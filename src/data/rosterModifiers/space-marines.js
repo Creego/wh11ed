@@ -4147,7 +4147,7 @@ export default {
             "ru": "и ещё, под Devastator Doctrine"
           },
           "cond": [
-            "never"
+            "doctrine-devastator"
           ]
         }
       ],
@@ -4596,7 +4596,7 @@ export default {
             "ru": "и ещё, под Devastator Doctrine"
           },
           "cond": [
-            "never"
+            "doctrine-devastator"
           ]
         }
       ],

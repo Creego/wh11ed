@@ -103,6 +103,11 @@ export const isAuto = (id) => Object.hasOwn(AUTO, id)
 const SOFT_AUTO = {
   'riled-up': (player, round) => player?.factionSlug === 'orks'
     && (player?.army?.toggleRounds || []).includes(round),
+  // Space Marines' Combat Doctrines — the army's pick of the round turns the doctrine on for every
+  // unit; a unit made subject to a different one keeps its own switch (see conditions.js).
+  ...Object.fromEntries(['assault', 'devastator', 'tactical'].filter((d) => conditions[`doctrine-${d}`])
+    .map((d) => [`doctrine-${d}`,
+      (player, round) => player?.factionSlug === 'space-marines' && player?.army?.selectionByRound?.[round] === d])),
 }
 
 // …and two datasheets answer it outright, with no trigger and no window: the Stompa's Waaagh!

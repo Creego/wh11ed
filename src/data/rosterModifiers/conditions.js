@@ -124,7 +124,14 @@ export const conditions = {
   // bonus is the army's for the rest of the turn — an army switch, not a per-unit one.
   'cold-fervour': { scope: 'army', duration: 'turn', label: { en: 'Cold Fervour triggered', ru: 'Cold Fervour сработал' } },
   'vision-momentous-brutality': { scope: 'army', duration: 'battle', label: { en: 'Vision of Momentous Brutality chosen', ru: 'Выбран Vision of Momentous Brutality' } },
-  'doctrine-assault': { scope: 'army', duration: 'round', label: { en: 'Assault Doctrine', ru: 'Assault Doctrine' } },
+  // Codex: Space Marines (11th) — Combat Doctrines. The army's pick is read from the tracker
+  // (rosterGameContext's SOFT_AUTO), but a doctrine can also be made active for ONE unit (Adept of
+  // the Codex, stratagems), and "only one combat doctrine can be active for each unit": a per-unit
+  // group, where the unit's own later switch evicts the army's (capGroups drops the oldest, and
+  // the tracker's pick carries no stamp). `doctrine-tactical` joins when a record needs it — the
+  // vocabulary gate refuses an id nothing uses.
+  'doctrine-assault': { scope: 'unit', duration: 'round', group: 'combat-doctrine', label: { en: 'Assault Doctrine', ru: 'Assault Doctrine' } },
+  'doctrine-devastator': { scope: 'unit', duration: 'round', group: 'combat-doctrine', label: { en: 'Devastator Doctrine', ru: 'Devastator Doctrine' } },
   'manifestation-imbued': { scope: 'army', duration: 'round', label: { en: 'Imbued Manifestation selected', ru: 'Выбран Imbued Manifestation' } },
   'manifestation-wrath': { scope: 'army', duration: 'round', label: { en: 'Wrath of the Immaterium selected', ru: 'Выбран Wrath of the Immaterium' } },
   'manifestation-maelstrom': { scope: 'army', duration: 'round', label: { en: 'Psychic Maelstrom selected', ru: 'Выбран Psychic Maelstrom' } },
