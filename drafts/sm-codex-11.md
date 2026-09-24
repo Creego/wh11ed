@@ -89,3 +89,17 @@ Saved lists naming one now get `detachmentGone` (commit cd01830).
 | psyker level / psychic level | уровень псайкера / психический уровень | shared with Orks 946 — the entry can go to main now |
 
 Keywords, rule / detachment / enhancement / stratagem names stay English (wh11ed convention).
+
+## Changelog draft (skill `changelog-entry`; numbers to re-check against appdata on the day)
+
+RU:
+- { h: 'Кодекс Space Marines' }
+- Вышел новый кодекс Space Marines. Oath of Moment больше нет — армейское правило теперь Combat Doctrines. На сайте новые правила армии, 15 детачментов и очки из MFM. Сохранённый список с исчезнувшим детачментом подскажет выбрать новый.
+- { h: 'Трекер: Combat Doctrines' }
+- В партии за Space Marines можно отмечать доктрину каждого раунда. Использованные доктрины остаются на карточке и показывают раунд. Лишние выборы от Gladius и Brethren-детачментов учитываются. Список в партии применяет эффекты доктрины сам.
+
+EN:
+- { h: 'Codex: Space Marines' }
+- The new Space Marines codex is out. Oath of Moment is gone — the army rule is now Combat Doctrines. The site has the new army rules, 15 detachments and MFM points. A saved list naming a detachment that is gone asks you to pick a new one.
+- { h: 'Tracker: Combat Doctrines' }
+- In a Space Marines game you can mark each round’s doctrine. Spent doctrines stay on the card with the round they were used in. The extra picks from Gladius and the Brethren detachments count. The list in the game applies the doctrine’s effects itself.
