@@ -11,7 +11,7 @@ import { hasKeyword, isBattlelineNow, grantedKeywordsFor, hostLimitsFor, leadTyp
 // answered by adding, dropping or re-arming a unit belongs to the Units tab and is deliberately
 // NOT here — including `overPoints`, which names the battle size but is almost always fixed by
 // the list, not by the limit.
-export const SETUP_CODES = new Set(['noFaction', 'noDetachment', 'dispositionUndeclared', 'detachmentTagClash', 'overDp'])
+export const SETUP_CODES = new Set(['noFaction', 'noDetachment', 'detachmentGone', 'dispositionUndeclared', 'detachmentTagClash', 'overDp'])
 
 export function setupIssueCount(issues) {
   return (issues || []).filter((i) => SETUP_CODES.has(i.code)).length
@@ -84,6 +84,16 @@ export function validateRoster(roster, { faction, core, items } = {}) {
       if (unit) iss.params = { unit, ...(iss.params || {}) }
     }
     issues.push(iss)
+  }
+
+  // A detachment the faction no longer has — a new codex retires detachments by name, and a list
+  // saved before it keeps the name. Resolving it to nothing (as every lookup below does) would let
+  // the list read as playing no detachment at all while the header still names one; saying so is
+  // what sends the player to the picker's Clear.
+  if (faction?.detachments) {
+    for (const name of roster?.detachments || []) {
+      if (!faction.detachments.some((d) => d.name === name)) add('detachmentGone', 'error', { params: { name } })
+    }
   }
 
   // Incompleteness (soft).

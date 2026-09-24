@@ -67,6 +67,16 @@ describe('validateRoster — completeness', () => {
     expect(codes({ ...roster(), detachments: [] })).toContain('noDetachment')
   })
 
+  // A codex retires detachments by name; a list saved before it keeps the name and would otherwise
+  // read as playing nothing while its header still names the old one.
+  it('flags a detachment the faction no longer has', () => {
+    const issues = validateRoster({ ...roster(), detachments: ['Gladius', 'Vanguard Spearhead'] }, { faction, core }).issues
+    const gone = issues.filter((i) => i.code === 'detachmentGone')
+    expect(gone).toHaveLength(1)
+    expect(gone[0]).toMatchObject({ level: 'error', params: { name: 'Vanguard Spearhead' } })
+    expect(codes(roster())).not.toContain('detachmentGone')
+  })
+
   // An army plays ONE Force Disposition. Detachments that disagree leave a choice the player still
   // owes — and everything downstream (the export's own line, the printed header, the game the list
   // is handed to) reads that answer, so the list is where it has to be made.
@@ -831,7 +841,7 @@ describe('validateRoster — every issue says which unit it is about', () => {
   it('asks for nothing the validator does not send', async () => {
     const { ui } = await import('../i18n/ui.js')
     const known = new Set(['unit', 'target', 'id', 'count', 'limit', 'over', 'spent', 'group',
-      'names', 'tag', 'enh', 'dets', 'points', 'kw', 'kws', 'own', 'theirs', 'options', 'item'])
+      'names', 'name', 'tag', 'enh', 'dets', 'points', 'kw', 'kws', 'own', 'theirs', 'options', 'item'])
     for (const loc of ['en', 'ru']) {
       for (const [key, tpl] of Object.entries(ui[loc])) {
         if (!key.startsWith('issue_')) continue
