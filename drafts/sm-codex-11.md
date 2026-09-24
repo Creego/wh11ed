@@ -90,6 +90,19 @@ Saved lists naming one now get `detachmentGone` (commit cd01830).
 
 Keywords, rule / detachment / enhancement / stratagem names stay English (wh11ed convention).
 
+## Release-day checklist beyond the pipeline
+
+- `rosterModifiers/space-marines.js`: replace the Oath of Moment `armyRule` record with the three
+  doctrines' own effects (Devastator → ranged `grant ASSAULT`, `cond: ['doctrine-devastator']`;
+  Assault / Tactical are eligibility rules — footnotes). Add `doctrine-tactical` to conditions.js
+  once a record uses it (Masterful Tactics, Transhuman Reactions). Without this the changelog's
+  last sentence is false — check it on a real card.
+- Adept of the Codex / Tactical Insight: "in addition to any other" — the `combat-doctrine` group
+  would evict it; leave those as footnotes (`never`) or give the group an exception.
+- Glossary: new states from the table above; `RosterViewView.test.js` looks for «Клятва момента».
+- Divergent chapters (BA/DA/SW/DW/BT): does appdata give them Combat Doctrines? The tracker and
+  SOFT_AUTO check `factionSlug === 'space-marines'` only.
+
 ## Changelog draft (skill `changelog-entry`; numbers to re-check against appdata on the day)
 
 RU:
