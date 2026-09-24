@@ -3,8 +3,8 @@
 // A `selection` primitive with `once: true` — a BATTLE-LONG pick, not the per-round choice AdMech's
 // Doctrina Imperatives make. At the start of the first battle round you select one of four Vows to
 // be active for your Adeptus Astartes units for the whole game, so the choice is stored once
-// (army.choice) rather than keyed by round. (Only Black Templars use Templar Vows; the other five
-// SM chapters keep Oath of Moment, which isn't a fixed-set pick — so this spec is BT-only.)
+// (army.choice) rather than keyed by round. (Only Black Templars use Templar Vows; the Codex SM
+// chapters have their own spec — Combat Doctrines, space-marines.js.)
 //
 // The option `body` texts are self-contained condensations of each Vow's rules (the specs never
 // import faction data), keyword names kept English, rules text translated. No detachment changes the

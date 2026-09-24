@@ -22,6 +22,7 @@ import blackTemplars from './black-templars.js'
 import deathGuard from './death-guard.js'
 import worldEaters from './world-eaters.js'
 import thousandSons from './thousand-sons.js'
+import spaceMarines from './space-marines.js'
 
 // Registry — add a faction by dropping its spec here.
 const REGISTRY = {
@@ -36,6 +37,7 @@ const REGISTRY = {
   'death-guard': deathGuard,
   'world-eaters': worldEaters,
   'thousand-sons': thousandSons,
+  'space-marines': spaceMarines,
 }
 
 // Detachment names come from the MFM dataset (player.detachments) and must line up with the
@@ -65,6 +67,12 @@ export function applyOverride(spec, ov) {
   const out = { ...spec, ...ov }
   if (ov.gains) out.gains = [...(spec.gains || []), ...ov.gains]
   if (ov.options) out.options = [...(spec.options || []), ...ov.options]
+  // Extra per-battle picks (see selectionBudget.js) add up across an army's detachments.
+  if (ov.spareUses) out.spareUses = (spec.spareUses || 0) + ov.spareUses
+  if (ov.bonusUses) {
+    out.bonusUses = { ...(spec.bonusUses || {}) }
+    for (const [id, n] of Object.entries(ov.bonusUses)) out.bonusUses[id] = (out.bonusUses[id] || 0) + n
+  }
   return out
 }
 
