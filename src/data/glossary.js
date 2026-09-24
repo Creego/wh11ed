@@ -1297,8 +1297,8 @@ export const glossary = {
 
   'sm-combat-doctrine': {
     term: 'Combat Doctrine',
-    en: 'The Gladius Task Force detachment rule. At the start of your Command phase you may switch on one of three Doctrines — **Devastator** (shoot after Advancing), **Tactical** (shoot and charge after Falling Back) or **Assault** (charge after Advancing) — for the whole army until your next Command phase. Each may be chosen only once per battle.',
-    ru: 'Правило детачмента Gladius Task Force. В начале вашей фазы командования можно включить одну из трёх доктрин — **Devastator** (стрелять после продвижения), **Tactical** (стрелять и нападать после отступления) или **Assault** (нападать после продвижения) — на всю армию до вашей следующей фазы командования. Каждую можно выбрать лишь раз за битву.',
+    en: 'The Space Marines army rule. At the start of your Command phase you can make one of three doctrines active for your Adeptus Astartes units until your next one — **Assault** (charge after an advance move), **Devastator** (ranged attacks have [ASSAULT]) or **Tactical** (shoot and charge after a fall-back move). Each can be selected once per battle, and a unit has one active doctrine at a time: a rule that makes another one active for it replaces the first.',
+    ru: 'Армейское правило Space Marines. В начале вашей фазы командования можно сделать активной одну из трёх доктрин для ваших юнитов Adeptus Astartes до следующей — **Assault** (charge после advance move), **Devastator** (ranged-атаки получают [ASSAULT]) или **Tactical** (стрельба и charge после fall-back move). Каждую можно выбрать раз за бой, и у юнита активна одна доктрина: правило, делающее активной другую, заменяет первую.',
   },
 
   'sm-psychic-discipline': {
