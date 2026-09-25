@@ -123,32 +123,19 @@
       </div>
     </div>
 
-    <!-- The points end the line, as they do in the corner of the sticky bar below: the number that
-         is consulted constantly belongs where the eye already is, not two feet down the screen. -->
-    <div class="rw-tally">
-      <RosterPointsTally
-        :points="points"
-        :limit="limit"
-        :error-count="errorCount"
-        :issue-count="issueCount"
-        :badge="!!factionSlug"
-        large
-        @open-issues="$emit('open-issues')"
-      />
-      <!-- The notes and the legality switch are decided once and then left alone; giving each a
-           permanent slot would spend the line on the two things nobody looks at twice. -->
-      <button
-        type="button"
-        class="rw-more"
-        :aria-label="labels.rosterMoreSettings"
-        :title="labels.rosterMoreSettings"
-        @click="moreOpen = true"
-      >
-        <i class="bi bi-three-dots" />
-      </button>
-      <!-- The caller's own close-out (the editor's Cancel / Save), last on the line. -->
-      <slot />
-    </div>
+    <!-- The notes and the legality switch are decided once and then left alone; giving each a
+         permanent slot would spend the line on the two things nobody looks at twice. The points
+         and the way out are not on this line: they are the fixed bar's at the bottom, where they
+         sit at every width (owner, 2026-09-26). -->
+    <button
+      type="button"
+      class="rw-more"
+      :aria-label="labels.rosterMoreSettings"
+      :title="labels.rosterMoreSettings"
+      @click="moreOpen = true"
+    >
+      <i class="bi bi-three-dots" />
+    </button>
 
     <FactionPickerModal
       v-if="factionPickerOpen"
@@ -228,7 +215,6 @@ import { computed, ref } from 'vue'
 import BaseModal from '../BaseModal.vue'
 import FactionPickerModal from '../tracker/FactionPickerModal.vue'
 import DetachmentPickerModal from '../tracker/DetachmentPickerModal.vue'
-import RosterPointsTally from './RosterPointsTally.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
 import { ROSTER_NOTES_MAX } from '../../composables/rosterEngine.js'
@@ -254,15 +240,11 @@ defineProps({
   dispositionCands: { type: Array, default: () => [] },
   checkLegality: { type: Boolean, default: true },
   notes: { type: String, default: '' },
-  points: { type: Number, default: 0 },
-  limit: { type: Number, default: 0 },
-  errorCount: { type: Number, default: 0 },
-  issueCount: { type: Number, default: 0 },
 })
 defineEmits([
   'update:name', 'update:battleSize', 'update:customPoints', 'update:disposition',
   'update:checkLegality', 'update:notes',
-  'pick-faction', 'toggle-detachment', 'clear-detachments', 'open-issues',
+  'pick-faction', 'toggle-detachment', 'clear-detachments',
 ])
 
 const { locale } = useLocale()
@@ -358,15 +340,9 @@ const moreOpen = ref(false)
 }
 .rw-static { font-size: 0.9rem; color: var(--text-primary); padding: 0.35rem 0; }
 
-.rw-tally {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-left: auto;
-  padding-bottom: 0.2rem;
-}
-
 .rw-more {
+  margin-left: auto;
+  margin-bottom: 0.2rem;
   background: none;
   border: 1px solid var(--border);
   color: var(--text-muted);

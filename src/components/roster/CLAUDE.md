@@ -1294,7 +1294,9 @@ steps, and the phone its modal.
   one line. The Settings tab and the wizard's step 1 are ordinary pages: `.rw-host` is bound to
   the columns being up.
 - **`RosterSettingsBar.vue`** is the top line — name, faction, detachments (with the DP count),
-  battle size, Force Disposition, then the points and the issue badge. It holds no state: both
+  battle size, Force Disposition, then its "…". **No points and no buttons** (owner, 2026-09-26):
+  the points, the issue badge and the way out are the fixed bar's at the bottom at every width, the
+  desk included. It holds no state: both
   callers own a roster and do different things with the same answer (the wizard's faction pick also
   creates the draft), so it reports and emits, pickers included. Notes and the legality switch are
   behind its "…" — decided once, then never looked at again, and a permanent slot for them would
@@ -1668,6 +1670,10 @@ What moved, and why each was safe to move:
   on the list's corner over a unit, and the Tracker tab reaches the game anyway.
 - **The desk loses its footer**: Cancel / Save end the settings line (`RosterSettingsBar`'s default
   slot), the name is that line's first field, and the columns run to the window's bottom.
+  **Reverted 2026-09-26 at the owner's word:** the footer is back on the desk with the points, the
+  badge and Cancel / Save (the mode switch stays phone-only), the settings line lost its points and
+  its slot, and "Back to lists" is gone from the desk on both screens (the wizard keeps its line of
+  step markers on a phone). The name stays the settings line's first field.
 
 The panes gained ~145px on a 390×740 phone (checked on screenshots, both builds side by side).
 

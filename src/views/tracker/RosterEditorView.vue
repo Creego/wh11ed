@@ -8,15 +8,6 @@
     <!-- `.rw-host` while the Units panes are up: the screen is then a column as tall as the
          window and the panes scroll inside themselves (RosterWorkbench); the Settings tab is an
          ordinary page. (No comment may sit BEFORE this root — see the src/views lint rule.) -->
-    <!-- Not on a phone: the fixed bar's Back goes to the same place, and the panes below get the
-         window minus everything above them, so a line here is a line taken from the catalogue. -->
-    <RouterLink
-      to="/roster"
-      class="back red-back"
-    >
-      <i class="bi bi-chevron-left" /> {{ labels.rosterBackToList }}
-    </RouterLink>
-
     <!-- The name is a Settings answer: on a phone it heads that mode only, and on the desk it is
          the settings bar's first field. Over the Units panes it was a row of every phone's screen
          spent on something renamed once (2026-09-24, the builder's height pass). -->
@@ -64,10 +55,6 @@
       :disposition-cands="dispositionCands"
       :check-legality="roster.checkLegality !== false"
       :notes="roster.notes || ''"
-      :points="points"
-      :limit="limit"
-      :error-count="validation.errorCount"
-      :issue-count="validation.issues.length"
       @update:name="rename"
       @update:battle-size="setBattleSize"
       @update:custom-points="setCustomPoints"
@@ -77,24 +64,7 @@
       @pick-faction="pickFaction"
       @toggle-detachment="toggleDetachment"
       @clear-detachments="clearDetachments"
-      @open-issues="issuesOpen = true"
-    >
-      <!-- On the desk the close-out actions end the line the points already end, and the fixed
-           footer is gone: its row went back to the three columns. -->
-      <button
-        type="button"
-        class="btn-ghost"
-        @click="leaveEditor"
-      >
-        {{ labels.rosterCancel }}
-      </button>
-      <button
-        class="btn-primary"
-        @click="save"
-      >
-        {{ labels.rosterSave }}
-      </button>
-    </RosterSettingsBar>
+    />
 
 
     <!-- Settings: the list's own answers, the same form as the wizard's step 1 -->
@@ -214,15 +184,11 @@
     />
 
     <!-- Fixed footer bar — same shape as the creation wizard's own .rc-sticky
-         (RosterCreateView.vue), Cancel/Save standing in for that one's Back/Next. Phone only: on
-         the desk its contents are the settings bar's last word. -->
-    <div
-      v-if="!desk"
-      class="rc-sticky"
-    >
+         (RosterCreateView.vue), Cancel/Save standing in for that one's Back/Next. At every width:
+         the desk had its points and buttons moved up into the settings line (2026-09-24) and the
+         owner asked for them back down here (2026-09-26). -->
+    <div class="rc-sticky">
       <div class="rc-sticky-inner">
-        <!-- On the desk the points and the issue badge are in the settings bar at the top, beside
-             the choices that move them; repeating them here would be the same number twice. -->
         <RosterPointsTally
           class="rc-sticky-info"
           :points="points"
@@ -236,6 +202,7 @@
              the panes; here they cost no height at all, and the amber mark a tab wore when the
              settings still owe an answer rides on the gear. -->
         <div
+          v-if="!desk"
           class="seg red-mode"
           role="group"
         >
@@ -577,7 +544,6 @@ function rename(name) {
 }
 /* Height is the phone's scarce axis, and the panes below are sized to what is left of it. */
 @media (max-width: 900px) {
-  .red-back { display: none; }
   .red-head { margin: 0 0 0.6rem; padding-bottom: 0.4rem; }
   .rname-input { font-size: 1.35rem; }
   .red-panel { gap: 0.6rem; }

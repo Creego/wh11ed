@@ -1,7 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import RosterPointsTally from './RosterPointsTally.vue'
-import RosterSettingsBar from './RosterSettingsBar.vue'
 
 const badgeOf = (w) => w.find('.issues-badge').classes()
 
@@ -24,12 +23,3 @@ describe('RosterPointsTally', () => {
 })
 
 // The desk's copy only knew red and green: a list owing a Force Disposition wore a green tick there.
-describe('RosterSettingsBar', () => {
-  it('shows warnings as amber, like the phone does', () => {
-    const w = mount(RosterSettingsBar, {
-      props: { factionSlug: 'space-marines', errorCount: 0, issueCount: 1 },
-      global: { stubs: { BaseModal: true, FactionPickerModal: true, DetachmentPickerModal: true } },
-    })
-    expect(badgeOf(w)).toContain('warn')
-  })
-})

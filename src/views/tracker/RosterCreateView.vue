@@ -9,7 +9,12 @@
          an ordinary page. (No comment may sit BEFORE this root — see the src/views lint rule.) -->
     <!-- One row for the way out and the step markers: on a phone the panes below get the window
          minus everything above them, so a line here is a line taken from the catalogue. -->
-    <div class="rc-top">
+    <!-- Phone only: the desk has no steps, and its way out is the fixed bar at the bottom (owner,
+         2026-09-26 — "К листам" over the settings line went). -->
+    <div
+      v-if="!desk"
+      class="rc-top"
+    >
       <RouterLink
         to="/roster"
         class="back"
@@ -26,10 +31,7 @@
            There were three: picking units and configuring them were a step apart, which since
            wargear started deciding a unit's price meant walking back and forth between them. They
            are one step with two panes now — the same layout the editor's Units tab uses. -->
-      <div
-        v-if="!desk"
-        class="rc-steps"
-      >
+      <div class="rc-steps">
         <button
           type="button"
           class="rc-step"
@@ -72,10 +74,6 @@
       :disposition-cands="dispositionCands"
       :check-legality="checkLegality"
       :notes="notes"
-      :points="points"
-      :limit="limit"
-      :error-count="validation.errorCount"
-      :issue-count="validation.issues.length"
       @update:name="name = $event"
       @update:battle-size="battleSize = $event"
       @update:custom-points="customPoints = Math.max(0, Number($event) || 0)"
@@ -85,7 +83,6 @@
       @pick-faction="pickFaction"
       @toggle-detachment="toggleDetachment"
       @clear-detachments="clearDetachments"
-      @open-issues="issuesOpen = true"
     />
 
     <div
@@ -204,9 +201,12 @@
          there, and the reading is consistent: the step's forward move is always in the corner. -->
     <div class="rc-sticky">
       <div class="rc-sticky-inner">
+        <!-- The points live here at every width once there are units to count — on the desk too,
+             where they sat in the settings line until 2026-09-26. -->
         <RosterPointsTally
-          v-if="!desk && step === 2"
+          v-if="desk || step === 2"
           class="rc-sticky-info"
+          :badge="!!factionSlug"
           :points="points"
           :limit="limit"
           :error-count="validation.errorCount"
