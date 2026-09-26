@@ -2754,6 +2754,9 @@ If your Army Faction is Adeptus Astartes, at the start of your Command phase, se
       // itself already matches the CP/box wording rather than the Codex's narrower "melee attack"
       // phrasing for Skullsquirm Blight — see the Codex file for that pre-existing note); "Pact
       // of Decay" is verbatim identical between CP and Codex.
+      // Contagion Range's three steps are the Codex's (3"/6"/9", owner's call 2026-09-26): the box's
+      // copy in appdata says "as shown below" and carries no steps at all (the Codex draws them as
+      // pictures), and the 6" ceiling that stood here was the one a player reported on the faction page.
       armyRule: {
         name: "Nurgle's Gift (Aura) & Pact of Decay",
         flavor: 'The Death Guard are warriors of the Plague God Nurgle. Their bloated bodies are riddled with corruption, and their mere presence causes the foe to sicken and wither in the grip of supernatural diseases while the battlefield falls to rot and ruin around them.',
@@ -2762,7 +2765,8 @@ If your Army Faction is Adeptus Astartes, at the start of your Command phase, se
 ### Contagion Range
 Contagion Range changes over the course of the battle:
 ▪ During the first battle round: Contagion Range 3".
-▪ Second battle round onwards: Contagion Range 6".
+▪ During the second battle round: Contagion Range 6".
+▪ Third battle round onwards: Contagion Range 9".
 ▪ Contagion Range cannot be greater than 12" after modifiers.
 
 ### Afflicted

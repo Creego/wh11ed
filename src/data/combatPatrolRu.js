@@ -1603,7 +1603,8 @@ export const combatPatrolRu = {
 ### Contagion Range | Дистанция заразы
 Contagion Range меняется по ходу битвы:
 ▪ В течение первого раунда битвы: Contagion Range 3".
-▪ Начиная со второго раунда битвы: Contagion Range 6".
+▪ В течение второго раунда битвы: Contagion Range 6".
+▪ Начиная с третьего раунда битвы: Contagion Range 9".
 ▪ Contagion Range не может быть больше 12" после модификаторов.
 
 ### Afflicted | Поражённые
