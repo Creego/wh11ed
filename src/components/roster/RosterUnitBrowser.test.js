@@ -67,7 +67,7 @@ describe('RosterUnitBrowser', () => {
     const row = w.findAll('.rub-item').find((r) => r.text().includes('Alpha Battleline'))
     await row.trigger('click')
     expect(w.emitted('add')).toBeFalsy()
-    const modal = w.find('roster-unit-rules-modal-stub')
+    const modal = w.findComponent({ name: 'RosterUnitRulesModal' })
     expect(modal.exists()).toBe(true)
     expect(modal.attributes('unitid')).toBe('a')
   })
@@ -252,11 +252,14 @@ describe('RosterUnitBrowser — the catalogue filters', () => {
     expect(w.find('.rub-hidden').text()).toContain('4')
   })
 
-  it('marks a unit as owned from its row, without opening the preview, and filters by that mark', async () => {
+  // The row only SHOWS the mark (a star badge beside the name); the collection is edited in the
+  // unit's card, so the row has no star button of its own to mis-tap (2026-09-26).
+  it('shows an owned unit with a star badge, without a toggle on the row, and filters by that mark', async () => {
+    useCollection().toggleOwned('space-marines', 'a', 'Alpha Battleline')
     const w = mountBrowser()
-    await rowFor(w, 'Alpha Battleline').find('.rub-star').trigger('click')
-    expect(w.find('roster-unit-rules-modal-stub').exists()).toBe(false)
-    expect(rowFor(w, 'Alpha Battleline').find('.rub-star').classes()).toContain('on')
+    expect(w.find('.rub-star').exists()).toBe(false)
+    expect(rowFor(w, 'Alpha Battleline').find('.owned-badge').exists()).toBe(true)
+    expect(rowFor(w, 'Bravo Character').find('.owned-badge').exists()).toBe(false)
 
     await tick(filters(w).at(-1))
     expect(w.text()).toContain('Alpha Battleline')
@@ -309,10 +312,17 @@ describe('RosterUnitBrowser — an allied unit is owned under ITS faction', () =
 
   // Browsed inside a Space Marines list, an Inquisitor is still an Imperial Agents datasheet — the
   // shelf is keyed that way, or the ids of two factions would share one bucket.
-  it('records the mark against the ally, not against the army browsing it', async () => {
+  it('reads the mark off the ally, not off the army browsing it', () => {
+    useCollection().toggleOwned('imperial-agents', 'inquisitor', 'Inquisitor')
     const w = mountBrowser({ units: [...units, ally], allies })
-    await w.findAll('.rub-item').find((r) => r.text().includes('Inquisitor')).find('.rub-star').trigger('click')
-    expect(collection['imperial-agents'].inquisitor.name).toBe('Inquisitor')
-    expect(collection['space-marines']).toBeUndefined()
+    expect(w.findAll('.rub-item').find((r) => r.text().includes('Inquisitor')).find('.owned-badge').exists()).toBe(true)
+  })
+
+  it('opens the preview under the ally\'s own faction and id — the key the card\'s star writes to', async () => {
+    const w = mountBrowser({ units: [...units, ally], allies })
+    await w.findAll('.rub-item').find((r) => r.text().includes('Inquisitor')).find('.rub-text').trigger('click')
+    const modal = w.findComponent({ name: 'RosterUnitRulesModal' })
+    expect(modal.props('factionSlug')).toBe('imperial-agents')
+    expect(modal.props('unitId')).toBe('inquisitor')
   })
 })

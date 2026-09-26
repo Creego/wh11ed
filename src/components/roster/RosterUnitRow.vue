@@ -7,9 +7,10 @@
      <button>, which is also why nothing here is focusable.
 
      What it shows, in order of how quickly it needs to be read:
-       - the name, and the warlord star;
+       - the name;
        - chips for the facts that distinguish THIS entry from another copy of the same datasheet —
-         how many models, which attachment slot it fills, its enhancement, its allegiance;
+         the Warlord's badge first, how many models, which attachment slot it fills, its enhancement,
+         its allegiance;
        - the wargear the player actually CHOSE.
 
      What it deliberately does not show is the default loadout. It is identical on every copy of a
@@ -19,10 +20,6 @@
 <template>
   <span class="rur">
     <span class="rur-name">
-      <i
-        v-if="entry.warlord"
-        class="bi bi-flag-fill rur-wl"
-      />
       {{ def?.name || entry.id }}
       <!-- The player's own note, in parentheses after the name — the way every list format that
            has the field prints it, ours included (rosterEngine's note helpers). Not a chip: a chip
@@ -34,9 +31,16 @@
     </span>
     <span class="rur-pts">{{ points }}</span>
     <span
-      v-if="chips.length"
+      v-if="chips.length || entry.warlord"
       class="rur-chips"
     >
+      <!-- The Warlord leads the chip line: the name above stays a name (owner's ask, 2026-09-26). -->
+      <span
+        v-if="entry.warlord"
+        class="legends-badge warlord-badge rur-wl"
+        :title="labels.rosterWarlord"
+        :aria-label="labels.rosterWarlord"
+      ><i class="bi bi-flag-fill" /></span>
       <span
         v-for="c in chips"
         :key="c.key"
@@ -113,7 +117,6 @@ const picks = computed(() => wargearNames(props.def, props.entry, props.items))
 .rur-pts { grid-area: 1 / 2 / 2 / 3; align-self: start; padding-right: var(--rul-acts-w, 0); }
 .rur-chips { grid-area: 2 / 1 / 3 / -1; margin-top: 0.2rem; }
 .rur-picks { grid-area: 3 / 1 / 4 / -1; margin-top: 0.2rem; }
-.rur-wl { color: #e3b341; font-size: 0.8rem; margin-right: 0.15rem; }
 /* Lighter than the name it follows, so the row still reads name-first at a glance. */
 .rur-note { font-weight: 400; font-size: 0.85em; color: var(--text-muted); }
 
@@ -127,6 +130,8 @@ const picks = computed(() => wargearNames(props.def, props.entry, props.items))
   color: var(--text-muted);
   white-space: nowrap;
 }
+/* The shared badge, sized to sit in this line as one of its chips. */
+.rur-wl { margin-left: 0; padding: 0.05rem 0.35rem; font-size: 0.68rem; vertical-align: baseline; }
 .rur-chip.role { border-color: color-mix(in srgb, var(--accent) 55%, var(--border)); color: var(--accent); }
 
 .rur-picks { font-size: 0.72rem; color: var(--text-dim); line-height: 1.35; }
@@ -147,7 +152,7 @@ const picks = computed(() => wargearNames(props.def, props.entry, props.items))
   .rur-pts { grid-area: 2 / 2 / 3 / 3; align-self: end; padding-right: 0; font-size: 0.85rem; }
   .rur-chips { grid-area: 2 / 1 / 3 / 2; }
   .rur-picks { grid-area: 3 / 1 / 4 / -1; }
-  .rur-chip { font-size: 0.62rem; padding: 0.05rem 0.25rem; }
+  .rur-chip, .rur-wl { font-size: 0.62rem; padding: 0.05rem 0.25rem; }
   .rur-picks { font-size: 0.66rem; }
 }
 </style>

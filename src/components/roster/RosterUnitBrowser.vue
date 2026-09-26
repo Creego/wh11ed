@@ -136,23 +136,17 @@
                 :class="{ added: countOf(u.id) }"
                 @click="previewId = u.id"
               >
-                <button
-                  type="button"
-                  class="rub-star"
-                  :class="{ on: ownsUnit(u) }"
-                  :aria-pressed="ownsUnit(u)"
-                  :title="ownsUnit(u) ? labels.dsOwnRemove : labels.dsOwnAdd"
-                  :aria-label="ownsUnit(u) ? labels.dsOwnRemove : labels.dsOwnAdd"
-                  @click.stop="toggleOwnUnit(u)"
-                >
-                  <i :class="ownsUnit(u) ? 'bi bi-star-fill' : 'bi bi-star'" />
-                </button>
                 <span class="rub-text">
                   <span class="rub-name">{{ u.name }}<span
                     v-if="u.flags?.legends"
                     class="legends-badge"
                     :title="labels.dsLegendsNote"
                   >{{ labels.dsLegends }}</span><span
+                    v-if="ownsUnit(u)"
+                    class="legends-badge owned-badge"
+                    :title="labels.rosterFilterOwned"
+                    :aria-label="labels.rosterFilterOwned"
+                  ><i class="bi bi-star-fill" /></span><span
                     v-if="countOf(u.id)"
                     class="rub-count"
                     :class="{ over: isOver(u) }"
@@ -255,7 +249,7 @@ const { locale } = useLocale()
 const labels = computed(() => ui[locale.value])
 
 // "I own this model" — set from the star on each row here, and from the faction datasheet pages.
-const { isOwned, toggleOwned } = useCollection()
+const { isOwned } = useCollection()
 
 // No autofocus. The catalogue used to have a screen to itself, where taking the keyboard was the
 // obvious opening move; it is now one pane of the build screen, which opens showing the list
@@ -297,7 +291,6 @@ function srcOf(u) {
   return { slug: src?.[0] || props.factionSlug, id: src?.[1] || u.id }
 }
 function ownsUnit(u) { const s = srcOf(u); return isOwned(s.slug, s.id) }
-function toggleOwnUnit(u) { const s = srcOf(u); toggleOwned(s.slug, s.id, u.name) }
 
 // A unit already in the list is never filtered away — same reason the detachment picker keeps the
 // detachments you took: its row carries the "−" button, and a list that hides what you just added
@@ -542,28 +535,6 @@ const previewUnitId = computed(() => previewSrc.value?.[1] || previewId.value)
 .rub-count { margin-left: 0.3em; font-weight: 700; color: var(--accent); }
 .rub-count.over { color: var(--danger); }
 .rub-pts { font-family: var(--font-mono); font-weight: 700; color: var(--text-primary); flex-shrink: 0; font-size: 0.8rem; }
-/* Owned-mark rail, mirroring the +/− rail on the other side of the row rather than floating over
-   the text — these rows are too dense for a corner overlay. Marked rows take the faction's accent,
-   the same colour the datasheet grid's star uses (the editor's root folds `--fa-light`/`--fa-dark`
-   into `--accent`, so this is the ROSTER's faction — an allied unit's star wears the army's colour,
-   which is the pane it is being browsed in). */
-.rub-star {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  background: none;
-  border: none;
-  border-right: 1px solid var(--border);
-  color: var(--text-muted);
-  opacity: 0.5;
-  font-size: 0.85rem;
-  cursor: pointer;
-}
-.rub-star.on { color: var(--accent); opacity: 1; }
-@media (hover: hover) { .rub-star:hover { opacity: 1; } }
-
 .rub-rail { flex-shrink: 0; display: flex; align-items: stretch; }
 .rub-add {
   flex-shrink: 0;
@@ -608,7 +579,6 @@ const previewUnitId = computed(() => previewSrc.value?.[1] || previewId.value)
   .rub-filter-list .check { padding: 0.35rem 0.4rem; gap: 0.35rem; font-size: 0.7rem; }
   .rub-filter-list .check input[type="checkbox"] { width: 16px; height: 16px; }
   .rub-hidden { font-size: 0.62rem; }
-  .rub-star { width: 1.5rem; font-size: 0.75rem; }
   .rub-add { width: 1.7rem; min-height: 1.7rem; font-size: 0.85rem; }
 }
 </style>

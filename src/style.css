@@ -949,6 +949,23 @@ strong {
   white-space: nowrap;
 }
 
+/* "In my collection" on a roster catalogue row — the Legends mark's shape in the faction's accent
+   (the editor's root folds it into `--accent`), a star for a word. Only a mark: the collection is edited on the datasheet pages, the row's own tap
+   already opens the preview and its right edge adds the unit (2026-09-26, owner's ask). */
+.legends-badge.owned-badge {
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--accent);
+}
+
+/* The Warlord on a roster list row — the same badge, white (the primary text colour, so it holds
+   in the light theme too), a flag for a word (2026-09-26, owner's ask). */
+.legends-badge.warlord-badge {
+  border-color: color-mix(in srgb, var(--text-primary) 40%, transparent);
+  background: color-mix(in srgb, var(--text-primary) 12%, transparent);
+  color: var(--text-primary);
+}
+
 /* Clear of the mobile bottom-nav (52px — .bn-item's min-height in App.vue), which is where the
    safe area is already accounted for; and the page's own gutter takes over from the 2rem
    measure, since below 900px the content is not measured either. */

@@ -1781,13 +1781,21 @@ carrying army-list semantics, while owning a box is a fact about a shelf. Keepin
 what stops either from inheriting the other's meaning — and they are drawn apart too, the pin
 staying `bi-pin-angle`, the owned mark a star.
 
-Marks are set in three places, all sharing the singleton: the catalogue row's own star rail
-(mirroring the +/− rail, since these rows are too dense for a corner overlay), the datasheet
+Marks are set in three places, all sharing the singleton: the unit card's header
+(`RosterUnitRulesModal`, a star beside the close, keyed by the card's own `factionSlug`/`unitId`
+— which already name an ally's faction), the datasheet
 grid's chips (`FactionDatasheetsView`, where a collection actually gets entered — one unit per
 visit is no way to fill a shelf), and one datasheet's page header. On the chips the pin and the
 star **stack** in the corner rather than standing side by side: two columns of buttons cost the
 name a third line at that grid's 180px. Both are icon-only toggles and a tooltip is no answer on a
 phone, so the key is printed once above the grid (`.ds-legend`) instead of on ninety chips.
+
+**The catalogue row only SHOWS the mark** (owner's ask, 2026-09-26): an `.owned-badge` beside the
+name — the Legends badge's shape in the faction's `--accent`, a filled star for its word. The row used
+to carry its own star rail on the left; it cost the name width and was one more target beside the
+row's tap-to-preview. The Warlord's flag on a list row (`RosterUnitRow`) became the same kind of
+badge leading the chip line under the name, in white (`--text-primary`), the same day. The card's own star takes the faction's `--accent` — the header sits outside
+the body's `FactionAccentScope`, so the button carries a second one (`display: contents`).
 
 The pin's own wording was fixed at the same time: the datasheet screens called it "Favorites"
 («Избранное») while the faction pickers, running the same `useFavorites` layer behind the same
@@ -1797,11 +1805,11 @@ icon, called it "Pinned" («Закреплённые»). One feature, one vocabu
 this does not, until there is a `/collection` endpoint to sync it to.
 
 **The Warlord's mark moved to `bi-flag-fill`** the same day. The star now means "I own this model"
-in the pane beside it, and one gold glyph cannot mean both on one screen. The Warlord keeps the
-gold `#e3b341`; the owned star takes **`var(--accent)`** — the faction's own colour, since every
+in the pane beside it, and one gold glyph cannot mean both on one screen. The Warlord kept the
+gold `#e3b341` until 2026-09-26, when its flag went white (`--text-primary`) on the list row's badge
+and the editor's checkbox alike; the owned star takes **`var(--accent)`** — the faction's own colour, since every
 screen it appears on is already themed that way (`FactionAccentScope`'s recipe, folded into
-`--accent` by the editor's, the wizard's and `FactionLayout`'s roots). Gold therefore means one
-thing again. The single exception is the datasheet page's header, where the buttons sit ON the
+`--accent` by the editor's, the wizard's and `FactionLayout`'s roots). The single exception is the datasheet page's header, where the buttons sit ON the
 faction-coloured hero and stay white like the rest of `.ds-btn`. Three components carried the icon
 (`RosterUnitRow`, `UnitEditorFields`, `RosterUnitRulesModal`) and a fourth carried a bare `'★'` in
 text — `rosterEngine`'s `entrySummary`, the read-only view's summary line, where a lone symbol on

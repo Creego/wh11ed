@@ -40,6 +40,21 @@ describe('RosterUnitRulesModal', () => {
     expect(w.emitted('close')).toBeTruthy()
   })
 
+  it('marks the unit as owned from the header star, under the faction and id it was opened with', async () => {
+    const { useCollection } = await import('../../composables/useCollection.js')
+    const { collection, isOwned } = useCollection()
+    for (const k of Object.keys(collection)) delete collection[k]
+    mount(RosterUnitRulesModal, {
+      props: { unitId: 'intercessor-squad', factionSlug: 'space-marines' },
+    })
+    await waitFor('Intercessor Squad')
+    await body().find('.rum-own').trigger('click')
+    expect(isOwned('space-marines', 'intercessor-squad')).toBe(true)
+    expect(body().find('.rum-own').attributes('aria-pressed')).toBe('true')
+    await body().find('.rum-own').trigger('click')
+    expect(isOwned('space-marines', 'intercessor-squad')).toBe(false)
+  })
+
   it('trims the weapon tables to the entry\'s own loadout when given a roster context', async () => {
     // Real data on purpose: an Intercessor Squad prints 12 weapon rows, but a squad that took
     // none of its optional swaps fields only its three default ones.

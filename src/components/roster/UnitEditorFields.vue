@@ -1068,7 +1068,8 @@ const writeNote = (obj, key, value) => setNote(obj, key, value)
 /* Which of the two squads of that name this row is. Its OWN line — the name above it is what the
    reader scans, and a sentence trailing off the end of it would be read as part of the name. */
 .opt-which { display: block; margin-top: 0.1rem; font-size: 0.7rem; font-style: normal; line-height: 1.3; color: var(--text-muted); }
-.wl-flag { color: #e3b341; margin-right: 0.3rem; }
+/* White, like the Warlord badge on the list row (2026-09-26). */
+.wl-flag { color: var(--text-primary); margin-right: 0.3rem; }
 
 /* Checkbox tiles (wargear picks, enhancements, warlord) — same look as the tracker's
    ScoringModal checkbox rows (.m-cond/.m-check), so a "select" control reads the same

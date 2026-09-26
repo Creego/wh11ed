@@ -5,6 +5,29 @@
     max-height="90dvh"
     @close="$emit('close')"
   >
+    <!-- "I own this one" — the only place in the builder the collection is edited: the catalogue
+         row just shows the mark (2026-09-26, owner's ask). Keyed by the props, which already name
+         the ally's own faction and id for an allied unit, so the mark lands where the datasheet
+         pages keep it. -->
+    <template #aside>
+      <FactionAccentScope
+        :faction-slug="factionSlug"
+        class="rum-own-scope"
+      >
+        <button
+          v-if="view.sheet"
+          type="button"
+          class="rum-own"
+          :class="{ on: owned }"
+          :aria-pressed="owned"
+          :title="owned ? labels.dsOwnRemove : labels.dsOwnAdd"
+          :aria-label="owned ? labels.dsOwnRemove : labels.dsOwnAdd"
+          @click="toggleOwned(factionSlug, unitId, view.sheet.name)"
+        >
+          <i :class="owned ? 'bi bi-star-fill' : 'bi bi-star'" />
+        </button>
+      </FactionAccentScope>
+    </template>
     <div class="modal-body">
       <!-- FactionAccentScope re-applies the faction-accent recipe: BaseModal teleports to
            <body>, outside FactionLayout's .faction-view.themed ancestor, so without this every
@@ -287,6 +310,7 @@ import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
 import { useKeywordPopover } from '../../composables/useKeywordPopover.js'
 import { useRenderInline } from '../../composables/useRenderInline.js'
+import { useCollection } from '../../composables/useCollection.js'
 // What the card SAYS — the printed sheet, the roster's overlay and the prose behind it — is
 // resolved once, here, and shared with the print sheet. This component adds the live game around
 // it: the chips, what they open, and what may not be spent right now.
@@ -313,6 +337,8 @@ const { locale } = useLocale()
 const { renderInline } = useRenderInline()
 const { openRule } = useKeywordPopover()
 const labels = computed(() => ui[locale.value])
+const { isOwned, toggleOwned } = useCollection()
+const owned = computed(() => isOwned(props.factionSlug, props.unitId))
 
 const {
   loaded, view,
@@ -440,6 +466,26 @@ const stratsBlockedNote = computed(() => {
 </script>
 
 <style scoped>
+/* The header sits outside the body's FactionAccentScope, so the star gets a scope of its own —
+   `display: contents` keeps the wrapper out of the header's flex row while the faction's
+   `--accent` still cascades to the button (owner's ask, 2026-09-26). */
+.rum-own-scope { display: contents; }
+.rum-own {
+  flex-shrink: 0;
+  min-width: 36px;
+  min-height: 36px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+.rum-own.on { color: var(--accent); }
+/* The close button's hover plate beside it, so the star reads as a button too. */
+@media (hover: hover) {
+  .rum-own:hover { background: color-mix(in srgb, var(--text-primary) 8%, transparent); color: var(--text-primary); }
+  .rum-own.on:hover { color: var(--accent); }
+}
 
 /* Context chips above the card. Muted, low-contrast on purpose — this is roster metadata, not
    part of the datasheet, and must not compete with the card's own accent-coloured header band. */
