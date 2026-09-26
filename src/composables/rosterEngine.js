@@ -321,6 +321,102 @@ export function wargearExclRoom(def, entry, gi, oi) {
     Math.max(0, limit - set.filter((o) => o !== oi).reduce((n, o) => n + optionCount(entry, gi, o), 0))))
 }
 
+// `pm` — rules about ONE model that reach across groups (pack-roster.mjs's perModelRules; Legends
+// Crisis Battlesuits: each suit takes up to three from one group, at most one of each starred item
+// counting the burst-cannon swap too, and at most three ranged weapons counting the swap's pick or
+// the burst cannon it kept). Groups store counts, not who holds what, so the question is whether
+// the counts CAN be dealt onto the models. Models differ only in what sits in the swap's slot, so
+// each gets its base (the swap's picks; the rest keep what the swap gives up) and the add group's
+// counts are a flow: item → the model (at most 1 of a starred item, none if it is the base) →
+// through the model's ranged allowance when the item is ranged → the model's slots. The flow
+// carries every pick exactly when a legal assignment exists.
+const pmItemOf = (o) => (Array.isArray(o[0]) ? o[0][0][0] : o[0])
+function pmCounts(def, entry, gi) {
+  const m = new Map()
+  for (const [g, oi, c] of entry?.wg || []) {
+    if (g !== gi) continue
+    const id = pmItemOf(def.gear[gi].o[oi])
+    m.set(id, (m.get(id) || 0) + (c || 1))
+  }
+  return m
+}
+function maxFlow(cap, s, t) {
+  const n = cap.length
+  let flow = 0
+  for (;;) {
+    const prev = new Array(n).fill(-1)
+    prev[s] = s
+    const queue = [s]
+    while (queue.length && prev[t] < 0) {
+      const u = queue.shift()
+      for (let v = 0; v < n; v++) if (prev[v] < 0 && cap[u][v] > 0) { prev[v] = u; queue.push(v) }
+    }
+    if (prev[t] < 0) return flow
+    let push = Infinity
+    for (let v = t; v !== s; v = prev[v]) push = Math.min(push, cap[prev[v]][v])
+    for (let v = t; v !== s; v = prev[v]) { cap[prev[v]][v] -= push; cap[v][prev[v]] += push }
+    flow += push
+  }
+}
+export function perModelFits(def, entry) {
+  const pm = def?.pm
+  if (!pm) return true
+  const models = capModels(def, entry)
+  const one = new Set(pm.one || [])
+  const [rangedMax, rangedIds] = pm.ranged || [Infinity, []]
+  const ranged = new Set(rangedIds)
+  const given = pm.base != null ? def.gear[pm.base]?.rep?.[0] ?? null : null
+  const bases = []
+  if (pm.base != null) for (const [id, n] of pmCounts(def, entry, pm.base)) for (let k = 0; k < n; k++) bases.push(id)
+  // More swaps than models: a unit-wide swap group has no cap of its own to say so, so this does.
+  if (bases.length > models) return false
+  while (bases.length < models) bases.push(given)
+  // Ranged weapons a model carries before the add group: its printed loadout's, with the swapped
+  // slot holding its base instead of what the swap gives up.
+  const row = def.defaults?.[0]?.[1] || []
+  const printed = row.filter(([id, , total]) => ranged.has(id) && !total).reduce((n, [, c]) => n + (c || 1), 0)
+  const rangedOf = (b) => printed - (given != null && ranged.has(given) ? 1 : 0) + (b != null && ranged.has(b) ? 1 : 0)
+
+  const adds = [...pmCounts(def, entry, pm.add)]
+  const want = adds.reduce((n, [, c]) => n + c, 0)
+  if (!want) return true
+  // Nodes: 0 source · items · per model a ranged gate and the model · sink.
+  const K = adds.length
+  const R = (i) => 1 + K + 2 * i
+  const T = (i) => 2 + K + 2 * i
+  const sink = 1 + K + 2 * models
+  const cap = Array.from({ length: sink + 1 }, () => new Array(sink + 1).fill(0))
+  adds.forEach(([id, c], k) => {
+    cap[0][1 + k] = c
+    for (let i = 0; i < models; i++) {
+      const each = one.has(id) ? (bases[i] === id ? 0 : 1) : pm.slots
+      cap[1 + k][ranged.has(id) ? R(i) : T(i)] = each
+    }
+  })
+  for (let i = 0; i < models; i++) {
+    cap[R(i)][T(i)] = Number.isFinite(rangedMax) ? Math.max(0, rangedMax - rangedOf(bases[i])) : pm.slots
+    cap[T(i)][sink] = pm.slots
+  }
+  return maxFlow(cap, 0, sink) === want
+}
+// How many of ONE option a `pm` group can hold with every other pick as it is — the most that still
+// deals out, scanning the whole range because a swap can make room (a suit that trades its burst
+// cannon for a support system has a ranged slot free). null for a group `pm` does not cover; the
+// current count when nothing fits, so the editor only ever stops the "+".
+export function perModelRoom(def, entry, gi, oi) {
+  const pm = def?.pm
+  if (!pm || (gi !== pm.add && gi !== pm.base)) return null
+  const models = capModels(def, entry)
+  const others = (entry?.wg || []).filter(([g, o]) => !(g === gi && o === oi))
+  const current = optionCount(entry, gi, oi)
+  let best = null
+  const top = gi === pm.add ? models * pm.slots : models
+  for (let n = 0; n <= top; n++) {
+    if (perModelFits(def, { ...entry, wg: n ? [...others, [gi, oi, n]] : others })) best = n
+  }
+  return best ?? current
+}
+
 // The ceiling a group with NO structural cap has: one pick per model of the profile it belongs to
 // — "any number of Sicarian Ruststalkers can each have their transonic razor replaced" excludes the
 // Princeps — times the copies of the weapon each of those models carries (`cp`, five groups
@@ -1248,6 +1344,10 @@ export function fitWargear(def, entry) {
       if (ceiling != null && wargearGroupSpent(e, gi) > ceiling) i = k
       else if (cap?.dup && (wg[k][2] || 1) > cap.dup) i = k
       else if (wargearExclOver(def, e, gi).some((x) => x.set.includes(wg[k][1]))) i = k
+    }
+    // Then the rules about one model across groups (`pm`): the latest pick in either group they cover.
+    if (i < 0 && !perModelFits(def, e)) {
+      for (let k = wg.length - 1; k >= 0 && i < 0; k--) if (wg[k][0] === def.pm.add || wg[k][0] === def.pm.base) i = k
     }
     // Then stock: the latest pick that spends an overdrawn item.
     if (i < 0) {

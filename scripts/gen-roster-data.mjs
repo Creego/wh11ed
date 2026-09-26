@@ -2557,16 +2557,12 @@ export { default as rosterItems } from './items.js'
 
 // Footnotes under a per-model group that say what ONE model may hold, written as `excl`: lists of
 // option indexes of which each model holds at most one — so together they are at most the unit's
-// model count, and the same round-robin argument as PER_MODEL_BUDGET keeps that exact. Two
-// footnotes in the whole corpus, both T'au:
-//   "* No model can be equipped with both a twin plasma rifle and twin smart missile system."
-//     (Broadside) → the pair is one set.
-//   "* Each model cannot have duplicates of these pieces of wargear." (Crisis Battlesuits, Legends)
-//     → every option whose bullet carries exactly one star is a set of its own.
-// Run on the finished units, pack Legends included, because the pack's reader builds its groups
-// elsewhere. A footnote whose options cannot all be found is reported and writes nothing. What
-// Crisis' "*** no more than 3 ranged weapons" says is across TWO groups (the burst cannon swap and
-// this one) and is not expressed — roster/CLAUDE.md, Known gaps.
+// model count, and the same round-robin argument as PER_MODEL_BUDGET keeps that exact. One
+// footnote in the corpus says this within one group: Broadside's "* No model can be equipped with
+// both a twin plasma rifle and twin smart missile system" → the pair is one set. (Legends Crisis'
+// starred items reach across two groups and are the unit's `pm`, pack-roster.mjs's perModelRules.)
+// Run on the finished units, pack Legends included. A footnote whose options cannot all be found is
+// reported and writes nothing.
 function oneEachPerModel(slug, units) {
   const texts = new Map([...textIds].map(([t, id]) => [id, t]))
   const nameOf = new Map([...itemIds].map(([uuid, id]) => [id, norm(wgItemName.get(uuid) || packItemNames.get(uuid) || '')]))
@@ -2578,12 +2574,6 @@ function oneEachPerModel(slug, units) {
       const sets = []
       const both = /no model can be equipped with both (?:an? )?(.+?) and (?:an? )?(.+?)\.?\s*$/im.exec(t)
       if (both) sets.push([at(both[1]), at(both[2])])
-      if (/^\*\s*each model cannot have duplicates of these/im.test(t)) {
-        for (const line of t.split('\n')) {
-          const m = /^[▪◦•]\s*(?:\d+\s+)?(.+?)(?<!\*)\*$/.exec(line.trim())
-          if (m) sets.push([at(m[1])])
-        }
-      }
       if (!sets.length) continue
       if (sets.some((x) => x.some((i) => i < 0))) { report.limit.perModelBudget.push(`${slug}/${u.name}: a footnote names an option the group lacks — nothing written`); continue }
       g.excl = sets

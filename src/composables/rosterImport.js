@@ -28,7 +28,7 @@
 // figure rides along only so the difference can be shown. A list exported against last month's
 // points is not a bug in the import.
 import { factionGroups } from '../data/factionsIndex.js'
-import { allySourceOf, leadTypeFor, modelsPerMini, optionItems, optionLabel, unitPoints, wargearGroupCap, wargearGroupFallbackCap } from './rosterEngine.js'
+import { allySourceOf, leadTypeFor, modelsPerMini, optionItems, optionLabel, perModelFits, unitPoints, wargearGroupCap, wargearGroupFallbackCap } from './rosterEngine.js'
 
 // GW's own section headings, plus the 10th-edition ones an older export may still carry.
 // `m` so detectFormat can test it against a whole pasted list; parseGw tests it a line at a time.
@@ -1172,6 +1172,14 @@ export function matchRoster(parsed, { faction, core, items } = {}) {
         let taken = 0
         for (const o of set) { const p = picks.get(`${gi}:${o}`); if (p) taken += p.stepper ? stepperCount(p) : p.n }
         room = Math.min(room, Math.max(0, (entry.count ?? bracket?.per?.[0] ?? 1) - taken))
+      }
+      // The rules about one model across groups (`pm`): one more of this option must still deal out.
+      if (oi != null && def.pm && (gi === def.pm.add || gi === def.pm.base) && room > 0) {
+        const wg = [...picks.values()].map((p) => [p.gi, p.oi, p.stepper ? stepperCount(p) : p.n])
+        const at = wg.find(([g, o]) => g === gi && o === oi)
+        if (at) at[2] += 1
+        else wg.push([gi, oi, 1])
+        if (!perModelFits(def, { ...entry, wg })) room = 0
       }
       return room
     }

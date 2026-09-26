@@ -241,13 +241,26 @@ inside both bounds can be dealt out round-robin — so `lim` with one row per mo
 the "any number" branch of `parseOption` in `pack-roster.mjs` for the Legends; the guard is
 `index.test.js`'s "a budget per model".
 
-**`excl` — one per model across a set of options.** Two footnotes narrow what ONE model may hold:
-Broadside's *"No model can be equipped with both a twin plasma rifle and twin smart missile system"*
-(the pair is one set) and Legends Crisis' starred *"Each model cannot have duplicates of these pieces
-of wargear"* (each starred option a set of its own). For counts the rule is again exact: each set
-together at most the unit's model count. The generator writes it in a pass over the finished units
-(`oneEachPerModel`, pack units included); `wargearExclRoom` is the editor's and the importer's room
-for one option, `wargearExclOver` feeds `validateRoster`'s `overWargearOnePerModel` and `fitWargear`.
+**`excl` — one per model across a set of options.** Broadside's *"No model can be equipped with both
+a twin plasma rifle and twin smart missile system"* makes the pair one set; for counts the rule is
+again exact: each set together at most the unit's model count. The generator writes it in a pass
+over the finished units (`oneEachPerModel`); `wargearExclRoom` is the editor's and the importer's
+room for one option, `wargearExclOver` feeds `validateRoster`'s `overWargearOnePerModel` and
+`fitWargear`.
+
+**`pm` — rules about one model that reach across groups** (Legends Crisis Battlesuits, 2026-09-26).
+Its footnotes under the "up to three" group — *"* Each model cannot have duplicates of these pieces
+of wargear"* and *"*** Each model cannot be equipped with more than 3 ranged weapons"* — count what
+the burst-cannon swap put in its slot too, so no per-group cap can say them. The unit carries
+`pm = { add, slots, base, one, ranged: [max, ids] }` (`pack-roster.mjs`'s `perModelRules`; ranged =
+a weapon the sheet prints a ranged profile for), and `perModelFits` decides it EXACTLY: models differ
+only in their base (the swap's picks; the rest keep the burst cannon), and dealing the add group's
+counts onto them is a small max-flow — item → model (one of a starred item, none if it is the base)
+→ the model's ranged allowance when the item is ranged → its three slots. Readers: `perModelRoom`
+(the editor's `stepMax`, every branch — it scans the whole range, because a swap can FREE room: a
+suit that trades its burst cannon for a shield generator has a ranged slot back), the importer's
+room, `fitWargear`, and `validateRoster`'s `overWargearPerModel`. It also caps the swap group itself
+at one pick per suit, which that unit-wide group had no other way to say.
 
 ### The stock rule: a weapon is given up once (added 2026-09-19)
 
@@ -3523,12 +3536,6 @@ they do.)
 `gen-seo-routes.mjs` must not learn about it.
 
 ## Known gaps
-
-**A cap across two wargear groups is not modelled.** Legends Crisis Battlesuits' *"*** Each model
-cannot be equipped with more than 3 ranged weapons"* spans the burst-cannon swap and the "up to three"
-group, and its starred items are "one per model" across both groups too; `excl` and `lim` are per
-group, so only the in-group half is enforced (the list can over-equip a suit that also swapped its
-burst cannon for a starred item). One Legends datasheet; left until a list shows it matters.
 
 The builder's transient tracking docs are gone — this file is the stable reference, and the
 work-in-progress journals they held were retired once their phases closed (they survive in the git

@@ -3,7 +3,7 @@
 // than preventing an illegal list. Each issue is `{ code, level, uid?, params? }`; `code` maps
 // to an i18n message (see RosterIssuesModal), `level` is 'error' (illegal) or 'warn'
 // (incomplete / soft). `uid` ties an issue to a specific unit entry.
-import { hasKeyword, isBattlelineNow, grantedKeywordsFor, hostLimitsFor, leadTypeFor, allyGroupsFor, allyGroupsOf, allySourceOf, canBeWarlord, enhEligible, findEnhancement, rosterPoints, effectiveBattle, capKeyOf, wargearGroupCap, wargearGroupFallbackCap, wargearGroupLive, wargearGroupSpent, wargearExclOver, optionItems, swapOverdraft, allegFor, allegKeyword, grantedKeywords, dispositionCandidates, dispositionOf } from './rosterEngine.js'
+import { hasKeyword, isBattlelineNow, grantedKeywordsFor, hostLimitsFor, leadTypeFor, allyGroupsFor, allyGroupsOf, allySourceOf, canBeWarlord, enhEligible, findEnhancement, rosterPoints, effectiveBattle, capKeyOf, wargearGroupCap, wargearGroupFallbackCap, wargearGroupLive, wargearGroupSpent, wargearExclOver, perModelFits, optionItems, swapOverdraft, allegFor, allegKeyword, grantedKeywords, dispositionCandidates, dispositionOf } from './rosterEngine.js'
 
 // Which issues the SETUP tab is the place to fix. An editor tab can only carry an honest mark if
 // the mark means "the fix is in here": faction, detachments, the Force Disposition they disagree
@@ -199,6 +199,9 @@ export function validateRoster(roster, { faction, core, items } = {}) {
         add('overWargearOnePerModel', 'error', { uid: u.uid, params: { count: x.spent, limit: x.limit, names } })
       }
     }
+    // Rules about one model across groups (`pm`, Legends Crisis Battlesuits): the picks cannot be
+    // dealt onto the models — rosterEngine's perModelFits.
+    if (!perModelFits(def, u)) add('overWargearPerModel', 'error', { uid: u.uid })
     // The stock rule: the same item given up by more models than carry it — two groups each
     // swapping a Chaos Lord's one bolt pistol. The editor greys such a group out before it is
     // picked (rosterEngine's swapRoom), so this is for lists built before the rule, imported, or

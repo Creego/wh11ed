@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest'
 import { validateRoster, duplicateLimit } from './rosterValidation.js'
-import { fitWargear, wargearExclOver, wargearExclRoom } from './rosterEngine.js'
+import { fitWargear, perModelFits, perModelRoom, wargearExclOver, wargearExclRoom } from './rosterEngine.js'
 
 // ── Fixtures ──
 const core = {
@@ -895,5 +895,46 @@ describe('a budget per model (Broadside Battlesuits)', () => {
     const e = { ...broadside([[gi, oi('Twin plasma rifle'), 1], [gi, oi('Twin smart missile system'), 2]]), size: 1 }
     const wg = fitWargear(def, e)
     expect(wargearExclOver(def, { ...e, wg }, gi)).toEqual([])
+  })
+})
+
+// Legends Crisis Battlesuits: up to three from one group per suit, at most one of each starred item
+// counting the burst-cannon swap, and at most three ranged weapons counting what sits in the swap's
+// slot. Three suits (size 0). Group 0 is the swap, group 1 the "up to three".
+describe('rules about one model across groups (Legends Crisis Battlesuits)', () => {
+  let tau, def
+  const g0 = (name) => def.gear[0].o.findIndex((o) => tau.items[o[0]] === name)
+  const g1 = (name) => def.gear[1].o.findIndex((o) => tau.items[o[0]] === name)
+  beforeAll(async () => {
+    const { loadRosterFaction } = await import('../data/roster/index.js')
+    const { default: rosterItems } = await import('../data/roster/items.js')
+    tau = await loadRosterFaction('tau-empire')
+    tau.items = rosterItems.items
+    def = tau.units.find((u) => u.id === 'crisis-battlesuits')
+  })
+  const crisis = (wg) => ({ uid: 'c1', id: 'crisis-battlesuits', size: 0, wg })
+
+  it('deals out a legal build: burst cannon, two plasma rifles and a support system each', () => {
+    expect(perModelFits(def, crisis([[1, g1('Plasma rifle'), 6], [1, g1('Battlesuit Support System'), 3]]))).toBe(true)
+  })
+
+  it('counts the burst cannon a suit kept as one of its three ranged weapons', () => {
+    expect(perModelFits(def, crisis([[1, g1('Plasma rifle'), 9]]))).toBe(false)
+    // …and a suit that traded it for a shield generator has the room.
+    expect(perModelFits(def, crisis([[0, g0('Shield Generator'), 3], [1, g1('Plasma rifle'), 9]]))).toBe(true)
+    expect(perModelRoom(def, crisis([]), 1, g1('Plasma rifle'))).toBe(6)
+  })
+
+  it('holds a starred item once per suit across both groups', () => {
+    expect(perModelFits(def, crisis([[0, g0('Shield Generator'), 3], [1, g1('Shield Generator'), 1]]))).toBe(false)
+    expect(perModelFits(def, crisis([[0, g0('Shield Generator'), 2], [1, g1('Shield Generator'), 1]]))).toBe(true)
+  })
+
+  it('refuses more swaps than suits, reports the list and trims it when the unit shrinks', () => {
+    expect(perModelFits(def, crisis([[0, g0('Plasma rifle'), 2], [0, g0('Fusion blaster'), 2]]))).toBe(false)
+    const e = crisis([[1, g1('Plasma rifle'), 9]])
+    const r = validateRoster({ name: 'x', faction: 'tau-empire', battleSize: 'strike-force', detachments: [], units: [e] }, { faction: tau, core, items: tau.items })
+    expect(r.issues.map((i) => i.code)).toContain('overWargearPerModel')
+    expect(perModelFits(def, { ...e, wg: fitWargear(def, e) })).toBe(true)
   })
 })

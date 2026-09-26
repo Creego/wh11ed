@@ -331,6 +331,50 @@ function parseOption(text, ctx) {
   return g
 }
 
+// ---- Rules about ONE model, across groups -------------------------------------------------------
+// Crisis Battlesuits (Legends) print two footnotes under their "up to three of the following" group
+// that reach past it: "* Each model cannot have duplicates of these pieces of wargear" (the starred
+// items — which the burst-cannon swap offers too, so a suit that swapped its burst cannon for a
+// shield generator cannot take another) and "*** Each model cannot be equipped with more than 3
+// ranged weapons" (the swap's pick and the burst cannon it kept count). No per-group cap says that,
+// so the unit carries it: `pm` = { add: the per-model group, slots: its picks per model, base: the
+// swap group whose one pick per model replaces `rep`, one: item ids each model holds at most one of,
+// ranged: [max, item ids that are ranged weapons] }. rosterEngine's perModelFits decides it exactly.
+// Ranged = a weapon the sheet prints a RANGED profile for. Anything this cannot pin down is reported
+// and nothing is written.
+function perModelRules(gear, raws, sheet, seenItems, report, who) {
+  const ai = raws.findIndex((t, i) => gear[i].lim?.[0]?.[0] === 1 &&
+    /each model cannot be equipped with more than \d+ ranged weapons|each model cannot have duplicates of these/i.test(t))
+  if (ai < 0) return null
+  const add = gear[ai]
+  const slots = add.lim[0][1]
+  const pm = { add: ai, slots }
+  const t = raws[ai]
+  if (/each model cannot have duplicates of these/i.test(t)) {
+    const one = []
+    for (const line of t.split('\n')) {
+      const m = /^[▪◦•■▫]\s*(?:\d+\s+)?(.+?)(?<!\*)\*$/.exec(line.trim())
+      if (!m) continue
+      const id = findName(m[1], seenItems)
+      if (id == null) { report.note.push(`${who}: starred "${m[1]}" not resolved — no per-model rule written`); return null }
+      one.push(id)
+    }
+    if (one.length) pm.one = one
+  }
+  const rm = /each model cannot be equipped with more than (\d+) ranged weapons/i.exec(t)
+  if (rm) {
+    const ranged = new Set((sheet.ranged || []).map((w) => norm(w.name.replace(/\s+–\s+.*$/, ''))))
+    const ids = [...seenItems].filter(([n]) => ranged.has(n)).map(([, id]) => id)
+    pm.ranged = [Number(rm[1]), [...new Set(ids)].sort((a, b) => a - b)]
+  }
+  // The swap each model makes at most once, whose pick sits in the slot of what it gives up: one
+  // item given up, taken by any number of models. Two such groups would be two slots — not read.
+  const bases = gear.map((g, i) => i).filter((i) => i !== ai && gear[i].rep?.length === 1 && gear[i].in === 'stepper' && !gear[i].lim && /^\s*any number of models can each have their/i.test(raws[i]))
+  if (bases.length > 1) { report.note.push(`${who}: ${bases.length} swap groups under one per-model rule — no per-model rule written`); return null }
+  if (bases.length) pm.base = bases[0]
+  return pm
+}
+
 // ---- The unit ----------------------------------------------------------------------------------
 // `sheet` is the datasheet entry; `ctx` carries the faction's other units (for Leader targets),
 // the interners and the report. Returns the roster unit, or null when the sheet cannot be read.
@@ -400,6 +444,7 @@ export function packRosterUnit(sheet, ctx) {
   }
 
   const gear = []
+  const raws = [] // each group's printed text, for the per-model footnotes read after the loop
   const drafts = []
   const ctxOpt = { single, findMini, maxModels }
   // "The Assault Sergeant can do one of the following: ▪ Replace its X with 1 Y. ▪ Be equipped
@@ -465,6 +510,7 @@ export function packRosterUnit(sheet, ctx) {
     else if (head && firstOfDo) grp.cond = [gear.indexOf(firstOfDo), 0]
     drafts.push({ grp, cond: opt.cond, m: opt.m, all: opt.all })
     gear.push(grp)
+    raws.push(String(raw))
   }
   // "[not] equipped with X" → a sibling on the same profile whose sole option is X (its toggle),
   // or whose swap gives X up; anything else stays ungated, as the appdata reader does.
@@ -483,6 +529,8 @@ export function packRosterUnit(sheet, ctx) {
     report.note.push(`${who}: condition "${name}" left ungated`)
   }
 
+  const pm = perModelRules(gear, raws, sheet, seenItems, report, who)
+
   const kws = sheet.keywords || []
   const flags = { legends: 1 }
   const has = (k) => kws.some((x) => norm(x) === norm(k))
@@ -494,6 +542,7 @@ export function packRosterUnit(sheet, ctx) {
   if (!single) unit.minis = minis.map((m) => ({ n: m.n }))
   if (defaults.length) unit.defaults = defaults
   if (gear.length) unit.gear = gear
+  if (pm) unit.pm = pm
   const alleg = allegFor?.(sheet)
   if (alleg) unit.alleg = alleg
   if (sheet.leader?.units?.length) {

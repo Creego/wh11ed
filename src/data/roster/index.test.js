@@ -1052,7 +1052,11 @@ describe('a budget per model', () => {
     const crisis = unitOf('crisis-battlesuits')
     const three = crisis.gear.find((g) => /up to three/.test(headOf(g)))
     expect(three.lim.at(-1)).toEqual([6, 18])
-    expect(three.excl).toHaveLength(4) // the four starred items, one each per model
+    // Its footnotes reach across the burst-cannon swap too, so they are the unit's `pm`, not `excl`.
+    expect(three.excl).toBeUndefined()
+    expect(crisis.pm).toMatchObject({ add: crisis.gear.indexOf(three), slots: 3, base: 0 })
+    expect(crisis.pm.one).toHaveLength(4) // the four starred items, one each per model
+    expect(crisis.pm.ranged[0]).toBe(3)
     expect(unitOf('piranhas').gear.find((g) => /seeker missiles/.test(headOf(g))).lim).toEqual([[1, 2], [2, 4], [3, 6]])
   })
 })

@@ -540,7 +540,7 @@ import FactionAccentScope from './FactionAccentScope.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
 import { loadRosterTextsRu } from '../../data/roster/ru/index.js'
-import { ENTRY_NOTE_MAX, allySourceOf, allegFor, allegSpent, defaultLoadoutLines, defaultWargearPoints, fitWargear, modelsPerMini, overdrawnGroups, optionItems, optionLabel, setNote, splitInstruction, swapRoom, wargearGroupBlocker, wargearExclRoom, wargearGroupCap, wargearGroupFallbackCap, wargearGroupSpent } from '../../composables/rosterEngine.js'
+import { ENTRY_NOTE_MAX, allySourceOf, allegFor, allegSpent, defaultLoadoutLines, defaultWargearPoints, fitWargear, modelsPerMini, overdrawnGroups, optionItems, optionLabel, setNote, splitInstruction, swapRoom, wargearGroupBlocker, perModelRoom, wargearExclRoom, wargearGroupCap, wargearGroupFallbackCap, wargearGroupSpent } from '../../composables/rosterEngine.js'
 
 const props = defineProps({
   entry: { type: Object, required: true },
@@ -876,7 +876,13 @@ function setStep(gi, oi, n) {
 // models, 1 model…" out of the instruction for the groups appdata gives no cap for — that guess
 // is both too loose ("Up to 4 Dominions" reads as no cap) and too strict ("for every 5 models,
 // up to 2" reads as one), which is exactly why the structural cap is preferred wherever it exists.
+// …and never past the rules about one model that reach across groups (Legends Crisis: starred items
+// and ranged weapons counted with the burst-cannon swap) — rosterEngine's perModelRoom, whichever
+// branch below answered.
 function stepMax(gi, oi) {
+  return Math.min(groupStepMax(gi, oi), perModelRoom(props.def, props.entry, gi, oi) ?? Infinity)
+}
+function groupStepMax(gi, oi) {
   // What the group's OTHER options have already taken. Every ceiling below belongs to the GROUP —
   // "any number of models can each have their lastrum bolt cannon replaced with ONE OF THE
   // FOLLOWING" is one budget of models, however many rows it is drawn as — so a row's own room is
