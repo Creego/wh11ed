@@ -278,17 +278,47 @@ export function optionLabel(o, items) {
 // `null` means the group carries no structural cap and the caller keeps its own behaviour —
 // 220 groups have one, the rest (a cross-group choice pool, an ambiguous match) don't, and
 // inventing a cap for those would forbid legal loadouts.
+// The unit's model count as the caps read it — the live count, not the size bracket.
+function capModels(def, entry) {
+  const size = def?.sizes?.[entry?.size ?? 0] || def?.sizes?.[0]
+  return entry?.count ?? size?.per?.[0] ?? 1
+}
+
 export function wargearGroupCap(def, entry, gi) {
   const rows = def?.gear?.[gi]?.lim
   if (!rows?.length) return null
-  const size = def.sizes?.[entry?.size ?? 0] || def.sizes?.[0]
-  const models = entry?.count ?? size?.per?.[0] ?? 1
+  const models = capModels(def, entry)
   let row = null
   for (const r of rows) if (models >= r[0] && (!row || r[0] > row[0])) row = r
   // Below every threshold the group genuinely offers nothing ("for every 5 models…" in a
   // 3-model squad), which is a real 0, not a missing cap.
   if (!row) return { limit: 0, dup: 0 }
   return { limit: row[1], dup: row[2] || 0 }
+}
+
+// `excl` (gen-roster-data.mjs's oneEachPerModel): sets of a group's options of which each MODEL
+// holds at most one — Broadside's "no model can be equipped with both a twin plasma rifle and twin
+// smart missile system", Crisis' starred "each model cannot have duplicates of these". A group
+// stores counts, not who holds what, and for counts the rule is exactly "each set together at most
+// the unit's model count". wargearExclOver lists the sets an entry breaks (validator, fitWargear);
+// wargearExclRoom is how many of ONE option its sets still allow (editor, importer), or null.
+function optionCount(entry, gi, oi) {
+  return (entry?.wg || []).filter(([g, o]) => g === gi && o === oi).reduce((n, [, , c]) => n + (c || 1), 0)
+}
+export function wargearExclOver(def, entry, gi) {
+  const sets = def?.gear?.[gi]?.excl
+  if (!sets?.length) return []
+  const limit = capModels(def, entry)
+  return sets
+    .map((set) => ({ set, spent: set.reduce((n, oi) => n + optionCount(entry, gi, oi), 0), limit }))
+    .filter((x) => x.spent > limit)
+}
+export function wargearExclRoom(def, entry, gi, oi) {
+  const sets = (def?.gear?.[gi]?.excl || []).filter((set) => set.includes(oi))
+  if (!sets.length) return null
+  const limit = capModels(def, entry)
+  return Math.min(...sets.map((set) =>
+    Math.max(0, limit - set.filter((o) => o !== oi).reduce((n, o) => n + optionCount(entry, gi, o), 0))))
 }
 
 // The ceiling a group with NO structural cap has: one pick per model of the profile it belongs to
@@ -1217,6 +1247,7 @@ export function fitWargear(def, entry) {
       const ceiling = cap ? cap.limit : wargearGroupFallbackCap(def, e, gi)
       if (ceiling != null && wargearGroupSpent(e, gi) > ceiling) i = k
       else if (cap?.dup && (wg[k][2] || 1) > cap.dup) i = k
+      else if (wargearExclOver(def, e, gi).some((x) => x.set.includes(wg[k][1]))) i = k
     }
     // Then stock: the latest pick that spends an overdrawn item.
     if (i < 0) {

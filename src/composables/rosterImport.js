@@ -1165,6 +1165,14 @@ export function matchRoster(parsed, { faction, core, items } = {}) {
         const mine = picks.get(`${gi}:${oi}`)
         room = Math.min(room, Math.max(0, capOf.dup - (mine ? (mine.stepper ? stepperCount(mine) : mine.n) : 0)))
       }
+      // One per model across a set of options (rosterEngine's wargearExclRoom), read off the picks
+      // made so far rather than the entry, which is still being assembled.
+      const excl = oi == null ? [] : (def.gear?.[gi]?.excl || []).filter((set) => set.includes(oi))
+      for (const set of excl) {
+        let taken = 0
+        for (const o of set) { const p = picks.get(`${gi}:${o}`); if (p) taken += p.stepper ? stepperCount(p) : p.n }
+        room = Math.min(room, Math.max(0, (entry.count ?? bracket?.per?.[0] ?? 1) - taken))
+      }
       return room
     }
     const roomIn = (gi) => roomLeft(gi) > 0

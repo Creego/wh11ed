@@ -1016,6 +1016,47 @@ describe('every scaled allowance the corpus states is in the data', () => {
   })
 })
 
+// "Any number of models can each be equipped with up to two of the following" is a budget PER MODEL
+// (gen-roster-data.mjs's PER_MODEL_BUDGET, pack-roster.mjs for the Legends): k models, k × N picks,
+// and "no duplicates" is k of any one option. Five T'au groups had no cap at all and drew one of
+// each option for the whole squad — three Broadsides could not carry six support systems.
+describe('a budget per model', () => {
+  const unitOf = (id) => factions.find((f) => f.slug === 'tau-empire').data.units.find((u) => u.id === id)
+  const headOf = (g) => (rosterItems.texts[g.t] || '').split('\n')[0]
+
+  it('leaves no "any number of models can each be equipped with up to N" group uncapped', () => {
+    const uncapped = []
+    for (const { slug, data } of factions) {
+      for (const u of data.units || []) {
+        for (const g of u.gear || []) {
+          if (!/^\s*any number of models can (?:each )?be equipped with up to/i.test(headOf(g))) continue
+          if (!g.lim?.length) uncapped.push(`${slug}/${u.id}: ${headOf(g).slice(0, 80)}`)
+        }
+      }
+    }
+    expect(uncapped).toEqual([])
+  })
+
+  it('gives Broadsides two support systems each, never two alike, and one plasma-or-missile slot', () => {
+    const unit = unitOf('broadside-battlesuits')
+    const sys = unit.gear.find((g) => /cannot take duplicates/.test(headOf(g)))
+    expect(sys.lim).toEqual([[1, 2, 1], [2, 4, 2], [3, 6, 3]])
+    const name = (o) => rosterItems.items[Array.isArray(o[0]) ? o[0][0][0] : o[0]]
+    expect(sys.excl.map((set) => set.map((oi) => name(sys.o[oi])).sort()))
+      .toEqual([['Twin plasma rifle', 'Twin smart missile system']])
+    const drones = unit.gear.find((g) => /and can take duplicates/.test(headOf(g)))
+    expect(drones.lim).toEqual([[1, 2], [2, 4], [3, 6]])
+  })
+
+  it('reads the Legends Crisis suits and the single-item Piranha form too', () => {
+    const crisis = unitOf('crisis-battlesuits')
+    const three = crisis.gear.find((g) => /up to three/.test(headOf(g)))
+    expect(three.lim.at(-1)).toEqual([6, 18])
+    expect(three.excl).toHaveLength(4) // the four starred items, one each per model
+    expect(unitOf('piranhas').gear.find((g) => /seeker missiles/.test(headOf(g))).lim).toEqual([[1, 2], [2, 4], [3, 6]])
+  })
+})
+
 // "Any number of Tempestus Scions can each have their hot-shot lasgun replaced with one of the
 // following" is FOUR picks, one per Scion — not one pick for the squad. appdata files it as a
 // checkbox with no limited-choice set, and a capless multi-option checkbox draws as a one-of radio,

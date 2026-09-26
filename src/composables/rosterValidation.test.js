@@ -1,5 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest'
 import { validateRoster, duplicateLimit } from './rosterValidation.js'
+import { fitWargear, wargearExclOver, wargearExclRoom } from './rosterEngine.js'
 
 // ── Fixtures ──
 const core = {
@@ -852,5 +853,47 @@ describe('an enhancement whose keyword a detachment grants', () => {
     expect(codes('land-speeder')).not.toContain('enhIneligible')
     // …and refuses it on a unit the same detachment does not name.
     expect(codes('rhino')).toContain('enhIneligible')
+  })
+})
+
+// Broadside Battlesuits: "Any number of models can each be equipped with up to two of the
+// following, but cannot take duplicates* — * No model can be equipped with both a twin plasma
+// rifle and twin smart missile system." Per model; the group stores counts, so at three models it
+// is six picks, three of a kind, and twin plasma + twin smart missile together at most three.
+describe('a budget per model (Broadside Battlesuits)', () => {
+  let tau, def, gi, oi
+  beforeAll(async () => {
+    const { loadRosterFaction } = await import('../data/roster/index.js')
+    const { default: rosterItems } = await import('../data/roster/items.js')
+    tau = await loadRosterFaction('tau-empire')
+    def = tau.units.find((u) => u.id === 'broadside-battlesuits')
+    gi = def.gear.findIndex((g) => g.excl)
+    const name = (o) => rosterItems.items[Array.isArray(o[0]) ? o[0][0][0] : o[0]]
+    oi = (n) => def.gear[gi].o.findIndex((o) => name(o) === n)
+    tau.items = rosterItems.items
+  })
+  const broadside = (wg) => ({ uid: 'b1', id: 'broadside-battlesuits', size: 2, wg })
+  const codes = (e) => validateRoster({ name: 'x', faction: 'tau-empire', battleSize: 'strike-force', detachments: [], units: [e] }, { faction: tau, core, items: tau.items })
+    .issues.map((i) => i.code)
+
+  it('takes a full legal build at three models', () => {
+    const e = broadside([[gi, oi('Twin plasma rifle'), 1], [gi, oi('Twin smart missile system'), 2], [gi, oi('Seeker missile'), 3]])
+    expect(codes(e)).not.toContain('overWargearOnePerModel')
+    expect(codes(e)).not.toContain('overWargearLimit')
+    expect(codes(e)).not.toContain('overWargearDup')
+  })
+
+  it('reports twin plasma and twin smart missiles on more models than the unit has', () => {
+    const e = broadside([[gi, oi('Twin plasma rifle'), 2], [gi, oi('Twin smart missile system'), 2]])
+    expect(codes(e)).toContain('overWargearOnePerModel')
+    // …and the editor's room for one of them is what the other left of the three models.
+    expect(wargearExclRoom(def, e, gi, oi('Twin plasma rifle'))).toBe(1)
+    expect(wargearExclRoom(def, e, gi, oi('Seeker missile'))).toBeNull()
+  })
+
+  it('shrinking the unit gives back the pick that broke the slot', () => {
+    const e = { ...broadside([[gi, oi('Twin plasma rifle'), 1], [gi, oi('Twin smart missile system'), 2]]), size: 1 }
+    const wg = fitWargear(def, e)
+    expect(wargearExclOver(def, { ...e, wg }, gi)).toEqual([])
   })
 })

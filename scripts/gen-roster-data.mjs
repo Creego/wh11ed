@@ -329,7 +329,7 @@ const bmlByDs = new Map() // datasheetId -> [{miniatureId, opts:[{wargearOptionI
 
 // ---- Per-faction generation ------------------------------------------------------------
 
-const report = { factions: 0, units: 0, linked: 0, unlinked: [], missingBundle: [], noPoints: [], stale: [], loadoutFixed: [], price: { repriced: 0, collapsed: 0, chapterOverrides: 0, noUnit: [], noBracket: [], stepDrift: [] }, bundle: { rewritten: 0, quantified: 0, unclaimed: [], unbacked: [] }, limit: { limited: 0, counted: 0, bundled: 0, ambiguous: 0, unmatched: 0, fromProse: 0, fromProseScaled: 0, fromProseConditional: [], perModelEach: [], scaledDrift: [], perCopy: 0, conflict: [], merged: 0 }, rep: { resolved: 0, noMatch: [], unresolved: [] }, keep: { resolved: 0, unresolved: [] }, staticDefaults: 0, paidDefault: { units: 0, odd: [] }, sharedDets: 0, leadKw: { resolved: 0, unresolved: [] }, proseAttach: [], proseAttachAdded: 0, packAttach: [], packAttachAdded: 0, mirror: { rules: 0, added: [], unread: [] }, hosts: { read: [], unread: [] }, comp: { units: 0, brackets: 0, rejected: [] }, detTag: { tagged: 0, drift: [] }, alleg: { units: 0, kinds: new Set() }, defaultsMerged: [], allies: { groups: 0, units: 0, empty: [], missing: [], narrowed: [] }, pack: { ...emptyPackReport(), dropped: [] } }
+const report = { factions: 0, units: 0, linked: 0, unlinked: [], missingBundle: [], noPoints: [], stale: [], loadoutFixed: [], price: { repriced: 0, collapsed: 0, chapterOverrides: 0, noUnit: [], noBracket: [], stepDrift: [] }, bundle: { rewritten: 0, quantified: 0, unclaimed: [], unbacked: [] }, limit: { limited: 0, counted: 0, bundled: 0, ambiguous: 0, unmatched: 0, fromProse: 0, fromProseScaled: 0, fromProseConditional: [], perModelEach: [], perModelBudget: [], scaledDrift: [], perCopy: 0, conflict: [], merged: 0 }, rep: { resolved: 0, noMatch: [], unresolved: [] }, keep: { resolved: 0, unresolved: [] }, staticDefaults: 0, paidDefault: { units: 0, odd: [] }, sharedDets: 0, leadKw: { resolved: 0, unresolved: [] }, proseAttach: [], proseAttachAdded: 0, packAttach: [], packAttachAdded: 0, mirror: { rules: 0, added: [], unread: [] }, hosts: { read: [], unread: [] }, comp: { units: 0, brackets: 0, rejected: [] }, detTag: { tagged: 0, drift: [] }, alleg: { units: 0, kinds: new Set() }, defaultsMerged: [], allies: { groups: 0, units: 0, empty: [], missing: [], narrowed: [] }, pack: { ...emptyPackReport(), dropped: [] } }
 
 // …and two datasheets whose attachment appdata states in PROSE and in no table at all. The Ogryn
 // Bodyguard and Nork Deddog "must join one COMMAND SQUAD unit from your army" (their Loyal
@@ -1911,6 +1911,35 @@ function buildUnit(bd, idMap, fx, kwIndex, prices) {
     d.lim = dup ? rows.map(([n, c]) => [n, c, dup]) : rows
     report.limit.fromProseScaled++
   }
+  // A budget PER MODEL: "Any number of models can each be equipped with up to two of the following,
+  // but cannot take duplicates" (Broadside and the three Crisis Battlesuits datasheets, all T'au;
+  // Fireknife and Starscythe drop the "each", which changes nothing — a squad-wide "up to two" on a
+  // three-suit squad is not a thing T'au wargear does anywhere else). The single-item spelling —
+  // Piranhas' "Any number of models can each be equipped with up to 2 seeker missiles" — is the
+  // same budget over one option; it had fallen back to one missile per model. appdata files each as one unit-wide group with no limited-choice set,
+  // so the editor offered one of each option to the whole squad: three Broadsides could not carry
+  // six support systems between them, and one could be handed four. The group stores COUNTS, not
+  // which model holds what, and counts are all this rule needs: M models × N picks is the budget,
+  // and "no duplicates" is at most M of any one option (one per model) — any counts inside both
+  // bounds can be dealt out round-robin, so the step table below is exact, one row per model count.
+  // Footnotes that narrow what one model may hold are read afterwards, for these groups and the
+  // pack's alike — see oneEachPerModel.
+  const PER_MODEL_BUDGET = /^\s*any number of models can (?:each )?be equipped with up to (\d+|one|two|three|four|five)\b/i
+  for (const d of drafts) {
+    const m = PER_MODEL_BUDGET.exec(d.text.split('\n')[0])
+    if (!m || d.lim) continue
+    const per = WORD_NUM[m[1].toLowerCase()] || Number(m[1])
+    const sizes = unit.sizes || []
+    const lo = Math.min(...sizes.map((x) => x.per?.[0] ?? 1))
+    const hi = Math.max(...sizes.map((x) => x.per?.[1] ?? 1))
+    if (!Number.isFinite(lo) || !Number.isFinite(hi) || lo < 1) continue
+    const noDup = proseNoDuplicates(d.text) && !/\bcan take duplicates\b/i.test(d.text)
+    const rows = []
+    for (let k = lo; k <= hi; k++) rows.push(noDup ? [k, k * per, k] : [k, k * per])
+    d.lim = rows
+    d.in = 'stepper'
+    report.limit.perModelBudget.push(`${bd.name}: ${JSON.stringify(d.lim)} — ${d.text.split('\n')[0].slice(0, 70)}`)
+  }
   // A swap a model may make ONCE PER COPY of the weapon it gives up: "Each of this model's
   // shuriken catapults can be replaced with 1 flamer" (a Wraithlord carries two), "Any number of
   // this model's dark lances can each be replaced with 1 disintegrator cannon" (a Ravager carries
@@ -2526,6 +2555,43 @@ export { default as rosterItems } from './items.js'
 
 // ---- Run -------------------------------------------------------------------------------
 
+// Footnotes under a per-model group that say what ONE model may hold, written as `excl`: lists of
+// option indexes of which each model holds at most one — so together they are at most the unit's
+// model count, and the same round-robin argument as PER_MODEL_BUDGET keeps that exact. Two
+// footnotes in the whole corpus, both T'au:
+//   "* No model can be equipped with both a twin plasma rifle and twin smart missile system."
+//     (Broadside) → the pair is one set.
+//   "* Each model cannot have duplicates of these pieces of wargear." (Crisis Battlesuits, Legends)
+//     → every option whose bullet carries exactly one star is a set of its own.
+// Run on the finished units, pack Legends included, because the pack's reader builds its groups
+// elsewhere. A footnote whose options cannot all be found is reported and writes nothing. What
+// Crisis' "*** no more than 3 ranged weapons" says is across TWO groups (the burst cannon swap and
+// this one) and is not expressed — roster/CLAUDE.md, Known gaps.
+function oneEachPerModel(slug, units) {
+  const texts = new Map([...textIds].map(([t, id]) => [id, t]))
+  const nameOf = new Map([...itemIds].map(([uuid, id]) => [id, norm(wgItemName.get(uuid) || packItemNames.get(uuid) || '')]))
+  for (const u of units) {
+    for (const g of u.gear || []) {
+      const t = texts.get(g.t) || ''
+      const names = (o) => (Array.isArray(o[0]) ? o[0].map(([id]) => id) : [o[0]]).map((id) => nameOf.get(id))
+      const at = (name) => g.o.findIndex((o) => names(o).includes(norm(name)))
+      const sets = []
+      const both = /no model can be equipped with both (?:an? )?(.+?) and (?:an? )?(.+?)\.?\s*$/im.exec(t)
+      if (both) sets.push([at(both[1]), at(both[2])])
+      if (/^\*\s*each model cannot have duplicates of these/im.test(t)) {
+        for (const line of t.split('\n')) {
+          const m = /^[▪◦•]\s*(?:\d+\s+)?(.+?)(?<!\*)\*$/.exec(line.trim())
+          if (m) sets.push([at(m[1])])
+        }
+      }
+      if (!sets.length) continue
+      if (sets.some((x) => x.some((i) => i < 0))) { report.limit.perModelBudget.push(`${slug}/${u.name}: a footnote names an option the group lacks — nothing written`); continue }
+      g.excl = sets
+      report.limit.perModelBudget.push(`${u.name}: one per model ${JSON.stringify(sets)}`)
+    }
+  }
+}
+
 // One call per process: the intern dictionaries and `report` are module state, so a second call
 // would keep interning into the same dicts. `npm run sync` imports this and calls run(['--check'])
 // exactly once, the same contract the other generators here follow.
@@ -2544,6 +2610,7 @@ for (const slug of slugs) await genFaction(slug)
 for (const { slug, data } of built) {
   const pack = await packUnitsFor(slug, data.units)
   if (pack.length) { data.units.push(...pack); data.units.sort((a, b) => a.name.localeCompare(b.name)); report.units += pack.length; report.linked += pack.length }
+  oneEachPerModel(slug, data.units)
   writeOut(`${slug}.js`, `${HEAD}export default ${stableJson(data)}\n`)
 }
 genItems() // after all factions — the intern dicts are complete
@@ -2622,6 +2689,10 @@ if (lm.conflict.length) {
 if (lm.fromProseConditional.length) {
   console.log(`  read "if this unit contains N models, …" as a step table (${lm.fromProseConditional.length}):`)
   for (const c of lm.fromProseConditional) console.log(`    - ${c}`)
+}
+if (lm.perModelBudget.length) {
+  console.log(`  read "any number of models can each be equipped with up to N" as a budget per model (${lm.perModelBudget.length}):`)
+  for (const c of lm.perModelBudget) console.log(`    - ${c}`)
 }
 if (lm.perModelEach.length) {
   console.log(`  read "any number of X can each have…" as one pick per model of that profile (${lm.perModelEach.length}), drawn as a stepper instead of a one-of radio:`)

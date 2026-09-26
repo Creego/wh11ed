@@ -540,7 +540,7 @@ import FactionAccentScope from './FactionAccentScope.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
 import { loadRosterTextsRu } from '../../data/roster/ru/index.js'
-import { ENTRY_NOTE_MAX, allySourceOf, allegFor, allegSpent, defaultLoadoutLines, defaultWargearPoints, fitWargear, modelsPerMini, overdrawnGroups, optionItems, optionLabel, setNote, splitInstruction, swapRoom, wargearGroupBlocker, wargearGroupCap, wargearGroupFallbackCap, wargearGroupSpent } from '../../composables/rosterEngine.js'
+import { ENTRY_NOTE_MAX, allySourceOf, allegFor, allegSpent, defaultLoadoutLines, defaultWargearPoints, fitWargear, modelsPerMini, overdrawnGroups, optionItems, optionLabel, setNote, splitInstruction, swapRoom, wargearGroupBlocker, wargearExclRoom, wargearGroupCap, wargearGroupFallbackCap, wargearGroupSpent } from '../../composables/rosterEngine.js'
 
 const props = defineProps({
   entry: { type: Object, required: true },
@@ -888,7 +888,10 @@ function stepMax(gi, oi) {
   // groups left this one, so it is the group's whole budget here, whatever its own cap says.
   const room = swapRoom(props.def, props.entry, gi, oi)
   const cap = caps.value[gi]
-  if (cap) return Math.max(0, Math.min(cap.dup || cap.limit, Math.min(cap.limit, room ?? Infinity) - elsewhere))
+  // One per model across a set of options (Broadside's twin plasma rifle / twin smart missile
+  // system): what the set's other options left of the model count.
+  const excl = wargearExclRoom(props.def, props.entry, gi, oi)
+  if (cap) return Math.max(0, Math.min(cap.dup || cap.limit, excl ?? Infinity, Math.min(cap.limit, room ?? Infinity) - elsewhere))
   // "For every 5 models in this unit:" over a BULLET LIST, and only that: the generator reads every
   // scaled allowance that states its number into `lim` (gen-roster-data.mjs's SCALED_ALLOWANCE), so
   // what is left here is the umbrella whose bullets are separate allowances — a Red Corsairs Raider

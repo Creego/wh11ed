@@ -225,9 +225,29 @@ How to look for the next one of these: `scripts/` has no audit for it, but the s
 "prose implies more than one pick, group carries no `lim`, and the editor's `mode()` makes it a
 radio or toggle" — dump every group without `lim`/`all`/`cp` whose first line has a number above
 one, "each", "any number", "all models", "if this unit" or "for every", and read what is left after
-dropping the bundled swaps ("2 X can be replaced with 2 Y" is one pick). The T'au *"any number of
-models can each be equipped with up to two of the following"* (a per-MODEL budget `lim` cannot
-express) is the known remainder — hub `journal/paused/2026-09-13-player-report-tails.md` §1.
+dropping the bundled swaps ("2 X can be replaced with 2 Y" is one pick).
+
+### A budget per model (added 2026-09-26)
+
+*"Any number of models can each be equipped with up to two of the following, but cannot take
+duplicates"* — Broadside, Crisis Fireknife / Starscythe / Sunforge, and in the Legends pack Crisis
+Battlesuits and XV9 Hazard; Piranhas' *"…up to 2 seeker missiles"* is the one-option spelling. appdata
+files each as one unit-wide group with no limited-choice set, so the editor offered one of each
+option to the whole squad: three Broadsides could not carry six support systems between them, and
+one could be handed four. A group stores COUNTS, not which model holds what, and counts are all the
+rule needs: k models × N picks is the budget, "no duplicates" is k of any one option, and any counts
+inside both bounds can be dealt out round-robin — so `lim` with one row per model count
+(`[[1,2,1],[2,4,2],[3,6,3]]`) is exact, not an approximation. `PER_MODEL_BUDGET` in the generator,
+the "any number" branch of `parseOption` in `pack-roster.mjs` for the Legends; the guard is
+`index.test.js`'s "a budget per model".
+
+**`excl` — one per model across a set of options.** Two footnotes narrow what ONE model may hold:
+Broadside's *"No model can be equipped with both a twin plasma rifle and twin smart missile system"*
+(the pair is one set) and Legends Crisis' starred *"Each model cannot have duplicates of these pieces
+of wargear"* (each starred option a set of its own). For counts the rule is again exact: each set
+together at most the unit's model count. The generator writes it in a pass over the finished units
+(`oneEachPerModel`, pack units included); `wargearExclRoom` is the editor's and the importer's room
+for one option, `wargearExclOver` feeds `validateRoster`'s `overWargearOnePerModel` and `fitWargear`.
 
 ### The stock rule: a weapon is given up once (added 2026-09-19)
 
@@ -3503,6 +3523,12 @@ they do.)
 `gen-seo-routes.mjs` must not learn about it.
 
 ## Known gaps
+
+**A cap across two wargear groups is not modelled.** Legends Crisis Battlesuits' *"*** Each model
+cannot be equipped with more than 3 ranged weapons"* spans the burst-cannon swap and the "up to three"
+group, and its starred items are "one per model" across both groups too; `excl` and `lim` are per
+group, so only the in-group half is enforced (the list can over-equip a suit that also swapped its
+burst cannon for a starred item). One Legends datasheet; left until a list shows it matters.
 
 The builder's transient tracking docs are gone — this file is the stable reference, and the
 work-in-progress journals they held were retired once their phases closed (they survive in the git

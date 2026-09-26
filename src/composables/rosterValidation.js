@@ -3,7 +3,7 @@
 // than preventing an illegal list. Each issue is `{ code, level, uid?, params? }`; `code` maps
 // to an i18n message (see RosterIssuesModal), `level` is 'error' (illegal) or 'warn'
 // (incomplete / soft). `uid` ties an issue to a specific unit entry.
-import { hasKeyword, isBattlelineNow, grantedKeywordsFor, hostLimitsFor, leadTypeFor, allyGroupsFor, allyGroupsOf, allySourceOf, canBeWarlord, enhEligible, findEnhancement, rosterPoints, effectiveBattle, capKeyOf, wargearGroupCap, wargearGroupFallbackCap, wargearGroupLive, wargearGroupSpent, swapOverdraft, allegFor, allegKeyword, grantedKeywords, dispositionCandidates, dispositionOf } from './rosterEngine.js'
+import { hasKeyword, isBattlelineNow, grantedKeywordsFor, hostLimitsFor, leadTypeFor, allyGroupsFor, allyGroupsOf, allySourceOf, canBeWarlord, enhEligible, findEnhancement, rosterPoints, effectiveBattle, capKeyOf, wargearGroupCap, wargearGroupFallbackCap, wargearGroupLive, wargearGroupSpent, wargearExclOver, optionItems, swapOverdraft, allegFor, allegKeyword, grantedKeywords, dispositionCandidates, dispositionOf } from './rosterEngine.js'
 
 // Which issues the SETUP tab is the place to fix. An editor tab can only carry an honest mark if
 // the mark means "the fix is in here": faction, detachments, the Force Disposition they disagree
@@ -192,6 +192,12 @@ export function validateRoster(roster, { faction, core, items } = {}) {
       }
       const over = cap.dup && (u.wg || []).find(([g, , n]) => g === gi && (n || 1) > cap.dup)
       if (over) add('overWargearDup', 'error', { uid: u.uid, params: { count: over[2] || 1, limit: cap.dup } })
+      // One per model across a set of options (Broadside's twin plasma rifle / twin smart missile
+      // system) — rosterEngine's wargearExclOver.
+      for (const x of wargearExclOver(def, u, gi)) {
+        const names = x.set.map((oi) => optionItems(def.gear[gi].o[oi]).map(([id]) => items?.[id]).filter(Boolean).join(' + ')).filter(Boolean).join(', ')
+        add('overWargearOnePerModel', 'error', { uid: u.uid, params: { count: x.spent, limit: x.limit, names } })
+      }
     }
     // The stock rule: the same item given up by more models than carry it — two groups each
     // swapping a Chaos Lord's one bolt pistol. The editor greys such a group out before it is

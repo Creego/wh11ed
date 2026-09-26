@@ -317,6 +317,15 @@ function parseOption(text, ctx) {
     if (!rows.length) return { fail: `"for every ${f.per}" on a ${maxModels}-model unit` }
     g.lim = rows
   } else if (f.n != null) g.lim = [[0, f.n]]
+  else if (value.limit > 1 && !f.given && (!f.who || /^models?$/i.test(clean(f.who)))) {
+    // "Any number of models can each be equipped with up to two of the following, and can take
+    // duplicates" (Crisis Battlesuits, XV9 Hazard) — a budget PER MODEL, which a squad of counts
+    // expresses exactly as one row per model count: k models, k × N picks, k × the per-model
+    // duplicate cap (gen-roster-data.mjs's PER_MODEL_BUDGET says why that is exact).
+    const rows = []
+    for (let k = 1; k <= maxModels; k++) rows.push(value.dup < value.limit ? [k, k * value.limit, k * value.dup] : [k, k * value.limit])
+    g.lim = rows
+  }
   if (f.floor) g.lim = (g.lim || [[0, 1]]).map((r) => [Math.max(r[0], f.floor), ...r.slice(1)])
   if (f.copies) g.copies = f.copies // "Each of"/"Both of"/"2 of this model's X": per copy
   return g
