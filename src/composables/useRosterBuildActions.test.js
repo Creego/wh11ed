@@ -80,6 +80,44 @@ for (const [label, shape] of [['a stored roster (editor)', asStored], ["the wiza
       expect(list.get().units.some((u) => u.warlord)).toBe(false)
     })
 
+    // SUPREME COMMANDER: "if this model is in your army, it must be your Warlord". Guilliman is the
+    // Space Marines' one; a renamed copy of him stands in for a second such unit.
+    function supremeSetup(units) {
+      const gui = sm.units.find((u) => u.id === 'roboute-guilliman')
+      const factionData = ref({ ...sm, units: [...sm.units, { ...gui, id: 'second-supreme' }] })
+      const list = shape({ faction: 'space-marines', battleSize: 'strike-force', detachments: [], units })
+      const { curDetachments, effBattle, defOf } = useRosterDerived(list.derivedOver, factionData)
+      const actions = useRosterBuildActions({
+        roster: list.get, factionData, curDetachments, effBattle, defOf, commit: vi.fn(), setFaction: list.setFaction,
+      })
+      const warlords = () => list.get().units.filter((u) => u.warlord).map((u) => u.id)
+      return { list, actions, warlords }
+    }
+
+    it('makes a SUPREME COMMANDER the Warlord when the seat is empty, and only then', () => {
+      const empty = supremeSetup([{ uid: 'i1', id: 'intercessor-squad' }])
+      empty.actions.addUnit('roboute-guilliman')
+      expect(empty.warlords()).toEqual(['roboute-guilliman'])
+
+      // A Warlord the player picked is not taken away: the validation error says what to fix.
+      const taken = supremeSetup([{ uid: 'c1', id: 'captain', warlord: true }])
+      taken.actions.addUnit('roboute-guilliman')
+      expect(taken.warlords()).toEqual(['captain'])
+    })
+
+    it('with two SUPREME COMMANDERs keeps the first, and passes the seat when it leaves', () => {
+      const { list, actions, warlords } = supremeSetup([])
+      actions.addUnit('roboute-guilliman')
+      actions.addUnit('second-supreme')
+      expect(warlords()).toEqual(['roboute-guilliman'])
+
+      actions.removeEntry(list.get().units[0])
+      expect(warlords()).toEqual(['second-supreme'])
+      // Undo puts back the list from before the tap — one Warlord, the original one.
+      actions.undoRemove()
+      expect(warlords()).toEqual(['roboute-guilliman'])
+    })
+
     it('adds, copies and removes a line', () => {
       const { list, actions } = setup(shape)
       actions.addUnit('intercessor-squad')

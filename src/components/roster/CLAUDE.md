@@ -701,6 +701,11 @@ directory; still part of this feature:
   must select one of them to be your WARLORD."* So Belisarius Cawl beside Thulia Ghuld is a legal
   Adeptus Mechanicus list — `supremeCommanderPick` asks for the choice when none of them wears the
   title, and the old `supremeCommanderConflict`, which called that pairing unresolvable, is gone.
+  **The builder seats such a unit itself** (`settleSupremeWarlord`, 2026-09-26), but only into an
+  empty seat: a SUPREME unit added to a list with no Warlord takes the title; one added beside a
+  Warlord the player picked changes nothing (the error above says what to fix — the flag is never
+  taken away silently); a second SUPREME unit leaves the first wearing it; the Warlord leaving
+  passes the seat to a SUPREME unit still on the list, and undoing that removal takes it back.
   The lesson is the general one: when appdata's per-datasheet text looks contradictory, the core
   rules this app already ships usually settle it.
   `unknownUnit` is the one issue about the DATA rather than the list: a roster outlives the

@@ -846,6 +846,22 @@ export function restoreUnitEntry(units, ticket) {
   return ticket.uid
 }
 
+// SUPREME COMMANDER ("if this model is in your army, it must be your Warlord"): the builder hands
+// such a unit the title itself, but only into an EMPTY seat. A Warlord the player picked is never
+// taken away silently — with a non-SUPREME Warlord standing, validateRoster's error says what is
+// wrong and the player decides. Several SUPREME units may share an army (the Muster step: "select
+// one of them"), so a second one arriving changes nothing, and when the one wearing the title
+// leaves, the seat passes to the next. `preferUid` is the unit that just arrived; otherwise the
+// first in list order. Returns the uid made Warlord, or null.
+export function settleSupremeWarlord(units, defOf, preferUid = null) {
+  if (!units?.length || units.some((u) => u.warlord)) return null
+  const supreme = units.filter((u) => defOf(u.id)?.flags?.supreme)
+  if (!supreme.length) return null
+  const pick = supreme.find((u) => u.uid === preferUid) || supreme[0]
+  pick.warlord = true
+  return pick.uid
+}
+
 // A second copy of an entry the player has already configured. Adding the same datasheet again
 // gives a bare entry (addUnitEntry above) and every wargear pick has to be made a second time,
 // which is what a list holding two identical squads costs today.

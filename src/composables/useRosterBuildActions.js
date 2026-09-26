@@ -17,7 +17,7 @@
 //                     of the wizard's
 import { computed, ref } from 'vue'
 import { uid } from './useRosters.js'
-import { addUnitEntry, dispositionCandidates, duplicateUnitEntry } from './rosterEngine.js'
+import { addUnitEntry, dispositionCandidates, duplicateUnitEntry, settleSupremeWarlord } from './rosterEngine.js'
 import { useRosterUndo } from './useRosterUndo.js'
 import rosterCore from '../data/roster/core.js'
 
@@ -94,9 +94,13 @@ export function useRosterBuildActions({ roster, factionData, curDetachments, eff
   // ── Units ──
   // The add/copy semantics are rosterEngine's: a default size, and the three fields a copy must
   // not inherit, decided once.
+  // A SUPREME COMMANDER arriving in a list with no Warlord takes the title (settleSupremeWarlord).
   function addUnit(unitId) {
     const r = list()
-    if (r && addUnitEntry(r.units, defOf(unitId), unitId, uid())) commit()
+    const entry = r && addUnitEntry(r.units, defOf(unitId), unitId, uid())
+    if (!entry) return
+    if (defOf(unitId)?.flags?.supreme) settleSupremeWarlord(r.units, defOf, entry.uid)
+    commit()
   }
   // A configured copy, right under its original. Its fields stay shut: a copy is wanted AS the
   // original far more often than not, and opening it would push the tapped row off the screen.
@@ -107,10 +111,24 @@ export function useRosterBuildActions({ roster, factionData, curDetachments, eff
   // Delete ONE line, not "a copy of this datasheet": two of the same unit are configured
   // separately. Through useRosterUndo, which keeps the ticket that puts it back — including the
   // Leader that had to let go of it (rosterEngine's takeUnitEntry).
-  const { undoable, removeWithUndo, undoRemove, dismissUndo } = useRosterUndo(() => list()?.units || [], commit)
+  // The Warlord leaving hands the seat to a SUPREME COMMANDER still on the list; undoing the
+  // removal gives it back, so the list is the one from before the tap, not one with two Warlords.
+  const { undoable, removeWithUndo, undoRemove: undoTake, dismissUndo } = useRosterUndo(() => list()?.units || [], commit)
   function removeEntry(entry) {
     if (openUid.value === entry.uid) openUid.value = null
-    removeWithUndo(entry.id, entry.uid, defOf(entry.id)?.name || '')
+    const wasWarlord = entry.warlord === true
+    if (removeWithUndo(entry.id, entry.uid, defOf(entry.id)?.name || '') && wasWarlord) {
+      if (settleSupremeWarlord(list()?.units, defOf)) commit()
+    }
+  }
+  function undoRemove() {
+    const back = undoTake()
+    const units = list()?.units || []
+    if (back && units.find((u) => u.uid === back)?.warlord && units.some((u) => u.uid !== back && u.warlord)) {
+      for (const u of units) if (u.uid !== back) delete u.warlord
+      commit()
+    }
+    return back
   }
 
   function toggleWarlord(entryUid) {
