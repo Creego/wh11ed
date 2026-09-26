@@ -497,7 +497,7 @@ const stratsBlockedNote = computed(() => {
   color: var(--text-muted); font-size: 0.8rem; line-height: 1.3;
 }
 .rum-chip strong { color: var(--text-primary); font-weight: 600; }
-.rum-chip-wl { color: var(--accent); }
+.rum-chip-wl { color: var(--text-primary); } /* white, like the list's Warlord badge and the editor's flag */
 .rum-chip-pts { color: var(--text-primary); font-weight: 600; }
 .rum-chip-tag { text-transform: lowercase; opacity: 0.8; }
 .rum-rule-conds { margin-bottom: 0.5rem; }
