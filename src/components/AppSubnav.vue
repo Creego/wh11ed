@@ -75,7 +75,7 @@ import { useLocale } from '../composables/useLocale.js'
 import { useRefNavigation } from '../composables/useRefNavigation.js'
 import { activeSectionId } from '../composables/useActiveSection.js'
 import { useRouteSection } from '../composables/useRouteSection.js'
-import { CORE_PATH, EVENT_PATH } from '../router/index.js'
+import { CORE_PATH, EVENT_PATH } from '../router/nav.js'
 import { useNavGroups } from '../composables/useNavGroups.js'
 import { ui } from '../i18n/ui.js'
 

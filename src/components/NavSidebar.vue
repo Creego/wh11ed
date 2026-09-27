@@ -225,7 +225,7 @@
 import { ref, computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { stripLocale } from '../router/locale.js'
-import { CORE_PATH, EVENT_PATH } from '../router/index.js'
+import { CORE_PATH, EVENT_PATH } from '../router/nav.js'
 import { useNavGroups } from '../composables/useNavGroups.js'
 import { ui } from '../i18n/ui.js'
 import { useLocale } from '../composables/useLocale.js'

@@ -5,7 +5,7 @@ import { useLocale } from './useLocale.js'
 import {
   navGroups, navGroupsRu, eventGroups, eventGroupsRu, trackerGroups, trackerGroupsRu,
   rosterGroups, rosterGroupsRu, factionGroups, factionGroupsRu, combatPatrolGroups, combatPatrolGroupsRu,
-} from '../router/index.js'
+} from '../router/nav.js'
 
 const LISTS = {
   core: [navGroups, navGroupsRu],

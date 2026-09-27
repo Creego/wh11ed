@@ -4,7 +4,7 @@
   "description": "Bilingual (EN/RU) interactive reference for Warhammer 40,000 11th Edition — core rules, the Event Companion, faction rules and unit datasheets, plus an offline game tracker. A fast, searchable Vue 3 SPA hosted at wh-rules.ru.",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/gen-seo-routes.mjs",
+    "build": "vite build && node scripts/check-chunk-graph.mjs && node scripts/gen-seo-routes.mjs",
     "preview": "vite preview",
     "test": "vitest run",
     "lint": "eslint .",
@@ -38,6 +38,7 @@
     "emphasis": "node scripts/check-emphasis.mjs",
     "layouts": "node scripts/check-layout-art.mjs",
     "companions": "node scripts/check-companion-pdfs.mjs",
+    "chunks": "node scripts/check-chunk-graph.mjs",
     "radii": "node scripts/check-radii.mjs",
     "dupes": "node scripts/check-css-dupes.mjs",
     "a11y": "node scripts/check-a11y.mjs",

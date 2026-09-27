@@ -29,7 +29,7 @@ import ChapterFaq from '../components/event/ChapterFaq.vue'
 import { ui } from '../i18n/ui.js'
 import { useLocale } from '../composables/useLocale.js'
 import { useNavGroups } from '../composables/useNavGroups.js'
-import { EVENT_PATH } from '../router/index.js'
+import { EVENT_PATH } from '../router/nav.js'
 
 const { locale } = useLocale()
 const labels = computed(() => ui[locale.value])

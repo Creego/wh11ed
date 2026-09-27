@@ -36,7 +36,7 @@ import { useLocale } from '../composables/useLocale.js'
 import { useAbilityFilter } from '../composables/useAbilityFilter.js'
 import { useCoreRulesSubsections } from '../composables/useCoreRulesSubsections.js'
 import { useNavGroups } from '../composables/useNavGroups.js'
-import { CORE_PATH } from '../router/index.js'
+import { CORE_PATH } from '../router/nav.js'
 
 const { locale } = useLocale()
 const labels = computed(() => ui[locale.value])

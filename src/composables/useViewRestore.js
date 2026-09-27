@@ -2,7 +2,7 @@ import { onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 import { scrollToAnchor } from './useRefNavigation.js'
 import { isStandaloneDisplay } from './standalone.js'
-import { LAST_ROUTE_KEY, SKIP_RESTORE } from '../router/index.js'
+import { LAST_ROUTE_KEY, SKIP_RESTORE } from '../router/nav.js'
 import { stripLocale } from '../router/locale.js'
 
 // PWA-only "resume where I left off". The router (router/index.js) restores the saved
