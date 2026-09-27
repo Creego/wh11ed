@@ -44,3 +44,16 @@ if (typeof globalThis.IntersectionObserver === 'undefined') {
     takeRecords() { return [] }
   }
 }
+
+// The build writes the app and notes versions into index.html as <meta> tags (vite.config.js's
+// buildInfoMeta, read by src/buildInfo.js). The same two here, so code reading them sees what a
+// real page carries: a test version for the app, and the changelog's own top entry for the notes.
+if (typeof document !== 'undefined') {
+  const { latestEntry } = await import('./data/changelog.js')
+  for (const [name, content] of [['wh-app-version', '0.0.0-test'], ['wh-notes-version', latestEntry?.version ?? '']]) {
+    const m = document.createElement('meta')
+    m.name = name
+    m.content = content
+    document.head.appendChild(m)
+  }
+}

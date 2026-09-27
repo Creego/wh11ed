@@ -601,6 +601,7 @@ import { useRosterFactionData, useRosterFactionRules } from '../../composables/u
 import { getItem, setItem } from '../../composables/safeStorage.js'
 import { loadHistory, rosterRecords } from '../../composables/gameStats.js'
 import { rosterNameFit } from '../../utils/rosterNameFit.js'
+import { APP_VERSION } from '../../buildInfo.js'
 
 const route = useRoute()
 const router = useRouter()
@@ -1347,7 +1348,7 @@ function goPrint() {
 async function copyWholeList() {
   const text = buildRosterText(
     roster.value,
-    { faction: factionData.value, core: rosterCore, items: rosterItems.items, version: { app: __APP_VERSION__, data: APP_DATA_VERSION } },
+    { faction: factionData.value, core: rosterCore, items: rosterItems.items, version: { app: APP_VERSION, data: APP_DATA_VERSION } },
     'gw',
   )
   try {

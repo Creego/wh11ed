@@ -15,9 +15,14 @@
 // returning visitor keeps a null last-seen and sees the banner once, until markSeen() stores it.
 import { ref, computed } from 'vue'
 import { getItem, setItem } from './safeStorage.js'
-import { latestEntry } from '../data/changelog.js'
+import { NOTES_VERSION } from '../buildInfo.js'
 
 const LAST_SEEN_KEY = 'wh11ed-last-seen-version'
+
+// Only the top entry's version is needed here, and it comes from the page (src/buildInfo.js):
+// importing the changelog put all 200 KB of it into the entry chunk every visitor downloads
+// first, and renamed every route chunk on every deploy. The notes themselves load with /changelog.
+const latestEntry = NOTES_VERSION ? { version: NOTES_VERSION } : null
 
 // Any wh11ed-* key other than our own → the app has been used here before.
 function isReturningVisitor() {

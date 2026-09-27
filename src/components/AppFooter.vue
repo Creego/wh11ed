@@ -108,6 +108,7 @@ import { APP_DATA_VERSION } from '../data/appDataVersion.js'
 import { useLocale } from '../composables/useLocale.js'
 import CollapseTransition from './CollapseTransition.vue'
 import VkIcon from './VkIcon.vue'
+import { APP_VERSION } from '../buildInfo.js'
 
 const { locale } = useLocale()
 const t = computed(() => landing[locale.value])
@@ -120,7 +121,7 @@ const contactEmail = 'gorlovevgeni9617@gmail.com'
 const repoUrl = 'https://github.com/Joker1796/wh-rules.ru'
 // The project's VK group — news, and the place to talk about a bug report.
 const vkUrl = 'https://vk.ru/whrules'
-const version = __APP_VERSION__
+const version = APP_VERSION
 // The GW app data_version the rules were reconciled against (shown under the app version).
 const dataVersion = APP_DATA_VERSION
 

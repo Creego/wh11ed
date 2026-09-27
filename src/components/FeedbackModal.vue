@@ -119,6 +119,7 @@ import { APP_DATA_VERSION } from '../data/appDataVersion.js'
 import { useTracker } from '../composables/useTracker.js'
 import { useRosters } from '../composables/useRosters.js'
 import { rosterPayload } from '../composables/rosterShare.js'
+import { APP_VERSION } from '../buildInfo.js'
 
 const route = useRoute()
 const { locale } = useLocale()
@@ -149,7 +150,7 @@ const canAttachRoster = computed(() => !!openRoster.value)
 
 function techContext() {
   return {
-    appVersion: __APP_VERSION__,
+    appVersion: APP_VERSION,
     dataVersion: APP_DATA_VERSION,
     locale: locale.value,
     theme: theme.value,

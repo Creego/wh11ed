@@ -68,6 +68,7 @@ import { useLocale } from '../../composables/useLocale.js'
 import { buildRosterText, EXPORT_FORMATS } from '../../composables/rosterExport.js'
 import { APP_DATA_VERSION } from '../../data/appDataVersion.js'
 import { encodeRoster, shareUrl } from '../../composables/rosterShare.js'
+import { APP_VERSION } from '../../buildInfo.js'
 
 const props = defineProps({
   roster: { type: Object, required: true },
@@ -87,7 +88,7 @@ const format = ref('gw')
 
 // The footer names the tool and the points data that wrote the list — never the GW app's own
 // version, which we would be claiming falsely (see rosterExport.js).
-const version = { app: __APP_VERSION__, data: APP_DATA_VERSION }
+const version = { app: APP_VERSION, data: APP_DATA_VERSION }
 const text = computed(() => buildRosterText(
   props.roster,
   { faction: props.faction, core: props.core, items: props.items, version },

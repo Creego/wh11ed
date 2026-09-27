@@ -5,6 +5,23 @@ import vue from '@vitejs/plugin-vue'
 import { VitePWA } from 'vite-plugin-pwa'
 
 const pkgVersion = JSON.parse(readFileSync('./package.json', 'utf8')).version
+// The changelog's top entry — the version the "what's new" banner announces (src/buildInfo.js).
+const notesVersion = (await import('./src/data/changelog.js')).latestEntry?.version ?? ''
+
+// The app and notes versions as <meta> tags in index.html, where src/buildInfo.js reads them.
+// NOT a `define`: a number compiled into the entry chunk renamed every route chunk on every deploy
+// (they import the entry by its hashed name), and the installed app re-downloaded them all.
+function buildInfoMeta() {
+  return {
+    name: 'build-info-meta',
+    transformIndexHtml() {
+      return [
+        { tag: 'meta', attrs: { name: 'wh-app-version', content: pkgVersion }, injectTo: 'head' },
+        { tag: 'meta', attrs: { name: 'wh-notes-version', content: notesVersion }, injectTo: 'head' },
+      ]
+    },
+  }
+}
 
 // Canonical origin baked into index.html's static SEO tags (og/twitter/JSON-LD) via the
 // %SITE_ORIGIN% placeholder. Same var + fallback as src/config.js and scripts/gen-seo-routes.mjs,
@@ -133,11 +150,9 @@ function offlineShell() {
 
 export default defineConfig({
   base: '/',
-  define: {
-    __APP_VERSION__: JSON.stringify(pkgVersion),
-  },
   plugins: [
     vue(),
+    buildInfoMeta(),
     injectSiteOrigin(),
     imageManifest(),
     offlineShell(),
