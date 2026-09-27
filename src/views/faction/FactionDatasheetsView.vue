@@ -203,6 +203,7 @@ import { useCollection } from '../../composables/useCollection.js'
 import { reconcileFactionMarks } from '../../composables/useUserPrefs.js'
 import { getItem, setItem } from '../../composables/safeStorage.js'
 import { scrollToAnchor } from '../../composables/useRefNavigation.js'
+import { foldName, preloadDatasheetTags, TAG_MIN, unitTagHit } from '../../composables/datasheetTags.js'
 
 const route = useRoute()
 const { slug, faction } = useFactionPage()
@@ -308,12 +309,17 @@ const hideLegends = ref(getItem('wh11ed-ds-filter-legends') === '1')
 watch(hideLegends, (v) => setItem('wh11ed-ds-filter-legends', v ? '1' : ''))
 const hasLegends = computed(() => datasheets.value.some((s) => s.legends))
 
+// The query also finds a unit by an ability or keyword ("deep strike", "fly") — the same tags the
+// global search and the roster catalogue match (datasheetTags.js), loaded with the first query
+// long enough to use them.
+watch(dsQuery, (q) => { if (q.trim().length >= TAG_MIN) preloadDatasheetTags() })
 const filteredDatasheets = computed(() => {
   const q = dsQuery.value.trim().toLowerCase()
+  const qf = foldName(q)
   const c = chapter.value
   return datasheets.value.filter((s) => {
     if (hideLegends.value && s.legends) return false
-    if (q && !s.name.toLowerCase().includes(q)) return false
+    if (q && !s.name.toLowerCase().includes(q) && !unitTagHit(slug.value, s.id, qf)) return false
     if (c) {
       // Chapter-less sheets are generic Adeptus Astartes units, legal in any Chapter's army.
       const sc = chapterOf(s)

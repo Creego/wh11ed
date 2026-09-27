@@ -201,6 +201,7 @@ import { allySourceOf, groupLabel, mandatoryEnhancementFor, capKeyOf, sectionsOf
 import { duplicateLimit } from '../../composables/rosterValidation.js'
 import { useCollection } from '../../composables/useCollection.js'
 import { getItem, setItem } from '../../composables/safeStorage.js'
+import { foldName, preloadDatasheetTags, TAG_MIN, unitTagHit } from '../../composables/datasheetTags.js'
 
 const props = defineProps({
   units: { type: Array, required: true },
@@ -257,11 +258,20 @@ const { isOwned } = useCollection()
 const query = ref('')
 
 // Search only. The toggles below narrow this further; the two stay apart so the "N hidden" note
-// can compare them and say how much the toggles — not the typing — took away.
+// can compare them and say how much the toggles — not the typing — took away. A unit is found by
+// its name, or by an ability or keyword ("deep strike", "fly") — the same tags the global search
+// and the datasheet grid match (datasheetTags.js), loaded with the first query long enough to use
+// them. An allied unit's tags are its own faction's (srcOf).
+watch(query, (q) => { if (q.trim().length >= TAG_MIN) preloadDatasheetTags() })
 const searched = computed(() => {
   const q = query.value.trim().toLowerCase()
   if (!q) return props.units
-  return props.units.filter((u) => u.name.toLowerCase().includes(q))
+  const qf = foldName(q)
+  return props.units.filter((u) => {
+    if (u.name.toLowerCase().includes(q)) return true
+    const s = srcOf(u)
+    return !!unitTagHit(s.slug, s.id, qf)
+  })
 })
 
 // Per device, like the missions screen's own filters (ChapterMissions.vue). Both start off: the

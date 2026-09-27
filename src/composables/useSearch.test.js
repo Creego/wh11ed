@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest'
+import { preloadDatasheetTags } from './datasheetTags.js'
 import { search, highlightMatch, preloadDatasheetIndex, preloadFactionRulesIndex, preloadCombatPatrolIndex, preloadFactionFaqIndex } from './useSearch.js'
 import { ui } from '../i18n/ui.js'
 
@@ -113,6 +114,17 @@ describe('datasheet unit search', () => {
     expect(unit.title).toBe('Ghazghkull Thraka')
     expect(unit.sectionTitle).toContain('Orks')
     expect(unit.key).toBeTruthy()
+  })
+
+  it('finds a unit by an ability, with the ability as the subline, under name hits', async () => {
+    await preloadDatasheetIndex()
+    await preloadDatasheetTags()
+    const res = search('tide of muscle', 'en')
+    const unit = res.find((r) => r.route === '/factions/orks/datasheets/boyz')
+    expect(unit?.titleRu).toBe('Tide of Muscle')
+    expect(unit.score).toBeLessThan(1)
+    // The RU header the overlay gives the same ability finds it too.
+    expect(search('вал мускулов', 'ru').some((r) => r.route === '/factions/orks/datasheets/boyz')).toBe(true)
   })
 
   it('localizes the datasheets label in RU results', async () => {

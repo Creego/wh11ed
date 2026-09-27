@@ -315,7 +315,7 @@ if (!only) {
 
   // Tripwire: if localizeSheet stops spelling the aliases this pass assumes, the pass is checking
   // the wrong fields and would go quiet rather than wrong-loud. Cheap to assert, so assert.
-  const ruIndexSrc = fs.readFileSync(path.join(dsRuDir, 'index.js'), 'utf8')
+  const ruIndexSrc = fs.readFileSync(path.join(dsRuDir, 'localize.js'), 'utf8')
   for (const expected of ['o.wargearAbilities || o.wargear', 'o.specialAbilities || o.special']) {
     if (!ruIndexSrc.includes(expected)) {
       notes.push(`localizeSheet no longer contains "${expected}" — re-read it, this pass mirrors its key handling`)

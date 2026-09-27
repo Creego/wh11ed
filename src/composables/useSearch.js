@@ -14,6 +14,7 @@ import { factionGroups } from '../data/factionsIndex.js'
 import { factionAliasesRu } from '../data/factionAliasesRu.js'
 import { h4AnchorId } from './anchors.js'
 import { splitBodyEntries } from './columnChunks.js'
+import { foldName, preloadDatasheetTags, TAG_MIN, unitTagHit } from './datasheetTags.js'
 
 // Every core-rules chapter lives on one page now, so a hit's `route` is the same for all of
 // them; the anchor (`id`) is what actually distinguishes them.
@@ -475,13 +476,17 @@ function searchDatasheets(q, locale) {
       // subline says so in either locale: the result's title is a different name from the one
       // typed, and without the reason it reads as a wrong hit.
       const legacyHit = !nameHit && !aliasHit && (legacy || []).find((a) => foldName(a).includes(qn))
-      if (!nameHit && !aliasHit && !legacyHit) continue
+      // Found by an ability or keyword ("deep strike", "fly"): the tag is the subline, since the
+      // title alone would not say why the unit is here. Ranked under every name hit — a query
+      // like "infantry" matches hundreds of sheets, and a unit CALLED what was typed comes first.
+      const tagHit = !nameHit && !aliasHit && !legacyHit && unitTagHit(slug, id, qn)
+      if (!nameHit && !aliasHit && !legacyHit && !tagHit) continue
       results.push({
         id: '',
         key: `ds-${slug}-${id}`,
         sectionNum: '',
         title: name,
-        titleRu: legacyHit ? `${L.dsLegendsProxies}: ${legacyHit}` : isRu && aliasHit ? aliasHit : '',
+        titleRu: legacyHit ? `${L.dsLegendsProxies}: ${legacyHit}` : isRu && aliasHit ? aliasHit : tagHit || '',
         body: '',
         snippet: '',
         route: `/factions/${slug}/datasheets/${id}`,
@@ -489,7 +494,7 @@ function searchDatasheets(q, locale) {
         // Drawn as the shared .legends-badge beside the title — the same mark the datasheet grid
         // and the roster browser wear, so a Legends hit reads as one before the page opens.
         legends: !!legends,
-        score: 2,
+        score: tagHit ? 0.9 : 2,
       })
     }
   }
@@ -758,9 +763,6 @@ function foldYo(s) {
 function stripApos(s) {
   return s.replace(/[’'`]/g, '')
 }
-function foldName(s) {
-  return stripApos(foldYo(s.toLowerCase()))
-}
 
 // A query that is purely a section number (1–3 groups of 1–2 digits, optional
 // trailing dot): "7", "07", "7.2", "07.02", "24.05", "07.". Returns the canonical
@@ -803,6 +805,8 @@ export function search(query, locale = 'en') {
   // Number queries bypass the 2-char minimum so a bare "7" works (→ "07").
   if (numQuery) return searchBySectionNum(getIndex(locale), numQuery)
   if (trimmed.length < 2) return []
+  // The ability/keyword tags load with the first query long enough to use them (datasheetTags.js).
+  if (trimmed.length >= TAG_MIN) preloadDatasheetTags()
   const index = getIndex(locale)
   const q = foldYo(trimmed)
   const results = []
