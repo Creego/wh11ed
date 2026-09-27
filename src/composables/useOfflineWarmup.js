@@ -41,6 +41,11 @@ const total = ref(0)
 // without fetching the very files in question.
 const bytes = ref(0)
 const warmed = ref(localStorage.getItem(DONE_KEY) !== null)
+// This run tops up a set that was complete before a deploy renamed part of it — not the first
+// download. To a reader already using the app, "Preparing offline…" after every release read
+// as something new starting, so the indicator says "update" then (owner's call, 2026-09-27).
+// The ⚙ button stays "offline": the reader asked for exactly that.
+const isUpdate = ref(false)
 
 let autoStarted = false
 let running = false
@@ -76,6 +81,7 @@ async function run({ force = false } = {}) {
       return
     }
 
+    isUpdate.value = !force && localStorage.getItem(DONE_KEY) !== null
     total.value = files.length
     done.value = 0
     status.value = 'warming'
@@ -137,5 +143,5 @@ export function useOfflineWarmup() {
     if ('requestIdleCallback' in window) requestIdleCallback(kick, { timeout: 4000 })
     else setTimeout(kick, 1500)
   }
-  return { status, done, total, bytes, warmed, progress: computed(() => (total.value ? done.value / total.value : 0)) }
+  return { status, done, total, bytes, warmed, isUpdate, progress: computed(() => (total.value ? done.value / total.value : 0)) }
 }

@@ -80,6 +80,43 @@ describe('startOfflineWarmup', () => {
   })
 })
 
+// The installed app tops the set up by itself after every release. To a reader already using it,
+// "Preparing offline…" read as something new starting; the indicator says "update" then — and only
+// then: the first download and the ⚙ button are what "offline" really means.
+describe('an installed app after a release', () => {
+  afterEach(() => { delete navigator.serviceWorker })
+  async function autoRun() {
+    vi.stubGlobal('matchMedia', () => ({ matches: true }))
+    vi.stubGlobal('requestIdleCallback', (cb) => cb())
+    Object.defineProperty(navigator, 'serviceWorker', { value: {}, configurable: true })
+    const mod = await fresh()
+    const api = mod.useOfflineWarmup()
+    await vi.waitFor(() => expect(api.status.value).toBe('ready'))
+    return { ...mod, api }
+  }
+
+  it('calls the first download offline preparation', async () => {
+    mockFetch()
+    const { api } = await autoRun()
+    expect(api.isUpdate.value).toBe(false)
+  })
+
+  it('calls a top-up of a set warmed before an update', async () => {
+    mockFetch()
+    localStorage.setItem('wh11ed-offline-warmed', 'an-older-set')
+    const { api } = await autoRun()
+    expect(api.isUpdate.value).toBe(true)
+  })
+
+  it('keeps the button’s run an offline download', async () => {
+    mockFetch()
+    localStorage.setItem('wh11ed-offline-warmed', 'an-older-set')
+    const { startOfflineWarmup, useOfflineWarmup } = await fresh()
+    await startOfflineWarmup()
+    expect(useOfflineWarmup().isUpdate.value).toBe(false)
+  })
+})
+
 describe('loadOfflineSize', () => {
   // What the ⚙ menu puts on the button. Nothing can work it out at runtime without fetching the
   // very files in question, which is the whole reason the build writes it down.
