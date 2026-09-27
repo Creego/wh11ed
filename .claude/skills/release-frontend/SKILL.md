@@ -56,10 +56,15 @@ npm run deploy --prefix /путь/к/wh11ed > /tmp/deploy.log 2>&1
 ## 5. Смоук живого домена (без него релиз не закрыт)
 
 ```bash
-curl -s https://wh-rules.ru/ | grep -o 'assets/index-[a-zA-Z0-9]*\.js' | head -1   # новый бандл
-curl -s https://wh-rules.ru/assets/index-XXXX.js | grep -c "X\.Y\.Z"               # чейнджлог внутри
+curl -s https://wh-rules.ru/ | grep -o 'assets/index-[a-zA-Z0-9_-]*\.js' | head -1  # новый бандл
+curl -s https://wh-rules.ru/ | grep -o 'wh-notes-version" content="[^"]*"'         # X.Y.Z — версия плашки
 curl -s -o /dev/null -w '%{http_code}\n' https://wh-rules.ru/<новая-страница>
 ```
 
 В логе деплоя убедиться, что прошли **оба** финальных шага: `CDN purged` и
-`Committing + pushing version bump…`. Без purge читатели получат старый `index.html` до часа.
+`Committing + pushing version bump…`. Без purge CDN продолжит отдавать старый `index.html`.
+
+И шаг `Release notes → archive`: `moved N older entries … kept 5` или `nothing to move` — норма.
+`⚠ … stay whole in the file` — архив не обновился (нет токена, API или сеть), сайт при этом
+выкатился с полным чейнджлогом; разобраться до следующего релиза. Версии и чейнджлог больше не
+живут в главном куске: их видно в `index.html` (`wh-notes-version`), см. DEPLOY.md.

@@ -44,13 +44,33 @@
       >
         {{ labels.changelogShowMore }}
       </button>
+      <!-- The older releases come from the API's archive, only on request (useChangelogArchive). -->
+      <template v-else-if="archive.status.value !== 'done'">
+        <p
+          v-if="archive.status.value === 'offline' || archive.status.value === 'error'"
+          class="cl-archive-note"
+          role="status"
+        >
+          {{ archive.status.value === 'offline' ? labels.changelogArchiveOffline : labels.changelogArchiveError }}
+        </p>
+        <button
+          class="show-more"
+          :disabled="archive.status.value === 'loading'"
+          @click="loadOlder"
+        >
+          {{ archive.status.value === 'loading' ? labels.changelogArchiveLoading
+            : archive.status.value === 'idle' ? labels.changelogShowOlder : labels.changelogArchiveRetry }}
+        </button>
+      </template>
     </div>
   </div>
 </template>
 
 <script setup>
-// Standalone "What's New" page (/changelog). Renders the bilingual changelog.js, newest first.
-// Reachable from the footer version and the update-notice banner. Opening it clears the banner.
+// Standalone "What's New" page (/changelog). Renders the bilingual changelog.js, newest first,
+// then — on request — the older releases from the API's archive (the file keeps only the last few;
+// deploy.sh moves the rest). Reachable from the footer version and the update-notice banner.
+// Opening it clears the banner.
 import { ref, computed } from 'vue'
 import { changelog } from '../data/changelog.js'
 import { renderMarks } from '../data/changelogMarks.js'
@@ -58,6 +78,7 @@ import { useLocale } from '../composables/useLocale.js'
 import { useRenderInline } from '../composables/useRenderInline.js'
 import { useFormatDate } from '../composables/useFormatDate.js'
 import { useUpdateNotice } from '../composables/useUpdateNotice.js'
+import { useChangelogArchive } from '../composables/useChangelogArchive.js'
 import { ui } from '../i18n/ui.js'
 
 const { locale } = useLocale()
@@ -68,9 +89,18 @@ const { renderInline } = useRenderInline()
 // Pagination — show 5 versions at a time via "show more" (same recipe as tracker game history).
 const PAGE = 5
 const visibleCount = ref(PAGE)
-const visibleEntries = computed(() => changelog.slice(0, visibleCount.value))
+const archive = useChangelogArchive()
+// The file's own entries first (paged locally — normally there are only a few), then whatever the
+// archive has returned so far.
+const visibleEntries = computed(() =>
+  visibleCount.value < changelog.length
+    ? changelog.slice(0, visibleCount.value)
+    : [...changelog, ...archive.entries.value])
 function showMore() {
   visibleCount.value += PAGE
+}
+function loadOlder() {
+  archive.loadOlder(changelog.at(-1)?.version, new Set(changelog.map((e) => e.version)))
 }
 
 // Seeing the changelog means the latest is "seen" — dismiss the banner.
@@ -190,4 +220,14 @@ useUpdateNotice().markSeen()
   cursor: pointer;
 }
 .show-more:hover { border-color: var(--accent); color: var(--accent); }
+.show-more:disabled { opacity: 0.6; cursor: default; }
+.show-more:disabled:hover { border-color: var(--border); color: var(--text-muted); }
+
+.cl-archive-note {
+  margin: 1.2rem 0 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+.cl-archive-note + .show-more { margin-top: 0.6rem; }
 </style>

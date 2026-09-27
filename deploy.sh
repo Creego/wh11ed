@@ -60,6 +60,34 @@ else
   echo "  → $NEW_VERSION"
 fi
 
+# 0b) Release notes: the app ships only the newest CHANGELOG_KEEP entries of src/data/changelog.js;
+#     older ones move to wh11ed-api's archive (the "What's new" page fetches them on request), so
+#     notes almost nobody reads stay out of the first load and the installed app's offline download.
+#     scripts/changelog-rollover.mjs publishes them, reads them back, and only then cuts them from the
+#     file — any failure leaves the file whole and the deploy goes on (the page renders it all the
+#     same). Needs a wh11ed-api checkout beside this one and CHANGELOG_YDB_ENDPOINT /
+#     CHANGELOG_YDB_DATABASE in .env.deploy; the cut file is committed with the version bump (step 5).
+CHANGELOG_KEEP="${CHANGELOG_KEEP:-5}"
+if [ -n "${CHANGELOG_YDB_DATABASE-}" ]; then
+  echo "▶ Release notes → archive (keeping the newest $CHANGELOG_KEEP)"
+  YDB_TOKEN="$("$YC_BIN" iam create-token 2>/dev/null || true)"
+  if [ -n "$YDB_TOKEN" ]; then
+    set +e
+    YDB_ENDPOINT="$CHANGELOG_YDB_ENDPOINT" YDB_DATABASE="$CHANGELOG_YDB_DATABASE" YDB_ACCESS_TOKEN="$YDB_TOKEN" \
+      node scripts/changelog-rollover.mjs --keep "$CHANGELOG_KEEP"
+    ROLLOVER_RC=$?
+    set -e
+    if [ "$ROLLOVER_RC" -eq 3 ]; then
+      echo "✗ The changelog rewrite did not check out and was reverted — look before deploying." >&2
+      exit 1
+    fi
+  else
+    echo "  ⚠ no IAM token (yc: $YC_BIN) — release notes stay whole in the file"
+  fi
+else
+  echo "⚠ CHANGELOG_YDB_DATABASE unset — release notes stay whole in the file (see .env.deploy.example)"
+fi
+
 # Point the SPA at the production API. Vite inlines VITE_API_BASE_URL at build time;
 # without it config.js falls back to http://localhost:8787 and the deployed app can't reach the API.
 echo "▶ Building… (API: ${VITE_API_BASE_URL:=https://api.wh-rules.ru})"
@@ -259,9 +287,12 @@ fi
 #    clean-tree check already happened in step 0, so this is just recording what shipped).
 if [ "$BUMP" != "none" ]; then
   echo "▶ Committing + pushing version bump…"
-  git add package.json package-lock.json
+  # The changelog too: step 0b may have moved its older entries to the archive.
+  git add package.json package-lock.json src/data/changelog.js
   git commit -m "chore: release v$(node -p "require('./package.json').version")"
   git push origin main
+elif ! git diff --quiet -- src/data/changelog.js; then
+  echo "⚠ BUMP=none: src/data/changelog.js lost its older entries to the archive (step 0b) — commit it."
 fi
 
 echo "✔ Done."
