@@ -1091,11 +1091,13 @@ export function matchRoster(parsed, { faction, core, items } = {}) {
     // is the pair our data offers as a single option, whose own label joins its items with " + " —
     // so the line answered to neither the label nor an item, and the swap was lost silently (it is
     // free, so the points said nothing). Split only when the whole name is unknown and EVERY part
-    // is known: "Genestealer claws and talons" is one weapon, and it resolves as one.
+    // is known: "Genestealer claws and talons" is one weapon, and it resolves as one. Three items
+    // come as a series — listhammer's "Vexilla, Misericordia and Praesidium Shield" on Custodian
+    // Guard (2026-09-27) — so the commas split too, under the same every-part-known rule.
     const knownGear = (name) => { const k = norm(name); return !!k && (printed.has(k) || idx.has(k)) }
     weapons = weapons.flatMap((w) => {
       if (knownGear(w.name) || !/ and /i.test(w.name)) return [w]
-      const parts = w.name.split(/ and /i).map((x) => x.trim())
+      const parts = w.name.split(/\s*,\s*|\s+and\s+/i).map((x) => x.trim()).filter(Boolean)
       return parts.every(knownGear) ? parts.map((name) => ({ ...w, name })) : [w]
     })
 

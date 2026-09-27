@@ -2308,6 +2308,38 @@ describe('matchRoster — a WTC list that states an attachment by its rule', () 
 })
 
 
+// listhammer writes a three-item option as a series — "Vexilla, Misericordia and Praesidium Shield"
+// is the one Custodian Guard bundle — and only " and " used to split, so it was reported as wargear
+// we could not place (a player's list, 2026-09-27).
+const CUSTODES = `Erode Path (2000 points)
+
+Adeptus Custodes
+Lions of The Emperor (3 Detachment Points)
+Take and Hold
+Strike Force (2000 Point)
+
+BATTLELINE
+
+Custodian Guard (170 points)
+• 4x Custodian Guard
+• 3x Guardian Spear
+• 1x Vexilla, Misericordia and Praesidium Shield
+
+Exported from listhammer.info: https://listhammer.info/list/6963ea8beb47907297`
+
+describe('matchRoster — a bundle of three written as a series', () => {
+  it('reads "A, B and C" as the one option it names', async () => {
+    const [{ loadRosterFaction }, { default: items }] = await Promise.all([
+      import('../data/roster/index.js'),
+      import('../data/roster/items.js'),
+    ])
+    const ctx = { faction: await loadRosterFaction('adeptus-custodes'), core: rosterCore, items: items.items }
+    const { report, payload } = matchRoster(parseList(CUSTODES), ctx)
+    expect(payload.units.find((u) => u.id === 'custodian-guard').wg).toEqual([[1, 0, 1]])
+    expect(report.units.flatMap((u) => u.gear.missing)).toEqual([])
+  })
+})
+
 // A T'au export, abridged: every Crisis suit's swaps show up ONLY as a changed count of a weapon
 // its printed loadout already names, and its Commander carries three of one weapon out of a group
 // that allows three. Both are shapes the reader used to be blind to.
