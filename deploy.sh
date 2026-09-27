@@ -67,10 +67,39 @@ export VITE_API_BASE_URL
 npm run build
 
 # 1) Hashed build assets — content-hashed names, safe to cache forever.
+#    NO `--delete`: the previous builds' chunks stay. A tab (or an installed app) opened before
+#    this deploy still runs the old code and loads its route chunks by their OLD names, the
+#    moment the reader first goes there. Deleting them here made every such click a 404 and
+#    the navigation silently did nothing — "the top menu doesn't respond" on a desktop, fixed
+#    only by clearing the site's data (a player, 2026-09-27). Step 1b prunes the old ones later.
 echo "▶ assets/  →  immutable, 1 year"
 aws s3 sync dist/assets "$BUCKET/assets" \
-  --cache-control "public, max-age=31536000, immutable" \
-  --delete
+  --cache-control "public, max-age=31536000, immutable"
+
+# 1b) Prune chunks no build has shipped for ASSET_KEEP_DAYS: older than that by upload time AND
+#     not part of this build (a chunk whose content never changed keeps its old upload date and
+#     its name — it is still live). A client older than that recovers on its own: a chunk that
+#     fails to load makes the app look for an update and reload (src/composables/staleChunks.js).
+ASSET_KEEP_DAYS="${ASSET_KEEP_DAYS:-30}"
+echo "▶ assets/  →  pruning chunks unshipped for ${ASSET_KEEP_DAYS} days"
+BUCKET_NAME="${BUCKET#s3://}"
+CUTOFF="$(node -p "new Date(Date.now() - ${ASSET_KEEP_DAYS} * 864e5).toISOString()")"
+PRUNE_DIR="$(mktemp -d)"
+aws s3api list-objects-v2 --bucket "$BUCKET_NAME" --prefix assets/ \
+  --query "Contents[?LastModified<'$CUTOFF'].Key" --output json > "$PRUNE_DIR/old.json"
+# Batches of ≤1000 keys (the delete-objects limit), one JSON request file each.
+node -e '
+  const fs = require("fs"), dir = process.argv[1]
+  const live = new Set(fs.readdirSync("dist/assets").map((f) => "assets/" + f))
+  const keys = (JSON.parse(fs.readFileSync(dir + "/old.json", "utf8")) || []).filter((k) => !live.has(k))
+  for (let i = 0; i < keys.length; i += 1000)
+    fs.writeFileSync(`${dir}/batch-${i / 1000}.json`, JSON.stringify({ Objects: keys.slice(i, i + 1000).map((Key) => ({ Key })), Quiet: true }))
+  console.log(`  → ${keys.length} old chunk(s) to delete`)
+' "$PRUNE_DIR"
+for batch in "$PRUNE_DIR"/batch-*.json; do
+  if [ -f "$batch" ]; then aws s3api delete-objects --bucket "$BUCKET_NAME" --delete "file://$batch" >/dev/null; fi
+done
+rm -rf "$PRUNE_DIR"
 
 # 2) Everything else except HTML (favicon, /images/, fonts, PWA icons) — 30 days, NOT
 #    immutable: these names are stable, so the URL alone is what every cache keys on.
@@ -147,17 +176,18 @@ for vf in dist/yandex_*.html dist/google*.html; do
   if [ -f "$vf" ]; then set_shortcache "$(basename "$vf")" "text/html; charset=utf-8"; fi
 done
 
-# 3) index.html — entry point. Short TTL (1h) so a deploy is discovered quickly by
-#    the SW bootstrap and non-SW browsers (under SW control, navigations come from
-#    precache, so this mostly speeds up first-paint freshness after a deploy).
+# 3) index.html — entry point. `no-cache`: the browser revalidates it on every load (a 304 when
+#    nothing changed — it costs a round trip, not a download). It was an hour until 2026-09-27,
+#    and for that hour after a deploy a reader without a service worker could be handed the old
+#    page by their own browser cache, pointing at the old build. The CDN copy is purged (step 4).
 #    Use `cp`, NOT `sync`: index.html keeps a stable name and near-constant size, so
 #    `s3 sync` silently skips re-uploading it (its size/mtime heuristic sees "no
-#    change") — leaving a stale entry point pointing at hashed assets that step 1's
-#    `--delete` already removed. `cp` always uploads. (Same reason sw.js uses cp.)
-echo "▶ index.html  →  1 hour"
+#    change") — leaving a stale entry point pointing at hashed assets that are gone
+#    once step 1b prunes them. `cp` always uploads. (Same reason sw.js uses cp.)
+echo "▶ index.html  →  no-cache"
 if [ -f "dist/index.html" ]; then
   aws s3 cp dist/index.html "$BUCKET/index.html" \
-    --cache-control "public, max-age=3600" \
+    --cache-control "no-cache" \
     --content-type "text/html; charset=utf-8" \
     --metadata-directive REPLACE
 fi
@@ -168,7 +198,8 @@ fi
 #     the ErrorDocument's 404 — crawlers don't index 404s. Keys are extension-less, so
 #     the content-type must be forced. Removed routes leave stale keys behind; that's
 #     harmless (they serve index.html → the SPA's catch-all shows its 404 view, noindex).
-echo "▶ SEO route keys  →  index.html copies, 1 hour"
+#     `no-cache`, like index.html (step 3): each of them is an entry point to the same build.
+echo "▶ SEO route keys  →  index.html copies, no-cache"
 if [ -f dist/.seo-routes.txt ] && [ -f dist/index.html ]; then
   # S3 allows a key to be both an "object" and a "directory" (event-companion AND
   # event-companion/sequence); a local filesystem mirror can't. So keys that are a
@@ -190,7 +221,7 @@ if [ -f dist/.seo-routes.txt ] && [ -f dist/index.html ]; then
     if [ ! -f "$SRC" ]; then SRC="dist/index.html"; MISSING=$((MISSING + 1)); fi
     if grep -q "^/$key/" dist/.seo-routes.txt; then
       aws s3 cp "$SRC" "$BUCKET/$key" \
-        --cache-control "public, max-age=3600" \
+        --cache-control "no-cache" \
         --content-type "text/html; charset=utf-8" \
         --metadata-directive REPLACE >/dev/null
       PARENTS=$((PARENTS + 1))
@@ -203,7 +234,7 @@ if [ -f dist/.seo-routes.txt ] && [ -f dist/index.html ]; then
 
   # Fresh mtimes on every mirror file ⇒ sync always uploads them.
   aws s3 sync "$MIRROR" "$BUCKET" \
-    --cache-control "public, max-age=3600" \
+    --cache-control "no-cache" \
     --content-type "text/html; charset=utf-8"
   echo "  → $(wc -l < dist/.seo-routes.txt | tr -d ' ') route keys uploaded ($PARENTS parents via cp)"
 else

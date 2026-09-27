@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { installErrorLog } from './composables/useErrorLog.js'
+import { installStaleChunkRecovery } from './composables/staleChunks.js'
 import { router } from './router/index.js'
 import App from './App.vue'
 import './fonts.js'
@@ -18,6 +19,9 @@ app.config.errorHandler = (err, _instance, info) => {
 }
 
 app.use(router)
+
+// A tab from before a deploy asking for a chunk that is gone: find the new build and reload.
+installStaleChunkRecovery(router)
 
 // Mount only after the router's initial navigation has settled. The PWA "resume last
 // view" restore is a `router.beforeEach` redirect (router/index.js) — an async navigation.

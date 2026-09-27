@@ -15,18 +15,18 @@
 
 Тиры `Cache-Control`, которые расставляет `deploy.sh`:
 
-- `assets/*` (content-hashed, incl. `workbox-*.js`) → `public, max-age=31536000, immutable`
+- `assets/*` (content-hashed, incl. `workbox-*.js`) → `public, max-age=31536000, immutable`. **Uploaded without `--delete`**: the previous builds' chunks stay, because a tab or installed app opened before the deploy loads its route chunks by their OLD names the first time the reader goes there — deleting them made that click a 404 and the navigation silently did nothing (a player, 2026-09-27: «кнопки в верхнем меню не нажимаются», cured only by clearing site data). Step 1b prunes chunks older than `ASSET_KEEP_DAYS` (30) that this build does not ship. Anything older is caught in the client by `src/composables/staleChunks.js` (a failed chunk → look for an update → one reload into the page asked for). **Don't put `--delete` back.**
 - images / favicon / PWA icons / `og-image.png` (stable names) → `public, max-age=2592000` (30 days). A year until 2026-09-12; what actually pins a stale illustration is the service worker's CacheFirst `/images/` route, which never revalidates whatever we send, and that is now guarded by `npm run imghash`. The shorter TTL only bounds the damage for a reader *without* a service worker if the gate is ever bypassed — a repeat visitor pays nothing for it either way
 - `offline-manifest.json` / `image-manifest.json` → `no-cache`: they DESCRIBE a set that every deploy renames, so a cached copy sends the warm-up after files that no longer exist
 - `sw.js` / `registerSW.js` / `manifest.webmanifest` → `no-cache` (**must** revalidate, or PWA updates never reach clients)
 - `robots.txt` / `sitemap.xml` → `public, max-age=3600` (1 h — excluded from the 1-year tier so crawlers pick up changes; a stale sitemap would otherwise be served for a year; `sitemap.xml` is **generated** into `dist/` by `scripts/gen-seo-routes.mjs`, there is no static copy in `public/`)
-- `index.html` → `public, max-age=3600` (1 hour) — uploaded via `aws s3 cp`, **not** `sync` (sync silently skips it: stable name + constant size defeats its size/mtime check, leaving a stale entry point that points at `--delete`d assets → broken site after purge). Don't change it back to `sync`.
-- **SEO route keys** (step 3b) — an `index.html` copy under every path from `dist/.seo-routes.txt` (1 h, forced `text/html`), so deep links return 200 (см. `CLAUDE.md` → Architecture). These keys exist only in the bucket, not in `dist/` — step 2 derives `--exclude`s for their top-level segments so its `--delete` never removes them. Removed routes leave stale keys; harmless (SPA shows its noindex 404).
+- `index.html` → `no-cache` (revalidated on every load, a 304 when unchanged; it was 1 hour until 2026-09-27, which let a browser without a service worker open the old build for up to an hour after a deploy) — uploaded via `aws s3 cp`, **not** `sync` (sync silently skips it: stable name + constant size defeats its size/mtime check, leaving a stale entry point that points at pruned assets). Don't change it back to `sync`.
+- **SEO route keys** (step 3b) — an `index.html` copy under every path from `dist/.seo-routes.txt` (`no-cache` like `index.html`, forced `text/html`), so deep links return 200 (см. `CLAUDE.md` → Architecture). These keys exist only in the bucket, not in `dist/` — step 2 derives `--exclude`s for their top-level segments so its `--delete` never removes them. Removed routes leave stale keys; harmless (SPA shows its noindex 404).
 
 > ⚠️ `index.html` заливается через `aws s3 cp`, **не** `s3 sync`. У него стабильное
 > имя и почти неизменный размер, поэтому эвристика `sync` (размер/mtime) молча
 > пропускает его — и входная точка остаётся старой, ссылаясь на хэшированные
-> `assets/*`, которые `sync --delete` (шаг 1) уже удалил → после purge сайт ломается.
+> `assets/*`, которые чистка (шаг 1b) со временем удалит → сайт ломается.
 > Не переписывай шаг 3 обратно на `sync` (так же, как `sw.js`/`manifest` идут через `cp`).
 
 > ⚠️ Картинки в `/images/` и favicon кэшируются 30 дней, но настоящий замок — не
@@ -108,7 +108,7 @@ yc cdn cache purge --resource-id <cdn-resource-id> --path '/*'
 
 ```bash
 curl -sI https://wh-rules.ru/ | grep -i cache-control
-#   → cache-control: public, max-age=3600
+#   → cache-control: no-cache
 
 curl -sI https://wh-rules.ru/assets/<хэш>.js | grep -i cache-control
 #   → cache-control: public, max-age=31536000, immutable
