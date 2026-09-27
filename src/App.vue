@@ -361,10 +361,14 @@ onUnmounted(() => {
 }
 
 /* Very narrow phones (≤480px): the 900px tier's 1rem gutter still wastes a large share
-   of a 320-375px viewport, so shrink it further here — almost-zero but not edge-to-edge. */
+   of a 320-375px viewport, so shrink it further here — almost-zero but not edge-to-edge.
+   The sides only: a `padding` shorthand here, later in the file and just as specific, also
+   reset the bottom and took away the roster panes' reserve (.main-content--desk above) — their
+   last rows sat under the points bar on every phone up to 480px (a player's report, 2026-09-26). */
 @media (max-width: 480px) {
   .main-content {
-    padding: 0 calc(0.5rem + var(--safe-right)) calc(4.5rem + var(--safe-bottom) + var(--mobile-bar-h, 0px)) calc(0.5rem + var(--safe-left));
+    padding-left: calc(0.5rem + var(--safe-left));
+    padding-right: calc(0.5rem + var(--safe-right));
   }
 }
 
