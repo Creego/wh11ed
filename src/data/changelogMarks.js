@@ -13,6 +13,7 @@ export const BTN_ICONS = {
   panes: { icon: 'bi-layout-split', en: 'Units', ru: 'Юниты' },         // …its Units mode
   book: { icon: 'bi-book', en: 'Faction rules', ru: 'Правила фракции' }, // beside the unit search
   revert: { icon: 'bi-arrow-counterclockwise', en: 'Cancel', ru: 'Отмена' }, // Cancel on a narrow phone
+  star: { icon: 'bi-star', en: 'In my collection', ru: 'Есть в коллекции' }, // the roster unit card's header
 }
 
 export const MARK_RE = /\{btn:([a-z-]+)\}|\{key:([^}]+)\}/g
