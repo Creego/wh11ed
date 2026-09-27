@@ -976,7 +976,9 @@ strong {
 
 /* The bar never wraps (the points readout's own half is in RosterPointsTally.vue): "1350 / 2000" split over two lines and "← Back" under itself is what a
    414px phone showed at the 400px threshold this used to be (2026-09-19). The compact measure
-   starts at 480px, and the points and the buttons are one line whatever the width. */
+   starts at 480px, and the points and the buttons are one line whatever the width. Its height
+   is reserved in App.vue as --roster-sticky-h (3.75rem, 3.1rem here) — change the paddings or
+   the button size and change that number with them, or the panes end short of the bar or under it. */
 .rc-sticky-actions > * { white-space: nowrap; }
 @media (max-width: 480px) {
   .rc-sticky-inner {

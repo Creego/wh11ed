@@ -347,9 +347,11 @@ onUnmounted(() => {
 
 /* Below the desk the roster screens keep two panes that scroll inside themselves on a page that
    does not scroll (RosterWorkbench measures the room under the panes from THIS padding), so the
-   reserve is exactly the fixed Cancel/Save bar, the bottom nav where there is one, and a gap. */
+   reserve is exactly the fixed Cancel/Save bar and the bottom nav where there is one. No gap:
+   the panes end flush on the bar — a 1rem one read as a stray empty strip on a phone, where
+   every row of height counts (owner's call, 2026-09-27). The desk above keeps its gap. */
 @media (max-width: 1199px) {
-  .main-content--desk { padding-bottom: calc(var(--roster-sticky-h, 0px) + 1rem); }
+  .main-content--desk { padding-bottom: var(--roster-sticky-h, 0px); }
 }
 
 /* ── Mobile ── */
@@ -357,7 +359,7 @@ onUnmounted(() => {
   .main-content {
     padding: 0 calc(1rem + var(--safe-right)) calc(4.5rem + var(--safe-bottom) + var(--mobile-bar-h, 0px)) calc(1rem + var(--safe-left));
   }
-  .main-content--desk { padding-bottom: calc(var(--roster-sticky-h, 0px) + 52px + var(--safe-bottom) + 1rem); }
+  .main-content--desk { padding-bottom: calc(var(--roster-sticky-h, 0px) + 52px + var(--safe-bottom)); }
 }
 
 /* Very narrow phones (≤480px): the 900px tier's 1rem gutter still wastes a large share
@@ -381,4 +383,9 @@ onUnmounted(() => {
    .rc-sticky height, not RosterEditorView's unrelated .red-sticky (a sticky totals readout,
    no buttons, nothing to block). */
 .app-layout:has(.rc-sticky) { --roster-sticky-h: 3.75rem; }
+/* The bar's compact tier (style.css, ≤480px) is ~49px, not ~59px: the full 3.75rem left a ~10px
+   empty strip between the roster panes and the bar, and floated the undo/utility bars as high. */
+@media (max-width: 480px) {
+  .app-layout:has(.rc-sticky) { --roster-sticky-h: 3.1rem; }
+}
 </style>
