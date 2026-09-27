@@ -338,21 +338,15 @@ onUnmounted(() => {
     max-width: 1600px;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-    /* Exactly the room the fixed Cancel/Save bar and the gap above it take — the desk's
-       columns are sized against the same two numbers (RosterWorkbench), so the page ends at
-       the window's edge and never scrolls. The general 4rem reserve is for the phone's bars. */
-    padding-bottom: calc(var(--roster-sticky-h, 0px) + 1rem);
   }
 }
 
-/* Below the desk the roster screens keep two panes that scroll inside themselves on a page that
-   does not scroll (RosterWorkbench measures the room under the panes from THIS padding), so the
-   reserve is exactly the fixed Cancel/Save bar and the bottom nav where there is one. No gap:
-   the panes end flush on the bar — a 1rem one read as a stray empty strip on a phone, where
-   every row of height counts (owner's call, 2026-09-27). The desk above keeps its gap. */
-@media (max-width: 1199px) {
-  .main-content--desk { padding-bottom: var(--roster-sticky-h, 0px); }
-}
+/* The roster screens keep their columns scrolling inside themselves on a page that does not
+   scroll (RosterWorkbench measures the room under them from THIS padding), so the reserve is
+   exactly the fixed Cancel/Save bar — plus the bottom nav below 900px. No gap: the columns end
+   flush on the bar; a 1rem one read as a stray empty strip, on the phone and the desk alike
+   (owner's call, 2026-09-27). The general 4rem reserve is for the phone's bars. */
+.main-content--desk { padding-bottom: var(--roster-sticky-h, 0px); }
 
 /* ── Mobile ── */
 @media (max-width: 900px) {
