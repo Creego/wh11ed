@@ -397,6 +397,45 @@ describe('default loadouts', () => {
     expect(without.length, without.join(', ')).toBeLessThanOrEqual(10)
   })
 
+  // A per-model count above one must be one the datasheet PRINTS ("2 phosphor pistols", "2
+  // macro-scalpels"). A profile total read as a per-model count gets multiplied by the models a
+  // second time, and nothing else notices: five Flash Gitz read "Choppa ×17", ten Tempestus
+  // Aquilons "Close combat weapon ×66" (fixed 2026-09-28 — a profile the loadout rows skip took
+  // its "Default Wargear" group's totals raw). A `total` entry (third element) is the profile's
+  // and is not checked here.
+  it('only counts more than one of an item per model where the datasheet prints that number', async () => {
+    const norm = (s) => (s || '').toLowerCase().replace(/\*\*/g, '').replace(/\([^)]*\)/g, '')
+      .replace(/[’‘]/g, "'").replace(/[‐-―]/g, '-').replace(/\s+/g, ' ').trim()
+    const WORDS = { 2: 'two', 3: 'three', 4: 'four' }
+    const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    const bad = []
+    let checked = 0
+    for (const { slug, data } of factions) {
+      let sheets
+      try { sheets = (await import(`../datasheets/${slug}.js`)).default } catch { continue }
+      const byId = new Map((sheets || []).map((s) => [s.id, s]))
+      for (const u of data.units) {
+        const sheet = byId.get(u.id)
+        if (!sheet?.loadout) continue
+        const prose = norm(sheet.loadout)
+        for (const [, list] of u.defaults || []) {
+          for (const [id, c, total] of list) {
+            if (total || c < 2) continue
+            checked++
+            // The stem, so the prose's plural reads too ("anvillus defence batteries").
+            const name = norm(rosterItems.items[id])
+            const stem = name.length > 6 ? name.slice(0, -2) : name
+            if (!new RegExp(`(?:${c}|${WORDS[c] || c}) ${esc(stem)}`).test(prose)) {
+              bad.push(`${slug}/${u.id}: ${rosterItems.items[id]} ×${c} per model`)
+            }
+          }
+        }
+      }
+    }
+    expect(checked).toBeGreaterThan(200)
+    expect(bad, bad.join('; ')).toEqual([])
+  })
+
   // appdata's base_miniature_loadout arms the Death Company Dreadnought with the BRUTALIS
   // Dreadnought's weapons; its own printed loadout and its own swap instruction both say blood
   // fists. Pinned because the substitution is a named one (LOADOUT_ITEM_FIXES) that has to be
