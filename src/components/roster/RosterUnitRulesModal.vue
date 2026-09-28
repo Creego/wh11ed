@@ -16,6 +16,7 @@
       >
         <button
           v-if="view.sheet"
+          data-press="pop"
           type="button"
           class="rum-own"
           :class="{ on: owned }"
@@ -250,9 +251,11 @@
                         <span class="rum-rule-src">{{ b.src }}</span>
                         <span class="rum-rule-name">{{ b.name }}</span>
                       </span>
-                      <i
-                        class="bi rum-chev"
-                        :class="open ? 'bi-chevron-down' : 'bi-chevron-right'"
+                      <ChevronIcon
+                        class="rum-chev"
+                        :turned="open"
+                        from="right"
+                        to="down"
                       />
                     </button>
                   </template>
@@ -298,6 +301,7 @@
 </template>
 
 <script setup>
+import ChevronIcon from '../ChevronIcon.vue'
 import { computed, ref } from 'vue'
 import BaseModal from '../BaseModal.vue'
 import DatasheetCard from '../DatasheetCard.vue'

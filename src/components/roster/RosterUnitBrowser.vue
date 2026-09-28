@@ -26,6 +26,7 @@
       <button
         type="button"
         class="rub-filter-btn"
+        data-press="pop"
         :class="{ open: filtersOpen, on: activeFilters }"
         :aria-expanded="filtersOpen"
         :aria-label="labels.rosterFilters"
@@ -125,9 +126,11 @@
             :aria-expanded="isOpen(g.id)"
             @click="toggleGroup(g.id)"
           >
-            <i
-              class="bi rub-chev"
-              :class="isOpen(g.id) ? 'bi-chevron-down' : 'bi-chevron-right'"
+            <ChevronIcon
+              class="rub-chev"
+              :turned="isOpen(g.id)"
+              from="right"
+              to="down"
             />
             <span class="rub-group-name">
               {{ groupLabel(g, labels) }}
@@ -139,7 +142,12 @@
             <span class="rub-group-count">{{ g.units.length }}</span>
           </button>
           <CollapseTransition :show="isOpen(g.id)">
-            <div class="rub-list">
+            <!-- Search and filters narrow the rows in place (the global `sift` motion). -->
+            <TransitionGroup
+              name="sift"
+              tag="div"
+              class="rub-list"
+            >
               <div
                 v-for="u in g.units"
                 :key="u.id"
@@ -172,6 +180,7 @@
                   <button
                     type="button"
                     class="rub-add"
+                    data-press
                     :disabled="atCap(u)"
                     :aria-label="labels.rosterAddUnit"
                     :title="atCap(u) ? labels.rosterAtDuplicateCap : undefined"
@@ -181,7 +190,7 @@
                   </button>
                 </span>
               </div>
-            </div>
+            </TransitionGroup>
           </CollapseTransition>
         </div>
       </template>
@@ -203,6 +212,7 @@
 </template>
 
 <script setup>
+import ChevronIcon from '../ChevronIcon.vue'
 import TypingGhost from '../TypingGhost.vue'
 import { computed, ref, watch } from 'vue'
 import CollapseTransition from '../CollapseTransition.vue'

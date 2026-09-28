@@ -2,36 +2,12 @@
   <div
     v-if="roster"
     class="roster-editor fa-themed"
-    :class="{ 'rw-host': desk || tab !== 'settings' }"
+    :class="{ 'rw-host': desk || paneTab !== 'settings' }"
     :style="accentStyle"
   >
     <!-- `.rw-host` while the Units panes are up: the screen is then a column as tall as the
          window and the panes scroll inside themselves (RosterWorkbench); the Settings tab is an
          ordinary page. (No comment may sit BEFORE this root — see the src/views lint rule.) -->
-    <!-- The name is a Settings answer: on a phone it heads that mode only, and on the desk it is
-         the settings bar's first field. Over the Units panes it was a row of every phone's screen
-         spent on something renamed once (2026-09-24, the builder's height pass). -->
-    <header
-      v-if="!desk && tab === 'settings'"
-      class="red-head"
-    >
-      <input
-        class="rname-input"
-        :class="nameFit"
-        :value="roster.name"
-        :placeholder="labels.rosterUntitled"
-        @input="rename($event.target.value)"
-      >
-      <button
-        v-if="roster.units.length"
-        class="hdr-icon"
-        :aria-label="labels.rosterExport"
-        @click="exportOpen = true"
-      >
-        <i class="bi bi-box-arrow-up" />
-      </button>
-    </header>
-
     <!-- On the desk the settings are a line above the work (RosterSettingsBar), not a panel
          behind a tab: "how many points is this" and "which detachment am I in" are asked WHILE
          adding units, and answering them cost a tab switch and the loss of the reader's place in
@@ -67,115 +43,147 @@
     />
 
 
-    <!-- Settings: the list's own answers, the same form as the wizard's step 1 -->
-    <div
-      v-if="!desk && tab === 'settings'"
-      class="red-panel"
-    >
-      <RosterSetupFields
-        :battle-size="roster.battleSize"
-        :custom-points="roster.customPoints ?? 2000"
-        :has-faction="!!roster.faction"
-        :faction-name="factionName"
-        :detachment-summary="detachmentSummary"
-        :dp-spent="dpSpent"
-        :dp-limit="effBattle.dp"
-        :dp-over-allowed="dpOverAllowed"
-        :disposition-cands="dispositionCands"
-        :disposition="roster.disposition || ''"
-        show-notes
-        :notes="roster.notes || ''"
-        :check-legality="roster.checkLegality !== false"
-        @update:battle-size="setBattleSize"
-        @update:custom-points="setCustomPoints"
-        @update:disposition="setDisposition"
-        @update:notes="setNotes"
-        @update:check-legality="setCheckLegality"
-        @pick-faction="factionPickerOpen = true"
-        @pick-detachments="detachmentPickerOpen = true"
-      />
-    </div>
-
-    <!-- Units: the catalogue and the roster's own list, side by side (`.roster-panes` in
-         style.css). Adding a unit and configuring it used to be two screens — this tab and
-         /roster/:id/add — which since wargear started deciding a unit's price meant a navigation
-         per unit. Both panes now read from the same `useRosterEditing` handles they always did;
-         only the layout changed. -->
-    <div
-      v-else
-      class="red-panel rw-fill"
+    <!-- A phone's two modes change with a short sideways fade toward the side each one's button
+         sits on — Settings left, Units right (the `axis-*` pair in style.css, 2026-09-28). -->
+    <Transition
+      :name="axisName"
+      mode="out-in"
+      @after-leave="paneTab = tab"
     >
       <div
-        v-if="!roster.faction"
-        class="red-hint"
+        v-if="!desk && tab === 'settings'"
+        key="settings"
       >
-        {{ labels.rosterPickFaction }}
+        <!-- The name is a Settings answer: on a phone it heads that mode only, and on the desk it is
+             the settings bar's first field. Over the Units panes it was a row of every phone's screen
+             spent on something renamed once (2026-09-24, the builder's height pass). -->
+        <header class="red-head">
+          <input
+            class="rname-input"
+            :class="nameFit"
+            :value="roster.name"
+            :placeholder="labels.rosterUntitled"
+            @input="rename($event.target.value)"
+          >
+          <button
+            v-if="roster.units.length"
+            class="hdr-icon"
+            :aria-label="labels.rosterExport"
+            @click="exportOpen = true"
+          >
+            <i class="bi bi-box-arrow-up" />
+          </button>
+        </header>
+
+        <!-- Settings: the list's own answers, the same form as the wizard's step 1 -->
+        <div class="red-panel">
+          <RosterSetupFields
+            :battle-size="roster.battleSize"
+            :custom-points="roster.customPoints ?? 2000"
+            :has-faction="!!roster.faction"
+            :faction-name="factionName"
+            :detachment-summary="detachmentSummary"
+            :dp-spent="dpSpent"
+            :dp-limit="effBattle.dp"
+            :dp-over-allowed="dpOverAllowed"
+            :disposition-cands="dispositionCands"
+            :disposition="roster.disposition || ''"
+            show-notes
+            :notes="roster.notes || ''"
+            :check-legality="roster.checkLegality !== false"
+            @update:battle-size="setBattleSize"
+            @update:custom-points="setCustomPoints"
+            @update:disposition="setDisposition"
+            @update:notes="setNotes"
+            @update:check-legality="setCheckLegality"
+            @pick-faction="factionPickerOpen = true"
+            @pick-detachments="detachmentPickerOpen = true"
+          />
+        </div>
       </div>
-      <template v-else>
-        <RosterWorkbench
-          :desk="desk"
-          :selected="!!openEntry"
+
+      <!-- Units: the catalogue and the roster's own list, side by side (`.roster-panes` in
+           style.css). Adding a unit and configuring it used to be two screens — this tab and
+           /roster/:id/add — which since wargear started deciding a unit's price meant a navigation
+           per unit. Both panes now read from the same `useRosterEditing` handles they always did;
+           only the layout changed. -->
+      <div
+        v-else
+        key="units"
+        class="red-panel rw-fill"
+      >
+        <div
+          v-if="!roster.faction"
+          class="red-hint"
         >
-          <template #catalog>
-            <RosterUnitBrowser
-              v-if="factionData"
-              :units="factionData.units"
-              :allies="factionData.allies || []"
-              :faction-slug="roster.faction"
-              :added-ids="roster.units.map((u) => u.id)"
-              :detachments="curDetachments"
-              :battle="effBattle"
-              :remaining="limit - points"
-              :check-legality="roster.checkLegality !== false"
-              rules-button
-              @add="addUnit"
-              @open-rules="rulesOpen = true"
-            />
-          </template>
-          <template #list>
-            <p
-              v-if="!roster.units.length"
-              class="red-empty"
-            >
-              {{ labels.rosterUnitsEmpty }}
-            </p>
-            <RosterUnitList
-              v-else
-              :groups="groupedUnits"
-              :def-of="defOf"
-              :items="rosterItems.items"
-              :detachments="curDetachments"
-              :points-of="(e) => entryMeta.get(e.uid)?.points"
-              :role-of="attachRole"
-              :slug-of="slugFor"
-              :dup-blocked="dupBlocked"
-              :open-uid="openUid"
-              :placement="desk ? 'pane' : 'auto'"
-              @toggle="toggleOpen"
-              @duplicate="duplicateEntry"
-              @remove="removeEntry"
-            >
-              <template #fields="{ entry: e }">
-                <RosterEntryFields
-                  v-bind="fieldProps"
-                  :entry="e"
-                  @toggle-warlord="toggleWarlord"
-                />
-              </template>
-            </RosterUnitList>
-          </template>
-          <!-- The desk's third column. Not rendered at all in the two-pane arrangement — there
-               the list draws the same fields itself, under the row they belong to. -->
-          <template #editor>
-            <RosterEntryFields
-              v-bind="fieldProps"
-              :entry="openEntry"
-              @toggle-warlord="toggleWarlord"
-            />
-          </template>
-        </RosterWorkbench>
-      </template>
-    </div>
+          {{ labels.rosterPickFaction }}
+        </div>
+        <template v-else>
+          <RosterWorkbench
+            :desk="desk"
+            :selected="!!openEntry"
+          >
+            <template #catalog>
+              <RosterUnitBrowser
+                v-if="factionData"
+                :units="factionData.units"
+                :allies="factionData.allies || []"
+                :faction-slug="roster.faction"
+                :added-ids="roster.units.map((u) => u.id)"
+                :detachments="curDetachments"
+                :battle="effBattle"
+                :remaining="limit - points"
+                :check-legality="roster.checkLegality !== false"
+                rules-button
+                @add="addUnit"
+                @open-rules="rulesOpen = true"
+              />
+            </template>
+            <template #list>
+              <p
+                v-if="!roster.units.length"
+                class="red-empty"
+              >
+                {{ labels.rosterUnitsEmpty }}
+              </p>
+              <RosterUnitList
+                v-else
+                :groups="groupedUnits"
+                :def-of="defOf"
+                :items="rosterItems.items"
+                :detachments="curDetachments"
+                :points-of="(e) => entryMeta.get(e.uid)?.points"
+                :role-of="attachRole"
+                :slug-of="slugFor"
+                :dup-blocked="dupBlocked"
+                :open-uid="openUid"
+                :placement="desk ? 'pane' : 'auto'"
+                @toggle="toggleOpen"
+                @duplicate="duplicateEntry"
+                @remove="removeEntry"
+              >
+                <template #fields="{ entry: e }">
+                  <RosterEntryFields
+                    v-bind="fieldProps"
+                    :entry="e"
+                    @toggle-warlord="toggleWarlord"
+                  />
+                </template>
+              </RosterUnitList>
+            </template>
+            <!-- The desk's third column. Not rendered at all in the two-pane arrangement — there
+                 the list draws the same fields itself, under the row they belong to. -->
+            <template #editor>
+              <RosterEntryFields
+                v-bind="fieldProps"
+                :entry="openEntry"
+                @toggle-warlord="toggleWarlord"
+              />
+            </template>
+          </RosterWorkbench>
+        </template>
+      </div>
+    </Transition>
 
     <RosterUndoBar
       :undoable="undoable"
@@ -320,6 +328,7 @@ import RosterIssuesModal from '../../components/roster/RosterIssuesModal.vue'
 import RosterExportModal from '../../components/roster/RosterExportModal.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
+import { useAxisDirection } from '../../composables/useAxisDirection.js'
 import { useRosterEditing } from '../../composables/useRosterEditing.js'
 import { useRosterBuildActions } from '../../composables/useRosterBuildActions.js'
 import { useFactionAccent } from '../../composables/useFactionAccent.js'
@@ -338,12 +347,20 @@ const labels = computed(() => ui[locale.value])
 const { saveToCloud } = useRosterSync()
 
 const tab = ref('units')
+// Which mode's pane is actually on screen. It trails `tab` through the switch's fade: the Units
+// pane needs the window-tall `.rw-host` column until it has faded out, and Settings must not get
+// it while coming in.
+const paneTab = ref(tab.value)
+// Settings sits left of Units in the switch.
+const axisName = useAxisDirection(tab, ['settings', 'units'])
 const rulesOpen = ref(false)
 
 // The one media query this screen asks: three columns with the settings on a line above them, or
 // the tabs and two panes it has always had. 1200px is where a third column stops squeezing the
 // other two — below it the catalogue's rows start wrapping their prices.
 const desk = useMediaQuery('(min-width: 1200px)')
+// Crossing into or out of the desk swaps no mode, so nothing fades and nothing moves `paneTab`.
+watch(desk, () => { paneTab.value = tab.value })
 
 // Every edit already writes straight to the reactive store (useRosters.js's deep watch
 // autosaves to localStorage on every change) — nothing here actually persists anything new

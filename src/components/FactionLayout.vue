@@ -65,6 +65,7 @@
           v-if="!tabsInView"
           type="button"
           class="fab-btn"
+          data-press="pop"
           :title="labels.backToTop"
           :aria-label="labels.backToTop"
           @click="scrollToTop"

@@ -163,12 +163,15 @@ useModalA11y(root, () => emit('close'))
    dialog's opacity: useModalA11y focuses the dialog in a rAF right after mount, and iOS
    VoiceOver mishandles focus moved into a not-yet-visible element. Durations come from
    the motion tokens, so prefers-reduced-motion zeroes them and the modal appears instantly. */
-.modal-enter-active { transition: background-color var(--motion-med) ease; }
-.modal-enter-active .modal { transition: transform var(--motion-med) ease; }
+/* `--motion-slow` and a decelerating curve (2026-09-28): at `--motion-med` with a 28px lift the
+   sheet read as simply appearing. On a phone it now rises from below the screen edge, whole, as
+   the system sheets do; wider, it grows in from 0.94. */
+.modal-enter-active { transition: background-color var(--motion-slow) ease; }
+.modal-enter-active .modal { transition: transform var(--motion-slow) cubic-bezier(0.2, 0.8, 0.2, 1); }
 .modal-enter-from { background-color: transparent; }
-.modal-enter-from .modal { transform: scale(0.96); }
+.modal-enter-from .modal { transform: scale(0.94); }
 
 @media (max-width: 560px) {
-  .modal-enter-from .modal { transform: translateY(28px); }
+  .modal-enter-from .modal { transform: translateY(100%); }
 }
 </style>

@@ -49,3 +49,15 @@ of a ninety-unit list.
 **Mobile faction hero tabs** (in-page Rules/Units switch that promotes to `MobileUtilityBar` once scrolled out of view, via `useContributeMobileActions('faction-tabs', …)` in `FactionLayout.vue`) — documented in root `CLAUDE.md`'s Navigation model section since it's part of the shared mobile-chrome mechanism, not specific to this directory.
 
 **Search by faction/unit name** (`datasheetIndex.js`, `factionRulesIndex.js`) — root `CLAUDE.md`'s Architecture → Search.
+
+
+## One route, three pages (2026-09-28)
+
+`/factions/:slug`, `/datasheets` and `/faq` are children of one route whose component is
+`FactionPagesView`: `FactionLayout` (hero, tabs, FABs) plus a `RouterView` of its own, sliding the
+child by the tabs' order (`useAxisDirection`, the `axis-*` pair) with `pageLeaving` / `pageArrived`
+from `usePageMotion` so the router sets the scroll in the gap. The three pages therefore draw NO
+layout of their own — a plain root `div` each. The unit page `/datasheets/:unit` is a top-level
+route (its own hero-less `FactionLayout`), a level deeper. Every faction route names a
+`meta.prefetch` (router/prefetch.js) so the page arrives with its data. `router/factionRoutes.test.js`
+pins the shape.

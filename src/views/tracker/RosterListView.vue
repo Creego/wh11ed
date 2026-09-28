@@ -53,105 +53,114 @@
 
     <!-- An empty screen is where somebody stands who has not decided this is worth their evening,
          so it is also where the explanation belongs — not three taps away in a help menu. -->
-    <p
-      v-if="!shown.length"
-      class="empty"
+    <!-- Saved | Drafts slide toward the side of the tab picked (axis-*, useAxisDirection). -->
+    <Transition
+      :name="tabAxis"
+      mode="out-in"
+      @enter="bringTabsIntoView"
     >
-      {{ tab === 'drafts' ? labels.rosterDraftsEmpty : labels.rostersEmpty }}
-    </p>
-    <TransitionGroup
-      v-else
-      tag="ul"
-      name="list"
-      class="rosters"
-    >
-      <li
-        v-for="r in shown"
-        :key="r.id"
-        class="roster"
-        :class="{ themed: !!factionOf(r) }"
-        :style="cardStyle(r)"
-        role="button"
-        tabindex="0"
-        @click="openRoster(r)"
-        @keydown.enter="openRoster(r)"
-      >
-        <div class="roster-main">
-          <span class="rname">{{ r.name || labels.rosterUntitled }}</span>
-          <!-- A draft's actions sheet only ever held one item, so it is spared the extra tap:
+      <div :key="tab">
+        <p
+          v-if="!shown.length"
+          class="empty"
+        >
+          {{ tab === 'drafts' ? labels.rosterDraftsEmpty : labels.rostersEmpty }}
+        </p>
+        <TransitionGroup
+          v-else
+          tag="ul"
+          name="list"
+          class="rosters"
+        >
+          <li
+            v-for="r in shown"
+            :key="r.id"
+            class="roster"
+            :class="{ themed: !!factionOf(r) }"
+            :style="cardStyle(r)"
+            role="button"
+            tabindex="0"
+            @click="openRoster(r)"
+            @keydown.enter="openRoster(r)"
+          >
+            <div class="roster-main">
+              <span class="rname">{{ r.name || labels.rosterUntitled }}</span>
+              <!-- A draft's actions sheet only ever held one item, so it is spared the extra tap:
                the card carries Delete itself. Everything a SAVED list can do still needs the
                sheet, so that one keeps the kebab. -->
-          <button
-            v-if="r.draft"
-            class="kebab danger"
-            :aria-label="labels.trackerDelete"
-            @click.stop="pendingDelete = r.id"
-          >
-            <i class="bi bi-trash" />
-          </button>
-          <button
-            v-else
-            class="kebab"
-            :aria-label="labels.rosterMoreActions"
-            @click.stop="menuFor = r.id"
-          >
-            <i class="bi bi-three-dots-vertical" />
-          </button>
-        </div>
-        <!-- The army's Force Disposition rides on the faction line as the same coloured chip the
+              <button
+                v-if="r.draft"
+                class="kebab danger"
+                :aria-label="labels.trackerDelete"
+                @click.stop="pendingDelete = r.id"
+              >
+                <i class="bi bi-trash" />
+              </button>
+              <button
+                v-else
+                class="kebab"
+                :aria-label="labels.rosterMoreActions"
+                @click.stop="menuFor = r.id"
+              >
+                <i class="bi bi-three-dots-vertical" />
+              </button>
+            </div>
+            <!-- The army's Force Disposition rides on the faction line as the same coloured chip the
              tracker's detachment picker uses, and the detachment(s) sit under it in quiet grey —
              so a list can be told from its neighbours by what it fields, and the name is free to
              be a joke (player request, 2026-09-21). The chip needs the MFM to know a detachment's
              disposition; until that lazy load lands the line simply has no chip. -->
-        <div
-          v-if="factionOf(r)"
-          class="rline"
-        >
-          <span class="rfaction">{{ factionOf(r).name }}</span>
-          <span
-            v-if="fdOf(r)"
-            class="tone tone-chip rfd"
-            :style="toneOf(r)"
-          >{{ fdOf(r) }}</span>
-        </div>
-        <span
-          v-if="r.detachments?.length"
-          class="rdets"
-        >{{ r.detachments.join(', ') }}</span>
-        <div class="roster-meta">
-          <span class="meta-left">
-            <span
-              class="rpoints"
-              :class="{ over: (r.summary?.points || 0) > limitOf(r) }"
+            <div
+              v-if="factionOf(r)"
+              class="rline"
             >
-              {{ r.summary?.points || 0 }}<span class="unit">/{{ limitOf(r) }} {{ labels.rosterPointsLabel }}</span>
-            </span>
-            <!-- What this list did on the table. Only ever present on a saved list — a draft
+              <span class="rfaction">{{ factionOf(r).name }}</span>
+              <span
+                v-if="fdOf(r)"
+                class="tone tone-chip rfd"
+                :style="toneOf(r)"
+              >{{ fdOf(r) }}</span>
+            </div>
+            <span
+              v-if="r.detachments?.length"
+              class="rdets"
+            >{{ r.detachments.join(', ') }}</span>
+            <div class="roster-meta">
+              <span class="meta-left">
+                <span
+                  class="rpoints"
+                  :class="{ over: (r.summary?.points || 0) > limitOf(r) }"
+                >
+                  {{ r.summary?.points || 0 }}<span class="unit">/{{ limitOf(r) }} {{ labels.rosterPointsLabel }}</span>
+                </span>
+                <!-- What this list did on the table. Only ever present on a saved list — a draft
                  can't be attached to a game — and it links nowhere: the full record is on
                  /tracker/stats, which the tracker page carries a way into. -->
-            <span
-              v-if="recordOf(r)"
-              class="rrec"
-              :title="labels.statsTitle"
-            >
-              <i class="bi bi-trophy" /> {{ recordOf(r) }}
-            </span>
-            <span
-              v-if="r.draft"
-              class="rstep"
-            >{{ draftStepLabel(r) }}</span>
-            <span
-              v-else-if="r.summary?.issues"
-              class="issues"
-              :title="String(r.summary.issues)"
-            >
-              <i class="bi bi-exclamation-triangle-fill" /> {{ r.summary.issues }}
-            </span>
-          </span>
-          <span class="date">{{ formatDate(r.updatedAt) }}</span>
-        </div>
-      </li>
-    </TransitionGroup>
+                <span
+                  v-if="recordOf(r)"
+                  class="rrec"
+                  :title="labels.statsTitle"
+                >
+                  <i class="bi bi-trophy" /> {{ recordOf(r) }}
+                </span>
+                <span
+                  v-if="r.draft"
+                  class="rstep"
+                >{{ draftStepLabel(r) }}</span>
+                <span
+                  v-else-if="r.summary?.issues"
+                  class="issues"
+                  :title="String(r.summary.issues)"
+                >
+                  <i class="bi bi-exclamation-triangle-fill" /> {{ r.summary.issues }}
+                </span>
+              </span>
+              <span class="date">{{ formatDate(r.updatedAt) }}</span>
+            </div>
+          </li>
+        </TransitionGroup>
+      </div>
+    </Transition>
 
     <!-- Per-card actions: edit / duplicate / delete (mirrors the tracker's per-card actions sheet). -->
     <BaseModal
@@ -231,6 +240,7 @@ import ConfirmModal from '../../components/ConfirmModal.vue'
 import PageTabs from '../../components/PageTabs.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
+import { useAxisDirection, bringTabsIntoView } from '../../composables/useAxisDirection.js'
 import { useRosters } from '../../composables/useRosters.js'
 import { useRosterSync } from '../../composables/useRosterSync.js'
 import { useAuth } from '../../composables/useAuth.js'
@@ -241,6 +251,7 @@ import { refreshSummaries } from '../../composables/rosterSummary.js'
 import rosterCore from '../../data/roster/core.js'
 import { rosterItems } from '../../data/roster/index.js'
 import { factionGroups } from '../../data/factionsIndex.js'
+import { toneVars } from '../../utils/tone.js'
 import { loadHistory, rosterRecords } from '../../composables/gameStats.js'
 
 const router = useRouter()
@@ -252,6 +263,7 @@ const { status, ensureSession } = useAuth()
 const { syncNow, saveToCloud, removeFromCloud, pulled } = useRosterSync()
 
 const tab = ref('saved')
+const tabAxis = useAxisDirection(tab, ['saved', 'drafts'])
 const tabs = computed(() => [
   { key: 'saved', label: labels.value.rosterTabSaved, count: savedRosters.value.length, active: tab.value === 'saved' },
   { key: 'drafts', label: labels.value.rosterTabDrafts, count: draftRosters.value.length, active: tab.value === 'drafts' },
@@ -339,8 +351,7 @@ function fdOf(r) {
   return dispositionOf(r, dets.map((d) => ({ fd: d.forceDisposition })))
 }
 function toneOf(r) {
-  const c = dispositionColor(fdOf(r))
-  return c ? { '--tone-light': c.light, '--tone-dark': c.dark } : undefined
+  return toneVars(dispositionColor(fdOf(r)))
 }
 
 // A saved list opens read-only; a draft goes back to the wizard, which resumes it from the id in

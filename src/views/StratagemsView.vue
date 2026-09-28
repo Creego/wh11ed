@@ -28,6 +28,7 @@
       <button
         type="button"
         class="strat-toggle"
+        data-press="pop"
         :class="{ active: byPhase }"
         :aria-pressed="byPhase"
         :aria-label="byPhase ? labels.stratGroupAsList : labels.stratGroupByPhase"
@@ -41,15 +42,18 @@
       </button>
     </div>
 
-    <p
-      v-if="!visibleStratagems.length"
-      class="strat-empty"
-    >
-      {{ labels.stratNoneForFilter }}
-    </p>
+    <Transition name="fade">
+      <p
+        v-if="!visibleStratagems.length"
+        class="strat-empty"
+      >
+        {{ labels.stratNoneForFilter }}
+      </p>
+    </Transition>
 
-    <!-- Phase view: one accordion per phase, stratagems for that phase inside. -->
-    <template v-else-if="byPhase">
+    <!-- Phase view: one accordion per phase, stratagems for that phase inside. The empty note
+         above is its own condition (not the head of this chain) so it can fade on its own. -->
+    <template v-if="visibleStratagems.length && byPhase">
       <div
         v-for="g in phaseGroups"
         :key="g.key"
@@ -61,9 +65,11 @@
           :aria-expanded="openPhases.has(g.key)"
           @click="togglePhase(g.key)"
         >
-          <i
-            class="bi phase-chev"
-            :class="openPhases.has(g.key) ? 'bi-chevron-down' : 'bi-chevron-right'"
+          <ChevronIcon
+            class="phase-chev"
+            :turned="openPhases.has(g.key)"
+            from="right"
+            to="down"
           />
           <span class="phase-name">{{ phaseLabel(g.key, labels) }}</span>
           <span class="phase-count">{{ g.strats.length }}</span>
@@ -83,7 +89,7 @@
 
     <!-- Flat list -->
     <div
-      v-else
+      v-else-if="visibleStratagems.length"
       class="strat-grid"
     >
       <StratCard
@@ -97,6 +103,7 @@
 </template>
 
 <script setup>
+import ChevronIcon from '../components/ChevronIcon.vue'
 import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import StratCard from '../components/StratCard.vue'

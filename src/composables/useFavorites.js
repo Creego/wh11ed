@@ -55,6 +55,14 @@ export function useFavorites() {
       .filter(Boolean)
   }
 
+  // The same groups with the pinned factions taken out — a pinned faction MOVES to the top rather
+  // than standing twice (owner, 2026-09-28) — and a group left empty dropped with its heading.
+  function unpinnedGroupsFrom(groups) {
+    return groups
+      .map((g) => ({ ...g, factions: g.factions.filter((f) => !isFactionPinned(f.slug)) }))
+      .filter((g) => g.factions.length)
+  }
+
   // Per-faction favourite datasheets.
   const favoriteUnitIds = (slug) => liveIds(favoritesStore.cellsOf(slug))
   const isUnitFavorite = (slug, id) => isLive(favoritesStore.cellsOf(slug)[id])
@@ -69,6 +77,7 @@ export function useFavorites() {
     isFactionPinned,
     toggleFaction,
     pinnedFactionsFrom,
+    unpinnedGroupsFrom,
     favoriteUnitIds,
     isUnitFavorite,
     toggleUnitFavorite,

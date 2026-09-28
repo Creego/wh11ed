@@ -46,6 +46,7 @@ import { ui } from '../i18n/ui.js'
 import { useLocale } from '../composables/useLocale.js'
 import { useFavorites } from '../composables/useFavorites.js'
 import { factionIndexBySlug } from '../data/factionsIndex.js'
+import { toneVars } from '../utils/tone.js'
 
 const props = defineProps({
   slug: { type: String, required: true },
@@ -65,10 +66,7 @@ const { isFactionPinned, toggleFaction } = useFavorites()
 // The colour and the monogram live in factionsIndex.js; the picker's rows come from the MFM list,
 // which has neither.
 const entry = computed(() => factionIndexBySlug(props.slug))
-const tone = computed(() => {
-  const c = entry.value?.color
-  return c ? { '--tone-light': c.light, '--tone-dark': c.dark } : undefined
-})
+const tone = computed(() => toneVars(entry.value?.color))
 </script>
 
 <style scoped>

@@ -1,5 +1,8 @@
 <template>
-  <div class="factions-view">
+  <div
+    ref="rootEl"
+    class="factions-view"
+  >
     <div class="hero">
       <h1 class="hero-title">
         {{ labels.factionsHeading }}
@@ -9,18 +12,23 @@
       </div>
     </div>
 
+    <!-- A pinned faction leaves its group for the top one, and slides there (useFlipMove). -->
     <div class="groups">
       <section
         v-if="pinned.length"
         class="group pinned-group"
       >
-        <h2 class="group-title">
+        <h2
+          class="group-title"
+          data-flip="h:pinned"
+        >
           {{ labels.favPinnedGroup }}
         </h2>
         <ul class="faction-list">
           <li
             v-for="f in pinned"
             :key="'pin-' + f.slug"
+            :data-flip="f.slug"
             class="fac-row"
           >
             <RouterLink
@@ -38,17 +46,21 @@
       </section>
 
       <section
-        v-for="group in factionGroups"
+        v-for="group in unpinned"
         :key="group.id"
         class="group"
       >
-        <h2 class="group-title">
+        <h2
+          class="group-title"
+          :data-flip="'h:' + group.id"
+        >
           {{ labels[factionGroupLabelKey(group.id)] }}
         </h2>
         <ul class="faction-list">
           <li
             v-for="f in group.factions"
             :key="f.slug"
+            :data-flip="f.slug"
             class="fac-row"
           >
             <template v-if="f.ready">
@@ -59,7 +71,7 @@
                 {{ f.name }}
               </RouterLink>
               <FavoriteStar
-                :pinned="isFactionPinned(f.slug)"
+                :pinned="false"
                 @toggle="toggleFaction(f.slug)"
               />
             </template>
@@ -78,18 +90,22 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import FavoriteStar from '../components/FavoriteStar.vue'
 import { factionGroups, factionGroupLabelKey } from '../data/factionsIndex.js'
 import { ui } from '../i18n/ui.js'
 import { useLocale } from '../composables/useLocale.js'
 import { useFavorites } from '../composables/useFavorites.js'
+import { useFlipMove } from '../composables/useFlipMove.js'
 
 const { locale } = useLocale()
 const labels = computed(() => ui[locale.value])
 
-const { isFactionPinned, toggleFaction, pinnedFactionsFrom } = useFavorites()
+const { toggleFaction, pinnedFactionsFrom, unpinnedGroupsFrom } = useFavorites()
 const pinned = computed(() => pinnedFactionsFrom(factionGroups))
+const unpinned = computed(() => unpinnedGroupsFrom(factionGroups))
+const rootEl = ref(null)
+useFlipMove(() => pinned.value.map((f) => f.slug), rootEl)
 
 </script>
 

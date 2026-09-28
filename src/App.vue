@@ -37,13 +37,17 @@
       :class="{ 'main-content--wide': isCoreRoute || isEventRoute, 'main-content--desk': isRosterDeskRoute }"
     >
       <RouterView v-slot="{ Component }">
+        <!-- `fade`, unless the link that started this swap asked for another (usePageMotion). -->
         <Transition
-          name="fade"
+          :name="pageMotion"
           mode="out-in"
+          @before-leave="pageLeaving"
+          @enter="pageArrived"
+          @after-enter="clearPageMotion"
         >
           <component
             :is="Component"
-            :key="appPath"
+            :key="pageKey"
           />
         </Transition>
       </RouterView>
@@ -92,6 +96,7 @@
 
 <script setup>
 import { ref, computed, watch, onMounted, onUnmounted, defineAsyncComponent } from 'vue'
+import { pageMotion, clearPageMotion, installPageMotion, pageLeaving, pageArrived } from './composables/usePageMotion.js'
 import { useRoute, useRouter } from 'vue-router'
 import { shouldWelcome } from './composables/useWelcome.js'
 import { useFeedbackModal } from './composables/useFeedbackModal.js'
@@ -132,6 +137,8 @@ import { localePath, stripLocale } from './router/locale.js'
 
 const route = useRoute()
 const router = useRouter()
+// Which way each page swap moves (usePageMotion: down or up a chain, a link's mark, or a fade).
+installPageMotion(router)
 const { open: feedbackOpen } = useFeedbackModal()
 useViewRestore() // PWA-only: remember & restore the last page + in-view section
 const { ensureSession } = useAuth()
@@ -152,6 +159,13 @@ const { locale } = useLocale()
 // The address carries the language (`/ru/…`); everything that asks "which page is this?" must ask
 // without it, or every predicate written against a bare path quietly stops matching in Russian.
 const appPath = computed(() => stripLocale(route.path))
+// What counts as "another page" for the swap above. A route with children (a faction's pages)
+// is one page per faction: moving between its tabs changes the child, drawn by the parent's own
+// RouterView (FactionPagesView), and must not re-create the parent — that is what kept the hero
+// and the tabs sliding out and in with every tab (2026-09-28).
+const pageKey = computed(() => (
+  route.matched.length > 1 ? `${route.matched[0].path}|${route.params.slug ?? ''}` : appPath.value
+))
 // A bare route (the broadcast overlay OBS captures) renders with NO app chrome at all —
 // navbar, drawer, subnav, bottom nav, utility bar and toasts stay out of the frame.
 const isBare = computed(() => !!route.meta.bare)
@@ -375,11 +389,15 @@ onUnmounted(() => {
    back-to-top) want, so THEY yield instead: this reserves the bar's real height in a variable
    MobileUtilityBar's own bottom offset adds (see its .mobile-bar rule) — always the fixed
    .rc-sticky height, not RosterEditorView's unrelated .red-sticky (a sticky totals readout,
-   no buttons, nothing to block). */
-.app-layout:has(.rc-sticky) { --roster-sticky-h: 3.75rem; }
+   no buttons, nothing to block).
+   A bar on a page that is on its way OUT (`.page-leaving`, set by the route transition above for
+   whichever animation it runs) reserves
+   nothing: the room is being freed, and a "to game" chip coming in for the next page aimed above
+   the leaving bar and then dropped onto its place (owner, 2026-09-28). */
+.app-layout:has(.rc-sticky:not(.page-leaving .rc-sticky)) { --roster-sticky-h: 3.75rem; }
 /* The bar's compact tier (style.css, ≤480px) is ~49px, not ~59px: the full 3.75rem left a ~10px
    empty strip between the roster panes and the bar, and floated the undo/utility bars as high. */
 @media (max-width: 480px) {
-  .app-layout:has(.rc-sticky) { --roster-sticky-h: 3.1rem; }
+  .app-layout:has(.rc-sticky:not(.page-leaving .rc-sticky)) { --roster-sticky-h: 3.1rem; }
 }
 </style>

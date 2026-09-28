@@ -1,5 +1,5 @@
 <template>
-  <FactionLayout>
+  <div class="faction-units-page">
     <!-- Datasheets (lazy-loaded per faction from src/data/datasheets/<slug>.js) -->
     <section
       id="datasheets"
@@ -67,7 +67,11 @@
           <h3 class="ds-group-head">
             {{ g.label }}
           </h3>
-          <div class="ds-grid">
+          <TransitionGroup
+            name="sift"
+            tag="div"
+            class="ds-grid"
+          >
             <RouterLink
               v-for="s in g.sheets"
               :key="s.id"
@@ -76,6 +80,7 @@
             >
               <span class="ds-marks">
                 <button
+                  data-press="pop"
                   type="button"
                   class="ds-fav"
                   :class="{ on: isUnitFavorite(slug, s.id) }"
@@ -90,6 +95,7 @@
                      This grid is where a collection actually gets entered: the datasheet page
                      carries the same button, but one unit per visit is no way to fill a shelf. -->
                 <button
+                  data-press="pop"
                   type="button"
                   class="ds-fav ds-own"
                   :class="{ on: isOwned(slug, s.id) }"
@@ -116,7 +122,7 @@
                 class="ds-chip-pts"
               >{{ ptsSummary(s.points) }}</span>
             </RouterLink>
-          </div>
+          </TransitionGroup>
         </template>
         <!-- The prose half of a "Legends: <Faction>" publication (src/data/factionLegends.json).
              Sits under the list, not above it: a player who opened this page came for the units,
@@ -126,65 +132,68 @@
              question a player sent us was exactly that, and this table already answered it in
              appdata. A search query narrows the proxies by the retired names, so typing the old
              unit's name finds its row even though no chip carries it. -->
-        <section
-          v-if="legends && (!dsQuery.trim() || visibleProxies.length)"
-          class="ds-legends"
-        >
-          <h3 class="ds-group-head">
-            {{ labels.dsLegendsTitle }}
-          </h3>
-          <template v-if="!dsQuery.trim() && legends.intro">
-            <button
-              type="button"
-              class="ds-legends-about"
-              :aria-expanded="introOpen"
-              @click="introOpen = !introOpen"
-            >
-              <i
-                class="bi"
-                :class="introOpen ? 'bi-chevron-down' : 'bi-chevron-right'"
-              />
-              <span>{{ labels.dsLegendsAbout }}</span>
-            </button>
-            <CollapseTransition :show="introOpen">
-              <div class="ds-legends-intro rule-body">
-                <RuleBody :body="legends.intro" />
-              </div>
-            </CollapseTransition>
-          </template>
-          <template v-if="visibleProxies.length">
-            <h4
-              id="legendary-proxies"
-              class="ds-legends-sub"
-            >
-              {{ labels.dsLegendsProxies }}
-            </h4>
-            <p class="ds-legends-hint">
-              {{ labels.dsLegendsProxiesHint }}
-            </p>
-            <ul class="ds-proxies">
-              <li
-                v-for="(p, i) in visibleProxies"
-                :key="i"
+        <ExpandTransition>
+          <section
+            v-if="legends && (!dsQuery.trim() || visibleProxies.length)"
+            class="ds-legends"
+          >
+            <h3 class="ds-group-head">
+              {{ labels.dsLegendsTitle }}
+            </h3>
+            <template v-if="!dsQuery.trim() && legends.intro">
+              <button
+                type="button"
+                class="ds-legends-about"
+                :aria-expanded="introOpen"
+                @click="introOpen = !introOpen"
               >
-                <span class="ds-proxy-legacy">{{ p.legacy.join(', ') }}</span>
-                <i class="bi bi-arrow-right ds-proxy-arrow" />
-                <!-- Both are flex items, so the line breaks around the text cost no space. -->
-                <RouterLink
-                  v-if="p.id"
-                  :to="`/factions/${slug}/datasheets/${p.id}`"
-                  class="ds-proxy-use"
+                <ChevronIcon
+                  :turned="introOpen"
+                  from="right"
+                  to="down"
+                />
+                <span>{{ labels.dsLegendsAbout }}</span>
+              </button>
+              <CollapseTransition :show="introOpen">
+                <div class="ds-legends-intro rule-body">
+                  <RuleBody :body="legends.intro" />
+                </div>
+              </CollapseTransition>
+            </template>
+            <template v-if="visibleProxies.length">
+              <h4
+                id="legendary-proxies"
+                class="ds-legends-sub"
+              >
+                {{ labels.dsLegendsProxies }}
+              </h4>
+              <p class="ds-legends-hint">
+                {{ labels.dsLegendsProxiesHint }}
+              </p>
+              <ul class="ds-proxies">
+                <li
+                  v-for="(p, i) in visibleProxies"
+                  :key="i"
                 >
-                  {{ p.use }}
-                </RouterLink>
-                <span
-                  v-else
-                  class="ds-proxy-use"
-                >{{ p.use }}</span>
-              </li>
-            </ul>
-          </template>
-        </section>
+                  <span class="ds-proxy-legacy">{{ p.legacy.join(', ') }}</span>
+                  <i class="bi bi-arrow-right ds-proxy-arrow" />
+                  <!-- Both are flex items, so the line breaks around the text cost no space. -->
+                  <RouterLink
+                    v-if="p.id"
+                    :to="`/factions/${slug}/datasheets/${p.id}`"
+                    class="ds-proxy-use"
+                  >
+                    {{ p.use }}
+                  </RouterLink>
+                  <span
+                    v-else
+                    class="ds-proxy-use"
+                  >{{ p.use }}</span>
+                </li>
+              </ul>
+            </template>
+          </section>
+        </ExpandTransition>
       </template>
       <p
         v-else-if="loaded"
@@ -193,14 +202,15 @@
         {{ labels.factionsSoon }}
       </p>
     </section>
-  </FactionLayout>
+  </div>
 </template>
 
 <script setup>
+import ChevronIcon from '../../components/ChevronIcon.vue'
 import TypingGhost from '../../components/TypingGhost.vue'
 import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import FactionLayout from '../../components/FactionLayout.vue'
+import ExpandTransition from '../../components/ExpandTransition.vue'
 import FactionPickerBar from '../../components/FactionPickerBar.vue'
 import CollapseTransition from '../../components/CollapseTransition.vue'
 import RuleBody from '../../components/RuleBody.vue'
