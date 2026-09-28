@@ -1152,7 +1152,9 @@ strong {
   padding: 0 0.3rem;
   border: 1px solid color-mix(in srgb, var(--tone) 55%, transparent);
   background: color-mix(in srgb, var(--tone) 16%, transparent);
-  color: var(--tone);
+  /* The hue, pulled toward the body text: the pure tone on its own 16% tint fell to 3–4.4:1 in both
+     themes on 11px text (npm run a11y, 2026-09-28, once the /factions page drew these rows). */
+  color: color-mix(in srgb, var(--tone) 55%, var(--text-primary));
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 700;

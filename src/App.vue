@@ -34,7 +34,7 @@
 
     <main
       class="main-content"
-      :class="{ 'main-content--wide': isCoreRoute || isEventRoute, 'main-content--desk': isRosterDeskRoute }"
+      :class="{ 'main-content--wide': isCoreRoute || isEventRoute, 'main-content--broad': isFactionsIndexRoute, 'main-content--desk': isRosterDeskRoute }"
     >
       <RouterView v-slot="{ Component }">
         <!-- `fade`, unless the link that started this swap asked for another (usePageMotion). -->
@@ -197,6 +197,8 @@ const isRosterEditRoute = computed(() =>
 // components/roster/RosterWorkbench.vue), which the 860px reading measure cannot hold. Printing
 // is excluded: it is a roster route by path, but its width is the paper's.
 const isRosterDeskRoute = computed(() => isRosterEditRoute.value && !appPath.value.endsWith('/print'))
+// The factions index lays its four groups out as four columns, which the 860px measure cannot fit.
+const isFactionsIndexRoute = computed(() => appPath.value === '/factions')
 
 // "Back to game" bar: only when a game is actively in progress and the user is reading something
 // that isn't the game — anywhere outside the tracker, plus the one tracker screen that is itself
@@ -343,6 +345,8 @@ onUnmounted(() => {
   max-width: 1120px;
   background: var(--bg-content);
 }
+/* The same width without the panel: the factions index (four columns of faction rows). */
+.main-content--broad { max-width: 1120px; }
 
 /* The roster builder's desk layout: catalogue, list and the chosen unit's fields side by side.
    Only above the threshold that layout itself uses — below it the screen is back to two panes at
