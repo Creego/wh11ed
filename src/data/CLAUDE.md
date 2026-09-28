@@ -333,7 +333,7 @@ rendered by `HelpTopicView.vue` from `src/data/help.js`.
 
 ## RU search aliases
 
-Search (Ctrl+K) matches unit names in English only, which is no help to a Russian reader who does
+Search (Ctrl+K — and, through the tag index, the faction datasheet grid and the roster catalogue) matches unit names in English only, which is no help to a Russian reader who does
 not know the English spelling of a deliberately mangled xenos name — or who looks a unit up by the
 community's nickname (Ghazghkull → «Газя»). `aliasesRu` is a hidden field that affects **search
 only**: a unit's name on screen is always the English one, per the bilingual convention above.

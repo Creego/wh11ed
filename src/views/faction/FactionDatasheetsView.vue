@@ -9,13 +9,23 @@
         {{ labels.factionDatasheets }}
       </h2>
       <template v-if="datasheets.length">
-        <input
-          v-model="dsQuery"
-          type="search"
-          class="ds-search"
-          :placeholder="labels.dsSearch"
-          :aria-label="labels.dsSearch"
+        <!-- Types the faction's own example queries while empty (useUnitSearchGhost). -->
+        <div
+          ref="dsSearchEl"
+          class="typing-field ds-search-field"
         >
+          <input
+            v-model="dsQuery"
+            type="search"
+            class="ds-search"
+            :placeholder="typing ? '' : labels.dsSearch"
+            :aria-label="labels.dsSearch"
+          >
+          <TypingGhost
+            v-if="typing && !dsQuery"
+            :text="ghostText"
+          />
+        </div>
         <!-- Global army choice (chapter + detachment), shared with the rule page.
              Chapter-less factions keep their datasheet list bar-free — a detachment
              picker filters nothing here. -->
@@ -187,6 +197,7 @@
 </template>
 
 <script setup>
+import TypingGhost from '../../components/TypingGhost.vue'
 import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import FactionLayout from '../../components/FactionLayout.vue'
@@ -204,6 +215,7 @@ import { reconcileFactionMarks } from '../../composables/useUserPrefs.js'
 import { getItem, setItem } from '../../composables/safeStorage.js'
 import { scrollToAnchor } from '../../composables/useRefNavigation.js'
 import { foldName, preloadDatasheetTags, TAG_MIN, unitTagHit } from '../../composables/datasheetTags.js'
+import { useUnitSearchGhost } from '../../composables/useUnitSearchExamples.js'
 
 const route = useRoute()
 const { slug, faction } = useFactionPage()
@@ -313,6 +325,8 @@ const hasLegends = computed(() => datasheets.value.some((s) => s.legends))
 // global search and the roster catalogue match (datasheetTags.js), loaded with the first query
 // long enough to use them.
 watch(dsQuery, (q) => { if (q.trim().length >= TAG_MIN) preloadDatasheetTags() })
+const dsSearchEl = ref(null)
+const { ghostText, typing } = useUnitSearchGhost({ slug, locale, query: dsQuery, el: dsSearchEl })
 const filteredDatasheets = computed(() => {
   const q = dsQuery.value.trim().toLowerCase()
   const qf = foldName(q)
@@ -365,15 +379,20 @@ const groupedDatasheets = computed(() => {
 
 <style scoped>
 
+.ds-search-field {
+  max-width: 24rem;
+  margin-bottom: 0.55rem;
+  --typing-pad: calc(0.5rem + 1px) calc(0.7rem + 1px);
+  --typing-size: 0.9rem;
+}
+
 .ds-search {
   width: 100%;
-  max-width: 24rem;
   padding: 0.5rem 0.7rem;
   font-size: 0.9rem;
   color: var(--text-primary);
   background: var(--bg-card);
   border: 1px solid var(--border);
-  margin-bottom: 0.55rem;
 }
 
 .ds-search:focus {
