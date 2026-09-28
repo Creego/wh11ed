@@ -8,12 +8,6 @@
       v-if="hero"
       class="hero"
     >
-      <RouterLink
-        to="/factions"
-        class="back-link"
-      >
-        {{ '← ' + labels.factionsBack }}
-      </RouterLink>
       <h1 class="hero-title">
         {{ faction ? faction.name : labels.factionsHeading }}
       </h1>
@@ -215,23 +209,12 @@ function backToUnits() {
    first heading — now 0.6rem. Nothing here wants more: the open tab erases the strip's accent line
    under itself so the content reads as hanging FROM the tab (see PageTabs), and a band of empty
    page between them is what breaks that join. */
+/* No "← All factions" link above the title (removed 2026-09-28, owner): the navbar's Factions
+   and the bottom nav's Factions button both reach every faction from anywhere. The padding the
+   link used to give the title is kept here. */
 .hero {
-  padding: 0.25rem 0 0;
+  padding: 1rem 0 0;
   margin-bottom: 0.6rem;
-}
-
-.back-link {
-  display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-decoration: none;
-  margin-bottom: 0.35rem;
-}
-
-.back-link:hover {
-  color: var(--accent);
-  text-decoration: none;
 }
 
 .hero-title {
