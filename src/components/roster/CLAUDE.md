@@ -2503,12 +2503,26 @@ Tier A does four things:
    interns a wargear name to two item ids) and `src/data/datasheets/index.test.js` (no datasheet
    lists a weapon name twice). appdata does publish 316 names with more than one profile set (an
    Ork Boy's Choppa against a Nob's), but never twice on the same datasheet; those tests are the
-   tripwire for the release where that stops being true. **The count is how many the unit holds,
-   not how many times it attacks**: a Carnifex may take Carnifex crushing claws in BOTH of its
-   option lines (appdata lists the claws in each), and the row then reads "×2" while its Attacks
-   stay 4 — the core rules have a model fight with ONE of its melee weapons, so the second pair
-   adds nothing but is legal. A player read the ×2 as 8 attacks (2026-09-28); the builder is
-   right, and it is not the builder's place to tell the reader a legal choice is pointless.
+   tripwire for the release where that stops being true.
+   **Melee rows count copies, not a sum (2026-09-28).** A model fights with ONE melee weapon
+   (04.01), so two copies of the same one on a model are not twice the attacks — yet a lone
+   Carnifex with crushing claws from both of its option lines read "×2", and a player took it for
+   8 attacks. `loadoutItemCopies` counts each copy as a slot (its profile, how many models hold
+   it) and `meleeRowsFor` prints one row per copy a model can hold: the lone Carnifex gets two
+   identical rows, two Carnifexes with both pairs two rows of "×2". A copy's RANK within its own
+   profile decides the row, so the Boyz' choppas and their Nob's stay one row "×10"; a unit-wide
+   group counts as a first copy (never invents a second weapon on one model). Ranged rows still
+   add up (a model fires them all), and so do [EXTRA ATTACKS] melee rows (24.11: it attacks with
+   all of them — two Extra Klaws on a Deff Dread are two extra attacks). Gate:
+   `src/data/roster/index.test.js` → "a second copy of a melee weapon is a second row" takes
+   every melee weapon in every group offering it, as far as the editor allows, and fails on a row
+   counted on more models than the unit has.
+   **A default count above one per model must be printed on the datasheet** ("2 phosphor
+   pistols"). A profile the loadout rows skip used to take its "Default Wargear" group's PROFILE
+   totals as per-model and got multiplied twice — five Flash Gitz read "Choppa ×17", ten Aquilons
+   "Close combat weapon ×66" — and a profile split over several default groups kept only the
+   first group's count. Both fixed in `gen-roster-data.mjs` the same day; the "default loadouts"
+   block of the same test file holds the count to the prose.
    An unknown count says nothing at all —
    `null` rather than a guess, the same asymmetry the trim itself uses.
 2. **Resolves rule-granted keywords** — the existing `conditionalKeywords.json` sidecar, gated on
@@ -3207,6 +3221,18 @@ proves the 18 enhancement effects worded "while the bearer is leading a unit". B
 they agree. Deliberately NOT `activeConditions` with an empty player: that also answers the
 clock-scoped ids, and a null clock reads as round 1 — "during battle rounds 1-3" would switch itself
 on in a list nobody is playing yet.
+
+**…and so does the wargear it took (2026-09-28).** The `wargear-*` conditions carry a `gear` spec
+(two copies of one weapon, N melee weapons besides a named one, a named set) and are answered by
+`wargearConditions(def, entry, items, printedSheet)` in rosterModifiers.js, from the same per-model
+copies the weapon table prints — true only when EVERY model of a profile holds the set, so a pair
+on one Talos of two stays a note. `rosterUnitCard` unions them into `activeConds` on and off the
+table; the row in `RosterViewView` does not need them (none of these effects gates a switch). Eight
+records use them — Talos, Telemon, the four Helbrutes (whose +2 A now also carries
+`only.notName: ['Close combat weapon']`, the two weapons the rule means), Wulfen Dreadnought,
+Knight Destrier — and all eight were `never`/`blocked-weapon` before. `src/data/rosterModifiers/
+index.test.js` → "a rule that rewards a set of weapons" finds every datasheet ability worded "is
+equipped with two …" / "with a X and a Y" and fails until its record is answered from the loadout.
 
 **A modifier note opens its own rule.** A note the caller could resolve to prose carries
 `hasSource`, and then the rule's name in the footnote under the stats opens it in the same popover a
