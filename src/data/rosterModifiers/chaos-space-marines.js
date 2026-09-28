@@ -470,7 +470,6 @@ export default {
               "HERETIC ASTARTES INFANTRY"
             ],
             "excludes": [
-              "Battle-shocked",
               "DAMNED"
             ]
           }

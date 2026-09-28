@@ -2503,7 +2503,13 @@ Tier A does four things:
    interns a wargear name to two item ids) and `src/data/datasheets/index.test.js` (no datasheet
    lists a weapon name twice). appdata does publish 316 names with more than one profile set (an
    Ork Boy's Choppa against a Nob's), but never twice on the same datasheet; those tests are the
-   tripwire for the release where that stops being true. An unknown count says nothing at all —
+   tripwire for the release where that stops being true. **The count is how many the unit holds,
+   not how many times it attacks**: a Carnifex may take Carnifex crushing claws in BOTH of its
+   option lines (appdata lists the claws in each), and the row then reads "×2" while its Attacks
+   stay 4 — the core rules have a model fight with ONE of its melee weapons, so the second pair
+   adds nothing but is legal. A player read the ×2 as 8 attacks (2026-09-28); the builder is
+   right, and it is not the builder's place to tell the reader a legal choice is pointless.
+   An unknown count says nothing at all —
    `null` rather than a guess, the same asymmetry the trim itself uses.
 2. **Resolves rule-granted keywords** — the existing `conditionalKeywords.json` sidecar, gated on
    the ROSTER's detachments instead of `useFactionChoice`, handed to `DatasheetCard`'s existing
@@ -2585,12 +2591,19 @@ which silently ungated whole rules before it was covered: a sentence-opening `Fr
 `[Ff]riendly`, NOT the /i flag, which would also make the keyword pattern's capitalisation
 case-insensitive and destroy the one signal that marks a keyword), a slash alternation
 ("Immortals/Necron Warriors units"), a parenthetical between the noun and "from your army", and
-singular/plural drift both ways (rules say "Vyper units", the datasheet keyword is VYPERS).
+singular/plural drift both ways (rules say "Vyper units", the datasheet keyword is VYPERS — and
+Aspect Host says "Aspect Warriors units" while a Phoenix Lord carries ASPECT WARRIOR, since
+appdata has both keywords; both sides are compared in the singular), and a lowercase joining
+word inside a keyword ("Tyranid Warriors with Ranged Bio-weapons", "Chaos Lord in Terminator
+Armour", "Agents of the Imperium"; "and"/"or" stay a list of targets). The last one was a
+player's report (2026-09-28): Leader-beasts broke at "with", named no keyword end to end, and
+was shown on every Tyranids card as "in effect".
 
-Measured across all 30 factions: 225 of 268 detachment rules are gated, 30 of them carry an
-exclusion, 41% of (unit, rule) pairs are hidden, and no unit is left seeing none of its faction's
-rules. **Re-run that measurement after touching the patterns** — the numbers are the only way to
-tell a sharper gate from a wrongly-hiding one.
+Measured across all 30 factions (2026-09-28): 244 of 270 detachment rules are gated, 44% of
+(unit, rule) pairs are hidden, and no unit is left seeing none of its faction's rules. **Re-run
+that measurement after touching the patterns** — the numbers are the only way to tell a sharper
+gate from a wrongly-hiding one, and diff the per-rule visible unit SETS, not the totals (the
+header of `ruleTargets.js` says how).
 
 An earlier attempt to gate the army rule on the datasheet's own `faction` ability line was
 measured and rejected — 712 of 1039 sheets match, 22 distinct mismatch classes, 128 sheets with
