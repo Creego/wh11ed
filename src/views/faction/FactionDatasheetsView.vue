@@ -1,5 +1,8 @@
 <template>
-  <div class="faction-units-page">
+  <div
+    ref="gridRoot"
+    class="faction-units-page"
+  >
     <!-- Datasheets (lazy-loaded per faction from src/data/datasheets/<slug>.js) -->
     <section
       id="datasheets"
@@ -64,7 +67,10 @@
           v-for="g in groupedDatasheets"
           :key="g.key"
         >
-          <h3 class="ds-group-head">
+          <h3
+            class="ds-group-head"
+            :data-flip="'h:' + g.key"
+          >
             {{ g.label }}
           </h3>
           <TransitionGroup
@@ -75,6 +81,7 @@
             <RouterLink
               v-for="s in g.sheets"
               :key="s.id"
+              :data-flip="s.id"
               :to="`/factions/${slug}/datasheets/${s.id}`"
               class="ds-chip"
             >
@@ -221,6 +228,7 @@ import { useLocale } from '../../composables/useLocale.js'
 import { useFactionChoice } from '../../composables/useFactionChoice.js'
 import { useFavorites } from '../../composables/useFavorites.js'
 import { useCollection } from '../../composables/useCollection.js'
+import { useFlipMove } from '../../composables/useFlipMove.js'
 import { reconcileFactionMarks } from '../../composables/useUserPrefs.js'
 import { getItem, setItem } from '../../composables/safeStorage.js'
 import { scrollToAnchor } from '../../composables/useRefNavigation.js'
@@ -315,7 +323,7 @@ const detachments = computed(() => {
 const { activeChapter } = useFactionChoice()
 const chapter = computed(() => activeChapter(slug.value, chapters.value))
 
-const { isUnitFavorite, toggleUnitFavorite } = useFavorites()
+const { isUnitFavorite, toggleUnitFavorite, favoriteUnitIds, pinnedUnitsFrom, unpinnedUnitGroupsFrom } = useFavorites()
 const { isOwned, toggleOwned } = useCollection()
 
 // A unit's Chapter = the second Faction keyword on its datasheet. Order in
@@ -376,14 +384,18 @@ const groupedDatasheets = computed(() => {
   for (const s of filteredDatasheets.value) {
     buckets.find((b) => !b.kw || (s.keywords || []).includes(b.kw)).sheets.push(s)
   }
-  const groups = buckets.filter((b) => b.sheets.length)
-  // "Favorites" — a quick-access group pinned to the top; the units also stay in their
-  // real type group below. Built from the filtered list so search / chapter still apply,
-  // and only shown when at least one favourite survives the filter.
-  const favs = filteredDatasheets.value.filter((s) => isUnitFavorite(slug.value, s.id))
+  // "Pinned" on top, and a pinned unit LEAVES its type group (owner, 2026-09-28 — as the faction
+  // lists do; useFavorites holds the split for both). Built from the filtered list, so search and
+  // the chapter still apply, and only shown while a pinned unit survives the filter.
+  const groups = unpinnedUnitGroupsFrom(slug.value, buckets)
+  const favs = pinnedUnitsFrom(slug.value, filteredDatasheets.value)
   if (favs.length) groups.unshift({ key: 'favorites', label: l.favPinnedGroup, sheets: favs })
   return groups
 })
+// A pin slides the card from its group to the top as one card (useFlipMove, the faction lists'
+// recipe); the chips and the headings carry `data-flip`.
+const gridRoot = ref(null)
+useFlipMove(() => favoriteUnitIds(slug.value), gridRoot)
 
 </script>
 

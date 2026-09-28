@@ -25,6 +25,9 @@ export function useFlipMove(source, root, { onAppear } = {}) {
     const ms = motionMs('--motion-move')
     const appeared = []
     for (const node of el.querySelectorAll('[data-flip]')) {
+      // A node on its way out — a <TransitionGroup> leave (the `sift` recipe hides it outright)
+      // still in the DOM with the same key as its replacement — is not a place anything travels to.
+      if ([...node.classList].some((c) => c.endsWith('-leave-active'))) continue
       const prev = was.get(node.dataset.flip)
       if (!prev) {
         appeared.push(node)

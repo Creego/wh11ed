@@ -62,7 +62,10 @@ libraries** (don't add GSAP/@vueuse/motion/animate.css).
   both — `unpinnedGroupsFrom`, 2026-09-28), so every faction list (`/factions`, the bottom nav's
   `FactionsNavModal`, the tracker/roster `FactionPickerModal`, Combat Patrol) marks its cards and
   headings `data-flip="<key>"` and the composable slides each key from where it stood to where it
-  stands now (Web Animations, `--motion-move`); a new key fades in. Watchers, not update hooks: in
+  stands now (Web Animations, `--motion-move`); a new key fades in. A faction's unit grid does the
+  same for a pinned unit (`pinnedUnitsFrom`/`unpinnedUnitGroupsFrom` — both pairs are thin wrappers
+  over one split in `useFavorites.js`). Its chips live inside `sift` TransitionGroups (the search),
+  so a node in `*-leave-active` is skipped: it still carries its key while its replacement arrives. Watchers, not update hooks: in
   a modal the list is slot content and the CHILD re-renders, so the owner's `onBeforeUpdate` never
   fires. Script-driven motion reads its token through `motionToken.js`'s `motionMs`, which is how
   reduced motion reaches it.
