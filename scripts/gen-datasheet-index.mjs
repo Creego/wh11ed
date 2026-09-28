@@ -144,6 +144,9 @@ const EXAMPLE_MAX = 22
 const CORE_EXAMPLES = ['Deep Strike', 'Infiltrators', 'Stealth', 'Lone Operative', 'Scouts', 'Feel No Pain', 'Fights First', 'Firing Deck']
 const KEYWORD_EXAMPLES = ['Fly', 'Psyker', 'Monster', 'Walker', 'Mounted', 'Vehicle', 'Infantry']
 const fits = (s) => s && s.length <= EXAMPLE_MAX
+// Aliases the search keeps understanding but the box does not suggest — slang the owner would
+// rather not put in front of every reader (2026-09-28: «термосы» → the plain «терминатор»).
+const ALIAS_NOT_AN_EXAMPLE = new Set(['термосы'])
 function pickExamples(units, aliasesOf) {
   const live = units.filter((u) => !u.legends)
   const count = (has) => live.filter(has).length
@@ -175,7 +178,11 @@ function pickExamples(units, aliasesOf) {
   const keyword = KEYWORD_EXAMPLES.find((k) => count((u) => (u.keywords || []).includes(k)) >= 2)
   // The RU alias that finds the most units (a class nickname like «термосы» shows the idea best).
   const aliasHits = new Map()
-  for (const u of live) for (const a of aliasesOf(u) || []) if (fits(a) && a.length >= 3) aliasHits.set(a, (aliasHits.get(a) || 0) + 1)
+  for (const u of live) {
+    for (const a of aliasesOf(u) || []) {
+      if (fits(a) && a.length >= 3 && !ALIAS_NOT_AN_EXAMPLE.has(a)) aliasHits.set(a, (aliasHits.get(a) || 0) + 1)
+    }
+  }
   const alias = byCount([...aliasHits])[0]?.[0] || null
   return [[unit, ability, core, keyword].filter(Boolean), alias]
 }
