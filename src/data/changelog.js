@@ -11,11 +11,42 @@
 // bump manually) and a short EN/RU note list. Trivial/no-note deploys need no entry — they pass
 // silently (the stored version advances without a banner). Keep notes short and player-facing.
 //
+// ONLY THE NEWEST FEW LIVE HERE: deploy.sh (step 0b, scripts/changelog-rollover.mjs) moves every entry
+// past the fifth to wh11ed-api's archive, which the /changelog page fetches on request — DEPLOY.md,
+// "Release notes archive". The rollover cuts this file by its layout: each entry opens on a line
+// that is exactly `  {` — keep writing them that way.
+//
 // NOTE SHAPE: each `en`/`ru` item is either a plain string (a bullet) or `{ h: 'text' }` (a section
 // heading, rendered without a bullet by ChangelogView). Keep the two locales structurally parallel —
 // a heading at position i in `en` must be a heading at position i in `ru`.
 
 export const changelog = [
+  {
+    version: '2.7.4',
+    date: '2026-09-28',
+    en: [
+      { h: 'Search: units by ability and keyword' },
+      'A unit can now be found by its abilities and keywords, not only by its name: type “deep strike”, “fly” or “Tide of Muscle”. This works in the site search, in the unit search on a faction’s page and in the roster builder’s unit list. The search by ability starts from the third letter.',
+      { h: 'Roster builder' },
+      'The builder’s columns now reach down to the points bar, on a phone and on a computer. Before, an empty strip stayed above the bar.',
+      'Importing from listhammer now recognises wargear of three or more items written on one line, such as “Vexilla, Misericordia and Praesidium Shield” on Custodian Guard. Before, that line went to the unmatched wargear, and the option had to be picked by hand.',
+      { h: 'Site' },
+      'I fixed a caching error after site updates. If the site was open during an update, the menu buttons could stop responding and sections would not open. Only clearing the browser cache helped. Now the page reloads into the new version by itself.',
+      { h: 'Checked a report: detachment points' },
+      'A player reported that a 3000-point battle should allow 4DP, not 3. I checked it against the Warhammer 40,000 app. Onslaught allows 3DP, the same as Strike Force: only the points total grows. The site shows it correctly.',
+    ],
+    ru: [
+      { h: 'Поиск: юниты по способностям и keywords' },
+      'Юнит теперь можно найти не только по имени, но и по способностям и keywords: наберите «deep strike», «fly» или «Tide of Muscle». Это работает в поиске по сайту, в поиске юнитов на странице фракции и в списке юнитов конструктора. Поиск по способностям начинается с третьей буквы.',
+      { h: 'Конструктор ростеров' },
+      'Колонки конструктора теперь доходят до самой панели с очками, на телефоне и на компьютере. Раньше над панелью оставалась пустая полоса.',
+      'Импорт с listhammer теперь узнаёт вооружение из трёх и более предметов, записанное одной строкой, например «Vexilla, Misericordia and Praesidium Shield» у Custodian Guard. Раньше такая строка попадала в несопоставленное вооружение, и вариант приходилось выбирать вручную.',
+      { h: 'Сайт' },
+      'Я исправил ошибку с кэшем после обновлений сайта. Если сайт был открыт во время обновления, кнопки в меню могли перестать нажиматься, а разделы — не открываться. Помогала только очистка кэша браузера. Теперь страница в таком случае сама перезагружается на новую версию.',
+      { h: 'Проверил сообщение: очки детачментов' },
+      'Игрок написал, что в битве на 3000 очков должно быть 4DP, а не 3. Я сверил это с приложением Warhammer 40,000. В Onslaught 3DP, как и в Strike Force: растёт только число очков. На сайте всё указано верно.',
+    ],
+  },
   {
     version: '2.7.3',
     date: '2026-09-27',
