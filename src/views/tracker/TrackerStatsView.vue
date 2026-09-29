@@ -329,6 +329,24 @@ const rosterRows = computed(() => [...records.value.entries()].map(([id, rec]) =
   overscroll-behavior: contain;
   padding: 0.75rem 0.5rem 2rem 1rem;
 }
+/* On the desk the statistics get the whole right-hand side — ~1100px and up — and one column of
+   bars that wide read as a row of empty rails (owner, 2026-09-29). So the page becomes a grid:
+   everything that is not a block (the heading, the headline numbers, the note under them) keeps
+   the full width, and every block — the curve, the
+   points split, each "win rate by …" — takes a cell, two across (three on a very wide screen),
+   each at a readable measure. `align-items: start` so a short block does not stretch to its
+   neighbour's height. */
+.sv-in-desk:not(:has(> .empty)) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(26rem, 1fr));
+  gap: 0 2rem;
+  align-content: start;
+  align-items: start;
+}
+.sv-in-desk > :not(.block) { grid-column: 1 / -1; }
+/* The headline numbers in one row where they fit (eight of them wrapped 7 + 1 at the phone's
+   7.5rem minimum). */
+.sv-in-desk .cards { grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr)); }
 
 .hero { padding: 0.8rem 0 0.6rem; border-bottom: 2px solid var(--accent); margin-bottom: 1.2rem; }
 .hero h1 { font-family: var(--font-display); font-size: 2.4rem; font-weight: 400; color: var(--text-primary); }
