@@ -1143,6 +1143,34 @@ strong {
   line-height: 1.5;
 }
 
+/* ── Filter chips ──────────────────────────────────────────────────────────
+   A wrapping row of buttons that narrow a list to one kind — "All" first, the one picked `.on`.
+   The missions' Force Disposition row drew these privately; the roster list's faction row
+   (2026-09-29) made it two. A chip inside `.tone` wears its colour pair on its border when picked. */
+.filter-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.32rem 0.7rem;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition: border-color var(--motion-fast), color var(--motion-fast), background var(--motion-fast);
+}
+.filter-chip:hover { color: var(--text-primary); border-color: var(--accent); }
+.filter-chip.on { background: var(--accent); color: var(--text-on-accent); border-color: var(--accent); }
+.filter-chip.tone.on {
+  background: color-mix(in srgb, var(--tone) 22%, var(--bg-secondary));
+  color: var(--text-primary);
+  border-color: var(--tone);
+}
+.filter-chip .tone-badge { height: 1.3rem; font-size: 0.62rem; }
+
 /* ── Section help ──────────────────────────────────────────────────────────
    The door from a section (Rules / Tracker / Rosters) to its page of the guide. An icon, not the
    words "Section help": it sits in the row above the content on screens whose first fold is the

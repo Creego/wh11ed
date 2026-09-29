@@ -349,6 +349,7 @@ export const ui = {
     rosterWargearTrimUndo: 'Put back',
     rosterTabSaved: 'Lists',
     rosterTabDrafts: 'Drafts',
+    rosterFilterFaction: 'Show lists of one faction',
     rosterDraftStep: 'step {n} of 3',
     rosterDraftsEmpty: 'No drafts. A list you start but haven\'t saved yet waits here.',
     // The floating "back to the half-built list" chip (MobileUtilityBar), shown while a draft
@@ -1366,6 +1367,7 @@ export const ui = {
     rosterWargearTrimUndo: 'Вернуть',
     rosterTabSaved: 'Списки',
     rosterTabDrafts: 'Черновики',
+    rosterFilterFaction: 'Показать списки одной фракции',
     rosterDraftStep: 'шаг {n} из 3',
     rosterDraftsEmpty: 'Черновиков нет. Начатый, но ещё не сохранённый лист ждёт здесь.',
     rosterResumeDraftBar: 'Вернуться к сборке ростера',

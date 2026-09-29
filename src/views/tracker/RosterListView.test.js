@@ -37,6 +37,43 @@ describe('RosterListView', () => {
     expect(push).toHaveBeenCalledWith('/roster/new')
   })
 
+  // Player request 2026-09-29: several armies' lists, narrowed to one by a row of faction chips.
+  describe('faction filter', () => {
+    const make = (store, name, faction) => { const r = store.createRoster(name); r.faction = faction; return r }
+    const names = (w) => w.findAll('.rname').map((n) => n.text())
+
+    it('is not offered while every list is of one faction', async () => {
+      const store = useRosters()
+      make(store, 'A', 'orks'); make(store, 'B', 'orks')
+      const w = mount(RosterListView, { global: { stubs } })
+      expect(w.find('.rl-factions').exists()).toBe(false)
+    })
+
+    it('narrows the lists to one faction, and a second tap lets go', async () => {
+      const store = useRosters()
+      make(store, 'Waaagh', 'orks'); make(store, 'Bugs', 'tyranids'); make(store, 'More bugs', 'tyranids')
+      const w = mount(RosterListView, { global: { stubs } })
+      const chips = w.findAll('.rl-factions .filter-chip')
+      expect(chips.map((c) => c.text().replace(/\s+/g, ' '))).toEqual(['All', 'OR Orks 1', 'TY Tyranids 2'])
+      const nids = chips.find((c) => c.text().includes('Tyranids'))
+      await nids.trigger('click')
+      expect(names(w).sort()).toEqual(['Bugs', 'More bugs'])
+      await nids.trigger('click')
+      expect(names(w)).toHaveLength(3)
+    })
+
+    it('shows everything again once the picked faction has no list left', async () => {
+      const store = useRosters()
+      make(store, 'Waaagh', 'orks'); const b = make(store, 'Bugs', 'tyranids'); make(store, 'Mechs', 'necrons')
+      const w = mount(RosterListView, { global: { stubs } })
+      await w.findAll('.rl-factions .filter-chip').find((c) => c.text().includes('Tyranids')).trigger('click')
+      expect(names(w)).toEqual(['Bugs'])
+      store.deleteRoster(b.id)
+      await flushPromises()
+      expect(names(w)).toHaveLength(2)
+    })
+  })
+
   it('clicking a card opens the read-only view, not the editor', async () => {
     const store = useRosters()
     const r = store.createRoster('Test list')

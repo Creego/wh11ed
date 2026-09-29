@@ -60,6 +60,39 @@
       @enter="bringTabsIntoView"
     >
       <div :key="tab">
+        <!-- A player with lists for several armies narrows the tab to one of them (player request,
+             2026-09-29). Only when the tab holds two factions or more: with one, "All" and the one
+             chip would show the same list. Tapping the picked chip again lets go of it. -->
+        <div
+          v-if="factionFilters.length > 1"
+          class="filter-chips rl-factions"
+          role="group"
+          :aria-label="labels.rosterFilterFaction"
+        >
+          <button
+            type="button"
+            class="filter-chip"
+            :class="{ on: !onlyFaction }"
+            :aria-pressed="!onlyFaction"
+            @click="pickFaction(null)"
+          >
+            {{ labels.filterAll }}
+          </button>
+          <button
+            v-for="f in factionFilters"
+            :key="f.slug"
+            type="button"
+            class="filter-chip tone"
+            :class="{ on: onlyFaction === f.slug }"
+            :style="toneVars(f.color)"
+            :aria-pressed="onlyFaction === f.slug"
+            @click="pickFaction(f.slug)"
+          >
+            <span class="tone-badge">{{ f.abbr }}</span>
+            {{ f.name }}
+            <span class="rl-fcount">{{ f.n }}</span>
+          </button>
+        </div>
         <p
           v-if="!shown.length"
           class="empty"
@@ -73,7 +106,7 @@
           class="rosters"
         >
           <li
-            v-for="r in shown"
+            v-for="r in listed"
             :key="r.id"
             class="roster"
             :class="{ themed: !!factionOf(r) }"
@@ -292,6 +325,30 @@ async function onExport(id) {
 // place is the reader's to finish, and that is where they can.
 function onImported(id) { router.push(`/roster/${id}`) }
 const shown = computed(() => (tab.value === 'drafts' ? draftRosters : savedRosters).value)
+// The factions this tab's lists belong to, with how many each, by name. A list with no faction
+// yet (a draft picked none) has no chip and shows under "All" only.
+const factionFilters = computed(() => {
+  const by = new Map()
+  for (const r of shown.value) {
+    const f = factionOf(r)
+    if (!f) continue
+    const had = by.get(f.slug)
+    if (had) had.n++
+    else by.set(f.slug, { ...f, n: 1 })
+  }
+  return [...by.values()].sort((a, b) => a.name.localeCompare(b.name))
+})
+// One choice for both tabs. It holds only while the tab still has lists of that faction — the
+// last one deleted, or a tab without it, shows everything again rather than an empty page.
+const pickedFaction = ref(null)
+const onlyFaction = computed(() => (
+  factionFilters.value.length > 1 && factionFilters.value.some((f) => f.slug === pickedFaction.value)
+    ? pickedFaction.value : null
+))
+function pickFaction(slug) { pickedFaction.value = slug && slug !== onlyFaction.value ? slug : null }
+const listed = computed(() => (
+  onlyFaction.value ? shown.value.filter((r) => r.faction === onlyFaction.value) : shown.value
+))
 function draftStepLabel(r) {
   return labels.value.rosterDraftStep.replace('{n}', String(r.draftStep || 1))
 }
@@ -445,6 +502,8 @@ function confirmDelete() {
 /* The same folder tabs the faction pages use (PageTabs) — the list below them is the tab's
    content, so it reads as one panel rather than a filter sitting above a list. */
 .rl-tabs { margin-bottom: 1rem; }
+.rl-factions { margin-bottom: 0.8rem; }
+.rl-fcount { font-family: var(--font-mono); opacity: 0.7; }
 .empty { color: var(--text-muted); font-style: italic; text-align: center; }
 /* Sits where a saved list shows its issue count — for a draft, how far it got is the useful fact. */
 .rstep {

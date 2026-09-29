@@ -23,7 +23,7 @@ import { motionMs } from './motionToken.js'
 // press says so with `data-press` instead of joining this list. NOT `.seg button`: its answer is the
 // lit plate sliding over (segSlider.js), and a button shrinking inside a plate that does not left
 // the plate showing round its edges.
-const PRESS_CLASSES = ['.btn-primary', '.btn-ghost', '.tab', '.bn-item']
+const PRESS_CLASSES = ['.btn-primary', '.btn-ghost', '.tab', '.bn-item', '.filter-chip']
 const CHECK_ROW = 'label:has(input[type="checkbox"])'
 const SELECTOR = ['[data-press]', CHECK_ROW, ...PRESS_CLASSES].join(', ')
 
