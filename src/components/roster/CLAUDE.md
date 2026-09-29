@@ -1734,6 +1734,11 @@ On a window wider than the bottom nav (≥901px) `/roster` and `/roster/:id/view
 (`TrackerStatsView` `in-desk`, loaded only then: it reads the tracker store, which carries the
 mission datasets). The list's "Statistics" button is just a link to `/roster`.
 
+- **One heading across the top** (owner, same day: "the header must be one"): `RosterListHead.vue`
+  — the title, New / Import (+ Statistics on the desk), the cloud line and the help link. The list
+  page draws it as before on a phone; on the desk `RosterDeskView` draws it once as a row over all
+  the columns, and the list column (`in-desk`) starts at its tabs. It owns the import dialog.
+
 - **Three columns from 1200px:** the roster's page splits again (`unit-pane`) and a unit's card
   opens in a column beside it instead of the dialog — the same card, `RosterUnitRulesCard.vue`,
   which the dialog `RosterUnitRulesModal.vue` wraps (with `RosterOwnedStar.vue` in its header).

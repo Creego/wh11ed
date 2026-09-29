@@ -4,6 +4,11 @@
     ref="hostEl"
     class="roster-desk rw-host"
   >
+    <RosterListHead
+      class="rd-head"
+      desk
+      :stats-on="!rosterId"
+    />
     <RosterListView
       class="rd-list"
       in-desk
@@ -35,8 +40,9 @@
 <script setup>
 // The rosters on a wide screen (owner, 2026-09-29): one screen instead of a list page and a page
 // per roster. The list of lists stands in a narrow column on the left; beside it either the open
-// roster (/roster/:id/view) or, with none open (/roster), the game statistics — the list's
-// "Statistics" button is simply the way to /roster. From 1200px the roster's page itself splits
+// roster (/roster/:id/view) or, with none open (/roster), the game statistics. One heading runs
+// across the top of all of it (RosterListHead): the title, New / Import, and "Statistics", which is
+// simply the way to /roster. From 1200px the roster's page itself splits
 // again and a unit's card opens in a third column instead of a dialog (RosterViewView unitPane);
 // between 901 and 1199px (a tablet) it stays two columns and the card stays a dialog.
 //
@@ -52,6 +58,7 @@ import { computed, defineAsyncComponent, nextTick, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import RosterListView from './RosterListView.vue'
 import RosterViewView from './RosterViewView.vue'
+import RosterListHead from '../../components/roster/RosterListHead.vue'
 import { useMediaQuery } from '../../composables/useMediaQuery.js'
 import { useViewportFill } from '../../composables/useViewportFill.js'
 
@@ -72,9 +79,11 @@ watch(wide, () => nextTick(measure))
 .roster-desk {
   display: grid;
   grid-template-columns: minmax(17rem, 21rem) minmax(0, 1fr);
-  grid-template-rows: minmax(0, 1fr);
-  gap: 1rem;
+  grid-template-rows: auto minmax(0, 1fr);
+  column-gap: 1rem;
 }
+/* One heading across the columns (owner, 2026-09-29): the title and the ways in at the top. */
+.rd-head { grid-column: 1 / -1; margin-bottom: 0; }
 .rd-list,
 .rd-main { min-height: 0; }
 .rd-main {

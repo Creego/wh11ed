@@ -3,57 +3,9 @@
     class="roster-list"
     :class="{ 'rl-in-desk': inDesk }"
   >
-    <!-- The heading row, the same shape the tracker home uses: the title on the left, and on the
-         right the two things that are ABOUT this page — its page of the guide (the builder does
-         more than the screen shows: import, share, hand-off to the tracker) and where the lists
-         are kept. Everything the cloud line can say is produced by the single sync pass on
-         entry; there is no manual "Sync" button, on purpose. -->
-    <div class="hero">
-      <h1>{{ labels.rostersHeading }}</h1>
-      <div class="hero-side">
-        <!-- Cloud first, help last: the help link is always there in the same shape and holds the
-             corner, while the line beside it changes with who is reading. -->
-        <RosterCloudBar
-          hint
-          compact
-        />
-        <RouterLink
-          class="hero-help"
-          to="/help/rosters"
-          :title="labels.helpSection"
-          :aria-label="labels.helpSection"
-        >
-          <i class="bi bi-question-circle" />
-        </RouterLink>
-      </div>
-    </div>
-
-    <div class="cta">
-      <button
-        class="btn-primary btn-lg"
-        @click="onNew"
-      >
-        <i class="bi bi-plus-lg" /> {{ labels.rosterNew }}
-      </button>
-      <!-- Most players already have their list somewhere else — in the GW app, in New Recruit.
-           Pasting it beats rebuilding it, so the second way in sits beside the first. -->
-      <button
-        class="btn-ghost"
-        @click="importOpen = true"
-      >
-        <i class="bi bi-clipboard-plus" /> {{ labels.rosterImport }}
-      </button>
-      <!-- On the desk the right-hand side shows either a list or the game statistics; this is the
-           way back to the statistics from a list (owner, 2026-09-29). -->
-      <RouterLink
-        v-if="inDesk"
-        to="/roster"
-        class="btn-ghost rl-stats"
-        :class="{ on: !activeId }"
-      >
-        <i class="bi bi-bar-chart" /> {{ labels.statsLink }}
-      </RouterLink>
-    </div>
+    <!-- The heading and the ways in (RosterListHead). On the desk the desk draws it once, across
+         all its columns, and this column starts at the tabs. -->
+    <RosterListHead v-if="!inDesk" />
 
     <!-- Saved lists and unfinished ones are the same kind of card but not the same kind of thing:
          a draft is a wizard run that hasn't been saved yet, so it lives behind its own tab and
@@ -264,11 +216,6 @@
       @close="pendingDelete = null"
     />
 
-    <RosterImportModal
-      v-if="importOpen"
-      @imported="onImported"
-      @close="importOpen = false"
-    />
 
     <RosterExportModal
       v-if="exportRoster"
@@ -285,8 +232,7 @@
 import { computed, onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import BaseModal from '../../components/BaseModal.vue'
-import RosterCloudBar from '../../components/roster/RosterCloudBar.vue'
-import RosterImportModal from '../../components/roster/RosterImportModal.vue'
+import RosterListHead from '../../components/roster/RosterListHead.vue'
 import RosterExportModal from '../../components/roster/RosterExportModal.vue'
 import ConfirmModal from '../../components/ConfirmModal.vue'
 import PageTabs from '../../components/PageTabs.vue'
@@ -329,7 +275,6 @@ const tabs = computed(() => [
   { key: 'saved', label: labels.value.rosterTabSaved, count: savedRosters.value.length, active: tab.value === 'saved' },
   { key: 'drafts', label: labels.value.rosterTabDrafts, count: draftRosters.value.length, active: tab.value === 'drafts' },
 ])
-const importOpen = ref(false)
 
 // Exporting needs the faction's generated bundle (unit names, wargear, points), which this screen
 // otherwise never loads — so it is fetched on demand, the same lazy load the editor does, and the
@@ -352,7 +297,6 @@ async function onExport(id) {
 }
 // An imported list lands in the editor, not in the read-only view: whatever the report could not
 // place is the reader's to finish, and that is where they can.
-function onImported(id) { router.push(`/roster/${id}`) }
 const shown = computed(() => (tab.value === 'drafts' ? draftRosters : savedRosters).value)
 // The factions this tab's lists belong to, with how many each, by name. A list with no faction
 // yet (a draft picked none) has no chip and shows under "All" only.
@@ -445,10 +389,6 @@ function openRoster(r) {
   router.push(r.draft ? { path: '/roster/new', query: { draft: r.id } } : `/roster/${r.id}/view`)
 }
 
-function onNew() {
-  router.push('/roster/new')
-}
-
 const menuFor = ref(null)
 const menuRoster = computed(() => (menuFor.value ? rosterById(menuFor.value) : null))
 const menuRosterName = computed(() => menuRoster.value?.name || labels.value.rosterUntitled)
@@ -483,51 +423,6 @@ function confirmDelete() {
 
 <style scoped>
 .roster-list { padding-top: 0.5rem; }
-.hero {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.2rem 0.75rem;
-  padding: 0.2rem 0 0.45rem;
-  border-bottom: 2px solid var(--accent);
-  margin-bottom: 1rem;
-}
-.hero h1 {
-  font-family: var(--font-display);
-  font-size: 2.1rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  margin: 0;
-  line-height: 1.1;
-}
-/* The pair on the right rides the heading's baseline and shrinks before the title does. */
-.hero-side {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  min-width: 0;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-.cta { display: flex; justify-content: center; gap: 0.6rem; margin-bottom: 1.75rem; flex-wrap: wrap; }
-/* Same treatment as the tracker's CTA row on phones: button-sized buttons on one line, not two
-   stretched panels. */
-@media (max-width: 480px) {
-  /* Display type is a lot of height on a 360px screen, and the heading is the least useful
-     thing on it — the list under it is what the reader came for. */
-  .hero h1 { font-size: 1.75rem; }
-  .hero-side { font-size: 0.75rem; }
-  .cta { gap: 0.5rem; margin-bottom: 1.4rem; }
-  .cta .btn-primary,
-  .cta .btn-ghost {
-    flex: 0 0 auto;
-    padding: 0.45rem 0.8rem;
-    font-size: 0.8rem;
-    white-space: nowrap;
-  }
-}
-
 /* The same folder tabs the faction pages use (PageTabs) — the list below them is the tab's
    content, so it reads as one panel rather than a filter sitting above a list. */
 .rl-tabs { margin-bottom: 1rem; }
@@ -550,8 +445,8 @@ function confirmDelete() {
 }
 .rosters { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; position: relative; }
 /* ── The left column of the rosters desk (RosterDeskView) ──
-   Narrow and its own scroller: the heading and the buttons one size down, the cards in one
-   column, the one open beside the list marked the way a picked faction row is. */
+   Narrow and its own scroller, starting at the tabs (the desk draws the heading across all its
+   columns): the cards in one column, the one open beside the list marked. */
 .rl-in-desk {
   height: 100%;
   min-height: 0;
@@ -559,10 +454,6 @@ function confirmDelete() {
   overscroll-behavior: contain;
   padding: 0.75rem 1rem 2rem 0;
 }
-.rl-in-desk .hero { flex-wrap: wrap; row-gap: 0.25rem; }
-.rl-in-desk .cta { justify-content: flex-start; margin-bottom: 1rem; }
-.rl-in-desk .cta .btn-lg { padding: 0.5rem 0.9rem; font-size: 0.9rem; }
-.rl-stats.on { border-color: var(--accent); color: var(--accent); }
 /* The faction's bar on the left stays; the other three edges and a wash say "open". */
 .roster.on {
   border-top-color: var(--accent);
