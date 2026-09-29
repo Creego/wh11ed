@@ -84,28 +84,23 @@ function withLocale(route) {
   return out
 }
 
-// `meta.trail` + `meta.level` place a page in a chain a reader walks down and back up (a list, an
-// item, the item's editor) — usePageMotion slides forward going deeper and back coming up, and
-// fades anything else. Level is a page's depth in its chain, NOT the path's: the roster editor
-// `/roster/:id` is deeper than the view `/roster/:id/view`. A page with no level (the game
-// screen, the landing, the one-off pages) always fades.
 const localeRoutes = [
     { path: '/',               component: LandingView, meta: { section: 'landing' } },
-    { path: CORE_PATH, component: CoreRulesView, meta: { trail: 'rules', level: 2, section: 'core' } },
+    { path: CORE_PATH, component: CoreRulesView, meta: { section: 'core' } },
     // The seven former chapter routes. They stay valid forever — old bookmarks, shared
     // links and the stale SEO keys still in the bucket all land on the right chapter.
     ...Object.entries(CORE_CHAPTER_ANCHORS).map(([path, anchor]) => ({
       path,
       redirect: { path: CORE_PATH, hash: '#' + anchor },
     })),
-    { path: EVENT_PATH, component: EventCompanionView, meta: { trail: 'rules', level: 2, section: 'event' } },
+    { path: EVENT_PATH, component: EventCompanionView, meta: { section: 'event' } },
     // The six former chapter routes. They stay valid forever — old bookmarks, shared
     // links and the stale SEO keys still in the bucket all land on the right chapter.
     ...Object.entries(EVENT_CHAPTER_ANCHORS).map(([path, anchor]) => ({
       path,
       redirect: { path: EVENT_PATH, hash: '#' + anchor },
     })),
-    { path: '/tracker',      component: TrackerHomeView, meta: { trail: 'tracker', level: 1, section: 'tracker' } },
+    { path: '/tracker',      component: TrackerHomeView, meta: { section: 'tracker' } },
     { path: '/tracker/game', component: TrackerGameView, meta: { section: 'tracker' } },
     // Joining a shared game (useParty.js): the invite link carries its token; the code is typed.
     { path: '/tracker/join/:invite?', component: PartyJoinView, meta: { section: 'tracker' } },
@@ -113,30 +108,30 @@ const localeRoutes = [
     // (/roster, indexable) + private creation wizard, read-only view and editor (/roster/new,
     // /roster/:id/view, /roster/:id — none in STATIC_ROUTES, like /tracker/game). Static
     // /roster/new and /roster/shared must precede the :id route so neither is captured as an id.
-    { path: '/roster',        component: RosterListView, meta: { trail: 'roster', level: 1, section: 'roster' } },
-    { path: '/roster/new',    component: RosterCreateView, meta: { trail: 'roster', level: 2, section: 'roster' } },
-    { path: '/roster/shared', component: RosterSharedView, meta: { trail: 'roster', level: 2, section: 'roster' } },
-    { path: '/roster/:id/view', component: RosterViewView, meta: { trail: 'roster', level: 2, section: 'roster' } },
+    { path: '/roster',        component: RosterListView, meta: { section: 'roster' } },
+    { path: '/roster/new',    component: RosterCreateView, meta: { section: 'roster' } },
+    { path: '/roster/shared', component: RosterSharedView, meta: { section: 'roster' } },
+    { path: '/roster/:id/view', component: RosterViewView, meta: { section: 'roster' } },
     // The same list as a document, with the panel that decides what goes on the paper.
     // Private like the rest of them: a print of somebody's army list has no business in
     // STATIC_ROUTES or in the sitemap.
-    { path: '/roster/:id/print', component: RosterPrintView, meta: { trail: 'roster', level: 3, section: 'roster' } },
+    { path: '/roster/:id/print', component: RosterPrintView, meta: { section: 'roster' } },
     // The catalogue used to live here, as a page of its own. It is now a pane of the editor's
     // Units tab — the redirect is for the links that outlive the route: a stored last route (the
     // PWA resumes into one), a phone's back stack, a bookmark.
     { path: '/roster/:id/add', redirect: (to) => `/roster/${to.params.id}` },
-    { path: '/roster/:id',    component: RosterEditorView, meta: { trail: 'roster', level: 3, section: 'roster' } },
+    { path: '/roster/:id',    component: RosterEditorView, meta: { section: 'roster' } },
     // The army list attached to a player of the CURRENT game (:pi = 0|1; :mi = doubles member
     // 0|1, absent in singles). Same view as /roster/:id/view, reading the game's own snapshot
     // instead of the saved-roster store — see rosterGameLink.js. Private, like /tracker/game:
     // not in STATIC_ROUTES, not in the sitemap.
     { path: '/tracker/game/roster/:pi/:mi?', component: RosterViewView, meta: { section: 'tracker' } },
-    { path: '/tracker/history/:id', component: TrackerHistoryView, meta: { trail: 'tracker', level: 2, section: 'tracker' } },
+    { path: '/tracker/history/:id', component: TrackerHistoryView, meta: { section: 'tracker' } },
     // Your battle record, read out of the same history. Private like /tracker/game: it is a view
     // of this device's games, so it is neither in STATIC_ROUTES nor in the sitemap.
-    { path: '/tracker/stats', component: TrackerStatsView, meta: { trail: 'tracker', level: 2, section: 'tracker' } },
+    { path: '/tracker/stats', component: TrackerStatsView, meta: { section: 'tracker' } },
     // The same list, read out of a FINISHED game — the snapshot is what makes that possible at all.
-    { path: '/tracker/history/:gid/roster/:pi/:mi?', component: RosterViewView, meta: { trail: 'tracker', level: 3, section: 'tracker' } },
+    { path: '/tracker/history/:gid/roster/:pi/:mi?', component: RosterViewView, meta: { section: 'tracker' } },
     { path: '/tracker/auth-callback', component: AuthCallbackView, meta: { section: 'tracker' } },
     // The live-broadcast overlay an OBS Browser Source opens. `bare` strips the app chrome
     // (App.vue); private like /tracker/game — not in STATIC_ROUTES, auto non-indexable.
@@ -150,12 +145,11 @@ const localeRoutes = [
     {
       path: '/help',
       component: HelpView,
-      meta: { trail: 'help', level: 1 },
       beforeEnter: (to) => (/^#help-[a-z-]+$/.test(to.hash) ? `/help/${to.hash.slice(6)}` : true),
     },
-    { path: '/help/:topic', component: HelpTopicView, meta: { trail: 'help', level: 2 } },
+    { path: '/help/:topic', component: HelpTopicView },
     { path: '/changelog', component: ChangelogView },
-    { path: '/factions',       component: FactionsListView, meta: { trail: 'faction', level: 1, section: 'faction' } },
+    { path: '/factions',       component: FactionsListView, meta: { section: 'faction' } },
     // A faction's three pages are CHILDREN of one route: the hero and its tabs (FactionPagesView →
     // FactionLayout) stay mounted while the page under them changes, so a tab switch moves only
     // the content. App.vue keys its page swap by the parent record + slug for that (`pageKey`).
@@ -163,7 +157,7 @@ const localeRoutes = [
     {
       path: '/factions/:slug',
       component: FactionPagesView,
-      meta: { trail: 'faction', level: 2, section: 'faction' },
+      meta: { section: 'faction' },
       children: [
         { path: '', component: FactionRuleView, meta: { prefetch: 'faction' } },
         { path: 'datasheets', component: FactionDatasheetsView, meta: { prefetch: 'factionDatasheets' } },
@@ -173,12 +167,12 @@ const localeRoutes = [
     // Merged into /factions/:slug — redirect old bookmarks/links to the combined page.
     { path: '/factions/:slug/detachments', redirect: (to) => `/factions/${to.params.slug}` },
     // One unit's sheet is a page of its own (hero-less), a level deeper than the list.
-    { path: '/factions/:slug/datasheets/:unit', component: FactionDatasheetView, meta: { trail: 'faction', level: 3, section: 'faction', prefetch: 'factionUnit' } },
+    { path: '/factions/:slug/datasheets/:unit', component: FactionDatasheetView, meta: { section: 'faction', prefetch: 'factionUnit' } },
     // "Rules" umbrella landing (Core Rules / Event Companion / Combat Patrol summary cards).
-    { path: '/rules', component: RulesLandingView, meta: { trail: 'rules', level: 1, section: 'rules-landing' } },
+    { path: '/rules', component: RulesLandingView, meta: { section: 'rules-landing' } },
     // Combat Patrol.
-    { path: '/combat-patrol',       component: CombatPatrolIndexView, meta: { trail: 'rules', level: 2, section: 'combat-patrol' } },
-    { path: '/combat-patrol/:slug', component: CombatPatrolFactionView, meta: { trail: 'rules', level: 3, section: 'combat-patrol' } },
+    { path: '/combat-patrol',       component: CombatPatrolIndexView, meta: { section: 'combat-patrol' } },
+    { path: '/combat-patrol/:slug', component: CombatPatrolFactionView, meta: { section: 'combat-patrol' } },
     // Game-time stratagem reference. Reachable only via the mobile bottom-nav (and direct
     // URL on desktop) — intentionally not in navGroups / NavSidebar / the top navbar.
     { path: '/stratagems', component: StratagemsView, meta: { section: 'stratagems' } },

@@ -21,7 +21,6 @@
           class="mb-icon mb-text"
           :title="labels.resumeGameBar"
           :aria-label="labels.resumeGameBar"
-          @click="markNextPage('rise')"
         >
           {{ labels.resumeGameShort }}
         </RouterLink>
@@ -37,7 +36,6 @@
           class="mb-icon mb-text"
           :title="labels.rosterResumeDraftBar"
           :aria-label="labels.rosterResumeDraftBar"
-          @click="markNextPage('rise')"
         >
           {{ labels.rosterResumeDraftShort }}
         </RouterLink>
@@ -92,7 +90,6 @@ import { useLocale } from '../composables/useLocale.js'
 import { ui } from '../i18n/ui.js'
 import { useMobileActionBar } from '../composables/useMobileActionBar.js'
 import { useBackToTop } from '../composables/useBackToTop.js'
-import { markNextPage } from '../composables/usePageMotion.js'
 
 const props = defineProps({
   showResumeGame: { type: Boolean, default: false },

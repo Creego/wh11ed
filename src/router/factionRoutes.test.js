@@ -14,16 +14,14 @@ describe('faction routes', () => {
       expect(r.matched.length, p).toBe(2)
       expect(r.params.slug).toBe('orks')
       expect(r.meta.section).toBe('faction')
-      expect(r.meta.level).toBe(2)
     }
     // the same parent record for all three — that is what keeps the hero mounted
     expect(new Set(['/factions/orks', '/factions/orks/datasheets', '/factions/orks/faq'].map((p) => at(p).matched[0].path)).size).toBe(1)
   })
 
-  it('keeps the unit page a level deeper, on its own', () => {
+  it('keeps the unit page a route of its own', () => {
     const r = at('/factions/orks/datasheets/boyz')
     expect(r.matched.length).toBe(1)
-    expect(r.meta.level).toBe(3)
     expect(r.params.unit).toBe('boyz')
   })
 

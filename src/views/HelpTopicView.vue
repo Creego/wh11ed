@@ -46,7 +46,6 @@
         v-if="prev"
         :to="`/help/${slugOf(prev)}`"
         class="ha-link ha-prev"
-        @click="markNextPage('axis-back')"
       >
         <i class="bi bi-chevron-left" />
         <span>{{ prev.title }}</span>
@@ -55,7 +54,6 @@
         v-if="next"
         :to="`/help/${slugOf(next)}`"
         class="ha-link ha-next"
-        @click="markNextPage('axis-fwd')"
       >
         <span>{{ next.title }}</span>
         <i class="bi bi-chevron-right" />
@@ -76,7 +74,6 @@ import { ui } from '../i18n/ui.js'
 import { useLocale } from '../composables/useLocale.js'
 import { useRenderInline } from '../composables/useRenderInline.js'
 import { useKeywordPopover } from '../composables/useKeywordPopover.js'
-import { markNextPage } from '../composables/usePageMotion.js'
 import { resolveRef, useRefNavigation } from '../composables/useRefNavigation.js'
 
 const route = useRoute()

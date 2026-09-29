@@ -132,36 +132,6 @@
   opacity: 0;
 }
 
-/* A page coming up from below — the route swap after a chip at the bottom of the screen ("To
-   game", "To roster"; usePageMotion.js). The old page fades as it always does; the new one rises
-   in on the sheets' timing.
-   Moved with `position: relative` + `top`/`left`, NOT `transform` — here and in `axis-*` below:
-   these classes run on whole pages and panels, and a transform makes its element the containing
-   block of every `position: fixed` inside it (the roster builder's Cancel/Save bar and undo bar,
-   a faction page's side buttons, the rules' contents button). For the length of the move they
-   would ride with the page instead of staying on the screen's edge. A relative offset moves the
-   box and leaves its fixed children where they are. */
-.rise-leave-active { transition: opacity var(--motion-fast) ease; }
-.rise-leave-to { opacity: 0; }
-.rise-enter-active {
-  position: relative;
-  transition: opacity var(--motion-slow) ease, top var(--motion-slow) cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.rise-enter-from { opacity: 0; top: 64px; }
-
-/* Shared axis X — a page and the one it leads into (usePageMotion: deeper goes
-   forward, back up goes back). The old view fades toward its own side, the new one comes in from
-   its own. Short travel, not a page slide, so only one view is ever drawn. Pair with
-   mode="out-in"; the caller picks fwd (moving right / deeper) or back. `left`, not `transform` —
-   see `rise` above. */
-.axis-fwd-enter-active, .axis-fwd-leave-active,
-.axis-back-enter-active, .axis-back-leave-active {
-  position: relative;
-  transition: opacity var(--motion-fast) ease, left var(--motion-fast) ease;
-}
-.axis-fwd-enter-from, .axis-back-leave-to { opacity: 0; left: 24px; }
-.axis-fwd-leave-to, .axis-back-enter-from { opacity: 0; left: -24px; }
-
 /* List (TransitionGroup) fade: leaving items drop out of flow so survivors reflow/slide. */
 .list-enter-active, .list-leave-active {
   transition: opacity var(--motion-med) ease;

@@ -19,16 +19,7 @@ libraries** (don't add GSAP/@vueuse/motion/animate.css).
 - **Reusable global transition classes** (also in `style.css`, use by `name=`): `fade` (opacity,
   single toggled elements), `list` (opacity + `position:absolute` leave + `list-move` FLIP, for
   `TransitionGroup` lists — the list container needs `position: relative` to contain leavers),
-  `fade-pop` (dropdowns/anchored menus), `slide-up` (fixed bottom bars), `axis-fwd` / `axis-back`
-  (shared axis X: only for going to another page, deeper or back up — `usePageMotion`. **In-page
-  switches fade** (`fade`, `mode="out-in"`): the `PageTabs` panels, the faction pages' tabs and
-  the roster editor's Settings | Units all slid sideways by the control's order until 2026-09-29,
-  and the owner found every one of them jerky. A view that sizes itself to the window must keep
-  that layout until it has faded out, and a view that is expensive to build is not remounted per
-  switch: both stay built behind `v-show`, one `<Transition>` each, and the leaving one's
-  `after-leave` lets the other in — the editor does both (`paneTab`). A tab switch hands its
-  `@enter` to `bringTabsIntoView`. The 24px of travel needs no clip of its own: `html` already
-  has `overflow-x: clip`), `sift` (a list or grid a
+  `fade-pop` (dropdowns/anchored menus), `slide-up` (fixed bottom bars), `sift` (a list or grid a
   search/filter narrows in place — leavers vanish at once via `display:none`, survivors slide,
   newcomers fade; the datasheet grid, the roster catalogue, the changelog).
   `sift` carries **`!important` on purpose**: a scoped item rule (`.ds-chip[data-v]`, 0,2,0; 0,3,0
@@ -99,27 +90,30 @@ libraries** (don't add GSAP/@vueuse/motion/animate.css).
   inline bit in a row (a custom-points input, a cap chip, an empty-state line) takes `fade`
   instead: there is no height to give. Wrapping the HEAD of a `v-if`/`v-else-if` chain splits
   the chain — give the wrapped element its own condition (see `StratagemsView`'s empty note).
+- **Switches inside a page fade** (`fade`, `mode="out-in"`): the `PageTabs` panels, the faction
+  pages' tabs and the roster editor's Settings | Units. They slid sideways by the control's order
+  (an `axis-*` pair) until 2026-09-29, and the owner found every one of them jerky; the pair is
+  gone. A view that sizes itself to the window must keep that layout until it has faded out, and
+  a view that is expensive to build is not remounted per switch: both stay built behind `v-show`,
+  one `<Transition>` each, and the leaving one's `after-leave` lets the other in — the editor does
+  both (`paneTab`). A tab switch hands its `@enter` to `bringTabsIntoView`.
 - **`BaseModal` animates open only** — on a phone the sheet rises from below the screen edge, wider
   it grows in from 0.94, at `--motion-slow`; never the dialog's opacity (VoiceOver focus, see its CSS) (`<Transition name="modal" appear>`); **close is intentionally
   instant** — a leave phase races the focus-restore in `useModalA11y.js`. Don't "fix" it.
-- **Page transitions**: `App.vue` wraps `<RouterView>` in `<Transition :name="pageMotion" mode="out-in">`
-  keyed on `$route.path`; `usePageMotion.js` picks the name (2026-09-28). Down a chain — `meta.trail`
-  + `meta.level` in `router/index.js` (a list 1, an item 2, its editor 3; the level is the page's
-  depth, not the path's) — the page slides in from the right (`axis-fwd`), back up from the left;
-  a link may mark the next swap (`markNextPage`: the bottom chips' `rise`, the help's prev/next);
-  anything else fades. **A page's data is fetched before it is shown** (`router/prefetch.js`, named
+- **Page transitions**: `App.vue` wraps `<RouterView>` in `<Transition name="fade" mode="out-in">`
+  keyed on `pageKey`. **Every page swap fades** (owner, 2026-09-29): from 2026-09-28 pages slid
+  sideways down and up a chain (`meta.trail`/`meta.level`), the help's prev/next did too, and the
+  bottom chips' target rose from below — all read as jerky and are gone, with the route meta that
+  drove them. Should a moving swap ever come back, move it with `position: relative` +
+  `left`/`top`, **never `transform`**: a transformed page is the containing block of every
+  `position: fixed` inside it (the builder's Cancel/Save bar, a faction's side buttons), which
+  would ride with it. **A page's data is fetched before it is shown** (`router/prefetch.js`, named
   by `meta.prefetch`, awaited in `beforeResolve`, capped at 4s): the faction pages render only once
-  their chunk is in, and without this they slid in empty and the content popped a beat later.
+  their chunk is in, and without this they came in empty and the content popped a beat later.
   **A faction's tabs are nested routes** (`FactionPagesView` → `FactionLayout` → its own
   `RouterView`), and `App.vue` keys the swap by `pageKey` — the parent record + slug where a route
-  has children — so a tab switch moves only the content under the hero. Do NOT mark a route-tab
-  click with `markNextPage`: no page swap consumes the mark and it leaks onto the next one. **On iOS a history step always fades** —
-  Safari animates its own edge-swipe — told apart by vue-router's `history.state.position` (a
-  `popstate` listener fires after the router has started). Page motion moves with `position:
-  relative` + `left`/`top`, **never `transform`**: a transformed page is the containing block of
-  every `position: fixed` inside it (the builder's Cancel/Save bar, a faction's side buttons), which
-  would ride with it. The leaving page gets `.page-leaving` whatever the animation — App.vue's
-  `--roster-sticky-h` reserve keys off it. `usePageMotion.test.js` pins the rules.
+  has children — so a tab switch fades only the content under the hero. The leaving page gets
+  `.page-leaving` — App.vue's `--roster-sticky-h` reserve keys off it (`usePageMotion.js`).
   **The scroll is set in the swap, not at the click** (`scrollBehavior` in `router/index.js` waits
   for `pageArrived`, the transition's `@enter`: the new page is in, still invisible) and instantly —
   set at the click, `<html>`'s smooth scrolling slid the leaving page up for half a second. Between

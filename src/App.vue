@@ -37,13 +37,11 @@
       :class="{ 'main-content--wide': isCoreRoute || isEventRoute, 'main-content--broad': isFactionsIndexRoute, 'main-content--desk': isRosterDeskRoute }"
     >
       <RouterView v-slot="{ Component }">
-        <!-- `fade`, unless the link that started this swap asked for another (usePageMotion). -->
         <Transition
-          :name="pageMotion"
+          name="fade"
           mode="out-in"
           @before-leave="pageLeaving"
           @enter="pageArrived"
-          @after-enter="clearPageMotion"
         >
           <component
             :is="Component"
@@ -96,7 +94,7 @@
 
 <script setup>
 import { ref, computed, watch, onMounted, onUnmounted, defineAsyncComponent } from 'vue'
-import { pageMotion, clearPageMotion, installPageMotion, pageLeaving, pageArrived } from './composables/usePageMotion.js'
+import { pageLeaving, pageArrived } from './composables/usePageMotion.js'
 import { useRoute, useRouter } from 'vue-router'
 import { shouldWelcome } from './composables/useWelcome.js'
 import { useFeedbackModal } from './composables/useFeedbackModal.js'
@@ -137,8 +135,6 @@ import { localePath, stripLocale } from './router/locale.js'
 
 const route = useRoute()
 const router = useRouter()
-// Which way each page swap moves (usePageMotion: down or up a chain, a link's mark, or a fade).
-installPageMotion(router)
 const { open: feedbackOpen } = useFeedbackModal()
 useViewRestore() // PWA-only: remember & restore the last page + in-view section
 const { ensureSession } = useAuth()
