@@ -461,6 +461,18 @@ function confirmDelete() {
   overscroll-behavior: contain;
   padding: 0.75rem 1rem 2rem 0;
 }
+/* Tighter than the list page (owner, 2026-09-29): the column is a picker to scan down, so every
+   card spends less height — the card's padding and its line gaps, the tabs' and the filter's
+   margins, and the "…" button, which keeps its tap area but no longer props the name row open. */
+.rl-in-desk .rl-tabs { margin-bottom: 0.6rem; }
+.rl-in-desk .rl-factions { margin-bottom: 0.5rem; }
+.rl-in-desk .rl-factions select { padding: 0.25rem 0.4rem; }
+.rl-in-desk .rosters { gap: 0.4rem; }
+.rl-in-desk .roster { padding: 0.45rem 0.7rem 0.5rem; }
+.rl-in-desk .rname { font-size: 0.9rem; line-height: 1.25; }
+.rl-in-desk .kebab { margin: -0.35rem -0.4rem -0.35rem 0; }
+.rl-in-desk .rline { margin-top: 0; }
+.rl-in-desk .roster-meta { margin-top: 0.2rem; }
 /* The faction's bar on the left stays; the other three edges and a wash say "open". */
 .roster.on {
   border-top-color: var(--accent);
