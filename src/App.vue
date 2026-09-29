@@ -34,7 +34,7 @@
 
     <main
       class="main-content"
-      :class="{ 'main-content--wide': isCoreRoute || isEventRoute, 'main-content--broad': isFactionsIndexRoute, 'main-content--desk': isRosterDeskRoute }"
+      :class="{ 'main-content--wide': isCoreRoute || isEventRoute, 'main-content--broad': isFactionsIndexRoute, 'main-content--desk': isRosterDeskRoute || isRosterBrowseDesk, 'main-content--browse': isRosterBrowseDesk }"
     >
       <RouterView v-slot="{ Component }">
         <Transition
@@ -49,7 +49,7 @@
           />
         </Transition>
       </RouterView>
-      <AppFooter v-if="!isTrackerGameRoute && !isRosterEditRoute && !isBare" />
+      <AppFooter v-if="!isTrackerGameRoute && !isRosterEditRoute && !isRosterBrowseDesk && !isBare" />
     </main>
 
     <AppBottomNav
@@ -137,6 +137,7 @@ import { useKeywordPopover, opensPopover } from './composables/useKeywordPopover
 import { useTracker } from './composables/useTracker.js'
 import { resolveRef, useRefNavigation } from './composables/useRefNavigation.js'
 import { useRouteSection } from './composables/useRouteSection.js'
+import { useMediaQuery } from './composables/useMediaQuery.js'
 import { useRosters } from './composables/useRosters.js'
 import { useRosterDraftResume } from './composables/useRosterDraftResume.js'
 import { useViewRestore } from './composables/useViewRestore.js'
@@ -169,9 +170,12 @@ const appPath = computed(() => stripLocale(route.path))
 // is one page per faction: moving between its tabs changes the child, drawn by the parent's own
 // RouterView (FactionPagesView), and must not re-create the parent — that is what kept the hero
 // and the tabs sliding out and in with every tab (2026-09-28).
-const pageKey = computed(() => (
-  route.matched.length > 1 ? `${route.matched[0].path}|${route.params.slug ?? ''}` : appPath.value
-))
+const pageKey = computed(() => {
+  // The rosters desk: the list and every roster's page are ONE screen on a wide window
+  // (RosterDeskView) — opening another roster changes its right-hand side, not the page.
+  if (isRosterBrowseDesk.value) return 'roster-desk'
+  return route.matched.length > 1 ? `${route.matched[0].path}|${route.params.slug ?? ''}` : appPath.value
+})
 // A bare route (the broadcast overlay OBS captures) renders with NO app chrome at all —
 // navbar, drawer, subnav, bottom nav, utility bar and toasts stay out of the frame.
 const isBare = computed(() => !!route.meta.bare)
@@ -208,6 +212,12 @@ const isRosterEditRoute = computed(() =>
 const isRosterDeskRoute = computed(() => isRosterEditRoute.value && !appPath.value.endsWith('/print'))
 // The factions index lays its four groups out as four columns, which the 860px measure cannot fit.
 const isFactionsIndexRoute = computed(() => appPath.value === '/factions')
+// The list of rosters and a saved roster's page, which a window wider than the bottom nav's
+// 900px shows as one screen of columns (RosterDeskView): as wide as the builder's desk, filling the
+// window with no footer under it, and one page for the swap (pageKey).
+const rosterBrowseWide = useMediaQuery('(min-width: 901px)')
+const isRosterBrowseDesk = computed(() => rosterBrowseWide.value &&
+  (appPath.value === '/roster' || /^\/roster\/[^/]+\/view$/.test(appPath.value)))
 
 // "Back to game" bar: only when a game is actively in progress and the user is reading something
 // that isn't the game — anywhere outside the tracker, plus the one tracker screen that is itself
@@ -368,6 +378,15 @@ onUnmounted(() => {
    the ordinary measure, and this class must not widen them. */
 @media (min-width: 1200px) {
   .main-content--desk {
+    max-width: 1600px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* The rosters desk (list + a roster, RosterDeskView) — from where the bottom nav goes. */
+@media (min-width: 901px) {
+  .main-content--browse {
     max-width: 1600px;
     padding-left: 1.5rem;
     padding-right: 1.5rem;

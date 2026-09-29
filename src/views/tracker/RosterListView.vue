@@ -1,5 +1,8 @@
 <template>
-  <div class="roster-list">
+  <div
+    class="roster-list"
+    :class="{ 'rl-in-desk': inDesk }"
+  >
     <!-- The heading row, the same shape the tracker home uses: the title on the left, and on the
          right the two things that are ABOUT this page — its page of the guide (the builder does
          more than the screen shows: import, share, hand-off to the tracker) and where the lists
@@ -40,6 +43,16 @@
       >
         <i class="bi bi-clipboard-plus" /> {{ labels.rosterImport }}
       </button>
+      <!-- On the desk the right-hand side shows either a list or the game statistics; this is the
+           way back to the statistics from a list (owner, 2026-09-29). -->
+      <RouterLink
+        v-if="inDesk"
+        to="/roster"
+        class="btn-ghost rl-stats"
+        :class="{ on: !activeId }"
+      >
+        <i class="bi bi-bar-chart" /> {{ labels.statsLink }}
+      </RouterLink>
     </div>
 
     <!-- Saved lists and unfinished ones are the same kind of card but not the same kind of thing:
@@ -109,7 +122,7 @@
             v-for="r in listed"
             :key="r.id"
             class="roster"
-            :class="{ themed: !!factionOf(r) }"
+            :class="{ themed: !!factionOf(r), on: inDesk && r.id === activeId }"
             :style="cardStyle(r)"
             role="button"
             tabindex="0"
@@ -294,6 +307,14 @@ import { rosterItems } from '../../data/roster/index.js'
 import { factionGroups } from '../../data/factionsIndex.js'
 import { toneVars } from '../../utils/tone.js'
 import { loadHistory, rosterRecords } from '../../composables/gameStats.js'
+
+defineProps({
+  // The left column of the rosters desk (RosterDeskView, wide screens): one column of cards, the
+  // open one marked, and the statistics one tap away.
+  inDesk: { type: Boolean, default: false },
+  // The roster the desk has open beside the list.
+  activeId: { type: String, default: '' },
+})
 
 const router = useRouter()
 const { locale } = useLocale()
@@ -528,11 +549,26 @@ function confirmDelete() {
   font-variant-numeric: tabular-nums;
 }
 .rosters { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; position: relative; }
-/* Two columns where the page is wide enough for two cards to keep their one-line meta row (owner,
-   2026-09-29: one card across a desktop was a band of empty middle). A leaving card is
-   position:absolute (`list`), so it drops out of the grid without reflowing the rest mid-fade. */
-@media (min-width: 1000px) {
-  .rosters { display: grid; grid-template-columns: 1fr 1fr; }
+/* ── The left column of the rosters desk (RosterDeskView) ──
+   Narrow and its own scroller: the heading and the buttons one size down, the cards in one
+   column, the one open beside the list marked the way a picked faction row is. */
+.rl-in-desk {
+  height: 100%;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0.75rem 1rem 2rem 0;
+}
+.rl-in-desk .hero { flex-wrap: wrap; row-gap: 0.25rem; }
+.rl-in-desk .cta { justify-content: flex-start; margin-bottom: 1rem; }
+.rl-in-desk .cta .btn-lg { padding: 0.5rem 0.9rem; font-size: 0.9rem; }
+.rl-stats.on { border-color: var(--accent); color: var(--accent); }
+/* The faction's bar on the left stays; the other three edges and a wash say "open". */
+.roster.on {
+  border-top-color: var(--accent);
+  border-right-color: var(--accent);
+  border-bottom-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, var(--bg-card));
 }
 .roster {
   contain: paint; /* the emblem's stamp (FactionEmblem): clipped to the card, under its text */

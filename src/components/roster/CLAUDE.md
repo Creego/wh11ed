@@ -1725,6 +1725,28 @@ come and go by themselves, a failure stays until closed, and a save older than t
 announced. The words are `useRosterCloudStatus`, the same reading the list page's heading line
 (`RosterCloudBar`) uses.
 
+## The rosters desk — list, roster and unit side by side (added 2026-09-29)
+
+On a window wider than the bottom nav (≥901px) `/roster` and `/roster/:id/view` are ONE screen,
+`views/tracker/RosterDeskView.vue` (owner, 2026-09-29): the list of lists in a narrow left column
+(`RosterListView` with `in-desk`), and beside it the open roster (`RosterViewView` with
+`roster-id` + `in-desk`) or — at `/roster`, with none open — the game statistics
+(`TrackerStatsView` `in-desk`, loaded only then: it reads the tracker store, which carries the
+mission datasets). The list's "Statistics" button is just a link to `/roster`.
+
+- **Three columns from 1200px:** the roster's page splits again (`unit-pane`) and a unit's card
+  opens in a column beside it instead of the dialog — the same card, `RosterUnitRulesCard.vue`,
+  which the dialog `RosterUnitRulesModal.vue` wraps (with `RosterOwnedStar.vue` in its header).
+  Nothing picked shows `rosterPickUnit`. 901–1199px (a tablet) stays two columns with the dialog.
+- **Below 901px** nothing changed: the list page and the roster's own page, as before.
+- **One page for the swap:** App.vue keys both addresses as `roster-desk` on a wide window
+  (`isRosterBrowseDesk`), so opening another roster keeps the list (and its scroll) standing and
+  only the right-hand side fades; the width is `main-content--browse`, the footer is not drawn.
+- **Height:** the desk fills the window and every column scrolls on its own — the same
+  `.rw-host` + `useViewportFill` the builder's workbench stands on (see "Height for the panes").
+- A tracker game's roster (`/tracker/game/roster/…`, `/tracker/history/…/roster/…`) is still
+  `RosterViewView` on its own: the desk is the saved rosters' screen.
+
 ## Faction rules beside the build (added 2026-08-28)
 
 `RosterRulesPanel.vue` on **both** building screens — the wizard's Units step and the editor's

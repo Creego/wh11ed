@@ -23,7 +23,9 @@ const PartyJoinView     = () => import('../views/tracker/PartyJoinView.vue')
 const AuthCallbackView  = () => import('../views/tracker/AuthCallbackView.vue')
 const TrackerHistoryView = () => import('../views/tracker/TrackerHistoryView.vue')
 const TrackerStatsView  = () => import('../views/tracker/TrackerStatsView.vue')
-const RosterListView    = () => import('../views/tracker/RosterListView.vue')
+// The list and a saved roster's page are one screen on a wide window (RosterDeskView), and the
+// same two pages as before on a phone.
+const RosterDeskView    = () => import('../views/tracker/RosterDeskView.vue')
 const RosterCreateView  = () => import('../views/tracker/RosterCreateView.vue')
 const RosterViewView    = () => import('../views/tracker/RosterViewView.vue')
 const RosterEditorView  = () => import('../views/tracker/RosterEditorView.vue')
@@ -108,10 +110,10 @@ const localeRoutes = [
     // (/roster, indexable) + private creation wizard, read-only view and editor (/roster/new,
     // /roster/:id/view, /roster/:id — none in STATIC_ROUTES, like /tracker/game). Static
     // /roster/new and /roster/shared must precede the :id route so neither is captured as an id.
-    { path: '/roster',        component: RosterListView, meta: { section: 'roster' } },
+    { path: '/roster',        component: RosterDeskView, meta: { section: 'roster' } },
     { path: '/roster/new',    component: RosterCreateView, meta: { section: 'roster' } },
     { path: '/roster/shared', component: RosterSharedView, meta: { section: 'roster' } },
-    { path: '/roster/:id/view', component: RosterViewView, meta: { section: 'roster' } },
+    { path: '/roster/:id/view', component: RosterDeskView, meta: { section: 'roster' } },
     // The same list as a document, with the panel that decides what goes on the paper.
     // Private like the rest of them: a print of somebody's army list has no business in
     // STATIC_ROUTES or in the sitemap.
