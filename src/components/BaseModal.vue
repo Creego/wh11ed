@@ -100,7 +100,7 @@ import { ui } from '../i18n/ui.js'
 import { useLocale } from '../composables/useLocale.js'
 import { useModalA11y } from '../composables/useModalA11y.js'
 
-defineProps({
+const props = defineProps({
   title: { type: String, default: '' },
   // A second line under the title — a date, what the dialog is about. Two lines align to the top.
   subtitle: { type: String, default: '' },
@@ -110,6 +110,9 @@ defineProps({
   maxWidth: { type: String, default: '520px' },
   maxHeight: { type: String, default: '85dvh' },
   zIndex: { type: Number, default: 400 },
+  // A CSS selector inside the dialog to focus on open, for a dialog that exists to take input
+  // (the roster import's paste box). Otherwise the dialog itself takes focus.
+  initialFocus: { type: String, default: '' },
 })
 const emit = defineEmits(['close'])
 const { locale } = useLocale()
@@ -117,7 +120,7 @@ const labels = computed(() => ui[locale.value])
 const titleId = useId()
 
 const root = ref(null)
-useModalA11y(root, () => emit('close'))
+useModalA11y(root, () => emit('close'), { initialFocus: props.initialFocus })
 </script>
 
 <style scoped>

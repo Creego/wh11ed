@@ -2,6 +2,7 @@
   <BaseModal
     :title="labels.rosterImportTitle"
     max-width="560px"
+    initial-focus=".rim-text"
     @close="$emit('close')"
   >
     <div class="modal-body rim">
