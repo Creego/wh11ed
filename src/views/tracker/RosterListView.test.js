@@ -49,18 +49,15 @@ describe('RosterListView', () => {
       expect(w.find('.rl-factions').exists()).toBe(false)
     })
 
-    it('narrows the lists to one faction, and a second tap lets go', async () => {
+    it('narrows the lists to one faction, and "All" lets go', async () => {
       const store = useRosters()
       make(store, 'Waaagh', 'orks'); make(store, 'Bugs', 'tyranids'); make(store, 'More bugs', 'tyranids')
       const w = mount(RosterListView, { global: { stubs } })
-      const chips = w.findAll('.rl-factions .filter-chip')
-      expect(chips.map((c) => c.text().replace(/\s+/g, ' '))).toEqual(['All', 'Orks 1', 'Tyranids 2'])
-      // Each faction chip wears its emblem in place of the monogram.
-      expect(chips.slice(1).every((c) => c.find('.faction-emblem').exists())).toBe(true)
-      const nids = chips.find((c) => c.text().includes('Tyranids'))
-      await nids.trigger('click')
+      const select = w.find('.rl-factions select')
+      expect(select.findAll('option').map((o) => o.text())).toEqual(['All (3)', 'Orks (1)', 'Tyranids (2)'])
+      await select.setValue('tyranids')
       expect(names(w).sort()).toEqual(['Bugs', 'More bugs'])
-      await nids.trigger('click')
+      await select.setValue('')
       expect(names(w)).toHaveLength(3)
     })
 
@@ -68,7 +65,7 @@ describe('RosterListView', () => {
       const store = useRosters()
       make(store, 'Waaagh', 'orks'); const b = make(store, 'Bugs', 'tyranids'); make(store, 'Mechs', 'necrons')
       const w = mount(RosterListView, { global: { stubs } })
-      await w.findAll('.rl-factions .filter-chip').find((c) => c.text().includes('Tyranids')).trigger('click')
+      await w.find('.rl-factions select').setValue('tyranids')
       expect(names(w)).toEqual(['Bugs'])
       store.deleteRoster(b.id)
       await flushPromises()

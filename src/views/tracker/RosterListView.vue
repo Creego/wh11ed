@@ -26,38 +26,28 @@
     >
       <div :key="tab">
         <!-- A player with lists for several armies narrows the tab to one of them (player request,
-             2026-09-29). Only when the tab holds two factions or more: with one, "All" and the one
-             chip would show the same list. Tapping the picked chip again lets go of it. -->
-        <div
+             2026-09-29) — a dropdown since the same day (owner: a row of chips grew as long as
+             the lists it filtered). Only when the tab holds two factions or more: with one, "All"
+             and the one faction would be the same list. -->
+        <label
           v-if="factionFilters.length > 1"
-          class="filter-chips rl-factions"
-          role="group"
-          :aria-label="labels.rosterFilterFaction"
+          class="rl-factions"
         >
-          <button
-            type="button"
-            class="filter-chip"
-            :class="{ on: !onlyFaction }"
-            :aria-pressed="!onlyFaction"
-            @click="pickFaction(null)"
+          <span class="rl-factions-label">{{ labels.rosterFilterFaction }}</span>
+          <select
+            :value="onlyFaction || ''"
+            @change="pickedFaction = $event.target.value || null"
           >
-            {{ labels.filterAll }}
-          </button>
-          <button
-            v-for="f in factionFilters"
-            :key="f.slug"
-            type="button"
-            class="filter-chip tone"
-            :class="{ on: onlyFaction === f.slug }"
-            :style="toneVars(f.color)"
-            :aria-pressed="onlyFaction === f.slug"
-            @click="pickFaction(f.slug)"
-          >
-            <FactionBadge :faction="f" />
-            {{ f.name }}
-            <span class="rl-fcount">{{ f.n }}</span>
-          </button>
-        </div>
+            <option value="">{{ labels.filterAll }} ({{ shown.length }})</option>
+            <option
+              v-for="f in factionFilters"
+              :key="f.slug"
+              :value="f.slug"
+            >
+              {{ f.name }} ({{ f.n }})
+            </option>
+          </select>
+        </label>
         <p
           v-if="!shown.length"
           class="empty"
@@ -236,7 +226,6 @@ import RosterListHead from '../../components/roster/RosterListHead.vue'
 import RosterExportModal from '../../components/roster/RosterExportModal.vue'
 import ConfirmModal from '../../components/ConfirmModal.vue'
 import PageTabs from '../../components/PageTabs.vue'
-import FactionBadge from '../../components/FactionBadge.vue'
 import FactionEmblem from '../../components/FactionEmblem.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
@@ -318,7 +307,6 @@ const onlyFaction = computed(() => (
   factionFilters.value.length > 1 && factionFilters.value.some((f) => f.slug === pickedFaction.value)
     ? pickedFaction.value : null
 ))
-function pickFaction(slug) { pickedFaction.value = slug && slug !== onlyFaction.value ? slug : null }
 const listed = computed(() => (
   onlyFaction.value ? shown.value.filter((r) => r.faction === onlyFaction.value) : shown.value
 ))
@@ -426,8 +414,27 @@ function confirmDelete() {
 /* The same folder tabs the faction pages use (PageTabs) — the list below them is the tab's
    content, so it reads as one panel rather than a filter sitting above a list. */
 .rl-tabs { margin-bottom: 1rem; }
-.rl-factions { margin-bottom: 0.8rem; }
-.rl-fcount { font-family: var(--font-mono); opacity: 0.7; }
+.rl-factions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.rl-factions-label { flex-shrink: 0; }
+.rl-factions select {
+  flex: 1;
+  min-width: 0;
+  max-width: 18rem;
+  padding: 0.4rem 0.5rem;
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
 .empty { color: var(--text-muted); font-style: italic; text-align: center; }
 /* Sits where a saved list shows its issue count — for a draft, how far it got is the useful fact. */
 .rstep {

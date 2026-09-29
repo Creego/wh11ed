@@ -1159,8 +1159,8 @@ strong {
 
 /* ── Filter chips ──────────────────────────────────────────────────────────
    A wrapping row of buttons that narrow a list to one kind — "All" first, the one picked `.on`.
-   The missions' Force Disposition row drew these privately; the roster list's faction row
-   (2026-09-29) made it two. A chip inside `.tone` wears its colour pair on its border when picked. */
+   The missions' Force Disposition row. (The roster list's faction row wore them for a day,
+   2026-09-29, and became a dropdown — the chips grew as long as the lists they filtered.) */
 .filter-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .filter-chip {
   display: inline-flex;
@@ -1178,12 +1178,6 @@ strong {
 }
 .filter-chip:hover { color: var(--text-primary); border-color: var(--accent); }
 .filter-chip.on { background: var(--accent); color: var(--text-on-accent); border-color: var(--accent); }
-.filter-chip.tone.on {
-  background: color-mix(in srgb, var(--tone) 22%, var(--bg-secondary));
-  color: var(--text-primary);
-  border-color: var(--tone);
-}
-.filter-chip .tone-badge { height: 1.3rem; font-size: 0.62rem; }
 
 /* ── Section help ──────────────────────────────────────────────────────────
    The door from a section (Rules / Tracker / Rosters) to its page of the guide. An icon, not the
