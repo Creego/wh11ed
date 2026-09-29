@@ -4,7 +4,7 @@
       v-for="(pl, i) in game.players"
       :key="i"
       class="col"
-      :class="{ lead: leaderIdx === i }"
+      :class="{ leading: leaderIdx === i }"
     >
       <div class="col-head">
         <span class="pname">{{ sideName(pl, i, labels) }}</span>
@@ -100,7 +100,9 @@ useFlashOnChange(() => grandTotal(1), () => grandEls[1])
   padding: 0.8rem;
   text-align: center;
 }
-.col.lead {
+/* `leading`, not `lead`: `.lead` is the global intro-paragraph primitive (style.css), and its
+   bottom margin shrank the winner's column short of the loser's (2026-09-29). */
+.col.leading {
   border-top-color: #e3b341;
 }
 .col-head {
