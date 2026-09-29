@@ -21,7 +21,11 @@
 // Astra Militarum are both "AM") and the community's own shorthands (CSM, GSC, AdM) read better
 // than a rule would produce.
 //
-// Shape: { id: group key (label in ui.js factionGroup*), factions: [{ slug, name, ready, abbr, color }] }.
+// `icon` (optional) — the faction's emblem, a one-colour SVG under /images/faction-icons/, drawn in
+// the badge instead of the monogram (FactionBadge.vue). The file is a mask: its own fill is ignored,
+// the badge paints it in the faction's tone. Like every image there, a new drawing is a new name.
+//
+// Shape: { id: group key (label in ui.js factionGroup*), factions: [{ slug, name, ready, abbr, color, icon? }] }.
 export const factionGroups = [
   {
     id: 'astartes',
@@ -30,7 +34,7 @@ export const factionGroups = [
       { slug: 'blood-angels',       name: 'Blood Angels', ready: true, abbr: 'BA', color: { light: '#9b1c1c', dark: '#e06666' } },
       { slug: 'dark-angels',        name: 'Dark Angels', ready: true, abbr: 'DA', color: { light: '#1d5e34', dark: '#4fae74' } },
       { slug: 'deathwatch',         name: 'Deathwatch', ready: true, abbr: 'DW', color: { light: '#4a5560', dark: '#98a6b4' } },
-      { slug: 'space-marines',      name: 'Space Marines', ready: true, abbr: 'SM', color: { light: '#1f4e8c', dark: '#6b9fd8' } },
+      { slug: 'space-marines',      name: 'Space Marines', ready: true, abbr: 'SM', color: { light: '#1f4e8c', dark: '#6b9fd8' }, icon: '/images/faction-icons/space-marines.svg' },
       { slug: 'space-wolves',       name: 'Space Wolves', ready: true, abbr: 'SW', color: { light: '#56707f', dark: '#9cc0d1' } },
     ],
   },

@@ -171,7 +171,8 @@ screens that had copied each other and drifted. The pairs that existed then are 
   `--tone-dark` gets `--tone` resolved for the reader's theme — the faction colour pair from
   `factionsIndex.js`, or a disposition's from `data/dispositionColors.js` — and wears it as a
   left bar, a monogram badge or a small chip; the faction and detachment pickers use it, kept
-  apart from `--accent` so a row's own colour never hijacks the screen's selection highlight).
+  apart from `--accent` so a row's own colour never hijacks the screen's selection highlight); a faction's badge goes through `FactionBadge.vue`, which draws its emblem instead of the
+  monogram when `factionsIndex.js` gives it an `icon`).
 - **Three ways to switch, and they are not interchangeable:** `PageTabs.vue` changes what the
   PAGE shows (faction pages, roster lists); `.seg` is one joined control inside a form; `.tab`
   is a row of separate boxes. Reach for the one that matches the job, don't add a fourth.

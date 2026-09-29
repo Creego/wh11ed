@@ -88,7 +88,7 @@
             :aria-pressed="onlyFaction === f.slug"
             @click="pickFaction(f.slug)"
           >
-            <span class="tone-badge">{{ f.abbr }}</span>
+            <FactionBadge :faction="f" />
             {{ f.name }}
             <span class="rl-fcount">{{ f.n }}</span>
           </button>
@@ -271,6 +271,7 @@ import RosterImportModal from '../../components/roster/RosterImportModal.vue'
 import RosterExportModal from '../../components/roster/RosterExportModal.vue'
 import ConfirmModal from '../../components/ConfirmModal.vue'
 import PageTabs from '../../components/PageTabs.vue'
+import FactionBadge from '../../components/FactionBadge.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
 import { bringTabsIntoView } from '../../composables/bringTabsIntoView.js'

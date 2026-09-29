@@ -18,7 +18,7 @@
       v-bind="to ? { to } : { type: 'button' }"
       @click="$emit('pick', slug)"
     >
-      <span class="tone-badge">{{ entry?.abbr || '' }}</span>
+      <FactionBadge :faction="entry" />
       <span class="fac-name">{{ name }}</span>
       <span
         v-if="on"
@@ -42,6 +42,7 @@
 import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import FavoriteStar from './FavoriteStar.vue'
+import FactionBadge from './FactionBadge.vue'
 import { ui } from '../i18n/ui.js'
 import { useLocale } from '../composables/useLocale.js'
 import { useFavorites } from '../composables/useFavorites.js'
