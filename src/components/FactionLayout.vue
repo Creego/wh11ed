@@ -9,6 +9,10 @@
       class="hero"
     >
       <h1 class="hero-title">
+        <FactionEmblem
+          :faction="indexEntry"
+          in-title
+        />
         {{ faction ? faction.name : labels.factionsHeading }}
       </h1>
       <!-- Page tabs (also the only way to switch between the three faction pages ≤900px,
@@ -78,6 +82,7 @@ import { stripLocale } from '../router/locale.js'
 import { factionIndexBySlug } from '../data/factionsIndex.js'
 import { useFactionPage } from '../composables/useFactionPage.js'
 import PageTabs from './PageTabs.vue'
+import FactionEmblem from './FactionEmblem.vue'
 import { ui } from '../i18n/ui.js'
 import { useLocale } from '../composables/useLocale.js'
 import { scrollToTop } from '../composables/useBackToTop.js'
@@ -95,7 +100,8 @@ const labels = computed(() => ui[locale.value])
 
 // Wahapedia-style faction theming: the palette in factionsIndex.js is exposed as two
 // private custom props; the scoped CSS below folds them into --accent per theme.
-const color = computed(() => factionIndexBySlug(slug.value)?.color || null)
+const indexEntry = computed(() => factionIndexBySlug(slug.value))
+const color = computed(() => indexEntry.value?.color || null)
 const colorVars = computed(() =>
   color.value ? { '--fa-light': color.value.light, '--fa-dark': color.value.dark } : undefined,
 )
@@ -218,6 +224,9 @@ function backToUnits() {
 }
 
 .hero-title {
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
   font-family: var(--font-display);
   font-size: 3rem;
   font-weight: 400;

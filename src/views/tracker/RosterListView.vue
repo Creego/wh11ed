@@ -116,6 +116,12 @@
             @click="openRoster(r)"
             @keydown.enter="openRoster(r)"
           >
+            <FactionEmblem
+              class="tone"
+              :style="toneVars(factionOf(r)?.color)"
+              :faction="factionOf(r)"
+              stamp
+            />
             <div class="roster-main">
               <span class="rname">{{ r.name || labels.rosterUntitled }}</span>
               <!-- A draft's actions sheet only ever held one item, so it is spared the extra tap:
@@ -272,6 +278,7 @@ import RosterExportModal from '../../components/roster/RosterExportModal.vue'
 import ConfirmModal from '../../components/ConfirmModal.vue'
 import PageTabs from '../../components/PageTabs.vue'
 import FactionBadge from '../../components/FactionBadge.vue'
+import FactionEmblem from '../../components/FactionEmblem.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
 import { bringTabsIntoView } from '../../composables/bringTabsIntoView.js'
@@ -521,7 +528,14 @@ function confirmDelete() {
   font-variant-numeric: tabular-nums;
 }
 .rosters { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; position: relative; }
+/* Two columns where the page is wide enough for two cards to keep their one-line meta row (owner,
+   2026-09-29: one card across a desktop was a band of empty middle). A leaving card is
+   position:absolute (`list`), so it drops out of the grid without reflowing the rest mid-fade. */
+@media (min-width: 1000px) {
+  .rosters { display: grid; grid-template-columns: 1fr 1fr; }
+}
 .roster {
+  contain: paint; /* the emblem's stamp (FactionEmblem): clipped to the card, under its text */
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-left: 3px solid var(--border);
@@ -529,6 +543,8 @@ function confirmDelete() {
   cursor: pointer;
   transition: border-color 0.15s;
 }
+/* On a roster card the emblem's stamp sits in the middle, not at the right edge. */
+.roster .stamp { right: auto; left: 50%; transform: translate(-50%, -50%); }
 .roster.themed { border-left-color: var(--fa-light, var(--accent)); }
 @media (prefers-color-scheme: dark) {
   .roster.themed { border-left-color: var(--fa-dark, var(--accent)); }

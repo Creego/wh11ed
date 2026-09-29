@@ -54,7 +54,9 @@ describe('RosterListView', () => {
       make(store, 'Waaagh', 'orks'); make(store, 'Bugs', 'tyranids'); make(store, 'More bugs', 'tyranids')
       const w = mount(RosterListView, { global: { stubs } })
       const chips = w.findAll('.rl-factions .filter-chip')
-      expect(chips.map((c) => c.text().replace(/\s+/g, ' '))).toEqual(['All', 'OR Orks 1', 'TY Tyranids 2'])
+      expect(chips.map((c) => c.text().replace(/\s+/g, ' '))).toEqual(['All', 'Orks 1', 'Tyranids 2'])
+      // Each faction chip wears its emblem in place of the monogram.
+      expect(chips.slice(1).every((c) => c.find('.faction-emblem').exists())).toBe(true)
       const nids = chips.find((c) => c.text().includes('Tyranids'))
       await nids.trigger('click')
       expect(names(w).sort()).toEqual(['Bugs', 'More bugs'])

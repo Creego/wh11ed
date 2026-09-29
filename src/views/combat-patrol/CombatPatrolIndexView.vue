@@ -35,6 +35,10 @@
             class="cp-card tone"
             :style="toneVars(factionIndexBySlug(f.slug)?.color)"
           >
+            <FactionEmblem
+              :faction="factionIndexBySlug(f.slug)"
+              stamp
+            />
             <span class="cp-card-name">{{ f.name }}</span>
             <span class="cp-card-box">{{ f.boxName }}</span>
           </RouterLink>
@@ -69,6 +73,10 @@
             class="cp-card tone"
             :style="toneVars(factionIndexBySlug(f.slug)?.color)"
           >
+            <FactionEmblem
+              :faction="factionIndexBySlug(f.slug)"
+              stamp
+            />
             <span class="cp-card-name">{{ f.name }}</span>
             <span class="cp-card-box">{{ f.boxName }}</span>
           </RouterLink>
@@ -92,6 +100,7 @@ import { useLocale } from '../../composables/useLocale.js'
 import { useFavorites } from '../../composables/useFavorites.js'
 import { useFlipMove } from '../../composables/useFlipMove.js'
 import FavoriteStar from '../../components/FavoriteStar.vue'
+import FactionEmblem from '../../components/FactionEmblem.vue'
 
 const { locale } = useLocale()
 const labels = computed(() => ui[locale.value])
@@ -182,6 +191,7 @@ useFlipMove(() => pinned.value.map((f) => f.slug), rootEl)
 }
 
 .cp-card {
+  contain: paint; /* the emblem's stamp (FactionEmblem) is clipped to the card and under its text */
   display: flex;
   flex-direction: column;
   gap: 0.1rem;

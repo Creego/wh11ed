@@ -172,7 +172,12 @@ screens that had copied each other and drifted. The pairs that existed then are 
   `factionsIndex.js`, or a disposition's from `data/dispositionColors.js` — and wears it as a
   left bar, a monogram badge or a small chip; the faction and detachment pickers use it, kept
   apart from `--accent` so a row's own colour never hijacks the screen's selection highlight); a faction's badge goes through `FactionBadge.vue`, which draws its emblem instead of the
-  monogram when `factionsIndex.js` gives it an `icon`).
+  monogram when the faction has one; the emblem itself is `FactionEmblem.vue` — before the name in
+  the faction and Combat Patrol page heroes, and as a faint `stamp` on the cards with room for it
+  (Combat Patrol, roster list, finished games; never in a dense list row, where it read as a
+  second stray icon). Emblems are files in `public/images/faction-icons/<slug>.svg`;
+  `npm run faction-icons` measures their shape and ink into `src/data/factionIcons.js`, and a
+  stamp's size comes from the ink, so every emblem puts the same colour on a card).
 - **Three ways to switch, and they are not interchangeable:** `PageTabs.vue` changes what the
   PAGE shows (faction pages, roster lists); `.seg` is one joined control inside a form; `.tab`
   is a row of separate boxes. Reach for the one that matches the job, don't add a fourth.

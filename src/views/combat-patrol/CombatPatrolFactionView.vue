@@ -5,7 +5,15 @@
     :class="{ themed: !!color }"
     :style="colorVars"
   >
-    <div class="hero">
+    <div
+      class="hero"
+      :class="{ 'with-emblem': factionIcons[route.params.slug] }"
+    >
+      <FactionEmblem
+        class="hero-emblem"
+        :faction="indexEntry"
+        in-title
+      />
       <h1 class="hero-title">
         {{ faction.name }}
       </h1>
@@ -215,6 +223,8 @@ import { useRoute } from 'vue-router'
 import RuleBlock from '../../components/RuleBlock.vue'
 import StratCard from '../../components/StratCard.vue'
 import DatasheetCard from '../../components/DatasheetCard.vue'
+import FactionEmblem from '../../components/FactionEmblem.vue'
+import { factionIcons } from '../../data/factionIcons.js'
 import PageTabs from '../../components/PageTabs.vue'
 import { bringTabsIntoView } from '../../composables/bringTabsIntoView.js'
 import { scrollToAnchor } from '../../composables/useRefNavigation.js'
@@ -234,7 +244,8 @@ const fmtBase = (raw) => formatBaseSize(raw, labels.value)
 // Same Wahapedia-style per-faction accent as the normal faction pages (FactionLayout.vue) —
 // factionsIndex.js's palette exposed as two private custom props, folded into --accent per
 // theme by the .cp-faction-view.themed rules below.
-const color = computed(() => factionIndexBySlug(route.params.slug)?.color || null)
+const indexEntry = computed(() => factionIndexBySlug(route.params.slug))
+const color = computed(() => indexEntry.value?.color || null)
 const colorVars = computed(() =>
   color.value ? { '--fa-light': color.value.light, '--fa-dark': color.value.dark } : undefined,
 )
@@ -290,13 +301,29 @@ watch(() => route.hash, (hash) => {
 
 <style scoped>
 .cp-faction-view {
-  padding-top: 0.5rem;
+  padding-top: 0.25rem; /* the faction page's (FactionLayout) */
 }
 
 .hero {
-  text-align: center;
+  --title-fs: 2.6rem;
+  --emblem-fs: 3rem; /* the faction page's title size: the same emblem as there */
   padding: 1rem 0 0;
 }
+/* The emblem beside the name, and the box's name under the faction's, not under the emblem: the
+   emblem spans both lines and is centred on the pair, so it needs none of the lift and spill it
+   takes beside a lone title (FactionEmblem's in-title). */
+.hero.with-emblem {
+  /* The emblem's top where the faction page's is: there it rises 0.3em above the title's line
+     into this padding (FactionEmblem's in-title lift and margin); here it heads the block. */
+  padding-top: calc(1rem - 0.3 * var(--emblem-fs));
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: calc(var(--title-fs) * 0.25);
+  align-items: center;
+}
+.with-emblem .hero-title,
+.with-emblem .hero-subtitle { grid-column: 2; }
+.with-emblem .hero-emblem { grid-row: 1 / 3; top: 0; margin: 0; font-size: var(--emblem-fs); }
 
 /* The faction page's spacing (FactionLayout): the tabs sit just under the name, and the open tab's
    content hangs from it 0.6rem down. The hero's own accent rule went with the tabs — their strip is
@@ -308,14 +335,15 @@ watch(() => route.hash, (hash) => {
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: 2.6rem;
+  font-size: var(--title-fs);
   font-weight: 400;
   color: var(--text-primary);
-  margin-bottom: 0.3rem;
+  line-height: 1;
 }
 
 .hero-subtitle {
   font-size: 0.95rem;
+  line-height: 1.2;
   color: var(--accent);
   font-style: italic;
 }
@@ -486,7 +514,7 @@ watch(() => route.hash, (hash) => {
 }
 
 @media (max-width: 640px) {
-  .hero-title { font-size: 2rem; }
+  .hero { --title-fs: 2rem; --emblem-fs: 2.2rem; }
 }
 
 /* Very narrow phones (≤480px): bleed the unit name plate to the true viewport edge and
