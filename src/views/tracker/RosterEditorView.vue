@@ -262,7 +262,7 @@
           </button>
           <button
             class="btn-primary"
-            @click="save"
+            @click="guardFd(save)"
           >
             {{ labels.rosterSave }}
           </button>
@@ -270,6 +270,16 @@
       </div>
     </div>
 
+    <!-- Saving with no Force Disposition declared asks once (useDispositionGate). -->
+    <ConfirmModal
+      v-if="fdAskOpen"
+      :title="labels.rosterFdAskTitle"
+      :message="fdAskMessage"
+      :confirm-label="labels.rosterFdAskSave"
+      :cancel-label="labels.rosterFdAskPick"
+      @confirm="confirmFd"
+      @close="closeFd(); tab = 'settings'"
+    />
     <ConfirmModal
       v-if="discardOpen"
       :title="labels.rosterDiscardTitle"
@@ -323,6 +333,7 @@
 import { computed, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import ConfirmModal from '../../components/ConfirmModal.vue'
+import { useDispositionGate } from '../../composables/useDispositionGate.js'
 import FactionPickerModal from '../../components/tracker/FactionPickerModal.vue'
 import DetachmentPickerModal from '../../components/tracker/DetachmentPickerModal.vue'
 import RosterEntryFields from '../../components/roster/RosterEntryFields.vue'
@@ -423,6 +434,9 @@ const {
   dirty, changedParts, revertEdits,
   slugFor, entryMeta, groupedUnits, attachRole, dupBlocked, fieldProps,
 } = useRosterEditing(() => route.params.id)
+const {
+  open: fdAskOpen, message: fdAskMessage, guard: guardFd, confirm: confirmFd, close: closeFd,
+} = useDispositionGate(validation, labels)
 
 // A missing/deleted id → back to the list (no broken editor shell).
 watch(roster, (r) => { if (!r) router.replace('/roster') }, { immediate: true })
