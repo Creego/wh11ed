@@ -73,6 +73,18 @@ describe('RosterListView', () => {
     })
   })
 
+  it('shows twenty lists, and "Show more" the next twenty', async () => {
+    const store = useRosters()
+    for (let i = 0; i < 45; i++) store.createRoster(`L${i}`)
+    const w = mount(RosterListView, { global: { stubs } })
+    expect(w.findAll('.roster')).toHaveLength(20)
+    await w.find('.show-more').trigger('click')
+    expect(w.findAll('.roster')).toHaveLength(40)
+    await w.find('.show-more').trigger('click')
+    expect(w.findAll('.roster')).toHaveLength(45)
+    expect(w.find('.show-more').exists()).toBe(false)
+  })
+
   it('clicking a card opens the read-only view, not the editor', async () => {
     const store = useRosters()
     const r = store.createRoster('Test list')

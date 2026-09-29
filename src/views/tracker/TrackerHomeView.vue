@@ -766,16 +766,4 @@ function footLine(g) {
   .gc-faction { font-size: 0.74rem; }
 }
 
-.show-more {
-  display: block;
-  margin: 0.8rem auto 0;
-  padding: 0.5rem 1.2rem;
-  background: none;
-  color: var(--text-muted);
-  border: 1px solid var(--border);
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-.show-more:hover { border-color: var(--accent); color: var(--accent); }
 </style>

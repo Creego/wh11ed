@@ -1157,6 +1157,23 @@ strong {
   line-height: 1.5;
 }
 
+/* ── Show more ──────────────────────────────────────────────────────────────
+   The quiet button under a long list that reveals the next page of it: the tracker's game history
+   (10 at a time) and the roster list (20). */
+.show-more {
+  display: block;
+  margin: 0.8rem auto 0;
+  padding: 0.5rem 1.2rem;
+  background: none;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+@media (hover: hover) { .show-more:hover { border-color: var(--accent); color: var(--accent); } }
+
 /* ── Filter chips ──────────────────────────────────────────────────────────
    A wrapping row of buttons that narrow a list to one kind — "All" first, the one picked `.on`.
    The missions' Force Disposition row. (The roster list's faction row wore them for a day,

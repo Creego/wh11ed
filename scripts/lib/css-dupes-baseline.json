@@ -151,10 +151,6 @@
     "src/components/RuleBlock.vue",
     "src/components/event/ChapterIntro.vue"
   ],
-  ".show-more:hover { border-color: var(--accent); color: var(--accent); }": [
-    "src/views/ChangelogView.vue",
-    "src/views/tracker/TrackerHomeView.vue"
-  ],
   ".strat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; align-items: start; }": [
     "src/views/combat-patrol/CombatPatrolFactionView.vue",
     "src/views/faction/FactionRuleView.vue"

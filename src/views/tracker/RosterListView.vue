@@ -61,7 +61,7 @@
           class="rosters"
         >
           <li
-            v-for="r in listed"
+            v-for="r in paged"
             :key="r.id"
             class="roster"
             :class="{ themed: !!factionOf(r), on: inDesk && r.id === activeId }"
@@ -160,6 +160,14 @@
             </div>
           </li>
         </TransitionGroup>
+        <button
+          v-if="listed.length > visibleCount"
+          type="button"
+          class="show-more"
+          @click="visibleCount += PAGE"
+        >
+          {{ labels.trackerShowMore }} ({{ listed.length - visibleCount }})
+        </button>
       </div>
     </Transition>
 
@@ -257,7 +265,7 @@ import { toneVars } from '../../utils/tone.js'
 import { isRosterPinned, toggleRosterPin, pinnedFirst } from '../../composables/useRosterPins.js'
 import { loadHistory, rosterRecords } from '../../composables/gameStats.js'
 
-defineProps({
+const props = defineProps({
   // The left column of the rosters desk (RosterDeskView, wide screens): one column of cards, the
   // open one marked, and the statistics one tap away.
   inDesk: { type: Boolean, default: false },
@@ -364,6 +372,19 @@ watch(status, (s) => { if (s === 'authed') syncAndReprice() })
 
 const allFactions = factionGroups.flatMap((g) => g.factions)
 function factionOf(r) { return allFactions.find((f) => f.slug === r.faction) || null }
+
+// Twenty at a time, and "Show more" adds the next twenty (owner, 2026-09-29) — the pattern the
+// tracker's game history uses. Back to one page whenever the list itself changes (another tab,
+// another faction). The list open on the desk is always among the shown: a card that is open
+// beside the list must be findable in it.
+const PAGE = 20
+const visibleCount = ref(PAGE)
+watch([tab, onlyFaction], () => { visibleCount.value = PAGE })
+watch([() => props.activeId, listed], ([id]) => {
+  const at = id ? listed.value.findIndex((r) => r.id === id) : -1
+  if (at >= visibleCount.value) visibleCount.value = Math.ceil((at + 1) / PAGE) * PAGE
+}, { immediate: true })
+const paged = computed(() => listed.value.slice(0, visibleCount.value))
 function cardStyle(r) {
   const c = factionOf(r)?.color
   return c ? { '--fa-light': c.light, '--fa-dark': c.dark } : {}
