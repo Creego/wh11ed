@@ -23,9 +23,10 @@
       </button>
       <!-- The game statistics (owner, 2026-09-29: they are not a roster's, so not on a roster's
            page — they were a bar there until the same day). On the desk they fill its right-hand
-           side, which /roster shows; on a phone they are the tracker's own page. -->
+           side (/roster?stats — a bare /roster reopens the last list); on a phone they are the
+           tracker's own page. -->
       <RouterLink
-        :to="desk ? '/roster' : '/tracker/stats'"
+        :to="desk ? '/roster?stats' : '/tracker/stats'"
         class="btn-ghost rlh-stats"
         :class="{ on: desk && statsOn }"
         :title="labels.statsLink"

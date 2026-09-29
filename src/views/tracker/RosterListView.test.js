@@ -161,9 +161,9 @@ describe('RosterListView', () => {
     store.createRoster('A list')
     const w = mount(RosterListView, { global: { stubs } })
     await w.find('.kebab').trigger('click')
-    // Edit / Export / Duplicate / Delete — picked by label everywhere else in this file, so the
+    // Edit / Export / Duplicate / Pin / Delete — picked by label everywhere else in this file, so the
     // sheet can grow without a positional index quietly pointing at the wrong action.
-    expect(w.findAll('.act-btn').map((b) => b.text())).toEqual(['Edit', 'Export roster', 'Duplicate', 'Delete'])
+    expect(w.findAll('.act-btn').map((b) => b.text())).toEqual(['Edit', 'Export roster', 'Duplicate', 'Pin to top', 'Delete'])
   })
 
   // A finished list is passed on more often than it is edited, so it exports from here too — which

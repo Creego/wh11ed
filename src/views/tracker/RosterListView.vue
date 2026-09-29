@@ -78,7 +78,13 @@
               stamp
             />
             <div class="roster-main">
-              <span class="rname">{{ r.name || labels.rosterUntitled }}</span>
+              <span class="rname">
+                <i
+                  v-if="isRosterPinned(r.id)"
+                  class="bi bi-pin-angle-fill rpin"
+                  :title="labels.favUnpin"
+                />{{ r.name || labels.rosterUntitled }}
+              </span>
               <!-- A draft's actions sheet only ever held one item, so it is spared the extra tap:
                the card carries Delete itself. Everything a SAVED list can do still needs the
                sheet, so that one keeps the kebab. -->
@@ -188,6 +194,12 @@
           {{ labels.rosterDuplicate }}
         </button>
         <button
+          class="act-btn"
+          @click="toggleRosterPin(menuFor); menuFor = null"
+        >
+          {{ isRosterPinned(menuFor) ? labels.favUnpin : labels.favPin }}
+        </button>
+        <button
           class="act-btn act-danger"
           @click="onDelete(menuFor)"
         >
@@ -241,6 +253,7 @@ import rosterCore from '../../data/roster/core.js'
 import { rosterItems } from '../../data/roster/index.js'
 import { factionGroups } from '../../data/factionsIndex.js'
 import { toneVars } from '../../utils/tone.js'
+import { isRosterPinned, toggleRosterPin, pinnedFirst } from '../../composables/useRosterPins.js'
 import { loadHistory, rosterRecords } from '../../composables/gameStats.js'
 
 defineProps({
@@ -307,8 +320,8 @@ const onlyFaction = computed(() => (
   factionFilters.value.length > 1 && factionFilters.value.some((f) => f.slug === pickedFaction.value)
     ? pickedFaction.value : null
 ))
-const listed = computed(() => (
-  onlyFaction.value ? shown.value.filter((r) => r.faction === onlyFaction.value) : shown.value
+const listed = computed(() => pinnedFirst(
+  onlyFaction.value ? shown.value.filter((r) => r.faction === onlyFaction.value) : shown.value,
 ))
 function draftStepLabel(r) {
   return labels.value.rosterDraftStep.replace('{n}', String(r.draftStep || 1))
@@ -538,6 +551,7 @@ function confirmDelete() {
 @media (prefers-color-scheme: dark) {
   .rfaction { color: var(--fa-dark, var(--accent)); }
 }
+.rpin { margin-right: 0.35rem; font-size: 0.8em; color: var(--accent); }
 .rpoints { font-family: var(--font-mono); font-weight: 700; color: var(--text-primary); white-space: nowrap; }
 .rpoints.over { color: var(--danger); }
 .rpoints .unit { font-size: 0.62rem; color: var(--text-dim); margin-left: 0.15rem; }

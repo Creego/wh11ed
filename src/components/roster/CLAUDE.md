@@ -1751,6 +1751,14 @@ mission datasets). The list's "Statistics" button is just a link to `/roster`.
   `.rw-host` + `useViewportFill` the builder's workbench stands on (see "Height for the panes").
 - A tracker game's roster (`/tracker/game/roster/…`, `/tracker/history/…/roster/…`) is still
   `RosterViewView` on its own: the desk is the saved rosters' screen.
+- **The last list comes back** (owner, same day): the desk remembers the saved list opened last
+  (`lastRoster.js`, per device, written on a phone too) and a bare `/roster` on a wide screen
+  reopens it. The statistics are asked for by name — `/roster?stats`, the heading's button — and a
+  remembered id that is gone or a draft leaves them showing. Phones keep `/roster` as the list:
+  there the list page IS the way to the other lists.
+- **Pinned lists stand first** in the list, both layouts (`useRosterPins.js`, per device, set from
+  a card's "…" sheet, marked with a pin before the name). Not written onto the roster: a pin is
+  how this screen is arranged, and a roster change would bump its date and ask for an upload.
 
 ## Faction rules beside the build (added 2026-08-28)
 
