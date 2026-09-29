@@ -78,13 +78,14 @@
               stamp
             />
             <div class="roster-main">
-              <span class="rname">
-                <i
-                  v-if="isRosterPinned(r.id)"
-                  class="bi bi-pin-angle-fill rpin"
-                  :title="labels.favUnpin"
-                />{{ r.name || labels.rosterUntitled }}
-              </span>
+              <span class="rname">{{ r.name || labels.rosterUntitled }}</span>
+              <!-- Pinned (useRosterPins): the mark stands beside the "…" that sets it, in the
+                   army's colour like the faction line under the name. -->
+              <i
+                v-if="isRosterPinned(r.id)"
+                class="bi bi-pin-angle-fill rpin"
+                :title="labels.favPinnedGroup"
+              />
               <!-- A draft's actions sheet only ever held one item, so it is spared the extra tap:
                the card carries Delete itself. Everything a SAVED list can do still needs the
                sheet, so that one keeps the kebab. -->
@@ -549,9 +550,9 @@ function confirmDelete() {
 .rfd { flex-shrink: 0; margin-top: 0.1rem; }
 .rdets { display: block; font-size: 0.72rem; color: var(--text-muted); opacity: 0.8; }
 @media (prefers-color-scheme: dark) {
-  .rfaction { color: var(--fa-dark, var(--accent)); }
+  .rfaction, .rpin { color: var(--fa-dark, var(--accent)); }
 }
-.rpin { margin-right: 0.35rem; font-size: 0.8em; color: var(--accent); }
+.rpin { flex-shrink: 0; margin-left: auto; font-size: 0.85rem; color: var(--fa-light, var(--accent)); }
 .rpoints { font-family: var(--font-mono); font-weight: 700; color: var(--text-primary); white-space: nowrap; }
 .rpoints.over { color: var(--danger); }
 .rpoints .unit { font-size: 0.62rem; color: var(--text-dim); margin-left: 0.15rem; }
@@ -576,6 +577,8 @@ function confirmDelete() {
   :root[data-theme='light'] .roster.themed:hover { border-color: var(--fa-light, #8b2a33); }
   :root[data-theme='dark'] .roster.themed:hover { border-color: var(--fa-dark, #c8585e); }
 }
-:root[data-theme='light'] .rfaction { color: var(--fa-light, #8b2a33); }
-:root[data-theme='dark'] .rfaction { color: var(--fa-dark, #c8585e); }
+:root[data-theme='light'] .rfaction,
+:root[data-theme='light'] .rpin { color: var(--fa-light, #8b2a33); }
+:root[data-theme='dark'] .rfaction,
+:root[data-theme='dark'] .rpin { color: var(--fa-dark, #c8585e); }
 </style>
