@@ -149,8 +149,7 @@
 }
 .rise-enter-from { opacity: 0; top: 64px; }
 
-/* Shared axis X — two views side by side in the reader's head: the roster editor's Settings |
-   Units, a PageTabs switch, and a page and the one it leads into (usePageMotion: deeper goes
+/* Shared axis X — two views side by side in the reader's head: a PageTabs switch, and a page and the one it leads into (usePageMotion: deeper goes
    forward, back up goes back). The old view fades toward its own side, the new one comes in from
    its own. Short travel, not a page slide, so only one view is ever drawn. Pair with
    mode="out-in"; the caller picks fwd (moving right / deeper) or back. `left`, not `transform` —

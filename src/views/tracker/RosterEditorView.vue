@@ -43,8 +43,9 @@
     />
 
 
-    <!-- A phone's two modes change with a short sideways fade toward the side each one's button
-         sits on — Settings left, Units right (the `axis-*` pair in style.css, 2026-09-28).
+    <!-- A phone's two modes change with a plain fade. They slid a little sideways toward their
+         buttons (the `axis-*` pair, 2026-09-28) and the owner found the move jerky even with
+         both panes built; the fade replaced it (2026-09-29).
          Both stay built and only one is shown (`v-show`), each in its own <Transition>: the one
          leaving hands over to the other in `after-leave`, which is `mode="out-in"` done by hand.
          They were a `v-if`/`v-else` pair until 2026-09-29, and every switch tore the Units pane
@@ -52,7 +53,7 @@
          that ran, and the catalogue's search, its open groups and the list's scroll were gone
          on the way back from Settings. -->
     <Transition
-      :name="axisName"
+      name="fade"
       @after-leave="paneTab = tab"
     >
       <div
@@ -114,7 +115,7 @@
          per unit. Both panes now read from the same `useRosterEditing` handles they always did;
          only the layout changed. -->
     <Transition
-      :name="axisName"
+      name="fade"
       @after-leave="paneTab = tab"
     >
       <div
@@ -337,7 +338,6 @@ import RosterIssuesModal from '../../components/roster/RosterIssuesModal.vue'
 import RosterExportModal from '../../components/roster/RosterExportModal.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
-import { useAxisDirection } from '../../composables/useAxisDirection.js'
 import { useRosterEditing } from '../../composables/useRosterEditing.js'
 import { useRosterBuildActions } from '../../composables/useRosterBuildActions.js'
 import { useFactionAccent } from '../../composables/useFactionAccent.js'
@@ -360,8 +360,6 @@ const tab = ref('units')
 // pane needs the window-tall `.rw-host` column until it has faded out, and Settings must not get
 // it while coming in.
 const paneTab = ref(tab.value)
-// Settings sits left of Units in the switch.
-const axisName = useAxisDirection(tab, ['settings', 'units'])
 // A mode's pane is up once it is both chosen and the other has finished leaving.
 const shown = (key) => tab.value === key && paneTab.value === key
 const rulesOpen = ref(false)
