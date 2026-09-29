@@ -1,20 +1,6 @@
-import { ref, toValue, watch } from 'vue'
 import { instantly } from './useRefNavigation.js'
 
-// Which way a side-by-side switch moved — the `axis-fwd` / `axis-back` pair in style.css, for a
-// <Transition mode="out-in"> around what the switch shows. `active` is the chosen key (a ref or a
-// getter), `order` the keys left to right as the switch draws them: moving right goes forward
-// (the new view comes in from the right), left goes back. Decided before the new view renders.
-export function useAxisDirection(active, order) {
-  const name = ref('axis-fwd')
-  watch(() => toValue(active), (to, from) => {
-    const keys = toValue(order)
-    name.value = keys.indexOf(to) < keys.indexOf(from) ? 'axis-back' : 'axis-fwd'
-  })
-  return name
-}
-
-// For the same <Transition>'s `@enter`: the new panel is in the document but still invisible, and
+// For a tab switch's <Transition mode="out-in"> `@enter`: the new panel is in the document but still invisible, and
 // the old one is gone — nothing on screen to jump. (Not after-leave: the old panel is already
 // detached there and the document at its shortest.) If the reader had scrolled the tab strip
 // up under the header (deep into a long tab), put it back just below the header, so the new tab

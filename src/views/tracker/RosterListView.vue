@@ -53,9 +53,9 @@
 
     <!-- An empty screen is where somebody stands who has not decided this is worth their evening,
          so it is also where the explanation belongs — not three taps away in a help menu. -->
-    <!-- Saved | Drafts slide toward the side of the tab picked (axis-*, useAxisDirection). -->
+    <!-- Saved | Drafts fade over each other (a sideways slide until 2026-09-29 — jerky). -->
     <Transition
-      :name="tabAxis"
+      name="fade"
       mode="out-in"
       @enter="bringTabsIntoView"
     >
@@ -240,7 +240,7 @@ import ConfirmModal from '../../components/ConfirmModal.vue'
 import PageTabs from '../../components/PageTabs.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
-import { useAxisDirection, bringTabsIntoView } from '../../composables/useAxisDirection.js'
+import { bringTabsIntoView } from '../../composables/bringTabsIntoView.js'
 import { useRosters } from '../../composables/useRosters.js'
 import { useRosterSync } from '../../composables/useRosterSync.js'
 import { useAuth } from '../../composables/useAuth.js'
@@ -263,7 +263,6 @@ const { status, ensureSession } = useAuth()
 const { syncNow, saveToCloud, removeFromCloud, pulled } = useRosterSync()
 
 const tab = ref('saved')
-const tabAxis = useAxisDirection(tab, ['saved', 'drafts'])
 const tabs = computed(() => [
   { key: 'saved', label: labels.value.rosterTabSaved, count: savedRosters.value.length, active: tab.value === 'saved' },
   { key: 'drafts', label: labels.value.rosterTabDrafts, count: draftRosters.value.length, active: tab.value === 'drafts' },

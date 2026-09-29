@@ -54,8 +54,8 @@ of a ninety-unit list.
 ## One route, three pages (2026-09-28)
 
 `/factions/:slug`, `/datasheets` and `/faq` are children of one route whose component is
-`FactionPagesView`: `FactionLayout` (hero, tabs, FABs) plus a `RouterView` of its own, sliding the
-child by the tabs' order (`useAxisDirection`, the `axis-*` pair) with `pageLeaving` / `pageArrived`
+`FactionPagesView`: `FactionLayout` (hero, tabs, FABs) plus a `RouterView` of its own, fading the
+child over (`fade`; a sideways slide by the tabs' order until 2026-09-29) with `pageLeaving` / `pageArrived`
 from `usePageMotion` so the router sets the scroll in the gap. The three pages therefore draw NO
 layout of their own — a plain root `div` each. The unit page `/datasheets/:unit` is a top-level
 route (its own hero-less `FactionLayout`), a level deeper. Every faction route names a

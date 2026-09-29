@@ -78,7 +78,7 @@ checks this content, on purpose.
 
 `CombatPatrolFactionView` shows one part of the box at a time — **Rules** (the detachment rule and
 the army rule), **Stratagems**, **Enhancements**, **Units** — on the shared `PageTabs`, only the tabs
-the box has, sliding by the tabs' order (`useAxisDirection`, the `axis-*` pair). One long page was
+the box has, fading over each other (`fade`; a sideways slide until 2026-09-29). One long page was
 the owner's complaint. A panel not on screen is not in the DOM, so anything that links INTO the
 page must open the right tab first: `tabForAnchor` maps the anchor ids above (`cp-strat-…`,
 `cp-enh-…`, `cp-<slug>-rule…`, and the old section ids `#stratagems` / `#enhancements` /

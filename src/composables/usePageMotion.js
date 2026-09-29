@@ -4,7 +4,7 @@ import { computed, ref } from 'vue'
 //
 // - Down a chain (`meta.trail` + `meta.level` in router/index.js: a list, an item, the item's
 //   editor) the new page comes in from the right (`axis-fwd`); back up it comes from the left
-//   (`axis-back`). The same pair the in-page switches use (PageTabs panels, the roster editor).
+//   (`axis-back`). In-page switches (tabs, the roster editor's modes) fade instead (2026-09-29).
 // - A link can say how the NEXT swap moves (`markNextPage`): the "To game" / "To roster" chips
 //   rise from the bottom (`rise`), a PageTabs row of route tabs slides by the tabs' order.
 //   A mark beats the chain.

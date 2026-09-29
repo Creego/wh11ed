@@ -23,7 +23,7 @@
       @select="tab = $event"
     />
     <Transition
-      :name="tabAxis"
+      name="fade"
       mode="out-in"
       @enter="bringTabsIntoView"
     >
@@ -216,7 +216,7 @@ import RuleBlock from '../../components/RuleBlock.vue'
 import StratCard from '../../components/StratCard.vue'
 import DatasheetCard from '../../components/DatasheetCard.vue'
 import PageTabs from '../../components/PageTabs.vue'
-import { useAxisDirection, bringTabsIntoView } from '../../composables/useAxisDirection.js'
+import { bringTabsIntoView } from '../../composables/bringTabsIntoView.js'
 import { scrollToAnchor } from '../../composables/useRefNavigation.js'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
@@ -265,7 +265,6 @@ const tabs = computed(() => {
   ]
   return all.filter((t) => t.has).map((t) => ({ key: t.key, label: t.label, active: tab.value === t.key }))
 })
-const tabAxis = useAxisDirection(tab, () => tabs.value.map((t) => t.key))
 
 // A link into the page names what it wants by anchor (the search index's `cp-strat-…`,
 // `cp-enh-…`, `cp-<slug>-rule…` ids, and the old section ids): open the tab that holds it before

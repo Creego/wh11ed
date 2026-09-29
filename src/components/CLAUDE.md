@@ -20,17 +20,15 @@ libraries** (don't add GSAP/@vueuse/motion/animate.css).
   single toggled elements), `list` (opacity + `position:absolute` leave + `list-move` FLIP, for
   `TransitionGroup` lists — the list container needs `position: relative` to contain leavers),
   `fade-pop` (dropdowns/anchored menus), `slide-up` (fixed bottom bars), `axis-fwd` / `axis-back`
-  (shared axis X: two views of one screen switched by a side-by-side control; pair with
-  `mode="out-in"` and pick the direction from the control's order; a view that sizes itself to
-  the window must keep that layout until it has faded out. A view that
-  is expensive to build is not remounted per switch: both stay built behind `v-show`, one
-  `<Transition>` each, and the leaving one's `after-leave` lets the other in — the roster editor's
-  Settings | Units does this (`paneTab`), with a plain `fade`: the owner found the sideways move
-  jerky over the two window-tall panes (2026-09-29); `useAxisDirection(active, order)` names the
-  direction. The
-  in-page `PageTabs` panels use it too — the roster view's Units | Rules | Stratagems and the
-  roster list's Saved | Drafts; the faction pages' tabs are routes and keep the page fade.
-  The 24px of travel needs no clip of its own: `html` already has `overflow-x: clip`), `sift` (a list or grid a
+  (shared axis X: only for going to another page, deeper or back up — `usePageMotion`. **In-page
+  switches fade** (`fade`, `mode="out-in"`): the `PageTabs` panels, the faction pages' tabs and
+  the roster editor's Settings | Units all slid sideways by the control's order until 2026-09-29,
+  and the owner found every one of them jerky. A view that sizes itself to the window must keep
+  that layout until it has faded out, and a view that is expensive to build is not remounted per
+  switch: both stay built behind `v-show`, one `<Transition>` each, and the leaving one's
+  `after-leave` lets the other in — the editor does both (`paneTab`). A tab switch hands its
+  `@enter` to `bringTabsIntoView`. The 24px of travel needs no clip of its own: `html` already
+  has `overflow-x: clip`), `sift` (a list or grid a
   search/filter narrows in place — leavers vanish at once via `display:none`, survivors slide,
   newcomers fade; the datasheet grid, the roster catalogue, the changelog).
   `sift` carries **`!important` on purpose**: a scoped item rule (`.ds-chip[data-v]`, 0,2,0; 0,3,0

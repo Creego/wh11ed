@@ -209,9 +209,9 @@
       <!-- Compact read-only unit list, grouped like the editor. Clicking a row opens the full
            rules card in RosterUnitRulesModal — not an inline accordion, that read badly nested
            and had overflow issues (see git history if this is ever revisited). -->
-      <!-- The three tabs' panels slide toward the side of the tab picked (axis-*, useAxisDirection). -->
+      <!-- The three tabs' panels fade over each other (a sideways slide until 2026-09-29 — jerky). -->
       <Transition
-        :name="tabAxis"
+        name="fade"
         mode="out-in"
         @enter="bringTabsIntoView"
       >
@@ -599,7 +599,7 @@ import ConditionChips from '../../components/ConditionChips.vue'
 import PageTabs from '../../components/PageTabs.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
-import { useAxisDirection, bringTabsIntoView } from '../../composables/useAxisDirection.js'
+import { bringTabsIntoView } from '../../composables/bringTabsIntoView.js'
 import { useKeywordPopover } from '../../composables/useKeywordPopover.js'
 import { useRosters } from '../../composables/useRosters.js'
 import { useRosterDerived } from '../../composables/useRosterDerived.js'
@@ -735,7 +735,6 @@ watch([roster, gameRoster], () => {
 }, { immediate: true })
 
 const tab = ref('units')
-const tabAxis = useAxisDirection(tab, ['units', 'rules', 'stratagems'])
 // The list's notes start folded on every visit — deliberately not remembered: what is worth a row
 // of the first screen is the army, and a plan is read at a moment, not throughout.
 const notesOpen = ref(false)
