@@ -23,7 +23,9 @@ libraries** (don't add GSAP/@vueuse/motion/animate.css).
   (shared axis X: two views of one screen switched by a side-by-side control — the roster editor's
   Settings | Units; pair with `mode="out-in"` and pick the direction from the control's order; a
   view that sizes itself to the window must keep that layout until it has faded out — see
-  `paneTab` in `RosterEditorView`; `useAxisDirection(active, order)` names the direction. The
+  `paneTab` in `RosterEditorView`. A view that is expensive to build (the editor's catalogue and
+  list) is not remounted per switch: both stay built behind `v-show`, one `<Transition>` each, and
+  the leaving one's `after-leave` lets the other in; `useAxisDirection(active, order)` names the direction. The
   in-page `PageTabs` panels use it too — the roster view's Units | Rules | Stratagems and the
   roster list's Saved | Drafts; the faction pages' tabs are routes and keep the page fade.
   The 24px of travel needs no clip of its own: `html` already has `overflow-x: clip`), `sift` (a list or grid a

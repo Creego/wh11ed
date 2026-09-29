@@ -44,15 +44,20 @@
 
 
     <!-- A phone's two modes change with a short sideways fade toward the side each one's button
-         sits on — Settings left, Units right (the `axis-*` pair in style.css, 2026-09-28). -->
+         sits on — Settings left, Units right (the `axis-*` pair in style.css, 2026-09-28).
+         Both stay built and only one is shown (`v-show`), each in its own <Transition>: the one
+         leaving hands over to the other in `after-leave`, which is `mode="out-in"` done by hand.
+         They were a `v-if`/`v-else` pair until 2026-09-29, and every switch tore the Units pane
+         down and built the whole catalogue and list again — the new pane came in jerking while
+         that ran, and the catalogue's search, its open groups and the list's scroll were gone
+         on the way back from Settings. -->
     <Transition
       :name="axisName"
-      mode="out-in"
       @after-leave="paneTab = tab"
     >
       <div
-        v-if="!desk && tab === 'settings'"
-        key="settings"
+        v-if="!desk"
+        v-show="shown('settings')"
       >
         <!-- The name is a Settings answer: on a phone it heads that mode only, and on the desk it is
              the settings bar's first field. Over the Units panes it was a row of every phone's screen
@@ -101,15 +106,19 @@
           />
         </div>
       </div>
+    </Transition>
 
-      <!-- Units: the catalogue and the roster's own list, side by side (`.roster-panes` in
-           style.css). Adding a unit and configuring it used to be two screens — this tab and
-           /roster/:id/add — which since wargear started deciding a unit's price meant a navigation
-           per unit. Both panes now read from the same `useRosterEditing` handles they always did;
-           only the layout changed. -->
+    <!-- Units: the catalogue and the roster's own list, side by side (`.roster-panes` in
+         style.css). Adding a unit and configuring it used to be two screens — this tab and
+         /roster/:id/add — which since wargear started deciding a unit's price meant a navigation
+         per unit. Both panes now read from the same `useRosterEditing` handles they always did;
+         only the layout changed. -->
+    <Transition
+      :name="axisName"
+      @after-leave="paneTab = tab"
+    >
       <div
-        v-else
-        key="units"
+        v-show="desk || shown('units')"
         class="red-panel rw-fill"
       >
         <div
@@ -353,6 +362,8 @@ const tab = ref('units')
 const paneTab = ref(tab.value)
 // Settings sits left of Units in the switch.
 const axisName = useAxisDirection(tab, ['settings', 'units'])
+// A mode's pane is up once it is both chosen and the other has finished leaving.
+const shown = (key) => tab.value === key && paneTab.value === key
 const rulesOpen = ref(false)
 
 // The one media query this screen asks: three columns with the settings on a line above them, or

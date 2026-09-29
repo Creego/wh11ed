@@ -1330,7 +1330,8 @@ steps, and the phone its modal.
   them on a phone (≤900px): the editor hides its back link (the bar's Back goes to the same place)
   and shrinks the name row and tab margins; the wizard puts the back link and the step markers on
   one line. The Settings tab and the wizard's step 1 are ordinary pages: `.rw-host` is bound to
-  the columns being up.
+  the columns being up. The editor keeps both modes built (`v-show`) so a switch never rebuilds
+  the catalogue and the list — their search, open groups and scroll survive a visit to Settings.
 - **`RosterSettingsBar.vue`** is the top line — name, faction, detachments (with the DP count),
   battle size, Force Disposition, then its "…". **No points and no buttons** (owner, 2026-09-26):
   the points, the issue badge and the way out are the fixed bar's at the bottom at every width, the
