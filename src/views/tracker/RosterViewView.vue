@@ -601,6 +601,7 @@ import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
 import { bringTabsIntoView } from '../../composables/bringTabsIntoView.js'
 import { useKeywordPopover } from '../../composables/useKeywordPopover.js'
+import { useKeywordContext } from '../../composables/useFactionKeywordUnits.js'
 import { useRosters } from '../../composables/useRosters.js'
 import { useRosterDerived } from '../../composables/useRosterDerived.js'
 import { useFactionAccent } from '../../composables/useFactionAccent.js'
@@ -761,6 +762,8 @@ const { factionData } = useRosterFactionData(() => roster.value?.faction, { alli
 const {
   defOf, curDetachments, limit, points, entryMeta, groupedUnits, attachRole, validation,
 } = useRosterDerived(roster, factionData)
+// A faction keyword tapped in a rule on this screen lists this list's own units first.
+useKeywordContext(() => ({ faction: roster.value?.faction, unitIds: roster.value?.units?.map((u) => u.id) }))
 
 // ── Base statline (M/T/SV/W/LD/OC + invuln) for the compact unit rows — not in the compact
 // roster data layer, so pull it from the full datasheet file (already needed by the unit rules

@@ -339,6 +339,7 @@ import RosterExportModal from '../../components/roster/RosterExportModal.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
 import { useRosterEditing } from '../../composables/useRosterEditing.js'
+import { useKeywordContext } from '../../composables/useFactionKeywordUnits.js'
 import { useRosterBuildActions } from '../../composables/useRosterBuildActions.js'
 import { useFactionAccent } from '../../composables/useFactionAccent.js'
 import { useMediaQuery } from '../../composables/useMediaQuery.js'
@@ -427,6 +428,8 @@ const {
 watch(roster, (r) => { if (!r) router.replace('/roster') }, { immediate: true })
 
 const nameFit = computed(() => rosterNameFit(roster.value?.name))
+// A faction keyword tapped in a rule on this screen lists this list's own units first.
+useKeywordContext(() => ({ faction: roster.value?.faction, unitIds: roster.value?.units.map((u) => u.id) }))
 
 // ── Army choices ──
 // The faction accent, from the recipe every faction-coloured screen shares (useFactionAccent.js).

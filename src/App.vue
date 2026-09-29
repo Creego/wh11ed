@@ -80,6 +80,14 @@
       @close="showRules = false"
     />
     <KeywordPopover />
+    <!-- A faction's unit keyword tapped in rule prose → the units carrying it (useFactionKeywordUnits). -->
+    <KeywordUnitsModal
+      v-if="fkwShown"
+      :keyword="fkwShown.keyword"
+      :units="fkwShown.units"
+      :faction-slug="fkwShown.factionSlug"
+      @close="closeFactionKeyword"
+    />
     <MobileUtilityBar
       v-if="!isBare"
       ref="mobileBarRef"
@@ -108,6 +116,8 @@ const FeedbackModal = defineAsyncComponent(() => import('./components/FeedbackMo
 const FactionsNavModal = defineAsyncComponent(() => import('./components/FactionsNavModal.vue'))
 const RulesNavModal = defineAsyncComponent(() => import('./components/RulesNavModal.vue'))
 import KeywordPopover from './components/KeywordPopover.vue'
+import KeywordUnitsModal from './components/KeywordUnitsModal.vue'
+import { useFactionKeywordUnits } from './composables/useFactionKeywordUnits.js'
 import NavSidebar from './components/NavSidebar.vue'
 import AppNavbar from './components/AppNavbar.vue'
 import AppSubnav from './components/AppSubnav.vue'
@@ -170,6 +180,9 @@ const isBare = computed(() => !!route.meta.bare)
 watch([() => route.path, locale], ([path, loc]) => applyRouteMeta(path, loc), { immediate: true })
 
 const { open: openKeyword, openGloss, close: closeKeyword } = useKeywordPopover()
+const { shown: fkwShown, openFactionKeyword, closeFactionKeyword } = useFactionKeywordUnits()
+// The faction whose page this is, for a keyword several factions share.
+const pageFaction = computed(() => (appPath.value.startsWith('/factions/') ? route.params.slug || null : null))
 const { navigateTo } = useRefNavigation()
 
 const {
@@ -272,6 +285,12 @@ function onGlobalClick(e) {
   const glossEl = e.target.closest('.gloss')
   if (glossEl) {
     openGloss(glossEl.dataset.gloss, glossEl.getBoundingClientRect())
+    return
+  }
+  const fkwEl = e.target.closest('.fkw')
+  if (fkwEl) {
+    closeKeyword()
+    openFactionKeyword(fkwEl.dataset.fkw, pageFaction.value)
     return
   }
   // `.core-ability` is the same popover from a quieter span — a core ability named in rule prose,

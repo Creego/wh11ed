@@ -413,6 +413,20 @@ a {
   }
 }
 
+/* A faction's unit keyword named in rule prose ("one Endless Multitude unit") — a tap lists the
+   units that carry it (useFactionKeywordUnits.js). The gloss's dotted line, since it too is a word
+   that explains itself on a tap, in the link colour, since what it opens is a list of links. */
+.fkw {
+  text-decoration: underline dotted;
+  text-decoration-color: var(--link-accent);
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .fkw:hover { color: var(--link-accent-hover); }
+}
+
 .cross-ref {
   color: var(--link-accent);
   text-decoration: underline dotted;

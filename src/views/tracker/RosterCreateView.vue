@@ -302,6 +302,7 @@ import RosterWorkbench from '../../components/roster/RosterWorkbench.vue'
 import RosterIssuesModal from '../../components/roster/RosterIssuesModal.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
+import { useKeywordContext } from '../../composables/useFactionKeywordUnits.js'
 import { useRosters } from '../../composables/useRosters.js'
 import { useRosterDerived } from '../../composables/useRosterDerived.js'
 import { useRosterBuildActions } from '../../composables/useRosterBuildActions.js'
@@ -337,6 +338,8 @@ const customPoints = ref(2000)
 const checkLegality = ref(true)
 const notes = ref('')
 const units = ref([])
+// A faction keyword tapped in a rule on this screen lists the units picked so far first.
+useKeywordContext(() => ({ faction: factionSlug.value, unitIds: units.value.map((u) => u.id) }))
 
 // ── Faction accent (useFactionAccent.js — the same recipe every faction-coloured screen uses) ──
 const { factionName, accentStyle } = useFactionAccent(factionSlug)
