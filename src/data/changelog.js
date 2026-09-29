@@ -23,7 +23,7 @@
 export const changelog = [
   {
     version: '2.7.6',
-    date: '2026-09-29',
+    date: '2026-09-30',
     en: [
       { h: 'Faction emblems' },
       'Every faction now has its emblem: in the faction lists, beside the name on a faction’s page and a Combat Patrol page, and stamped into the background of roster, game and Combat Patrol cards.',
