@@ -367,7 +367,12 @@ const { locale } = useLocale()
 const labels = computed(() => ui[locale.value])
 const { saveToCloud } = useRosterSync()
 
-const tab = ref('units')
+// A list that was just made elsewhere — an import — opens on Settings (`?mode=settings`, owner
+// 2026-09-29): what it most likely lacks is a choice made there (its detachments, its Force
+// Disposition), not a unit. Everything else opens on the units. The query is dropped at once so a
+// reload lands where editing usually does.
+const tab = ref(route.query?.mode === 'settings' ? 'settings' : 'units')
+if (route.query?.mode) router.replace({ path: route.path })
 // Which mode's pane is actually on screen. It trails `tab` through the switch's fade: the Units
 // pane needs the window-tall `.rw-host` column until it has faded out, and Settings must not get
 // it while coming in.

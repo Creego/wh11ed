@@ -53,7 +53,7 @@
 
     <RosterImportModal
       v-if="importOpen"
-      @imported="(id) => router.push(`/roster/${id}`)"
+      @imported="(id) => router.push({ path: `/roster/${id}`, query: { mode: 'settings' } })"
       @close="importOpen = false"
     />
   </div>
