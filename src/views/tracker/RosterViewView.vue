@@ -95,19 +95,6 @@
         <i class="bi bi-chevron-right rvi-go" />
       </button>
 
-      <!-- How this list has done on the table. Saved lists only: in a game the answer is the game.
-         The full record — matchups, missions, cards — is behind the link. -->
-      <RouterLink
-        v-if="record"
-        to="/tracker/stats"
-        class="rv-record"
-      >
-        <i class="bi bi-trophy" />
-        <span class="rvr-rec">{{ record }}</span>
-        <span class="rvr-lab">{{ labels.statsTitle }}</span>
-        <i class="bi bi-chevron-right rvr-go" />
-      </RouterLink>
-
       <p
         v-if="!roster.faction"
         class="rv-hint"
@@ -635,7 +622,6 @@ import { phaseLabel, usableInSlot, PHASE_ORDER } from '../../composables/stratag
 import { normName } from '../../composables/rosterFactionRules.js'
 import { useRosterFactionData, useRosterFactionRules } from '../../composables/useRosterFactionData.js'
 import { getItem, setItem } from '../../composables/safeStorage.js'
-import { loadHistory, rosterRecords } from '../../composables/gameStats.js'
 import { rosterNameFit } from '../../utils/rosterNameFit.js'
 import { APP_VERSION } from '../../buildInfo.js'
 
@@ -729,15 +715,6 @@ watch([gamePi, gameMi, historyId], async ([pi, , gid]) => {
   }
 }, { immediate: true })
 onUnmounted(() => { if (liveParty) liveParty.detach() })
-
-// This list's own record, read once from storage (gameStats.js) — the read-only side of the game
-// history, so this route keeps working without the tracker store it dynamic-imports above. Off the
-// table only: inside a game the score on screen is the record that matters.
-const record = computed(() => {
-  if (inGame.value || !roster.value?.id) return null
-  const rec = rosterRecords(loadHistory()).get(roster.value.id)
-  return rec ? `${rec.w}–${rec.l}–${rec.d}` : null
-})
 
 // What is true for one entry: the game answers when there is one, and off the table the LIST still
 // answers for itself (an enhancement gated on "while the bearer is leading a unit" is proven by the
@@ -1529,22 +1506,6 @@ function stratKey(strat) {
 </script>
 
 <style scoped>
-.rv-record {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  margin: 0.5rem 0 0.2rem;
-  padding: 0.4rem 0.6rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 0.8rem;
-}
-.rv-record:hover { border-color: var(--accent); color: var(--text-primary); }
-.rvr-rec { color: var(--text-primary); font-weight: 600; font-variant-numeric: tabular-nums; }
-.rvr-lab { flex: 1; }
-
 /* The strip is a boxed, titled set now, not a loose row of chips, so it needs a little air under
    it on a phone too — hugging the tab row was what made the chips read as part of the tabs. */
 .rv-conds { margin: 0.6rem 0 0.75rem; }

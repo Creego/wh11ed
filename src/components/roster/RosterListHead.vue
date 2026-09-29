@@ -21,15 +21,17 @@
       >
         <i class="bi bi-clipboard-plus" /> {{ labels.rosterImport }}
       </button>
-      <!-- On the desk the right-hand side shows either a list or the game statistics; this is the
-           way back to the statistics from a list (owner, 2026-09-29). -->
+      <!-- The game statistics (owner, 2026-09-29: they are not a roster's, so not on a roster's
+           page — they were a bar there until the same day). On the desk they fill its right-hand
+           side, which /roster shows; on a phone they are the tracker's own page. -->
       <RouterLink
-        v-if="desk"
-        to="/roster"
+        :to="desk ? '/roster' : '/tracker/stats'"
         class="btn-ghost rlh-stats"
-        :class="{ on: statsOn }"
+        :class="{ on: desk && statsOn }"
+        :title="labels.statsLink"
+        :aria-label="labels.statsLink"
       >
-        <i class="bi bi-bar-chart" /> {{ labels.statsLink }}
+        <i class="bi bi-bar-chart" /> <span class="rlh-stats-text">{{ labels.statsLink }}</span>
       </RouterLink>
     </div>
     <div class="rlh-side">
@@ -64,7 +66,7 @@
 // of the guide. The same shape the tracker home's heading has.
 //
 // Two layouts of one block. On a phone (RosterListView) the title and the pair share a row over
-// the accent rule and the buttons stand centred under it. On the rosters desk (RosterDeskView,
+// the accent rule and the buttons (New, Import, Statistics) stand centred under it. On the rosters desk (RosterDeskView,
 // owner 2026-09-29: "the header must be one") it is ONE row across all the desk's columns — title,
 // buttons (with "Statistics", the way back to them), the pair at the far right — over one rule.
 import { computed, ref } from 'vue'
@@ -162,6 +164,12 @@ const importOpen = ref(false)
 /* Same treatment as the tracker's CTA row on phones: button-sized buttons on one line, not two
    stretched panels. Display type is a lot of height on a 360px screen, and the heading is the
    least useful thing on it — the list under it is what the reader came for. */
+/* Three buttons on one line down to the narrowest phone: below 400px Statistics keeps its icon
+   only (its name stays in the title and the accessible name) — spelled out, it wrapped to a second
+   row and cost the list 40px. */
+@media (max-width: 400px) {
+  .rlh-stats-text { display: none; }
+}
 @media (max-width: 480px) {
   .rlh-title { font-size: 1.75rem; }
   .rlh-side { font-size: 0.75rem; }
