@@ -203,6 +203,22 @@ async function syncFaction(slug) {
     } else if (!whInv.length && appInvList.length === 1 && !appInvList[0].miniatureId && (appInvList[0].save || appInvList[0].rangedSave)) {
       lines.push(`  + datasheet "${d.name}" missing invulnerable save: appdata has ${appInvList[0].save || `${appInvList[0].rangedSave}/${appInvList[0].meleeSave}`}`)
     }
+    // The condition on it ("against ranged attacks only", "improved to 4+ against melee") — a
+    // `rules` line appdata prints under the save, our per-profile `invNote`. Compared by what it
+    // restricts to (ranged/melee/psychic) and any other save it names, not by wording: the notes
+    // are written three ways across the data. The Astraeus showed an unconditional 5+ until 2026-10.
+    const invGist = (s, save) => {
+      const t = String(s || '').toLowerCase()
+      const saves = (t.match(/\d\+/g) || []).filter((x) => x !== save).sort().join(',')
+      return ['ranged', 'melee', 'psychic'].filter((w) => t.includes(w)).join('+') + (saves ? ` ${saves}` : '')
+    }
+    const whNotes = [...new Set((d.profiles || []).map((p) => p.invNote).filter(Boolean))]
+    for (const iv of appInvList) {
+      if (!iv.rules) continue
+      const want = invGist(iv.rules, iv.save)
+      if (!want || whNotes.some((n) => invGist(n, iv.save) === want)) continue
+      lines.push(`  ~ datasheet "${d.name}" invulnerable save condition differs: wh11ed=${JSON.stringify(whNotes)} appdata=${JSON.stringify(iv.rules)}`)
+    }
 
     // Weapons: resolve each wh11ed ranged[]/melee[] row to its appdata wargear item, id-first via
     // the sourceIds `wg:` bridge (immune to later name drift), falling back to matchWeapon() for

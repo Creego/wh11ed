@@ -1085,3 +1085,18 @@ and appdata state fresh; a data model can change between now and when this is ne
 71. **A gate that counts uses must count every user.** The condition-vocabulary test read only the
     faction modifier files, so `unit-battle-shocked` — used by the Core Rules' Battle-shock record —
     looked dead the day the last faction record naming it retired. It reads `coreModifiers` too now.
+
+72. **Map every field of the bundle to the script that compares it.** Angron's Driven by Ultimate
+    Rage sat pre-errata from 963 until a player reported it: `abilitySets` (appdata's
+    `subAbilities`) were generated from appdata but compared by nothing, and the translation queue —
+    the bump's EN worklist too — skipped the `subAbilities` kind, so the change reported in
+    `changes.json` reached no list. The same walk found `invNote` uncompared (the Astraeus showed an
+    unconditional 5+). After a new field or kind appears, walk the bundle's leaf paths and name the
+    comparing script for each; "the generator reads it" is not "something compares it".
+
+73. **A baseline key must carry the values, wherever they live.** The sync baseline keyed a finding
+    by its head line, and a text finding's head names only the rule — so the 274 accepted prose
+    differences were blind to any later errata on the same rule. The key now adds a hash of the body.
+    When re-keying, check that the set of findings is unchanged (strip the hash, compare) and audit
+    what the old keys were hiding before accepting the new baseline: numbers present on one side
+    only, then words, over the full texts rather than the report's trimmed middles.
