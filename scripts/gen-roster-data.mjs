@@ -804,7 +804,15 @@ function linkWargearConditions(datasheetId, drafts) {
     // Case (b): a sibling group's own `rep` shows it replaces this exact item — this group is
     // only live once that sibling has actually been picked away from its default.
     const repSibling = drafts.find((s) => s !== d && s.m === d.m && s.rep?.includes(uuid))
-    if (repSibling) d.cond = { sibling: repSibling, active: negated }
+    if (repSibling) { d.cond = { sibling: repSibling, active: negated }; continue }
+
+    // Case (c): the item is not the model's to start with, and exactly one sibling group hands it
+    // out — "If the Helliarch is equipped with 1 splinter pistol, it can be equipped with 1
+    // hellglaive", where only the swap for "1 splinter pistol and 1 power weapon" brings a pistol.
+    // Unread until 2026-09-30, the hellglaive could be taken with no swap at all.
+    if (negated || defaultsByMini.get(d.miniId)?.has(uuid)) continue
+    const givers = drafts.filter((s) => s !== d && s.m === d.m && s.opts.some((o) => o.uuid === uuid))
+    if (givers.length === 1) d.cond = { sibling: givers[0], active: true }
   }
 }
 

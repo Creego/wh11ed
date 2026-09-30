@@ -382,6 +382,26 @@ describe('replaced-item links', () => {
   })
 })
 
+describe('an option that needs an item only another option brings', () => {
+  // "If the Helliarch is equipped with 1 splinter pistol, it can be equipped with 1 hellglaive" —
+  // the pistol comes only with the hellglaive's swap, so the second hellglaive waits for it.
+  const unit = (slug, id) => factions.find((f) => f.slug === slug).data.units.find((u) => u.id === id)
+  const groupNamed = (u, name) => u.gear.findIndex((g) => g.o.length === 1 && rosterItems.items[g.o[0][0]] === name)
+  it.each([
+    ['drukhari', 'hellions', 'Hellglaive'],
+    ['imperial-agents', 'inquisitor', 'Force weapon'],
+    ['space-marines', 'lieutenant', 'Storm Shield'],
+  ])('%s %s: %s is closed until the swap that brings the item', (slug, id, name) => {
+    const u = unit(slug, id)
+    const gi = groupNamed(u, name)
+    expect(gi).toBeGreaterThanOrEqual(0)
+    const [sib, active] = u.gear[gi].cond
+    expect(active).toBe(1)
+    expect(wargearGroupLive(u, { size: 0, wg: [] }, gi)).toBe(false)
+    expect(wargearGroupLive(u, { size: 0, wg: [[sib, 0, 1]] }, gi)).toBe(true)
+  })
+})
+
 describe('default loadouts', () => {
   // 144 datasheets carry no base_miniature_loadout row; for 136 the starting gear is a
   // "Default Wargear" option group instead. Reading only the loadout table left those units with
