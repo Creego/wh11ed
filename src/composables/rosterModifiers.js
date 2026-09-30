@@ -14,7 +14,7 @@
 // an attributed note instead — the same "mark it, don't fake it" treatment DatasheetCard already
 // gives rule-granted keywords via its `grantedKeywords` prop.
 
-import { wargearGroupCap, wargearGroupLive, findEnhancement, mandatoryEnhancementFor, optionItems, modelsPerMini, swapsByMini, allegFor, allegKeyword, allegItems, grantedKeywordsFor } from './rosterEngine.js'
+import { copiesLeft, wargearGroupCap, wargearGroupLive, findEnhancement, mandatoryEnhancementFor, optionItems, modelsPerMini, swapsByMini, allegFor, allegKeyword, allegItems, grantedKeywordsFor } from './rosterEngine.js'
 import { conditions } from '../data/rosterModifiers/conditions.js'
 // Rule-granted keywords moved to rosterEngine.js, which needs them to answer whether a unit can
 // carry an enhancement; re-exported here because this is where every caller already imports them.
@@ -129,15 +129,23 @@ export function loadoutItemCopies(def, entry) {
       const take = removed.get(`${m}:${id}`) || 0
       // `take` counts MODELS OF THIS PROFILE that gave the item up; `c` is its per-model quantity.
       // A profile whose model count is unknown keeps everything — never hide a weapon on a guess.
-      if (!take || models == null || c * Math.max(0, models - take) > 0) {
+      if (!take || models == null || copiesLeft(c, models, take) > 0) {
         // `total` marks a quantity that belongs to the PROFILE rather than to each of its models —
         // the single heavy bolter among two Gun Servitors — so it stands as written and is never
         // multiplied, the same reading rosterEngine's defaultLoadoutLines() gives it. It is one
         // slot held by that many models, never two on one.
         if (total) slot(id, m, c)
+        else if (models == null) for (let k = 0; k < c; k++) slot(id, m, null)
         else {
-          const holders = models == null ? null : Math.max(0, models - take)
-          for (let k = 0; k < c; k++) slot(id, m, holders)
+          // `take` can be a share of a model (rosterEngine's pickShare: one catapult of a
+          // Wraithlord's two): the models stripped outright hold nothing, and ONE more model has
+          // given up that many of its copies — its last ones, so it drops out of the top slots.
+          const whole = Math.floor(take + 1e-9)
+          const part = Math.round(c * (take - whole))
+          for (let k = 0; k < c; k++) {
+            const holders = Math.max(0, models - whole - (part && k >= c - part ? 1 : 0))
+            if (holders || !take) slot(id, m, holders)
+          }
         }
       }
     }
