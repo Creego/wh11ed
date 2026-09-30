@@ -2548,7 +2548,7 @@ export default [
           },
           {
             "name": "Time Flux (Aura, Psychic)",
-            "text": "While a friendly Thousand Sons unit is within 6\" of this PSYKER, add 2\" to the Move characteristic of models in that unit."
+            "text": "While a friendly THOUSAND SONS unit is within 6\" of this PSYKER, add 2\" to the Move characteristic of models in that unit."
           }
         ]
       }

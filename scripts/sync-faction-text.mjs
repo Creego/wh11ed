@@ -54,6 +54,7 @@ function plainText(s) {
   // that wh11ed adds, and reformats "a, or b" ⇄ "a. Or: b"; keep " (inches) and +/-/% (stat
   // modifiers) and / (keyword unions), which can carry meaning.
   t = t.toLowerCase().replace(/[^a-z0-9"/+%-]+/g, ' ').replace(/\s+/g, ' ').trim()
+  t = t.replace(/\b([a-z]+) \1\b/g, '$1') // appdata stutters ("and it it can only") — wh11ed fixes them
   return t
 }
 
@@ -182,6 +183,18 @@ export async function eachFactionTextPair(slug, visit) {
       const a = appAbilityByName.get(norm(ab.name))
       if (!a) continue
       visit(`datasheet "${d.name}" · ability "${ab.name}"`, ab.text, [a.rules])
+    }
+
+    // abilitySets — the "pick one" groups on Primarch-grade sheets (Angron's Wrathful Presence):
+    // each option is appdata's subAbilities[] under the set's own datasheet ability. Left out of
+    // this diff until 2026-10, errata to them (Angron, Mortarion, Yarrick) went unnoticed.
+    for (const set of d.abilitySets || []) {
+      const optByName = byNormName(appAbilityByName.get(norm(set.name))?.subAbilities || [], (s) => s.name)
+      for (const opt of set.options || []) {
+        const s = optByName.get(norm(opt.name))
+        if (!s) continue
+        visit(`datasheet "${d.name}" · ability set "${set.name}" · "${opt.name}"`, opt.text, [s.rules])
+      }
     }
 
     // wargearAbilities — a wargear item's own passive rule text (e.g. Storm Shield's invulnerable

@@ -128,7 +128,7 @@ export default [
         "options": [
           {
             "name": "Wreathed in Shadows (Aura, Psychic)",
-            "text": "While a friendly Legiones Daemonica unit or Shadow Legion unit is within 6\" of this model, that unit can only be targeted by a ranged attack if the attacking model is within 18\"."
+            "text": "While a friendly LEGIONES DAEMONICA unit or Shadow Legion unit is within 6\" of this model, that unit can only be targeted by a ranged attack if the attacking model is within 18\"."
           },
           {
             "name": "Pall of Despair (Aura, Psychic)",
@@ -136,7 +136,7 @@ export default [
           },
           {
             "name": "Shadow Lord (Aura, Psychic)",
-            "text": "While a friendly Legiones Daemonica or Shadow Legion unit is within 6\" of this model, each time a model in that unit makes an attack, re-roll a Hit roll of 1."
+            "text": "While a friendly LEGIONES DAEMONICA or Shadow Legion unit is within 6\" of this model, each time a model in that unit makes an attack, re-roll a Hit roll of 1."
           }
         ]
       }

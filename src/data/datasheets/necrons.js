@@ -4312,15 +4312,15 @@ export default [
         "options": [
           {
             "name": "Phaeron of the Stars (Aura)",
-            "text": "While a friendly NECRONS unit (excluding Monster units) is within 6\" of this unit’s Szarekh model, each time a model in that unit makes an attack, re-roll a Hit roll of 1 and re-roll a Wound roll of 1."
+            "text": "While a friendly NECRONS unit (excluding MONSTER units) is within 6\" of this unit’s Szarekh model, each time a model in that unit makes an attack, re-roll a Hit roll of 1 and re-roll a Wound roll of 1."
           },
           {
             "name": "Phaeron of the Blades (Aura)",
-            "text": "While a friendly NECRONS unit (excluding Monster units) is within 6\" of this unit’s Szarekh model, you can re-roll Charge rolls made for that unit and each time a model in that unit makes a melee attack, add 1 to the Strength characteristic of that attack."
+            "text": "While a friendly NECRONS unit (excluding MONSTER units) is within 6\" of this unit’s Szarekh model, you can re-roll Charge rolls made for that unit and each time a model in that unit makes a melee attack, add 1 to the Strength characteristic of that attack."
           },
           {
             "name": "Relentless March (Aura)",
-            "text": "While a friendly NECRONS unit (excluding Monster units) is within 6\" of this unit’s Szarekh model, add 2\" to the Move characteristic of models in that unit."
+            "text": "While a friendly NECRONS unit (excluding MONSTER units) is within 6\" of this unit’s Szarekh model, add 2\" to the Move characteristic of models in that unit."
           }
         ]
       }

@@ -1892,7 +1892,7 @@ export default [
           },
           {
             "name": "Aethersails",
-            "text": "While one or more Drukhari units are embarked within this model, you can re-roll Advance and Charge rolls made for this model."
+            "text": "While one or more DRUKHARI units are embarked within this model, you can re-roll Advance and Charge rolls made for this model."
           }
         ]
       }

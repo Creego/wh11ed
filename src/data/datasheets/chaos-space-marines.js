@@ -110,11 +110,11 @@ export default [
         "options": [
           {
             "name": "Paragon of Hatred (Aura)",
-            "text": "While a friendly HERETIC ASTARTES unit is within 6\" (excluding DAMNED units) of this model, each time a model in that unit makes an attack, you can re-roll the Hit roll."
+            "text": "While a friendly HERETIC ASTARTES unit (excluding DAMNED units) is within 6\" of this model, each time a model in that unit makes an attack, you can re-roll the Hit roll."
           },
           {
             "name": "Mark of Chaos Ascendant (Aura)",
-            "text": "While a friendly Heretic Astartes Infantry or Heretic Astartes Mounted unit (excluding DAMNED units) is within 6\" of this model, models in that unit have a 4+ invulnerable save."
+            "text": "While a friendly HERETIC ASTARTES INFANTRY or HERETIC ASTARTES MOUNTED unit (excluding DAMNED units) is within 6\" of this model, models in that unit have a 4+ invulnerable save."
           },
           {
             "name": "Lord of the Traitor Legions (Aura)",
