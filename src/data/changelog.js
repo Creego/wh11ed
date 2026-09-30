@@ -261,32 +261,6 @@ export const changelog = [
       'Игрок написал, что в битве на 3000 очков должно быть 4DP, а не 3. Я сверил это с приложением Warhammer 40,000. В Onslaught 3DP, как и в Strike Force: растёт только число очков. На сайте всё указано верно.',
     ],
   },
-  {
-    version: '2.7.3',
-    date: '2026-09-27',
-    en: [
-      { h: 'Roster builder' },
-      'The star button is gone from the unit list. Units from your collection are marked there with a star badge in the faction’s colour. To mark a unit, tap {btn:star} in its card, next to the close button.',
-      'The Warlord is marked with a white flag badge under the unit’s name, and with a white label in the unit card. A unit with SUPREME COMMANDER becomes the Warlord by itself if the list has no Warlord yet. If you remove it, the flag goes to another unit with that rule.',
-      'Broadside, Crisis Fireknife, Crisis Starscythe and Crisis Sunforge Battlesuits can take up to two items from their list for each model. Before, Broadsides got one pick for the whole unit, and Crisis suits could take more than allowed. A Broadside cannot carry a twin plasma rifle and a twin smart missile system together. Piranhas can take two seeker missiles per model, not one.',
-      'The Legends Crisis and XV9 Hazard Battlesuits follow the same per-model limits. For Crisis Battlesuits the builder also reads the datasheet’s footnotes: at most three ranged weapons per model, and one of each starred item, counting the burst cannon swap.',
-      'On a computer, a new list’s page no longer scrolls before you pick a faction.',
-      'On phones up to 480px wide, the last row of both panes went under the points bar. Both panes now end above the bar.',
-      { h: 'Combat Patrol: Maggot Lords' },
-      'On the Maggot Lords page, Contagion Range is now 9" from the third battle round, as in the Codex. Before, it stayed at 6" there.',
-    ],
-    ru: [
-      { h: 'Конструктор ростеров' },
-      'Кнопка-звёздочка из списка юнитов убрана. Юниты из вашей коллекции отмечены там бейджем со звёздочкой в цвете фракции. Отметить юнит можно звёздочкой {btn:star} в его карточке, рядом с крестиком.',
-      'Варлорд отмечен белым бейджем с флажком под названием юнита, а в карточке юнита — белой плашкой. Юнит с правилом SUPREME COMMANDER сам становится варлордом, если варлорда в списке ещё нет. Если такой юнит удалить, флажок переходит к другому юниту с этим правилом.',
-      'Broadside, Crisis Fireknife, Crisis Starscythe и Crisis Sunforge Battlesuits могут взять до двух предметов из списка на каждую модель. Раньше Broadside получали один выбор на весь отряд, а Crisis могли взять больше положенного. Одна модель Broadside не может нести twin plasma rifle и twin smart missile system вместе. Piranhas могут взять по две seeker missiles на модель, а не по одной.',
-      'У Legends Crisis и XV9 Hazard Battlesuits действуют те же ограничения на модель. У Crisis Battlesuits конструктор учитывает и сноски датащита: не больше трёх стрелковых на модель и не больше одного каждого предмета со звёздочкой, считая замену burst cannon.',
-      'На компьютере страница нового ростера больше не прокручивается, пока не выбрана фракция.',
-      'На телефонах шириной до 480px последняя строка обеих колонок уходила под панель с очками. Теперь колонки заканчиваются над ней.',
-      { h: 'Combat Patrol: Maggot Lords' },
-      'На странице Maggot Lords Contagion Range с третьего раунда боя теперь 9", как в Кодексе. Раньше там оставалось 6".',
-    ],
-  },
 ]
 
 // The latest entry drives the banner + the stored "last seen version". Exported so the composable
