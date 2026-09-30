@@ -69,7 +69,7 @@ export default {
           0,
           [
             [
-              1337,
+              1472,
               1
             ]
           ]
@@ -78,7 +78,7 @@ export default {
           1,
           [
             [
-              1337,
+              1472,
               1
             ]
           ]
@@ -124,7 +124,7 @@ export default {
           0,
           [
             [
-              1338,
+              1473,
               1
             ]
           ]
@@ -168,19 +168,19 @@ export default {
           0,
           [
             [
-              595,
+              599,
               1
             ],
             [
-              1339,
+              1474,
               1
             ],
             [
-              1340,
+              1475,
               1
             ],
             [
-              1341,
+              1476,
               1
             ]
           ]
@@ -195,35 +195,35 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 566,
+          "t": 565,
           "in": "stepper",
           "o": [
             [
-              1342
+              1477
             ],
             [
-              1343
+              1478
             ]
           ],
           "rep": [
-            1340
+            1475
           ],
           "dr": 10
         },
         {
           "m": 0,
-          "t": 567,
+          "t": 566,
           "in": "stepper",
           "o": [
             [
-              1344
+              1479
             ],
             [
-              1345
+              1480
             ]
           ],
           "rep": [
-            1339
+            1474
           ]
         }
       ]
@@ -243,7 +243,7 @@ export default {
       "flags": {},
       "sizes": [
         {
-          "pts": 70,
+          "pts": 65,
           "per": [
             5,
             5
@@ -261,7 +261,7 @@ export default {
           ]
         },
         {
-          "pts": 130,
+          "pts": 120,
           "per": [
             6,
             10
@@ -293,11 +293,11 @@ export default {
           1,
           [
             [
-              1346,
+              1481,
               1
             ],
             [
-              610,
+              613,
               1
             ]
           ]
@@ -306,11 +306,11 @@ export default {
           0,
           [
             [
-              1346,
+              1481,
               1
             ],
             [
-              610,
+              613,
               1
             ]
           ]
@@ -319,11 +319,11 @@ export default {
       "gear": [
         {
           "m": 1,
-          "t": 568,
+          "t": 567,
           "in": "checkbox",
           "o": [
             [
-              1347
+              1482
             ]
           ],
           "lim": [
@@ -333,16 +333,16 @@ export default {
             ]
           ],
           "rep": [
-            610
+            613
           ]
         },
         {
           "m": 1,
-          "t": 569,
+          "t": 568,
           "in": "stepper",
           "o": [
             [
-              1348
+              1483
             ]
           ],
           "lim": [
@@ -356,21 +356,21 @@ export default {
             ]
           ],
           "rep": [
-            610,
-            1346
+            613,
+            1481
           ]
         },
         {
           "m": 0,
-          "t": 570,
+          "t": 569,
           "in": "checkbox",
           "o": [
             [
-              1349
+              1484
             ]
           ],
           "rep": [
-            1346
+            1481
           ]
         }
       ]
@@ -440,11 +440,11 @@ export default {
           1,
           [
             [
-              614,
+              617,
               1
             ],
             [
-              1346,
+              1481,
               1
             ]
           ]
@@ -453,11 +453,11 @@ export default {
           0,
           [
             [
-              614,
+              617,
               1
             ],
             [
-              1346,
+              1481,
               1
             ]
           ]
@@ -466,11 +466,11 @@ export default {
       "gear": [
         {
           "m": 1,
-          "t": 571,
+          "t": 570,
           "in": "checkbox",
           "o": [
             [
-              1347
+              1482
             ]
           ],
           "lim": [
@@ -480,16 +480,16 @@ export default {
             ]
           ],
           "rep": [
-            614
+            617
           ]
         },
         {
           "m": 1,
-          "t": 572,
+          "t": 571,
           "in": "stepper",
           "o": [
             [
-              1350
+              1485
             ]
           ],
           "lim": [
@@ -503,20 +503,20 @@ export default {
             ]
           ],
           "rep": [
-            614
+            617
           ]
         },
         {
           "m": 0,
-          "t": 570,
+          "t": 569,
           "in": "checkbox",
           "o": [
             [
-              1349
+              1484
             ]
           ],
           "rep": [
-            1346
+            1481
           ]
         }
       ]
@@ -548,11 +548,11 @@ export default {
       "linked": 1,
       "leads": [
         {
-          "to": "acolyte-hybrids-with-autopistols",
+          "to": "neophyte-hybrids",
           "type": "leader"
         },
         {
-          "to": "acolyte-hybrids-with-hand-flamers",
+          "to": "acolyte-hybrids-with-autopistols",
           "type": "leader"
         },
         {
@@ -560,7 +560,7 @@ export default {
           "type": "leader"
         },
         {
-          "to": "neophyte-hybrids",
+          "to": "acolyte-hybrids-with-hand-flamers",
           "type": "leader"
         }
       ],
@@ -569,7 +569,7 @@ export default {
           0,
           [
             [
-              1351,
+              1486,
               1
             ],
             [
@@ -664,15 +664,15 @@ export default {
           1,
           [
             [
-              1352,
+              1487,
               1
             ],
             [
-              226,
+              228,
               1
             ],
             [
-              1353,
+              1488,
               1
             ]
           ]
@@ -681,11 +681,11 @@ export default {
           0,
           [
             [
-              226,
+              228,
               1
             ],
             [
-              1352,
+              1487,
               1
             ]
           ]
@@ -694,11 +694,11 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 573,
+          "t": 572,
           "in": "stepper",
           "o": [
             [
-              1354
+              1489
             ]
           ],
           "lim": [
@@ -712,16 +712,16 @@ export default {
             ]
           ],
           "rep": [
-            226
+            228
           ]
         },
         {
           "m": 0,
-          "t": 574,
+          "t": 573,
           "in": "stepper",
           "o": [
             [
-              540
+              542
             ]
           ],
           "lim": [
@@ -735,23 +735,23 @@ export default {
             ]
           ],
           "rep": [
-            1352
+            1487
           ]
         },
         {
           "m": 1,
-          "t": 575,
+          "t": 574,
           "in": "stepper",
           "o": [
             [
-              1355
+              1490
             ],
             [
-              1356
+              1491
             ]
           ],
           "rep": [
-            1353
+            1488
           ]
         }
       ]
@@ -783,7 +783,7 @@ export default {
       "linked": 1,
       "leads": [
         {
-          "to": "acolyte-hybrids-with-autopistols",
+          "to": "hybrid-metamorphs",
           "type": "leader"
         },
         {
@@ -791,11 +791,11 @@ export default {
           "type": "leader"
         },
         {
-          "to": "hybrid-metamorphs",
+          "to": "neophyte-hybrids",
           "type": "leader"
         },
         {
-          "to": "neophyte-hybrids",
+          "to": "acolyte-hybrids-with-autopistols",
           "type": "leader"
         }
       ],
@@ -804,7 +804,7 @@ export default {
           0,
           [
             [
-              1357,
+              1492,
               1
             ],
             [
@@ -841,15 +841,7 @@ export default {
       "linked": 1,
       "leads": [
         {
-          "to": "acolyte-hybrids-with-autopistols",
-          "type": "support"
-        },
-        {
-          "to": "acolyte-hybrids-with-hand-flamers",
-          "type": "support"
-        },
-        {
-          "to": "hybrid-metamorphs",
+          "to": "aberrants",
           "type": "support"
         },
         {
@@ -857,7 +849,15 @@ export default {
           "type": "support"
         },
         {
-          "to": "aberrants",
+          "to": "hybrid-metamorphs",
+          "type": "support"
+        },
+        {
+          "to": "acolyte-hybrids-with-autopistols",
+          "type": "support"
+        },
+        {
+          "to": "acolyte-hybrids-with-hand-flamers",
           "type": "support"
         }
       ],
@@ -866,15 +866,15 @@ export default {
           0,
           [
             [
-              1358,
+              1493,
               1
             ],
             [
-              1359,
+              1494,
               1
             ],
             [
-              1360,
+              1495,
               1
             ],
             [
@@ -957,7 +957,7 @@ export default {
       "flags": {},
       "sizes": [
         {
-          "pts": 120,
+          "pts": 110,
           "per": [
             1,
             1
@@ -975,19 +975,19 @@ export default {
           0,
           [
             [
-              1340,
+              1475,
               1
             ],
             [
-              1361,
+              1496,
               1
             ],
             [
-              1362,
+              1497,
               1
             ],
             [
-              508,
+              510,
               1
             ]
           ]
@@ -996,18 +996,18 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 576,
+          "t": 575,
           "in": "checkbox",
           "o": [
             [
-              1363
+              1498
             ],
             [
-              1364
+              1499
             ]
           ],
           "rep": [
-            1340
+            1475
           ]
         }
       ]
@@ -1045,19 +1045,19 @@ export default {
           0,
           [
             [
-              1361,
+              1496,
               1
             ],
             [
-              508,
+              510,
               1
             ],
             [
-              151,
+              153,
               1
             ],
             [
-              660,
+              663,
               1
             ]
           ]
@@ -1131,11 +1131,11 @@ export default {
           0,
           [
             [
-              610,
+              613,
               1
             ],
             [
-              1365,
+              1500,
               1
             ]
           ]
@@ -1144,11 +1144,11 @@ export default {
           1,
           [
             [
-              610,
+              613,
               1
             ],
             [
-              1366,
+              1501,
               1
             ]
           ]
@@ -1157,24 +1157,24 @@ export default {
       "gear": [
         {
           "all": 1,
-          "t": 577,
+          "t": 576,
           "in": "stepper",
           "o": [
             [
-              614
+              617
             ]
           ],
           "rep": [
-            610
+            613
           ]
         },
         {
           "m": 1,
-          "t": 578,
+          "t": 577,
           "in": "checkbox",
           "o": [
             [
-              1347
+              1482
             ]
           ],
           "lim": [
@@ -1184,7 +1184,7 @@ export default {
             ]
           ],
           "rep": [
-            610
+            613
           ]
         }
       ]
@@ -1225,7 +1225,7 @@ export default {
           0,
           [
             [
-              1367,
+              1502,
               1
             ],
             [
@@ -1233,7 +1233,7 @@ export default {
               1
             ],
             [
-              300,
+              302,
               1
             ]
           ]
@@ -1269,11 +1269,11 @@ export default {
           0,
           [
             [
-              300,
+              302,
               1
             ],
             [
-              1368,
+              1503,
               1
             ]
           ]
@@ -1306,7 +1306,7 @@ export default {
       "linked": 1,
       "leads": [
         {
-          "to": "acolyte-hybrids-with-autopistols",
+          "to": "neophyte-hybrids",
           "type": "support"
         },
         {
@@ -1318,7 +1318,7 @@ export default {
           "type": "support"
         },
         {
-          "to": "neophyte-hybrids",
+          "to": "acolyte-hybrids-with-autopistols",
           "type": "support"
         }
       ],
@@ -1327,7 +1327,7 @@ export default {
           0,
           [
             [
-              1369,
+              1504,
               1
             ]
           ]
@@ -1361,6 +1361,10 @@ export default {
       "linked": 1,
       "leads": [
         {
+          "to": "neophyte-hybrids",
+          "type": "leader"
+        },
+        {
           "to": "acolyte-hybrids-with-autopistols",
           "type": "leader"
         },
@@ -1371,10 +1375,6 @@ export default {
         {
           "to": "hybrid-metamorphs",
           "type": "leader"
-        },
-        {
-          "to": "neophyte-hybrids",
-          "type": "leader"
         }
       ],
       "defaults": [
@@ -1382,7 +1382,7 @@ export default {
           0,
           [
             [
-              1370,
+              1505,
               1
             ],
             [
@@ -1457,7 +1457,7 @@ export default {
           1,
           [
             [
-              1371,
+              1506,
               1
             ],
             [
@@ -1465,7 +1465,7 @@ export default {
               1
             ],
             [
-              610,
+              613,
               1
             ]
           ]
@@ -1474,11 +1474,11 @@ export default {
           0,
           [
             [
-              610,
+              613,
               1
             ],
             [
-              1371,
+              1506,
               1
             ],
             [
@@ -1491,17 +1491,17 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 579,
+          "t": 578,
           "in": "checkbox",
           "o": [
             [
               [
                 [
-                  1372,
+                  1507,
                   1
                 ],
                 [
-                  1373,
+                  1508,
                   1
                 ]
               ]
@@ -1509,28 +1509,28 @@ export default {
             [
               [
                 [
-                  1372,
+                  1507,
                   1
                 ],
                 [
-                  1374,
+                  1509,
                   1
                 ]
               ]
             ]
           ],
           "rep": [
-            1371,
+            1506,
             6
           ]
         },
         {
           "m": 1,
-          "t": 580,
+          "t": 579,
           "in": "checkbox",
           "o": [
             [
-              1375
+              1510
             ]
           ],
           "lim": [
@@ -1546,17 +1546,17 @@ export default {
         },
         {
           "m": 1,
-          "t": 581,
+          "t": 580,
           "in": "stepper",
           "o": [
             [
-              508
+              510
             ],
             [
-              1376
+              1511
             ],
             [
-              1377
+              1512
             ]
           ],
           "lim": [
@@ -1572,22 +1572,22 @@ export default {
             ]
           ],
           "rep": [
-            1371
+            1506
           ]
         },
         {
           "m": 1,
-          "t": 581,
+          "t": 580,
           "in": "stepper",
           "o": [
             [
-              539
+              541
             ],
             [
-              540
+              542
             ],
             [
-              1378
+              1513
             ]
           ],
           "lim": [
@@ -1603,7 +1603,7 @@ export default {
             ]
           ],
           "rep": [
-            1371
+            1506
           ]
         }
       ]
@@ -1623,7 +1623,7 @@ export default {
       },
       "sizes": [
         {
-          "pts": 60,
+          "pts": 50,
           "per": [
             1,
             1
@@ -1634,7 +1634,7 @@ export default {
       "linked": 1,
       "leads": [
         {
-          "to": "acolyte-hybrids-with-autopistols",
+          "to": "hybrid-metamorphs",
           "type": "support"
         },
         {
@@ -1642,11 +1642,11 @@ export default {
           "type": "support"
         },
         {
-          "to": "neophyte-hybrids",
+          "to": "acolyte-hybrids-with-autopistols",
           "type": "support"
         },
         {
-          "to": "hybrid-metamorphs",
+          "to": "neophyte-hybrids",
           "type": "support"
         }
       ],
@@ -1703,7 +1703,7 @@ export default {
           0,
           [
             [
-              1379,
+              1514,
               1
             ]
           ]
@@ -1725,7 +1725,7 @@ export default {
       },
       "sizes": [
         {
-          "pts": 70,
+          "pts": 60,
           "per": [
             1,
             1
@@ -1740,15 +1740,15 @@ export default {
           "type": "leader"
         },
         {
+          "to": "hybrid-metamorphs",
+          "type": "leader"
+        },
+        {
           "to": "acolyte-hybrids-with-hand-flamers",
           "type": "leader"
         },
         {
           "to": "neophyte-hybrids",
-          "type": "leader"
-        },
-        {
-          "to": "hybrid-metamorphs",
           "type": "leader"
         }
       ],
@@ -1757,15 +1757,15 @@ export default {
           0,
           [
             [
-              1380,
+              1515,
               1
             ],
             [
-              1381,
+              1516,
               1
             ],
             [
-              1382,
+              1517,
               1
             ]
           ]
@@ -1809,7 +1809,7 @@ export default {
           0,
           [
             [
-              1383,
+              1518,
               1
             ]
           ]
@@ -1854,11 +1854,11 @@ export default {
               1
             ],
             [
-              1384,
+              1519,
               1
             ],
             [
-              1385,
+              1520,
               1
             ],
             [
@@ -1884,7 +1884,7 @@ export default {
       },
       "sizes": [
         {
-          "pts": 65,
+          "pts": 60,
           "per": [
             1,
             1
@@ -1898,7 +1898,7 @@ export default {
           0,
           [
             [
-              1386,
+              1521,
               1
             ]
           ]
@@ -1907,13 +1907,13 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 582,
+          "t": 581,
           "in": "checkbox",
           "o": [
             [
               [
                 [
-                  1387,
+                  1522,
                   1
                 ],
                 [
@@ -1924,7 +1924,7 @@ export default {
             ]
           ],
           "rep": [
-            1386
+            1521
           ]
         }
       ]
@@ -1957,7 +1957,7 @@ export default {
           0,
           [
             [
-              2754,
+              3351,
               1
             ]
           ]
@@ -2485,23 +2485,6 @@ export default {
       "unique": "HOSTS",
       "enhancements": [
         {
-          "name": "Devious Disguises (Upgrade)",
-          "pts": 15,
-          "type": "upgrade",
-          "nonCharOk": 1,
-          "limit": 3,
-          "req": [
-            {
-              "fac": [
-                "Genestealer Cults"
-              ]
-            }
-          ],
-          "lockDs": [
-            "2a1941df-b537-49b6-bf69-c4375c29b167"
-          ]
-        },
-        {
           "name": "Inspired to Greatness",
           "pts": 15,
           "type": "miniature",
@@ -2516,6 +2499,23 @@ export default {
                 "Genestealer Cults"
               ]
             }
+          ]
+        },
+        {
+          "name": "Devious Disguises (Upgrade)",
+          "pts": 15,
+          "type": "upgrade",
+          "nonCharOk": 1,
+          "limit": 3,
+          "req": [
+            {
+              "fac": [
+                "Genestealer Cults"
+              ]
+            }
+          ],
+          "lockDs": [
+            "2a1941df-b537-49b6-bf69-c4375c29b167"
           ]
         }
       ]

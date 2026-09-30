@@ -8,7 +8,6 @@ export default {
       "sid": "d37c55b2-43dc-4093-9051-ea1b50a23b29",
       "name": "Astorath",
       "kws": [
-        "Astorath",
         "Chaplain",
         "Character",
         "Epic Hero",
@@ -24,7 +23,7 @@ export default {
       },
       "sizes": [
         {
-          "pts": 85,
+          "pts": 90,
           "per": [
             1,
             1
@@ -44,7 +43,7 @@ export default {
           0,
           [
             [
-              739,
+              755,
               1
             ]
           ]
@@ -56,7 +55,6 @@ export default {
       "sid": "a0d726c5-f0ce-4cba-bc51-e64eb4f270c0",
       "name": "Baal Predator",
       "kws": [
-        "Baal Predator",
         "Frame",
         "Imperium",
         "Smoke",
@@ -65,7 +63,7 @@ export default {
       "flags": {},
       "sizes": [
         {
-          "pts": 125,
+          "pts": 135,
           "per": [
             1,
             1
@@ -76,29 +74,18 @@ export default {
       "linked": 1,
       "step": {
         "at": 3,
-        "pts": 10
-      },
-      "alleg": {
-        "g": "headhunter-task-force-keywords",
-        "t": "Headhunter Task Force Keywords",
-        "o": [
-          {
-            "n": "Character"
-          }
-        ],
-        "det": "Headhunter Task Force",
-        "max": 3
+        "pts": 15
       },
       "defaults": [
         [
           0,
           [
             [
-              34,
+              756,
               1
             ],
             [
-              740,
+              757,
               1
             ]
           ]
@@ -107,46 +94,13 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 316,
-          "in": "checkbox",
-          "o": [
-            [
-              741
-            ]
-          ],
-          "rep": [
-            740
-          ]
-        },
-        {
-          "m": 0,
-          "t": 11,
-          "in": "checkbox",
-          "o": [
-            [
-              37
-            ]
-          ]
-        },
-        {
-          "m": 0,
-          "t": 12,
-          "in": "checkbox",
-          "o": [
-            [
-              38
-            ]
-          ]
-        },
-        {
-          "m": 0,
-          "t": 317,
+          "t": 311,
           "in": "stepper",
           "o": [
             [
               [
                 [
-                  742,
+                  758,
                   2
                 ]
               ]
@@ -154,10 +108,43 @@ export default {
             [
               [
                 [
-                  743,
+                  759,
                   2
                 ]
               ]
+            ]
+          ]
+        },
+        {
+          "m": 0,
+          "t": 312,
+          "in": "checkbox",
+          "o": [
+            [
+              760
+            ]
+          ],
+          "rep": [
+            756
+          ]
+        },
+        {
+          "m": 0,
+          "t": 313,
+          "in": "checkbox",
+          "o": [
+            [
+              761
+            ]
+          ]
+        },
+        {
+          "m": 0,
+          "t": 314,
+          "in": "checkbox",
+          "o": [
+            [
+              762
             ]
           ]
         }
@@ -170,7 +157,7 @@ export default {
       "kws": [
         "Captain",
         "Character",
-        "Grenades",
+        "Explosives",
         "Imperium",
         "Infantry",
         "Tacticus"
@@ -180,7 +167,7 @@ export default {
       },
       "sizes": [
         {
-          "pts": 80,
+          "pts": 90,
           "per": [
             1,
             1
@@ -190,10 +177,6 @@ export default {
       ],
       "linked": 1,
       "leads": [
-        {
-          "to": "assault-intercessor-squad",
-          "type": "leader"
-        },
         {
           "to": "company-heroes",
           "type": "leader"
@@ -207,23 +190,11 @@ export default {
           "type": "leader"
         },
         {
+          "to": "assault-intercessor-squad",
+          "type": "leader"
+        },
+        {
           "to": "sternguard-veteran-squad",
-          "type": "leader"
-        },
-        {
-          "to": "tactical-squad",
-          "type": "leader"
-        },
-        {
-          "to": "victrix-honour-guard",
-          "type": "leader"
-        }
-      ],
-      "leadKw": [
-        {
-          "kw": [
-            "Sternguard Veteran Squad"
-          ],
           "type": "leader"
         }
       ],
@@ -232,11 +203,11 @@ export default {
           0,
           [
             [
-              681,
+              763,
               1
             ],
             [
-              744,
+              764,
               1
             ]
           ]
@@ -245,31 +216,31 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 318,
+          "t": 315,
           "in": "checkbox",
           "o": [
             [
-              24
+              765
+            ],
+            [
+              766
             ]
           ],
           "rep": [
-            681
+            764
           ]
         },
         {
           "m": 0,
-          "t": 319,
+          "t": 316,
           "in": "checkbox",
           "o": [
             [
-              745
-            ],
-            [
-              746
+              767
             ]
           ],
           "rep": [
-            744
+            763
           ]
         }
       ]
@@ -307,11 +278,11 @@ export default {
           0,
           [
             [
-              1167,
+              1,
               1
             ],
             [
-              2669,
+              3267,
               1
             ]
           ]
@@ -320,10 +291,6 @@ export default {
       "leads": [
         {
           "to": "assault-intercessor-squad",
-          "type": "leader"
-        },
-        {
-          "to": "assault-squad",
           "type": "leader"
         },
         {
@@ -343,15 +310,7 @@ export default {
           "type": "leader"
         },
         {
-          "to": "devastator-squad",
-          "type": "leader"
-        },
-        {
           "to": "sternguard-veteran-squad",
-          "type": "leader"
-        },
-        {
-          "to": "tactical-squad",
           "type": "leader"
         },
         {
@@ -393,15 +352,15 @@ export default {
           0,
           [
             [
-              2670,
+              3268,
               1
             ],
             [
-              1167,
+              1,
               1
             ],
             [
-              2671,
+              3269,
               1
             ]
           ]
@@ -413,15 +372,7 @@ export default {
           "type": "leader"
         },
         {
-          "to": "assault-squad",
-          "type": "leader"
-        },
-        {
           "to": "bladeguard-veteran-squad",
-          "type": "leader"
-        },
-        {
-          "to": "command-squad",
           "type": "leader"
         },
         {
@@ -445,10 +396,6 @@ export default {
           "type": "leader"
         },
         {
-          "to": "tactical-squad",
-          "type": "leader"
-        },
-        {
           "to": "vanguard-veteran-squad",
           "type": "leader"
         }
@@ -460,9 +407,8 @@ export default {
       "name": "Chief Librarian Mephiston",
       "kws": [
         "Character",
-        "Chief Librarian Mephiston",
         "Epic Hero",
-        "Grenades",
+        "Explosives",
         "Imperium",
         "Infantry",
         "Psyker",
@@ -474,7 +420,7 @@ export default {
       },
       "sizes": [
         {
-          "pts": 110,
+          "pts": 175,
           "per": [
             1,
             1
@@ -488,15 +434,15 @@ export default {
           0,
           [
             [
-              25,
+              768,
               1
             ],
             [
-              747,
+              769,
               1
             ],
             [
-              748,
+              770,
               1
             ]
           ]
@@ -510,10 +456,9 @@ export default {
       "kws": [
         "Chapter Master",
         "Character",
-        "Commander Dante",
         "Epic Hero",
+        "Explosives",
         "Fly",
-        "Grenades",
         "Imperium",
         "Infantry",
         "Jump Pack",
@@ -525,7 +470,7 @@ export default {
       },
       "sizes": [
         {
-          "pts": 125,
+          "pts": 140,
           "per": [
             1,
             1
@@ -536,11 +481,11 @@ export default {
       "linked": 1,
       "leads": [
         {
-          "to": "assault-intercessors-with-jump-packs",
+          "to": "sanguinary-guard",
           "type": "leader"
         },
         {
-          "to": "sanguinary-guard",
+          "to": "assault-intercessors-with-jump-packs",
           "type": "leader"
         },
         {
@@ -553,11 +498,11 @@ export default {
           0,
           [
             [
-              749,
+              771,
               1
             ],
             [
-              750,
+              772,
               1
             ]
           ]
@@ -572,7 +517,7 @@ export default {
         "Captain",
         "Character",
         "Death Company",
-        "Grenades",
+        "Explosives",
         "Imperium",
         "Infantry",
         "Tacticus"
@@ -582,7 +527,7 @@ export default {
       },
       "sizes": [
         {
-          "pts": 70,
+          "pts": 80,
           "per": [
             1,
             1
@@ -595,10 +540,6 @@ export default {
         {
           "to": "death-company-marines",
           "type": "leader"
-        },
-        {
-          "to": "death-company-marines-with-bolt-rifles",
-          "type": "leader"
         }
       ],
       "defaults": [
@@ -606,11 +547,11 @@ export default {
           0,
           [
             [
-              681,
+              773,
               1
             ],
             [
-              744,
+              774,
               1
             ]
           ]
@@ -619,31 +560,31 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 318,
+          "t": 315,
           "in": "checkbox",
           "o": [
             [
-              24
+              775
+            ],
+            [
+              776
             ]
           ],
           "rep": [
-            681
+            774
           ]
         },
         {
           "m": 0,
-          "t": 319,
+          "t": 316,
           "in": "checkbox",
           "o": [
             [
-              745
-            ],
-            [
-              746
+              777
             ]
           ],
           "rep": [
-            744
+            773
           ]
         }
       ]
@@ -656,9 +597,8 @@ export default {
         "Captain",
         "Character",
         "Death Company",
+        "Explosives",
         "Fly",
-        "Grenades",
-        "Imperium",
         "Infantry",
         "Jump Pack",
         "Tacticus"
@@ -668,7 +608,7 @@ export default {
       },
       "sizes": [
         {
-          "pts": 75,
+          "pts": 85,
           "per": [
             1,
             1
@@ -688,11 +628,11 @@ export default {
           0,
           [
             [
-              681,
+              778,
               1
             ],
             [
-              751,
+              779,
               1
             ]
           ]
@@ -701,34 +641,83 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 320,
+          "t": 317,
           "in": "checkbox",
           "o": [
             [
-              25
-            ],
-            [
-              614
+              [
+                [
+                  780,
+                  1
+                ],
+                [
+                  781,
+                  1
+                ]
+              ]
             ]
           ],
           "rep": [
-            681
+            779,
+            778
           ]
         },
         {
           "m": 0,
-          "t": 321,
+          "t": 318,
           "in": "checkbox",
           "o": [
             [
-              745
+              782
             ],
             [
-              746
+              783
             ]
           ],
           "rep": [
-            751
+            779
+          ]
+        },
+        {
+          "m": 0,
+          "t": 319,
+          "in": "checkbox",
+          "o": [
+            [
+              [
+                [
+                  779,
+                  1
+                ],
+                [
+                  781,
+                  1
+                ]
+              ]
+            ]
+          ],
+          "rep": [
+            779,
+            778
+          ],
+          "keep": [
+            779
+          ]
+        },
+        {
+          "m": 0,
+          "t": 320,
+          "in": "checkbox",
+          "o": [
+            [
+              784
+            ],
+            [
+              785
+            ]
+          ],
+          "rep": [
+            778
           ]
         }
       ]
@@ -739,7 +728,6 @@ export default {
       "name": "Death Company Dreadnought",
       "kws": [
         "Death Company",
-        "Death Company Dreadnought",
         "Dreadnought",
         "Imperium",
         "Vehicle",
@@ -748,7 +736,7 @@ export default {
       "flags": {},
       "sizes": [
         {
-          "pts": 150,
+          "pts": 165,
           "per": [
             1,
             1
@@ -759,26 +747,26 @@ export default {
       "linked": 1,
       "step": {
         "at": 3,
-        "pts": 10
+        "pts": 20
       },
       "defaults": [
         [
           0,
           [
             [
-              714,
+              786,
               1
             ],
             [
-              752,
+              787,
               1
             ],
             [
-              753,
+              788,
               1
             ],
             [
-              754,
+              789,
               1
             ]
           ]
@@ -787,29 +775,29 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 322,
+          "t": 321,
           "in": "checkbox",
           "o": [
             [
-              61
+              790
             ]
           ],
           "rep": [
-            714
+            787
           ]
         },
         {
           "m": 0,
-          "t": 323,
+          "t": 322,
           "in": "checkbox",
           "o": [
             [
-              755
+              791
             ]
           ],
           "rep": [
-            752,
-            754
+            788,
+            789
           ]
         }
       ]
@@ -843,7 +831,7 @@ export default {
           0,
           [
             [
-              1335,
+              1470,
               1
             ],
             [
@@ -851,7 +839,7 @@ export default {
               1
             ],
             [
-              2672,
+              3270,
               1
             ]
           ]
@@ -864,7 +852,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              743
+              2957
             ]
           ],
           "rep": [
@@ -873,34 +861,34 @@ export default {
         },
         {
           "m": 0,
-          "t": 1023,
+          "t": 1075,
           "in": "checkbox",
           "o": [
             [
-              743
+              2957
             ]
           ],
           "rep": [
-            1335
+            1470
           ]
         },
         {
           "m": 0,
-          "t": 1024,
+          "t": 1076,
           "in": "checkbox",
           "o": [
             [
-              755
+              791
             ]
           ]
         },
         {
           "m": 0,
-          "t": 1025,
+          "t": 1077,
           "in": "checkbox",
           "o": [
             [
-              2673
+              3271
             ]
           ]
         }
@@ -912,8 +900,7 @@ export default {
       "name": "Death Company Marines",
       "kws": [
         "Death Company",
-        "Death Company Marines",
-        "Grenades",
+        "Explosives",
         "Imperium",
         "Infantry",
         "Tacticus"
@@ -921,7 +908,7 @@ export default {
       "flags": {},
       "sizes": [
         {
-          "pts": 85,
+          "pts": 90,
           "per": [
             5,
             5
@@ -929,9 +916,9 @@ export default {
           "default": 1
         },
         {
-          "pts": 160,
+          "pts": 170,
           "per": [
-            6,
+            10,
             10
           ]
         }
@@ -939,215 +926,53 @@ export default {
       "linked": 1,
       "step": {
         "at": 3,
-        "pts": 10
+        "pts": 15
       },
-      "condBattleline": 1,
       "defaults": [
         [
           0,
           [
             [
-              685,
+              792,
               1
             ],
             [
-              756,
+              793,
               1
             ]
           ]
         ]
       ],
       "gear": [
+        {
+          "m": 0,
+          "t": 323,
+          "in": "stepper",
+          "o": [
+            [
+              [
+                [
+                  794,
+                  1
+                ],
+                [
+                  795,
+                  1
+                ]
+              ]
+            ]
+          ],
+          "rep": [
+            793
+          ]
+        },
         {
           "m": 0,
           "t": 324,
-          "in": "checkbox",
-          "o": [
-            [
-              614
-            ],
-            [
-              9
-            ],
-            [
-              11
-            ]
-          ],
-          "lim": [
-            [
-              0,
-              1
-            ]
-          ],
-          "rep": [
-            685
-          ]
-        },
-        {
-          "m": 0,
-          "t": 325,
           "in": "stepper",
           "o": [
             [
-              757
-            ]
-          ],
-          "lim": [
-            [
-              0,
-              1
-            ],
-            [
-              10,
-              2
-            ]
-          ],
-          "rep": [
-            756
-          ]
-        },
-        {
-          "m": 0,
-          "t": 326,
-          "in": "checkbox",
-          "o": [
-            [
-              691
-            ],
-            [
-              738
-            ],
-            [
-              758
-            ]
-          ],
-          "lim": [
-            [
-              0,
-              1
-            ]
-          ],
-          "rep": [
-            756
-          ]
-        }
-      ]
-    },
-    {
-      "id": "death-company-marines-with-bolt-rifles",
-      "sid": "10f6d882-ef36-4ce1-9a10-9c0a08c1e9c2",
-      "name": "Death Company Marines with Bolt Rifles",
-      "kws": [
-        "Death Company",
-        "Death Company Marines with Bolt Rifles",
-        "Grenades",
-        "Imperium",
-        "Infantry",
-        "Tacticus"
-      ],
-      "flags": {},
-      "sizes": [
-        {
-          "pts": 80,
-          "per": [
-            5,
-            5
-          ],
-          "default": 1
-        },
-        {
-          "pts": 155,
-          "per": [
-            6,
-            10
-          ]
-        }
-      ],
-      "linked": 1,
-      "step": {
-        "at": 3,
-        "pts": 10
-      },
-      "condBattleline": 1,
-      "defaults": [
-        [
-          0,
-          [
-            [
-              688,
-              1
-            ],
-            [
-              1,
-              1
-            ],
-            [
-              759,
-              1
-            ]
-          ]
-        ]
-      ],
-      "gear": [
-        {
-          "m": 0,
-          "t": 327,
-          "in": "checkbox",
-          "o": [
-            [
-              756
-            ],
-            [
-              614
-            ],
-            [
-              9
-            ],
-            [
-              11
-            ]
-          ],
-          "lim": [
-            [
-              0,
-              1
-            ]
-          ],
-          "rep": [
-            759
-          ]
-        },
-        {
-          "m": 0,
-          "t": 328,
-          "in": "stepper",
-          "o": [
-            [
-              757
-            ]
-          ],
-          "lim": [
-            [
-              0,
-              1
-            ],
-            [
-              10,
-              2
-            ]
-          ],
-          "rep": [
-            759,
-            688
-          ]
-        },
-        {
-          "m": 0,
-          "t": 329,
-          "in": "stepper",
-          "o": [
-            [
-              760
+              796
             ]
           ],
           "lim": [
@@ -1160,27 +985,23 @@ export default {
               2
             ]
           ],
-          "cond": [
-            0,
-            0
+          "rep": [
+            793
           ]
         },
         {
           "m": 0,
-          "t": 330,
+          "t": 325,
           "in": "checkbox",
           "o": [
             [
-              756
+              797
             ],
             [
-              691
+              798
             ],
             [
-              738
-            ],
-            [
-              758
+              799
             ]
           ],
           "lim": [
@@ -1190,7 +1011,52 @@ export default {
             ]
           ],
           "rep": [
-            688
+            792
+          ]
+        },
+        {
+          "m": 0,
+          "t": 326,
+          "in": "stepper",
+          "o": [
+            [
+              800
+            ]
+          ],
+          "lim": [
+            [
+              5,
+              1
+            ],
+            [
+              10,
+              2
+            ]
+          ]
+        },
+        {
+          "m": 0,
+          "t": 327,
+          "in": "checkbox",
+          "o": [
+            [
+              775
+            ],
+            [
+              801
+            ],
+            [
+              802
+            ]
+          ],
+          "lim": [
+            [
+              0,
+              1
+            ]
+          ],
+          "rep": [
+            793
           ]
         }
       ]
@@ -1231,11 +1097,11 @@ export default {
           0,
           [
             [
-              1332,
+              1467,
               1
             ],
             [
-              357,
+              359,
               1
             ]
           ]
@@ -1244,53 +1110,53 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 1026,
+          "t": 1078,
           "in": "stepper",
           "o": [
             [
               [
                 [
-                  751,
+                  1005,
                   1
                 ],
                 [
-                  1167,
+                  1,
                   1
                 ]
               ]
             ],
             [
-              2047
+              2392
             ]
           ],
           "rep": [
-            1332,
-            357
+            1467,
+            359
           ]
         },
         {
           "m": 0,
-          "t": 1027,
+          "t": 1079,
           "in": "stepper",
           "o": [
             [
-              614
+              617
             ],
             [
               9
             ],
             [
-              536
+              538
             ]
           ]
         },
         {
           "m": 0,
-          "t": 1028,
+          "t": 1080,
           "in": "stepper",
           "o": [
             [
-              952
+              1011
             ],
             [
               13
@@ -1337,11 +1203,11 @@ export default {
           0,
           [
             [
-              1332,
+              1467,
               1
             ],
             [
-              357,
+              359,
               1
             ]
           ]
@@ -1350,53 +1216,53 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 1026,
+          "t": 1078,
           "in": "stepper",
           "o": [
             [
               [
                 [
-                  751,
+                  1005,
                   1
                 ],
                 [
-                  1167,
+                  1,
                   1
                 ]
               ]
             ],
             [
-              2047
+              2392
             ]
           ],
           "rep": [
-            1332,
-            357
+            1467,
+            359
           ]
         },
         {
           "m": 0,
-          "t": 1027,
+          "t": 1079,
           "in": "stepper",
           "o": [
             [
-              614
+              617
             ],
             [
               9
             ],
             [
-              536
+              538
             ]
           ]
         },
         {
           "m": 0,
-          "t": 1028,
+          "t": 1080,
           "in": "stepper",
           "o": [
             [
-              952
+              1011
             ],
             [
               13
@@ -1411,9 +1277,8 @@ export default {
       "name": "Death Company Marines with Jump Packs",
       "kws": [
         "Death Company",
-        "Death Company Marines",
+        "Explosives",
         "Fly",
-        "Grenades",
         "Imperium",
         "Infantry",
         "Jump Pack",
@@ -1422,7 +1287,7 @@ export default {
       "flags": {},
       "sizes": [
         {
-          "pts": 115,
+          "pts": 130,
           "per": [
             5,
             5
@@ -1430,9 +1295,9 @@ export default {
           "default": 1
         },
         {
-          "pts": 230,
+          "pts": 260,
           "per": [
-            6,
+            10,
             10
           ]
         }
@@ -1440,18 +1305,18 @@ export default {
       "linked": 1,
       "step": {
         "at": 3,
-        "pts": 15
+        "pts": 30
       },
       "defaults": [
         [
           0,
           [
             [
-              685,
+              803,
               1
             ],
             [
-              756,
+              804,
               1
             ]
           ]
@@ -1460,11 +1325,11 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 331,
+          "t": 324,
           "in": "stepper",
           "o": [
             [
-              11
+              805
             ]
           ],
           "lim": [
@@ -1478,21 +1343,21 @@ export default {
             ]
           ],
           "rep": [
-            685
+            804
           ]
         },
         {
           "m": 0,
-          "t": 325,
+          "t": 328,
           "in": "stepper",
           "o": [
             [
-              757
+              806
             ]
           ],
           "lim": [
             [
-              0,
+              5,
               1
             ],
             [
@@ -1501,29 +1366,76 @@ export default {
             ]
           ],
           "rep": [
-            756
+            804
           ]
         },
         {
           "m": 0,
-          "t": 326,
-          "in": "checkbox",
+          "t": 329,
+          "in": "stepper",
           "o": [
             [
-              738
-            ],
-            [
-              691
+              807
             ]
           ],
           "lim": [
             [
-              0,
+              5,
               1
+            ],
+            [
+              10,
+              2
             ]
           ],
           "rep": [
-            756
+            803
+          ]
+        },
+        {
+          "m": 0,
+          "t": 330,
+          "in": "stepper",
+          "o": [
+            [
+              808
+            ]
+          ],
+          "lim": [
+            [
+              5,
+              2
+            ],
+            [
+              10,
+              4
+            ]
+          ],
+          "rep": [
+            804
+          ]
+        },
+        {
+          "m": 0,
+          "t": 331,
+          "in": "stepper",
+          "o": [
+            [
+              809
+            ]
+          ],
+          "lim": [
+            [
+              5,
+              1
+            ],
+            [
+              10,
+              2
+            ]
+          ],
+          "rep": [
+            803
           ]
         },
         {
@@ -1532,143 +1444,21 @@ export default {
           "in": "stepper",
           "o": [
             [
-              [
-                [
-                  614,
-                  1
-                ],
-                [
-                  756,
-                  1
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  614,
-                  1
-                ],
-                [
-                  691,
-                  1
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  614,
-                  1
-                ],
-                [
-                  738,
-                  1
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  691,
-                  1
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  738,
-                  1
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  9,
-                  1
-                ],
-                [
-                  756,
-                  1
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  9,
-                  1
-                ],
-                [
-                  691,
-                  1
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  9,
-                  1
-                ],
-                [
-                  738,
-                  1
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  11,
-                  1
-                ],
-                [
-                  756,
-                  1
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  11,
-                  1
-                ],
-                [
-                  691,
-                  1
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  11,
-                  1
-                ],
-                [
-                  738,
-                  1
-                ]
-              ]
+              810
             ]
           ],
           "lim": [
             [
               5,
-              1
+              2
             ],
             [
               10,
-              2
+              4
             ]
           ],
           "rep": [
-            685,
-            756
+            803
           ]
         }
       ]
@@ -1702,11 +1492,11 @@ export default {
           0,
           [
             [
-              2674,
+              3272,
               1
             ],
             [
-              2675,
+              3273,
               1
             ],
             [
@@ -1719,17 +1509,17 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 1029,
+          "t": 1081,
           "in": "checkbox",
           "o": [
             [
               [
                 [
-                  755,
+                  791,
                   1
                 ],
                 [
-                  1335,
+                  1470,
                   1
                 ]
               ]
@@ -1737,19 +1527,19 @@ export default {
             [
               [
                 [
-                  2672,
+                  3270,
                   1
                 ],
                 [
-                  1335,
+                  1470,
                   1
                 ]
               ]
             ]
           ],
           "rep": [
-            2674,
-            2675
+            3272,
+            3273
           ]
         },
         {
@@ -1758,7 +1548,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              743
+              2957
             ]
           ],
           "rep": [
@@ -1767,21 +1557,21 @@ export default {
         },
         {
           "m": 0,
-          "t": 1023,
+          "t": 1075,
           "in": "checkbox",
           "o": [
             [
-              743
+              2957
             ]
           ]
         },
         {
           "m": 0,
-          "t": 1030,
+          "t": 1082,
           "in": "checkbox",
           "o": [
             [
-              2676
+              3274
             ]
           ]
         }
@@ -1820,11 +1610,11 @@ export default {
           0,
           [
             [
-              1167,
+              1,
               1
             ],
             [
-              2677,
+              3275,
               1
             ]
           ]
@@ -1836,15 +1626,7 @@ export default {
           "type": "leader"
         },
         {
-          "to": "assault-squad",
-          "type": "leader"
-        },
-        {
           "to": "bladeguard-veteran-squad",
-          "type": "leader"
-        },
-        {
-          "to": "command-squad",
           "type": "leader"
         },
         {
@@ -1868,10 +1650,6 @@ export default {
           "type": "leader"
         },
         {
-          "to": "tactical-squad",
-          "type": "leader"
-        },
-        {
           "to": "vanguard-veteran-squad",
           "type": "leader"
         }
@@ -1884,13 +1662,13 @@ export default {
       "kws": [
         "Chaplain",
         "Character",
+        "Death Company",
         "Epic Hero",
+        "Explosives",
         "Fly",
-        "Grenades",
         "Imperium",
         "Infantry",
         "Jump Pack",
-        "Lemartes",
         "Tacticus"
       ],
       "flags": {
@@ -1899,7 +1677,7 @@ export default {
       },
       "sizes": [
         {
-          "pts": 100,
+          "pts": 110,
           "per": [
             1,
             1
@@ -1919,11 +1697,11 @@ export default {
           0,
           [
             [
-              761,
+              811,
               1
             ],
             [
-              762,
+              812,
               1
             ]
           ]
@@ -1961,7 +1739,7 @@ export default {
           0,
           [
             [
-              2678,
+              3276,
               1
             ],
             [
@@ -1969,11 +1747,11 @@ export default {
               1
             ],
             [
-              2675,
+              3273,
               1
             ],
             [
-              2679,
+              3277,
               1
             ]
           ]
@@ -1982,14 +1760,14 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 1031,
+          "t": 1083,
           "in": "checkbox",
           "o": [
             [
-              743
+              2957
             ],
             [
-              1335
+              1470
             ]
           ],
           "rep": [
@@ -2003,18 +1781,17 @@ export default {
       "sid": "6b6b4a64-7aca-48f9-88a4-a3dd3cb87d87",
       "name": "Sanguinary Guard",
       "kws": [
+        "Explosives",
         "Fly",
-        "Grenades",
         "Imperium",
         "Infantry",
         "Jump Pack",
-        "Sanguinary Guard",
         "Tacticus"
       ],
       "flags": {},
       "sizes": [
         {
-          "pts": 120,
+          "pts": 135,
           "per": [
             3,
             3
@@ -2022,9 +1799,9 @@ export default {
           "default": 1
         },
         {
-          "pts": 260,
+          "pts": 275,
           "per": [
-            4,
+            6,
             6
           ]
         }
@@ -2032,18 +1809,18 @@ export default {
       "linked": 1,
       "step": {
         "at": 3,
-        "pts": 20
+        "pts": 15
       },
       "defaults": [
         [
           0,
           [
             [
-              763,
+              813,
               1
             ],
             [
-              764,
+              814,
               1
             ]
           ]
@@ -2056,25 +1833,12 @@ export default {
           "in": "stepper",
           "o": [
             [
-              765
-            ]
-          ],
-          "rep": [
-            763
-          ]
-        },
-        {
-          "m": 0,
-          "t": 334,
-          "in": "stepper",
-          "o": [
-            [
-              9
+              815
             ]
           ],
           "lim": [
             [
-              0,
+              3,
               1
             ],
             [
@@ -2083,23 +1847,7 @@ export default {
             ]
           ],
           "rep": [
-            764
-          ]
-        },
-        {
-          "m": 0,
-          "t": 335,
-          "in": "checkbox",
-          "o": [
-            [
-              766
-            ]
-          ],
-          "lim": [
-            [
-              0,
-              1
-            ]
+            813
           ]
         }
       ]
@@ -2110,10 +1858,9 @@ export default {
       "name": "Sanguinary Priest",
       "kws": [
         "Character",
-        "Grenades",
+        "Explosives",
         "Imperium",
         "Infantry",
-        "Sanguinary Priest",
         "Tacticus"
       ],
       "flags": {
@@ -2121,7 +1868,7 @@ export default {
       },
       "sizes": [
         {
-          "pts": 75,
+          "pts": 60,
           "per": [
             1,
             1
@@ -2130,25 +1877,13 @@ export default {
         }
       ],
       "linked": 1,
-      "step": {
-        "at": 3,
-        "pts": 10
-      },
       "leads": [
         {
           "to": "assault-intercessor-squad",
           "type": "support"
         },
         {
-          "to": "desolation-squad",
-          "type": "support"
-        },
-        {
-          "to": "devastator-squad",
-          "type": "support"
-        },
-        {
-          "to": "hellblaster-squad",
+          "to": "company-heroes",
           "type": "support"
         },
         {
@@ -2164,19 +1899,15 @@ export default {
           "type": "support"
         },
         {
-          "to": "tactical-squad",
+          "to": "bladeguard-veteran-squad",
           "type": "support"
         },
         {
-          "to": "bladeguard-veteran-squad",
+          "to": "desolation-squad",
           "type": "support"
-        }
-      ],
-      "leadKw": [
+        },
         {
-          "kw": [
-            "Sternguard Veteran Squad"
-          ],
+          "to": "hellblaster-squad",
           "type": "support"
         }
       ],
@@ -2185,11 +1916,11 @@ export default {
           0,
           [
             [
-              767,
+              816,
               1
             ],
             [
-              768,
+              817,
               1
             ]
           ]
@@ -2228,11 +1959,11 @@ export default {
           0,
           [
             [
-              1167,
+              1,
               1
             ],
             [
-              751,
+              1005,
               1
             ]
           ]
@@ -2241,10 +1972,6 @@ export default {
       "leads": [
         {
           "to": "assault-intercessors-with-jump-packs",
-          "type": "support"
-        },
-        {
-          "to": "assault-squad-with-jump-packs",
           "type": "support"
         },
         {
@@ -2264,8 +1991,7 @@ export default {
         "Imperium",
         "Infantry",
         "Jump Pack",
-        "Tacticus",
-        "The Sanguinor"
+        "Tacticus"
       ],
       "flags": {
         "char": 1,
@@ -2287,7 +2013,7 @@ export default {
           0,
           [
             [
-              769,
+              818,
               1
             ]
           ]
@@ -2327,15 +2053,15 @@ export default {
           0,
           [
             [
-              2670,
+              3268,
               1
             ],
             [
-              1167,
+              1,
               1
             ],
             [
-              2671,
+              3269,
               1
             ]
           ]
@@ -2344,10 +2070,6 @@ export default {
       "leads": [
         {
           "to": "death-company-marines",
-          "type": "leader"
-        },
-        {
-          "to": "death-company-marines-with-bolt-rifles",
           "type": "leader"
         },
         {
@@ -2360,26 +2082,13 @@ export default {
   "detachments": [
     {
       "name": "Angelic Inheritors",
-      "sid": "2de2e2bc-8c9a-415e-ad61-11a8c2704590",
+      "sid": "a8e82e32-5105-4997-b035-32b590145109",
       "dp": 3,
       "fd": "Priority Assets",
-      "unique": "GRACE",
       "enhancements": [
         {
           "name": "Prescient Flash",
-          "pts": 20,
-          "type": "miniature",
-          "req": [
-            {
-              "fac": [
-                "Adeptus Astartes"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Troubling Visions",
-          "pts": 15,
+          "pts": 25,
           "type": "miniature",
           "req": [
             {
@@ -2397,9 +2106,6 @@ export default {
             {
               "fac": [
                 "Adeptus Astartes"
-              ],
-              "kw": [
-                "Infantry"
               ]
             }
           ]
@@ -2415,204 +2121,29 @@ export default {
               ]
             }
           ]
+        },
+        {
+          "name": "Unto Death",
+          "pts": 15,
+          "type": "miniature",
+          "req": [
+            {
+              "fac": [
+                "Adeptus Astartes"
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "name": "Encarmine Speartip",
-      "sid": "ce2408b7-6810-4219-9f28-3c20499f0e13",
+      "sid": "a8367074-525c-4caa-9840-5aab3dc7f661",
       "dp": 1,
       "fd": "Disruption",
       "enhancements": [
-        {
-          "name": "Shadow of Abomination",
-          "pts": 25,
-          "type": "miniature",
-          "req": [
-            {
-              "fac": [
-                "Adeptus Astartes"
-              ],
-              "kw": [
-                "Jump Pack"
-              ]
-            }
-          ]
-        },
         {
           "name": "Angelic Executioner",
-          "pts": 25,
-          "type": "miniature",
-          "req": [
-            {
-              "fac": [
-                "Adeptus Astartes"
-              ],
-              "kw": [
-                "Jump Pack"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Legacy of Grace",
-      "sid": "6c2b0c94-4bce-40ba-b6cc-8effe9e5efff",
-      "dp": 1,
-      "fd": "Priority Assets",
-      "unique": "GRACE",
-      "enhancements": [
-        {
-          "name": "Blood Boil",
-          "pts": 10,
-          "type": "miniature",
-          "req": [
-            {
-              "fac": [
-                "Adeptus Astartes"
-              ],
-              "kw": [
-                "Psyker"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Aureole of the Angel",
-          "pts": 20,
-          "type": "miniature",
-          "req": [
-            {
-              "fac": [
-                "Adeptus Astartes"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Liberator Assault Group",
-      "sid": "5f032619-a925-4e61-8d52-5d2e5f81311f",
-      "dp": 3,
-      "fd": "Take and Hold",
-      "enhancements": [
-        {
-          "name": "Speed of the Primarch",
-          "pts": 25,
-          "type": "miniature",
-          "req": [
-            {
-              "fac": [
-                "Adeptus Astartes"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Rage-fuelled Warrior",
-          "pts": 35,
-          "type": "miniature",
-          "req": [
-            {
-              "fac": [
-                "Adeptus Astartes"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Icon of the Angel",
-          "pts": 20,
-          "type": "miniature",
-          "req": [
-            {
-              "fac": [
-                "Adeptus Astartes"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Gift of Foresight",
-          "pts": 15,
-          "type": "miniature",
-          "req": [
-            {
-              "fac": [
-                "Adeptus Astartes"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Rage-cursed Onslaught",
-      "sid": "98d89ce1-bf5b-49f5-bbcc-cba5e32659e5",
-      "dp": 3,
-      "fd": "Purge the Foe",
-      "unique": "DOOMED",
-      "enhancements": [
-        {
-          "name": "Carmine Reliquary",
-          "pts": 30,
-          "type": "miniature",
-          "req": [
-            {
-              "kw": [
-                "Chaplain"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Master of the Red Thirst",
-          "pts": 25,
-          "type": "miniature",
-          "req": [
-            {
-              "fac": [
-                "Adeptus Astartes"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Sanguinary Tear (Aura)",
-          "pts": 35,
-          "type": "miniature",
-          "req": [
-            {
-              "fac": [
-                "Adeptus Astartes"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Angel’s Fang",
-          "pts": 25,
-          "type": "miniature",
-          "req": [
-            {
-              "fac": [
-                "Adeptus Astartes"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "The Angelic Host",
-      "sid": "8351fbfa-edd6-4db9-a21d-400c05f1e9f1",
-      "dp": 2,
-      "fd": "Disruption",
-      "enhancements": [
-        {
-          "name": "Artisan of War",
           "pts": 20,
           "type": "miniature",
           "req": [
@@ -2627,7 +2158,7 @@ export default {
           ]
         },
         {
-          "name": "Visage of Death",
+          "name": "Shadow of Abomination",
           "pts": 15,
           "type": "miniature",
           "req": [
@@ -2637,93 +2168,6 @@ export default {
               ],
               "kw": [
                 "Jump Pack"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Archangel’s Shard",
-          "pts": 15,
-          "type": "miniature",
-          "req": [
-            {
-              "fac": [
-                "Adeptus Astartes"
-              ],
-              "kw": [
-                "Jump Pack"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Gleaming Pinions",
-          "pts": 25,
-          "type": "miniature",
-          "req": [
-            {
-              "fac": [
-                "Adeptus Astartes"
-              ],
-              "kw": [
-                "Jump Pack"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "The Lost Brethren",
-      "sid": "0002bcde-4fd1-4bcc-99ea-7edbd5809792",
-      "dp": 2,
-      "fd": "Purge the Foe",
-      "unique": "DOOMED",
-      "enhancements": [
-        {
-          "name": "Sanguinius’ Grace",
-          "pts": 20,
-          "type": "miniature",
-          "req": [
-            {
-              "kw": [
-                "Death Company"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Blood Shard",
-          "pts": 25,
-          "type": "miniature",
-          "req": [
-            {
-              "kw": [
-                "Death Company"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "To Slay The Warmaster",
-          "pts": 15,
-          "type": "miniature",
-          "req": [
-            {
-              "kw": [
-                "Death Company"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Vengeful Onslaught",
-          "pts": 10,
-          "type": "miniature",
-          "req": [
-            {
-              "kw": [
-                "Death Company"
               ]
             }
           ]
@@ -2732,10 +2176,9 @@ export default {
     },
     {
       "name": "Wrath of the Doomed",
-      "sid": "b5a5858b-3187-44f3-95af-e34dfe7eb7c9",
+      "sid": "a952ab50-aa3d-425c-808f-c12dade0a80f",
       "dp": 1,
       "fd": "Purge the Foe",
-      "unique": "DOOMED",
       "enhancements": [
         {
           "name": "On the Archtraitor's Bridge",
@@ -2838,62 +2281,84 @@ export default {
           "onslaught": 3,
           "strike-force": 2
         },
-        "Requisitioned": {
-          "incursion": 1,
-          "onslaught": 2,
-          "strike-force": 1
-        },
         "Retinue": {
           "incursion": 1,
           "onslaught": 3,
           "strike-force": 2
+        },
+        "Requisitioned": {
+          "incursion": 1,
+          "onslaught": 2,
+          "strike-force": 1
         }
       },
       "up": {
+        "imperial-agents:inquisitor-draxus": {
+          "1": 110
+        },
         "imperial-agents:eversor-assassin": {
           "1": 110
         },
-        "imperial-agents:exaction-squad": {
-          "11": 85
+        "imperial-agents:sisters-of-battle-immolator": {
+          "1": 105
+        },
+        "imperial-agents:voidsmen-at-arms": {
+          "6": 70
         },
         "imperial-agents:grey-knights-terminator-squad": {
           "5": 190
         },
-        "imperial-agents:inquisitor": {
-          "1": 65
+        "imperial-agents:vindicare-assassin": {
+          "1": 125
         },
-        "imperial-agents:inquisitor-coteaz": {
-          "1": 95
+        "imperial-agents:rogue-trader-entourage": {
+          "4": 105
         },
-        "imperial-agents:inquisitor-draxus": {
-          "1": 110
+        "imperial-agents:subductor-squad": {
+          "11": 100
+        },
+        "imperial-agents:sisters-of-battle-squad": {
+          "10": 110
+        },
+        "imperial-agents:navigator": {
+          "1": 75
         },
         "imperial-agents:inquisitorial-agents": {
           "6": 60,
           "12": 120
         },
-        "imperial-agents:navigator": {
-          "1": 75
+        "imperial-agents:inquisitor-coteaz": {
+          "1": 95
         },
-        "imperial-agents:rogue-trader-entourage": {
-          "4": 105
+        "imperial-agents:exaction-squad": {
+          "11": 85
         },
-        "imperial-agents:sisters-of-battle-immolator": {
-          "1": 105
-        },
-        "imperial-agents:sisters-of-battle-squad": {
-          "10": 110
-        },
-        "imperial-agents:subductor-squad": {
-          "11": 100
-        },
-        "imperial-agents:vindicare-assassin": {
-          "1": 125
-        },
-        "imperial-agents:voidsmen-at-arms": {
-          "6": 70
+        "imperial-agents:inquisitor": {
+          "1": 65
         }
       }
+    },
+    {
+      "key": "deathwatch",
+      "name": "Deathwatch",
+      "ids": [
+        "deathwatch:corvus-blackstar",
+        "deathwatch:deathwatch-terminator-squad",
+        "deathwatch:deathwatch-veterans",
+        "deathwatch:decimus-kill-team",
+        "deathwatch:fortis-kill-team",
+        "deathwatch:indomitor-kill-team",
+        "deathwatch:spectrus-kill-team",
+        "deathwatch:talonstrike-kill-team",
+        "deathwatch:watch-captain-artemis",
+        "deathwatch:watch-master"
+      ],
+      "pts": {
+        "incursion": 500,
+        "onslaught": 500,
+        "strike-force": 500
+      },
+      "enh": 1
     },
     {
       "key": "imperial-knights",
@@ -2941,57 +2406,36 @@ export default {
     "aggressor-squad",
     "ancient",
     "ancient-in-terminator-armour",
-    "ancient-on-bike",
     "apothecary",
     "apothecary-biologis",
-    "apothecary-on-bike",
     "assault-intercessor-squad",
     "assault-intercessors-with-jump-packs",
-    "assault-squad",
-    "assault-squad-with-jump-packs",
-    "astartes-servitors",
     "astraeus",
-    "attack-bike-squad",
     "ballistus-dreadnought",
-    "bike-squad",
     "bladeguard-ancient",
     "bladeguard-veteran-squad",
     "brutalis-dreadnought",
-    "caestus-assault-ram",
     "captain",
     "captain-in-gravis-armour",
     "captain-in-phobos-armour",
     "captain-in-terminator-armour",
     "captain-on-bike",
     "captain-with-jump-pack",
-    "carab-culln-the-risen",
     "centurion-assault-squad",
     "centurion-devastator-squad",
     "cerberus",
     "chaplain",
     "chaplain-in-terminator-armour",
     "chaplain-on-bike",
-    "chaplain-venerable-dreadnought",
     "chaplain-with-jump-pack",
-    "command-squad",
-    "company-champion-on-bike",
     "company-heroes",
-    "company-veterans-on-bikes",
-    "deathstorm-drop-pod",
-    "deimos-predator",
-    "deredeo-dreadnought",
     "desolation-squad",
-    "devastator-squad",
     "dreadnought",
-    "dreadnought-drop-pod",
     "drop-pod",
     "eliminator-squad",
-    "eradicator-squad",
     "eradicator-squad-with-heavy-bolters",
+    "eradicator-squad-with-melta-rifles",
     "falchion",
-    "fellblade",
-    "ferren-areios",
-    "fire-raptor-gunship",
     "firestrike-servo-turrets",
     "gladiator-lancer",
     "gladiator-reaper",
@@ -2999,153 +2443,80 @@ export default {
     "hammerfall-bunker",
     "heavy-intercessor-squad",
     "hellblaster-squad",
-    "hunter",
-    "imperial-space-marine",
     "impulsor",
     "inceptor-squad",
     "incursor-squad",
     "infernus-squad",
     "infiltrator-squad",
     "intercessor-squad",
-    "invader-atv",
+    "invader-atvs",
     "invictor-tactical-warsuit",
-    "ironclad-dreadnought",
-    "javelin-attack-speeder",
     "judiciar",
     "kratos",
     "land-raider",
-    "land-raider-achilles",
     "land-raider-crusader",
     "land-raider-excelsior",
-    "land-raider-helios",
-    "land-raider-prometheus",
-    "land-raider-proteus",
     "land-raider-redeemer",
     "land-speeder",
-    "land-speeder-storm",
-    "land-speeder-tempest",
-    "land-speeder-tornado",
-    "land-speeder-typhoon",
-    "leviathan-dreadnought",
     "librarian",
     "librarian-in-phobos-armour",
     "librarian-in-terminator-armour",
-    "librarian-on-bike",
-    "librarian-with-jump-pack",
     "lieutenant",
     "lieutenant-in-phobos-armour",
-    "lieutenant-in-reiver-armour",
     "lieutenant-with-combi-weapon",
     "mastodon",
-    "mortis-dreadnought",
     "outrider-squad",
     "predator-annihilator",
     "predator-destructor",
-    "primaris-company-champion",
     "rapier-carrier",
     "razorback",
     "redemptor-dreadnought",
     "reiver-squad",
-    "relic-contemptor-dreadnought",
     "relic-razorback",
-    "relic-terminator-squad",
     "repulsor",
     "repulsor-executioner",
     "rhino",
     "rhino-primaris",
     "scout-bike-squad",
-    "scout-sniper-squad",
     "scout-squad",
-    "sicaran-arcus",
-    "sicaran-battle-tank",
-    "sicaran-omega",
-    "sicaran-punisher",
-    "sicaran-venator",
-    "sokar-pattern-stormbird",
-    "spartan",
-    "stalker",
+    "sicaran",
     "sternguard-veteran-squad",
-    "storm-eagle-gunship",
     "storm-speeder-hailstrike",
     "storm-speeder-hammerstrike",
     "storm-speeder-thunderstrike",
     "stormhawk-interceptor",
     "stormraven-gunship",
     "stormtalon-gunship",
-    "suppressor-squad",
-    "tactical-squad",
     "tarantula-air-defence-battery",
     "tarantula-sentry-battery",
     "techmarine",
-    "techmarine-on-bike",
     "terminator-assault-squad",
     "terminator-squad",
-    "terminus-ultra",
     "terrax-pattern-termite",
-    "thunderfire-cannon",
     "thunderhawk-gunship",
-    "thunderhawk-transporter",
     "typhon",
     "vanguard-veteran-squad",
     "vanguard-veteran-squad-with-jump-packs",
     "venerable-dreadnought",
     "vindicator",
-    "vindicator-laser-destroyer",
-    "whirlwind",
-    "whirlwind-scorpius",
-    "xiphon-interceptor"
+    "whirlwind"
   ],
-  "unitPoints": {
-    "assault-intercessor-squad": {
-      "5": 80
-    },
-    "assault-intercessors-with-jump-packs": {
-      "5": 95,
-      "10": 180
-    },
-    "bladeguard-veteran-squad": {
-      "3": 85,
-      "6": 170
-    },
-    "captain-with-jump-pack": {
-      "1": 80
-    },
-    "centurion-devastator-squad": {
-      "6": 350
-    },
-    "chaplain-with-jump-pack": {
-      "1": 80
-    },
-    "outrider-squad": {
-      "3": 75
-    },
-    "repulsor-executioner": {
-      "1": 230
-    },
-    "vanguard-veteran-squad-with-jump-packs": {
-      "5": 110,
-      "10": 220
-    }
-  },
   "sharedDetachments": [
-    "1st Company Task Force",
-    "Anvil Siege Force",
-    "Armoured Speartip",
-    "Bastion Task Force",
-    "Ceramite Sentinels",
-    "Firestorm Assault Force",
-    "Fulguris Task Force",
+    "Assault Brethren",
+    "Deathwatch Support",
+    "Devastator Brethren",
+    "Gauntlet Task Force",
     "Gladius Task Force",
-    "Headhunter Task Force",
+    "Gravis Linebreaker Force",
+    "Gravis Siege Force",
+    "Ironclad Champions",
     "Ironstorm Spearhead",
-    "Librarius Conclave",
-    "Orbital Assault Force",
+    "Phobos Shadow Force",
+    "Phobos Shock Force",
     "Stormlance Task Force",
-    "Subversion Assets",
-    "Vanguard Spearhead",
-    "Vengeful Hosts"
-  ],
-  "detachmentDp": {
-    "Stormlance Task Force": 2
-  }
+    "Tactical Brethren",
+    "Tacticus Attack Force",
+    "Tacticus Firestorm Force",
+    "Terminator Storm Force"
+  ]
 }

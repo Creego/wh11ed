@@ -44,6 +44,8 @@ async function waitFor(w, needle, tries = 60) {
   }
 }
 
+// The Space Marines detachment these walk through is Gladius Task Force; it was 1st Company Task
+// Force until Codex: Space Marines (app data 963) retired that one.
 describe('RosterCreateView', () => {
   // The same question the editor's setup tab asks, and the tracker's own setup after it: an army
   // plays ONE Force Disposition, so two detachments that disagree make it a declaration.
@@ -86,11 +88,11 @@ describe('RosterCreateView', () => {
     expect(w.find('.ch-value').text()).toBe('Space Marines')
 
     // Detachment picker only becomes usable once a faction is chosen; wait for its data.
-    await waitFor(w, '1st Company Task Force')
+    await waitFor(w, 'Gladius Task Force')
     await w.findAll('.ch-pick')[1].trigger('click') // opens DetachmentPickerModal
-    const detBtn = w.findAll('.det').find((b) => b.text().includes('1st Company Task Force'))
+    const detBtn = w.findAll('.det').find((b) => b.text().includes('Gladius Task Force'))
     await detBtn.trigger('click')
-    expect(w.text()).toContain('1st Company Task Force')
+    expect(w.text()).toContain('Gladius Task Force')
 
     // Step 2: add a unit and finish. The catalogue only adds — removing is the list pane's own
     // business, beside the unit it is removing.
@@ -123,7 +125,7 @@ describe('RosterCreateView', () => {
     expect(store.rosters.value).toHaveLength(1)
     const r = store.rosters.value[0]
     expect(r.faction).toBe('space-marines')
-    expect(r.detachments).toEqual(['1st Company Task Force'])
+    expect(r.detachments).toEqual(['Gladius Task Force'])
     expect(r.units).toHaveLength(1)
     // The list screens read the cached summary, not the units — a wizard-built roster used to
     // reach them priced at 0 because only the editor ever wrote one (rosterSummary.js).
@@ -137,9 +139,9 @@ describe('RosterCreateView', () => {
     await w.findAll('.ch-pick')[0].trigger('click')
     await waitFor(w, 'Space Marines')
     await w.findAll('.fac-link').find((b) => b.text().includes('Space Marines')).trigger('click')
-    await waitFor(w, '1st Company Task Force')
+    await waitFor(w, 'Gladius Task Force')
     await w.findAll('.ch-pick')[1].trigger('click')
-    await w.findAll('.det').find((b) => b.text().includes('1st Company Task Force')).trigger('click')
+    await w.findAll('.det').find((b) => b.text().includes('Gladius Task Force')).trigger('click')
 
     await w.find('.rc-sticky-actions .btn-primary').trigger('click') // → step 2
     await waitFor(w, 'Intercessor Squad')
@@ -167,9 +169,9 @@ describe('RosterCreateView', () => {
     await w.findAll('.ch-pick')[0].trigger('click')
     await waitFor(w, 'Space Marines')
     await w.findAll('.fac-link').find((b) => b.text().includes('Space Marines')).trigger('click')
-    await waitFor(w, '1st Company Task Force')
+    await waitFor(w, 'Gladius Task Force')
     await w.findAll('.ch-pick')[1].trigger('click')
-    await w.findAll('.det').find((b) => b.text().includes('1st Company Task Force')).trigger('click')
+    await w.findAll('.det').find((b) => b.text().includes('Gladius Task Force')).trigger('click')
 
     await w.find('.rc-sticky-actions .btn-primary').trigger('click') // → step 2
     await waitFor(w, 'Intercessor Squad')
@@ -180,7 +182,7 @@ describe('RosterCreateView', () => {
     const panels = w.findAll('.rc-panel')
     const tile = panels[1].findAll('.rul-row').find((b) => b.find('.rur-name').text().trim() === 'Intercessor Squad')
     expect(tile.text()).toContain('5 models') // the bracket it was added at
-    expect(tile.text()).not.toContain('Bolt rifle') // the default loadout lives in the accordion
+    expect(tile.text()).not.toContain('Bolt Rifle') // the default loadout lives in the accordion (Title Case since app data 963)
   })
 
   it('flags units as over the duplicate cap (red badge + issues count) after the battle size is lowered', async () => {
@@ -188,9 +190,9 @@ describe('RosterCreateView', () => {
     await w.findAll('.ch-pick')[0].trigger('click')
     await waitFor(w, 'Space Marines')
     await w.findAll('.fac-link').find((b) => b.text().includes('Space Marines')).trigger('click')
-    await waitFor(w, '1st Company Task Force')
+    await waitFor(w, 'Gladius Task Force')
     await w.findAll('.ch-pick')[1].trigger('click')
-    await w.findAll('.det').find((b) => b.text().includes('1st Company Task Force')).trigger('click')
+    await w.findAll('.det').find((b) => b.text().includes('Gladius Task Force')).trigger('click')
     await w.find('.mh-close').trigger('click') // close DetachmentPickerModal — its .modal-stub
     // would otherwise still be in the DOM (never auto-closes) and shadow RosterIssuesModal's own
     // .modal-stub later in this test.
@@ -320,12 +322,12 @@ describe('RosterCreateView', () => {
     // The id goes into the URL, which is what makes a reload resume THIS draft.
     expect(replace).toHaveBeenCalledWith({ path: '/roster/new', query: { draft: draftId } })
 
-    await waitFor(w, '1st Company Task Force')
+    await waitFor(w, 'Gladius Task Force')
     await w.findAll('.ch-pick')[1].trigger('click')
-    await w.findAll('.det').find((b) => b.text().includes('1st Company Task Force')).trigger('click')
+    await w.findAll('.det').find((b) => b.text().includes('Gladius Task Force')).trigger('click')
     await flushPromises()
     expect(store.rosters.value).toHaveLength(1) // written through, not a second roster
-    expect(store.rosters.value[0].detachments).toEqual(['1st Company Task Force'])
+    expect(store.rosters.value[0].detachments).toEqual(['Gladius Task Force'])
 
     await w.find('.rc-sticky-actions .btn-primary').trigger('click') // → step 2
     expect(store.rosters.value[0].draftStep).toBe(2)
@@ -350,7 +352,7 @@ describe('RosterCreateView', () => {
       draft: true,
       draftStep: 3, // a draft left on the old configure step resumes on the step that absorbed it
       faction: 'space-marines',
-      detachments: ['1st Company Task Force'],
+      detachments: ['Gladius Task Force'],
       battleSize: 'incursion',
       units: [{ uid: 'a', id: 'intercessor-squad', size: 0 }],
     })
@@ -364,7 +366,7 @@ describe('RosterCreateView', () => {
     expect(panels[1].isVisible()).toBe(true)
     expect(panels[1].text()).toContain('Intercessor Squad')
     expect(w.find('input[type="text"]').element.value).toBe('Half a list')
-    expect(w.text()).toContain('1st Company Task Force')
+    expect(w.text()).toContain('Gladius Task Force')
     expect(store.rosters.value).toHaveLength(1) // resumed, not re-created
 
     // Saving from here clears the draft flags — it's an ordinary list now.

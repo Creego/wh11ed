@@ -853,24 +853,24 @@ describe('validateRoster — every issue says which unit it is about', () => {
   })
 })
 
-// Against the real Orks bundle and the real sidecar: a stub cannot exercise this, because
+// Against a real bundle and the real sidecar: a stub cannot exercise this, because
 // conditionalKeywords.json is keyed by the faction slug and the datasheet's own id.
 describe('an enhancement whose keyword a detachment grants', () => {
-  // Fulguris Task Force makes the Land Speeders SPEEDER, and "Speeder unit only" is what
-  // Bellicose Weapon Spirits asks for. No Space Marines datasheet PRINTS that keyword, so
-  // every upgrade in that detachment was ineligible for every unit in the game and a legal
-  // list came back with an error on each Land Speeder carrying one. (This used to be read on
-  // Orks' Rollin' Deff and WAGON; Codex: Orks retired the detachment and now prints Wagon.)
-  it('accepts the upgrade on the unit that detachment made a Speeder', async () => {
+  // Contagion Engines makes the Helbrute CONTAGION ENGINES, and that keyword is what Parasitic
+  // Woe-reaper asks for; the Helbrute does not PRINT it, so without the grant a legal list comes
+  // back with an error on the Helbrute carrying one. (Read first on Orks' Rollin' Deff and WAGON
+  // — Codex: Orks retired the detachment and now prints Wagon — then on Space Marines' Fulguris
+  // Task Force and SPEEDER, which Codex: Space Marines retired in app data 963.)
+  it('accepts the upgrade on the unit that detachment made a Contagion Engine', async () => {
     const { loadRosterFaction } = await import('../data/roster/index.js')
-    const sm = await loadRosterFaction('space-marines')
+    const dg = await loadRosterFaction('death-guard')
     const codes = (id) => validateRoster(
-      { faction: 'space-marines', detachments: ['Fulguris Task Force'], battleSize: 'strike-force', units: [{ uid: 'u1', id, size: 0, enh: 'Bellicose Weapon Spirits (Upgrade)' }] },
-      { faction: sm, core },
+      { faction: 'death-guard', detachments: ['Contagion Engines'], battleSize: 'strike-force', units: [{ uid: 'u1', id, size: 0, enh: 'Parasitic Woe\u2011reaper (Upgrade)' }] },
+      { faction: dg, core },
     ).issues.map((i) => i.code)
-    expect(codes('land-speeder')).not.toContain('enhIneligible')
+    expect(codes('helbrute')).not.toContain('enhIneligible')
     // …and refuses it on a unit the same detachment does not name.
-    expect(codes('rhino')).toContain('enhIneligible')
+    expect(codes('plagueburst-crawler')).toContain('enhIneligible')
   })
 })
 

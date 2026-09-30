@@ -1168,19 +1168,33 @@ describe('the stock rule — a model cannot give the same item up twice', () => 
   })
 })
 
+// Item ids are interned across every faction and renumber whenever a bump adds weapons anywhere
+// (app data 963 moved every one of these), so the real-data cases below name an item and look its
+// id up among the unit's own items, where a name is unambiguous.
+const unitItemId = (def, items, name) => {
+  const ids = new Set()
+  for (const [, list] of def.defaults || []) for (const [id] of list) ids.add(id)
+  const walk = (x) => (Array.isArray(x) ? x.forEach(walk) : typeof x === 'number' && ids.add(x))
+  for (const g of def.gear) walk(g.o)
+  const hits = [...ids].filter((id) => items[id] === name)
+  if (hits.length !== 1) throw new Error(`${def.id}: ${hits.length} items named ${name}`)
+  return hits[0]
+}
+
 // A player's report, 2026-09-24: CSM Terminators built at ten and dropped to five kept a heavy
 // weapon, five combi-weapons and paired accursed weapons — seven combi-bolters given up on five.
 describe('the real CSM Terminators, shrunk under their picks', () => {
   it('trims the excess, latest picks first, and marks what is over until then', async () => {
     const rf = await import('../data/roster/chaos-space-marines.js')
+    const items = (await import('../data/roster/items.js')).default.items
     const terms = rf.default.units.find((u) => u.id === 'chaos-terminator-squad')
     const gi = (t) => terms.gear.findIndex((g) => g.o.some((o) => o[0] === t))
     const heavy = terms.gear.findIndex((g) => g.m === 1 && g.o.length === 2)
-    const combi = gi(7)
-    const paired = gi(958)
+    const combi = gi(unitItemId(terms, items, 'Combi-weapon'))
+    const paired = gi(unitItemId(terms, items, 'Paired accursed weapons'))
     // As the player left it: ten models, then the 5-model bracket.
     const e = { id: terms.id, size: 0, wg: [[heavy, 1, 1], [combi, 0, 5], [paired, 0, 1]] }
-    expect(swapOverdraft(terms, e)).toEqual([{ id: 942, used: 7, cap: 5 }])
+    expect(swapOverdraft(terms, e)).toEqual([{ id: unitItemId(terms, items, 'Combi-bolter'), used: 7, cap: 5 }])
     // All three spend the same combi-bolters, so all three are marked: any of them is a way down.
     expect([...overdrawnGroups(terms, e)].sort()).toEqual([heavy, combi, paired].sort())
     // Latest first: the paired weapons go, then one combi-weapon — five combi-bolters, five swaps.
@@ -1205,9 +1219,10 @@ describe('the real CSM Terminators, shrunk under their picks', () => {
 describe('the real Raptors lock', () => {
   it('leaves two chainswords to trade after two plasma pistols', async () => {
     const rf = await import('../data/roster/chaos-space-marines.js')
+    const items = (await import('../data/roster/items.js')).default.items
     const raptors = rf.default.units.find((u) => u.id === 'raptors')
     const plasma = raptors.gear.findIndex((g) => g.m === 1 && g.keep)
-    const heavyMelee = raptors.gear.findIndex((g) => g.m === 1 && g.o[0][0] === 1017)
+    const heavyMelee = raptors.gear.findIndex((g) => g.m === 1 && g.o[0][0] === unitItemId(raptors, items, 'Heavy melee weapon'))
     expect(swapRoom(raptors, { size: 0, wg: [[plasma, 0, 2]] }, heavyMelee)).toBe(2)
   })
 })
@@ -1605,19 +1620,21 @@ describe('attached units read as one block', () => {
 describe('an enhancement whose keyword a detachment grants', () => {
   // Was Rollin' Deff granting WAGON to the Kill Rig until Codex: Orks both retired that
   // detachment and started PRINTING Wagon on the datasheets, which is exactly the case this
-  // guards against. Fulguris Task Force grants SPEEDER the same way, and no Space Marines
-  // datasheet prints it.
-  it("offers Fulguris Task Force's upgrades to the Land Speeder it made a Speeder", async () => {
+  // guards against. Then Fulguris Task Force granting SPEEDER to the Land Speeder, until Codex:
+  // Space Marines (app data 963) retired that detachment too. Death Guard's Contagion Engines
+  // grants CONTAGION ENGINES the same way, and the Helbrute does not print it.
+  it("offers Contagion Engines' upgrades to the Helbrute it made a Contagion Engine", async () => {
     const { loadRosterFaction } = await import('../data/roster/index.js')
-    const sm = await loadRosterFaction('space-marines')
-    const det = sm.detachments.find((d) => d.name === 'Fulguris Task Force')
-    const speeder = sm.units.find((u) => u.id === 'land-speeder')
-    const rhino = sm.units.find((u) => u.id === 'rhino')
-    const eligible = (def) => enhOptionsFor(def, [det], [], null, 'space-marines').filter((o) => o.eligible).map((o) => o.name)
-    expect(eligible(speeder)).toContain('Bellicose Weapon Spirits (Upgrade)')
-    expect(eligible(rhino)).not.toContain('Bellicose Weapon Spirits (Upgrade)')
+    const dg = await loadRosterFaction('death-guard')
+    const det = dg.detachments.find((d) => d.name === 'Contagion Engines')
+    const helbrute = dg.units.find((u) => u.id === 'helbrute')
+    const crawler = dg.units.find((u) => u.id === 'plagueburst-crawler')
+    const upgrade = 'Parasitic Woe\u2011reaper (Upgrade)'
+    const eligible = (def) => enhOptionsFor(def, [det], [], null, 'death-guard').filter((o) => o.eligible).map((o) => o.name)
+    expect(eligible(helbrute)).toContain(upgrade)
+    expect(eligible(crawler)).not.toContain(upgrade)
     // and without the faction to look the grant up in, the printed sheet is all there is
-    expect(enhOptionsFor(speeder, [det], [], null).filter((o) => o.eligible).map((o) => o.name)).not.toContain('Bellicose Weapon Spirits (Upgrade)')
+    expect(enhOptionsFor(helbrute, [det], [], null).filter((o) => o.eligible).map((o) => o.name)).not.toContain(upgrade)
   })
 })
 

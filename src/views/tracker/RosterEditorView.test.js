@@ -91,11 +91,16 @@ describe('RosterEditorView', () => {
   // and the player finds out at Save (owner, 2026-09-24).
   it('marks the Setup tab while a choice that lives there is still unmade', async () => {
     const fac = (await import('../../data/roster/space-marines.js')).default
-    const byFd = (fd) => fac.detachments.filter((d) => d.fd === fd).sort((a, b) => a.dp - b.dp)[0].name
+    const cheapest = (fd, notTag) => fac.detachments.filter((d) => d.fd === fd && (!notTag || d.unique !== notTag)).sort((a, b) => a.dp - b.dp)[0]
+    // A legal pair apart from the disposition: since Codex: Space Marines (app data 963) the
+    // cheapest of each are Assault and Devastator Brethren, which share the DOCTRINES tag — a
+    // Setup issue of its own that would keep the mark up whatever the disposition.
+    const hold = cheapest('Take and Hold')
+    const purge = cheapest('Purge the Foe', hold.unique)
     const store = useRosters()
     const r = store.createRoster('Test list')
     r.faction = 'space-marines'
-    r.detachments = [byFd('Take and Hold'), byFd('Purge the Foe')]
+    r.detachments = [hold.name, purge.name]
     ROSTER_ID = r.id
 
     const w = mount(RosterEditorView, { global: { stubs } })
@@ -134,7 +139,7 @@ describe('RosterEditorView', () => {
     await waitFor(w, 'Intercessor Squad')
 
     expect(w.text()).toContain('Intercessor Squad')
-    expect(w.text()).toContain('80')   // default 5-model bracket points
+    expect(w.text()).toContain('95')   // default 5-model bracket points (MFM v1.5; 80 before app data 963)
     expect(w.text()).toContain('2000') // Strike Force limit
   })
 
@@ -207,7 +212,7 @@ describe('RosterEditorView', () => {
 
     const w = mount(RosterEditorView, { global: { stubs } })
     await waitFor(w, 'Intercessor Squad')
-    expect(w.text()).toContain('80')  // unit points
+    expect(w.text()).toContain('95')  // unit points (MFM v1.5; 80 before app data 963)
     expect(w.text()).toContain('500') // custom limit
   })
 
@@ -235,7 +240,7 @@ describe('RosterEditorView', () => {
 
     const w = mount(RosterEditorView, { global: { stubs } })
     await waitFor(w, 'Intercessor Squad')
-    expect(w.find('.rc-points').text()).toContain('80')
+    expect(w.find('.rc-points').text()).toContain('95') // MFM v1.5; 80 before app data 963
     await w.find('.rc-sticky .btn-primary').trigger('click')
     expect(push).toHaveBeenCalledWith(`/roster/${r.id}/view`)
   })

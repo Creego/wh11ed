@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { refreshSummaries, summarize, summaryOf, summaryStale } from './rosterSummary.js'
 
-// Real Space Marines data — Intercessor Squad is 80 points at its default bracket.
+// Real Space Marines data — Intercessor Squad is 95 points at its default bracket (MFM v1.5).
 function roster(extra = {}) {
   return {
     id: 'r1',
@@ -23,7 +23,7 @@ describe('summaryStale', () => {
   })
 
   it('believes a summary that agrees with the units', () => {
-    expect(summaryStale(roster({ summary: summaryOf(roster(), 80) }))).toBe(false)
+    expect(summaryStale(roster({ summary: summaryOf(roster(), 95) }))).toBe(false)
   })
 
   // 0 points is the right answer for an empty list whether or not anything ever wrote it, so an
@@ -40,7 +40,7 @@ describe('refreshSummaries', () => {
     await refreshSummaries([r])
     // The issue count is the editor's own validator, not a separate opinion — one error here,
     // for the warlord this list hasn't named.
-    expect(r.summary).toEqual({ points: 80, unitCount: 1, issues: 1 })
+    expect(r.summary).toEqual({ points: 95, unitCount: 1, issues: 1 })
   })
 
   it('leaves a believable summary untouched', async () => {
@@ -59,12 +59,12 @@ describe('refreshSummaries', () => {
 describe('summarize', () => {
   it('counts every copy and reports the roster\'s own validation errors', async () => {
     const { default: data } = await import('../data/roster/space-marines.js')
-    // Four Intercessor Squads at 80: one over the Strike Force duplicate cap, so the summary
+    // Four Intercessor Squads at 95: one over the Strike Force duplicate cap, so the summary
     // carries a validation error alongside the points rather than points alone.
     const r = roster({ units: Array.from({ length: 4 }, (_, i) => ({ uid: `u${i}`, id: 'intercessor-squad', size: 0 })) })
     const s = summarize(r, data)
     expect(s.unitCount).toBe(4)
-    expect(s.points).toBe(320)
+    expect(s.points).toBe(380)
     expect(s.issues).toBeGreaterThan(0)
   })
 })

@@ -35,19 +35,19 @@ export default {
           0,
           [
             [
-              1070,
+              1134,
               1
             ],
             [
-              1071,
+              1135,
               1
             ],
             [
-              1068,
+              1132,
               1
             ],
             [
-              1069,
+              1133,
               1
             ]
           ]
@@ -56,43 +56,43 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 442,
+          "t": 440,
           "in": "checkbox",
           "o": [
             [
-              1068
+              1132
             ],
             [
-              1072
+              1136
             ],
             [
-              1073
+              1137
             ],
             [
-              1074
+              1138
             ]
           ],
           "rep": [
-            1069
+            1133
           ]
         },
         {
           "m": 0,
-          "t": 443,
+          "t": 441,
           "in": "checkbox",
           "o": [
             [
-              1069
+              1133
             ],
             [
-              1072
+              1136
             ],
             [
-              1073
+              1137
             ]
           ],
           "rep": [
-            1068
+            1132
           ]
         }
       ]
@@ -129,27 +129,27 @@ export default {
           0,
           [
             [
-              1077,
+              1141,
               3
             ],
             [
-              1076,
+              1140,
               1
             ],
             [
-              1068,
+              1132,
               1
             ],
             [
-              1069,
+              1133,
               1
             ],
             [
-              1075,
+              1139,
               1
             ],
             [
-              1078,
+              1142,
               2
             ]
           ]
@@ -158,34 +158,15 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 444,
+          "t": 442,
           "in": "checkbox",
           "o": [
             [
-              1079
+              1143
             ]
           ],
           "rep": [
-            1075
-          ]
-        },
-        {
-          "m": 0,
-          "t": 445,
-          "in": "checkbox",
-          "o": [
-            [
-              1068
-            ],
-            [
-              1072
-            ],
-            [
-              1073
-            ]
-          ],
-          "rep": [
-            1069
+            1139
           ]
         },
         {
@@ -194,17 +175,36 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1069
+              1132
             ],
             [
-              1072
+              1136
             ],
             [
-              1073
+              1137
             ]
           ],
           "rep": [
-            1068
+            1133
+          ]
+        },
+        {
+          "m": 0,
+          "t": 441,
+          "in": "checkbox",
+          "o": [
+            [
+              1133
+            ],
+            [
+              1136
+            ],
+            [
+              1137
+            ]
+          ],
+          "rep": [
+            1132
           ]
         }
       ]
@@ -241,15 +241,15 @@ export default {
           0,
           [
             [
-              1080,
+              1144,
               1
             ],
             [
-              1081,
+              1145,
               1
             ],
             [
-              1082,
+              1146,
               1
             ]
           ]
@@ -258,40 +258,40 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 446,
+          "t": 444,
           "in": "checkbox",
           "o": [
             [
-              1083
+              1147
             ],
             [
-              1084
+              1148
             ],
             [
-              1081
+              1145
             ]
           ],
           "rep": [
-            1082
+            1146
           ]
         },
         {
           "m": 0,
-          "t": 447,
+          "t": 445,
           "in": "checkbox",
           "o": [
             [
-              1083
+              1147
             ],
             [
-              1082
+              1146
             ],
             [
-              1084
+              1148
             ]
           ],
           "rep": [
-            1081
+            1145
           ]
         }
       ]
@@ -328,27 +328,27 @@ export default {
           0,
           [
             [
-              1086,
+              1150,
               1
             ],
             [
-              1085,
+              1149,
               1
             ],
             [
-              1088,
+              1152,
               2
             ],
             [
-              1087,
+              1151,
               2
             ],
             [
-              1077,
+              1141,
               2
             ],
             [
-              1089,
+              1153,
               1
             ]
           ]
@@ -357,64 +357,64 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 448,
+          "t": 446,
           "in": "stepper",
           "o": [
             [
               [
                 [
-                  1090,
+                  1154,
                   2
                 ]
               ]
             ]
           ],
           "rep": [
-            1087
+            1151
           ]
         },
         {
           "m": 0,
-          "t": 449,
+          "t": 447,
           "in": "checkbox",
           "o": [
             [
-              1091
+              1155
             ],
             [
-              1086
+              1150
             ],
             [
-              1092
+              1156
             ],
             [
-              1093
+              1157
             ]
           ],
           "rep": [
-            1085
+            1149
           ]
         },
         {
           "m": 0,
-          "t": 450,
+          "t": 448,
           "in": "checkbox",
           "o": [
             [
-              1085
+              1149
             ],
             [
-              1091
+              1155
             ],
             [
-              1092
+              1156
             ],
             [
-              1093
+              1157
             ]
           ],
           "rep": [
-            1086
+            1150
           ]
         }
       ]
@@ -462,60 +462,60 @@ export default {
           "onslaught": 3,
           "strike-force": 2
         },
-        "Requisitioned": {
-          "incursion": 1,
-          "onslaught": 2,
-          "strike-force": 1
-        },
         "Retinue": {
           "incursion": 1,
           "onslaught": 3,
           "strike-force": 2
+        },
+        "Requisitioned": {
+          "incursion": 1,
+          "onslaught": 2,
+          "strike-force": 1
         }
       },
       "up": {
+        "imperial-agents:inquisitor-draxus": {
+          "1": 110
+        },
         "imperial-agents:eversor-assassin": {
           "1": 110
         },
-        "imperial-agents:exaction-squad": {
-          "11": 85
+        "imperial-agents:sisters-of-battle-immolator": {
+          "1": 105
+        },
+        "imperial-agents:voidsmen-at-arms": {
+          "6": 70
         },
         "imperial-agents:grey-knights-terminator-squad": {
           "5": 190
         },
-        "imperial-agents:inquisitor": {
-          "1": 65
+        "imperial-agents:vindicare-assassin": {
+          "1": 125
         },
-        "imperial-agents:inquisitor-coteaz": {
-          "1": 95
+        "imperial-agents:rogue-trader-entourage": {
+          "4": 105
         },
-        "imperial-agents:inquisitor-draxus": {
-          "1": 110
+        "imperial-agents:subductor-squad": {
+          "11": 100
+        },
+        "imperial-agents:sisters-of-battle-squad": {
+          "10": 110
+        },
+        "imperial-agents:navigator": {
+          "1": 75
         },
         "imperial-agents:inquisitorial-agents": {
           "6": 60,
           "12": 120
         },
-        "imperial-agents:navigator": {
-          "1": 75
+        "imperial-agents:inquisitor-coteaz": {
+          "1": 95
         },
-        "imperial-agents:rogue-trader-entourage": {
-          "4": 105
+        "imperial-agents:exaction-squad": {
+          "11": 85
         },
-        "imperial-agents:sisters-of-battle-immolator": {
-          "1": 105
-        },
-        "imperial-agents:sisters-of-battle-squad": {
-          "10": 110
-        },
-        "imperial-agents:subductor-squad": {
-          "11": 100
-        },
-        "imperial-agents:vindicare-assassin": {
-          "1": 125
-        },
-        "imperial-agents:voidsmen-at-arms": {
-          "6": 70
+        "imperial-agents:inquisitor": {
+          "1": 65
         }
       }
     },

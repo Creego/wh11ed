@@ -8,12 +8,11 @@ export default {
       "sid": "00422d3c-a337-4c70-a521-4c3f268fecc6",
       "name": "Asmodai",
       "kws": [
-        "Asmodai",
         "Chaplain",
         "Character",
         "Deathwing",
         "Epic Hero",
-        "Grenades",
+        "Explosives",
         "Imperium",
         "Infantry",
         "Tacticus"
@@ -24,7 +23,7 @@ export default {
       },
       "sizes": [
         {
-          "pts": 70,
+          "pts": 80,
           "per": [
             1,
             1
@@ -35,18 +34,6 @@ export default {
       "linked": 1,
       "leads": [
         {
-          "to": "assault-intercessor-squad",
-          "type": "leader"
-        },
-        {
-          "to": "bladeguard-veteran-squad",
-          "type": "leader"
-        },
-        {
-          "to": "hellblaster-squad",
-          "type": "leader"
-        },
-        {
           "to": "infernus-squad",
           "type": "leader"
         },
@@ -55,7 +42,15 @@ export default {
           "type": "leader"
         },
         {
+          "to": "assault-intercessor-squad",
+          "type": "leader"
+        },
+        {
           "to": "intercessor-squad",
+          "type": "leader"
+        },
+        {
+          "to": "bladeguard-veteran-squad",
           "type": "leader"
         },
         {
@@ -63,15 +58,7 @@ export default {
           "type": "leader"
         },
         {
-          "to": "tactical-squad",
-          "type": "leader"
-        }
-      ],
-      "leadKw": [
-        {
-          "kw": [
-            "Sternguard Veteran Squad"
-          ],
+          "to": "hellblaster-squad",
           "type": "leader"
         }
       ],
@@ -80,11 +67,11 @@ export default {
           0,
           [
             [
-              1094,
+              1158,
               1
             ],
             [
-              685,
+              1159,
               1
             ]
           ]
@@ -96,12 +83,11 @@ export default {
       "sid": "2c8e0331-4d53-44dc-bd48-5a1aacca2818",
       "name": "Azrael",
       "kws": [
-        "Azrael",
         "Chapter Master",
         "Character",
         "Deathwing",
         "Epic Hero",
-        "Grenades",
+        "Explosives",
         "Imperium",
         "Infantry",
         "Tacticus"
@@ -112,7 +98,7 @@ export default {
       },
       "sizes": [
         {
-          "pts": 140,
+          "pts": 150,
           "per": [
             1,
             1
@@ -123,23 +109,7 @@ export default {
       "linked": 1,
       "leads": [
         {
-          "to": "assault-intercessor-squad",
-          "type": "leader"
-        },
-        {
           "to": "bladeguard-veteran-squad",
-          "type": "leader"
-        },
-        {
-          "to": "hellblaster-squad",
-          "type": "leader"
-        },
-        {
-          "to": "infernus-squad",
-          "type": "leader"
-        },
-        {
-          "to": "inner-circle-companions",
           "type": "leader"
         },
         {
@@ -147,19 +117,27 @@ export default {
           "type": "leader"
         },
         {
+          "to": "inner-circle-companions",
+          "type": "leader"
+        },
+        {
+          "to": "hellblaster-squad",
+          "type": "leader"
+        },
+        {
           "to": "sternguard-veteran-squad",
           "type": "leader"
         },
         {
-          "to": "tactical-squad",
+          "to": "infernus-squad",
           "type": "leader"
-        }
-      ],
-      "leadKw": [
+        },
         {
-          "kw": [
-            "Sternguard Veteran Squad"
-          ],
+          "to": "assault-intercessor-squad",
+          "type": "leader"
+        },
+        {
+          "to": "company-heroes",
           "type": "leader"
         }
       ],
@@ -168,15 +146,15 @@ export default {
           0,
           [
             [
-              1095,
+              1160,
               1
             ],
             [
-              1096,
+              1161,
               1
             ],
             [
-              1097,
+              1162,
               1
             ]
           ]
@@ -188,7 +166,6 @@ export default {
       "sid": "28dd278b-fdb7-4c37-9171-c924399c20c1",
       "name": "Belial",
       "kws": [
-        "Belial",
         "Captain",
         "Character",
         "Deathwing",
@@ -203,7 +180,7 @@ export default {
       },
       "sizes": [
         {
-          "pts": 75,
+          "pts": 100,
           "per": [
             1,
             1
@@ -214,15 +191,11 @@ export default {
       "linked": 1,
       "leads": [
         {
-          "to": "deathwing-knights",
-          "type": "leader"
-        },
-        {
           "to": "deathwing-terminator-squad",
           "type": "leader"
         },
         {
-          "to": "terminator-assault-squad",
+          "to": "deathwing-knights",
           "type": "leader"
         },
         {
@@ -235,11 +208,11 @@ export default {
           0,
           [
             [
-              1098,
+              1163,
               1
             ],
             [
-              1099,
+              1164,
               1
             ]
           ]
@@ -337,7 +310,7 @@ export default {
               1
             ],
             [
-              952,
+              1011,
               1
             ]
           ]
@@ -350,7 +323,7 @@ export default {
               1
             ],
             [
-              1457,
+              1622,
               1
             ]
           ]
@@ -359,7 +332,7 @@ export default {
           2,
           [
             [
-              2731,
+              3328,
               1
             ]
           ]
@@ -372,7 +345,7 @@ export default {
               1
             ],
             [
-              952,
+              1011,
               1
             ]
           ]
@@ -381,20 +354,20 @@ export default {
       "gear": [
         {
           "m": 3,
-          "t": 1055,
+          "t": 1107,
           "in": "stepper",
           "o": [
             [
-              2135
+              1014
             ],
             [
               [
                 [
-                  2047,
+                  2392,
                   1
                 ],
                 [
-                  2100,
+                  1307,
                   1
                 ]
               ]
@@ -402,25 +375,25 @@ export default {
           ],
           "rep": [
             38,
-            952
+            1011
           ]
         },
         {
           "m": 3,
-          "t": 1056,
+          "t": 1108,
           "in": "stepper",
           "o": [
             [
-              1457
+              1622
             ]
           ],
           "rep": [
-            952
+            1011
           ]
         },
         {
           "m": 3,
-          "t": 1057,
+          "t": 1109,
           "in": "checkbox",
           "o": [
             [
@@ -428,22 +401,22 @@ export default {
             ]
           ],
           "rep": [
-            952
+            1011
           ]
         },
         {
           "m": 3,
-          "t": 1058,
+          "t": 1110,
           "in": "stepper",
           "o": [
             [
-              2156
+              1572
             ],
             [
-              743
+              2957
             ],
             [
-              1481
+              1646
             ],
             [
               [
@@ -452,7 +425,7 @@ export default {
                   1
                 ],
                 [
-                  736,
+                  2673,
                   1
                 ]
               ]
@@ -474,11 +447,11 @@ export default {
         },
         {
           "all": 1,
-          "t": 1059,
+          "t": 1111,
           "in": "checkbox",
           "o": [
             [
-              1102
+              1167
             ]
           ]
         }
@@ -490,7 +463,6 @@ export default {
       "name": "Deathwing Knights",
       "kws": [
         "Deathwing",
-        "Deathwing Knights",
         "Imperium",
         "Infantry",
         "Terminator"
@@ -498,7 +470,7 @@ export default {
       "flags": {},
       "sizes": [
         {
-          "pts": 240,
+          "pts": 255,
           "per": [
             5,
             5
@@ -507,11 +479,11 @@ export default {
           "comp": [
             [
               0,
-              1
+              4
             ],
             [
               1,
-              4
+              1
             ]
           ]
         }
@@ -523,10 +495,10 @@ export default {
       },
       "minis": [
         {
-          "n": "Knight Master"
+          "n": "Deathwing Knights"
         },
         {
-          "n": "Deathwing Knight"
+          "n": "Knight Master"
         }
       ],
       "defaults": [
@@ -534,7 +506,7 @@ export default {
           1,
           [
             [
-              1100,
+              1165,
               1
             ]
           ]
@@ -543,7 +515,7 @@ export default {
           0,
           [
             [
-              1101,
+              1166,
               1
             ]
           ]
@@ -552,44 +524,38 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 451,
+          "t": 449,
           "in": "checkbox",
           "o": [
             [
-              1102
+              1167
             ]
-          ],
-          "lim": [
-            [
-              0,
-              1
-            ]
-          ]
-        },
-        {
-          "m": 0,
-          "t": 452,
-          "in": "checkbox",
-          "o": [
-            [
-              1103
-            ]
-          ],
-          "rep": [
-            1101
           ]
         },
         {
           "m": 1,
-          "t": 453,
-          "in": "stepper",
+          "t": 450,
+          "in": "checkbox",
           "o": [
             [
-              1104
+              1168
             ]
           ],
           "rep": [
-            1100
+            1165
+          ]
+        },
+        {
+          "m": 0,
+          "t": 451,
+          "in": "stepper",
+          "o": [
+            [
+              1169
+            ]
+          ],
+          "rep": [
+            1166
           ]
         }
       ]
@@ -630,7 +596,7 @@ export default {
               1
             ],
             [
-              2062,
+              1379,
               1
             ]
           ]
@@ -639,29 +605,29 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 1060,
+          "t": 1112,
           "in": "checkbox",
           "o": [
             [
-              2135
+              1014
             ],
             [
               38
             ],
             [
-              1457
+              1622
             ],
             [
-              1100
+              1166
             ],
             [
-              952
+              1011
             ],
             [
-              2047
+              2392
             ],
             [
-              2100
+              1307
             ]
           ],
           "lim": [
@@ -673,7 +639,7 @@ export default {
           ],
           "rep": [
             38,
-            2062
+            1379
           ]
         }
       ],
@@ -684,10 +650,6 @@ export default {
         },
         {
           "to": "deathwing-terminator-squad",
-          "type": "support"
-        },
-        {
-          "to": "relic-terminator-squad",
           "type": "support"
         },
         {
@@ -706,7 +668,6 @@ export default {
       "name": "Deathwing Terminator Squad",
       "kws": [
         "Deathwing",
-        "Deathwing Terminator Squad",
         "Imperium",
         "Infantry",
         "Terminator"
@@ -714,7 +675,7 @@ export default {
       "flags": {},
       "sizes": [
         {
-          "pts": 165,
+          "pts": 190,
           "per": [
             5,
             5
@@ -732,9 +693,9 @@ export default {
           ]
         },
         {
-          "pts": 330,
+          "pts": 380,
           "per": [
-            6,
+            10,
             10
           ],
           "comp": [
@@ -744,19 +705,22 @@ export default {
             ],
             [
               1,
-              5,
               9
             ]
           ]
         }
       ],
       "linked": 1,
+      "step": {
+        "at": 3,
+        "pts": 40
+      },
       "minis": [
         {
           "n": "Deathwing Sergeant"
         },
         {
-          "n": "Deathwing Terminator"
+          "n": "Deathwing Terminators"
         }
       ],
       "defaults": [
@@ -764,11 +728,11 @@ export default {
           1,
           [
             [
-              691,
+              1170,
               1
             ],
             [
-              38,
+              1171,
               1
             ]
           ]
@@ -777,11 +741,11 @@ export default {
           0,
           [
             [
-              38,
+              1170,
               1
             ],
             [
-              738,
+              1171,
               1
             ]
           ]
@@ -790,18 +754,28 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 451,
+          "t": 452,
           "in": "checkbox",
           "o": [
             [
-              1102
+              1167
+            ]
+          ]
+        },
+        {
+          "m": 0,
+          "t": 453,
+          "in": "checkbox",
+          "o": [
+            [
+              1172
+            ],
+            [
+              1173
             ]
           ],
-          "lim": [
-            [
-              0,
-              1
-            ]
+          "rep": [
+            1171
           ]
         },
         {
@@ -810,11 +784,11 @@ export default {
           "in": "stepper",
           "o": [
             [
-              737
+              1172
             ]
           ],
           "rep": [
-            691
+            1171
           ]
         },
         {
@@ -825,7 +799,7 @@ export default {
             [
               [
                 [
-                  735,
+                  1174,
                   1
                 ]
               ]
@@ -833,7 +807,7 @@ export default {
             [
               [
                 [
-                  495,
+                  1175,
                   1
                 ]
               ]
@@ -841,7 +815,7 @@ export default {
             [
               [
                 [
-                  1105,
+                  1176,
                   1
                 ]
               ]
@@ -849,19 +823,20 @@ export default {
             [
               [
                 [
-                  38,
+                  1170,
                   1
                 ],
                 [
-                  736,
+                  1177,
                   1
                 ]
-              ]
+              ],
+              10
             ]
           ],
           "lim": [
             [
-              0,
+              5,
               1
             ],
             [
@@ -870,10 +845,10 @@ export default {
             ]
           ],
           "rep": [
-            38
+            1170
           ],
           "keep": [
-            38
+            1170
           ]
         }
       ]
@@ -886,12 +861,12 @@ export default {
         "Character",
         "Deathwing",
         "Epic Hero",
-        "Ezekiel",
-        "Grenades",
+        "Explosives",
         "Imperium",
         "Infantry",
         "Librarian",
-        "Psyker"
+        "Psyker",
+        "Tacticus"
       ],
       "flags": {
         "char": 1,
@@ -899,7 +874,7 @@ export default {
       },
       "sizes": [
         {
-          "pts": 75,
+          "pts": 110,
           "per": [
             1,
             1
@@ -910,18 +885,6 @@ export default {
       "linked": 1,
       "leads": [
         {
-          "to": "assault-intercessor-squad",
-          "type": "leader"
-        },
-        {
-          "to": "bladeguard-veteran-squad",
-          "type": "leader"
-        },
-        {
-          "to": "hellblaster-squad",
-          "type": "leader"
-        },
-        {
           "to": "infernus-squad",
           "type": "leader"
         },
@@ -930,23 +893,23 @@ export default {
           "type": "leader"
         },
         {
+          "to": "assault-intercessor-squad",
+          "type": "leader"
+        },
+        {
+          "to": "bladeguard-veteran-squad",
+          "type": "leader"
+        },
+        {
           "to": "intercessor-squad",
           "type": "leader"
         },
         {
-          "to": "sternguard-veteran-squad",
+          "to": "hellblaster-squad",
           "type": "leader"
         },
         {
-          "to": "tactical-squad",
-          "type": "leader"
-        }
-      ],
-      "leadKw": [
-        {
-          "kw": [
-            "Sternguard Veteran Squad"
-          ],
+          "to": "sternguard-veteran-squad",
           "type": "leader"
         }
       ],
@@ -955,19 +918,15 @@ export default {
           0,
           [
             [
-              1106,
+              1178,
               1
             ],
             [
-              1107,
+              1179,
               1
             ],
             [
-              1108,
-              1
-            ],
-            [
-              1109,
+              1180,
               1
             ]
           ]
@@ -982,13 +941,12 @@ export default {
         "Deathwing",
         "Imperium",
         "Infantry",
-        "Inner Circle Companions",
         "Tacticus"
       ],
       "flags": {},
       "sizes": [
         {
-          "pts": 80,
+          "pts": 90,
           "per": [
             3,
             3
@@ -996,9 +954,9 @@ export default {
           "default": 1
         },
         {
-          "pts": 160,
+          "pts": 180,
           "per": [
-            4,
+            6,
             6
           ]
         }
@@ -1006,18 +964,18 @@ export default {
       "linked": 1,
       "step": {
         "at": 3,
-        "pts": 10
+        "pts": 15
       },
       "defaults": [
         [
           0,
           [
             [
-              685,
+              1181,
               1
             ],
             [
-              1110,
+              1182,
               1
             ]
           ]
@@ -1032,14 +990,14 @@ export default {
         "Fly",
         "Frame",
         "Imperium",
-        "Land Speeder Vengeance",
         "Ravenwing",
+        "Speeder",
         "Vehicle"
       ],
       "flags": {},
       "sizes": [
         {
-          "pts": 130,
+          "pts": 150,
           "per": [
             1,
             1
@@ -1057,15 +1015,15 @@ export default {
           0,
           [
             [
-              726,
+              1185,
               1
             ],
             [
-              1112,
+              1186,
               1
             ],
             [
-              35,
+              1187,
               1
             ]
           ]
@@ -1078,11 +1036,11 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              735
+              1188
             ]
           ],
           "rep": [
-            35
+            1185
           ]
         }
       ]
@@ -1096,10 +1054,9 @@ export default {
         "Character",
         "Deathwing",
         "Epic Hero",
-        "Grenades",
+        "Explosives",
         "Imperium",
         "Infantry",
-        "Lazarus",
         "Tacticus"
       ],
       "flags": {
@@ -1108,7 +1065,7 @@ export default {
       },
       "sizes": [
         {
-          "pts": 70,
+          "pts": 80,
           "per": [
             1,
             1
@@ -1119,7 +1076,15 @@ export default {
       "linked": 1,
       "leads": [
         {
+          "to": "inner-circle-companions",
+          "type": "leader"
+        },
+        {
           "to": "assault-intercessor-squad",
+          "type": "leader"
+        },
+        {
+          "to": "intercessor-squad",
           "type": "leader"
         },
         {
@@ -1131,27 +1096,11 @@ export default {
           "type": "leader"
         },
         {
-          "to": "inner-circle-companions",
-          "type": "leader"
-        },
-        {
-          "to": "intercessor-squad",
-          "type": "leader"
-        },
-        {
           "to": "sternguard-veteran-squad",
           "type": "leader"
         },
         {
-          "to": "tactical-squad",
-          "type": "leader"
-        }
-      ],
-      "leadKw": [
-        {
-          "kw": [
-            "Sternguard Veteran Squad"
-          ],
+          "to": "company-heroes",
           "type": "leader"
         }
       ],
@@ -1160,11 +1109,11 @@ export default {
           0,
           [
             [
-              1111,
+              1183,
               1
             ],
             [
-              22,
+              1184,
               1
             ]
           ]
@@ -1174,12 +1123,11 @@ export default {
     {
       "id": "lion-eljonson",
       "sid": "38867cfd-ef90-473f-9a15-6a297180c6dd",
-      "name": "Lion El’Jonson",
+      "name": "Lion El'Jonson",
       "kws": [
         "Character",
         "Epic Hero",
         "Imperium",
-        "Lion El’Jonson",
         "Mobile",
         "Monster",
         "Primarch"
@@ -1191,7 +1139,7 @@ export default {
       },
       "sizes": [
         {
-          "pts": 265,
+          "pts": 415,
           "per": [
             1,
             1
@@ -1205,11 +1153,11 @@ export default {
           0,
           [
             [
-              1113,
+              1189,
               1
             ],
             [
-              1114,
+              1190,
               1
             ]
           ]
@@ -1222,335 +1170,6 @@ export default {
       "name": "Nephilim Jetfighter",
       "kws": [
         "Aircraft",
-        "Fly",
-        "Imperium",
-        "Nephilim Jetfighter",
-        "Ravenwing",
-        "Vehicle"
-      ],
-      "flags": {},
-      "sizes": [
-        {
-          "pts": 180,
-          "per": [
-            1,
-            1
-          ],
-          "default": 1
-        }
-      ],
-      "linked": 1,
-      "defaults": [
-        [
-          0,
-          [
-            [
-              151,
-              1
-            ],
-            [
-              714,
-              1
-            ],
-            [
-              1115,
-              1
-            ],
-            [
-              1116,
-              1
-            ]
-          ]
-        ]
-      ],
-      "gear": [
-        {
-          "m": 0,
-          "t": 457,
-          "in": "checkbox",
-          "o": [
-            [
-              1117
-            ]
-          ],
-          "rep": [
-            1115
-          ]
-        }
-      ]
-    },
-    {
-      "id": "ravenwing-black-knights",
-      "sid": "e479d5a6-6367-4ffa-a143-f8260ec6a358",
-      "name": "Ravenwing Black Knights",
-      "kws": [
-        "Grenades",
-        "Imperium",
-        "Mounted",
-        "Ravenwing",
-        "Ravenwing Black Knights"
-      ],
-      "flags": {},
-      "sizes": [
-        {
-          "pts": 75,
-          "per": [
-            3,
-            3
-          ],
-          "default": 1,
-          "comp": [
-            [
-              0,
-              1
-            ],
-            [
-              1,
-              2
-            ]
-          ]
-        },
-        {
-          "pts": 150,
-          "per": [
-            4,
-            6
-          ],
-          "comp": [
-            [
-              0,
-              1
-            ],
-            [
-              1,
-              3,
-              5
-            ]
-          ]
-        }
-      ],
-      "linked": 1,
-      "step": {
-        "at": 3,
-        "pts": 10
-      },
-      "minis": [
-        {
-          "n": "Ravenwing Huntmaster"
-        },
-        {
-          "n": "Ravenwing Black Knight"
-        }
-      ],
-      "defaults": [
-        [
-          0,
-          [
-            [
-              1,
-              1
-            ],
-            [
-              1118,
-              1
-            ],
-            [
-              1119,
-              1
-            ]
-          ]
-        ],
-        [
-          1,
-          [
-            [
-              1119,
-              1
-            ],
-            [
-              1,
-              1
-            ],
-            [
-              1118,
-              1
-            ]
-          ]
-        ]
-      ],
-      "gear": [
-        {
-          "all": 1,
-          "t": 458,
-          "in": "stepper",
-          "o": [
-            [
-              760
-            ]
-          ],
-          "lim": [
-            [
-              0,
-              1
-            ],
-            [
-              6,
-              2
-            ]
-          ],
-          "rep": [
-            1118
-          ]
-        }
-      ]
-    },
-    {
-      "id": "ravenwing-command-squad",
-      "sid": "515eaf0d-be4b-4a33-89ae-228f029c2bbf",
-      "name": "Ravenwing Command Squad",
-      "kws": [
-        "Character",
-        "Grenades",
-        "Imperium",
-        "Mounted",
-        "Ravenwing",
-        "Ravenwing Command Squad"
-      ],
-      "flags": {
-        "char": 1
-      },
-      "sizes": [
-        {
-          "pts": 105,
-          "per": [
-            3,
-            3
-          ],
-          "default": 1,
-          "comp": [
-            [
-              0,
-              1
-            ],
-            [
-              1,
-              1
-            ],
-            [
-              2,
-              1
-            ]
-          ]
-        }
-      ],
-      "linked": 1,
-      "step": {
-        "at": 3,
-        "pts": 10
-      },
-      "leads": [
-        {
-          "to": "outrider-squad",
-          "type": "support"
-        },
-        {
-          "to": "ravenwing-black-knights",
-          "type": "support"
-        }
-      ],
-      "minis": [
-        {
-          "n": "Ravenwing Champion"
-        },
-        {
-          "n": "Ravenwing Apothecary"
-        },
-        {
-          "n": "Ravenwing Ancient"
-        }
-      ],
-      "defaults": [
-        [
-          2,
-          [
-            [
-              1118,
-              1
-            ],
-            [
-              1,
-              1
-            ],
-            [
-              1119,
-              1
-            ]
-          ]
-        ],
-        [
-          1,
-          [
-            [
-              1119,
-              1
-            ],
-            [
-              1118,
-              1
-            ],
-            [
-              1,
-              1
-            ]
-          ]
-        ],
-        [
-          0,
-          [
-            [
-              1118,
-              1
-            ],
-            [
-              1,
-              1
-            ],
-            [
-              1120,
-              1
-            ]
-          ]
-        ]
-      ],
-      "gear": [
-        {
-          "all": 1,
-          "t": 458,
-          "in": "checkbox",
-          "o": [
-            [
-              760
-            ]
-          ],
-          "lim": [
-            [
-              0,
-              1
-            ]
-          ],
-          "rep": [
-            1118
-          ]
-        }
-      ]
-    },
-    {
-      "id": "ravenwing-dark-talon",
-      "sid": "f6b89272-de6b-4255-9024-9c0dcc17a656",
-      "name": "Ravenwing Dark Talon",
-      "kws": [
-        "Aircraft",
-        "Dark Talon",
         "Fly",
         "Imperium",
         "Ravenwing",
@@ -1573,29 +1192,306 @@ export default {
           0,
           [
             [
-              1121,
+              1191,
               1
             ],
             [
-              712,
-              2
+              1192,
+              1
             ],
             [
-              151,
+              1193,
+              1
+            ],
+            [
+              1194,
               1
             ]
           ]
         ]
+      ],
+      "gear": [
+        {
+          "m": 0,
+          "t": 457,
+          "in": "checkbox",
+          "o": [
+            [
+              1195
+            ]
+          ],
+          "rep": [
+            1193
+          ]
+        }
       ]
     },
     {
-      "id": "ravenwing-darkshroud",
-      "sid": "751aa1e1-089a-4732-bb32-3c327213fee7",
-      "name": "Ravenwing Darkshroud",
+      "id": "ravenwing-black-knights",
+      "sid": "e479d5a6-6367-4ffa-a143-f8260ec6a358",
+      "name": "Ravenwing Black Knights",
       "kws": [
-        "Darkshroud",
+        "Explosives",
+        "Imperium",
+        "Mounted",
+        "Ravenwing"
+      ],
+      "flags": {},
+      "sizes": [
+        {
+          "pts": 85,
+          "per": [
+            3,
+            3
+          ],
+          "default": 1,
+          "comp": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              2
+            ]
+          ]
+        },
+        {
+          "pts": 170,
+          "per": [
+            6,
+            6
+          ],
+          "comp": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              5
+            ]
+          ]
+        }
+      ],
+      "linked": 1,
+      "step": {
+        "at": 3,
+        "pts": 10
+      },
+      "minis": [
+        {
+          "n": "Ravenwing Huntmaster"
+        },
+        {
+          "n": "Ravenwing Black Knight"
+        }
+      ],
+      "defaults": [
+        [
+          1,
+          [
+            [
+              1196,
+              1
+            ],
+            [
+              1197,
+              1
+            ],
+            [
+              1198,
+              1
+            ]
+          ]
+        ],
+        [
+          0,
+          [
+            [
+              1196,
+              1
+            ],
+            [
+              1197,
+              1
+            ],
+            [
+              1198,
+              1
+            ]
+          ]
+        ]
+      ],
+      "gear": [
+        {
+          "all": 1,
+          "t": 458,
+          "in": "stepper",
+          "o": [
+            [
+              1199
+            ]
+          ],
+          "lim": [
+            [
+              3,
+              1
+            ],
+            [
+              6,
+              2
+            ]
+          ],
+          "rep": [
+            1197
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ravenwing-command-squad",
+      "sid": "515eaf0d-be4b-4a33-89ae-228f029c2bbf",
+      "name": "Ravenwing Command Squad",
+      "kws": [
+        "Explosives",
+        "Imperium",
+        "Mounted",
+        "Ravenwing"
+      ],
+      "flags": {},
+      "sizes": [
+        {
+          "pts": 115,
+          "per": [
+            3,
+            3
+          ],
+          "default": 1,
+          "comp": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ]
+          ]
+        }
+      ],
+      "linked": 1,
+      "step": {
+        "at": 3,
+        "pts": 20
+      },
+      "leads": [
+        {
+          "to": "ravenwing-black-knights",
+          "type": "support"
+        },
+        {
+          "to": "outrider-squad",
+          "type": "support"
+        }
+      ],
+      "minis": [
+        {
+          "n": "Ravenwing Apothecary"
+        },
+        {
+          "n": "Ravenwing Champion"
+        },
+        {
+          "n": "Ravenwing Ancient"
+        }
+      ],
+      "defaults": [
+        [
+          0,
+          [
+            [
+              1200,
+              1
+            ],
+            [
+              1201,
+              1
+            ],
+            [
+              1202,
+              1
+            ]
+          ]
+        ],
+        [
+          1,
+          [
+            [
+              1200,
+              1
+            ],
+            [
+              1201,
+              1
+            ],
+            [
+              1203,
+              1
+            ]
+          ]
+        ],
+        [
+          2,
+          [
+            [
+              1200,
+              1
+            ],
+            [
+              1201,
+              1
+            ],
+            [
+              1202,
+              1
+            ]
+          ]
+        ]
+      ],
+      "gear": [
+        {
+          "all": 1,
+          "t": 458,
+          "in": "checkbox",
+          "o": [
+            [
+              1204
+            ]
+          ],
+          "lim": [
+            [
+              0,
+              1
+            ]
+          ],
+          "rep": [
+            1201
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ravenwing-dark-talon",
+      "sid": "f6b89272-de6b-4255-9024-9c0dcc17a656",
+      "name": "Ravenwing Dark Talon",
+      "kws": [
+        "Aircraft",
         "Fly",
-        "Frame",
         "Imperium",
         "Ravenwing",
         "Vehicle"
@@ -1603,7 +1499,7 @@ export default {
       "flags": {},
       "sizes": [
         {
-          "pts": 70,
+          "pts": 190,
           "per": [
             1,
             1
@@ -1617,11 +1513,55 @@ export default {
           0,
           [
             [
-              35,
+              1208,
               1
             ],
             [
-              726,
+              1209,
+              2
+            ],
+            [
+              1210,
+              1
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "ravenwing-darkshroud",
+      "sid": "751aa1e1-089a-4732-bb32-3c327213fee7",
+      "name": "Ravenwing Darkshroud",
+      "kws": [
+        "Fly",
+        "Frame",
+        "Imperium",
+        "Ravenwing",
+        "Speeder",
+        "Vehicle"
+      ],
+      "flags": {},
+      "sizes": [
+        {
+          "pts": 80,
+          "per": [
+            1,
+            1
+          ],
+          "default": 1
+        }
+      ],
+      "linked": 1,
+      "defaults": [
+        [
+          0,
+          [
+            [
+              1205,
+              1
+            ],
+            [
+              1206,
               1
             ]
           ]
@@ -1634,11 +1574,11 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              735
+              1207
             ]
           ],
           "rep": [
-            35
+            1205
           ]
         }
       ]
@@ -1674,7 +1614,7 @@ export default {
           0,
           [
             [
-              711,
+              1559,
               1
             ],
             [
@@ -1697,13 +1637,12 @@ export default {
         "Captain",
         "Character",
         "Epic Hero",
+        "Explosives",
         "Fly",
         "Frame",
-        "Grenades",
         "Imperium",
         "Mounted",
-        "Ravenwing",
-        "Sammael"
+        "Ravenwing"
       ],
       "flags": {
         "char": 1,
@@ -1711,7 +1650,7 @@ export default {
       },
       "sizes": [
         {
-          "pts": 105,
+          "pts": 120,
           "per": [
             1,
             1
@@ -1735,19 +1674,19 @@ export default {
           0,
           [
             [
-              1122,
+              1211,
               1
             ],
             [
-              22,
+              1212,
               1
             ],
             [
-              1123,
+              1213,
               1
             ],
             [
-              1124,
+              1214,
               1
             ]
           ]
@@ -1757,106 +1696,17 @@ export default {
   ],
   "detachments": [
     {
-      "name": "Company of Hunters",
-      "sid": "88060204-d25c-4ed9-95c7-a4b58d530320",
-      "dp": 2,
-      "fd": "Disruption",
-      "enhancements": [
-        {
-          "name": "Master-crafted Weapon",
-          "pts": 10,
-          "type": "miniature",
-          "req": [
-            {
-              "kw": [
-                "Ravenwing"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Mounted Strategist",
-          "pts": 30,
-          "type": "miniature",
-          "req": [
-            {
-              "kw": [
-                "Ravenwing"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Master of Manoeuvre",
-          "pts": 15,
-          "type": "miniature",
-          "req": [
-            {
-              "kw": [
-                "Ravenwing"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Recon Hunter",
-          "pts": 30,
-          "type": "miniature",
-          "req": [
-            {
-              "kw": [
-                "Ravenwing"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Dark Age Arsenal",
-      "sid": "2e1dbbe3-13ef-42cd-b3d8-6daae893ae82",
-      "dp": 1,
-      "fd": "Priority Assets",
-      "enhancements": [
-        {
-          "name": "Petition of Stability (Upgrade)",
-          "pts": 15,
-          "type": "upgrade",
-          "nonCharOk": 1,
-          "limit": 3,
-          "req": [
-            {
-              "fac": [
-                "Adeptus Astartes"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Entreaty of Perpetual Ardour (Upgrade)",
-          "pts": 15,
-          "type": "upgrade",
-          "nonCharOk": 1,
-          "limit": 3,
-          "req": [
-            {
-              "fac": [
-                "Adeptus Astartes"
-              ]
-            }
-          ],
-          "lockDs": [
-            "1db34bd3-5f48-4d1b-b222-87decab7dfc2"
-          ]
-        }
-      ]
-    },
-    {
       "name": "Darkflight Pursuit",
-      "sid": "0b44b0ad-420b-4b4c-af5a-27f0a735042e",
+      "sid": "8ba93ebb-f562-438a-b727-5b17ef81fd3d",
       "dp": 1,
       "fd": "Reconnaissance",
       "enhancements": [
+        {
+          "name": "Nightforged Battery (Upgarde)",
+          "pts": 10,
+          "type": "upgrade",
+          "nonCharOk": 1
+        },
         {
           "name": "Thundercowl Turbines (Upgrade)",
           "pts": 15,
@@ -1866,61 +1716,26 @@ export default {
           "req": [
             {
               "kw": [
-                "Ravenwing",
-                "Fly"
+                "Fly",
+                "Ravenwing"
               ]
-            }
-          ]
-        },
-        {
-          "name": "Nightforged Battery (Upgrade)",
-          "pts": 15,
-          "type": "upgrade",
-          "nonCharOk": 1,
-          "limit": 3,
-          "req": [
+            },
             {
-              "fac": [
-                "Dark Angels"
+              "kw": [
+                "Ravenwing",
+                "Mounted"
               ]
             }
-          ],
-          "lockDs": [
-            "e310b2d0-59b7-44d1-8b5e-60a12f5bcfc6"
           ]
         }
       ]
     },
     {
       "name": "Inner Circle Task Force",
-      "sid": "0843e2f3-27e5-4bc2-90ac-0ad099c66d3e",
-      "dp": 2,
+      "sid": "0af88b8c-951a-442c-987b-85384f0020e7",
+      "dp": 1,
       "fd": "Priority Assets",
       "enhancements": [
-        {
-          "name": "Champion of the Deathwing",
-          "pts": 15,
-          "type": "miniature",
-          "req": [
-            {
-              "kw": [
-                "Deathwing"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Eye of the Unseen",
-          "pts": 10,
-          "type": "miniature",
-          "req": [
-            {
-              "kw": [
-                "Deathwing"
-              ]
-            }
-          ]
-        },
         {
           "name": "Singular Will",
           "pts": 20,
@@ -1934,172 +1749,13 @@ export default {
           ]
         },
         {
-          "name": "Deathwing Assault",
-          "pts": 30,
-          "type": "miniature",
-          "req": [
-            {
-              "kw": [
-                "Deathwing"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Interrogation Conclave",
-      "sid": "2a38def8-f0d2-4f28-aeca-bc2b555172bb",
-      "dp": 1,
-      "fd": "Take and Hold",
-      "enhancements": [
-        {
-          "name": "Limitless Zeal",
-          "pts": 10,
-          "type": "miniature",
-          "req": [
-            {
-              "kw": [
-                "Chaplain"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Inescapable Interrogation",
-          "pts": 20,
-          "type": "miniature",
-          "req": [
-            {
-              "kw": [
-                "Chaplain"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Lion’s Blade Task Force",
-      "sid": "6040c18f-09c2-4708-8e85-912f88949221",
-      "dp": 2,
-      "fd": "Purge the Foe",
-      "enhancements": [
-        {
-          "name": "Calibanite Armaments",
-          "pts": 15,
-          "type": "miniature",
-          "req": [
-            {
-              "fac": [
-                "Adeptus Astartes"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Lord of the Hunt",
-          "pts": 15,
-          "type": "miniature",
-          "req": [
-            {
-              "kw": [
-                "Ravenwing"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Stalwart Champion",
-          "pts": 15,
-          "type": "miniature",
-          "req": [
-            {
-              "kw": [
-                "Captain"
-              ]
-            },
-            {
-              "kw": [
-                "Lieutenant"
-              ]
-            },
-            {
-              "kw": [
-                "Chaplain"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Fulgus Magna",
+          "name": "Champion of the Deathwing",
           "pts": 20,
           "type": "miniature",
           "req": [
             {
               "kw": [
                 "Deathwing"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Unforgiven Task Force",
-      "sid": "410ea102-b63f-4b3e-b901-05c2c869c298",
-      "dp": 2,
-      "fd": "Take and Hold",
-      "enhancements": [
-        {
-          "name": "Shroud of Heroes",
-          "pts": 25,
-          "type": "miniature",
-          "req": [
-            {
-              "fac": [
-                "Adeptus Astartes"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Stubborn Tenacity",
-          "pts": 15,
-          "type": "miniature",
-          "req": [
-            {
-              "fac": [
-                "Adeptus Astartes"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Weapons of the First Legion",
-          "pts": 15,
-          "type": "miniature",
-          "req": [
-            {
-              "fac": [
-                "Adeptus Astartes"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Pennant of Remembrance",
-          "pts": 10,
-          "type": "miniature",
-          "req": [
-            {
-              "kw": [
-                "Ancient"
-              ]
-            },
-            {
-              "kw": [
-                "Bladeguard Ancient"
               ]
             }
           ]
@@ -2108,9 +1764,10 @@ export default {
     },
     {
       "name": "Wrath of the Rock",
-      "sid": "e5a06319-a071-4bb4-aaa6-07c98c07abc6",
-      "dp": 3,
-      "fd": "Priority Assets",
+      "sid": "195b367e-d4a1-453b-9be4-6831a73cd66b",
+      "dp": 2,
+      "fd": "Take and Hold",
+      "unique": "TERMINATOR",
       "enhancements": [
         {
           "name": "Tempered in Battle (Aura)",
@@ -2125,18 +1782,6 @@ export default {
           ]
         },
         {
-          "name": "Ancient Weapons",
-          "pts": 25,
-          "type": "miniature",
-          "req": [
-            {
-              "fac": [
-                "Adeptus Astartes"
-              ]
-            }
-          ]
-        },
-        {
           "name": "Deathwing Assault",
           "pts": 15,
           "type": "miniature",
@@ -2149,8 +1794,20 @@ export default {
           ]
         },
         {
+          "name": "Ancient Weapons",
+          "pts": 20,
+          "type": "miniature",
+          "req": [
+            {
+              "fac": [
+                "Adeptus Astartes"
+              ]
+            }
+          ]
+        },
+        {
           "name": "Lord of the Ravenwing",
-          "pts": 10,
+          "pts": 15,
           "type": "miniature",
           "req": [
             {
@@ -2237,62 +1894,84 @@ export default {
           "onslaught": 3,
           "strike-force": 2
         },
-        "Requisitioned": {
-          "incursion": 1,
-          "onslaught": 2,
-          "strike-force": 1
-        },
         "Retinue": {
           "incursion": 1,
           "onslaught": 3,
           "strike-force": 2
+        },
+        "Requisitioned": {
+          "incursion": 1,
+          "onslaught": 2,
+          "strike-force": 1
         }
       },
       "up": {
+        "imperial-agents:inquisitor-draxus": {
+          "1": 110
+        },
         "imperial-agents:eversor-assassin": {
           "1": 110
         },
-        "imperial-agents:exaction-squad": {
-          "11": 85
+        "imperial-agents:sisters-of-battle-immolator": {
+          "1": 105
+        },
+        "imperial-agents:voidsmen-at-arms": {
+          "6": 70
         },
         "imperial-agents:grey-knights-terminator-squad": {
           "5": 190
         },
-        "imperial-agents:inquisitor": {
-          "1": 65
+        "imperial-agents:vindicare-assassin": {
+          "1": 125
         },
-        "imperial-agents:inquisitor-coteaz": {
-          "1": 95
+        "imperial-agents:rogue-trader-entourage": {
+          "4": 105
         },
-        "imperial-agents:inquisitor-draxus": {
-          "1": 110
+        "imperial-agents:subductor-squad": {
+          "11": 100
+        },
+        "imperial-agents:sisters-of-battle-squad": {
+          "10": 110
+        },
+        "imperial-agents:navigator": {
+          "1": 75
         },
         "imperial-agents:inquisitorial-agents": {
           "6": 60,
           "12": 120
         },
-        "imperial-agents:navigator": {
-          "1": 75
+        "imperial-agents:inquisitor-coteaz": {
+          "1": 95
         },
-        "imperial-agents:rogue-trader-entourage": {
-          "4": 105
+        "imperial-agents:exaction-squad": {
+          "11": 85
         },
-        "imperial-agents:sisters-of-battle-immolator": {
-          "1": 105
-        },
-        "imperial-agents:sisters-of-battle-squad": {
-          "10": 110
-        },
-        "imperial-agents:subductor-squad": {
-          "11": 100
-        },
-        "imperial-agents:vindicare-assassin": {
-          "1": 125
-        },
-        "imperial-agents:voidsmen-at-arms": {
-          "6": 70
+        "imperial-agents:inquisitor": {
+          "1": 65
         }
       }
+    },
+    {
+      "key": "deathwatch",
+      "name": "Deathwatch",
+      "ids": [
+        "deathwatch:corvus-blackstar",
+        "deathwatch:deathwatch-terminator-squad",
+        "deathwatch:deathwatch-veterans",
+        "deathwatch:decimus-kill-team",
+        "deathwatch:fortis-kill-team",
+        "deathwatch:indomitor-kill-team",
+        "deathwatch:spectrus-kill-team",
+        "deathwatch:talonstrike-kill-team",
+        "deathwatch:watch-captain-artemis",
+        "deathwatch:watch-master"
+      ],
+      "pts": {
+        "incursion": 500,
+        "onslaught": 500,
+        "strike-force": 500
+      },
+      "enh": 1
     },
     {
       "key": "imperial-knights",
@@ -2340,57 +2019,36 @@ export default {
     "aggressor-squad",
     "ancient",
     "ancient-in-terminator-armour",
-    "ancient-on-bike",
     "apothecary",
     "apothecary-biologis",
-    "apothecary-on-bike",
     "assault-intercessor-squad",
     "assault-intercessors-with-jump-packs",
-    "assault-squad",
-    "assault-squad-with-jump-packs",
-    "astartes-servitors",
     "astraeus",
-    "attack-bike-squad",
     "ballistus-dreadnought",
-    "bike-squad",
     "bladeguard-ancient",
     "bladeguard-veteran-squad",
     "brutalis-dreadnought",
-    "caestus-assault-ram",
     "captain",
     "captain-in-gravis-armour",
     "captain-in-phobos-armour",
     "captain-in-terminator-armour",
     "captain-on-bike",
     "captain-with-jump-pack",
-    "carab-culln-the-risen",
     "centurion-assault-squad",
     "centurion-devastator-squad",
     "cerberus",
     "chaplain",
     "chaplain-in-terminator-armour",
     "chaplain-on-bike",
-    "chaplain-venerable-dreadnought",
     "chaplain-with-jump-pack",
-    "command-squad",
-    "company-champion-on-bike",
     "company-heroes",
-    "company-veterans-on-bikes",
-    "deathstorm-drop-pod",
-    "deimos-predator",
-    "deredeo-dreadnought",
     "desolation-squad",
-    "devastator-squad",
     "dreadnought",
-    "dreadnought-drop-pod",
     "drop-pod",
     "eliminator-squad",
-    "eradicator-squad",
     "eradicator-squad-with-heavy-bolters",
+    "eradicator-squad-with-melta-rifles",
     "falchion",
-    "fellblade",
-    "ferren-areios",
-    "fire-raptor-gunship",
     "firestrike-servo-turrets",
     "gladiator-lancer",
     "gladiator-reaper",
@@ -2398,126 +2056,80 @@ export default {
     "hammerfall-bunker",
     "heavy-intercessor-squad",
     "hellblaster-squad",
-    "hunter",
-    "imperial-space-marine",
     "impulsor",
     "inceptor-squad",
     "incursor-squad",
     "infernus-squad",
     "infiltrator-squad",
     "intercessor-squad",
-    "invader-atv",
+    "invader-atvs",
     "invictor-tactical-warsuit",
-    "ironclad-dreadnought",
-    "javelin-attack-speeder",
     "judiciar",
     "kratos",
     "land-raider",
-    "land-raider-achilles",
     "land-raider-crusader",
     "land-raider-excelsior",
-    "land-raider-helios",
-    "land-raider-prometheus",
-    "land-raider-proteus",
     "land-raider-redeemer",
     "land-speeder",
-    "land-speeder-storm",
-    "land-speeder-tempest",
-    "land-speeder-tornado",
-    "land-speeder-typhoon",
-    "leviathan-dreadnought",
     "librarian",
     "librarian-in-phobos-armour",
     "librarian-in-terminator-armour",
-    "librarian-on-bike",
-    "librarian-with-jump-pack",
     "lieutenant",
     "lieutenant-in-phobos-armour",
-    "lieutenant-in-reiver-armour",
     "lieutenant-with-combi-weapon",
     "mastodon",
-    "mortis-dreadnought",
     "outrider-squad",
     "predator-annihilator",
     "predator-destructor",
-    "primaris-company-champion",
     "rapier-carrier",
     "razorback",
     "redemptor-dreadnought",
     "reiver-squad",
-    "relic-contemptor-dreadnought",
     "relic-razorback",
-    "relic-terminator-squad",
     "repulsor",
     "repulsor-executioner",
     "rhino",
     "rhino-primaris",
     "scout-bike-squad",
-    "scout-sniper-squad",
     "scout-squad",
-    "sicaran-arcus",
-    "sicaran-battle-tank",
-    "sicaran-omega",
-    "sicaran-punisher",
-    "sicaran-venator",
-    "sokar-pattern-stormbird",
-    "spartan",
-    "stalker",
+    "sicaran",
     "sternguard-veteran-squad",
-    "storm-eagle-gunship",
     "storm-speeder-hailstrike",
     "storm-speeder-hammerstrike",
     "storm-speeder-thunderstrike",
     "stormhawk-interceptor",
     "stormraven-gunship",
     "stormtalon-gunship",
-    "suppressor-squad",
-    "tactical-squad",
     "tarantula-air-defence-battery",
     "tarantula-sentry-battery",
     "techmarine",
-    "techmarine-on-bike",
     "terminator-assault-squad",
     "terminator-squad",
-    "terminus-ultra",
     "terrax-pattern-termite",
-    "thunderfire-cannon",
     "thunderhawk-gunship",
-    "thunderhawk-transporter",
     "typhon",
     "vanguard-veteran-squad",
     "vanguard-veteran-squad-with-jump-packs",
     "venerable-dreadnought",
     "vindicator",
-    "vindicator-laser-destroyer",
-    "whirlwind",
-    "whirlwind-scorpius",
-    "xiphon-interceptor"
+    "whirlwind"
   ],
-  "unitPoints": {
-    "centurion-devastator-squad": {
-      "6": 350
-    },
-    "repulsor-executioner": {
-      "1": 230
-    }
-  },
   "sharedDetachments": [
-    "1st Company Task Force",
-    "Anvil Siege Force",
-    "Armoured Speartip",
-    "Bastion Task Force",
-    "Ceramite Sentinels",
-    "Firestorm Assault Force",
-    "Fulguris Task Force",
+    "Assault Brethren",
+    "Deathwatch Support",
+    "Devastator Brethren",
+    "Gauntlet Task Force",
     "Gladius Task Force",
-    "Headhunter Task Force",
+    "Gravis Linebreaker Force",
+    "Gravis Siege Force",
+    "Ironclad Champions",
     "Ironstorm Spearhead",
-    "Librarius Conclave",
-    "Orbital Assault Force",
+    "Phobos Shadow Force",
+    "Phobos Shock Force",
     "Stormlance Task Force",
-    "Subversion Assets",
-    "Vanguard Spearhead",
-    "Vengeful Hosts"
+    "Tactical Brethren",
+    "Tacticus Attack Force",
+    "Tacticus Firestorm Force",
+    "Terminator Storm Force"
   ]
 }

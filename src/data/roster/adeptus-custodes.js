@@ -96,15 +96,15 @@ export default {
       "linked": 1,
       "leads": [
         {
-          "to": "vigilators",
-          "type": "leader"
-        },
-        {
           "to": "witchseekers",
           "type": "leader"
         },
         {
           "to": "prosecutors",
+          "type": "leader"
+        },
+        {
+          "to": "vigilators",
           "type": "leader"
         }
       ],
@@ -133,7 +133,7 @@ export default {
       "flags": {},
       "sizes": [
         {
-          "pts": 110,
+          "pts": 120,
           "per": [
             2,
             2
@@ -141,21 +141,21 @@ export default {
           "default": 1
         },
         {
-          "pts": 165,
+          "pts": 180,
           "per": [
             3,
             3
           ]
         },
         {
-          "pts": 280,
+          "pts": 300,
           "per": [
             4,
             5
           ]
         },
         {
-          "pts": 340,
+          "pts": 360,
           "per": [
             6,
             6
@@ -165,7 +165,7 @@ export default {
       "linked": 1,
       "step": {
         "at": 3,
-        "pts": 30
+        "pts": 40
       },
       "defaults": [
         [
@@ -261,7 +261,7 @@ export default {
           0,
           [
             [
-              38,
+              128,
               1
             ],
             [
@@ -437,7 +437,7 @@ export default {
       },
       "leads": [
         {
-          "to": "custodian-guard-with-adrasite-and-pyrithite-spears",
+          "to": "sagittarum-custodians",
           "type": "leader"
         },
         {
@@ -445,11 +445,11 @@ export default {
           "type": "leader"
         },
         {
-          "to": "custodian-guard",
+          "to": "custodian-guard-with-adrasite-and-pyrithite-spears",
           "type": "leader"
         },
         {
-          "to": "sagittarum-custodians",
+          "to": "custodian-guard",
           "type": "leader"
         }
       ],
@@ -458,7 +458,7 @@ export default {
           0,
           [
             [
-              132,
+              133,
               1
             ]
           ]
@@ -497,15 +497,15 @@ export default {
           0,
           [
             [
-              128,
-              1
-            ],
-            [
               129,
               1
             ],
             [
               130,
+              1
+            ],
+            [
+              131,
               1
             ]
           ]
@@ -518,12 +518,12 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              131,
+              132,
               15
             ]
           ],
           "rep": [
-            130
+            131
           ]
         }
       ]
@@ -570,7 +570,7 @@ export default {
           0,
           [
             [
-              133,
+              134,
               1
             ],
             [
@@ -589,7 +589,7 @@ export default {
             [
               [
                 [
-                  134,
+                  135,
                   2
                 ]
               ]
@@ -609,7 +609,7 @@ export default {
                   1
                 ],
                 [
-                  134,
+                  135,
                   1
                 ]
               ]
@@ -629,7 +629,7 @@ export default {
             [
               [
                 [
-                  134,
+                  135,
                   1
                 ],
                 [
@@ -687,7 +687,7 @@ export default {
           0,
           [
             [
-              137,
+              138,
               1
             ]
           ]
@@ -727,15 +727,15 @@ export default {
           0,
           [
             [
-              129,
-              1
-            ],
-            [
-              138,
+              130,
               1
             ],
             [
               139,
+              1
+            ],
+            [
+              140,
               1
             ]
           ]
@@ -755,7 +755,7 @@ export default {
       "flags": {},
       "sizes": [
         {
-          "pts": 170,
+          "pts": 180,
           "per": [
             4,
             4
@@ -763,7 +763,7 @@ export default {
           "default": 1
         },
         {
-          "pts": 215,
+          "pts": 225,
           "per": [
             5,
             5
@@ -795,11 +795,11 @@ export default {
             [
               [
                 [
-                  135,
+                  136,
                   1
                 ],
                 [
-                  136,
+                  137,
                   1
                 ]
               ]
@@ -825,7 +825,7 @@ export default {
                   1
                 ],
                 [
-                  136,
+                  137,
                   1
                 ]
               ]
@@ -873,7 +873,7 @@ export default {
           0,
           [
             [
-              144,
+              145,
               1
             ]
           ]
@@ -886,11 +886,11 @@ export default {
           "in": "stepper",
           "o": [
             [
-              145
+              146
             ]
           ],
           "rep": [
-            144
+            145
           ]
         }
       ]
@@ -907,7 +907,7 @@ export default {
       "flags": {},
       "sizes": [
         {
-          "pts": 200,
+          "pts": 210,
           "per": [
             4,
             4
@@ -915,7 +915,7 @@ export default {
           "default": 1
         },
         {
-          "pts": 250,
+          "pts": 260,
           "per": [
             5,
             5
@@ -997,11 +997,11 @@ export default {
       "linked": 1,
       "leads": [
         {
-          "to": "witchseekers",
+          "to": "prosecutors",
           "type": "leader"
         },
         {
-          "to": "prosecutors",
+          "to": "witchseekers",
           "type": "leader"
         },
         {
@@ -1014,7 +1014,7 @@ export default {
           0,
           [
             [
-              140,
+              141,
               1
             ]
           ]
@@ -1029,11 +1029,11 @@ export default {
             [
               [
                 [
-                  141,
+                  142,
                   1
                 ],
                 [
-                  142,
+                  143,
                   1
                 ]
               ]
@@ -1041,18 +1041,18 @@ export default {
             [
               [
                 [
-                  143,
+                  144,
                   1
                 ],
                 [
-                  142,
+                  143,
                   1
                 ]
               ]
             ]
           ],
           "rep": [
-            140
+            141
           ]
         }
       ]
@@ -1093,7 +1093,7 @@ export default {
               1
             ],
             [
-              146,
+              148,
               2
             ],
             [
@@ -1101,7 +1101,7 @@ export default {
               2
             ],
             [
-              129,
+              130,
               2
             ]
           ]
@@ -1136,11 +1136,11 @@ export default {
           0,
           [
             [
-              139,
+              140,
               1
             ],
             [
-              151,
+              153,
               1
             ]
           ]
@@ -1160,7 +1160,7 @@ export default {
       "flags": {},
       "sizes": [
         {
-          "pts": 45,
+          "pts": 50,
           "per": [
             4,
             4
@@ -1178,7 +1178,7 @@ export default {
           ]
         },
         {
-          "pts": 50,
+          "pts": 55,
           "per": [
             5,
             5
@@ -1195,7 +1195,7 @@ export default {
           ]
         },
         {
-          "pts": 75,
+          "pts": 80,
           "per": [
             6,
             9
@@ -1213,7 +1213,7 @@ export default {
           ]
         },
         {
-          "pts": 85,
+          "pts": 90,
           "per": [
             10,
             10
@@ -1245,11 +1245,11 @@ export default {
           0,
           [
             [
-              95,
+              147,
               1
             ],
             [
-              5,
+              95,
               1
             ]
           ]
@@ -1258,7 +1258,7 @@ export default {
           1,
           [
             [
-              5,
+              147,
               1
             ],
             [
@@ -1295,11 +1295,11 @@ export default {
           0,
           [
             [
-              152,
+              154,
               1
             ],
             [
-              153,
+              155,
               1
             ]
           ]
@@ -1336,15 +1336,15 @@ export default {
           "type": "leader"
         },
         {
-          "to": "sagittarum-custodians",
-          "type": "leader"
-        },
-        {
           "to": "custodian-guard",
           "type": "leader"
         },
         {
           "to": "custodian-guard-with-adrasite-and-pyrithite-spears",
+          "type": "leader"
+        },
+        {
+          "to": "sagittarum-custodians",
           "type": "leader"
         }
       ],
@@ -1353,7 +1353,7 @@ export default {
           0,
           [
             [
-              147,
+              149,
               1
             ]
           ]
@@ -1368,46 +1368,46 @@ export default {
             [
               [
                 [
-                  148,
-                  1
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  149,
-                  1
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  149,
-                  1
-                ],
-                [
-                  136,
-                  1
-                ]
-              ]
-            ],
-            [
-              [
-                [
                   150,
                   1
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  151,
+                  1
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  151,
+                  1
                 ],
                 [
-                  136,
+                  137,
+                  1
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  152,
+                  1
+                ],
+                [
+                  137,
                   1
                 ]
               ]
             ]
           ],
           "rep": [
-            147
+            149
           ]
         }
       ]
@@ -1439,11 +1439,11 @@ export default {
       "linked": 1,
       "leads": [
         {
-          "to": "aquilon-custodians",
+          "to": "allarus-custodians",
           "type": "leader"
         },
         {
-          "to": "allarus-custodians",
+          "to": "aquilon-custodians",
           "type": "leader"
         }
       ],
@@ -1452,7 +1452,7 @@ export default {
           0,
           [
             [
-              147,
+              149,
               1
             ],
             [
@@ -1469,11 +1469,11 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              148
+              150
             ]
           ],
           "rep": [
-            147
+            149
           ]
         }
       ]
@@ -1495,7 +1495,7 @@ export default {
       },
       "sizes": [
         {
-          "pts": 140,
+          "pts": 150,
           "per": [
             1,
             1
@@ -1506,11 +1506,11 @@ export default {
       "linked": 1,
       "leads": [
         {
-          "to": "agamatus-custodians",
+          "to": "vertus-praetors",
           "type": "leader"
         },
         {
-          "to": "vertus-praetors",
+          "to": "agamatus-custodians",
           "type": "leader"
         }
       ],
@@ -1519,11 +1519,11 @@ export default {
           0,
           [
             [
-              154,
+              156,
               1
             ],
             [
-              155,
+              157,
               1
             ]
           ]
@@ -1536,11 +1536,11 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              156
+              158
             ]
           ],
           "rep": [
-            155
+            157
           ]
         }
       ]
@@ -1587,15 +1587,15 @@ export default {
           0,
           [
             [
-              157,
+              159,
               2
             ],
             [
-              158,
+              160,
               1
             ],
             [
-              159,
+              161,
               1
             ]
           ]
@@ -1610,18 +1610,6 @@ export default {
             [
               [
                 [
-                  160,
-                  2
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  161,
-                  2
-                ],
-                [
                   162,
                   2
                 ]
@@ -1630,23 +1618,19 @@ export default {
             [
               [
                 [
-                  157,
-                  1
+                  163,
+                  2
                 ],
                 [
-                  160,
-                  1
+                  164,
+                  2
                 ]
               ]
             ],
             [
               [
                 [
-                  157,
-                  1
-                ],
-                [
-                  161,
+                  159,
                   1
                 ],
                 [
@@ -1658,22 +1642,38 @@ export default {
             [
               [
                 [
-                  160,
+                  159,
                   1
                 ],
                 [
-                  161,
+                  163,
                   1
                 ],
+                [
+                  164,
+                  1
+                ]
+              ]
+            ],
+            [
+              [
                 [
                   162,
+                  1
+                ],
+                [
+                  163,
+                  1
+                ],
+                [
+                  164,
                   1
                 ]
               ]
             ]
           ],
           "rep": [
-            157
+            159
           ]
         }
       ]
@@ -1707,7 +1707,7 @@ export default {
       "linked": 1,
       "leads": [
         {
-          "to": "custodian-wardens",
+          "to": "custodian-guard-with-adrasite-and-pyrithite-spears",
           "type": "leader"
         },
         {
@@ -1719,7 +1719,7 @@ export default {
           "type": "leader"
         },
         {
-          "to": "custodian-guard-with-adrasite-and-pyrithite-spears",
+          "to": "custodian-wardens",
           "type": "leader"
         }
       ],
@@ -1728,11 +1728,11 @@ export default {
           0,
           [
             [
-              163,
+              165,
               1
             ],
             [
-              164,
+              166,
               1
             ]
           ]
@@ -1757,7 +1757,7 @@ export default {
       },
       "sizes": [
         {
-          "pts": 110,
+          "pts": 120,
           "per": [
             1,
             1
@@ -1768,19 +1768,19 @@ export default {
       "linked": 1,
       "leads": [
         {
-          "to": "custodian-guard",
-          "type": "leader"
-        },
-        {
           "to": "custodian-guard-with-adrasite-and-pyrithite-spears",
           "type": "leader"
         },
         {
-          "to": "sagittarum-custodians",
+          "to": "custodian-guard",
           "type": "leader"
         },
         {
           "to": "custodian-wardens",
+          "type": "leader"
+        },
+        {
+          "to": "sagittarum-custodians",
           "type": "leader"
         }
       ],
@@ -1789,7 +1789,7 @@ export default {
           0,
           [
             [
-              168,
+              170,
               1
             ]
           ]
@@ -1835,7 +1835,7 @@ export default {
           0,
           [
             [
-              165,
+              167,
               1
             ]
           ]
@@ -1856,18 +1856,18 @@ export default {
             [
               [
                 [
-                  166,
+                  168,
                   1
                 ],
                 [
-                  167,
+                  169,
                   1
                 ]
               ]
             ]
           ],
           "rep": [
-            165
+            167
           ],
           "dr": 5
         }
@@ -1915,15 +1915,15 @@ export default {
           0,
           [
             [
-              169,
-              1
-            ],
-            [
-              170,
-              1
-            ],
-            [
               171,
+              1
+            ],
+            [
+              172,
+              1
+            ],
+            [
+              173,
               1
             ]
           ]
@@ -1936,11 +1936,11 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              172
+              174
             ]
           ],
           "rep": [
-            169
+            171
           ]
         }
       ]
@@ -1978,15 +1978,15 @@ export default {
           0,
           [
             [
-              173,
+              175,
               1
             ],
             [
-              174,
+              176,
               2
             ],
             [
-              175,
+              177,
               1
             ]
           ]
@@ -2009,7 +2009,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              176
+              178
             ]
           ]
         }
@@ -2028,7 +2028,7 @@ export default {
       "flags": {},
       "sizes": [
         {
-          "pts": 145,
+          "pts": 155,
           "per": [
             2,
             2
@@ -2036,7 +2036,7 @@ export default {
           "default": 1
         },
         {
-          "pts": 215,
+          "pts": 230,
           "per": [
             3,
             3
@@ -2057,7 +2057,7 @@ export default {
               1
             ],
             [
-              155,
+              157,
               1
             ]
           ]
@@ -2070,11 +2070,11 @@ export default {
           "in": "stepper",
           "o": [
             [
-              156
+              158
             ]
           ],
           "rep": [
-            155
+            157
           ]
         }
       ]
@@ -2176,7 +2176,7 @@ export default {
           0,
           [
             [
-              177,
+              179,
               1
             ]
           ]
@@ -2185,7 +2185,7 @@ export default {
           1,
           [
             [
-              177,
+              179,
               1
             ]
           ]
@@ -2289,7 +2289,7 @@ export default {
           1,
           [
             [
-              143,
+              144,
               1
             ],
             [
@@ -2306,7 +2306,7 @@ export default {
               1
             ],
             [
-              143,
+              144,
               1
             ]
           ]
@@ -2770,7 +2770,7 @@ export default {
       "unique": "LIONS",
       "enhancements": [
         {
-          "name": "Efficient Aggression",
+          "name": "Mnemo-locked Shrine Cipher",
           "pts": 25,
           "type": "miniature",
           "req": [
@@ -2785,7 +2785,7 @@ export default {
           ]
         },
         {
-          "name": "Mnemo-locked Shrine Cipher",
+          "name": "Efficient Aggression",
           "pts": 25,
           "type": "miniature",
           "req": [
@@ -2876,60 +2876,60 @@ export default {
           "onslaught": 3,
           "strike-force": 2
         },
-        "Requisitioned": {
-          "incursion": 1,
-          "onslaught": 2,
-          "strike-force": 1
-        },
         "Retinue": {
           "incursion": 1,
           "onslaught": 3,
           "strike-force": 2
+        },
+        "Requisitioned": {
+          "incursion": 1,
+          "onslaught": 2,
+          "strike-force": 1
         }
       },
       "up": {
+        "imperial-agents:inquisitor-draxus": {
+          "1": 110
+        },
         "imperial-agents:eversor-assassin": {
           "1": 110
         },
-        "imperial-agents:exaction-squad": {
-          "11": 85
+        "imperial-agents:sisters-of-battle-immolator": {
+          "1": 105
+        },
+        "imperial-agents:voidsmen-at-arms": {
+          "6": 70
         },
         "imperial-agents:grey-knights-terminator-squad": {
           "5": 190
         },
-        "imperial-agents:inquisitor": {
-          "1": 65
+        "imperial-agents:vindicare-assassin": {
+          "1": 125
         },
-        "imperial-agents:inquisitor-coteaz": {
-          "1": 95
+        "imperial-agents:rogue-trader-entourage": {
+          "4": 105
         },
-        "imperial-agents:inquisitor-draxus": {
-          "1": 110
+        "imperial-agents:subductor-squad": {
+          "11": 100
+        },
+        "imperial-agents:sisters-of-battle-squad": {
+          "10": 110
+        },
+        "imperial-agents:navigator": {
+          "1": 75
         },
         "imperial-agents:inquisitorial-agents": {
           "6": 60,
           "12": 120
         },
-        "imperial-agents:navigator": {
-          "1": 75
+        "imperial-agents:inquisitor-coteaz": {
+          "1": 95
         },
-        "imperial-agents:rogue-trader-entourage": {
-          "4": 105
+        "imperial-agents:exaction-squad": {
+          "11": 85
         },
-        "imperial-agents:sisters-of-battle-immolator": {
-          "1": 105
-        },
-        "imperial-agents:sisters-of-battle-squad": {
-          "10": 110
-        },
-        "imperial-agents:subductor-squad": {
-          "11": 100
-        },
-        "imperial-agents:vindicare-assassin": {
-          "1": 125
-        },
-        "imperial-agents:voidsmen-at-arms": {
-          "6": 70
+        "imperial-agents:inquisitor": {
+          "1": 65
         }
       }
     },

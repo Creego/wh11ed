@@ -38,19 +38,19 @@ export default {
           0,
           [
             [
-              874,
+              923,
               1
             ],
             [
-              873,
+              922,
               2
             ],
             [
-              875,
+              924,
               2
             ],
             [
-              872,
+              921,
               1
             ]
           ]
@@ -92,19 +92,19 @@ export default {
           0,
           [
             [
-              881,
+              930,
               2
             ],
             [
-              874,
+              923,
               1
             ],
             [
-              880,
+              929,
               2
             ],
             [
-              882,
+              931,
               1
             ]
           ]
@@ -113,13 +113,13 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 355,
+          "t": 353,
           "in": "stepper",
           "o": [
             [
               [
                 [
-                  883,
+                  932,
                   2
                 ]
               ]
@@ -127,31 +127,31 @@ export default {
             [
               [
                 [
-                  881,
+                  930,
                   1
                 ],
                 [
-                  883,
+                  932,
                   1
                 ]
               ]
             ]
           ],
           "rep": [
-            881
+            930
           ]
         },
         {
           "m": 0,
-          "t": 356,
+          "t": 354,
           "in": "checkbox",
           "o": [
             [
-              884
+              933
             ]
           ],
           "rep": [
-            882
+            931
           ]
         }
       ]
@@ -185,15 +185,15 @@ export default {
           0,
           [
             [
-              922,
+              972,
               1
             ],
             [
-              1501,
+              1666,
               1
             ],
             [
-              1502,
+              1667,
               2
             ]
           ]
@@ -202,7 +202,7 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 634,
+          "t": 635,
           "in": "checkbox",
           "o": [
             [
@@ -210,7 +210,7 @@ export default {
             ]
           ],
           "rep": [
-            1501
+            1666
           ]
         }
       ]
@@ -248,15 +248,15 @@ export default {
           0,
           [
             [
-              922,
+              972,
               1
             ],
             [
-              933,
+              983,
               1
             ],
             [
-              932,
+              982,
               1
             ]
           ]
@@ -265,17 +265,17 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 368,
+          "t": 366,
           "in": "checkbox",
           "o": [
             [
               [
                 [
-                  934,
+                  984,
                   1
                 ],
                 [
-                  935,
+                  985,
                   1
                 ]
               ]
@@ -283,7 +283,7 @@ export default {
             [
               [
                 [
-                  933,
+                  983,
                   1
                 ]
               ]
@@ -291,7 +291,7 @@ export default {
             [
               [
                 [
-                  936,
+                  986,
                   1
                 ]
               ]
@@ -299,29 +299,29 @@ export default {
             [
               [
                 [
-                  937,
+                  987,
                   1
                 ]
               ]
             ]
           ],
           "rep": [
-            932
+            982
           ]
         },
         {
           "m": 0,
-          "t": 369,
+          "t": 367,
           "in": "checkbox",
           "o": [
             [
               [
                 [
-                  934,
+                  984,
                   1
                 ],
                 [
-                  935,
+                  985,
                   1
                 ]
               ]
@@ -329,7 +329,7 @@ export default {
             [
               [
                 [
-                  936,
+                  986,
                   1
                 ]
               ]
@@ -337,7 +337,7 @@ export default {
             [
               [
                 [
-                  937,
+                  987,
                   1
                 ]
               ]
@@ -345,14 +345,14 @@ export default {
             [
               [
                 [
-                  932,
+                  982,
                   1
                 ]
               ]
             ]
           ],
           "rep": [
-            933
+            983
           ]
         }
       ]
@@ -386,15 +386,15 @@ export default {
           0,
           [
             [
-              1503,
+              1668,
               1
             ],
             [
-              1504,
+              1669,
               1
             ],
             [
-              1501,
+              1666,
               1
             ]
           ]
@@ -403,7 +403,7 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 634,
+          "t": 635,
           "in": "checkbox",
           "o": [
             [
@@ -411,7 +411,7 @@ export default {
             ]
           ],
           "rep": [
-            1501
+            1666
           ]
         }
       ]
@@ -451,15 +451,15 @@ export default {
           0,
           [
             [
-              1505,
+              1670,
               1
             ],
             [
-              1506,
+              1671,
               1
             ],
             [
-              1507,
+              1672,
               1
             ]
           ]
@@ -503,15 +503,15 @@ export default {
           0,
           [
             [
-              890,
+              940,
               1
             ],
             [
-              714,
+              938,
               1
             ],
             [
-              889,
+              939,
               1
             ]
           ]
@@ -537,7 +537,7 @@ export default {
       },
       "sizes": [
         {
-          "pts": 405,
+          "pts": 420,
           "per": [
             1,
             1
@@ -555,11 +555,11 @@ export default {
           0,
           [
             [
-              900,
+              950,
               1
             ],
             [
-              901,
+              951,
               1
             ]
           ]
@@ -603,11 +603,11 @@ export default {
           0,
           [
             [
-              905,
+              955,
               1
             ],
             [
-              904,
+              954,
               1
             ]
           ]
@@ -651,7 +651,7 @@ export default {
           0,
           [
             [
-              909,
+              959,
               1
             ]
           ]
@@ -695,27 +695,27 @@ export default {
           0,
           [
             [
-              892,
+              942,
               1
             ],
             [
-              1508,
+              1673,
               1
             ],
             [
-              1509,
+              1674,
               2
             ],
             [
-              1510,
+              1675,
               1
             ],
             [
-              1511,
+              1676,
               1
             ],
             [
-              1512,
+              1677,
               2
             ]
           ]
@@ -724,25 +724,25 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 635,
+          "t": 636,
           "in": "checkbox",
           "o": [
             [
               [
                 [
-                  1509,
+                  1674,
                   1
                 ],
                 [
-                  1508,
+                  1673,
                   2
                 ]
               ]
             ]
           ],
           "rep": [
-            1509,
-            1508
+            1674,
+            1673
           ]
         }
       ]
@@ -784,15 +784,15 @@ export default {
           0,
           [
             [
-              1513,
+              1678,
               1
             ],
             [
-              495,
+              497,
               1
             ],
             [
-              892,
+              942,
               1
             ],
             [
@@ -800,7 +800,7 @@ export default {
               1
             ],
             [
-              1514,
+              1679,
               1
             ]
           ]
@@ -809,11 +809,11 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 636,
+          "t": 637,
           "in": "checkbox",
           "o": [
             [
-              1501
+              1666
             ]
           ],
           "rep": [
@@ -822,17 +822,17 @@ export default {
         },
         {
           "m": 0,
-          "t": 637,
+          "t": 638,
           "in": "checkbox",
           "o": [
             [
               [
                 [
-                  1515,
+                  1680,
                   1
                 ],
                 [
-                  1501,
+                  1666,
                   1
                 ]
               ],
@@ -840,7 +840,7 @@ export default {
             ]
           ],
           "rep": [
-            1513
+            1678
           ]
         },
         {
@@ -849,13 +849,13 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1516
+              1681
             ],
             [
-              1517
+              1682
             ],
             [
-              1518
+              1683
             ]
           ]
         }
@@ -880,7 +880,7 @@ export default {
       },
       "sizes": [
         {
-          "pts": 400,
+          "pts": 385,
           "per": [
             1,
             1
@@ -898,23 +898,23 @@ export default {
           0,
           [
             [
-              1519,
+              1684,
               1
             ],
             [
-              1520,
+              1685,
               1
             ],
             [
-              1521,
+              1686,
               1
             ],
             [
-              1522,
+              1687,
               1
             ],
             [
-              892,
+              942,
               1
             ]
           ]
@@ -958,19 +958,19 @@ export default {
           0,
           [
             [
-              1523,
+              1688,
               1
             ],
             [
-              1524,
+              1689,
               1
             ],
             [
-              1525,
+              942,
               1
             ],
             [
-              892,
+              1690,
               1
             ]
           ]
@@ -979,34 +979,34 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 638,
-          "in": "checkbox",
-          "o": [
-            [
-              1526
-            ],
-            [
-              1527
-            ]
-          ],
-          "rep": [
-            1523
-          ]
-        },
-        {
-          "m": 0,
           "t": 639,
           "in": "checkbox",
           "o": [
             [
-              1526
+              1691
             ],
             [
-              1527
+              1692
             ]
           ],
           "rep": [
-            1524
+            1690
+          ]
+        },
+        {
+          "m": 0,
+          "t": 640,
+          "in": "checkbox",
+          "o": [
+            [
+              1691
+            ],
+            [
+              1692
+            ]
+          ],
+          "rep": [
+            1689
           ]
         }
       ]
@@ -1048,11 +1048,11 @@ export default {
           0,
           [
             [
-              1513,
+              1678,
               1
             ],
             [
-              887,
+              936,
               1
             ],
             [
@@ -1065,11 +1065,11 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 636,
+          "t": 637,
           "in": "checkbox",
           "o": [
             [
-              1501
+              1666
             ]
           ],
           "rep": [
@@ -1078,15 +1078,15 @@ export default {
         },
         {
           "m": 0,
-          "t": 640,
+          "t": 641,
           "in": "checkbox",
           "o": [
             [
-              1528
+              1693
             ]
           ],
           "rep": [
-            887
+            936
           ]
         },
         {
@@ -1095,13 +1095,13 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1516
+              1681
             ],
             [
-              1517
+              1682
             ],
             [
-              1518
+              1683
             ]
           ]
         }
@@ -1144,11 +1144,11 @@ export default {
           0,
           [
             [
-              1529,
+              1694,
               1
             ],
             [
-              1530,
+              1695,
               1
             ],
             [
@@ -1161,11 +1161,11 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 636,
+          "t": 637,
           "in": "checkbox",
           "o": [
             [
-              1501
+              1666
             ]
           ],
           "rep": [
@@ -1178,13 +1178,13 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1516
+              1681
             ],
             [
-              1517
+              1682
             ],
             [
-              1518
+              1683
             ]
           ]
         }
@@ -1231,15 +1231,15 @@ export default {
               1
             ],
             [
-              887,
+              936,
               1
             ],
             [
-              1501,
+              1666,
               1
             ],
             [
-              1515,
+              1680,
               1
             ]
           ]
@@ -1248,11 +1248,11 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 636,
+          "t": 637,
           "in": "checkbox",
           "o": [
             [
-              1501
+              1666
             ]
           ],
           "rep": [
@@ -1261,15 +1261,15 @@ export default {
         },
         {
           "m": 0,
-          "t": 640,
+          "t": 641,
           "in": "checkbox",
           "o": [
             [
-              1528
+              1693
             ]
           ],
           "rep": [
-            887
+            936
           ]
         },
         {
@@ -1278,13 +1278,13 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1516
+              1681
             ],
             [
-              1517
+              1682
             ],
             [
-              1518
+              1683
             ]
           ]
         }
@@ -1327,15 +1327,15 @@ export default {
           0,
           [
             [
-              1531,
+              1696,
               1
             ],
             [
-              1532,
+              1697,
               1
             ],
             [
-              887,
+              936,
               1
             ]
           ]
@@ -1344,31 +1344,31 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 641,
+          "t": 642,
           "in": "checkbox",
           "o": [
             [
               15
             ],
             [
-              1501
+              1666
             ]
           ],
           "rep": [
-            1532
+            1697
           ]
         },
         {
           "m": 0,
-          "t": 640,
+          "t": 641,
           "in": "checkbox",
           "o": [
             [
-              1528
+              1693
             ]
           ],
           "rep": [
-            887
+            936
           ]
         },
         {
@@ -1377,13 +1377,13 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1516
+              1681
             ],
             [
-              1517
+              1682
             ],
             [
-              1518
+              1683
             ]
           ]
         }
@@ -1408,7 +1408,7 @@ export default {
       },
       "sizes": [
         {
-          "pts": 400,
+          "pts": 390,
           "per": [
             1,
             1
@@ -1426,27 +1426,27 @@ export default {
           0,
           [
             [
-              1508,
+              1673,
               1
             ],
             [
-              1533,
+              1698,
               1
             ],
             [
-              1534,
+              1699,
               1
             ],
             [
-              892,
+              942,
               1
             ],
             [
-              1512,
+              1677,
               2
             ],
             [
-              1509,
+              1674,
               2
             ]
           ]
@@ -1455,25 +1455,25 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 635,
+          "t": 636,
           "in": "checkbox",
           "o": [
             [
               [
                 [
-                  1509,
+                  1674,
                   1
                 ],
                 [
-                  1508,
+                  1673,
                   2
                 ]
               ]
             ]
           ],
           "rep": [
-            1509,
-            1508
+            1674,
+            1673
           ]
         }
       ]
@@ -1497,7 +1497,7 @@ export default {
       },
       "sizes": [
         {
-          "pts": 375,
+          "pts": 365,
           "per": [
             1,
             1
@@ -1515,15 +1515,15 @@ export default {
           0,
           [
             [
-              495,
+              497,
               1
             ],
             [
-              887,
+              936,
               1
             ],
             [
-              1514,
+              1679,
               1
             ],
             [
@@ -1536,11 +1536,11 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 636,
+          "t": 637,
           "in": "checkbox",
           "o": [
             [
-              1501
+              1666
             ]
           ],
           "rep": [
@@ -1549,15 +1549,15 @@ export default {
         },
         {
           "m": 0,
-          "t": 640,
+          "t": 641,
           "in": "checkbox",
           "o": [
             [
-              1528
+              1693
             ]
           ],
           "rep": [
-            887
+            936
           ]
         },
         {
@@ -1566,13 +1566,13 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1516
+              1681
             ],
             [
-              1517
+              1682
             ],
             [
-              1518
+              1683
             ]
           ]
         }
@@ -1615,15 +1615,15 @@ export default {
           0,
           [
             [
-              887,
+              936,
               1
             ],
             [
-              918,
+              968,
               1
             ],
             [
-              917,
+              967,
               1
             ]
           ]
@@ -1632,24 +1632,24 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 363,
+          "t": 361,
           "in": "checkbox",
           "o": [
             [
               [
                 [
-                  919,
+                  969,
                   1
                 ],
                 [
-                  920,
+                  970,
                   1
                 ]
               ]
             ]
           ],
           "rep": [
-            887
+            936
           ]
         }
       ]
@@ -1691,15 +1691,15 @@ export default {
           0,
           [
             [
-              926,
+              976,
               1
             ],
             [
-              887,
+              936,
               1
             ],
             [
-              925,
+              975,
               1
             ]
           ]
@@ -1708,24 +1708,24 @@ export default {
       "gear": [
         {
           "m": 0,
-          "t": 363,
+          "t": 361,
           "in": "checkbox",
           "o": [
             [
               [
                 [
-                  919,
+                  969,
                   1
                 ],
                 [
-                  920,
+                  970,
                   1
                 ]
               ]
             ]
           ],
           "rep": [
-            887
+            936
           ]
         }
       ]
@@ -2133,8 +2133,8 @@ export default {
         "adeptus-mechanicus:tech-priest-manipulus"
       ],
       "pts": {
-        "strike-force": 500,
         "incursion": 500,
+        "strike-force": 500,
         "onslaught": 500
       },
       "dets": [
@@ -2215,60 +2215,60 @@ export default {
           "onslaught": 3,
           "strike-force": 2
         },
-        "Requisitioned": {
-          "incursion": 1,
-          "onslaught": 2,
-          "strike-force": 1
-        },
         "Retinue": {
           "incursion": 1,
           "onslaught": 3,
           "strike-force": 2
+        },
+        "Requisitioned": {
+          "incursion": 1,
+          "onslaught": 2,
+          "strike-force": 1
         }
       },
       "up": {
+        "imperial-agents:inquisitor-draxus": {
+          "1": 110
+        },
         "imperial-agents:eversor-assassin": {
           "1": 110
         },
-        "imperial-agents:exaction-squad": {
-          "11": 85
+        "imperial-agents:sisters-of-battle-immolator": {
+          "1": 105
+        },
+        "imperial-agents:voidsmen-at-arms": {
+          "6": 70
         },
         "imperial-agents:grey-knights-terminator-squad": {
           "5": 190
         },
-        "imperial-agents:inquisitor": {
-          "1": 65
+        "imperial-agents:vindicare-assassin": {
+          "1": 125
         },
-        "imperial-agents:inquisitor-coteaz": {
-          "1": 95
+        "imperial-agents:rogue-trader-entourage": {
+          "4": 105
         },
-        "imperial-agents:inquisitor-draxus": {
-          "1": 110
+        "imperial-agents:subductor-squad": {
+          "11": 100
+        },
+        "imperial-agents:sisters-of-battle-squad": {
+          "10": 110
+        },
+        "imperial-agents:navigator": {
+          "1": 75
         },
         "imperial-agents:inquisitorial-agents": {
           "6": 60,
           "12": 120
         },
-        "imperial-agents:navigator": {
-          "1": 75
+        "imperial-agents:inquisitor-coteaz": {
+          "1": 95
         },
-        "imperial-agents:rogue-trader-entourage": {
-          "4": 105
+        "imperial-agents:exaction-squad": {
+          "11": 85
         },
-        "imperial-agents:sisters-of-battle-immolator": {
-          "1": 105
-        },
-        "imperial-agents:sisters-of-battle-squad": {
-          "10": 110
-        },
-        "imperial-agents:subductor-squad": {
-          "11": 100
-        },
-        "imperial-agents:vindicare-assassin": {
-          "1": 125
-        },
-        "imperial-agents:voidsmen-at-arms": {
-          "6": 70
+        "imperial-agents:inquisitor": {
+          "1": 65
         }
       }
     }

@@ -265,14 +265,13 @@ describe('replaced-item links', () => {
     expect(g.o[0][1]).toBe(10)
   })
 
-  it('reads a name appdata spells two ways across its own tables', () => {
-    // The prose says "absolver bolt pistol"; the item table says "Absolvor bolt pistol".
-    // (This used to pin the Orks Big Mek in Mega Armour's "kustom-mega blasta"; Codex: Orks
-    // rewrote that instruction, so the case moved rather than went away.)
-    const u = groupsOf('black-templars', 'execrator')
-    const g = u.gear.find((x) => /absolver bolt pistol/i.test(textOf(x)))
-    expect(repNames(g)).toEqual(['Absolvor bolt pistol'])
-  })
+  // "reads a name appdata spells two ways across its own tables" — gen-roster-data still reads a
+  // one-character typo ("absolver" for "Absolvor") and a moved hyphen ("kustom-mega blasta" for
+  // "Kustom mega-blasta"), but no instruction in the corpus needs either any more: Codex: Orks
+  // rewrote the Big Mek's, and Codex: Space Marines (app data 963) rewrote the Execrator's to
+  // name "Absolvor Bolt Pistol" exactly as the item table does. Every replaced item now matches
+  // its prose up to case and hyphen glyph, so there is nothing left to pin; the case is
+  // untested rather than pinned to an example that no longer exists.
 
   it('reads a name the prose has prefixed with one adjective', () => {
     // "plague combi-bolter and bubotic blade" — the item is just "Combi-bolter", and the tail of
@@ -350,7 +349,9 @@ describe('replaced-item links', () => {
       }
     }
     expect(silent).toEqual([])
-    expect(checked).toBeGreaterThan(80)
+    // 78 since Codex: Space Marines (app data 963) retired some sixty datasheets in each of the six
+    // Astartes bundles — Tactical, Devastator and Assault Squads among them. Was a floor of 80.
+    expect(checked).toBeGreaterThan(75)
     // The Deathwatch kill teams: two open-ended profiles, so no count is knowable either way.
     expect(unknown).toBeLessThanOrEqual(28)
   })
@@ -386,9 +387,10 @@ describe('default loadouts', () => {
   // "Default Wargear" option group instead. Reading only the loadout table left those units with
   // no default loadout at all — nothing to print, and nothing for the overlay to subtract from.
   it('reads a Default Wargear group when the loadout table has no row', () => {
+    // Codex: Space Marines (app data 963) names its items in Title Case, with a plain hyphen.
     const u = factions.find((f) => f.slug === 'blood-angels').data.units.find((x) => x.id === 'blood-angels-captain')
     expect((u.defaults || []).flatMap(([, list]) => list.map(([id]) => rosterItems.items[id])))
-      .toEqual(['Heavy bolt pistol', 'Master‐crafted chainsword'])
+      .toEqual(['Heavy Bolt Pistol', 'Master-crafted Chainsword'])
   })
 
   it('leaves only genuinely unarmed units without one', () => {
@@ -432,7 +434,9 @@ describe('default loadouts', () => {
         }
       }
     }
-    expect(checked).toBeGreaterThan(200)
+    // 199 since Codex: Space Marines (app data 963) retired some sixty datasheets per Astartes
+    // bundle. Was a floor of 200.
+    expect(checked).toBeGreaterThan(195)
     expect(bad, bad.join('; ')).toEqual([])
   })
 
@@ -443,8 +447,9 @@ describe('default loadouts', () => {
   it('arms the Death Company Dreadnought with its own weapons, not the Brutalis pattern', () => {
     const u = factions.find((f) => f.slug === 'blood-angels').data.units.find((x) => x.id === 'death-company-dreadnought')
     const names = (u.defaults || []).flatMap(([, list]) => list.map(([id]) => rosterItems.items[id]))
-    expect(names).toContain('Blood fists')
-    expect(names).toContain('Blood fist bolt rifles')
+    // Title Case since Codex: Space Marines (app data 963).
+    expect(names).toContain('Blood Fists')
+    expect(names).toContain('Blood Fist Bolt Rifles')
     expect(names.join(', ')).not.toMatch(/Brutalis/)
   })
 })
@@ -542,9 +547,10 @@ describe('keyword-defined leader attachments', () => {
   })
 
   it('resolves a keyword to every datasheet carrying it', () => {
-    // "Eradicator Squad" is two datasheets — the plain one and the heavy-bolter variant.
+    // "Eradicator Squad" is two datasheets — the melta-rifle one and the heavy-bolter variant.
+    // (The first was plain `eradicator-squad` until Codex: Space Marines, app data 963.)
     expect(leadsOf('space-marines', 'tor-garadon')).toEqual(
-      expect.arrayContaining(['eradicator-squad', 'eradicator-squad-with-heavy-bolters']),
+      expect.arrayContaining(['eradicator-squad-with-melta-rifles', 'eradicator-squad-with-heavy-bolters']),
     )
   })
 
@@ -777,15 +783,22 @@ describe('detachment tags', () => {
     for (const d of tagged) expect(d.unique).toBe(d.unique.toUpperCase())
   })
 
-  it('never leaves a tag on a single detachment — a tag only means something in a pair', () => {
-    for (const { slug, data } of factions) {
-      const byTag = new Map()
+  // Asked of every detachment an army can FIELD — a Chapter's own plus the Codex ones it folds in
+  // (loadRosterFaction) — and counted across the whole game, once per detachment. Since Codex: Space
+  // Marines (app data 963) a pair can straddle two armies: Ironstorm Spearhead and Medusa's Wrath
+  // share IRONSTORM, and a Black Templars army can field the first but never the second (Iron Hands
+  // only), which is still a pair, just not one that army can meet.
+  it('never leaves a tag on a single detachment — a tag only means something in a pair', async () => {
+    const byTag = new Map()
+    for (const { slug } of factions) {
+      const data = await loadRosterFaction(slug)
       for (const d of data.detachments || []) {
         if (!d.unique) continue
-        byTag.set(d.unique, (byTag.get(d.unique) || 0) + 1)
+        if (!byTag.has(d.unique)) byTag.set(d.unique, new Set())
+        byTag.get(d.unique).add(d.name)
       }
-      for (const [tag, n] of byTag) expect(n, `${slug} ${tag}`).toBeGreaterThan(1)
     }
+    for (const [tag, names] of byTag) expect(names.size, tag).toBeGreaterThan(1)
   })
 })
 
@@ -798,10 +811,12 @@ describe('allegiance choices', () => {
     .filter((u) => u.alleg).map((u) => ({ slug, u })))
 
   it('reaches every datasheet appdata gives one', () => {
-    // 92 from appdata, plus the 17 Faction Pack Legends of the Chaos Space Marines that the
+    // 67 from appdata, plus the 17 Faction Pack Legends of the Chaos Space Marines that the
     // Pactbound Zealots rule reaches by its own wording (a HERETIC ASTARTES unit that is not an
-    // EPIC HERO and carries no mark already) — see gen-roster-data.mjs's packUnitsFor.
-    expect(withAlleg()).toHaveLength(92 + 17)
+    // EPIC HERO and carries no mark already) — see gen-roster-data.mjs's packUnitsFor. Was 92
+    // from appdata until Codex: Space Marines (app data 963) retired Headhunter Task Force, whose
+    // keyword upgrade 25 vehicles carried (17 Space Marines, 7 Black Templars, 1 Blood Angels).
+    expect(withAlleg()).toHaveLength(67 + 17)
   })
 
   it('always offers something to choose, and says whether it must be chosen', () => {
@@ -952,19 +967,21 @@ describe('keyword-defined attachments', () => {
 // around. Resolving the exclusion by NAME made those the same unit, and every Deathwatch list with
 // a Watch Master in it read as illegal.
 describe('detachment exclusions across factions', () => {
-  it('bars the allied copy, not the army’s own datasheet', async () => {
-    const dw = await loadRosterFaction('deathwatch', { allies: true })
-    const det = dw.detachments.find((d) => d.name === 'Black Spear Task Force')
-    expect(det.excludedUnits).toContain('imperial-agents:watch-master')
-    expect(det.excludedUnits).not.toContain('watch-master')
-    expect(dw.units.some((u) => u.id === 'watch-master')).toBe(true)
-  })
+  // "bars the allied copy, not the army's own datasheet" — the generator still namespaces a
+  // foreign exclusion (`imperial-agents:watch-master`), but since Codex: Space Marines (app data
+  // 963) no detachment in the corpus bars another faction's datasheet: Black Spear Task Force
+  // lost its exclusion list, and the Deathwatch army rule now keeps AGENTS OF THE IMPERIUM
+  // DEATHWATCH units out instead (the allied pool already leaves them out). Nothing left to pin,
+  // so the case is untested rather than pinned to an example that no longer exists.
 
+  // Was Black Spear Task Force barring the Tactical and Devastator Squads a Chapter folds in,
+  // until app data 963 retired both squads and that list. Shadow Legion bars Chaos Daemons' own
+  // named daemons the same way — by the bare id of a unit in the army's own pool.
   it('still bars a unit of this army’s own pool by its bare id', async () => {
-    const dw = await loadRosterFaction('deathwatch')
-    const det = dw.detachments.find((d) => d.name === 'Black Spear Task Force')
-    // The Codex: Space Marines squads a Chapter folds in are this bundle's own units.
-    expect(det.excludedUnits).toEqual(expect.arrayContaining(['tactical-squad', 'devastator-squad']))
+    const cd = await loadRosterFaction('chaos-daemons')
+    const det = cd.detachments.find((d) => d.name === 'Shadow Legion')
+    expect(det.excludedUnits).toEqual(expect.arrayContaining(['skarbrand', 'daemon-prince-of-chaos']))
+    for (const id of ['skarbrand', 'daemon-prince-of-chaos']) expect(cd.units.some((u) => u.id === id)).toBe(true)
   })
 })
 
@@ -998,10 +1015,12 @@ describe('an attachment one unit borrows from another', () => {
   // The clause before "can be attached to" is a restriction, and it is kept: Victrix Honour Guard
   // borrows the Company Heroes attachment for a CAPTAIN or CHAPTER MASTER, and the Lieutenant —
   // who leads Company Heroes as well, but is neither — does not get it.
+  // (Pinned on Pedro Kantor until Codex: Space Marines, app data 963, retired him; a Captain is
+  // the plainest CAPTAIN there is.)
   it('keeps the restriction the rule states', async () => {
     const sm = await loadRosterFaction('space-marines')
     const leads = (id) => (sm.units.find((u) => u.id === id)?.leads || []).map((l) => l.to)
-    expect(leads('pedro-kantor')).toEqual(expect.arrayContaining(['company-heroes', 'victrix-honour-guard']))
+    expect(leads('captain')).toEqual(expect.arrayContaining(['company-heroes', 'victrix-honour-guard']))
     expect(leads('lieutenant')).toContain('company-heroes')
     expect(leads('lieutenant')).not.toContain('victrix-honour-guard')
   })
@@ -1012,15 +1031,19 @@ describe('an attachment one unit borrows from another', () => {
 // it also marks `defaultValue`) and the Munitorum bracket does not include it, so it has to be
 // charged on top — see defaultWargearPoints in rosterEngine.js.
 describe('a default loadout that costs points', () => {
-  it('prices a Terminator Assault Squad the way GW\'s own export does', async () => {
+  // Was the Terminator Assault Squad's thunder hammer (+5 a model, 360 for ten against a 310
+  // bracket, as GW's own export priced it) until Codex: Space Marines (app data 963) made twin
+  // lightning claws its default and the hammer a paid pick. The Repulsor Executioner is the same
+  // shape: appdata marks its heavy laser destroyer both `defaultValue` and `points: 10`.
+  it('prices a Repulsor Executioner the way appdata does', async () => {
     const sm = await loadRosterFaction('space-marines')
-    const unit = sm.units.find((u) => u.id === 'terminator-assault-squad')
-    expect(unit.dw).toEqual([[0, 5], [1, 5]])       // thunder hammer, +5 on either profile
-    expect(unit.sizes[1].pts).toBe(310)             // the bracket stays the Munitorum's
-    expect(unitPoints(unit, { size: 1, count: 10 })).toBe(360)
-    // …and the group that trades the hammer away knows what it hands back.
-    expect(unit.gear.find((g) => g.dr)?.dr).toBe(5)
-    expect(unitPoints(unit, { size: 1, count: 10, wg: [[unit.gear.findIndex((g) => g.dr), 0, 10]] })).toBe(310)
+    const unit = sm.units.find((u) => u.id === 'repulsor-executioner')
+    expect(unit.dw).toEqual([[0, 10]])              // heavy laser destroyer, +10
+    expect(unit.sizes[0].pts).toBe(275)             // the bracket stays the Munitorum's
+    expect(unitPoints(unit, { size: 0, count: 1 })).toBe(285)
+    // …and the group that trades the cannon away knows what it hands back.
+    expect(unit.gear.find((g) => g.dr)?.dr).toBe(10)
+    expect(unitPoints(unit, { size: 0, count: 1, wg: [[unit.gear.findIndex((g) => g.dr), 0, 1]] })).toBe(275)
   })
 
   it('is confined to the datasheets appdata prices that way', async () => {
@@ -1040,7 +1063,9 @@ describe('a default loadout that costs points', () => {
       'astra-militarum/leman-russ-vanquisher',
       'drukhari/ravager',
       'genestealer-cults/achilles-ridgerunners',
-      'space-marines/terminator-assault-squad',
+      // app data 963: the Terminator Assault Squad's hammer became a pick, and the Repulsor
+      // Executioner's heavy laser destroyer started costing 10.
+      'space-marines/repulsor-executioner',
       'space-marines/victrix-honour-guard',
       'tau-empire/crisis-fireknife-battlesuits',
       'tau-empire/crisis-starscythe-battlesuits',
@@ -1074,11 +1099,13 @@ describe('an allowance the instruction states without naming a number', () => {
   // separate single-item instructions. Nothing left to pin, so the case is untested rather
   // than pinned to an example that no longer exists.
 
-  // "…can be replaced with two different weapons from the following list" — the Sergeant gives up
-  // both his bolt pistol and his boltgun, so it is two picks, never the same weapon twice.
+  // "…can be replaced with two different weapons from the following list" — the Pack Leader gives
+  // up both his bolt pistol and his boltgun (or chainsword), so it is two picks, never the same
+  // weapon twice. (Pinned on the Devastator and Tactical Sergeants until Codex: Space Marines,
+  // app data 963, retired both squads.)
   it('reads "two different weapons from the following list" as two picks', () => {
-    for (const id of ['devastator-squad', 'tactical-squad']) {
-      const gear = gearOf('space-marines', id)
+    for (const id of ['wolf-guard-pack-leader', 'wolf-guard-pack-leader-with-jump-pack']) {
+      const gear = gearOf('space-wolves', id)
       const gi = gear.findIndex((g) => /different weapons from the following list/i.test(headOf(g)))
       expect(wargearGroupCap({ gear }, {}, gi)).toEqual({ limit: 2, dup: 1 })
     }
@@ -1279,11 +1306,14 @@ describe('a pair whose instruction spells an item with a U+2010 hyphen', () => {
 
   // Two identical options are what makes a limited-choice set ambiguous, so folding the pair also
   // let the "for every 5 models, 1 model" cap appdata records for it find its group at last.
+  // Since Codex: Space Marines (app data 963) this instruction is typed with a plain hyphen and
+  // pairs the boltgun with knives and fists, so it no longer exercises U+2010 — the pair and its
+  // cap are what it still pins.
   it('pairs the Deathwatch Veterans stalker swap and picks up its cap', () => {
     const g = unitOf('deathwatch', 'deathwatch-veterans').gear
-      .find((x) => /stalker‐pattern boltgun/.test(textOf(x)))
+      .find((x) => /stalker-pattern boltgun/i.test(textOf(x)))
     expect(g.o).toHaveLength(1)
-    expect(optionLabel(g.o[0], rosterItems.items)).toBe('Stalker-pattern boltgun + Close combat weapon')
+    expect(optionLabel(g.o[0], rosterItems.items)).toBe('Stalker-pattern Boltgun + Knives and Fists')
     expect(g.lim).toEqual([[5, 1], [10, 2]])
   })
 
