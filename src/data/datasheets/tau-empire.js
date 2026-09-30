@@ -792,7 +792,7 @@ export default [
       "Any number of models can each have their heavy rail rifle replaced with 1 high-yield missile pods.",
       "Any number of models can each be equipped with up to two of the following, but cannot take duplicates:\n▪ 1 seeker missile\n▪ 1 twin plasma rifle*\n▪ 1 twin smart missile system*\n▪ 1 weapon support system",
       "Any number of models can each be equipped with up to two of the following, and can take duplicates:\n▪ 1 gun drone\n▪ 1 marker drone\n▪ 1 missile drone\n▪ 1 shield drone",
-      "* No model can be equipped with both a twin plasma rifle and twin smart missile system at the same time."
+      "* No model can be equipped with both a twin plasma rifle and twin smart missile system."
     ],
     "keywords": [
       "Broadside",
@@ -2269,7 +2269,7 @@ export default [
     ],
     "loadout": "**Every model is equipped with:** 2 fusion blasters; battlesuit fists.",
     "options": [
-      "Any number of models can be equipped with up to two of the following, but cannot take duplicates:\n▪ 1 gun drone\n▪ 1 marker drone\n▪ 1 shield drone"
+      "Any number of models can each be equipped with up to two of the following, but cannot take duplicates:\n▪ 1 gun drone\n▪ 1 marker drone\n▪ 1 shield drone"
     ],
     "keywords": [
       "Walker",

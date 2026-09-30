@@ -1470,8 +1470,8 @@ export default [
     "loadout": "**This model is equipped with:** daemonbreath meltagun; reaper chainsword; titanic feet; warpstrike claw.",
     "options": [
       "This model’s daemonbreath meltagun can be replaced with 1 diabolus heavy stubber.",
-      "This model’s reaper chainsword can be replaced with one of the following:\n▪ 1 daemonbreath thermal cannon\n▪ 1 despoiler gatling cannon and 1 heavy darkflamer\n▪ 1 despoiler battle cannon and 1 diabolus heavy stubber",
-      "This model’s warpstrike claw can be replaced with one of the following:\n▪ 1 daemonbreath thermal cannon\n▪ 1 despoiler gatling cannon and 1 heavy darkflamer\n▪ 1 despoiler battle cannon and 1 diabolus heavy stubber",
+      "This model’s reaper chainsword can be replaced with 1 of the following:\n▪ 1 daemonbreath thermal cannon\n▪ 1 despoiler gatling cannon and 1 heavy darkflamer\n▪ 1 despoiler battle cannon and 1 diabolus heavy stubber",
+      "This model’s warpstrike claw can be replaced with 1 of the following:\n▪ 1 daemonbreath thermal cannon\n▪ 1 despoiler gatling cannon and 1 heavy darkflamer\n▪ 1 despoiler battle cannon and 1 diabolus heavy stubber",
       "This model can be equipped with one of the following:\n▪ 1 havoc missile pod\n▪ 1 ruinspear rocket pod\n▪ 1 hellstorm autocannons"
     ],
     "keywords": [

@@ -5278,8 +5278,8 @@ export default [
       "For every 10 models in this unit, up to 2 Death Korps Troopers can each have their lasgun replaced with one of the following*:\n▪ 1 flamer\n▪ 1 grenade launcher\n▪ 1 long-las\n▪ 1 meltagun\n▪ 1 plasma gun\n* You cannot select the same option more than once per unit unless it contains 20 models, in which case you cannot select the same option more than twice per unit.",
       "For every 10 models in this unit, 1 Death Korps Trooper equipped with a lasgun can be equipped with 1 Death Korps medi-pack (that model’s lasgun cannot be replaced)**.",
       "For every 10 models in this unit, 1 Death Korps Trooper equipped with a lasgun can be equipped with 1 vox-caster (that model’s lasgun cannot be replaced).**\n\n** A model can only take one of these options.",
-      "Any number of Death Korps Watchmasters can each have their laspistol and chainsword replaced with 1 boltgun and 1 close combat weapon.",
-      "Any number of Death Korps Watchmasters can each have their chainsword replaced with 1 power weapon.",
+      "Any number of Death Korps Watchmasters can each replace their laspistol and chainsword with 1 boltgun and 1 close combat weapon.",
+      "Any number of Death Korps Watchmasters can each replace their chainsword with 1 power weapon.",
       "Any number of Death Korps Watchmasters can each have their laspistol replaced with one of the following:\n▪ 1 bolt pistol\n▪ 1 plasma pistol",
       "*  You cannot select the same option more than once per unit unless it contains 20 models, in which case you cannot select the same option more than twice per unit.",
       "** A model can only take one of these options."
@@ -14602,7 +14602,7 @@ export default [
     ],
     "loadout": "**This model is equipped with:** castigator gatling cannon; heavy stubber; twin battle cannon; armoured tracks.",
     "options": [
-      "This model’s twin battle cannon can be replaced with 1 oppressor cannon and 1 coaxial autocannon.",
+      "This model’s twin battle cannon can be replaced with 1 oppressor cannon and 1 co-axial autocannon.",
       "This model’s castigator gatling cannon can be replaced with 1 pulveriser cannon.",
       "This model can be equipped with one of the following:\n▪ 2 meltaguns\n▪ 2 additional heavy stubbers",
       "This model can be equipped with one of the following:\n▪ 2 heavy bolters\n▪ 2 multi-meltas"

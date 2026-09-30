@@ -1100,3 +1100,10 @@ and appdata state fresh; a data model can change between now and when this is ne
     When re-keying, check that the set of findings is unchanged (strip the hash, compare) and audit
     what the old keys were hiding before accepting the new baseline: numbers present on one side
     only, then words, over the full texts rather than the report's trimmed middles.
+
+74. **A re-record at a bump is where findings get accepted without anyone deciding.** The 963
+    bump's `npm run sync -- --baseline` took nine detachments whose Force Disposition appdata had
+    just changed (MFM v1.5 still says the old one) in with the rest of the codex, and no commit or
+    journal says anyone chose the MFM. A re-record now lists what it accepts for the first time and
+    keeps the reason written against each older entry; read that list, and write a reason for
+    anything kept on purpose (`"appdata typo: …"`), so the next reader does not decide it again.

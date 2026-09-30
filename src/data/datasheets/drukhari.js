@@ -3475,7 +3475,7 @@ export default [
     "loadout": "**This model is equipped with:** 2 void lances; bladed wings.",
     "options": [
       "This model can be equipped with 1 Voidraven missiles.",
-      "This model’s 2 void lances can be replaced with 2 dark scythes."
+      "The model’s 2 void lances can be replaced with 2 dark scythes."
     ],
     "keywords": [
       "Aeldari",

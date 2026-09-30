@@ -81,7 +81,8 @@ import { applyBaseline, findingKey, loadBaseline, writeBaseline, BASELINE_PATH }
 // `--baseline` records every finding this run produced as accepted (scripts/lib/sync-baseline.json)
 // rather than filtering against it. Read that file's own header before reaching for it.
 const RECORD_BASELINE = process.argv.includes('--baseline')
-const baseline = RECORD_BASELINE ? {} : loadBaseline()
+const previousBaseline = loadBaseline() // what was accepted before this run — a re-record keeps its reasons and names what is new
+const baseline = RECORD_BASELINE ? {} : previousBaseline
 const seenKeys = new Set()
 const recorded = {}
 let totalSuppressed = 0
@@ -123,7 +124,7 @@ async function run(label, modulePath, args = [], { filtered = false } = {}) {
   const { kept, suppressed, seen } = applyBaseline(buffered, baseline)
   for (const k of seen) {
     seenKeys.add(k)
-    if (RECORD_BASELINE) recorded[k] = ''
+    if (RECORD_BASELINE) recorded[k] = previousBaseline[k] ?? '' // keep the reason an entry was accepted for
   }
   totalSuppressed += suppressed
   for (const line of kept) console.log(line)
@@ -203,6 +204,15 @@ if (companionsFailed) console.log('✗ an Event Companion PDF moved on without u
 if (RECORD_BASELINE) {
   const n = writeBaseline(recorded)
   console.log(`✓ baseline written: ${n} finding(s) recorded as accepted in ${BASELINE_PATH}.`)
+  // Printed, not left to the diff: the 963 bump's re-record took nine detachments whose Force
+  // Disposition appdata had just changed (MFM ≠ appdata) in with everything else, and nobody
+  // decided anything about them. What is accepted for the first time is the part to read.
+  const fresh = Object.keys(recorded).filter((k) => !Object.hasOwn(previousBaseline, k))
+  if (fresh.length) {
+    console.log(`  ${fresh.length} of them accepted for the FIRST time — each one is a decision:`)
+    for (const k of fresh.slice(0, 60)) console.log(`    ${k.length > 170 ? `${k.slice(0, 170)}…` : k}`)
+    if (fresh.length > 60) console.log(`    …and ${fresh.length - 60} more`)
+  }
   console.log('  Read the diff before committing it — every line in there is a decision.')
 } else {
   if (totalSuppressed) console.log(`· ${totalSuppressed} known finding(s) suppressed by scripts/lib/sync-baseline.json.`)
