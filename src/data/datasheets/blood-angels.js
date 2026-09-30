@@ -164,7 +164,7 @@ export default [
       },
       {
         "name": "Redeemer of the Lost",
-        "text": "In the Fight phase, when a model in this unit is **[gloss:destroyed:destroyed]**, if this unit has not been **[gloss:selected-to-fight:selected to fight]** this phase, roll one D6, with +1 to that roll if that model was **[gloss:engaged:engaged]** with an enemy unit with a **[gloss:toughness:T]** greater than or equal to this unit's **[gloss:toughness:T]**:\n▪ On a 4+, do not remove that model from the battlefield. When this unit has fought, or at the end of the phase (whichever comes first), that model is removed from the battlefield."
+        "text": "In the Fight phase, when a model in this unit is **[gloss:destroyed:destroyed]**, if this unit has not been **[gloss:selected-to-fight:selected to fight]** this phase, roll one D6, with +1 to that roll if that model was **[gloss:engaged:engaged]** with an enemy unit with a **[gloss:toughness:T]** greater than or equal to this unit's **T**:\n▪ On a 4+, do not remove that model from the battlefield. When this unit has fought, or at the end of the phase (whichever comes first), that model is removed from the battlefield."
       }
     ],
     "composition": [
@@ -798,11 +798,11 @@ export default [
         "options": [
           {
             "name": "Quickening (psychic level 1)",
-            "text": "In your Command phase, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **[gloss:battle-shocked:battle-shocked]**.\n▪ The **[gloss:sm-combat-doctrine:assault doctrine]** is active for this unit __in addition__ to any other **[gloss:sm-combat-doctrine:combat doctrine]** until the start of your next Command phase."
+            "text": "In your Command phase, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ The **[gloss:sm-combat-doctrine:assault doctrine]** is active for this unit __in addition__ to any other **combat doctrine** until the start of your next Command phase."
           },
           {
             "name": "Transfixing Gaze (psychic level 2)",
-            "text": "Start of your opponent's Movement phase, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **[gloss:battle-shocked:battle-shocked]**.\n▪ When an enemy unit within 6\" makes a **[gloss:fall-back-move:fall-back move]**, that enemy unit must take a **[gloss:leadership-roll:leadership roll]**. If that test is failed, that enemy unit must Remain Stationary (Core Rules, 09.04)."
+            "text": "Start of your opponent's Movement phase, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ When an enemy unit within 6\" makes a **[gloss:fall-back-move:fall-back move]**, that enemy unit must take a **[gloss:leadership-roll:leadership roll]**. If that test is failed, that enemy unit must Remain Stationary (Core Rules, 09.04)."
           }
         ]
       }
@@ -878,11 +878,11 @@ export default [
     "abilities": [
       {
         "name": "Death Mask of Sanguinius",
-        "text": "At the start of the Fight phase, each enemy unit within 6\" of this model makes a **[gloss:battle-shock-test:battle-shock roll]**, with -1 to that **[gloss:battle-shock-test:battle-shock roll]**."
+        "text": "At the start of the Fight phase, each enemy unit within 6\" of this model makes a **[gloss:battle-shock-test:battle-shock roll]**, with -1 to that **battle-shock roll**."
       },
       {
         "name": "Warden of the Imperium Nihilus",
-        "text": "The **[gloss:sm-combat-doctrine:assault doctrine]** and **[gloss:sm-combat-doctrine:tactical doctrine]** are active for this unit __in addition__ to any other **[gloss:sm-combat-doctrine:combat doctrine]**."
+        "text": "The **[gloss:sm-combat-doctrine:assault doctrine]** and **tactical doctrine** are active for this unit __in addition__ to any other **combat doctrine**."
       }
     ],
     "composition": [
@@ -1007,7 +1007,7 @@ export default [
       },
       {
         "name": "Death Visions of Sanguinius",
-        "text": "In the Fight phase, when an enemy unit has fought, if this model was **[gloss:destroyed:destroyed]** by those attacks, you can use this ability. If you do, roll one D6, with +2 to that roll if this model was **[gloss:engaged:engaged]** with an enemy WARLORD unit:\n▪ On a 2-3, that enemy unit suffers D3 **[gloss:mortal-wound:mortal wounds]**.\n▪ On a 4-5, that enemy unit suffers 3 **[gloss:mortal-wound:mortal wounds]**.\n▪ On a 6+, that enemy unit suffers D3+3 **[gloss:mortal-wound:mortal wounds]**."
+        "text": "In the Fight phase, when an enemy unit has fought, if this model was **[gloss:destroyed:destroyed]** by those attacks, you can use this ability. If you do, roll one D6, with +2 to that roll if this model was **[gloss:engaged:engaged]** with an enemy WARLORD unit:\n▪ On a 2-3, that enemy unit suffers D3 **[gloss:mortal-wound:mortal wounds]**.\n▪ On a 4-5, that enemy unit suffers 3 **mortal wounds**.\n▪ On a 6+, that enemy unit suffers D3+3 **mortal wounds**."
       }
     ],
     "composition": [
@@ -1157,7 +1157,7 @@ export default [
     "abilities": [
       {
         "name": "Death Visions of Sanguinius",
-        "text": "In the Fight phase, when an enemy unit has fought, if this model was **[gloss:destroyed:destroyed]** by those attacks, you can use this ability. If you do, roll one D6, with +2 to that roll if this model was **[gloss:engaged:engaged]** with an enemy WARLORD unit:\n▪ On a 2-3, that enemy unit suffers D3 **[gloss:mortal-wound:mortal wounds]**.\n▪ On a 4-5, that enemy unit suffers 3 **[gloss:mortal-wound:mortal wounds]**.\n▪ On a 6+, that enemy unit suffers D3+3 **[gloss:mortal-wound:mortal wounds]**."
+        "text": "In the Fight phase, when an enemy unit has fought, if this model was **[gloss:destroyed:destroyed]** by those attacks, you can use this ability. If you do, roll one D6, with +2 to that roll if this model was **[gloss:engaged:engaged]** with an enemy WARLORD unit:\n▪ On a 2-3, that enemy unit suffers D3 **[gloss:mortal-wound:mortal wounds]**.\n▪ On a 4-5, that enemy unit suffers 3 **mortal wounds**.\n▪ On a 6+, that enemy unit suffers D3+3 **mortal wounds**."
       },
       {
         "name": "Lost to Fury",

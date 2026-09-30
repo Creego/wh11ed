@@ -55,7 +55,7 @@ const RU_FORMS = [
   [/^цел(ь|и|ью|ей|ям|ями)$/, 'objective'], [/^цел\S* нападения$/, 'charge-target'], [/^закреплён\S*$|^закреплена$/, 'secured-objective'],
   [/^боев\S* доктрин\S*$/, 'sm-combat-doctrine'], [/^(assault|devastator|tactical) doctrine$/, 'sm-combat-doctrine'], [/^доктрин\S* (assault|devastator|tactical)$/, 'sm-combat-doctrine'],
   [/^обычн\S* манёвр\S*$/, 'normal-move'], [/^продвижени\S*$/, 'advance-move'], [/^отступлени\S*$/, 'fall-back-move'],
-  [/^манёвр\S* нападения$/, 'charge-move'], [/^манёвр\S* прибытия$/, 'ingress-move'], [/^манёвр\S* консолидации$/, 'consolidation'],
+  [/^манёвр\S* нападения$/, 'charge-move'], [/^манёвр\S* прибытия$/, 'ingress-move'], [/^манёвр\S* консолидации$/, 'consolidation'], [/^манёвр\S* сближения$/, 'pile-in'],
   [/^штурмов\S* манёвр\S* высадки$/, 'assault-disembark-move'], [/^ударн\S* манёвр\S* высадки$/, 'shock-disembark-move'], [/^манёвр\S* высадки$/, 'disembark'],
   [/^стремительн\S* манёвр\S*$/, 'surge-move'], [/^тип\S* манёвр\S*$/, 'move-type'],
   [/^объявля\S* нападение$/, 'declare-charge'], [/^(имеет )?прав\S* объявлять нападение$/, 'eligible-to-charge'], [/^име\S* прав\S* сражаться$/, 'eligible-to-fight'],
@@ -102,6 +102,7 @@ export async function prime() {
 const fold = (s) => s.toLowerCase().replace(/[’‘]/g, "'").replace(/‑|‐/g, '-').replace(/\s+/g, ' ').trim()
 function enId(term) {
   const t = fold(term)
+  if (!t) return null
   const hit = enForms.get(t) || enForms.get(t.replace(/s$/, '')) || enForms.get(`${t}s`)
   if (hit) return hit
   for (const [re, id] of EN_PATTERNS) if (re.test(t)) return id
@@ -109,6 +110,7 @@ function enId(term) {
 }
 function ruId(term) {
   const t = fold(term)
+  if (!t) return null
   for (const [re, id] of RU_FORMS) if (re.test(t)) return id
   return null
 }
@@ -133,6 +135,7 @@ function linkSpan(inner, idOf) {
   if (id) return `${lead}[gloss:${id}:${core}]${trail}`
   if (core.includes('/')) {
     const parts = core.split('/')
+    if (parts.some((p) => !p.trim())) return null // "PHOBOS**/**SCOUT": a bold slash, not a list
     const tail = parts[parts.length - 1].includes(' ') ? parts[parts.length - 1].split(' ').slice(1).join(' ') : ''
     const ids = parts.map((p) => idOf(p) || (tail && !p.includes(' ') ? idOf(`${p} ${tail}`) : null))
     if (ids.every(Boolean)) return `${lead}${parts.map((p, i) => `[gloss:${ids[i]}:${p}]`).join('/')}${trail}`
@@ -141,43 +144,107 @@ function linkSpan(inner, idOf) {
 }
 
 // Rewrite every bold span of one string. Returns [newString, linked, unlinkedTerms].
+// Rewrite every bold span of one string. Returns [newString, linked, unlinkedTerms].
+//
+// One popover per term per SECTION: a term linked once stays plain bold until the next `### `
+// subheading (owner, 2026-09-30 — "боевая доктрина" four times in one list was too much). Every
+// string is a section of its own too: a stratagem's WHEN/TARGET/EFFECT sit under their own labels,
+// a datasheet's abilities under their own names. A repeat that is already a popover is unwrapped
+// back to plain bold, so re-running the script tidies a file linked before this rule existed.
+// Core abilities are left alone — `[core:…]` is how the rulebook's own emphasis is carried, not an
+// extra, and the emphasis gate reads it.
 export function glossString(str, locale, onSpan = null) {
   const idOf = locale === 'ru' ? ruId : enId
   let linked = 0
   const open = []
-  const out = str.replace(/\*\*([^*\n]+?)\*\*/g, (m, inner) => {
-    const core = coreOf(inner.replace(/[.:,]+$/, ''))
-    if (core) { linked++; const to = `[core:${core}]${inner.slice(inner.replace(/[.:,]+$/, '').length)}`; onSpan?.(m, to); return to }
-    const rep = linkSpan(inner, idOf)
-    if (rep) { linked++; onSpan?.(m, `**${rep}**`); return `**${rep}**` }
-    if (!/\[(gloss|core):/.test(inner)) open.push(inner.trim())
-    return m
+  const seen = new Set()
+  const keepFirst = (tokens) => tokens.replace(/\[gloss:([a-z0-9-]+):([^\]]+)\]/g, (t, id, label) => {
+    if (seen.has(id)) return label
+    seen.add(id)
+    linked++
+    return t
+  })
+  const out = str.replace(/^### .*$|\*\*([^*\n]+?)\*\*/gm, (m, inner) => {
+    if (inner === undefined) { seen.clear(); return m }
+    const bare = inner.replace(/[.:,]+$/, '')
+    const core = coreOf(bare)
+    if (core) { const to = `[core:${core}]${inner.slice(bare.length)}`; onSpan?.(m, to); return to }
+    let body = /\[gloss:/.test(inner) ? inner : linkSpan(inner, idOf)
+    if (!body) {
+      if (!/\[core:/.test(inner)) open.push(inner.trim())
+      return m
+    }
+    body = keepFirst(body)
+    const to = `**${body}**`
+    if (to !== m) onSpan?.(m, to)
+    return to
   })
   return [out, linked, open]
 }
 
-function spliceSpans(src, str, locale) {
-  const head = str.split('\n')[0].slice(0, 40)
-  const heads = [head, JSON.stringify(head).slice(1, -1), head.replace(/'/g, "\\'")]
-  const reps = []
-  glossString(str, locale, (from, to) => reps.push([from, to]))
-  // Every place the string could start — two rules can open with the same words (Deathwatch's
-  // Mission Tactics, printed in both detachments), and the first may already be linked.
-  for (const h of heads) {
-    for (let at = src.indexOf(h); at >= 0; at = src.indexOf(h, at + 1)) {
-      let cursor = at
-      let out = src
-      let ok = true
-      for (const [from, to] of reps) {
-        const i = out.indexOf(from, cursor)
-        if (i < 0 || i - at > str.length * 2) { ok = false; break }
-        out = out.slice(0, i) + to + out.slice(i + from.length)
-        cursor = i + to.length
+// Every string literal of a JS source, in order: [start, end, quote, parts]. `parts` are the cooked
+// static pieces (one for a quoted string; a template literal is split at each `${…}`, whose code is
+// kept verbatim in `holes`). Comments are skipped. Enough of a tokenizer for data files — no regex
+// literals, which these files do not use.
+function literals(src) {
+  const out = []
+  for (let i = 0; i < src.length; i++) {
+    const c = src[i]
+    if (c === '/' && src[i + 1] === '/') { i = src.indexOf('\n', i); if (i < 0) break; continue }
+    if (c === '/' && src[i + 1] === '*') { i = src.indexOf('*/', i + 2) + 1; continue }
+    if (c !== "'" && c !== '"' && c !== '`') continue
+    const start = i
+    const parts = ['']
+    const holes = []
+    for (i++; i < src.length && src[i] !== c; i++) {
+      if (src[i] === '\\') { parts[parts.length - 1] += src[i] + src[i + 1]; i++; continue }
+      if (c === '`' && src[i] === '$' && src[i + 1] === '{') {
+        let depth = 1
+        let j = i + 2
+        for (; j < src.length && depth; j++) { if (src[j] === '{') depth++; else if (src[j] === '}') depth-- }
+        holes.push(src.slice(i, j))
+        parts.push('')
+        i = j - 1
+        continue
       }
-      if (ok) return out
+      parts[parts.length - 1] += src[i]
     }
+    out.push({ start, end: i + 1, quote: c, parts, holes })
   }
-  return null
+  return out
+}
+const COOK = { n: '\n', t: '\t', r: '\r', b: '\b', f: '\f', v: '\v', 0: '\0' }
+const cook = (raw) => raw.replace(/\\(u\{[0-9a-fA-F]+\}|u[0-9a-fA-F]{4}|x[0-9a-fA-F]{2}|\n|[\s\S])/g, (m, e) => {
+  if (e[0] === 'u' && e[1] === '{') return String.fromCodePoint(parseInt(e.slice(2, -1), 16))
+  if (e[0] === 'u' || e[0] === 'x') return String.fromCharCode(parseInt(e.slice(1), 16))
+  if (e === '\n') return ''
+  return COOK[e] ?? e
+})
+const raw = (text, quote) => text.replace(/\\/g, '\\\\')
+  .replace(quote === '`' ? /`|\$\{/g : new RegExp(quote, 'g'), (m) => `\\${m}`)
+  .replace(quote === '`' ? /(?!)/g : /\n/g, '\\n')
+
+// Rewrite one source file literal by literal. A template's `${…}` holes become a sentinel while the
+// text is linked, so a span never runs across one and the section rule still sees the whole string.
+function glossSource(src, locale) {
+  let out = ''
+  let at = 0
+  let changed = 0
+  for (const lit of literals(src)) {
+    const cooked = lit.parts.map(cook)
+    const joined = cooked.join('\u0000')
+    if (!joined.includes('**')) continue
+    const [next] = glossString(joined, locale)
+    if (next === joined) continue
+    const pieces = next.split('\u0000')
+    if (pieces.length !== cooked.length) continue
+    let body = raw(pieces[0], lit.quote)
+    lit.holes.forEach((h, k) => { body += h + raw(pieces[k + 1], lit.quote) })
+    out += src.slice(at, lit.start) + lit.quote + body + lit.quote
+    at = lit.end
+    changed++
+  }
+  return [out + src.slice(at), changed]
 }
 
 async function processFile(rel, locale, write) {
@@ -199,23 +266,16 @@ async function processFile(rel, locale, write) {
   Object.values(mod).forEach(walk)
   let miss = 0
   if (write && pairs.size) {
-    let src = fs.readFileSync(file, 'utf8')
-    // Longest first, so a string that contains a shorter changed one is replaced whole.
-    for (const [a, b] of [...pairs].sort((x, y) => y[0].length - x[0].length)) {
-      const forms = [[JSON.stringify(a).slice(1, -1), JSON.stringify(b).slice(1, -1)], [a, b], [a.replace(/'/g, "\\'"), b.replace(/'/g, "\\'")]]
-      const f = forms.find(([x]) => src.includes(x))
-      if (f) { src = src.split(f[0]).join(f[1]); continue }
-      // Not in the file whole: a template built from a constant (`${chapterLock}`) or escaped
-      // another way. Find where the string starts and swap its bold spans one by one, in order,
-      // inside that stretch of the source.
-      // The same text can be written out more than once (two Death Company sheets share Black
-      // Rage word for word): splice until no copy is left unlinked.
-      let next = spliceSpans(src, a, locale)
-      const found = !!next
-      for (let n = 0; next && n < 20; n++) { src = next; next = spliceSpans(src, a, locale) }
-      if (!found) { miss++; if (process.env.GLOSS_DEBUG) console.log(`  MISS ${rel}: ${JSON.stringify(a).slice(0, 160)}`) }
-    }
-    fs.writeFileSync(file, src)
+    const src = fs.readFileSync(file, 'utf8')
+    const [next] = glossSource(src, locale)
+    fs.writeFileSync(file, next)
+    // Whatever the module still disagrees on after the rewrite was not a literal of this file.
+    const after = await import(`${pathToFileURL(file).href}?after=${Date.now()}`)
+    const left = []
+    const check = (v) => { if (typeof v === 'string') { if (glossString(v, locale)[0] !== v) left.push(v) } else if (Array.isArray(v)) v.forEach(check); else if (v && typeof v === 'object') Object.values(v).forEach(check) }
+    Object.values(after).forEach(check)
+    miss = left.length
+    if (process.env.GLOSS_DEBUG) for (const l of left) console.log(`  MISS ${rel}: ${JSON.stringify(l).slice(0, 160)}`)
   }
   return { linked, open, miss, changed: pairs.size }
 }

@@ -209,7 +209,7 @@ export default [
     "abilities": [
       {
         "name": "Vehement Aggression",
-        "text": "In the Fight phase, when this unit is **[gloss:selected-to-fight:selected to fight]**, you can use this ability. If you do, make a **[gloss:leadership-roll:leadership roll]** for this unit:\n▪ This unit's melee attacks can re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ __Or:__ If that roll succeeds: This unit's melee attacks:\n▪ Can re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ Can re-roll **[gloss:wound-roll:wound rolls]** of 1."
+        "text": "In the Fight phase, when this unit is **[gloss:selected-to-fight:selected to fight]**, you can use this ability. If you do, make a **[gloss:leadership-roll:leadership roll]** for this unit:\n▪ This unit's melee attacks can re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ __Or:__ If that roll succeeds: This unit's melee attacks:\n▪ Can re-roll **hit rolls** of 1.\n▪ Can re-roll **[gloss:wound-roll:wound rolls]** of 1."
       }
     ],
     "composition": [
@@ -339,7 +339,7 @@ export default [
       },
       {
         "name": "Faithful Cenobytes",
-        "text": "▪ If this unit’s Chaplain Grimaldus model is **[gloss:destroyed:destroyed]**, this unit’s remaining Cenobyte Servitor models are also **[gloss:destroyed:destroyed]**.\n▪ Each Cenobyte Servitor model in this unit takes up 0 **[gloss:transport-capacity:transport capacity]**."
+        "text": "▪ If this unit’s Chaplain Grimaldus model is **[gloss:destroyed:destroyed]**, this unit’s remaining Cenobyte Servitor models are also **destroyed**.\n▪ Each Cenobyte Servitor model in this unit takes up 0 **[gloss:transport-capacity:transport capacity]**."
       }
     ],
     "composition": [
@@ -883,11 +883,11 @@ export default [
     "abilities": [
       {
         "name": "Remorseless Persecution",
-        "text": "In your Movement phase, when this unit is selected to make an **[gloss:advance-move:advance move]**, that **[gloss:advance-move:advance move]** does not prevent this unit from being **[gloss:eligible-to-charge:eligible to declare a charge]**."
+        "text": "In your Movement phase, when this unit is selected to make an **[gloss:advance-move:advance move]**, that **advance move** does not prevent this unit from being **[gloss:eligible-to-charge:eligible to declare a charge]**."
       },
       {
         "name": "Condemnatory Annihilation",
-        "text": "After this unit has fought, if this unit **[gloss:destroyed:destroyed]** an enemy model this phase, each enemy unit **[gloss:engaged:engaged]** with this unit makes a **[gloss:battle-shock-test:battle-shock roll]**, with -1 to that **[gloss:battle-shock-test:battle-shock roll]**."
+        "text": "After this unit has fought, if this unit **[gloss:destroyed:destroyed]** an enemy model this phase, each enemy unit **[gloss:engaged:engaged]** with this unit makes a **[gloss:battle-shock-test:battle-shock roll]**, with -1 to that **battle-shock roll**."
       }
     ],
     "composition": [
@@ -1292,7 +1292,7 @@ export default [
     "abilities": [
       {
         "name": "High Marshal",
-        "text": "At the start of the Fight phase, select up to one enemy unit **[gloss:engaged:engaged]** with this unit and roll one D6:\n▪ On a 2-3, that enemy unit suffers D3 **[gloss:mortal-wound:mortal wounds]**.\n▪ On a 4-5, that enemy unit suffers 3 **[gloss:mortal-wound:mortal wounds]**.\n▪ On a 6+, that enemy unit suffers D3+3 **[gloss:mortal-wound:mortal wounds]**."
+        "text": "At the start of the Fight phase, select up to one enemy unit **[gloss:engaged:engaged]** with this unit and roll one D6:\n▪ On a 2-3, that enemy unit suffers D3 **[gloss:mortal-wound:mortal wounds]**.\n▪ On a 4-5, that enemy unit suffers 3 **mortal wounds**.\n▪ On a 6+, that enemy unit suffers D3+3 **mortal wounds**."
       },
       {
         "name": "Crusade of Wrath",
@@ -1575,7 +1575,7 @@ export default [
       },
       {
         "name": "Pious Fervour",
-        "text": "When this unit is **[gloss:selected-to-fight:selected to fight]**, you can use this ability. If you do, this model's melee attacks have +1 **[gloss:attack-dice:A]** for each enemy unit within 6\" of this model (to a maximum of +3 **[gloss:attack-dice:A]**)."
+        "text": "When this unit is **[gloss:selected-to-fight:selected to fight]**, you can use this ability. If you do, this model's melee attacks have +1 **[gloss:attack-dice:A]** for each enemy unit within 6\" of this model (to a maximum of +3 **A**)."
       }
     ],
     "composition": [
@@ -1740,7 +1740,7 @@ export default [
     "abilities": [
       {
         "name": "Combat Embarkation",
-        "text": "In your opponent’s Charge phase, when an enemy unit has selected **[gloss:charge-target:charge targets]**, you can select one friendly **[gloss:unengaged:unengaged]** ADEPTUS ASTARTES unit that was one of those **[gloss:charge-target:charge targets]** and is eligible to embark within this TRANSPORT. If every model in that unit is within 3\" of this TRANSPORT, that unit can embark within this TRANSPORT. That enemy unit can then select new **[gloss:charge-target:charge targets]** for that **[gloss:charge-move:charge move]**."
+        "text": "In your opponent’s Charge phase, when an enemy unit has selected **[gloss:charge-target:charge targets]**, you can select one friendly **[gloss:unengaged:unengaged]** ADEPTUS ASTARTES unit that was one of those **charge targets** and is eligible to embark within this TRANSPORT. If every model in that unit is within 3\" of this TRANSPORT, that unit can embark within this TRANSPORT. That enemy unit can then select new **charge targets** for that **[gloss:charge-move:charge move]**."
       }
     ],
     "composition": [

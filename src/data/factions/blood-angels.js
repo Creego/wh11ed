@@ -22,7 +22,7 @@ const en = {
     "id": "combat-doctrines",
     "name": "Combat Doctrines",
     "flavor": "",
-    "body": "At the start of your Command phase, you can select one **[gloss:sm-combat-doctrine:combat doctrine]** listed below. If you do, that **[gloss:sm-combat-doctrine:combat doctrine]** is active for friendly ADEPTUS ASTARTES units with this ability until the start of your next Command phase.\n\n### Assault Doctrine\nWhen this unit is selected to make an **[gloss:advance-move:advance move]**, that **[gloss:advance-move:advance move]** does not prevent this unit from being **[gloss:eligible-to-charge:eligible to declare a charge]**.\n\n### Devastator Doctrine\nThis unit’s ranged attacks have [ASSAULT].\n\n### Tactical Doctrine\nWhen this unit is selected to make a **[gloss:fall-back-move:fall-back move]**, that **[gloss:fall-back-move:fall-back move]** does not prevent this unit from being **[gloss:eligible-to-shoot:eligible to shoot]** and **[gloss:eligible-to-charge:eligible to declare a charge]**.\n\nUnless otherwise stated:\n▪ You can only select each **[gloss:sm-combat-doctrine:combat doctrine]** once per battle.\n▪ Only one **[gloss:sm-combat-doctrine:combat doctrine]** can be active for each unit. If a rule makes a **[gloss:sm-combat-doctrine:combat doctrine]** active for a unit, any **[gloss:sm-combat-doctrine:combat doctrine]** previously active for that unit is no longer active for that unit.\n\n### Transhuman Strategist\nAt the start of the battle round, if a model with this ability is your WARLORD, gain 1**[gloss:command-points:CP]**."
+    "body": "At the start of your Command phase, you can select one **[gloss:sm-combat-doctrine:combat doctrine]** listed below. If you do, that **combat doctrine** is active for friendly ADEPTUS ASTARTES units with this ability until the start of your next Command phase.\n\n### Assault Doctrine\nWhen this unit is selected to make an **[gloss:advance-move:advance move]**, that **advance move** does not prevent this unit from being **[gloss:eligible-to-charge:eligible to declare a charge]**.\n\n### Devastator Doctrine\nThis unit’s ranged attacks have [ASSAULT].\n\n### Tactical Doctrine\nWhen this unit is selected to make a **[gloss:fall-back-move:fall-back move]**, that **fall-back move** does not prevent this unit from being **[gloss:eligible-to-shoot:eligible to shoot]** and **[gloss:eligible-to-charge:eligible to declare a charge]**.\n\nUnless otherwise stated:\n▪ You can only select each **[gloss:sm-combat-doctrine:combat doctrine]** once per battle.\n▪ Only one **combat doctrine** can be active for each unit. If a rule makes a **combat doctrine** active for a unit, any **combat doctrine** previously active for that unit is no longer active for that unit.\n\n### Transhuman Strategist\nAt the start of the battle round, if a model with this ability is your WARLORD, gain 1**[gloss:command-points:CP]**."
   },
   detachments: [
     {
@@ -34,7 +34,7 @@ const en = {
       "rule": {
         "name": "Sanguinius' Fury",
         "flavor": "Swept up in visions of the Primarch’s blood-drenched final hours, the Lost throw themselves upon the foe, channelling the Great Angel’s fury and striving their utmost to emulate his mastery of close-quarters combat.",
-        "body": "Friendly DEATH COMPANY units have the following:\n▪ At the start of each phase, the **[gloss:sm-combat-doctrine:assault doctrine]** is active for this unit.\n▪ The **[gloss:sm-combat-doctrine:devastator]/[gloss:sm-combat-doctrine:tactical doctrine]** __cannot__ be active for this unit.\n\nThis means that, regardless of any other rules, DEATH COMPANY units can never have an active doctrine other than the **[gloss:sm-combat-doctrine:assault doctrine]**.\n\n**Restrictions:** Your army can include BLOOD ANGELS units, but it cannot include any ADEPTUS ASTARTES units drawn from any other Chapter."
+        "body": "Friendly DEATH COMPANY units have the following:\n▪ At the start of each phase, the **[gloss:sm-combat-doctrine:assault doctrine]** is active for this unit.\n▪ The **devastator/tactical doctrine** __cannot__ be active for this unit.\n\nThis means that, regardless of any other rules, DEATH COMPANY units can never have an active doctrine other than the **assault doctrine**.\n\n**Restrictions:** Your army can include BLOOD ANGELS units, but it cannot include any ADEPTUS ASTARTES units drawn from any other Chapter."
       },
       "stratagems": [
         {
@@ -95,7 +95,7 @@ const en = {
       "rule": {
         "name": "Wrath of Angels",
         "flavor": "Few living warriors embody the ideal of the Emperor's wrathful angels more than the Sanguinary Guard, for they appear without warning to wreak death and destruction before surging on to the next foe with shocking speed.",
-        "body": "The **[gloss:sm-combat-doctrine:tactical doctrine]** is active for SANGUINARY GUARD units __in addition__ to any other **[gloss:sm-combat-doctrine:combat doctrine]**.\n\n**Restrictions:** Your army can include BLOOD ANGELS units, but it cannot include any ADEPTUS ASTARTES units drawn from any other Chapter."
+        "body": "The **[gloss:sm-combat-doctrine:tactical doctrine]** is active for SANGUINARY GUARD units __in addition__ to any other **combat doctrine**.\n\n**Restrictions:** Your army can include BLOOD ANGELS units, but it cannot include any ADEPTUS ASTARTES units drawn from any other Chapter."
       },
       "stratagems": [
         {
@@ -106,7 +106,7 @@ const en = {
           "flavor": "The meteoric impact of the Sanguinary Guard is an unavoidable judgement on those who have incurred the Chapter's wrath.",
           "when": "Your Charge phase, when a friendly SANGUINARY GUARD unit form your army ends a **[gloss:charge-move:charge move]**.",
           "target": "That SANGUINARY GUARD unit.",
-          "effect": "Select one enemy unit **[gloss:engaged:engaged]** with your unit. Roll one D6 for each model in your unit **[gloss:engaged:engaged]** with that enemy unit:\n▪ For each 3+, that enemy unit suffers 1 **[gloss:mortal-wound:mortal wound]**.",
+          "effect": "Select one enemy unit **[gloss:engaged:engaged]** with your unit. Roll one D6 for each model in your unit **engaged** with that enemy unit:\n▪ For each 3+, that enemy unit suffers 1 **[gloss:mortal-wound:mortal wound]**.",
           "restrictions": ""
         },
         {
@@ -222,7 +222,7 @@ const en = {
           "flavor": "Stern and level-headed, this Blood Angels commander is a beacon of composure amidst the tempest of his brothers’ fury, providing much-needed tactical guidance for his impetuous battle-brothers.",
           "when": "Your Command phase.",
           "target": "One friendly ADEPTUS ASTARTES CHARACTER unit.",
-          "effect": "Select one **[gloss:sm-combat-doctrine:combat doctrine]**. That **[gloss:sm-combat-doctrine:combat doctrine]** is active for your unit until the start of your next Command phase.",
+          "effect": "Select one **[gloss:sm-combat-doctrine:combat doctrine]**. That **combat doctrine** is active for your unit until the start of your next Command phase.",
           "restrictions": ""
         }
       ],
@@ -243,7 +243,7 @@ const en = {
           "name": "Ordained Sacrifice",
           "points": 25,
           "flavor": "Knowing only too well the desperate and vital nature of the battle before him, this scion of Sanguinius echoes his Primarch’s resolute determination to fight on even beyond what seems the doors of certain death.",
-          "body": "ADEPTUS ASTARTES model only. (Once per battle, per army) At the end of a phase in which this model is **[gloss:destroyed:destroyed]**, roll one D6:\n▪ On a 2+, set this model back up on the battlefield as close as possible to where it was **[gloss:destroyed:destroyed]**, **[gloss:unengaged:unengaged]**, with 3 wounds remaining."
+          "body": "ADEPTUS ASTARTES model only. (Once per battle, per army) At the end of a phase in which this model is **[gloss:destroyed:destroyed]**, roll one D6:\n▪ On a 2+, set this model back up on the battlefield as close as possible to where it was **destroyed**, **[gloss:unengaged:unengaged]**, with 3 wounds remaining."
         },
         {
           "name": "Unto Death",

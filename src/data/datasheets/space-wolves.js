@@ -431,7 +431,7 @@ export default [
     "abilities": [
       {
         "name": "Berserk Charge",
-        "text": "When this unit is selected to make an **[gloss:advance-move:advance move]**, that **[gloss:advance-move:advance move]** does not prevent this unit from being **[gloss:eligible-to-charge:eligible to declare a charge]**."
+        "text": "When this unit is selected to make an **[gloss:advance-move:advance move]**, that **advance move** does not prevent this unit from being **[gloss:eligible-to-charge:eligible to declare a charge]**."
       }
     ],
     "composition": [
@@ -1313,7 +1313,7 @@ export default [
     "abilities": [
       {
         "name": "Guile of the Wolf",
-        "text": "At the start of each phase, the **[gloss:sm-combat-doctrine:assault doctrine]**, **[gloss:sm-combat-doctrine:devastator doctrine]** and **[gloss:sm-combat-doctrine:tactical doctrine]** are active for this unit."
+        "text": "At the start of each phase, the **[gloss:sm-combat-doctrine:assault doctrine]**, **devastator doctrine** and **tactical doctrine** are active for this unit."
       },
       {
         "name": "High King of Fenris (Once per battle round, per unit)",
@@ -2106,15 +2106,15 @@ export default [
         "options": [
           {
             "name": "Murderous Hurricane (psychic level 1)",
-            "text": "In your Movement phase, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **[gloss:battle-shocked:battle-shocked]**.\n▪ Select one **[gloss:visible:visible]** enemy unit within 12\". That enemy unit cannot make **[gloss:snap-shooting:Snap shooting]** attacks."
+            "text": "In your Movement phase, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ Select one **[gloss:visible:visible]** enemy unit within 12\". That enemy unit cannot make **[gloss:snap-shooting:Snap shooting]** attacks."
           },
           {
             "name": "Storm Caller (psychic level 1)",
-            "text": "When an enemy unit targets this unit, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **[gloss:battle-shocked:battle-shocked]**.\n▪ This unit has -3\" **[gloss:detection-range:detection range]** until the end of the phase."
+            "text": "When an enemy unit targets this unit, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ This unit has -3\" **[gloss:detection-range:detection range]** until the end of the phase."
           },
           {
             "name": "Tempest's Wrath (psychic level 1)",
-            "text": "In your Shooting phase, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **[gloss:battle-shocked:battle-shocked]**.\n▪ Select one **[gloss:visible:visible]** enemy unit within 18\". That enemy unit is **[gloss:sm-suppressed:suppressed]** until the start of your next turn:\n▪ While a unit is **[gloss:sm-suppressed:suppressed]**, that unit’s attacks have -1 to **[gloss:hit-roll:hit rolls]**."
+            "text": "In your Shooting phase, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ Select one **[gloss:visible:visible]** enemy unit within 18\". That enemy unit is **[gloss:sm-suppressed:suppressed]** until the start of your next turn:\n▪ While a unit is **suppressed**, that unit’s attacks have -1 to **[gloss:hit-roll:hit rolls]**."
           }
         ]
       }
@@ -2185,7 +2185,7 @@ export default [
     "abilities": [
       {
         "name": "War Howl",
-        "text": "▪ While this model is attached to a BLOOD CLAWS unit, this unit's melee attacks have +1 **[gloss:strength:S]** and [SUSTAINED HITS 1].\n▪ While this model is attached to a WOLF GUARD HEADTAKERS unit, when this unit is selected to make an **[gloss:advance-move:advance move]**, that **[gloss:advance-move:advance move]** does not prevent this unit from being **[gloss:eligible-to-charge:eligible to declare a charge]**."
+        "text": "▪ While this model is attached to a BLOOD CLAWS unit, this unit's melee attacks have +1 **[gloss:strength:S]** and [SUSTAINED HITS 1].\n▪ While this model is attached to a WOLF GUARD HEADTAKERS unit, when this unit is selected to make an **[gloss:advance-move:advance move]**, that **advance move** does not prevent this unit from being **[gloss:eligible-to-charge:eligible to declare a charge]**."
       },
       {
         "name": "Battle-lust",
@@ -2952,7 +2952,7 @@ export default [
       },
       {
         "name": "Oathbound",
-        "text": "▪ This unit's melee attacks have +1 to **[gloss:hit-roll:hit rolls]**.\n▪ __Or:__ This unit's melee attacks that target this unit's **slayer's oath** have +1 to **[gloss:hit-roll:hit rolls]** and **[gloss:wound-roll:wound rolls]**."
+        "text": "▪ This unit's melee attacks have +1 to **[gloss:hit-roll:hit rolls]**.\n▪ __Or:__ This unit's melee attacks that target this unit's **slayer's oath** have +1 to **hit rolls** and **[gloss:wound-roll:wound rolls]**."
       }
     ],
     "composition": [
@@ -5159,7 +5159,7 @@ export default [
     "wargearAbilities": [
       {
         "name": "Haywire Mine (Once per battle, per unit)",
-        "text": "In your Shooting phase, select up to one **[gloss:visible:visible]** enemy unit within 6\" of this unit and roll one D6. On a 2+:\n▪ That enemy unit suffers D3 **[gloss:mortal-wound:mortal wounds]**.\n▪ __Or:__ If that enemy unit is a VEHICLE unit, that enemy unit suffers 2D3 **[gloss:mortal-wound:mortal wounds]**."
+        "text": "In your Shooting phase, select up to one **[gloss:visible:visible]** enemy unit within 6\" of this unit and roll one D6. On a 2+:\n▪ That enemy unit suffers D3 **[gloss:mortal-wound:mortal wounds]**.\n▪ __Or:__ If that enemy unit is a VEHICLE unit, that enemy unit suffers 2D3 **mortal wounds**."
       }
     ],
     "composition": [
@@ -5483,7 +5483,7 @@ export default [
     "abilities": [
       {
         "name": "Hammer Blow",
-        "text": "In the Fight phase, when this unit has fought, select up to one enemy MONSTER/VEHICLE unit hit by those attacks. If you do, that enemy unit is **[gloss:sm-suppressed:suppressed]** until the start of your next turn:\n▪ While a unit is **[gloss:sm-suppressed:suppressed]**, that unit's attacks have -1 to **[gloss:hit-roll:hit rolls]**."
+        "text": "In the Fight phase, when this unit has fought, select up to one enemy MONSTER/VEHICLE unit hit by those attacks. If you do, that enemy unit is **[gloss:sm-suppressed:suppressed]** until the start of your next turn:\n▪ While a unit is **suppressed**, that unit's attacks have -1 to **[gloss:hit-roll:hit rolls]**."
       }
     ],
     "wargearAbilities": [

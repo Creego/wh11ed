@@ -33,7 +33,7 @@ const en = {
     "id": "combat-doctrines",
     "name": "Combat Doctrines",
     "flavor": "The Space Marines draw upon the combat doctrines of the Codex Astartes as they flow through each phase of battle: first hammering the enemy with devastating firepower, then raking them with close-ranged volleys while manoeuvring to deliver a final, crushing assault.",
-    "body": "At the start of your Command phase, you can select one **[gloss:sm-combat-doctrine:combat doctrine]** listed below. If you do, that **[gloss:sm-combat-doctrine:combat doctrine]** is active for friendly ADEPTUS ASTARTES units with this ability until the start of your next Command phase.\n\n### Assault Doctrine\nWhen this unit is selected to make an **[gloss:advance-move:advance move]**, that **[gloss:advance-move:advance move]** does not prevent this unit from being **[gloss:eligible-to-charge:eligible to declare a charge]**.\n\n### Devastator Doctrine\nThis unit’s ranged attacks have [ASSAULT].\n\n### Tactical Doctrine\nWhen this unit is selected to make a **[gloss:fall-back-move:fall-back move]**, that **[gloss:fall-back-move:fall-back move]** does not prevent this unit from being **[gloss:eligible-to-shoot:eligible to shoot]** and **[gloss:eligible-to-charge:eligible to declare a charge]**.\n\nUnless otherwise stated:\n▪ You can only select each **[gloss:sm-combat-doctrine:combat doctrine]** once per battle.\n▪ Only one **[gloss:sm-combat-doctrine:combat doctrine]** can be active for each unit. If a rule makes a **[gloss:sm-combat-doctrine:combat doctrine]** active for a unit, any **[gloss:sm-combat-doctrine:combat doctrine]** previously active for that unit is no longer active for that unit.\n\n### Transhuman Strategist\nAt the start of the battle round, if a model with this ability is your WARLORD, gain 1CP.\n\n### Librarius\nADEPTUS ASTARTES PSYKER units with this ability have a **[gloss:psyker-level:psyker level]** of 1 or higher, specified in that unit’s abilities. Each **[gloss:psychic-ability:psychic ability]** has a **[gloss:psyker-level:psychic level]** of 1 or higher, specified in that ability’s name.\n\nIn a battle round, a friendly ADEPTUS ASTARTES PSYKER unit can use a number of **[gloss:psychic-ability:psychic abilities]** whose total **[gloss:psyker-level:psychic level]** does not exceed that PSYKER unit’s **[gloss:psyker-level:psyker level]**.\n\nExample: In a battle round, a **[gloss:psyker-level:psyker level 3]** PSYKER unit could use three **[gloss:psyker-level:psychic level 1]** abilities, or one **[gloss:psyker-level:psychic level 1]** ability and one **[gloss:psyker-level:psychic level 2]** ability, or one **[gloss:psyker-level:psychic level 3]** ability.\n\n### Special Move Types\nSome rules allow a unit to make one of the following **[gloss:move-type:move types]**:\n▪ **[gloss:shock-disembark-move:shock disembark move]** (18.07)\n▪ **[gloss:assault-disembark-move:assault disembark move]** (18.06)"
+    "body": "At the start of your Command phase, you can select one **[gloss:sm-combat-doctrine:combat doctrine]** listed below. If you do, that **combat doctrine** is active for friendly ADEPTUS ASTARTES units with this ability until the start of your next Command phase.\n\n### Assault Doctrine\nWhen this unit is selected to make an **[gloss:advance-move:advance move]**, that **advance move** does not prevent this unit from being **[gloss:eligible-to-charge:eligible to declare a charge]**.\n\n### Devastator Doctrine\nThis unit’s ranged attacks have [ASSAULT].\n\n### Tactical Doctrine\nWhen this unit is selected to make a **[gloss:fall-back-move:fall-back move]**, that **fall-back move** does not prevent this unit from being **[gloss:eligible-to-shoot:eligible to shoot]** and **[gloss:eligible-to-charge:eligible to declare a charge]**.\n\nUnless otherwise stated:\n▪ You can only select each **[gloss:sm-combat-doctrine:combat doctrine]** once per battle.\n▪ Only one **combat doctrine** can be active for each unit. If a rule makes a **combat doctrine** active for a unit, any **combat doctrine** previously active for that unit is no longer active for that unit.\n\n### Transhuman Strategist\nAt the start of the battle round, if a model with this ability is your WARLORD, gain 1CP.\n\n### Librarius\nADEPTUS ASTARTES PSYKER units with this ability have a **[gloss:psyker-level:psyker level]** of 1 or higher, specified in that unit’s abilities. Each **[gloss:psychic-ability:psychic ability]** has a **psychic level** of 1 or higher, specified in that ability’s name.\n\nIn a battle round, a friendly ADEPTUS ASTARTES PSYKER unit can use a number of **psychic abilities** whose total **psychic level** does not exceed that PSYKER unit’s **psyker level**.\n\nExample: In a battle round, a **psyker level 3** PSYKER unit could use three **psychic level 1** abilities, or one **psychic level 1** ability and one **psychic level 2** ability, or one **psychic level 3** ability.\n\n### Special Move Types\nSome rules allow a unit to make one of the following **[gloss:move-type:move types]**:\n▪ **[gloss:shock-disembark-move:shock disembark move]** (18.07)\n▪ **[gloss:assault-disembark-move:assault disembark move]** (18.06)"
   },
   detachments: [
     {
@@ -45,7 +45,7 @@ const en = {
       "rule": {
         "name": "Combined Deployment",
         "flavor": "Space Marine crews train to provide armoured fire support to their debarked passengers while on the attack.",
-        "body": "In your Shooting phase, when a friendly ADEPTUS ASTARTES TRANSPORT unit has shot, you can select one enemy unit hit by those attacks. That enemy unit is **[gloss:sm-assailed:assailed]** until the end of the turn:\n▪ While a unit is **[gloss:sm-assailed:assailed]**, when an ADEPTUS ASTARTES unit that disembarked this turn targets that unit, those attacks have [SUSTAINED HITS 1]."
+        "body": "In your Shooting phase, when a friendly ADEPTUS ASTARTES TRANSPORT unit has shot, you can select one enemy unit hit by those attacks. That enemy unit is **[gloss:sm-assailed:assailed]** until the end of the turn:\n▪ While a unit is **assailed**, when an ADEPTUS ASTARTES unit that disembarked this turn targets that unit, those attacks have [SUSTAINED HITS 1]."
       },
       "stratagems": [
         {
@@ -56,7 +56,7 @@ const en = {
           "flavor": "The advanced mechanised assault tactics employed by this force allow ground to be seized rapidly while on the move.",
           "when": "End of your Movement phase.",
           "target": "One friendly ADEPTUS ASTARTES TRANSPORT unit that has an ADEPTUS ASTARTES BATTLELINE unit embarked within it.",
-          "effect": "Select one **[gloss:objective:objective]** your unit is controlling. That **[gloss:objective:objective]** is **[gloss:secured-objective:secured]**.",
+          "effect": "Select one **[gloss:objective:objective]** your unit is controlling. That **objective** is **[gloss:secured-objective:secured]**.",
           "restrictions": ""
         },
         {
@@ -93,7 +93,7 @@ const en = {
           "name": "Damocles-class Uplink",
           "points": 15,
           "flavor": "This portable strat-shrine plugs directly into the bearer’s armour, enhancing their command and control abilities.",
-          "body": "CAPTAIN model only. In your Movement phase, if this unit is embarked within a TRANSPORT unit, you can select one friendly ADEPTUS ASTARTES INFANTRY unit within 6\" of that TRANSPORT unit and select one **[gloss:sm-combat-doctrine:combat doctrine]**. That **[gloss:sm-combat-doctrine:combat doctrine]** is active for that INFANTRY unit."
+          "body": "CAPTAIN model only. In your Movement phase, if this unit is embarked within a TRANSPORT unit, you can select one friendly ADEPTUS ASTARTES INFANTRY unit within 6\" of that TRANSPORT unit and select one **[gloss:sm-combat-doctrine:combat doctrine]**. That **combat doctrine** is active for that INFANTRY unit."
         }
       ]
     },
@@ -117,7 +117,7 @@ const en = {
           "flavor": "Booming war cries through his vox-amplifiers, this Dreadnought rampages through the terrified foe.",
           "when": "Start of the Fight phase.",
           "target": "One friendly DREADNOUGHT unit.",
-          "effect": "Each enemy unit **[gloss:engaged:engaged]** with your unit makes a **[gloss:battle-shock-test:battle-shock roll]**, with -1 to that **[gloss:battle-shock-test:battle-shock roll]**.",
+          "effect": "Each enemy unit **[gloss:engaged:engaged]** with your unit makes a **[gloss:battle-shock-test:battle-shock roll]**, with -1 to that **battle-shock roll**.",
           "restrictions": ""
         },
         {
@@ -334,7 +334,7 @@ const en = {
           "name": "Cyber-familiar",
           "points": 15,
           "flavor": "Hovering high overhead on grav-impellers, this small cyber-creature cogitates emergent threats and alerts its master to tactical openings.",
-          "body": "TACTICUS model only. When both players have deployed their armies, you can redeploy up to three friendly ADEPTUS ASTARTES INFANTRY units. When doing so, you can set those units up in **[gloss:strategic-reserves:strategic reserves]**, regardless of how many units are already in **[gloss:strategic-reserves:strategic reserves]**."
+          "body": "TACTICUS model only. When both players have deployed their armies, you can redeploy up to three friendly ADEPTUS ASTARTES INFANTRY units. When doing so, you can set those units up in **[gloss:strategic-reserves:strategic reserves]**, regardless of how many units are already in **strategic reserves**."
         },
         {
           "name": "Tempered in Battle (Aura)",
@@ -395,7 +395,7 @@ const en = {
           "name": "Auspex Triangulation Shrines (Upgrade)",
           "points": 10,
           "flavor": "Fitted to the Chapter’s swift grav-speeders, these vigilant devices runelock the positions of enemy forces, laying them bare to the Space Marines’ wrath.",
-          "body": "ADEPTUS ASTARTES SPEEDER unit only. At the start of your Shooting phase, select one **[gloss:visible:visible]** enemy unit within 12\" of this unit. That enemy unit is **[gloss:tau-spotted:spotted]**:\n▪ While a unit is **[gloss:tau-spotted:spotted]**, that unit has +3\" **[gloss:detection-range:detection range]**."
+          "body": "ADEPTUS ASTARTES SPEEDER unit only. At the start of your Shooting phase, select one **[gloss:visible:visible]** enemy unit within 12\" of this unit. That enemy unit is **[gloss:tau-spotted:spotted]**:\n▪ While a unit is **spotted**, that unit has +3\" **[gloss:detection-range:detection range]**."
         },
         {
           "name": "Supercharged Engines (Upgrade)",
@@ -436,7 +436,7 @@ const en = {
           "flavor": "The tenets of the Codex Astartes allow for unorthodox use of combat tactics and the employment of divergent doctrines if doing so will lead to victory.",
           "when": "Your Command phase.",
           "target": "One friendly ADEPTUS ASTARTES unit.",
-          "effect": "Select one **[gloss:sm-combat-doctrine:combat doctrine]**. That **[gloss:sm-combat-doctrine:combat doctrine]** is active for your unit until the start of your next Command phase.",
+          "effect": "Select one **[gloss:sm-combat-doctrine:combat doctrine]**. That **combat doctrine** is active for your unit until the start of your next Command phase.",
           "restrictions": ""
         },
         {
@@ -489,13 +489,13 @@ const en = {
           "name": "Laurels of Triumph",
           "points": 20,
           "flavor": "A rare honour, the Laurels of Triumph mark out a truly accomplished warrior even amongst the Angels of Death.",
-          "body": "ADEPTUS ASTARTES model only. This model’s melee attacks have:\n▪ +1 **[gloss:strength:S]** and **[gloss:armour-penetration:AP]**.\n▪ __Or:__ If the **[gloss:sm-combat-doctrine:assault doctrine]** is active for this unit, +2 **[gloss:strength:S]** and **[gloss:armour-penetration:AP]**."
+          "body": "ADEPTUS ASTARTES model only. This model’s melee attacks have:\n▪ +1 **[gloss:strength:S]** and **[gloss:armour-penetration:AP]**.\n▪ __Or:__ If the **[gloss:sm-combat-doctrine:assault doctrine]** is active for this unit, +2 **S** and **AP**."
         },
         {
           "name": "Adept of the Codex",
           "points": 20,
           "flavor": "An ardent student of the Codex Astartes, this commander epitomises its tactical genius.",
-          "body": "CAPTAIN model only. The **[gloss:sm-combat-doctrine:tactical doctrine]** is active for this unit __in addition__ to any other **[gloss:sm-combat-doctrine:combat doctrine]**."
+          "body": "CAPTAIN model only. The **[gloss:sm-combat-doctrine:tactical doctrine]** is active for this unit __in addition__ to any other **combat doctrine**."
         },
         {
           "name": "Artificer Armour",
@@ -667,7 +667,7 @@ const en = {
           "flavor": "Laying down hails of heavy fire, these warriors pin or drive back the foe.",
           "when": "Your Shooting phase, when a friendly GRAVIS unit has shot.",
           "target": "That GRAVIS unit.",
-          "effect": "Select one enemy unit hit by those attacks. That enemy unit makes a **[gloss:battle-shock-test:battle-shock roll]**, with -1 to that **[gloss:battle-shock-test:battle-shock roll]**.",
+          "effect": "Select one enemy unit hit by those attacks. That enemy unit makes a **[gloss:battle-shock-test:battle-shock roll]**, with -1 to that **battle-shock roll**.",
           "restrictions": ""
         },
         {
@@ -678,7 +678,7 @@ const en = {
           "flavor": "Ground claimed by Gravis-clad Adeptus Astartes cannot be taken back with ease.",
           "when": "End of your Movement phase.",
           "target": "One friendly GRAVIS unit.",
-          "effect": "Select one **[gloss:objective:objective]** your unit is controlling. That **[gloss:objective:objective]** is **[gloss:secured-objective:secured]**.",
+          "effect": "Select one **[gloss:objective:objective]** your unit is controlling. That **objective** is **[gloss:secured-objective:secured]**.",
           "restrictions": ""
         }
       ],
@@ -740,7 +740,7 @@ const en = {
           "flavor": "The Codex Astartes dictates when firepower is best used to dismay, disrupt and debilitate the enemy.",
           "when": "Your Shooting phase, when a friendly ADEPTUS ASTARTES unit has shot.",
           "target": "That ADEPTUS ASTARTES unit.",
-          "effect": "Select one enemy unit hit by those attacks. That enemy unit is **[gloss:sm-suppressed:suppressed]** until the start of your next turn:\n▪ While a unit is **[gloss:sm-suppressed:suppressed]**, that unit’s attacks have -1 to **[gloss:hit-roll:hit rolls]**.",
+          "effect": "Select one enemy unit hit by those attacks. That enemy unit is **[gloss:sm-suppressed:suppressed]** until the start of your next turn:\n▪ While a unit is **suppressed**, that unit’s attacks have -1 to **[gloss:hit-roll:hit rolls]**.",
           "restrictions": ""
         }
       ],
@@ -749,7 +749,7 @@ const en = {
           "name": "Tactical Insight",
           "points": 15,
           "flavor": "This champion understands the deeper flow of battle, and is always prepared to discern the course of action that will bring assured victory.",
-          "body": "CAPTAIN model only. The **[gloss:sm-combat-doctrine:tactical doctrine]** is active for this unit __in addition__ to any other **[gloss:sm-combat-doctrine:combat doctrine]**."
+          "body": "CAPTAIN model only. The **[gloss:sm-combat-doctrine:tactical doctrine]** is active for this unit __in addition__ to any other **combat doctrine**."
         },
         {
           "name": "Laurels of Vigilance",
@@ -817,7 +817,7 @@ const en = {
           "name": "Venator Omni-auspex",
           "points": 15,
           "flavor": "Constantly detecting and analysing viable targets, this artefact feeds advanced combat data directly into the bearer’s autosenses.",
-          "body": "PHOBOS model only. This unit’s attacks that target a **[gloss:hidden:hidden]** unit can:\n▪ Re-roll **[gloss:wound-roll:wound rolls]** of 1.\n▪ __Or:__ If the **[gloss:sm-combat-doctrine:assault doctrine]** is active for this unit, re-roll **[gloss:wound-roll:wound rolls]** of 1-2."
+          "body": "PHOBOS model only. This unit’s attacks that target a **[gloss:hidden:hidden]** unit can:\n▪ Re-roll **[gloss:wound-roll:wound rolls]** of 1.\n▪ __Or:__ If the **[gloss:sm-combat-doctrine:assault doctrine]** is active for this unit, re-roll **wound rolls** of 1-2."
         }
       ]
     },
@@ -903,8 +903,8 @@ const en = {
           "turn": "your",
           "flavor": "These stealth operatives lace the battlefield with explosive devices that trigger by micro-auspex and las-wire when foes blunder into them.",
           "when": "End of your Movement phase.",
-          "target": "One friendly **[gloss:unengaged:unengaged]** PHOBOS**[gloss:strength:]/[gloss:strength:]**SCOUT SQUAD unit.",
-          "effect": "If your unit is controlling an **[gloss:objective:objective]**, that **[gloss:objective:objective]** is **[gloss:sm-snared:snared]**. While an **[gloss:objective:objective]** is **[gloss:sm-snared:snared]**, when an enemy unit ends a move within range of that **[gloss:objective:objective]**, roll one D6:\n▪ On a 2+, that enemy unit suffers D6 **[gloss:mortal-wound:mortal wounds]**.\n▪ That **[gloss:objective:objective]** is no longer **[gloss:sm-snared:snared]**.",
+          "target": "One friendly **[gloss:unengaged:unengaged]** PHOBOS**/**SCOUT SQUAD unit.",
+          "effect": "If your unit is controlling an **[gloss:objective:objective]**, that **objective** is **[gloss:sm-snared:snared]**. While an **objective** is **snared**, when an enemy unit ends a move within range of that **objective**, roll one D6:\n▪ On a 2+, that enemy unit suffers D6 **[gloss:mortal-wound:mortal wounds]**.\n▪ That **objective** is no longer **snared**.",
           "restrictions": ""
         },
         {
@@ -914,7 +914,7 @@ const en = {
           "turn": "opponent",
           "flavor": "At an opportune moment, Space Marine infiltration units slip away from battle, only to relocate ready to strike the foe again.",
           "when": "End of your opponent’s Fight phase.",
-          "target": "One friendly **[gloss:unengaged:unengaged]** PHOBOS**[gloss:strength:]/[gloss:strength:]**SCOUT SQUAD unit.",
+          "target": "One friendly **[gloss:unengaged:unengaged]** PHOBOS**/**SCOUT SQUAD unit.",
           "effect": "Place your unit in **[gloss:strategic-reserves:strategic reserves]**.",
           "restrictions": ""
         },
@@ -935,7 +935,7 @@ const en = {
           "name": "Venator Omni-auspex",
           "points": 15,
           "flavor": "Constantly detecting and analysing viable targets, this artefact feeds advanced combat data directly into the bearer’s autosenses.",
-          "body": "PHOBOS model only. This unit’s attacks that target a **[gloss:hidden:hidden]** unit can:\n▪ Re-roll **[gloss:wound-roll:wound rolls]** of 1.\n▪ __Or:__ If the **[gloss:sm-combat-doctrine:assault doctrine]** is active for this unit, re-roll **[gloss:wound-roll:wound rolls]** of 1 and 2."
+          "body": "PHOBOS model only. This unit’s attacks that target a **[gloss:hidden:hidden]** unit can:\n▪ Re-roll **[gloss:wound-roll:wound rolls]** of 1.\n▪ __Or:__ If the **[gloss:sm-combat-doctrine:assault doctrine]** is active for this unit, re-roll **wound rolls** of 1 and 2."
         },
         {
           "name": "Execute and Redeploy",
@@ -977,7 +977,7 @@ const en = {
           "flavor": "Throwing their armoured mass into an assault, a Space Marine in Gravis armour can crush and trample their foe.",
           "when": "Your Charge phase, when a friendly GRAVIS unit ends a **[gloss:charge-move:charge move]**.",
           "target": "That GRAVIS unit.",
-          "effect": "When your unit ends a **[gloss:charge-move:charge move]**, you can select one enemy unit **[gloss:engaged:engaged]** with your unit. If you do, roll one D6 for each model in your unit **[gloss:engaged:engaged]** with that enemy unit:\n▪ For each 3+, that enemy unit suffers 1 **[gloss:mortal-wound:mortal wound]**.",
+          "effect": "When your unit ends a **[gloss:charge-move:charge move]**, you can select one enemy unit **[gloss:engaged:engaged]** with your unit. If you do, roll one D6 for each model in your unit **engaged** with that enemy unit:\n▪ For each 3+, that enemy unit suffers 1 **[gloss:mortal-wound:mortal wound]**.",
           "restrictions": ""
         },
         {
@@ -1017,7 +1017,7 @@ const en = {
       "rule": {
         "name": "Mastered Doctrines",
         "flavor": "Marneus Calgar deploys the complete and nuanced wisdom of the Codex Astartes as easily and instinctively as drawing breath.",
-        "body": "If your army includes a MARNEUS CALGAR unit, you can select the **[gloss:sm-combat-doctrine:assault doctrine]/[gloss:sm-combat-doctrine:devastator doctrine]/[gloss:sm-combat-doctrine:tactical doctrine]** each one additional time per battle."
+        "body": "If your army includes a MARNEUS CALGAR unit, you can select the **[gloss:sm-combat-doctrine:assault doctrine]/devastator doctrine/tactical doctrine** each one additional time per battle."
       },
       "stratagems": [
         {
@@ -1028,7 +1028,7 @@ const en = {
           "flavor": "No Chapter’s warriors know better the breadth – theoretical and practical – of the Codex Astartes’ teachings, and how these can and should be adapted to ensure victory.",
           "when": "Your Command phase.",
           "target": "One friendly ADEPTUS ASTARTES unit.",
-          "effect": "Select one **[gloss:sm-combat-doctrine:combat doctrine]**. That **[gloss:sm-combat-doctrine:combat doctrine]** is active for your unit until the start of your next Command phase.",
+          "effect": "Select one **[gloss:sm-combat-doctrine:combat doctrine]**. That **combat doctrine** is active for your unit until the start of your next Command phase.",
           "restrictions": ""
         },
         {
@@ -1098,13 +1098,13 @@ const en = {
           "name": "Student of the Codex",
           "points": 20,
           "flavor": "This prodigal officer has focused upon one aspect of the Codex Astartes and means to master its every aspect before moving on to the next.",
-          "body": "CAPTAIN model only. The **[gloss:sm-combat-doctrine:tactical doctrine]** is active for this unit __in addition__ to any other **[gloss:sm-combat-doctrine:combat doctrine]**."
+          "body": "CAPTAIN model only. The **[gloss:sm-combat-doctrine:tactical doctrine]** is active for this unit __in addition__ to any other **combat doctrine**."
         },
         {
           "name": "Oath of Macragge",
           "points": 20,
           "flavor": "Amongst the most solemn and binding oaths an Ultramarine can swear, it is a rare honour to enter battle with these words affixed to their armour.",
-          "body": "ADEPTUS ASTARTES model only. This model’s melee attacks have:\n▪ +1 **[gloss:strength:S]** and **[gloss:armour-penetration:AP]**.\n▪ __Or:__ If the **[gloss:sm-combat-doctrine:assault doctrine]** is active for this unit, +2 **[gloss:strength:S]** and **[gloss:armour-penetration:AP]**."
+          "body": "ADEPTUS ASTARTES model only. This model’s melee attacks have:\n▪ +1 **[gloss:strength:S]** and **[gloss:armour-penetration:AP]**.\n▪ __Or:__ If the **[gloss:sm-combat-doctrine:assault doctrine]** is active for this unit, +2 **S** and **AP**."
         },
         {
           "name": "Veteran of Behemoth",
@@ -1124,7 +1124,7 @@ const en = {
       "rule": {
         "name": "Adaptive Defence",
         "flavor": "These Space Marines are experts in fighting from rapidly prepared defensive positions. They are able to maximise the potential of almost any terrain to serve as an ad‑hoc strongpoint, rapidly assessing optimal firing lines and punishing the foe’s every attempt to advance and dislodge them.",
-        "body": "▪ While a friendly ADEPTUS ASTARTES unit is within a **[gloss:terrain-area:terrain area]**, that unit’s attacks can re-roll **[gloss:wound-roll:wound rolls]** of 1.\n▪ Friendly ADEPTUS ASTARTES units are **[gloss:sm-entrenched:entrenched]** while all of the following apply:\n▪ That unit is within a **[gloss:terrain-area:terrain area]**.\n▪ That unit was not set up this turn.\n▪ No model in that unit moved more than 3\" this turn.\n▪ Friendly DARNATH LYSANDER/TOR GARADON units have the following ability:\n\n**Defensive Mastery**: At the start of each phase, this unit is **[gloss:sm-entrenched:entrenched]**.\n\nDarnath Lysander's/Tor Garadon's unit is always **[gloss:sm-entrenched:entrenched]**, regardless of the conditions listed above.\n\n**Restrictions:** Your army can include IMPERIAL FISTS units, but it cannot include any ADEPTUS ASTARTES units drawn from any other Chapter."
+        "body": "▪ While a friendly ADEPTUS ASTARTES unit is within a **[gloss:terrain-area:terrain area]**, that unit’s attacks can re-roll **[gloss:wound-roll:wound rolls]** of 1.\n▪ Friendly ADEPTUS ASTARTES units are **[gloss:sm-entrenched:entrenched]** while all of the following apply:\n▪ That unit is within a **terrain area**.\n▪ That unit was not set up this turn.\n▪ No model in that unit moved more than 3\" this turn.\n▪ Friendly DARNATH LYSANDER/TOR GARADON units have the following ability:\n\n**Defensive Mastery**: At the start of each phase, this unit is **entrenched**.\n\nDarnath Lysander's/Tor Garadon's unit is always **entrenched**, regardless of the conditions listed above.\n\n**Restrictions:** Your army can include IMPERIAL FISTS units, but it cannot include any ADEPTUS ASTARTES units drawn from any other Chapter."
       },
       "stratagems": [
         {
@@ -1146,7 +1146,7 @@ const en = {
           "flavor": "Codex doctrine when conducting an aggressive defence is to swiftly take up new positions whenever the foe finds your range.",
           "when": "Your opponent’s Shooting phase, when an enemy unit has shot.",
           "target": "One friendly **[gloss:unengaged:unengaged]** ADEPTUS ASTARTES INFANTRY/MOUNTED unit that lost a wound as a result of those attacks.",
-          "effect": "▪ Your unit can make a **[gloss:normal-move:normal move]** of up to D6\".\n▪ __Or:__ If your unit is **[gloss:sm-entrenched:entrenched]**, your unit can make a **[gloss:normal-move:normal move]** of up to D3+3\".\n\nYour unit is __not__ able to embark within a TRANSPORT until the end of the turn.",
+          "effect": "▪ Your unit can make a **[gloss:normal-move:normal move]** of up to D6\".\n▪ __Or:__ If your unit is **[gloss:sm-entrenched:entrenched]**, your unit can make a **normal move** of up to D3+3\".\n\nYour unit is __not__ able to embark within a TRANSPORT until the end of the turn.",
           "restrictions": ""
         },
         {
@@ -1168,7 +1168,7 @@ const en = {
           "flavor": "Aware of how vital it is that the defence line holds, these warriors fight even to their last breath.",
           "when": "Your opponent’s Shooting phase or the Fight phase, when an enemy unit targets a friendly ADEPTUS ASTARTES unit (excluding MONSTER/VEHICLE units).",
           "target": "That ADEPTUS ASTARTES unit.",
-          "effect": "▪ Attacks that target your unit with a **[gloss:strength:S]** greater than your unit’s **[gloss:toughness:T]** have -1 to **[gloss:wound-roll:wound rolls]**.\n▪ __Or:__ If your unit is **[gloss:sm-entrenched:entrenched]**, attacks that target your unit have -1 to **[gloss:wound-roll:wound rolls]**.",
+          "effect": "▪ Attacks that target your unit with a **[gloss:strength:S]** greater than your unit’s **[gloss:toughness:T]** have -1 to **[gloss:wound-roll:wound rolls]**.\n▪ __Or:__ If your unit is **[gloss:sm-entrenched:entrenched]**, attacks that target your unit have -1 to **wound rolls**.",
           "restrictions": ""
         },
         {
@@ -1179,7 +1179,7 @@ const en = {
           "flavor": "Steadfast and determined, the Imperial Fists favour methodical advances, securing and consolidating positions to establish battlefield dominance before turning their attention to the elimination of remaining foes.",
           "when": "Fight phase, when a friendly **[gloss:sm-entrenched:entrenched]** ADEPTUS ASTARTES INFANTRY unit is selected to make a **[gloss:consolidation:consolidation move]**.",
           "target": "That ADEPTUS ASTARTES INFANTRY unit.",
-          "effect": "You can select the **[gloss:objective-consolidation:objective consolidation]** mode for that **[gloss:consolidation:consolidation move]**, regardless of that **[gloss:consolidation:consolidation move]**’s Before Moving restrictions.\n\n**Designer’s Note:** This means your unit can move out of **[gloss:engagement-range:engagement range]** with enemy units, provided it meets the conditions of the\n\n**[gloss:objective-consolidation:objective consolidation mode]**.",
+          "effect": "You can select the **[gloss:objective-consolidation:objective consolidation]** mode for that **[gloss:consolidation:consolidation move]**, regardless of that **consolidation move**’s Before Moving restrictions.\n\n**Designer’s Note:** This means your unit can move out of **[gloss:engagement-range:engagement range]** with enemy units, provided it meets the conditions of the\n\n**objective consolidation mode**.",
           "restrictions": ""
         },
         {
@@ -1211,13 +1211,13 @@ const en = {
           "name": "Honour Indefatigable",
           "points": 10,
           "flavor": "This rare honour badge celebrates a warrior who refuses to give up, even in the face of apparently certain death.",
-          "body": "GRAVIS model only. (Once per battle, per army) At the end of a phase in which this model is **[gloss:destroyed:destroyed]**, roll one D6:\n▪ On a 2+, set this model back up on the battlefield as close as possible to where it was **[gloss:destroyed:destroyed]**, **[gloss:unengaged:unengaged]**, with 3 wounds remaining."
+          "body": "GRAVIS model only. (Once per battle, per army) At the end of a phase in which this model is **[gloss:destroyed:destroyed]**, roll one D6:\n▪ On a 2+, set this model back up on the battlefield as close as possible to where it was **destroyed**, **[gloss:unengaged:unengaged]**, with 3 wounds remaining."
         },
         {
           "name": "Defensive Mastery",
           "points": 10,
           "flavor": "Few officers of the Chapter can match this commander’s talent for cunning defensive troop dispositions.",
-          "body": "ADEPTUS ASTARTES model only. When both players have deployed their armies, you can redeploy up to three friendly ADEPTUS ASTARTES INFANTRY units. When doing so, you can set those units up in **[gloss:strategic-reserves:strategic reserves]**, regardless of how many units are already in **[gloss:strategic-reserves:strategic reserves]**."
+          "body": "ADEPTUS ASTARTES model only. When both players have deployed their armies, you can redeploy up to three friendly ADEPTUS ASTARTES INFANTRY units. When doing so, you can set those units up in **[gloss:strategic-reserves:strategic reserves]**, regardless of how many units are already in **strategic reserves**."
         }
       ]
     },
@@ -1232,7 +1232,7 @@ const en = {
       "rule": {
         "name": "Armoured Wrath",
         "flavor": "",
-        "body": "Each time a friendly ADEPTUS ASTARTES unit is **[gloss:selected-to-shoot:selected to shoot]** or **[gloss:selected-to-fight:selected to fight]** apply one of the following when resolving those attacks:\n▪ If that unit is within 6\" of a friendly CANNOK VAR/IRON FATHER FEIRROS unit you can:\n▪ Re-roll __one__ **[gloss:hit-roll:hit roll]**.\n▪ Re-roll __one__ **[gloss:wound-roll:wound roll]**.\n▪ Re-roll __one__ **[gloss:damage-roll:damage roll]**.\n▪ Otherwise you can:\n▪ Re-roll __one__ **[gloss:hit-roll:hit roll]**.\n▪ __Or:__ Re-roll __one__ **[gloss:wound-roll:wound roll]**.\n▪ __Or:__ Re-roll __one__ **[gloss:damage-roll:damage roll]**."
+        "body": "Each time a friendly ADEPTUS ASTARTES unit is **[gloss:selected-to-shoot:selected to shoot]** or **[gloss:selected-to-fight:selected to fight]** apply one of the following when resolving those attacks:\n▪ If that unit is within 6\" of a friendly CANNOK VAR/IRON FATHER FEIRROS unit you can:\n▪ Re-roll __one__ **[gloss:hit-roll:hit roll]**.\n▪ Re-roll __one__ **[gloss:wound-roll:wound roll]**.\n▪ Re-roll __one__ **[gloss:damage-roll:damage roll]**.\n▪ Otherwise you can:\n▪ Re-roll __one__ **hit roll**.\n▪ __Or:__ Re-roll __one__ **wound roll**.\n▪ __Or:__ Re-roll __one__ **damage roll**."
       },
       "stratagems": [
         {
@@ -1298,7 +1298,7 @@ const en = {
           "flavor": "There are many tales of machine spirits wreaking havoc on the foe, even after the crew of their vehicle are slain and critical systems are failing.",
           "when": "Your opponent’s Shooting phase, when an enemy unit that targeted a friendly **[gloss:unengaged:unengaged]** ADEPTUS ASTARTES VEHICLE unit has shot.",
           "target": "That ADEPTUS ASTARTES VEHICLE unit.",
-          "effect": "Your unit shoots using:\n▪ **[gloss:snap-shooting:Snap shooting]**.\n▪ __Or:__ If your unit is **[gloss:half-strength:at half-strength]**/**[gloss:half-strength:below half-strength]**, **[gloss:normal-shooting:normal shooting]**.\n\nWhile doing so your unit can only target that enemy unit.",
+          "effect": "Your unit shoots using:\n▪ **[gloss:snap-shooting:Snap shooting]**.\n▪ __Or:__ If your unit is **[gloss:half-strength:at half-strength]**/**below half-strength**, **[gloss:normal-shooting:normal shooting]**.\n\nWhile doing so your unit can only target that enemy unit.",
           "restrictions": ""
         }
       ],
@@ -1319,7 +1319,7 @@ const en = {
           "name": "Master of the Machine War",
           "points": 25,
           "flavor": "This commander is supremely gifted in the strategies of armoured warfare, understanding the capabilities of every war engine in the Chapter’s arsenal. Delivering precision orders, they ensure the vehicles under their command inflict the most punishing damage to the\n\nenemy even amidst complex manoeuvres.",
-          "body": "ADEPTUS ASTARTES model only.\n\nIn your Movement phase, you can select one **[gloss:visible:visible]** friendly ADEPTUS ASTARTES VEHICLE unit within 6” of this model and then select the **[gloss:sm-combat-doctrine:devastator doctrine]** or **[gloss:sm-combat-doctrine:tactical doctrine]**. That doctrine is active for that VEHICLE unit until the start of your next Command phase."
+          "body": "ADEPTUS ASTARTES model only.\n\nIn your Movement phase, you can select one **[gloss:visible:visible]** friendly ADEPTUS ASTARTES VEHICLE unit within 6” of this model and then select the **[gloss:sm-combat-doctrine:devastator doctrine]** or **tactical doctrine**. That doctrine is active for that VEHICLE unit until the start of your next Command phase."
         },
         {
           "name": "Adept of the Omnissiah",
@@ -1406,7 +1406,7 @@ const en = {
           "flavor": "Retreating from the fight, these warriors lure their enemies on before swiftly turning the tables and hurling themselves into their now overextended foe.",
           "when": "Your Command phase.",
           "target": "One friendly ADEPTUS ASTARTES INFANTRY unit.",
-          "effect": "The **[gloss:sm-combat-doctrine:tactical doctrine]** is active for your unit in addition to any other **[gloss:sm-combat-doctrine:combat doctrine]**, until the start of your next Command phase.",
+          "effect": "The **[gloss:sm-combat-doctrine:tactical doctrine]** is active for your unit in addition to any other **combat doctrine**, until the start of your next Command phase.",
           "restrictions": ""
         }
       ],
@@ -1447,7 +1447,7 @@ const en = {
       "rule": {
         "name": "Vulkan's Quest",
         "flavor": "Tireless in his pursuit of the Primarch’s legacy, Forgefather Vulkan He’stan annihilates any who impede his quest. Favouring swift, aggressive assaults, he and his warriors close rapidly with the enemy, destroying them at close range with ruthless efficiency",
-        "body": "▪ You can select the **[gloss:sm-combat-doctrine:devastator doctrine]** one additional time per battle.\n▪ Friendly ADEPTUS ASTARTES units’ ranged attacks that target a unit within 12”, have +1 **[gloss:strength:S]**.\n\nIf your army includes a VULKAN HE’STAN unit, friendly INFERNUS SQUAD units have the following:\n▪ When this unit is selected to make an **[gloss:advance:advance]/[gloss:fall-back-move:fall-back move]**, that **[gloss:advance:advance]/[gloss:fall-back-move:fall-back move]** does not prevent this unit from being **[gloss:eligible-to-act:eligible to start an action]**.\n▪ When this unit **[gloss:action:starts an action]**, that **[gloss:action:action]** does not prevent this unit from being **[gloss:eligible-to-shoot:eligible to shoot]**.\n\n**Restrictions:** Your army can include SALAMANDERS units, but it cannot include any ADEPTUS ASTARTES units drawn from any other Chapter."
+        "body": "▪ You can select the **[gloss:sm-combat-doctrine:devastator doctrine]** one additional time per battle.\n▪ Friendly ADEPTUS ASTARTES units’ ranged attacks that target a unit within 12”, have +1 **[gloss:strength:S]**.\n\nIf your army includes a VULKAN HE’STAN unit, friendly INFERNUS SQUAD units have the following:\n▪ When this unit is selected to make an **[gloss:advance:advance]/[gloss:fall-back-move:fall-back move]**, that **advance/fall-back move** does not prevent this unit from being **[gloss:eligible-to-act:eligible to start an action]**.\n▪ When this unit **[gloss:action:starts an action]**, that **action** does not prevent this unit from being **[gloss:eligible-to-shoot:eligible to shoot]**.\n\n**Restrictions:** Your army can include SALAMANDERS units, but it cannot include any ADEPTUS ASTARTES units drawn from any other Chapter."
       },
       "stratagems": [
         {
@@ -1513,7 +1513,7 @@ const en = {
           "flavor": "Having drawn their enemies in, Space Marine battle-brothers fall back and open fire at point-blank range before thundering forward to put any survivors to death.",
           "when": "Your Command phase.",
           "target": "One friendly ADEPTUS ASTARTES INFANTRY unit.",
-          "effect": "The **[gloss:sm-combat-doctrine:assault doctrine]** __or__ **[gloss:sm-combat-doctrine:tactical doctrine]** is active for your unit, until the start of your next Command phase.",
+          "effect": "The **[gloss:sm-combat-doctrine:assault doctrine]** __or__ **tactical doctrine** is active for your unit, until the start of your next Command phase.",
           "restrictions": ""
         }
       ],
@@ -1554,7 +1554,7 @@ const en = {
       "rule": {
         "name": "Storm-swift Onslaught",
         "flavor": "The White Scars are masters of high‑speed tactics and hit‑and‑run warfare. They do battle on the move and from the saddle, outwitting their enemies with breakneck manoeuvres and melting away one moment only to crash home with bone‑crushing force the next.",
-        "body": "▪ You can select the **[gloss:sm-combat-doctrine:assault doctrine]** __or__ **[gloss:sm-combat-doctrine:tactical doctrine]** one additional time per battle.\n▪ Friendly ADEPTUS ASTARTES MOUNTED/SPEEDER units have +1 to **[gloss:advance-roll:advance rolls]**.\n\nFriendly SUBODEN KHAN units have the following ability:\n\n**Wrath of the First Khan:** At the end of the Fight phase, if this unit was **[gloss:eligible-to-fight:eligible to fight]** this phase, you can use this ability. If you do:\n▪ If this unit is **[gloss:unengaged:unengaged]**, this unit can make a **[gloss:normal-move:normal move]**.\n▪ __Or:__ If this unit is **[gloss:engaged:engaged]**, this unit can make a **[gloss:fall-back-move:fall-back move]**.\n\n**Restrictions:** Your army can include WHITE SCARS units, but it cannot include any ADEPTUS ASTARTES units drawn from any other Chapter."
+        "body": "▪ You can select the **[gloss:sm-combat-doctrine:assault doctrine]** __or__ **tactical doctrine** one additional time per battle.\n▪ Friendly ADEPTUS ASTARTES MOUNTED/SPEEDER units have +1 to **[gloss:advance-roll:advance rolls]**.\n\nFriendly SUBODEN KHAN units have the following ability:\n\n**Wrath of the First Khan:** At the end of the Fight phase, if this unit was **[gloss:eligible-to-fight:eligible to fight]** this phase, you can use this ability. If you do:\n▪ If this unit is **[gloss:unengaged:unengaged]**, this unit can make a **[gloss:normal-move:normal move]**.\n▪ __Or:__ If this unit is **[gloss:engaged:engaged]**, this unit can make a **[gloss:fall-back-move:fall-back move]**.\n\n**Restrictions:** Your army can include WHITE SCARS units, but it cannot include any ADEPTUS ASTARTES units drawn from any other Chapter."
       },
       "stratagems": [
         {
@@ -1629,7 +1629,7 @@ const en = {
           "name": "Spearpoint Paragon",
           "points": 25,
           "flavor": "Decades of service within the White Scars First Company have helped this superlative warrior master the violent arts of high‑speed combat.",
-          "body": "ADEPTUS ASTARTES model only. This model’s melee attacks have:\n▪ +1 **[gloss:strength:S]** and **[gloss:armour-penetration:AP]**.\n▪ __Or:__ If this unit made a **[gloss:charge-move:charge move]** this turn, +2 **[gloss:strength:S]** and **[gloss:armour-penetration:AP]**."
+          "body": "ADEPTUS ASTARTES model only. This model’s melee attacks have:\n▪ +1 **[gloss:strength:S]** and **[gloss:armour-penetration:AP]**.\n▪ __Or:__ If this unit made a **[gloss:charge-move:charge move]** this turn, +2 **S** and **AP**."
         },
         {
           "name": "Stormseers' Wisdom",

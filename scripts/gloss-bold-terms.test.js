@@ -20,7 +20,16 @@ describe('gloss-bold-terms', () => {
   })
 
   it('leaves loadout headers, unknown terms and already-linked spans alone', () => {
-    for (const s of ['**This model is equipped with:** 1 Bolt Rifle.', '**vowed objective**', '**[gloss:engaged:engaged]**']) expect(g(s)).toBe(s)
+    for (const s of ['**This model is equipped with:** 1 Bolt Rifle.', '**vowed objective**', '**[gloss:engaged:engaged]**', 'PHOBOS**/**SCOUT SQUAD']) expect(g(s)).toBe(s)
+  })
+
+  it('links a term once per section, and again after each ### subheading', () => {
+    expect(g('**боевую доктрину** и **боевая доктрина**\n### Tactical Doctrine | Тактическая доктрина\n**боевой доктрине**', 'ru'))
+      .toBe('**[gloss:sm-combat-doctrine:боевую доктрину]** и **боевая доктрина**\n### Tactical Doctrine | Тактическая доктрина\n**[gloss:sm-combat-doctrine:боевой доктрине]**')
+  })
+
+  it('unwraps a repeat that is already a popover', () => {
+    expect(g('**[gloss:hit-roll:hit rolls]** and **[gloss:hit-roll:hit rolls]**')).toBe('**[gloss:hit-roll:hit rolls]** and **hit rolls**')
   })
 
   it('is idempotent', () => {

@@ -184,7 +184,7 @@ export default [
     "abilities": [
       {
         "name": "Feared Interrogator",
-        "text": "At the start of the Fight phase, each enemy CHARACTER unit within 6\" of this model makes a **[gloss:battle-shock-test:battle-shock roll]**, with -1 to that **[gloss:battle-shock-test:battle-shock roll]**."
+        "text": "At the start of the Fight phase, each enemy CHARACTER unit within 6\" of this model makes a **[gloss:battle-shock-test:battle-shock roll]**, with -1 to that **battle-shock roll**."
       },
       {
         "name": "Exemplar of Hate",
@@ -279,11 +279,11 @@ export default [
     "abilities": [
       {
         "name": "Masterful Tactician",
-        "text": "In your Movement phase, select up to one **[gloss:visible:visible]** friendly ADEPTUS ASTARTES unit within 9\" of this model, and select one **[gloss:sm-combat-doctrine:combat doctrine]**. That **[gloss:sm-combat-doctrine:combat doctrine]** is active for that unit until the start of your next Command phase."
+        "text": "In your Movement phase, select up to one **[gloss:visible:visible]** friendly ADEPTUS ASTARTES unit within 9\" of this model, and select one **[gloss:sm-combat-doctrine:combat doctrine]**. That **combat doctrine** is active for that unit until the start of your next Command phase."
       },
       {
         "name": "Watcher in the Dark (Once per battle, per unit)",
-        "text": "In any phase, when this unit suffers a **[gloss:mortal-wound:mortal wound]**, this unit can summon a Watcher in the Dark. If it does, this unit has [core:Feel No Pain 4+] against **[gloss:mortal-wound:mortal wounds]**."
+        "text": "In any phase, when this unit suffers a **[gloss:mortal-wound:mortal wound]**, this unit can summon a Watcher in the Dark. If it does, this unit has [core:Feel No Pain 4+] against **mortal wounds**."
       },
       {
         "name": "Supreme Grand Master",
@@ -1250,11 +1250,11 @@ export default [
         "options": [
           {
             "name": "Engulfing Fear (psychic level 1)",
-            "text": "In your Shooting phase, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **[gloss:battle-shocked:battle-shocked]**.\n▪ Select one enemy unit within 12” of this model. That unit makes a **[gloss:battle-shock-test:battle-shock roll]** with -1 to that **[gloss:battle-shock-test:battle-shock roll]**."
+            "text": "In your Shooting phase, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ Select one enemy unit within 12” of this model. That unit makes a **[gloss:battle-shock-test:battle-shock roll]** with -1 to that **battle-shock roll**."
           },
           {
             "name": "Whispers of the Shadow Forest (psychic level 1)",
-            "text": "When an enemy unit targets this unit, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **[gloss:battle-shocked:battle-shocked]**.\n▪ Attacks that target this unit have -1 to **[gloss:hit-roll:hit rolls]** until the end of the phase."
+            "text": "When an enemy unit targets this unit, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ Attacks that target this unit have -1 to **[gloss:hit-roll:hit rolls]** until the end of the phase."
           }
         ]
       }
@@ -1679,7 +1679,7 @@ export default [
       },
       {
         "name": "Master Strategist",
-        "text": "In your Command phase, you can use this ability. If you do, select one **[gloss:sm-combat-doctrine:combat doctrine]** to be active for this unit until the start of your next Command phase, __in addition__ to any other **[gloss:sm-combat-doctrine:combat doctrine]**."
+        "text": "In your Command phase, you can use this ability. If you do, select one **[gloss:sm-combat-doctrine:combat doctrine]** to be active for this unit until the start of your next Command phase, __in addition__ to any other **combat doctrine**."
       },
       {
         "name": "Primarch of the First Legion",
@@ -2238,7 +2238,7 @@ export default [
     "abilities": [
       {
         "name": "Stasis Bomb",
-        "text": "At the end of your opponent’s Fight phase, select one visible enemy unit (excluding AIRCRAFT/[core:Lone Operative] units) within 24\" of this unit. That enemy unit is **slowed** until the end of your opponent's next Movement phase:\n▪ While a unit is **slowed**, in your opponent's Movement phase, when that unit is **[gloss:selected-to-move:selected to move]**, unless that unit **[gloss:remain-stationary:remains stationary]**, roll one D6:\n▪ On a 1-4, that unit suffers D3 **[gloss:mortal-wound:mortal wounds]** and that unit has -2” **[gloss:move-characteristic:M]**.\n▪ On a 5-6, that unit suffers 2D3 **[gloss:mortal-wound:mortal wounds]** and that unit has -3” **[gloss:move-characteristic:M]**."
+        "text": "At the end of your opponent’s Fight phase, select one visible enemy unit (excluding AIRCRAFT/[core:Lone Operative] units) within 24\" of this unit. That enemy unit is **slowed** until the end of your opponent's next Movement phase:\n▪ While a unit is **slowed**, in your opponent's Movement phase, when that unit is **[gloss:selected-to-move:selected to move]**, unless that unit **[gloss:remain-stationary:remains stationary]**, roll one D6:\n▪ On a 1-4, that unit suffers D3 **[gloss:mortal-wound:mortal wounds]** and that unit has -2” **[gloss:move-characteristic:M]**.\n▪ On a 5-6, that unit suffers 2D3 **mortal wounds** and that unit has -3” **M**."
       }
     ],
     "composition": [

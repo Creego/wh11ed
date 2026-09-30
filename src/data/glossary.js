@@ -262,8 +262,8 @@ export const glossary = {
   },
   'move-type': {
     term: 'Move Type',
-    en: 'The kind of move being made — Normal, Advance, Fall Back or Charge.',
-    ru: 'Тип совершаемого манёвра — обычный манёвр, продвижение, отход или манёвр нападения.',
+    en: 'The kind of move being made; each has its own distance and restrictions. In your Movement phase: normal, advance or fall-back move. In the Charge phase: charge move. In the Fight phase: pile-in and consolidation moves. From a transport: disembark, emergency disembark, assault disembark and shock disembark moves. From reserves: ingress move. Others: surge move and scout move. A rule can name its own move type, which it then describes.',
+    ru: 'Вид совершаемого манёвра; у каждого своя дистанция и ограничения. В вашей фазе движения: обычный манёвр, продвижение или отступление. В фазе нападения: манёвр нападения. В фазе боя: манёвр сближения и манёвр консолидации. Из транспорта: манёвр высадки, экстренный, штурмовой и ударный манёвры высадки. Из резервов: манёвр прибытия. Другие: стремительный манёвр и разведывательный манёвр. Правило может ввести свой тип манёвра и тогда само его описывает.',
   },
   'normal-move': {
     term: 'Normal Move',

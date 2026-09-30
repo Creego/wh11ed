@@ -22,7 +22,7 @@ const en = {
     "id": "combat-doctrines",
     "name": "Combat Doctrines",
     "flavor": "",
-    "body": "At the start of your Command phase, you can select one **[gloss:sm-combat-doctrine:combat doctrine]** listed below. If you do, that **[gloss:sm-combat-doctrine:combat doctrine]** is active for friendly ADEPTUS ASTARTES units with this ability until the start of your next Command phase.\n\n### Assault Doctrine\nWhen this unit is selected to make an **[gloss:advance-move:advance move]**, that **[gloss:advance-move:advance move]** does not prevent this unit from being **[gloss:eligible-to-charge:eligible to declare a charge]**.\n\n### Devastator Doctrine\nThis unit’s ranged attacks have [ASSAULT].\n\n### Tactical Doctrine\nWhen this unit is selected to make a **[gloss:fall-back-move:fall-back move]**, that **[gloss:fall-back-move:fall-back move]** does not prevent this unit from being **[gloss:eligible-to-shoot:eligible to shoot]** and **[gloss:eligible-to-charge:eligible to declare a charge]**.\n\nUnless otherwise stated:\n▪ You can only select each **[gloss:sm-combat-doctrine:combat doctrine]** once per battle.\n▪ Only one **[gloss:sm-combat-doctrine:combat doctrine]** can be active for each unit. If a rule makes a **[gloss:sm-combat-doctrine:combat doctrine]** active for a unit, any **[gloss:sm-combat-doctrine:combat doctrine]** previously active for that unit is no longer active for that unit.\n\n### Transhuman Strategist\nAt the start of the battle round, if a model with this ability is your WARLORD, gain 1CP.\n\n### The Ravenwing\nThe following friendly ADEPTUS ASTARTES units have RAVENWING:\n▪ MOUNTED units.\n▪ VEHICLE FLY units.\n\n### The Deathwing\nThe following friendly ADEPTUS ASTARTES units have DEATHWING:\n▪ TERMINATOR units.\n▪ BLADEGUARD ANCIENT/BLADEGUARD VETERAN SQUAD/STERNGUARD VETERAN SQUAD/VANGUARD VETERAN SQUAD WITH JUMP PACKS units.\n▪ LAND RAIDER/LAND RAIDER CRUSADER/LAND RAIDER REDEEMER/REPULSOR/REPULSOR EXECUTIONER units.\n▪ DREADNOUGHT units."
+    "body": "At the start of your Command phase, you can select one **[gloss:sm-combat-doctrine:combat doctrine]** listed below. If you do, that **combat doctrine** is active for friendly ADEPTUS ASTARTES units with this ability until the start of your next Command phase.\n\n### Assault Doctrine\nWhen this unit is selected to make an **[gloss:advance-move:advance move]**, that **advance move** does not prevent this unit from being **[gloss:eligible-to-charge:eligible to declare a charge]**.\n\n### Devastator Doctrine\nThis unit’s ranged attacks have [ASSAULT].\n\n### Tactical Doctrine\nWhen this unit is selected to make a **[gloss:fall-back-move:fall-back move]**, that **fall-back move** does not prevent this unit from being **[gloss:eligible-to-shoot:eligible to shoot]** and **[gloss:eligible-to-charge:eligible to declare a charge]**.\n\nUnless otherwise stated:\n▪ You can only select each **[gloss:sm-combat-doctrine:combat doctrine]** once per battle.\n▪ Only one **combat doctrine** can be active for each unit. If a rule makes a **combat doctrine** active for a unit, any **combat doctrine** previously active for that unit is no longer active for that unit.\n\n### Transhuman Strategist\nAt the start of the battle round, if a model with this ability is your WARLORD, gain 1CP.\n\n### The Ravenwing\nThe following friendly ADEPTUS ASTARTES units have RAVENWING:\n▪ MOUNTED units.\n▪ VEHICLE FLY units.\n\n### The Deathwing\nThe following friendly ADEPTUS ASTARTES units have DEATHWING:\n▪ TERMINATOR units.\n▪ BLADEGUARD ANCIENT/BLADEGUARD VETERAN SQUAD/STERNGUARD VETERAN SQUAD/VANGUARD VETERAN SQUAD WITH JUMP PACKS units.\n▪ LAND RAIDER/LAND RAIDER CRUSADER/LAND RAIDER REDEEMER/REPULSOR/REPULSOR EXECUTIONER units.\n▪ DREADNOUGHT units."
   },
   detachments: [
     {
@@ -34,7 +34,7 @@ const en = {
       "rule": {
         "name": "Vowed Target",
         "flavor": "Whether its true significance is kept a secret or not, there is a singular prize here that the Inner Circle have come to either secure or destroy. They will pursue this strategic objective with cold ferocity.",
-        "body": "In your Command phase, you can use this ability. If you do, select one **[gloss:objective:objective]**. That **[gloss:objective:objective]** is your **vowed objective** until your next Command phase.\n▪ Friendly DEATHWING INFANTRY unit’s attacks that target an enemy unit within range of your **vowed objective** have +1 to **[gloss:wound-roll:wound rolls]**.\n\n**Restrictions:** Your army can include DARK ANGELS units, but it cannot include any ADEPTUS ASTARTES units drawn from any other Chapter."
+        "body": "In your Command phase, you can use this ability. If you do, select one **[gloss:objective:objective]**. That **objective** is your **vowed objective** until your next Command phase.\n▪ Friendly DEATHWING INFANTRY unit’s attacks that target an enemy unit within range of your **vowed objective** have +1 to **[gloss:wound-roll:wound rolls]**.\n\n**Restrictions:** Your army can include DARK ANGELS units, but it cannot include any ADEPTUS ASTARTES units drawn from any other Chapter."
       },
       "stratagems": [
         {
@@ -67,7 +67,7 @@ const en = {
           "flavor": "Channelling the strategic puissance and measured ferocity of their gene-sire, the veterans of the Unforgiven unleash a perfectly timed and utterly lethal storm of tightly controlled violence.",
           "when": "Your Charge phase, when a friendly DEATHWING unit ends a **[gloss:charge-move:charge move]**.",
           "target": "That DEATHWING unit.",
-          "effect": "Select one enemy unit **[gloss:engaged:engaged]** with your unit. If you do, roll one D6 for each model in your unit **[gloss:engaged:engaged]** with that enemy unit:\n▪ For each 3+, that enemy unit suffers 1 **[gloss:mortal-wound:mortal wound]** (to a maximum of 6 **[gloss:mortal-wound:mortal wounds]**).",
+          "effect": "Select one enemy unit **[gloss:engaged:engaged]** with your unit. If you do, roll one D6 for each model in your unit **engaged** with that enemy unit:\n▪ For each 3+, that enemy unit suffers 1 **[gloss:mortal-wound:mortal wound]** (to a maximum of 6 **mortal wounds**).",
           "restrictions": ""
         }
       ],
@@ -212,7 +212,7 @@ const en = {
           "flavor": "When the constituent elements of the Dark Angels fight as one, the enemy is often overwhelmed and torn apart by the Chapter’s tactical flexibility and mastery of rapid warfare.",
           "when": "Your Command phase.",
           "target": "One friendly DEATHWING/RAVENWING unit.",
-          "effect": "Select one **[gloss:sm-combat-doctrine:combat doctrine]**. That **[gloss:sm-combat-doctrine:combat doctrine]** is active for your unit until the start of your next Command phase.",
+          "effect": "Select one **[gloss:sm-combat-doctrine:combat doctrine]**. That **combat doctrine** is active for your unit until the start of your next Command phase.",
           "restrictions": ""
         },
         {
@@ -223,7 +223,7 @@ const en = {
           "flavor": "Those inducted into the Dark Angels’ Inner Circle will gladly give their lives in pursuit of victory, and to see the Fallen brought to justice.",
           "when": "Any phase, when a friendly DEATHWING/RAVENWING unit within range of an **[gloss:objective:objective]** is **[gloss:destroyed:destroyed]**.",
           "target": "That DEATHWING/RAVENWING unit. You can target that unit with this **[gloss:stratagem:stratagem]** even though it is **[gloss:destroyed:destroyed]**.",
-          "effect": "Select one **[gloss:objective:objective]**:\n▪ That no enemy units (excluding AIRCRAFT units) are within range of.\n▪ That your unit was controlling at the end of the previous phase.\n\nThat **[gloss:objective:objective]** is **[gloss:secured-objective:secured]**.",
+          "effect": "Select one **[gloss:objective:objective]**:\n▪ That no enemy units (excluding AIRCRAFT units) are within range of.\n▪ That your unit was controlling at the end of the previous phase.\n\nThat **objective** is **[gloss:secured-objective:secured]**.",
           "restrictions": ""
         }
       ],

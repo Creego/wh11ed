@@ -435,7 +435,7 @@ export default [
     "abilities": [
       {
         "name": "Terminatus Assault",
-        "text": "▪ This unit can re-roll **[gloss:charge-roll:charge rolls]**.\n▪ After this unit ends a **[gloss:charge-move:charge move]**, each enemy unit **[gloss:engaged:engaged]** with this unit makes a **[gloss:battle-shock-test:battle-shock roll]**, with -1 to that **[gloss:battle-shock-test:battle-shock roll]** if it's a NON-IMPERIUM/CHAOS unit."
+        "text": "▪ This unit can re-roll **[gloss:charge-roll:charge rolls]**.\n▪ After this unit ends a **[gloss:charge-move:charge move]**, each enemy unit **[gloss:engaged:engaged]** with this unit makes a **[gloss:battle-shock-test:battle-shock roll]**, with -1 to that **battle-shock roll** if it's a NON-IMPERIUM/CHAOS unit."
       },
       {
         "name": "Teleport Homer",
@@ -676,7 +676,7 @@ export default [
     "abilities": [
       {
         "name": "Death to the Alien",
-        "text": "This unit's attacks can:\n▪ Re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ __Or:__ If the target of those attacks does not have IMPERIUM/CHAOS, re-roll **[gloss:hit-roll:hit rolls]**."
+        "text": "This unit's attacks can:\n▪ Re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ __Or:__ If the target of those attacks does not have IMPERIUM/CHAOS, re-roll **hit rolls**."
       }
     ],
     "wargearAbilities": [
@@ -1019,7 +1019,7 @@ export default [
     "abilities": [
       {
         "name": "Death to the Alien",
-        "text": "This unit's attacks can:\n▪ Re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ __Or:__ If the target of those attacks does not have IMPERIUM/CHAOS, re-roll **[gloss:hit-roll:hit rolls]**."
+        "text": "This unit's attacks can:\n▪ Re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ __Or:__ If the target of those attacks does not have IMPERIUM/CHAOS, re-roll **hit rolls**."
       }
     ],
     "wargearAbilities": [
@@ -1373,7 +1373,7 @@ export default [
     "abilities": [
       {
         "name": "Fortis Doctrines",
-        "text": "This unit's attacks that target a unit\n▪ **[gloss:below-starting-strength:Below starting strength]**, have +1 to **[gloss:hit-roll:hit rolls]**.\n▪ __Or:__ at or **[gloss:half-strength:below half-strength]** have +1 to **[gloss:hit-roll:hit rolls]** and **[gloss:wound-roll:wound rolls]**."
+        "text": "This unit's attacks that target a unit\n▪ **[gloss:below-starting-strength:Below starting strength]**, have +1 to **[gloss:hit-roll:hit rolls]**.\n▪ __Or:__ at or **[gloss:half-strength:below half-strength]** have +1 to **hit rolls** and **[gloss:wound-roll:wound rolls]**."
       }
     ],
     "composition": [
@@ -1621,7 +1621,7 @@ export default [
     "abilities": [
       {
         "name": "Indomitor Doctrines",
-        "text": "▪ This unit's ranged attacks that target the closest eligible enemy unit, have +1 **[gloss:strength:S]**.\n▪ If this unit made a **[gloss:charge-move:charge move]** this turn, this unit's melee attacks have +1 **[gloss:strength:S]**."
+        "text": "▪ This unit's ranged attacks that target the closest eligible enemy unit, have +1 **[gloss:strength:S]**.\n▪ If this unit made a **[gloss:charge-move:charge move]** this turn, this unit's melee attacks have +1 **S**."
       }
     ],
     "composition": [
@@ -2244,7 +2244,7 @@ export default [
       },
       {
         "name": "Strategic Knowledge",
-        "text": "▪ This unit’s ranged attacks have [ASSAULT].\n▪ When this unit is selected to make an **[gloss:advance-move:advance move]**, that **[gloss:advance-move:advance move]** does not prevent this unit from being **[gloss:eligible-to-charge:eligible to declare a charge]**.\n▪ When this unit is selected to make a **[gloss:fall-back-move:fall-back move]**, that **[gloss:fall-back-move:fall-back move]** does not prevent this unit from being **[gloss:eligible-to-shoot:eligible to shoot]** and **[gloss:eligible-to-charge:eligible to declare a charge]**."
+        "text": "▪ This unit’s ranged attacks have [ASSAULT].\n▪ When this unit is selected to make an **[gloss:advance-move:advance move]**, that **advance move** does not prevent this unit from being **[gloss:eligible-to-charge:eligible to declare a charge]**.\n▪ When this unit is selected to make a **[gloss:fall-back-move:fall-back move]**, that **fall-back move** does not prevent this unit from being **[gloss:eligible-to-shoot:eligible to shoot]** and **eligible to declare a charge**."
       },
       {
         "name": "Purgatus Quarry",

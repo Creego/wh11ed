@@ -22,7 +22,7 @@ const en = {
     "id": "combat-doctrines",
     "name": "Combat Doctrines",
     "flavor": "",
-    "body": "At the start of your Command phase, you can select one **[gloss:sm-combat-doctrine:combat doctrine]** listed below. If you do, that **[gloss:sm-combat-doctrine:combat doctrine]** is active for friendly ADEPTUS ASTARTES units with this ability until the start of your next Command phase.\n\n### Assault Doctrine\nWhen this unit is selected to make an **[gloss:advance-move:advance move]**, that **[gloss:advance-move:advance move]** does not prevent this unit from being **[gloss:eligible-to-charge:eligible to declare a charge]**.\n\n### Devastator Doctrine\nThis unit’s ranged attacks have [ASSAULT].\n\n### Tactical Doctrine\nWhen this unit is selected to make a **[gloss:fall-back-move:fall-back move]**, that **[gloss:fall-back-move:fall-back move]** does not prevent this unit from being **[gloss:eligible-to-shoot:eligible to shoot]** and **[gloss:eligible-to-charge:eligible to declare a charge]**.\n\nUnless otherwise stated:\n▪ You can only select each **[gloss:sm-combat-doctrine:combat doctrine]** once per battle.\n▪ Only one **[gloss:sm-combat-doctrine:combat doctrine]** can be active for each unit. If a rule makes a **[gloss:sm-combat-doctrine:combat doctrine]** active for a unit, any **[gloss:sm-combat-doctrine:combat doctrine]** previously active for that unit is no longer active for that unit.\n\n### Transhuman Strategist\nAt the start of the battle round, if a model with this ability is your WARLORD, gain 1CP.\n\n### Heirs of Sigismund\n▫ Your army cannot include any ADEPTUS ASTARTES PSYKER models.\n▫ Your army cannot include the following datasheets from Codex: Space Marines: GLADIATOR LANCER; GLADIATOR REAPER; GLADIATOR VALIANT; IMPULSOR; REPULSOR; REPULSOR EXECUTIONER."
+    "body": "At the start of your Command phase, you can select one **[gloss:sm-combat-doctrine:combat doctrine]** listed below. If you do, that **combat doctrine** is active for friendly ADEPTUS ASTARTES units with this ability until the start of your next Command phase.\n\n### Assault Doctrine\nWhen this unit is selected to make an **[gloss:advance-move:advance move]**, that **advance move** does not prevent this unit from being **[gloss:eligible-to-charge:eligible to declare a charge]**.\n\n### Devastator Doctrine\nThis unit’s ranged attacks have [ASSAULT].\n\n### Tactical Doctrine\nWhen this unit is selected to make a **[gloss:fall-back-move:fall-back move]**, that **fall-back move** does not prevent this unit from being **[gloss:eligible-to-shoot:eligible to shoot]** and **[gloss:eligible-to-charge:eligible to declare a charge]**.\n\nUnless otherwise stated:\n▪ You can only select each **[gloss:sm-combat-doctrine:combat doctrine]** once per battle.\n▪ Only one **combat doctrine** can be active for each unit. If a rule makes a **combat doctrine** active for a unit, any **combat doctrine** previously active for that unit is no longer active for that unit.\n\n### Transhuman Strategist\nAt the start of the battle round, if a model with this ability is your WARLORD, gain 1CP.\n\n### Heirs of Sigismund\n▫ Your army cannot include any ADEPTUS ASTARTES PSYKER models.\n▫ Your army cannot include the following datasheets from Codex: Space Marines: GLADIATOR LANCER; GLADIATOR REAPER; GLADIATOR VALIANT; IMPULSOR; REPULSOR; REPULSOR EXECUTIONER."
   },
   detachments: [
     {
@@ -34,7 +34,7 @@ const en = {
       "rule": {
         "name": "Templar Vows",
         "flavor": "On the eve of battle, the Black Templars gather to be led in prayer and contemplation by their champions. United in their hatred of the foe, they swear a mighty vow to uphold in the battle ahead.",
-        "body": "At the start of the first battle round, you can select one **Vow** listed below. That **Vow** is active for friendly ADEPTUS ASTARTES units until the end of the battle.\n\n### Abhor the Witch, Destroy the Witch\nThis unit’s melee attacks that target a **[gloss:psyker:PSYKER]** unit:\n▪ Have [PRECISION].\n▪ Have [LANCE].\n\n### Accept Any Challenge, No Matter the Odds\nFriendly melee attacks that target a unit with a **[gloss:toughness:T]** greater than this unit’s **[gloss:strength:S]** have +1 to **[gloss:wound-roll:wound rolls]**.\n\n### Uphold the Honour of the Emperor\nFriendly INFANTRY units have:\n▪ At the end of your Movement phase, if this unit is controlling an **[gloss:objective:objective]**, that **[gloss:objective:objective]** is **[gloss:secured-objective:secured]**.\n▪ When this unit is selected to make an **[gloss:advance-move:advance move]**, that **[gloss:advance-move:advance move]** does not prevent this unit from being **[gloss:eligible-to-act:eligible to start an action]**.\n\n**Restrictions:** Your army can include BLACK TEMPLARS units, but it cannot include any ADEPTUS ASTARTES units drawn from any other Chapter."
+        "body": "At the start of the first battle round, you can select one **Vow** listed below. That **Vow** is active for friendly ADEPTUS ASTARTES units until the end of the battle.\n\n### Abhor the Witch, Destroy the Witch\nThis unit’s melee attacks that target a **[gloss:psyker:PSYKER]** unit:\n▪ Have [PRECISION].\n▪ Have [LANCE].\n\n### Accept Any Challenge, No Matter the Odds\nFriendly melee attacks that target a unit with a **[gloss:toughness:T]** greater than this unit’s **[gloss:strength:S]** have +1 to **[gloss:wound-roll:wound rolls]**.\n\n### Uphold the Honour of the Emperor\nFriendly INFANTRY units have:\n▪ At the end of your Movement phase, if this unit is controlling an **[gloss:objective:objective]**, that **objective** is **[gloss:secured-objective:secured]**.\n▪ When this unit is selected to make an **[gloss:advance-move:advance move]**, that **advance move** does not prevent this unit from being **[gloss:eligible-to-act:eligible to start an action]**.\n\n**Restrictions:** Your army can include BLACK TEMPLARS units, but it cannot include any ADEPTUS ASTARTES units drawn from any other Chapter."
       },
       "stratagems": [
         {
@@ -45,7 +45,7 @@ const en = {
           "flavor": "The warrior priests of a crusade drive Sigismund’s heirs into the heart of battle, daring the greatest abominations to face their spiritual strength.",
           "when": "Fight phase, when a friendly CHAPLAIN/JUDICIAR unit is **[gloss:selected-to-fight:selected to fight]**.",
           "target": "That CHAPLAIN/JUDICIAR unit.",
-          "effect": "▪ Your unit’s melee attacks can re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ __Or:__ Your unit’s melee attacks that target a MONSTER/VEHICLE unit can re-roll **[gloss:hit-roll:hit rolls]** of 1 and **[gloss:wound-roll:wound rolls]** of 1.",
+          "effect": "▪ Your unit’s melee attacks can re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ __Or:__ Your unit’s melee attacks that target a MONSTER/VEHICLE unit can re-roll **hit rolls** of 1 and **[gloss:wound-roll:wound rolls]** of 1.",
           "restrictions": ""
         },
         {
@@ -78,7 +78,7 @@ const en = {
           "flavor": "To face the Emperor’s transhuman crusaders as they chant their litanies of detestation can chill the soul.",
           "when": "Your opponent’s Charge phase, when an enemy unit selects **[gloss:charge-target:charge targets]**.",
           "target": "One ADEPTUS ASTARTES INFANTRY unit that was selected as a **[gloss:charge-target:charge target]** by that enemy unit this phase.",
-          "effect": "That enemy unit must make a **[gloss:battle-shock-test:battle-shock roll]**, with -1 to that **[gloss:battle-shock-test:battle-shock roll]**.",
+          "effect": "That enemy unit must make a **[gloss:battle-shock-test:battle-shock roll]**, with -1 to that **battle-shock roll**.",
           "restrictions": ""
         },
         {
@@ -151,7 +151,7 @@ const en = {
           "flavor": "With roared litanies and incendiary hatred, the Sword Brethren plunge into their foe like a white-hot blade, their armoured momentum cracking armour, crushing bones, and trampling the foe underfoot.",
           "when": "Your Charge phase, when a friendly SWORD BRETHREN SQUAD unit ends a **[gloss:charge-move:charge move]**.",
           "target": "That SWORD BRETHREN SQUAD.",
-          "effect": "Select one enemy unit **[gloss:engaged:engaged]** with your unit. Roll one D6 for each model in your unit **[gloss:engaged:engaged]** with that enemy unit:\n▪ For each 4+, that enemy unit suffers 1 **[gloss:mortal-wound:mortal wound]** (to a maximum of 6 **[gloss:mortal-wound:mortal wounds]**).",
+          "effect": "Select one enemy unit **[gloss:engaged:engaged]** with your unit. Roll one D6 for each model in your unit **engaged** with that enemy unit:\n▪ For each 4+, that enemy unit suffers 1 **[gloss:mortal-wound:mortal wound]** (to a maximum of 6 **mortal wounds**).",
           "restrictions": ""
         },
         {
@@ -201,7 +201,7 @@ const en = {
       "rule": {
         "name": "Purge and Sanctify",
         "flavor": "As the battle‑brothers of a Vindication Task Force purge the Emperor’s domain in fire and blood, they see their holy quest as recovering Humanity’s rightful dominion. They scour the stain of the unclean, topple false idols, breach strongholds of unholy faith and plant the crusade’s standards in their place, branding such sites with the sacred icons of their brotherhood.",
-        "body": "Each time a friendly CRUSADER SQUAD unit makes a **[gloss:surge-move:surge move]**, instead of selecting a **[gloss:surge-target:surge target]**, you can select the closest **[gloss:objective:objective]** to that unit. When that unit makes that **[gloss:surge-move:surge move]**, each model in that unit must end that **[gloss:surge-move:surge move]** as close as possible to that **[gloss:objective:objective]** instead.\n\n**Restrictions:** Your army can include BLACK TEMPLARS units, but it cannot include any ADEPTUS ASTARTES units drawn from any other Chapter."
+        "body": "Each time a friendly CRUSADER SQUAD unit makes a **[gloss:surge-move:surge move]**, instead of selecting a **[gloss:surge-target:surge target]**, you can select the closest **[gloss:objective:objective]** to that unit. When that unit makes that **surge move**, each model in that unit must end that **surge move** as close as possible to that **objective** instead.\n\n**Restrictions:** Your army can include BLACK TEMPLARS units, but it cannot include any ADEPTUS ASTARTES units drawn from any other Chapter."
       },
       "stratagems": [
         {
@@ -234,7 +234,7 @@ const en = {
           "flavor": "For all their zealous fury, the Black Templars are Space Marines still, capable of adapting their strategies in the midst of battle to ensure the foe’s destruction.",
           "when": "Your Command phase.",
           "target": "One friendly CRUSADER SQUAD unit.",
-          "effect": "Select one **[gloss:sm-combat-doctrine:combat doctrine]**. That **[gloss:sm-combat-doctrine:combat doctrine]** is active for your unit until the start of your next Command phase.",
+          "effect": "Select one **[gloss:sm-combat-doctrine:combat doctrine]**. That **combat doctrine** is active for your unit until the start of your next Command phase.",
           "restrictions": ""
         }
       ],
@@ -243,7 +243,7 @@ const en = {
           "name": "Oathbound Exemplar",
           "points": 10,
           "flavor": "With a ceaseless and booming oratory, this commander exhorts his warriors in their duty to the Emperor. Honour, he declaims, must be pursued relentlessly.",
-          "body": "ADEPTUS ASTARTES INFANTRY unit only. When this unit is selected to make an **[gloss:advance:advance]/[gloss:fall-back-move:fall-back move]**, that **[gloss:advance:advance]/[gloss:fall-back-move:fall-back move]** does not prevent this unit from being **[gloss:eligible-to-act:eligible to start an action]**."
+          "body": "ADEPTUS ASTARTES INFANTRY unit only. When this unit is selected to make an **[gloss:advance:advance]/[gloss:fall-back-move:fall-back move]**, that **advance/fall-back move** does not prevent this unit from being **[gloss:eligible-to-act:eligible to start an action]**."
         },
         {
           "name": "Righteous Fervour (Upgrade)",
