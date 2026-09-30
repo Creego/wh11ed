@@ -1041,7 +1041,8 @@ export default [
         "w": "24",
         "ld": "6+",
         "oc": "8",
-        "inv": "5+"
+        "inv": "5+",
+        "invNote": "* Against ranged attacks only"
       }
     ],
     "ranged": [
