@@ -367,6 +367,8 @@ export default {
     abilities: {
       'Blood Surge':
         'В фазе стрельбы вашего оппонента, когда вражеский юнит отстрелялся, если модель этого юнита была уничтожена в результате этих атак, этот юнит может совершить рывок (Surge move) до D6+2".',
+      'Murderous Charge':
+        'Если этот юнит совершил **манёвр нападения** в этот ход, атаки ближнего боя этого юнита имеют +1 **S**.',
     },
     wargear: {
       'Icon of Khorne': ICON_OF_KHORNE,
@@ -508,6 +510,7 @@ export const abilityNamesRu = {
   'The Betrayer': 'Предатель',
   'Berzerker Frenzy': 'Берсеркерское неистовство',
   'Blood Surge': 'Кровавый порыв',
+  'Murderous Charge': 'Смертоносный натиск',
   'Idol of Blessed Blood': 'Идол благословенной крови',
   'Super-heavy War Engine': 'Сверхтяжёлая боевая машина',
   'Fire Riders': 'Огненные всадники',
