@@ -1042,7 +1042,7 @@ export default [
         "ld": "6+",
         "oc": "8",
         "inv": "5+",
-        "invNote": "* Against ranged attacks only"
+        "invNote": "* This model has a 5+ invulnerable save against ranged attacks."
       }
     ],
     "ranged": [

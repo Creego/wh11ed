@@ -355,3 +355,19 @@ export function diffByName(label, wh11edList, appdataList, nameOf11, nameOfApp, 
   }
   return lines
 }
+
+// The units Codex: Space Marines moved into Legends (Predators, Razorback, Stormraven…) came through
+// 963 with their wargear instructions TWICE: the new ones, which name the sheet's own Title Case
+// items ("…Twin Heavy Bolter can be replaced with 1 Twin Lascannon."), and the old codex ones, led
+// by "■" and in the old lower case ("■ …twin heavy bolter can be replaced with 1 twin lascannon.").
+// On a sheet that mixes the two, a "■" line is dropped when an unmarked line says nearly the same
+// thing (word overlap ≥ 0.5); one without such a twin is a real instruction and stays.
+const WG_STOP = new Set(['the', 'can', 'with', 'this', 'and', 'model', 'models', 'replaced', 'following', 'one', 'each', 'their'])
+const wgWords = (s) => new Set(s.toLowerCase().replace(/^■\s*/, '').replace(/’/g, "'").replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter((w) => w.length > 2 && !WG_STOP.has(w)))
+const wgOverlap = (a, b) => [...a].filter((x) => b.has(x)).length / new Set([...a, ...b]).size
+export function currentWargearRules(rules) {
+  const marked = (r) => /^■/.test(r.rules.trim())
+  const plain = rules.filter((r) => !marked(r))
+  if (!plain.length || plain.length === rules.length) return rules
+  return rules.filter((r) => !marked(r) || !plain.some((p) => wgOverlap(wgWords(r.rules), wgWords(p.rules)) >= 0.5))
+}

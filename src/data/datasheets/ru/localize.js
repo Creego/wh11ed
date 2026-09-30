@@ -76,6 +76,28 @@ const SHARED_RULE_TEXTS = {
   },
 }
 
+// RU text of the condition printed under an invulnerable save (`profiles[].invNote` — "* Against
+// ranged attacks only"). Fourteen wordings cover every note in the data, so they are translated
+// here once, keyed by the exact English (leading asterisk and case aside — the data spells both
+// ways) the same way SHARED_RULE_TEXTS is: a note worded any other way stays English, and
+// `npm run parity` names it. Until 2026-10 no note was translated at all.
+const INV_NOTES_RU = {
+  'against ranged attacks only': 'Только против дальнобойных атак',
+  'against melee attacks only': 'Только против атак ближнего боя',
+  'this model has a 5+ invulnerable save against ranged attacks.': 'Эта модель имеет неуязвимый спас-бросок 5+ против дальнобойных атак.',
+  '4+ against melee attacks': '4+ против атак ближнего боя',
+  '4+ against melee attacks only': '4+ только против атак ближнего боя',
+  'this invulnerable save is improved to 4+ against melee attacks.': 'Против атак ближнего боя этот неуязвимый спас-бросок улучшается до 4+.',
+  'this invulnerable save is improved to 4+ against psychic attacks.': 'Против Psychic Attacks этот неуязвимый спас-бросок улучшается до 4+.',
+  'see shadowfield ability (below)': 'См. способность «Теневое поле» (ниже)',
+  'see shadow field ability (below)': 'См. способность «Теневое поле» (ниже)',
+  'ibram gaunt only.': 'Только Ibram Gaunt.',
+  'inquisitor ostromandeus only.': 'Только Inquisitor Ostromandeus.',
+  'traitor enforcer model only.': 'Только модель Traitor Enforcer.',
+  'excluding the cyber-mastiff.': 'Кроме Cyber-mastiff.',
+}
+export const invNoteRu = (note) => INV_NOTES_RU[String(note || '').replace(/^\*\s*/, '').trim().toLowerCase()] || null
+
 // RU body text for the recurring ALL-CAPS structural `rules` plates (Warlord constraints,
 // attach-swap rules, transport/order mechanics, …), keyed by datasheet **id**. These plates
 // are the same rule wherever they appear, so centralising them here translates all 19
@@ -180,6 +202,9 @@ export function localizeSheet(en, overlay, abilityNamesRu) {
   if (o.options) s.options = o.options
   if (o.damaged) s.damaged = { ...en.damaged, ...o.damaged }
   if (o.leader) s.leader = { ...en.leader, ...o.leader }
+  if (en.profiles?.some((p) => p.invNote)) {
+    s.profiles = en.profiles.map((p) => (p.invNote && invNoteRu(p.invNote) ? { ...p, invNote: invNoteRu(p.invNote) } : p))
+  }
 
   // Abilities: translate the display name in the header from the global map and swap in the
   // translated text from this sheet's per-list overlay map, keyed by English name. An

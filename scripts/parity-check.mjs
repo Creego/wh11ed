@@ -46,6 +46,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { ROOT, loadModule } from './lib/sync-common.mjs'
+import { localizeSheet } from '../src/data/datasheets/ru/localize.js'
 
 const args = process.argv.slice(2)
 const only = (() => {
@@ -460,6 +461,21 @@ if (!only) {
       if (!pool.has(key)) {
         errors.push(`datasheets/ru/${slug}.js abilityNamesRu: "${key}" names no ability on any ${slug} datasheet — the header it was written for is gone`)
       }
+    }
+
+    // The note under an invulnerable save is translated by one shared map in localizeSheet (not by
+    // the overlay), so a note worded a new way reaches a Russian reader in English and nothing
+    // above would notice — which is how every one of them read until 2026-10. Ask localizeSheet.
+    for (const u of en) {
+      if (!(u.profiles || []).some((p) => p.invNote)) continue
+      const ru = localizeSheet(u, overlay[u.id], ruMod?.abilityNamesRu)
+      u.profiles.forEach((p, i) => {
+        if (!p.invNote) return
+        pairs++
+        if (ru.profiles?.[i]?.invNote === p.invNote) {
+          errors.push(`${slug}/${u.id}.profiles[${i}].invNote: "${p.invNote}" has no RU — add its wording to INV_NOTES_RU in datasheets/ru/localize.js`)
+        }
+      })
     }
   }
 

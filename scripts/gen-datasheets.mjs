@@ -17,7 +17,7 @@
 // MFM's copy-tax tiers on top. Nothing here is translated: the RU overlay is a separate pass.
 import fs from 'node:fs'
 import path from 'node:path'
-import { ROOT, APPDATA, SLUG_MAP, norm, appdataToMarkup, appdataToParagraphs, loadJson, loadModule, table, nameOfEn, combatPatrolNames } from './lib/sync-common.mjs'
+import { ROOT, APPDATA, SLUG_MAP, norm, currentWargearRules, appdataToMarkup, appdataToParagraphs, loadJson, loadModule, table, nameOfEn, combatPatrolNames } from './lib/sync-common.mjs'
 import { slugify } from '../src/data/slugify.js'
 
 const slug = process.argv[2]
@@ -94,22 +94,6 @@ function compositionAndLoadout(html) {
 // through miniature.json — by characteristics, since a statline carries no id of its own.
 const miniatures = new Map(table('miniature.json').map((m) => [m.id, m]))
 const MINI_STATS = [['M', 'movement'], ['T', 'toughness'], ['Sv', 'save'], ['W', 'wounds'], ['Ld', 'leadership'], ['OC', 'objectiveControl']]
-// The units Codex: Space Marines moved into Legends (Predators, Razorback, Stormraven…) came through
-// 963 with their wargear instructions TWICE: the new ones, which name the sheet's own Title Case
-// items ("…Twin Heavy Bolter can be replaced with 1 Twin Lascannon."), and the old codex ones, led
-// by "■" and in the old lower case ("■ …twin heavy bolter can be replaced with 1 twin lascannon.").
-// On a sheet that mixes the two, a "■" line is dropped when an unmarked line says nearly the same
-// thing (word overlap ≥ 0.5); one without such a twin is a real instruction and stays.
-const STOP = new Set(['the', 'can', 'with', 'this', 'and', 'model', 'models', 'replaced', 'following', 'one', 'each', 'their'])
-const words = (s) => new Set(s.toLowerCase().replace(/^■\s*/, '').replace(/’/g, "'").replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter((w) => w.length > 2 && !STOP.has(w)))
-const overlap = (a, b) => [...a].filter((x) => b.has(x)).length / new Set([...a, ...b]).size
-function currentWargearRules(rules) {
-  const marked = (r) => /^■/.test(r.rules.trim())
-  const plain = rules.filter((r) => !marked(r))
-  if (!plain.length || plain.length === rules.length) return rules
-  return rules.filter((r) => !marked(r) || !plain.some((p) => overlap(words(r.rules), words(p.rules)) >= 0.5))
-}
-
 function invFor(ds) {
   const saves = ds.invulnerableSaves || []
   const out = new Map() // statline index → { inv, invNote? }
@@ -119,7 +103,10 @@ function invFor(ds) {
     const value = s.save || s.rangedSave || s.meleeSave
     if (!value) continue
     const v = { inv: value }
-    if (!s.save) v.invNote = s.rules ? `* ${appdataToMarkup(s.rules).replace(/\*/g, '').trim()}` : `* Against ${s.rangedSave ? 'ranged' : 'melee'} attacks only`
+    // The condition is written whenever appdata prints one — also beside a plain `save`. Keying it
+    // off `!s.save` alone dropped the Astraeus' "…against ranged attacks." (2026-10).
+    if (s.rules) v.invNote = `* ${appdataToMarkup(s.rules).replace(/\*/g, '').trim()}`
+    else if (!s.save) v.invNote = `* Against ${s.rangedSave ? 'ranged' : 'melee'} attacks only`
     if (!s.miniatureId) { all(v); continue }
     const mini = miniatures.get(s.miniatureId)
     const hits = (ds.statlines || []).map((st, i) => (mini && MINI_STATS.every(([a, b]) => String(st[a]) === String(mini[b])) ? i : -1)).filter((i) => i >= 0)
