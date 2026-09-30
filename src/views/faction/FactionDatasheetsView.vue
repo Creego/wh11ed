@@ -604,8 +604,10 @@ useFlipMove(() => favoriteUnitIds(slug.value), gridRoot)
 }
 
 .ds-legends-sub {
-  margin: 0.8rem 0 0.1rem;
-  font-size: 0.95rem;
+  margin: 0.9rem 0 0.15rem;
+  /* The display face runs narrow: at 0.95rem it read smaller than the body line above it. Sits
+     under the 1.3rem group head, above the body. */
+  font-size: 1.2rem;
   font-weight: 700;
 }
 
