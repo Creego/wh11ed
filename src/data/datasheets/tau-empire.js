@@ -493,7 +493,7 @@ export default [
     "points": [
       {
         "models": 10,
-        "points": 90
+        "points": 80
       }
     ],
     "flavor": "Where enemies must be driven from fortified positions or void ships boarded, there go the Fire Warriors of the Breacher Teams. Their pulse blasters are short ranged but lethal, and when coupled with the team’s tough armour, tactical discipline and specialist support drones, Breacher Teams become lethal at close quarters.",
@@ -6659,7 +6659,7 @@ export default [
     "points": [
       {
         "models": 2,
-        "points": 230
+        "points": 240
       }
     ],
     "flavor": "Shas’ri Locai and Shas’ri Lantar fight with an aggression rarely seen amongst the Fire caste. There is a focus to their ferocity, however, leaping close to their foes in jet-assisted bounds and unleashing punishing firepower before discharging kinetic shock waves built up by their neocapacitor shields and retreating again amidst the resultant carnage.",

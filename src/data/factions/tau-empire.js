@@ -264,7 +264,7 @@ If you have upgraded a model to have a drone, place a Drone token next to your m
       name: "Mont’ka",
       source: 'codex',
       dp: 3,
-      forceDisposition: "Priority Assets",
+      forceDisposition: "Take and Hold",
       rule: {
         name: "Killing Blow",
         flavor: "Mont’ka is the most aggressive style of T’au warfare. Its singular focus is the art of identifying a target of opportunity and attacking it swiftly with an overwhelming application of force.",

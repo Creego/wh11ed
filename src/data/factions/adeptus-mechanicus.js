@@ -497,7 +497,7 @@ This detachment has the DATA-PSALM tag and cannot be taken with another DATA-PSA
       id: 'cohort-cybernetica',
       name: 'Cohort Cybernetica',
       source: 'codex',
-      dp: 2,
+      dp: 1,
       forceDisposition: 'Take and Hold',
       rule: {
         name: 'Cyber-psalm Programming',
@@ -674,7 +674,7 @@ This detachment has the DATA-PSALM tag and cannot be taken with another DATA-PSA
       id: 'lords-of-the-forge',
       name: 'Lords of the Forge',
       source: 'faction-pack',
-      dp: 1,
+      dp: 2,
       forceDisposition: 'Priority Assets',
       rule: {
         name: 'War-form Mantles',
@@ -812,7 +812,7 @@ This detachment has the DATA-PSALM tag and cannot be taken with another DATA-PSA
       id: 'eradication-cohort',
       name: 'Eradication Cohort',
       source: 'faction-pack',
-      dp: 3,
+      dp: 2,
       forceDisposition: 'Purge the Foe',
       rule: {
         name: 'Murderous Imperative',

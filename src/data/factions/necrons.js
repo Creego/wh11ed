@@ -290,7 +290,7 @@ Each time a Destroyer Cult unit from your army makes a ranged attack that target
       id: 'canoptek-court',
       name: 'Canoptek Court',
       source: 'codex',
-      dp: 3,
+      dp: 2,
       forceDisposition: 'Take and Hold',
       rule: {
         name: 'Power Matrix',

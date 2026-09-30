@@ -137,7 +137,7 @@ Some Orks rules allow a unit to make a **pulse jet move**, as described below. (
         },
         {
           name: 'Targetin’ Gizmos (Upgrade)',
-          points: 10,
+          points: 25,
           flavor: 'These sparkly optiks and other elaborate gitfindas help focus a wagon’s dakka, but it takes a really clever Mek to know how to work them.',
           body: `WAGON unit only. While a BIG MEK model is embarked within this unit:
 ▪ This unit’s ranged attacks have [IGNORES COVER].
@@ -399,7 +399,7 @@ If you rolled two D6, when this unit has attacked, this unit makes one **hazard 
         },
         {
           name: 'Dreadherder',
-          points: 20,
+          points: 30,
           flavor: 'This Mek is deft at avoiding his creations’ feet and klaws.',
           body: `BIG MEK model only. While this model is within 3" of a friendly ORKS WALKER unit (excluding BIG MEK units):
 ▪ This model has **Lone Operative**.
@@ -1034,7 +1034,7 @@ In the Declare Battle Formations step, the bearer can be attached to a Flash Git
         },
         {
           name: 'Supa-snazz Dakka (Upgrade)',
-          points: 20,
+          points: 25,
           flavor: 'Coils of sparking wires, unstable propellant and throbbing power cells are just some of the extras which Flash Gitz rivet onto their snazzguns to kill the enemy in more over-the-top ways.',
           body: `FLASH GITZ unit only. This unit’s Snazzgun weapons have [RAPID FIRE 1].`,
         },

@@ -1612,12 +1612,12 @@ export default [
       {
         "models": 1,
         "points": 115,
-        "note": "1st"
+        "note": "1st-2nd"
       },
       {
         "models": 1,
-        "points": 135,
-        "note": "2nd+"
+        "points": 145,
+        "note": "3rd+"
       }
     ],
     "flavor": "Basilisks are self-propelled artillery tanks, armed with a fearsome earthshaker cannon. Able to keep pace with infantry advances – their barrels levelled for direct fire – or deploy to rear positions from which they unleash relentless shelling, Basilisks are amongst the most numerous of the Imperial Guard’s ordnance tanks.",
@@ -1735,22 +1735,22 @@ export default [
       {
         "models": 3,
         "points": 90,
-        "note": "1st"
+        "note": "1st-2nd"
       },
       {
         "models": 6,
         "points": 200,
-        "note": "1st"
+        "note": "1st-2nd"
       },
       {
         "models": 3,
-        "points": 105,
-        "note": "2nd+"
+        "points": 120,
+        "note": "3rd+"
       },
       {
         "models": 6,
-        "points": 215,
-        "note": "2nd+"
+        "points": 230,
+        "note": "3rd+"
       }
     ],
     "flavor": "The most obstinate of the Ogryn strain of abhumans, Bullgryns are clad in heavy armour and carry crude assault weaponry built to withstand the thunderous blows Bullgryns strike with them. A line of these heavily muscled humanoids, advancing in shield-lines from which shots bounce harmlessly, is a frightening sight.",
@@ -3748,7 +3748,8 @@ export default [
       "Squadron",
       "Transport",
       "Dedicated Transport",
-      "Centaur RSV"
+      "Centaur RSV",
+      "Frame"
     ],
     "factionKeywords": [
       "Astra Militarum"
@@ -4385,7 +4386,8 @@ export default [
       "Imperium",
       "Officer",
       "Commissar Graves",
-      "Vehicle"
+      "Vehicle",
+      "Frame"
     ],
     "factionKeywords": [
       "Astra Militarum"
@@ -4484,7 +4486,8 @@ export default [
       "Character",
       "Epic Hero",
       "Imperium",
-      "Commissar Graves on Foot"
+      "Commissar Graves on Foot",
+      "Officer"
     ],
     "factionKeywords": [
       "Astra Militarum"
@@ -4497,7 +4500,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 120
+        "points": 110
       }
     ],
     "flavor": "Few champions of the Imperium inspire the common soldiery as does Commissar Sebastian Yarrick. He can also tear a swathe through his enemies, delivering thunderous blows with his trophy power klaw, mowing them down with his storm bolter, and delivering laser blasts from his ocular augmetic, the so-called Bale Eye.",
@@ -5498,12 +5501,12 @@ export default [
       {
         "models": 1,
         "points": 125,
-        "note": "1st"
+        "note": "1st-2nd"
       },
       {
         "models": 1,
-        "points": 135,
-        "note": "2nd+"
+        "points": 145,
+        "note": "3rd+"
       }
     ],
     "flavor": "The sanctioned use of a Deathstrike – designated ‘Ordnance Extremis’ – is often an excessive measure to combat the Imperial Guard’s most heinous enemies. Its huge missile, capable of mounting various catastrophic payloads, is able to visit the undimmed wrath of the Emperor on a foe half a world away.",
@@ -7210,12 +7213,12 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 125,
+        "points": 115,
         "note": "1st-2nd"
       },
       {
         "models": 1,
-        "points": 135,
+        "points": 125,
         "note": "3rd+"
       }
     ],
@@ -7686,7 +7689,8 @@ export default [
       "Imperium",
       "Smoke",
       "Squadron",
-      "Hippogriff AFV"
+      "Hippogriff AFV",
+      "Frame"
     ],
     "factionKeywords": [
       "Astra Militarum"
@@ -10556,7 +10560,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 75
+        "points": 70
       }
     ],
     "flavor": "As is tradition in the armies of Krieg, Lord Marshal Varnan Dreir leads from the front, despite his lofty rank, often to the horror of his superiors. That he and his loyal Krieg steed have emerged from so many battles alive and victorious speaks to his skill as both commander and cavalry soldier.",
@@ -10658,7 +10662,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 130
+        "points": 120
       }
     ],
     "flavor": "Arcadian Leontus wields entire armies of the Astra Militarum against apocalyptic invasions and sector-wide insurgencies. A war scholar and master tactician, the Lord Commander Solar bestrides the battlefield on his cybernetic stallion, Konstantin, levelling his blade at the foe as he bellows his orders.",
@@ -12030,12 +12034,12 @@ export default [
       {
         "models": 1,
         "points": 150,
-        "note": "1st"
+        "note": "1st-2nd"
       },
       {
         "models": 1,
-        "points": 170,
-        "note": "2nd+"
+        "points": 180,
+        "note": "3rd+"
       }
     ],
     "flavor": "Capable of firing its limited supply of storm eagle rockets to unleash furious barrages at incredible distances, the Manticore can lay waste to enemy formations. Multiple warheads release a moment before each rocket’s impact, signalling the panicking foe’s doom no matter how far they try to flee at the last moment.",
@@ -18431,12 +18435,12 @@ export default [
       {
         "models": 1,
         "points": 95,
-        "note": "1st"
+        "note": "1st-2nd"
       },
       {
         "models": 1,
-        "points": 115,
-        "note": "2nd+"
+        "points": 125,
+        "note": "3rd+"
       }
     ],
     "flavor": "The Wyvern excels in claustrophobic urban combat, raining curtains of shells down upon luckless enemy infantry without needing to expose itself to harm. The suppression tank’s stormshard mortars are lethal to tightly packed foes, their shells detonating in blizzards of eviscerating aquila-shaped flechettes.",

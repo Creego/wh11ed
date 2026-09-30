@@ -44,12 +44,12 @@ const en = {
       id: "berzerker-warband",
       name: "Berzerker Warband",
       source: 'codex',
-      dp: 3,
+      dp: 2,
       forceDisposition: "Purge the Foe",
       rule: {
         name: "Relentless Rage",
         flavor: "The World Eaters fight in a perpetual fury, driven ever onward to slaughter all who stand in their path. All of their warriors have been subject to horrific surgery, implanted with crude devices that amplify their aggression. Some even submit to possession by the Blood God’s daemonic servants. These warriors will only stop killing when every foe lies in bloody ruin at their feet - and sometimes not even then.",
-        body: "Each time a WORLD EATERS unit from your army makes a Charge move, until the end of the turn, add 1 to the Attacks characteristic and add 2 to the Strength characteristic of melee weapons equipped by models in that unit.",
+        body: "Friendly WORLD EATERS units’ melee attacks have +1 **A**.",
       },
       stratagems: [
         {

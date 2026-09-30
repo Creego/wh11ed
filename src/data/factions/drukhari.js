@@ -851,7 +851,7 @@ This detachment has the **COVENS** tag and cannot be taken with another **COVENS
       name: "Reaper's Wager",
       source: 'faction-pack',
       dp: 3,
-      forceDisposition: 'Purge the Foe',
+      forceDisposition: 'Priority Assets',
       rule: {
         name: 'Callous Competition',
         flavor:

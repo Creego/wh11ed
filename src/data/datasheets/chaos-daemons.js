@@ -219,7 +219,7 @@ export default [
       },
       {
         "models": 6,
-        "points": 200,
+        "points": 210,
         "note": "1st-2nd"
       },
       {
@@ -229,7 +229,7 @@ export default [
       },
       {
         "models": 6,
-        "points": 240,
+        "points": 250,
         "note": "3rd+"
       }
     ],
@@ -1674,12 +1674,12 @@ export default [
       },
       {
         "models": 3,
-        "points": 105,
+        "points": 115,
         "note": "3rd+"
       },
       {
         "models": 6,
-        "points": 205,
+        "points": 215,
         "note": "3rd+"
       }
     ],
@@ -1825,7 +1825,7 @@ export default [
     "points": [
       {
         "models": 5,
-        "points": 75
+        "points": 80
       },
       {
         "models": 10,
@@ -3899,7 +3899,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 315
+        "points": 330
       }
     ],
     "flavor": "Never pausing, never relenting, Skarbrand storms across realspace hacking apart every luckless foe that stands in its path. Worse, all who find themselves in the daemon’s presence are seized by its feral murderlust, a madness that sees elegant strategies collapse into orgies of primal savagery.",

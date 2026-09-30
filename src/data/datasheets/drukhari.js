@@ -2916,22 +2916,22 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 75,
+        "points": 70,
         "note": "1st-2nd"
       },
       {
         "models": 2,
-        "points": 150,
+        "points": 140,
         "note": "1st-2nd"
       },
       {
         "models": 1,
-        "points": 85,
+        "points": 80,
         "note": "3rd+"
       },
       {
         "models": 2,
-        "points": 160,
+        "points": 150,
         "note": "3rd+"
       }
     ],
@@ -3495,15 +3495,15 @@ export default [
     "points": [
       {
         "models": 5,
-        "points": 60
+        "points": 55
       },
       {
         "models": 8,
-        "points": 100
+        "points": 90
       },
       {
         "models": 10,
-        "points": 120
+        "points": 110
       }
     ],
     "flavor": "The gnarled hide of the Wracks is a leathery mass of old scars, inured to pain. These adepts of fleshcrafting serve the wizened masters of the covens and are as much experiments in stitch and sinew as apprentices to the Haemonculus’ gruesome craft. They are granted a host of cruel tools, butchering blades and arcane bioweapons with which they inflict maximum agony.",

@@ -540,7 +540,7 @@ Note that you can include AGENTS OF THE IMPERIUM DEDICATED TRANSPORT units in su
           flavor: "The eyes of the Officio Assassinorum are everywhere. As the foe turns to flee, the noose tightens, agents already forewarned of enemy movements and moving swiftly to cut off all avenues of retreat.",
           when: "End of your opponent’s Charge phase.",
           target: "One AGENTS OF THE IMPERIUM INFANTRY unit from your army that is within 6\" of one or more enemy units and would be eligible to declare a charge against one or more of those enemy units.",
-          effect: "Your unit can declare a charge. When doing so, you must select one or more of those enemy units as the targets of that charge, and your unit does not receive a Charge bonus this turn. In addition, if it is a Callidus Assassin unit and it makes a Charge move as a result of this Stratagem, until the end of the turn, each time a model in your unit makes a melee attack, add 1 to the Wound roll.",
+          effect: "Your unit can declare a charge. When doing so, you must select one or more of those enemy units as the targets of that charge. In addition, if it is a Callidus Assassin unit and it makes a Charge move as a result of this Stratagem, until the end of the turn, each time a model in your unit makes a melee attack, add 1 to the Wound roll.",
           restrictions: "",
         },
       ],

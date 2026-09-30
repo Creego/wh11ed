@@ -75,7 +75,7 @@ Each time one of the triggers shown in the Agile Manoeuvres section below occurs
       id: 'warhost',
       name: 'Warhost',
       source: 'codex',
-      dp: 3,
+      dp: 2,
       forceDisposition: 'Reconnaissance',
       rule: {
         name: 'Martial Grace',

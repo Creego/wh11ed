@@ -35,7 +35,7 @@ When mustering your army, unless specifically stated otherwise, you cannot selec
       id: "carnival-of-excess",
       name: "Carnival of Excess",
       source: 'codex',
-      dp: 2,
+      dp: 3,
       forceDisposition: "Disruption",
       rule: {
         name: "Daemonic Empowerment",
@@ -678,7 +678,7 @@ When mustering your army, unless specifically stated otherwise, you cannot selec
       id: "slaaneshs-chosen",
       name: "Slaanesh’s Chosen",
       source: 'codex',
-      dp: 2,
+      dp: 1,
       forceDisposition: "Purge the Foe",
       rule: {
         name: "Internal Rivalries",
@@ -747,8 +747,8 @@ When mustering your army, unless specifically stated otherwise, you cannot selec
           cp: "1CP",
           turn: "opponent",
           flavor: "Consumed by their obsessive desire for revenge, the Emperor's Children surge into oncoming fusillades.",
-          when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
-          target: "One EMPEROR’S CHILDREN CHARACTER unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+          when: "Your opponent’s Shooting phase, when an enemy unit that targeted a friendly **unengaged** EMPEROR’S CHILDREN CHARACTER unit this phase has shot.",
+          target: "That EMPEROR’S CHILDREN CHARACTER unit.",
           effect: "Your unit can make a surge move of up to D6\". If your unit is not your army\u2019s Favoured Champions, you can re-roll the dice to determine the distance of that surge move.",
           restrictions: "",
         },
@@ -854,7 +854,7 @@ When mustering your army, unless specifically stated otherwise, you cannot selec
       rule: {
         name: "Frantic Focus",
         flavor: "Seeming to be everywhere at once, bands of Infractors and Tormentors seek to embrace all the sensations the battlefield can offer, never relenting for a moment.",
-        body: "When a friendly EMPEROR\u2019S CHILDREN BATTLELINE unit is selected to make an advance/fall-back move, that unit\u2019s attacks have +1 S until the end of the turn.\n\nThis detachment has the **HOST** tag and cannot be taken with another **HOST** detachment.",
+        body: "When a friendly EMPEROR\u2019S CHILDREN BATTLELINE unit is selected to make an **advance/fall-back move**, that unit\u2019s BATTLELINE models\u2019 attacks have [SUSTAINED HITS 1] until the end of the turn.",
       },
       stratagems: [
         {

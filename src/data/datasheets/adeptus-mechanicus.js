@@ -421,11 +421,11 @@ export default [
     "points": [
       {
         "models": 5,
-        "points": 65
+        "points": 60
       },
       {
         "models": 10,
-        "points": 130
+        "points": 120
       }
     ],
     "flavor": "Electro-Priests of the Corpuscarii faction build up huge electrical potential as they zealously chant their canticles of battle. They conduct the Motive Force through their bodies, eager to share its illumination, releasing it from their gauntlets in coruscating arcs of electrical power that leap from target to target.",
@@ -499,7 +499,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 25
+        "points": 20
       }
     ],
     "flavor": "Datasmiths optimise the programming of their robotic charges. These Tech-Priests employ rituals and binharic hymns to bless the doctrina wafers through which they alter the robots’ protocols, all the while laying waste to the enemies of the Omnissiah with blasts of ionising radiation from their archeotech pistols.",
@@ -582,11 +582,11 @@ export default [
     "points": [
       {
         "models": 5,
-        "points": 70
+        "points": 65
       },
       {
         "models": 10,
-        "points": 140
+        "points": 130
       }
     ],
     "flavor": "Crackling with power stolen from those they slay, Fulgurite Electro- Priests are fanatical cultists of the Machine God. With their heavy, copper-bound staves, they smite blasphemers that waste the Motive Force, leeching it from heretic warriors and harnessing the holy energy in their capacitors where it empowers their voltagheist field.",
@@ -645,12 +645,12 @@ export default [
     "points": [
       {
         "models": 5,
-        "points": 105,
+        "points": 100,
         "note": "1st-2nd"
       },
       {
         "models": 5,
-        "points": 120,
+        "points": 115,
         "note": "3rd+"
       }
     ],
@@ -765,12 +765,12 @@ export default [
     "points": [
       {
         "models": 5,
-        "points": 115,
+        "points": 105,
         "note": "1st-2nd"
       },
       {
         "models": 5,
-        "points": 130,
+        "points": 120,
         "note": "3rd+"
       }
     ],
@@ -990,22 +990,22 @@ export default [
       {
         "models": 2,
         "points": 150,
-        "note": "1st"
+        "note": "1st-2nd"
       },
       {
         "models": 4,
         "points": 300,
-        "note": "1st"
+        "note": "1st-2nd"
       },
       {
         "models": 2,
         "points": 180,
-        "note": "2nd+"
+        "note": "3rd+"
       },
       {
         "models": 4,
         "points": 330,
-        "note": "2nd+"
+        "note": "3rd+"
       }
     ],
     "flavor": "Kastelan Robots are giant automata from Mankind’s dark past, shielded with thick armour and advanced force fields. Heeding preprogrammed doctrines without fail, Kastelans are bastions in defence and nigh unstoppable on the attack, unleashing heavy firepower and bludgeoning swipes with their giant fists.",
@@ -1142,11 +1142,11 @@ export default [
     "points": [
       {
         "models": 3,
-        "points": 150
+        "points": 140
       },
       {
         "models": 6,
-        "points": 310
+        "points": 290
       }
     ],
     "flavor": "Kataphron Breachers are large battle servitors that grind forward on heavy tracks. They are ideal tools for smashing open enemy battle lines and bastions with blasts from heavy weapons and blows from combat attachments, while any enemy firepower is deflected by thick armour and absorbed by layered bionics.",
@@ -1371,7 +1371,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 155
+        "points": 150
       }
     ],
     "flavor": "The Onager Dunecrawler’s flexible armaments can blast apart squadrons of aircraft or atomise elite infantry in beams of blinding energy. They are versatile heavy weapons platforms, well-shielded and easily able to advance alongside Skitarii as their multiple limbs propel them over treacherous obstacles.",
@@ -2024,7 +2024,7 @@ export default [
       },
       {
         "models": 6,
-        "points": 110
+        "points": 105
       }
     ],
     "flavor": "Long-range scouts and outriders, Raiders of the Serberys Corps employ advanced suites of sensors within their cybercanid mounts to identify enemy interlopers. They maintain punishing rates of carbine fire while moving at high speed, and when their prey can run no more, Raiders draw their sabres and charge into the fray.",
@@ -2121,7 +2121,7 @@ export default [
       },
       {
         "models": 6,
-        "points": 100
+        "points": 95
       }
     ],
     "flavor": "Sulphurhound cavalry squadrons are aggressive shock troops and line-breakers. The loping, mechanical beasts breathe gouts of incinerating phosphor and disembowel the foe with slashing claws, while the elite Skitarii riders unload incandescent pistol fire as they smash through defence lines, before circling back for survivors.",
@@ -2248,12 +2248,12 @@ export default [
     "points": [
       {
         "models": 9,
-        "points": 65,
+        "points": 75,
         "note": "1st-2nd"
       },
       {
         "models": 9,
-        "points": 75,
+        "points": 85,
         "note": "3rd+"
       }
     ],
@@ -3257,11 +3257,11 @@ export default [
       },
       {
         "models": 2,
-        "points": 100
+        "points": 95
       },
       {
         "models": 3,
-        "points": 150
+        "points": 140
       }
     ],
     "flavor": "Striding through a mist of their own sacred incense, the long-limbed engines ridden by Sydonian Dragoons are forever in motion. Dragoons mark their quarry with shots of glowing phosphor or irradiated slugs, allowing them to detect their prey through the cloying mist and home in on them with a thunderous stampede.",
@@ -3443,7 +3443,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 50
+        "points": 45
       }
     ],
     "flavor": "A Sydonian Skatros is a sinister sentinel, unmoving until the enemy strays into the sniper’s sights. With protocol-driven precision and an advanced scanner known as the achillan eye, they lock on to their foes’ weak points and unleash pinpoint fire that sows panic and agony, the better to erode enemy morale.",

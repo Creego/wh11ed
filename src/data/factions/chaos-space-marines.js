@@ -151,7 +151,7 @@ The combined points value of such units you can include in your army depends on 
       name: "Creations of Bile",
       source: 'faction-pack', // printed in the pack (identical to the codex text)
       dp: 3,
-      forceDisposition: "Purge the Foe",
+      forceDisposition: "Take and Hold",
       rule: {
         name: "Experimental Augmentations",
         flavor: "Bile’s creations, the Terata, possess a variety of mutations, all of which increase their transhuman lethality – for now.",
@@ -686,7 +686,7 @@ The combined points value of such units you can include in your army depends on 
       name: "Huron’s Marauders",
       source: 'faction-pack', // printed in the pack (identical to the codex text)
       dp: 3,
-      forceDisposition: "Purge the Foe",
+      forceDisposition: "Disruption",
       rule: {
         name: "Tyrannical Motivation",
         flavor: "Murderers and renegades all, the Red Corsairs strive to meet their master’s standards, fighting hardest of all when his gaze is upon them.",
@@ -902,7 +902,7 @@ The combined points value of such units you can include in your army depends on 
       name: "Pactbound Zealots",
       source: 'codex',
       dp: 3,
-      forceDisposition: "Priority Assets",
+      forceDisposition: "Disruption",
       rule: {
         name: "Marks of Chaos",
         flavor: "",
@@ -1009,7 +1009,7 @@ The combined points value of such units you can include in your army depends on 
       name: "Renegade Raiders",
       source: 'codex',
       dp: 3,
-      forceDisposition: "Reconnaissance",
+      forceDisposition: "Priority Assets",
       rule: {
         name: "Raiders and Reavers",
         flavor: "Some Heretic Astartes warbands are piratical by nature, launching swift attacks focused upon destroying their foes in a storm of bloody violence, seizing territory and spoils of war before the enemy can bring reinforcements to bear.",

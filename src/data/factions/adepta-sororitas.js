@@ -374,7 +374,7 @@ Before making a dice roll for a model or unit from your army with the Acts of Fa
       name: "Hallowed Martyrs",
       source: 'codex',
       dp: 3,
-      forceDisposition: "Priority Assets",
+      forceDisposition: "Take and Hold",
       rule: {
         name: "The Blood of Martyrs",
         flavor: "The blood of martyrs is the life force of the Imperium. So do the tenets of this Order joyously proclaim, and in its warriors’ darkest hour does the sacrifice of their fallen Sisters shine brightest.",

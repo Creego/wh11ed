@@ -61,7 +61,7 @@ Select one enemy unit within 24" of and visible to the manifesting model. Until 
       name: 'Grand Coven',
       source: 'codex',
       dp: 3,
-      forceDisposition: 'Priority Assets',
+      forceDisposition: 'Disruption',
       rule: {
         name: 'Kindred Sorcery',
         flavor:
@@ -469,12 +469,12 @@ In the Declare Battle Formations step, the bearer can be attached to a Tzaangors
         {
           name: 'Infernal Fusillade',
           sublabel: 'Rubricae Phalanx – Wargear Stratagem',
-          cp: '2CP',
+          cp: '1CP',
           turn: 'your',
           flavor: "Arcane invocations imbue the Thousand Sons' weapons with sorcerous power, rendering them still more lethal to the foe.",
           when: 'Your Shooting phase.',
           target: 'One THOUSAND SONS PSYKER unit from your army that has not been selected to shoot this phase.',
-          effect: 'Until the end of the phase, all inferno bolt pistols, inferno boltguns, inferno combi-bolters and inferno combi-weapons equipped by models in your unit have the [PSYCHIC] ability and a Strength characteristic of 5.',
+          effect: 'Until the end of the phase, all inferno bolt pistols, inferno boltguns, inferno combi-bolters and inferno combi-weapons equipped by models in your unit have the [PSYCHIC] ability.',
           restrictions: '',
         },
         {
@@ -485,7 +485,7 @@ In the Declare Battle Formations step, the bearer can be attached to a Tzaangors
           flavor: 'Massed in an unyielding wall of sorcerous ceramite, the sheer unnatural resilience of the Thousand Sons can withstand the most vicious assault.',
           when: "Your opponent's Charge phase, just after an enemy unit ends a Charge move.",
           target: 'One Rubric Marines unit from your army within Engagement Range of that enemy unit.',
-          effect: 'Until the end of the turn, each time an attack targets your unit, subtract 1 from the Wound roll.',
+          effect: 'Until the end of the turn, attacks that target your unit with a **S** greater than your unit’s **T** have -1 to **wound rolls**.',
           restrictions: '',
         },
       ],

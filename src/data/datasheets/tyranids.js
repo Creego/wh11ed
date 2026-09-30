@@ -83,11 +83,11 @@ export default [
     "points": [
       {
         "models": 5,
-        "points": 55
+        "points": 50
       },
       {
         "models": 10,
-        "points": 110
+        "points": 100
       }
     ],
     "flavor": "Barbgaunts are little more than living weapons, their bodies and bio-cannons slaved to the will of a pulsating ganglio-parasite that piggybacks them into battle. There, they unleash volleys of chitinous barbs that detonate with the fury of violent muscle-spasms and transfix nearby victims with hails of jagged projectiles.",
@@ -682,11 +682,11 @@ export default [
     "points": [
       {
         "models": 10,
-        "points": 80
+        "points": 75
       },
       {
         "models": 20,
-        "points": 155
+        "points": 150
       }
     ],
     "flavor": "Gargoyles are often the first warrior organisms hurled against a prey world. Their teeming swarms darken the skies. Their opportunistic attacks spread panic and disarray. Worst of all, the creatures can squirm through gaps that appear far too small, bursting through gun slits and vent pipes to assail horrified defenders.",
@@ -1940,7 +1940,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 135
+        "points": 130
       }
     ],
     "flavor": "Vast, burrowing wormforms, Mawlocs hunt by sensing even the smallest vibrations on the surface above them. Once they have located prey, the Mawlocs surge upwards in an eruption of bedrock and soil, yawning maws swallowing everything above them before they plunge back under the surface again.",
@@ -2197,7 +2197,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 130
+        "points": 120
       }
     ],
     "flavor": "The Shadow in the Warp radiating from this immensely powerful psyker-analogue creeps in all directions, driving even non-psychic prey organisms to screaming madness. As its foes writhe in agony, the Neurotyrant guides the swarms around it to slaughter with brutal efficiency.",
@@ -2515,7 +2515,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 140
+        "points": 130
       }
     ],
     "flavor": "Known as the Beast of Calth, this unstoppable brute was first seen during the First Tyrannic War. Though many have thought it slain over the centuries, always the scarred monster rises again. Whether it is a Tyranid subgenus or the same unstoppable monster come again is a mystery few in its path live long enough to ponder.",
@@ -2590,7 +2590,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 70
+        "points": 65
       }
     ],
     "flavor": "Swooping on leathery wings, Parasites of Mortrex use their barbed ovipositors to drive Ripper gestation pods deep into their victims’ bodies, from where the swiftly growing creatures soon eat their way out. Such was the doom of the defenders of Mortrex, the world first cursed by the Parasites’ onslaught.",
@@ -3336,7 +3336,7 @@ export default [
     "points": [
       {
         "models": 10,
-        "points": 60
+        "points": 55
       },
       {
         "models": 20,
@@ -3479,7 +3479,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 160
+        "points": 150
       }
     ],
     "flavor": "Beyond simply being large and powerful synapse beasts, Tervigons are also able to spawn skittering masses of Termagant warrior organisms from within their bulging abdomens. These dripping spawn instinctively protect their broodmother with their lives, their numbers growing all the time until they overwhelm the prey.",
@@ -3577,7 +3577,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 130
+        "points": 120
       }
     ],
     "flavor": "A serpentine fiend that tunnels beneath the battlefield to strike at unsuspecting prey, the Red Terror is a rare bioform spawned to sow disruption deep behind enemy lines. Able to distend its jaws to swallow prey whole, the beast is further able to rapidly absorb their biomass to regenerate its injuries.",
@@ -3826,7 +3826,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 140
+        "points": 135
       }
     ],
     "flavor": "Trygons are battle-tank-sized tunnelling machines. As they dig through the substrata of the prey world, they excavate huge tunnels for other Tyranid beasts to exploit. At the same time, the rasping of their chitinous plates builds up a powerful bio-electric charge that the Trygons can unleash as a weapon.",

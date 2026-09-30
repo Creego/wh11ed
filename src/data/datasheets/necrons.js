@@ -19,7 +19,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 95
+        "points": 100
       }
     ],
     "flavor": "Slow-moving but deadly, Annihilation Barges serve as anti-infantry fire support platforms. They are often deployed to watch over important strategic locations, gliding serenely into position upon a cushion of repulsion energies before unleashing furious storms of eldritch lightning from their massive cannons.",
@@ -406,7 +406,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 140
+        "points": 130
       }
     ],
     "flavor": "Canoptek Doomstalkers stride with eerie grace. Whether prowling their masters’ armouries as tireless sentinels or providing mobile fire support to the Necron legions, the Doomstalkers annihilate all those who dare stand against them with searing salvoes from their doomsday blasters.",
@@ -822,7 +822,7 @@ export default [
     "points": [
       {
         "models": 2,
-        "points": 50
+        "points": 60
       }
     ],
     "flavor": "Lumbering weapon platforms and loyal bodyguards, Canoptek Tomb Crawlers are usually seen fighting alongside their Cryptek masters. They select and eliminate their targets with dogged persistence, their aim unwavering as they blast their victims to blackened ruin or pitch them screaming into dimensional oubliettes from which there is no escape.",
@@ -1546,7 +1546,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 210,
+        "points": 200,
         "note": "1st-2nd"
       },
       {
@@ -2036,11 +2036,11 @@ export default [
     "points": [
       {
         "models": 5,
-        "points": 70
+        "points": 65
       },
       {
         "models": 10,
-        "points": 140
+        "points": 130
       }
     ],
     "flavor": "Once the shook troops of the Necrontyr, Immortals still provide their masters with a powerful core of skilled soldiery millennia later. More advanced than Necron Warriors, they can employ a number of strategies even without command, and their firepower makes them deadly in close or midrange engagements.",
@@ -2234,7 +2234,7 @@ export default [
       },
       {
         "models": 6,
-        "points": 175,
+        "points": 190,
         "note": "1st-2nd"
       },
       {
@@ -2254,7 +2254,7 @@ export default [
       },
       {
         "models": 6,
-        "points": 205,
+        "points": 220,
         "note": "3rd+"
       }
     ],
@@ -2813,7 +2813,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 185
+        "points": 195
       }
     ],
     "flavor": "Death made manifest, Nekrosor Ammentar is a figure of horror even to other Necrons. Destroyer madness radiates from the Nekrosor like religious fervour, driving its legions to murderous ferocity. Yet none kill with the sheer relentless fury of the Nekrosor, whose Unmaker Gauntlet and enmitic disintegrators leave ruin in the monster’s wake.",
@@ -3501,7 +3501,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 55
+        "points": 65
       }
     ],
     "flavor": "Psychomancers study the science of fear. They are expert manipulators, conjuring phantasms and temporary hard-light constructs that trigger primal survival instincts in their victims’ minds, or overload even the most advanced sensoria. No being is safe from the creeping tendrils of the Psychomancer’s art.",
@@ -4040,7 +4040,7 @@ export default [
       },
       {
         "models": 1,
-        "points": 485,
+        "points": 505,
         "note": "2nd+"
       }
     ],
@@ -4556,7 +4556,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 65
+        "points": 60
       }
     ],
     "flavor": "A thief of moments in history, Trazyn takes to the battlefield to acquire that which cunning cannot secure. His Empathic Obliterator triggers psionic shock waves that kill not only his immediate victim, but those of a like mind nearby, while his ability to leap from one surrogate body to the next ensures he is hard to slay indeed.",
