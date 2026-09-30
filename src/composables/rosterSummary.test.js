@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { refreshSummaries, summarize, summaryOf, summaryStale } from './rosterSummary.js'
+import { APP_VERSION } from '../buildInfo.js'
 
 // Real Space Marines data — Intercessor Squad is 95 points at its default bracket (MFM v1.5).
 function roster(extra = {}) {
@@ -26,6 +27,15 @@ describe('summaryStale', () => {
     expect(summaryStale(roster({ summary: summaryOf(roster(), 95) }))).toBe(false)
   })
 
+  // A points update ships as a release: the card must not keep the total from before it, while
+  // the list's own page already prices it anew.
+  it('flags a summary written by another release, or before releases were stamped', () => {
+    const old = summaryOf(roster(), 90, 0, '2.7.8')
+    expect(summaryStale(roster({ summary: old }), '2.7.9')).toBe(true)
+    expect(summaryStale(roster({ summary: old }), '2.7.8')).toBe(false)
+    expect(summaryStale(roster({ summary: { points: 90, unitCount: 1, issues: 0 } }), '2.7.9')).toBe(true)
+  })
+
   // 0 points is the right answer for an empty list whether or not anything ever wrote it, so an
   // empty roster must never cost a faction chunk.
   it('never flags an empty roster', () => {
@@ -40,11 +50,11 @@ describe('refreshSummaries', () => {
     await refreshSummaries([r])
     // The issue count is the editor's own validator, not a separate opinion — one error here,
     // for the warlord this list hasn't named.
-    expect(r.summary).toEqual({ points: 95, unitCount: 1, issues: 1 })
+    expect(r.summary).toEqual({ points: 95, unitCount: 1, issues: 1, v: APP_VERSION })
   })
 
   it('leaves a believable summary untouched', async () => {
-    const r = roster({ summary: { points: 12345, unitCount: 1, issues: 0 } })
+    const r = roster({ summary: { points: 12345, unitCount: 1, issues: 0, v: APP_VERSION } })
     await refreshSummaries([r])
     expect(r.summary.points).toBe(12345)
   })

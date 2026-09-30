@@ -2249,7 +2249,7 @@ whole point — but it is not a list: it shows only on the Drafts tab of `/roste
 be fielded. The flags never travel: `rosterShare.js`'s `PICK` is a whitelist, so a share link or
 a game snapshot carries the army and nothing about how it was made.
 
-**`roster.summary` (`{ points, unitCount, issues }`) is a CACHE**, and `rosterSummary.js` owns the
+**`roster.summary` (`{ points, unitCount, issues, v }`) is a CACHE**, and `rosterSummary.js` owns the
 rules around it. It exists precisely because of the line above: points live in the faction chunk,
 and the two screens that show them — `RosterListView` and the tracker's `RosterPickerModal` — must
 not load one. So it can only ever be as good as its last writer, and **every screen that changes a
@@ -2257,10 +2257,15 @@ roster while holding its faction data has to write it**: `useRosterEditing` (the
 `RosterCreateView`. That is what went wrong once already — only the editor
 wrote it, so a list built end-to-end in the wizard showed "0 pts" on both screens while its own
 page priced it correctly. `refreshSummaries()` is the safety net under those writers, called on
-mount by both readers: it prices only a roster whose cache is missing or contradicted by its own
-unit count (a share-link import, anything older than this mechanism), one faction chunk per
+mount by both readers: it prices only a roster whose cache is missing, contradicted by its own
+unit count (a share-link import, anything older than this mechanism) or stamped by another
+release (`v`, the build's `APP_VERSION`), one faction chunk per
 faction involved, and writes straight onto the roster object so the repair doesn't bump
 `updatedAt` — the list screen shows that date, and repairing a number is not the user editing.
+The release stamp exists because a points update never reached the cards: a list's page prices it
+from the running build, its card kept the day-of-last-edit total, and a player concluded the app
+froze prices (2026-09-30). **Prices are always the current ones**; keeping a list at the prices of
+a fixed tournament ruleset is a separate feature, not yet designed (hub journal, paused).
 
 ## Cloud sync (`src/composables/useRosterSync.js`)
 
