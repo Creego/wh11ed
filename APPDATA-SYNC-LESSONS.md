@@ -1044,3 +1044,44 @@ and appdata state fresh; a data model can change between now and when this is ne
     against the rule — the card was what the player actually saw — and a check of "every value
     shown is in the rule" is too weak: it passed a card that stopped at 6", because 6" is in the
     rule too. Compare the SET both ways.
+
+65. **A codex that replaces a faction is a generator run, not a hand port.** 946 transcribed Orks
+    with a one-off script that did not survive the session; 963 (Codex: Space Marines + five Chapter
+    Supplements + six one-detachment Supplements) needed the same thing six times over. Both now live
+    in the repo: `scripts/gen-datasheets.mjs` and `scripts/gen-faction-rules.mjs`, validated by
+    regenerating Orks and diffing against the proof-read 946 file — every difference left was either
+    963 errata or a hand touch. `--only="A|B"` rewrites single sheets of a hand-authored file (the
+    five Deathwatch units in Agents of the Imperium).
+
+66. **The number fixes of a bump are a tool too: `scripts/apply-appdata-scalars.mjs`.** 963 re-statted
+    every Astartes body in the game (T5, bolt weapons S5 AP-1) across eight factions — 412 values.
+    The applier reuses sync-appdata's matching and SKIPS every finding recorded in the sync baseline,
+    because 600-odd of those are decisions (a Tesseract Vault's C'TAN POWER tags), not lag. A
+    collapsed one-row profile is only rewritten when appdata's statlines agree — which a single GW
+    typo breaks (Paladin Ancient's Sv "2"): check the `?` lines by hand, two real ones hid there.
+
+67. **appdata writes its own typos into numbers.** Every CSM-family and Grey Knights Combi-weapon and
+    Storm bolter reads AP "1" in 963 where the same item everywhere else went to "-1"; the applier
+    writes "-1" and says so, and the baseline holds the findings. Names too: "Nightforged Battery
+    (Upgarde)" (MFM), "Unbridled Feroicity", "CHAPLIN/JUDICIAR", "mico-auspex", a broken
+    `<k>Adeptus Astartes infantry>` tag — fixed in EN and RU, each one visible to a player otherwise.
+
+68. **Codex-to-Legends units carry their wargear instructions twice.** The twelve units Codex: Space
+    Marines moved into Legends ship the new Title Case instructions AND the old codex ones, led by "■"
+    in lower case. gen-datasheets drops a "■" line when an unmarked one says nearly the same (word
+    overlap ≥ 0.5); a "■" line without such a twin is a real instruction and stays.
+
+69. **The rule's prose and its structural table can disagree about WHICH unit.** Captain with Jump
+    Pack's Leader text says "VANGUARD VETERAN SQUAD" — literally the Legends squad on foot — where
+    `leaderOf` names "…with Jump Packs". The table stays the base, the prose adds only what the table
+    lacks (Watch Master's Kill Teams), and a prose name that is the start of a table name is the same
+    unit. The three that still differ are in the sync baseline with this reason.
+
+70. **A rebuilt overlay drops what was never translation — again (lesson 52).** Seven SM character
+    aliases went missing in the RU rebuild, and an alias rule stopped matching because appdata now
+    spells "Emperor's Champion" with a straight apostrophe. Compare the alias count before and after
+    (`datasheets:index` prints it) and look for alias rules that match no unit.
+
+71. **A gate that counts uses must count every user.** The condition-vocabulary test read only the
+    faction modifier files, so `unit-battle-shocked` — used by the Core Rules' Battle-shock record —
+    looked dead the day the last faction record naming it retired. It reads `coreModifiers` too now.
