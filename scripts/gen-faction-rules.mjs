@@ -191,5 +191,8 @@ if (WRITE) {
   const body = Object.entries(en).map(([k, v]) => `  ${k}: ${JSON.stringify(v, null, 2).replace(/\n/g, '\n  ')},`).join('\n')
   fs.writeFileSync(file, `${header}\nconst en = {\n${body}\n}\n\nexport const ${binding} = { en, ru: en }\n`)
   console.log(`  wrote ${path.relative(ROOT, file)}`)
+  // The regenerated English comes back without the bold-term popovers; put them back.
+  const { glossFaction, GLOSS_SLUGS } = await import('./gloss-bold-terms.mjs')
+  if (GLOSS_SLUGS.includes(slug)) await glossFaction(slug)
 }
 

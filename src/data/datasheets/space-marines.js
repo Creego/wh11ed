@@ -60,11 +60,11 @@ export default [
     "abilities": [
       {
         "name": "Lord of the Pyroclasts",
-        "text": "While an enemy unit is **engaged** with this unit, that enemy unit has -1 **OC**."
+        "text": "While an enemy unit is **[gloss:engaged:engaged]** with this unit, that enemy unit has -1 **[gloss:objective-control:OC]**."
       },
       {
         "name": "Unto the Anvil",
-        "text": "This unit’s melee attacks can:\n▪ Re-roll **wound rolls** of 1.\n▪ __Or:__ If the **assault doctrine** is active for this unit, re-roll **wound rolls**."
+        "text": "This unit’s melee attacks can:\n▪ Re-roll **[gloss:wound-roll:wound rolls]** of 1.\n▪ __Or:__ If the **[gloss:sm-combat-doctrine:assault doctrine]** is active for this unit, re-roll **[gloss:wound-roll:wound rolls]**."
       }
     ],
     "composition": [
@@ -153,11 +153,11 @@ export default [
     "abilities": [
       {
         "name": "Master of Shadows",
-        "text": "In your Command phase, you can select one friendly ADEPTUS ASTARTES INFANTRY unit. You can re-roll **charge rolls** for that unit until the start of your next Command phase."
+        "text": "In your Command phase, you can select one friendly ADEPTUS ASTARTES INFANTRY unit. You can re-roll **[gloss:charge-roll:charge rolls]** for that unit until the start of your next Command phase."
       },
       {
         "name": "Blackwing Mantle (Once per phase, per army)",
-        "text": "You can target this unit with the **Heroic Intervention stratagem**, regardless of any other uses of that **stratagem** this phase. If you do:\n▪ That use is -1 CP.\n▪ That use does not prevent any uses of that **stratagem** on other units this phase."
+        "text": "You can target this unit with the **Heroic Intervention stratagem**, regardless of any other uses of that **[gloss:stratagem:stratagem]** this phase. If you do:\n▪ That use is -1 CP.\n▪ That use does not prevent any uses of that **[gloss:stratagem:stratagem]** on other units this phase."
       }
     ],
     "composition": [
@@ -288,7 +288,7 @@ export default [
     "abilities": [
       {
         "name": "Close-quarters Firestorm",
-        "text": "This unit’s attacks that target an enemy unit within 9\" of this unit have +1 **S**."
+        "text": "This unit’s attacks that target an enemy unit within 9\" of this unit have +1 **[gloss:strength:S]**."
       }
     ],
     "composition": [
@@ -395,11 +395,11 @@ export default [
     "abilities": [
       {
         "name": "Honour of the Company",
-        "text": "This unit has +1 **OC**."
+        "text": "This unit has +1 **[gloss:objective-control:OC]**."
       },
       {
         "name": "Raise the Banner",
-        "text": "At the end of your Movement phase, if this unit is controlling an **objective**, that **objective** is **secured**."
+        "text": "At the end of your Movement phase, if this unit is controlling an **[gloss:objective:objective]**, that **[gloss:objective:objective]** is **[gloss:secured-objective:secured]**."
       }
     ],
     "composition": [
@@ -491,11 +491,11 @@ export default [
     "abilities": [
       {
         "name": "Raise the Banner",
-        "text": "At the end of your Movement phase, if this unit is controlling an **objective**, that **objective** is **secured**."
+        "text": "At the end of your Movement phase, if this unit is controlling an **[gloss:objective:objective]**, that **[gloss:objective:objective]** is **[gloss:secured-objective:secured]**."
       },
       {
         "name": "Never Shall the Standard Fall",
-        "text": "While this unit is within range of an **objective**, attacks that target this unit with a **S** greater than this unit’s **T** have -1 to **wound rolls**."
+        "text": "While this unit is within range of an **[gloss:objective:objective]**, attacks that target this unit with a **[gloss:strength:S]** greater than this unit’s **[gloss:toughness:T]** have -1 to **[gloss:wound-roll:wound rolls]**."
       }
     ],
     "composition": [
@@ -587,7 +587,7 @@ export default [
     "abilities": [
       {
         "name": "Narthecium",
-        "text": "In your Command phase, this unit **heals** D3+1 wounds."
+        "text": "In your Command phase, this unit **[gloss:heal:heals]** D3+1 wounds."
       }
     ],
     "composition": [
@@ -834,7 +834,7 @@ export default [
     "abilities": [
       {
         "name": "Targeted Intercession",
-        "text": "If this unit made a **charge move** this turn, this unit’s melee attacks have +1 **S** and **AP**."
+        "text": "If this unit made a **[gloss:charge-move:charge move]** this turn, this unit’s melee attacks have +1 **[gloss:strength:S]** and **[gloss:armour-penetration:AP]**."
       }
     ],
     "composition": [
@@ -990,7 +990,7 @@ export default [
     "abilities": [
       {
         "name": "Hammer of Wrath",
-        "text": "When this unit ends a **charge move**, you can select one enemy unit **engaged** with this unit. For each model in this unit **engaged** with that enemy unit, roll one D6:\n▪ On a 4+, that enemy unit suffers 1 **mortal wound**."
+        "text": "When this unit ends a **[gloss:charge-move:charge move]**, you can select one enemy unit **[gloss:engaged:engaged]** with this unit. For each model in this unit **[gloss:engaged:engaged]** with that enemy unit, roll one D6:\n▪ On a 4+, that enemy unit suffers 1 **[gloss:mortal-wound:mortal wound]**."
       }
     ],
     "composition": [
@@ -1160,7 +1160,7 @@ export default [
     "abilities": [
       {
         "name": "Suppression Fire",
-        "text": "In your Shooting phase, when this unit has shot, select one enemy unit hit by this model's Twin Macro-accelerator Cannon weapon. That enemy unit is **suppressed** until the start of your next turn:\n▪ While a unit is **suppressed**, that unit's attacks have -1 to **hit rolls**."
+        "text": "In your Shooting phase, when this unit has shot, select one enemy unit hit by this model's Twin Macro-accelerator Cannon weapon. That enemy unit is **[gloss:sm-suppressed:suppressed]** until the start of your next turn:\n▪ While a unit is **[gloss:sm-suppressed:suppressed]**, that unit's attacks have -1 to **[gloss:hit-roll:hit rolls]**."
       }
     ],
     "composition": [
@@ -1343,11 +1343,11 @@ export default [
     "abilities": [
       {
         "name": "Deeds of Legend",
-        "text": "While this unit is within range of an **objective**, this unit’s melee attacks have +1 **A**."
+        "text": "While this unit is within range of an **[gloss:objective:objective]**, this unit’s melee attacks have +1 **[gloss:attack-dice:A]**."
       },
       {
         "name": "Raise the Banner",
-        "text": "At the end of your Movement phase, if this unit is controlling an **objective**, that **objective** is **secured**."
+        "text": "At the end of your Movement phase, if this unit is controlling an **[gloss:objective:objective]**, that **[gloss:objective:objective]** is **[gloss:secured-objective:secured]**."
       }
     ],
     "composition": [
@@ -1488,7 +1488,7 @@ export default [
     "abilities": [
       {
         "name": "Bladeguard (Once per turn, per unit)",
-        "text": "In the Fight phase, when this unit is **selected to fight** or when an enemy unit targets this unit, you can select one of the following:\n▪ This unit’s melee attacks have +1 to **hit rolls**.\n▪ __Or:__ Attacks that target this unit have -1 to **hit rolls**."
+        "text": "In the Fight phase, when this unit is **[gloss:selected-to-fight:selected to fight]** or when an enemy unit targets this unit, you can select one of the following:\n▪ This unit’s melee attacks have +1 to **[gloss:hit-roll:hit rolls]**.\n▪ __Or:__ Attacks that target this unit have -1 to **[gloss:hit-roll:hit rolls]**."
       }
     ],
     "composition": [
@@ -1623,7 +1623,7 @@ export default [
     "abilities": [
       {
         "name": "Brutalis Charge (Once per phase, per unit)",
-        "text": "You can target this unit with the **Crushing Impact stratagem**, regardless of any other uses of that **stratagem** this phase. If you do:\n▪ That use is -1 CP.\n▪ That use does not prevent any uses of that **stratagem** on other units this phase."
+        "text": "You can target this unit with the **Crushing Impact stratagem**, regardless of any other uses of that **[gloss:stratagem:stratagem]** this phase. If you do:\n▪ That use is -1 CP.\n▪ That use does not prevent any uses of that **[gloss:stratagem:stratagem]** on other units this phase."
       }
     ],
     "composition": [
@@ -1699,11 +1699,11 @@ export default [
     "abilities": [
       {
         "name": "Cold and Calculating",
-        "text": "In your Shooting phase or the Fight phase, when this unit is **selected to attack**, you can select one of the following for this unit’s attacks to have:\n▪ [LETHAL HITS: MONSTER/VEHICLE].\n▪ __Or:__ [SUSTAINED HITS 1: **non-**MONSTER/VEHICLE].\n▪ __Or:__ If the **tactical doctrine** is active for this unit, [LETHAL HITS: MONSTER/VEHICLE] and [SUSTAINED HITS 1: **non-**MONSTER/VEHICLE]."
+        "text": "In your Shooting phase or the Fight phase, when this unit is **[gloss:selected-to-attack:selected to attack]**, you can select one of the following for this unit’s attacks to have:\n▪ [LETHAL HITS: MONSTER/VEHICLE].\n▪ __Or:__ [SUSTAINED HITS 1: **non-**MONSTER/VEHICLE].\n▪ __Or:__ If the **[gloss:sm-combat-doctrine:tactical doctrine]** is active for this unit, [LETHAL HITS: MONSTER/VEHICLE] and [SUSTAINED HITS 1: **non-**MONSTER/VEHICLE]."
       },
       {
         "name": "Cerebrex Logic Engine",
-        "text": "In the Declare Battle Formations step, you can select one friendly ADEPTUS ASTARTES INFANTRY unit. That unit has **Scouts 6\"**."
+        "text": "In the Declare Battle Formations step, you can select one friendly ADEPTUS ASTARTES INFANTRY unit. That unit has [core:Scouts 6\"]."
       }
     ],
     "composition": [
@@ -1843,17 +1843,17 @@ export default [
     "abilities": [
       {
         "name": "Strategic Acumen",
-        "text": "In your Command phase, you can use this ability. If you do, select one **combat doctrine** to be active for this unit until the start of your next Command phase."
+        "text": "In your Command phase, you can use this ability. If you do, select one **[gloss:sm-combat-doctrine:combat doctrine]** to be active for this unit until the start of your next Command phase."
       },
       {
         "name": "Finest Hour (Once per battle, per unit)",
-        "text": "In the Fight phase, when this unit is **selected to fight**, you can use this ability. If you do, this model’s melee attacks have:\n▪ +3 **A**.\n▪ [DEVASTATING WOUNDS]."
+        "text": "In the Fight phase, when this unit is **[gloss:selected-to-fight:selected to fight]**, you can use this ability. If you do, this model’s melee attacks have:\n▪ +3 **[gloss:attack-dice:A]**.\n▪ [DEVASTATING WOUNDS]."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Relic Shield",
-        "text": "This model has +1 **W**."
+        "text": "This model has +1 **[gloss:wounds:W]**."
       }
     ],
     "composition": [
@@ -2006,11 +2006,11 @@ export default [
     "abilities": [
       {
         "name": "Refuse to Yield",
-        "text": "Attacks allocated to this model have -1 **D**."
+        "text": "Attacks allocated to this model have -1 **[gloss:damage-roll:D]**."
       },
       {
         "name": "Strategic Acumen",
-        "text": "In your Command phase, you can use this ability. If you do, select one **combat doctrine** to be active for this unit until the start of your next Command phase."
+        "text": "In your Command phase, you can use this ability. If you do, select one **[gloss:sm-combat-doctrine:combat doctrine]** to be active for this unit until the start of your next Command phase."
       }
     ],
     "composition": [
@@ -2110,11 +2110,11 @@ export default [
     "abilities": [
       {
         "name": "Strategic Acumen",
-        "text": "In your Command phase, you can use this ability. If you do, select one **combat doctrine** to be active for this unit until the start of your next Command phase."
+        "text": "In your Command phase, you can use this ability. If you do, select one **[gloss:sm-combat-doctrine:combat doctrine]** to be active for this unit until the start of your next Command phase."
       },
       {
         "name": "Tactical Fluidity (Once per battle round, per unit)",
-        "text": "▪ In your Shooting phase, when this unit has shot, if this unit is **unengaged**, this unit can make a **normal move** of up to D6\".\n▪ __Or:__ At the end of your opponent’s Fight phase if this unit is **engaged**, this unit can make a **fall-back move** of up to 6\"."
+        "text": "▪ In your Shooting phase, when this unit has shot, if this unit is **[gloss:unengaged:unengaged]**, this unit can make a **[gloss:normal-move:normal move]** of up to D6\".\n▪ __Or:__ At the end of your opponent’s Fight phase if this unit is **[gloss:engaged:engaged]**, this unit can make a **[gloss:fall-back-move:fall-back move]** of up to 6\"."
       }
     ],
     "composition": [
@@ -2242,11 +2242,11 @@ export default [
     "abilities": [
       {
         "name": "Unstoppable Valour",
-        "text": "You can re-roll **charge rolls** for this unit."
+        "text": "You can re-roll **[gloss:charge-roll:charge rolls]** for this unit."
       },
       {
         "name": "Strategic Acumen",
-        "text": "In your Command phase, you can use this ability. If you do, select one **combat doctrine** to be active for this unit until the start of your next Command phase."
+        "text": "In your Command phase, you can use this ability. If you do, select one **[gloss:sm-combat-doctrine:combat doctrine]** to be active for this unit until the start of your next Command phase."
       }
     ],
     "composition": [
@@ -2381,11 +2381,11 @@ export default [
     "abilities": [
       {
         "name": "Into the Fray",
-        "text": "If this unit made a **charge move** this turn, this unit’s melee attacks have [CLEAVE 1]."
+        "text": "If this unit made a **[gloss:charge-move:charge move]** this turn, this unit’s melee attacks have [CLEAVE 1]."
       },
       {
         "name": "Strategic Acumen",
-        "text": "In your Command phase, you can use this ability. If you do, select one **combat doctrine** to be active for this unit until the start of your next Command phase."
+        "text": "In your Command phase, you can use this ability. If you do, select one **[gloss:sm-combat-doctrine:combat doctrine]** to be active for this unit until the start of your next Command phase."
       }
     ],
     "composition": [
@@ -2483,15 +2483,15 @@ export default [
     "abilities": [
       {
         "name": "Press the Attack",
-        "text": "This unit’s melee attacks have:\n▪ [SUSTAINED HITS 1: **non-**MONSTER/VEHICLE].\n▪ __Or:__ If the **assault doctrine** is active for this unit, [SUSTAINED HITS 1]."
+        "text": "This unit’s melee attacks have:\n▪ [SUSTAINED HITS 1: **non-**MONSTER/VEHICLE].\n▪ __Or:__ If the **[gloss:sm-combat-doctrine:assault doctrine]** is active for this unit, [SUSTAINED HITS 1]."
       },
       {
         "name": "Righteous Fury (Once per battle, per army)",
-        "text": "In the Fight phase, you can use this ability. If you do, this unit’s melee attacks have +1 **S**, and when this unit has fought:\n▪ This model **heals** D3 wounds.\n▪ __Or:__ If this model **destroyed** an enemy model this phase, this model **heals** 2D3 wounds."
+        "text": "In the Fight phase, you can use this ability. If you do, this unit’s melee attacks have +1 **[gloss:strength:S]**, and when this unit has fought:\n▪ This model **[gloss:heal:heals]** D3 wounds.\n▪ __Or:__ If this model **[gloss:destroyed:destroyed]** an enemy model this phase, this model **[gloss:heal:heals]** 2D3 wounds."
       },
       {
         "name": "Honour of Ultramar",
-        "text": "In the fight phase, when this model is **destroyed**, if this unit has not been **selected to fight** this phase, roll one D6:\n▪ On a 2+, do not remove this model from the battlefield. When your unit has fought, or at the end of the phase (whichever comes first), this model is removed from the battlefield."
+        "text": "In the fight phase, when this model is **[gloss:destroyed:destroyed]**, if this unit has not been **[gloss:selected-to-fight:selected to fight]** this phase, roll one D6:\n▪ On a 2+, do not remove this model from the battlefield. When your unit has fought, or at the end of the phase (whichever comes first), this model is removed from the battlefield."
       }
     ],
     "composition": [
@@ -2646,17 +2646,17 @@ export default [
     "abilities": [
       {
         "name": "Strategic Acumen",
-        "text": "In your Command phase, you can use this ability. If you do, select one **combat doctrine** to be active for this unit until the start of your next Command phase."
+        "text": "In your Command phase, you can use this ability. If you do, select one **[gloss:sm-combat-doctrine:combat doctrine]** to be active for this unit until the start of your next Command phase."
       },
       {
         "name": "Angel’s Wrath",
-        "text": "This unit has +1 to **advance rolls** and **charge rolls**."
+        "text": "This unit has +1 to **[gloss:advance-roll:advance rolls]** and **[gloss:charge-roll:charge rolls]**."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Relic Shield",
-        "text": "This model has +1 **W**."
+        "text": "This model has +1 **[gloss:wounds:W]**."
       }
     ],
     "composition": [
@@ -2772,7 +2772,7 @@ export default [
       },
       {
         "name": "Knight Champion of Macragge (Once per phase, per army)",
-        "text": "In your opponent’s Movement phase, when an enemy unit ends a move within 8\" of this unit, if this unit is **unengaged**, this unit can make a **normal move** of up to 6\"."
+        "text": "In your opponent’s Movement phase, when an enemy unit ends a move within 8\" of this unit, if this unit is **[gloss:unengaged:unengaged]**, this unit can make a **[gloss:normal-move:normal move]** of up to 6\"."
       },
       {
         "name": "Honour or Death",
@@ -3039,7 +3039,7 @@ export default [
     "abilities": [
       {
         "name": "Decimator Protocols",
-        "text": "▪ This unit's ranged attacks can re-roll **hit rolls** of 1.\n▪ __Or:__This unit's ranged attacks that target an enemy unit within range of an **objective** can re-roll **hit rolls**."
+        "text": "▪ This unit's ranged attacks can re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ __Or:__This unit's ranged attacks that target an enemy unit within range of an **[gloss:objective:objective]** can re-roll **[gloss:hit-roll:hit rolls]**."
       }
     ],
     "composition": [
@@ -3173,7 +3173,7 @@ export default [
     "abilities": [
       {
         "name": "Atomantic Arc-reactor",
-        "text": "In a turn this unit **remained stationary**, this unit's Cerberus Neutron Pulse Array ranged attacks have [LETHAL HITS]."
+        "text": "In a turn this unit **[gloss:remain-stationary:remained stationary]**, this unit's Cerberus Neutron Pulse Array ranged attacks have [LETHAL HITS]."
       }
     ],
     "composition": [
@@ -3254,7 +3254,7 @@ export default [
       },
       {
         "name": "Spiritual Leader (Once per battle round, per unit)",
-        "text": "At the start of any phase, you can select one friendly **battle-shocked** ADEPTUS ASTARTES unit within 6\" of this model. That unit is no longer **battle-shocked**."
+        "text": "At the start of any phase, you can select one friendly **[gloss:battle-shocked:battle-shocked]** ADEPTUS ASTARTES unit within 6\" of this model. That unit is no longer **[gloss:battle-shocked:battle-shocked]**."
       }
     ],
     "composition": [
@@ -3350,13 +3350,13 @@ export default [
       },
       {
         "name": "Zealous Fortitude",
-        "text": "This unit has **Feel No Pain 4+** against **mortal wounds**."
+        "text": "This unit has [core:Feel No Pain 4+] against **[gloss:mortal-wound:mortal wounds]**."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Relic Shield",
-        "text": "This model has +1 **W**."
+        "text": "This model has +1 **[gloss:wounds:W]**."
       }
     ],
     "composition": [
@@ -3460,7 +3460,7 @@ export default [
       },
       {
         "name": "Catechism of Fire",
-        "text": "In your Shooting phase, when this unit is **selected to shoot**, you can select one **visible** enemy unit. This unit’s ranged attacks that target that unit have [DEVASTATING WOUNDS]."
+        "text": "In your Shooting phase, when this unit is **[gloss:selected-to-shoot:selected to shoot]**, you can select one **[gloss:visible:visible]** enemy unit. This unit’s ranged attacks that target that unit have [DEVASTATING WOUNDS]."
       }
     ],
     "composition": [
@@ -3540,7 +3540,7 @@ export default [
     "abilities": [
       {
         "name": "Exhortation of Rage",
-        "text": "While this unit is at or below **half-strength**, this unit’s melee attacks can re-roll **wound rolls**."
+        "text": "While this unit is at or below **[gloss:half-strength:half-strength]**, this unit’s melee attacks can re-roll **[gloss:wound-roll:wound rolls]**."
       },
       {
         "name": "Litany of Hate",
@@ -3642,11 +3642,11 @@ export default [
     "abilities": [
       {
         "name": "Chief Librarian (psyker level 3)",
-        "text": "This model has the **psychic abilities** listed in the Psychic Abilities section."
+        "text": "This model has the **[gloss:psychic-ability:psychic abilities]** listed in the Psychic Abilities section."
       },
       {
         "name": "Hood of Hellfire (Psychic)",
-        "text": "This unit has **Feel No Pain 4+** against **psychic attacks** and **mortal wounds**."
+        "text": "This unit has [core:Feel No Pain 4+] against **[gloss:psychic-attack:psychic attacks]** and **[gloss:mortal-wound:mortal wounds]**."
       }
     ],
     "composition": [
@@ -3671,11 +3671,11 @@ export default [
         "options": [
           {
             "name": "Prescience (psychic level 2)",
-            "text": "In your Movement phase, if this unit is not **battle-shocked**, you can make a **psychic roll** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ This unit has +1 **Sv** until the start of your next turn."
+            "text": "In your Movement phase, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **[gloss:battle-shocked:battle-shocked]**.\n▪ This unit has +1 **[gloss:save:Sv]** until the start of your next turn."
           },
           {
             "name": "Telepathic Assault (psychic level 1)",
-            "text": "In your Shooting phase, if this unit is not **battle-shocked**, you can make a **psychic roll** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ Select one **visible** enemy unit within 24\" of this unit. That enemy unit suffers 2D3 **mortal wounds**."
+            "text": "In your Shooting phase, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **[gloss:battle-shocked:battle-shocked]**.\n▪ Select one **[gloss:visible:visible]** enemy unit within 24\" of this unit. That enemy unit suffers 2D3 **[gloss:mortal-wound:mortal wounds]**."
           }
         ]
       }
@@ -3816,11 +3816,11 @@ export default [
     "abilities": [
       {
         "name": "Command Squad",
-        "text": "Attacks that target this unit have -1 to **wound rolls**."
+        "text": "Attacks that target this unit have -1 to **[gloss:wound-roll:wound rolls]**."
       },
       {
         "name": "Raise the Banner",
-        "text": "At the end of your Movement phase, if this unit is controlling an **objective**, that **objective** is **secured**."
+        "text": "At the end of your Movement phase, if this unit is controlling an **[gloss:objective:objective]**, that **[gloss:objective:objective]** is **[gloss:secured-objective:secured]**."
       }
     ],
     "composition": [
@@ -3882,11 +3882,11 @@ export default [
     "abilities": [
       {
         "name": "Rampart (Once per battle, per army)",
-        "text": "At the start of any phase, you can use this ability. If you do, this model has 2+ **InSv** until the end of the phase."
+        "text": "At the start of any phase, you can use this ability. If you do, this model has 2+ **[gloss:invulnerable-save:InSv]** until the end of the phase."
       },
       {
         "name": "Icon of Obstinacy",
-        "text": "Attacks that target this unit have -1 to **hit rolls**."
+        "text": "Attacks that target this unit have -1 to **[gloss:hit-roll:hit rolls]**."
       }
     ],
     "composition": [
@@ -4030,7 +4030,7 @@ export default [
     "abilities": [
       {
         "name": "Targeter Optics",
-        "text": "This unit’s ranged attacks that target a **visible** enemy unit have [IGNORES COVER]."
+        "text": "This unit’s ranged attacks that target a **[gloss:visible:visible]** enemy unit have [IGNORES COVER]."
       }
     ],
     "composition": [
@@ -4212,7 +4212,7 @@ export default [
     "abilities": [
       {
         "name": "Wisdom of the Ancients",
-        "text": "While a friendly ADEPTUS ASTARTES INFANTRY unit is within 6\" of this model, that unit's attacks can re-roll **hit rolls** of 1."
+        "text": "While a friendly ADEPTUS ASTARTES INFANTRY unit is within 6\" of this model, that unit's attacks can re-roll **[gloss:hit-roll:hit rolls]** of 1."
       }
     ],
     "composition": [
@@ -4273,13 +4273,13 @@ export default [
       },
       {
         "name": "Drop Pod Assault",
-        "text": "▪ This unit must start the battle in **strategic reserves**.\n▪ In your first Movement phase, this unit can make an **ingress move**.\n▪ When this unit is set up, all units embarked within this unit must make a **disembark/assault disembark move** (pg 157), and those units must be set up more than 8\" away from all enemy units."
+        "text": "▪ This unit must start the battle in **[gloss:strategic-reserves:strategic reserves]**.\n▪ In your first Movement phase, this unit can make an **[gloss:ingress-move:ingress move]**.\n▪ When this unit is set up, all units embarked within this unit must make a **[gloss:disembark:disembark]/[gloss:assault-disembark-move:assault disembark move]** (pg 157), and those units must be set up more than 8\" away from all enemy units."
       }
     ],
     "composition": [
       "1 Drop Pod model"
     ],
-    "transport": "This model has a **transport capacity** of 12 ADEPTUS ASTARTES INFANTRY models. It cannot transport GRAVIS/JUMP PACK/TERMINATOR models.",
+    "transport": "This model has a **[gloss:transport-capacity:transport capacity]** of 12 ADEPTUS ASTARTES INFANTRY models. It cannot transport GRAVIS/JUMP PACK/TERMINATOR models.",
     "keywords": [
       "Dedicated Transport",
       "Frame",
@@ -4391,11 +4391,11 @@ export default [
     "abilities": [
       {
         "name": "Chameleoline Cloaks",
-        "text": "This unit has -3\" **detection range**."
+        "text": "This unit has -3\" **[gloss:detection-range:detection range]**."
       },
       {
         "name": "Special-issue Optics and Ammunition",
-        "text": "In your Shooting phase, when this unit is **selected to shoot**, you can select one of the following:\n▪ This unit’s ranged attacks have [IGNORES COVER].\n▪ __Or:__ Select one enemy unit within 24\" of this unit. That enemy unit has +6\" **detection range** until this unit has shot."
+        "text": "In your Shooting phase, when this unit is **[gloss:selected-to-shoot:selected to shoot]**, you can select one of the following:\n▪ This unit’s ranged attacks have [IGNORES COVER].\n▪ __Or:__ Select one enemy unit within 24\" of this unit. That enemy unit has +6\" **[gloss:detection-range:detection range]** until this unit has shot."
       }
     ],
     "composition": [
@@ -4649,7 +4649,7 @@ export default [
     "abilities": [
       {
         "name": "Total Obliteration",
-        "text": "This unit’s ranged attacks can re-roll **damage rolls**."
+        "text": "This unit’s ranged attacks can re-roll **[gloss:damage-roll:damage rolls]**."
       }
     ],
     "composition": [
@@ -4915,7 +4915,7 @@ export default [
     "abilities": [
       {
         "name": "Sentinel Protocols (Once per phase, per unit)",
-        "text": "You can target this unit with the **Fire Overwatch stratagem**, regardless of any other uses of that **stratagem** this phase. If you do:\n▪ This unit’s **snap shooting** attacks hit on unmodified **hit rolls** of 4+ until that **stratagem** is resolved.\n▪ That use does not prevent any uses of that **stratagem** on other units this phase."
+        "text": "You can target this unit with the **Fire Overwatch stratagem**, regardless of any other uses of that **[gloss:stratagem:stratagem]** this phase. If you do:\n▪ This unit’s **[gloss:snap-shooting:snap shooting]** attacks hit on unmodified **[gloss:hit-roll:hit rolls]** of 4+ until that **[gloss:stratagem:stratagem]** is resolved.\n▪ That use does not prevent any uses of that **[gloss:stratagem:stratagem]** on other units this phase."
       }
     ],
     "composition": [
@@ -5004,7 +5004,7 @@ export default [
     "abilities": [
       {
         "name": "Aquilon Optics",
-        "text": "This unit’s ranged attacks that target a MONSTER/VEHICLE unit can:\n▪ Re-roll __one__ **hit roll**.\n▪ Re-roll __one__ **wound roll**.\n▪ Re-roll __one__ **damage roll**."
+        "text": "This unit’s ranged attacks that target a MONSTER/VEHICLE unit can:\n▪ Re-roll __one__ **[gloss:hit-roll:hit roll]**.\n▪ Re-roll __one__ **[gloss:wound-roll:wound roll]**.\n▪ Re-roll __one__ **[gloss:damage-roll:damage roll]**."
       }
     ],
     "composition": [
@@ -5093,7 +5093,7 @@ export default [
     "abilities": [
       {
         "name": "Reaping Tally",
-        "text": "This unit’s ranged attacks that target a unit (excluding MONSTER/VEHICLE units) have +1 **AP**."
+        "text": "This unit’s ranged attacks that target a unit (excluding MONSTER/VEHICLE units) have +1 **[gloss:armour-penetration:AP]**."
       }
     ],
     "composition": [
@@ -5192,7 +5192,7 @@ export default [
     "abilities": [
       {
         "name": "Priority Target Acquisition",
-        "text": "This unit’s ranged attacks that target a unit within 12\" of this unit have +1 **S**."
+        "text": "This unit’s ranged attacks that target a unit within 12\" of this unit have +1 **[gloss:strength:S]**."
       }
     ],
     "composition": [
@@ -5288,11 +5288,11 @@ export default [
     "abilities": [
       {
         "name": "Fortification",
-        "text": "While an enemy unit is **engaged** with only FORTIFICATION units:\n▪ That enemy unit can be selected as a target of ranged attacks.\n▪ When shooting that enemy unit, those ranged attacks have -1 to **hit rolls** (excluding [CLOSE-QUARTERS] attacks).\n▪ When that enemy unit is selected to make a **fall-back move**, if that enemy unit is not **battle-shocked**, **hazard rolls** made for that enemy unit are automatically passed."
+        "text": "While an enemy unit is **[gloss:engaged:engaged]** with only FORTIFICATION units:\n▪ That enemy unit can be selected as a target of ranged attacks.\n▪ When shooting that enemy unit, those ranged attacks have -1 to **[gloss:hit-roll:hit rolls]** (excluding [CLOSE-QUARTERS] attacks).\n▪ When that enemy unit is selected to make a **[gloss:fall-back-move:fall-back move]**, if that enemy unit is not **[gloss:battle-shocked:battle-shocked]**, **[gloss:hazard-roll:hazard rolls]** made for that enemy unit are automatically passed."
       },
       {
         "name": "Ceramite Cover",
-        "text": "When an attack targets a unit that is not **fully visible** to the attacking model because of this unit, the target has the **benefit of cover** against that attack."
+        "text": "When an attack targets a unit that is not **[gloss:fully-visible:fully visible]** to the attacking model because of this unit, the target has the **[gloss:benefit-of-cover:benefit of cover]** against that attack."
       },
       {
         "name": "Defensive Array (Once per phase, per unit)",
@@ -5408,7 +5408,7 @@ export default [
     "abilities": [
       {
         "name": "Unyielding in the Face of the Foe",
-        "text": "While this unit is controlling an **objective**, this unit has +1 to **save rolls**."
+        "text": "While this unit is controlling an **[gloss:objective:objective]**, this unit has +1 to **[gloss:save-roll:save rolls]**."
       }
     ],
     "composition": [
@@ -5558,7 +5558,7 @@ export default [
     "abilities": [
       {
         "name": "Rites of Thermal Appeasement",
-        "text": "This unit has +1 to **hazard rolls** made for its Plasma Incinerator and Plasma Pistol weapons."
+        "text": "This unit has +1 to **[gloss:hazard-roll:hazard rolls]** made for its Plasma Incinerator and Plasma Pistol weapons."
       }
     ],
     "composition": [
@@ -5707,24 +5707,24 @@ export default [
     "abilities": [
       {
         "name": "Rapid Disembarkation",
-        "text": "In your Movement phase, when this unit ends an **advance move**, units embarked within this unit can make a **shock disembark move** (pg 157)."
+        "text": "In your Movement phase, when this unit ends an **[gloss:advance-move:advance move]**, units embarked within this unit can make a **[gloss:shock-disembark-move:shock disembark move]** (pg 157)."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Shield Dome",
-        "text": "This unit has 5+ **InSv**."
+        "text": "This unit has 5+ **[gloss:invulnerable-save:InSv]**."
       },
       {
         "name": "Orbital Comms Array",
-        "text": "This unit has **Scouts 6\"**."
+        "text": "This unit has [core:Scouts 6\"]."
       }
     ],
     "composition": [
       "1 Impulsor model"
     ],
     "loadout": "**This model is equipped with:** 1 Armoured Hull; 1 Storm Bolters.",
-    "transport": "This model has a **transport capacity** of 7 ADEPTUS ASTARTES INFANTRY models. It cannot transport TERMINATOR/JUMP PACK models. Each GRAVIS model takes up the space of 2 models.",
+    "transport": "This model has a **[gloss:transport-capacity:transport capacity]** of 7 ADEPTUS ASTARTES INFANTRY models. It cannot transport TERMINATOR/JUMP PACK models. Each GRAVIS model takes up the space of 2 models.",
     "keywords": [
       "Dedicated Transport",
       "Frame",
@@ -5845,11 +5845,11 @@ export default [
     "abilities": [
       {
         "name": "Parabolic Jetleap",
-        "text": "At the end of your opponent’s Fight phase, if this unit is **unengaged**, you can place this unit in **strategic reserves**."
+        "text": "At the end of your opponent’s Fight phase, if this unit is **[gloss:unengaged:unengaged]**, you can place this unit in **[gloss:strategic-reserves:strategic reserves]**."
       },
       {
         "name": "Meteoric Descent",
-        "text": "If this unit made an **ingress move** this turn, this unit’s ranged attacks have +1 to **hit rolls**."
+        "text": "If this unit made an **[gloss:ingress-move:ingress move]** this turn, this unit’s ranged attacks have +1 to **[gloss:hit-roll:hit rolls]**."
       }
     ],
     "composition": [
@@ -5963,11 +5963,11 @@ export default [
     "abilities": [
       {
         "name": "Haywire Mine (Once per battle, per unit)",
-        "text": "In your Shooting phase, you can select one **visible** enemy unit within 6\" of this unit and roll one D6. On a 2+:\n▪ That enemy unit suffers D3 **mortal wounds**.\n▪ __Or:__ If that enemy unit is a VEHICLE unit, that enemy unit suffers 2D3 **mortal wounds**."
+        "text": "In your Shooting phase, you can select one **[gloss:visible:visible]** enemy unit within 6\" of this unit and roll one D6. On a 2+:\n▪ That enemy unit suffers D3 **[gloss:mortal-wound:mortal wounds]**.\n▪ __Or:__ If that enemy unit is a VEHICLE unit, that enemy unit suffers 2D3 **[gloss:mortal-wound:mortal wounds]**."
       },
       {
         "name": "Divinator-class Auspexes (Once per phase, per unit)",
-        "text": "In your Shooting phase, when a friendly ADEPTUS ASTARTES unit is **selected to shoot**, you can use this ability. If you do, select one **visible** enemy unit within 18\" of this unit. That unit is **scanned**:\n▪ While a unit is **scanned**, ranged attacks that target that unit can re-roll **hit rolls** of 1."
+        "text": "In your Shooting phase, when a friendly ADEPTUS ASTARTES unit is **[gloss:selected-to-shoot:selected to shoot]**, you can use this ability. If you do, select one **[gloss:visible:visible]** enemy unit within 18\" of this unit. That unit is **scanned**:\n▪ While a unit is **scanned**, ranged attacks that target that unit can re-roll **[gloss:hit-roll:hit rolls]** of 1."
       }
     ],
     "composition": [
@@ -6171,13 +6171,13 @@ export default [
     "abilities": [
       {
         "name": "Omni-scramblers",
-        "text": "In your Shooting phase, you can select one **visible** enemy unit within 18\" of this unit. That unit is **detected**:\n▪ While a unit is **detected**, that unit has +3\" **detection range**."
+        "text": "In your Shooting phase, you can select one **[gloss:visible:visible]** enemy unit within 18\" of this unit. That unit is **detected**:\n▪ While a unit is **detected**, that unit has +3\" **[gloss:detection-range:detection range]**."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Helix Gauntlet",
-        "text": "In your Command phase, this unit **heals** D3 wounds."
+        "text": "In your Command phase, this unit **[gloss:heal:heals]** D3 wounds."
       }
     ],
     "composition": [
@@ -6389,11 +6389,11 @@ export default [
     "abilities": [
       {
         "name": "Bolter Discipline",
-        "text": "In your Shooting phase, if any of the following apply, this unit’s ranged attacks have +1 to **hit rolls**:\n▪ This unit is within range of an **objective**.\n▪ The target of that attack is within range of an **objective**."
+        "text": "In your Shooting phase, if any of the following apply, this unit’s ranged attacks have +1 to **[gloss:hit-roll:hit rolls]**:\n▪ This unit is within range of an **[gloss:objective:objective]**.\n▪ The target of that attack is within range of an **[gloss:objective:objective]**."
       },
       {
         "name": "Tactical Mainstay",
-        "text": "▪ Being **engaged**/**battle-shocked** does not prevent this unit from being **eligible to start an action**.\n▪ When this unit **starts an action**, that **action** does not prevent this unit from being **eligible to shoot**."
+        "text": "▪ Being **[gloss:engaged:engaged]**/**[gloss:battle-shocked:battle-shocked]** does not prevent this unit from being **[gloss:eligible-to-act:eligible to start an action]**.\n▪ When this unit **[gloss:action:starts an action]**, that **[gloss:action:action]** does not prevent this unit from being **[gloss:eligible-to-shoot:eligible to shoot]**."
       }
     ],
     "composition": [
@@ -6521,7 +6521,7 @@ export default [
     "abilities": [
       {
         "name": "Aggressive Reconnaissance",
-        "text": "In your Shooting phase, this unit’s ranged attacks that target an enemy unit that is not within 6\" of any other enemy units have +1 to **wound rolls**."
+        "text": "In your Shooting phase, this unit’s ranged attacks that target an enemy unit that is not within 6\" of any other enemy units have +1 to **[gloss:wound-roll:wound rolls]**."
       }
     ],
     "composition": [
@@ -6643,7 +6643,7 @@ export default [
     "abilities": [
       {
         "name": "Forward Assault Warsuit",
-        "text": "At the start of the first battle round, you can select one enemy unit to be this unit’s **mark**:\n▪ This unit’s attacks that target this unit’s **mark** can re-roll **wound rolls** of 1.\n▪ Each time this unit’s **mark** is **destroyed**, select one enemy unit to be this unit’s **mark**."
+        "text": "At the start of the first battle round, you can select one enemy unit to be this unit’s **mark**:\n▪ This unit’s attacks that target this unit’s **mark** can re-roll **[gloss:wound-roll:wound rolls]** of 1.\n▪ Each time this unit’s **mark** is **[gloss:destroyed:destroyed]**, select one enemy unit to be this unit’s **mark**."
       }
     ],
     "composition": [
@@ -6739,15 +6739,15 @@ export default [
     "abilities": [
       {
         "name": "Master of the Forge",
-        "text": "In your Movement phase, at the start or end of this unit’s move, you can select one friendly ADEPTUS ASTARTES VEHICLE model within 3\" of this model:\n▪ That VEHICLE model **heals** 3 wounds.\n▪ That VEHICLE model’s attacks can ignore modifiers to the following until the start of your next Movement phase:\n▪ **BS**.\n▪ **Hit rolls** and **wound rolls**."
+        "text": "In your Movement phase, at the start or end of this unit’s move, you can select one friendly ADEPTUS ASTARTES VEHICLE model within 3\" of this model:\n▪ That VEHICLE model **[gloss:heal:heals]** 3 wounds.\n▪ That VEHICLE model’s attacks can ignore modifiers to the following until the start of your next Movement phase:\n▪ **[gloss:ballistic-skill:BS]**.\n▪ **[gloss:hit-roll:Hit rolls]** and **[gloss:wound-roll:wound rolls]**."
       },
       {
         "name": "Rites of Tempering",
-        "text": "Attacks that target this unit with a **S** greater than this unit’s **T** have -1 to **wound rolls**."
+        "text": "Attacks that target this unit with a **[gloss:strength:S]** greater than this unit’s **[gloss:toughness:T]** have -1 to **[gloss:wound-roll:wound rolls]**."
       },
       {
         "name": "Iron Father",
-        "text": "While this model is within 3\" of a friendly ADEPTUS ASTARTES VEHICLE unit, this model has **Lone Operative**"
+        "text": "While this model is within 3\" of a friendly ADEPTUS ASTARTES VEHICLE unit, this model has [core:Lone Operative]"
       }
     ],
     "composition": [
@@ -6832,7 +6832,7 @@ export default [
     "abilities": [
       {
         "name": "Tempormortis",
-        "text": "This unit has **Fights First**."
+        "text": "This unit has [core:Fights First]."
       }
     ],
     "composition": [
@@ -6931,11 +6931,11 @@ export default [
     "abilities": [
       {
         "name": "Veteran Bodyguard",
-        "text": "While this model is attached to a unit, other CHARACTER models in this unit have **Feel No Pain 4+**."
+        "text": "While this model is attached to a unit, other CHARACTER models in this unit have [core:Feel No Pain 4+]."
       },
       {
         "name": "Calgar’s Champion",
-        "text": "This model’s attacks that target a CHARACTER unit can:\n▪ Re-roll **hit rolls** of 1.\n▪ Re-roll **wound rolls** of 1."
+        "text": "This model’s attacks that target a CHARACTER unit can:\n▪ Re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ Re-roll **[gloss:wound-roll:wound rolls]** of 1."
       }
     ],
     "composition": [
@@ -7020,11 +7020,11 @@ export default [
     "abilities": [
       {
         "name": "Trifold Path of Shadow",
-        "text": "This unit has:\n▪ **Stealth**.\n▪ -3\" **detection range**."
+        "text": "This unit has:\n▪ [core:Stealth].\n▪ -3\" **[gloss:detection-range:detection range]**."
       },
       {
         "name": "Echo of the Ravenspire",
-        "text": "At the end of your opponent’s Fight phase, if this unit is **unengaged**, you can place this unit in **strategic reserves**."
+        "text": "At the end of your opponent’s Fight phase, if this unit is **[gloss:unengaged:unengaged]**, you can place this unit in **[gloss:strategic-reserves:strategic reserves]**."
       }
     ],
     "composition": [
@@ -7125,7 +7125,7 @@ export default [
     "abilities": [
       {
         "name": "Trophy Taker",
-        "text": "This unit’s attacks that target a CHARACTER unit can:\n▪ Re-roll **hit rolls** of 1\n▪ Re-roll **wound rolls** of 1."
+        "text": "This unit’s attacks that target a CHARACTER unit can:\n▪ Re-roll **[gloss:hit-roll:hit rolls]** of 1\n▪ Re-roll **[gloss:wound-roll:wound rolls]** of 1."
       },
       {
         "name": "For the Khan!",
@@ -7405,7 +7405,7 @@ export default [
     "abilities": [
       {
         "name": "Line-breaker",
-        "text": "In your Shooting phase, when this unit is **selected to shoot** using **close-quarters shooting**:\n▪ This unit's attacks that target a unit **engaged** with this unit can ignore modifiers to:\n▪ **BS**.\n▪ **Hit rolls**.\n▪ For each of this unit's [BLAST] weapons, you can choose for that weapon to not have [BLAST]:\n▪ If you do, that weapon can only target an enemy unit that is not **engaged** with another friendly unit."
+        "text": "In your Shooting phase, when this unit is **[gloss:selected-to-shoot:selected to shoot]** using **[gloss:close-quarters:close-quarters shooting]**:\n▪ This unit's attacks that target a unit **[gloss:engaged:engaged]** with this unit can ignore modifiers to:\n▪ **[gloss:ballistic-skill:BS]**.\n▪ **[gloss:hit-roll:Hit rolls]**.\n▪ For each of this unit's [BLAST] weapons, you can choose for that weapon to not have [BLAST]:\n▪ If you do, that weapon can only target an enemy unit that is not **[gloss:engaged:engaged]** with another friendly unit."
       }
     ],
     "composition": [
@@ -7536,11 +7536,11 @@ export default [
     "abilities": [
       {
         "name": "Power of the Machine Spirit",
-        "text": "This unit’s ranged attacks can:\n▪ Re-roll __one__ **hit roll**.\n▪ Re-roll __one__ **wound roll**."
+        "text": "This unit’s ranged attacks can:\n▪ Re-roll __one__ **[gloss:hit-roll:hit roll]**.\n▪ Re-roll __one__ **[gloss:wound-roll:wound roll]**."
       },
       {
         "name": "Assault Ramp",
-        "text": "In your Movement phase, when this unit ends a **normal move**, units embarked within this unit can make an **assault disembark move** (pg 157)."
+        "text": "In your Movement phase, when this unit ends a **[gloss:normal-move:normal move]**, units embarked within this unit can make an **[gloss:assault-disembark-move:assault disembark move]** (pg 157)."
       }
     ],
     "composition": [
@@ -7552,7 +7552,7 @@ export default [
       "This model can be equipped with 1 Multi-melta.",
       "This model can be equipped with 1 Storm Bolter."
     ],
-    "transport": "This model has a **transport capacity** of 14 ADEPTUS ASTARTES INFANTRY models. It cannot transport JUMP PACK models. Each GRAVIS/TERMINATOR model takes up the space of 2 models.",
+    "transport": "This model has a **[gloss:transport-capacity:transport capacity]** of 14 ADEPTUS ASTARTES INFANTRY models. It cannot transport JUMP PACK models. Each GRAVIS/TERMINATOR model takes up the space of 2 models.",
     "keywords": [
       "Frame",
       "Imperium",
@@ -7672,7 +7672,7 @@ export default [
     "abilities": [
       {
         "name": "Assault Ramp",
-        "text": "In your Movement phase, when this unit ends a **normal move**, units embarked within this unit can make an **assault disembark move** (pg 157)."
+        "text": "In your Movement phase, when this unit ends a **[gloss:normal-move:normal move]**, units embarked within this unit can make an **[gloss:assault-disembark-move:assault disembark move]** (pg 157)."
       },
       {
         "name": "Fury of the Machine Spirit",
@@ -7688,7 +7688,7 @@ export default [
       "This model can be equipped with 1 Multi-melta.",
       "This model can be equipped with 1 Storm Bolter."
     ],
-    "transport": "This model has a **transport capacity** of 16 ADEPTUS ASTARTES INFANTRY models. It cannot transport JUMP PACK models. Each GRAVIS/TERMINATOR model takes up the space of 2 models.",
+    "transport": "This model has a **[gloss:transport-capacity:transport capacity]** of 16 ADEPTUS ASTARTES INFANTRY models. It cannot transport JUMP PACK models. Each GRAVIS/TERMINATOR model takes up the space of 2 models.",
     "keywords": [
       "Explosives",
       "Frame",
@@ -7834,7 +7834,7 @@ export default [
     "abilities": [
       {
         "name": "Rites of Battle",
-        "text": "Once per battle round, one unit from your army with this ability can use it when it is targeted with a **stratagem**. If it does, reduce the cost of that **stratagem** by 1 **CP**."
+        "text": "Once per battle round, one unit from your army with this ability can use it when it is targeted with a **[gloss:stratagem:stratagem]**. If it does, reduce the cost of that **[gloss:stratagem:stratagem]** by 1 **[gloss:command-points:CP]**."
       }
     ],
     "composition": [
@@ -7972,7 +7972,7 @@ export default [
       },
       {
         "name": "Assault Ramp",
-        "text": "In your Movement phase, when this unit ends a **normal move**, units embarked within this unit can make an **assault disembark move** (pg 157)."
+        "text": "In your Movement phase, when this unit ends a **[gloss:normal-move:normal move]**, units embarked within this unit can make an **[gloss:assault-disembark-move:assault disembark move]** (pg 157)."
       }
     ],
     "composition": [
@@ -7984,7 +7984,7 @@ export default [
       "This model can be equipped with 1 Multi-melta.",
       "This model can be equipped with 1 Storm Bolter."
     ],
-    "transport": "This model has a **transport capacity** of 14 ADEPTUS ASTARTES INFANTRY models. It cannot transport JUMP PACK models. Each GRAVIS/TERMINATOR model takes up the space of 2 models.",
+    "transport": "This model has a **[gloss:transport-capacity:transport capacity]** of 14 ADEPTUS ASTARTES INFANTRY models. It cannot transport JUMP PACK models. Each GRAVIS/TERMINATOR model takes up the space of 2 models.",
     "keywords": [
       "Explosives",
       "Frame",
@@ -8084,7 +8084,7 @@ export default [
     "abilities": [
       {
         "name": "Purgation Run",
-        "text": "In your Shooting phase, when this unit has shot, you can use this ability. If you do:\n▪ This unit can make a **normal move** of up to D6\".\n▪ This unit is not **eligible to declare a charge** until the end of the turn."
+        "text": "In your Shooting phase, when this unit has shot, you can use this ability. If you do:\n▪ This unit can make a **[gloss:normal-move:normal move]** of up to D6\".\n▪ This unit is not **[gloss:eligible-to-charge:eligible to declare a charge]** until the end of the turn."
       }
     ],
     "composition": [
@@ -8185,11 +8185,11 @@ export default [
     "abilities": [
       {
         "name": "Psychic Hood (Psychic)",
-        "text": "This unit has **Feel No Pain 4+** against **psychic attacks**."
+        "text": "This unit has [core:Feel No Pain 4+] against **[gloss:psychic-attack:psychic attacks]**."
       },
       {
         "name": "Librarian (psyker level 1)",
-        "text": "This model has the **psychic abilities** listed in the Psychic Abilities section."
+        "text": "This model has the **[gloss:psychic-ability:psychic abilities]** listed in the Psychic Abilities section."
       }
     ],
     "composition": [
@@ -8218,11 +8218,11 @@ export default [
         "options": [
           {
             "name": "Veil of Time (psychic level 1)",
-            "text": "When this unit is selected to make an **advance move**, if this unit is not **battle-shocked**, you can make a **psychic roll** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ This unit can change that **advance roll** to a 6."
+            "text": "When this unit is selected to make an **[gloss:advance-move:advance move]**, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **[gloss:battle-shocked:battle-shocked]**.\n▪ This unit can change that **[gloss:advance-roll:advance roll]** to a 6."
           },
           {
             "name": "Force Dome (psychic level 1)",
-            "text": "In your Movement phase, if this unit is not **battle-shocked**, you can make a **psychic roll** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ This unit has 4+ **InSv** until the start of your next turn."
+            "text": "In your Movement phase, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **[gloss:battle-shocked:battle-shocked]**.\n▪ This unit has 4+ **[gloss:invulnerable-save:InSv]** until the start of your next turn."
           }
         ]
       }
@@ -8319,11 +8319,11 @@ export default [
     "abilities": [
       {
         "name": "Psychic Hood (Psychic)",
-        "text": "This unit has **Feel No Pain 4+** against **psychic attacks**."
+        "text": "This unit has [core:Feel No Pain 4+] against **[gloss:psychic-attack:psychic attacks]**."
       },
       {
         "name": "Librarian (psyker level 1)",
-        "text": "This model has the **psychic abilities** listed in the Psychic Abilities section."
+        "text": "This model has the **[gloss:psychic-ability:psychic abilities]** listed in the Psychic Abilities section."
       }
     ],
     "composition": [
@@ -8348,11 +8348,11 @@ export default [
         "options": [
           {
             "name": "Shrouding (psychic level 1)",
-            "text": "When an enemy unit targets this unit, if this unit is not **battle-shocked**, you can make a **psychic roll** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ Attacks that target this unit have -1 to **hit rolls** until the end of the phase."
+            "text": "When an enemy unit targets this unit, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **[gloss:battle-shocked:battle-shocked]**.\n▪ Attacks that target this unit have -1 to **[gloss:hit-roll:hit rolls]** until the end of the phase."
           },
           {
             "name": "Soul Sight (psychic level 1)",
-            "text": "In your Shooting phase, if this unit is not **battle-shocked**, you can make a **psychic roll** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ Select one **visible** enemy unit. Ranged attacks that target that enemy unit have [IGNORES COVER]."
+            "text": "In your Shooting phase, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **[gloss:battle-shocked:battle-shocked]**.\n▪ Select one **[gloss:visible:visible]** enemy unit. Ranged attacks that target that enemy unit have [IGNORES COVER]."
           }
         ]
       }
@@ -8450,11 +8450,11 @@ export default [
     "abilities": [
       {
         "name": "Psychic Hood (Psychic)",
-        "text": "This unit has **Feel No Pain 4+** against **psychic attacks**."
+        "text": "This unit has [core:Feel No Pain 4+] against **[gloss:psychic-attack:psychic attacks]**."
       },
       {
         "name": "Librarian (psyker level 1)",
-        "text": "This model has the **psychic abilities** listed in the Psychic Abilities section."
+        "text": "This model has the **[gloss:psychic-ability:psychic abilities]** listed in the Psychic Abilities section."
       }
     ],
     "composition": [
@@ -8478,11 +8478,11 @@ export default [
         "options": [
           {
             "name": "Might of Heroes (psychic level 1)",
-            "text": "In the Fight phase, if this unit is not **battle-shocked**, you can make a **psychic roll** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ This unit’s melee attacks have +2 **S**."
+            "text": "In the Fight phase, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **[gloss:battle-shocked:battle-shocked]**.\n▪ This unit’s melee attacks have +2 **[gloss:strength:S]**."
           },
           {
             "name": "Thunderous Force (psychic level 1)",
-            "text": "In your Shooting phase, if this unit is not **battle-shocked**, you can make a **psychic roll** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ This unit’s ranged attacks have +6\" **R**."
+            "text": "In your Shooting phase, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **[gloss:battle-shocked:battle-shocked]**.\n▪ This unit’s ranged attacks have +6\" **[gloss:range:R]**."
           }
         ]
       }
@@ -8632,13 +8632,13 @@ export default [
       },
       {
         "name": "Demi-company Commander (Once per turn, per unit)",
-        "text": "When a friendly CAPTAIN unit uses its Strategic Acumen ability, you can use this ability. If you do, the selected **combat doctrine** is active for this unit until the start of your next Command phase."
+        "text": "When a friendly CAPTAIN unit uses its Strategic Acumen ability, you can use this ability. If you do, the selected **[gloss:sm-combat-doctrine:combat doctrine]** is active for this unit until the start of your next Command phase."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Storm Shield",
-        "text": "This model has a 4+ **InSv**."
+        "text": "This model has a 4+ **[gloss:invulnerable-save:InSv]**."
       }
     ],
     "composition": [
@@ -8753,7 +8753,7 @@ export default [
       },
       {
         "name": "Demi-company Commander (Once per turn, per unit)",
-        "text": "When a friendly CAPTAIN unit uses its Strategic Acumen ability, you can use this ability. If you do, the selected **combat doctrine** is active for this unit until the start of your next Command phase."
+        "text": "When a friendly CAPTAIN unit uses its Strategic Acumen ability, you can use this ability. If you do, the selected **[gloss:sm-combat-doctrine:combat doctrine]** is active for this unit until the start of your next Command phase."
       }
     ],
     "composition": [
@@ -8855,11 +8855,11 @@ export default [
     "abilities": [
       {
         "name": "Priority Target Identified (Once per battle, per unit)",
-        "text": "In your Command phase, you can use this ability. If you do, select one **visible terrain feature**. That terrain feature is **identified** until the end of the turn.\n▪ While an enemy unit is within an** identified terrain feature**, that enemy unit has +3\" **detection range**."
+        "text": "In your Command phase, you can use this ability. If you do, select one **visible terrain feature**. That terrain feature is **identified** until the end of the turn.\n▪ While an enemy unit is within an** identified terrain feature**, that enemy unit has +3\" **[gloss:detection-range:detection range]**."
       },
       {
         "name": "Evade and Survive (Once per phase, per unit)",
-        "text": "In your opponent’s Movement phase, when an enemy unit ends a move within 8\" of this unit, if this unit is **unengaged**, this unit can make a **normal move** of up to D3+3\"."
+        "text": "In your opponent’s Movement phase, when an enemy unit ends a move within 8\" of this unit, if this unit is **[gloss:unengaged:unengaged]**, this unit can make a **[gloss:normal-move:normal move]** of up to D3+3\"."
       }
     ],
     "composition": [
@@ -8945,15 +8945,15 @@ export default [
     "abilities": [
       {
         "name": "Codex Adept",
-        "text": "The **assault doctrine**, **devastator doctrine** and **tactical doctrine** are active for this unit."
+        "text": "The **[gloss:sm-combat-doctrine:assault doctrine]**, **[gloss:sm-combat-doctrine:devastator doctrine]** and **[gloss:sm-combat-doctrine:tactical doctrine]** are active for this unit."
       },
       {
         "name": "Master Tactician",
-        "text": "In your Movement phase, you can select one **visible** friendly ADEPTUS ASTARTES unit within 9\" of this model, and select one **combat doctrine**. That **combat doctrine** is active for that unit until the start of your next Command phase."
+        "text": "In your Movement phase, you can select one **[gloss:visible:visible]** friendly ADEPTUS ASTARTES unit within 9\" of this model, and select one **[gloss:sm-combat-doctrine:combat doctrine]**. That **[gloss:sm-combat-doctrine:combat doctrine]** is active for that unit until the start of your next Command phase."
       },
       {
         "name": "Thunderhawk Insertion",
-        "text": "In the Declare Battle Formations step, you can select one friendly GRAVIS/PHOBOS/TACTICUS unit. That unit has **Deep Strike**."
+        "text": "In the Declare Battle Formations step, you can select one friendly GRAVIS/PHOBOS/TACTICUS unit. That unit has [core:Deep Strike]."
       }
     ],
     "composition": [
@@ -9104,7 +9104,7 @@ export default [
     "abilities": [
       {
         "name": "Inviolable Transport",
-        "text": "Attacks allocated to this unit have -1 **D**."
+        "text": "Attacks allocated to this unit have -1 **[gloss:damage-roll:D]**."
       }
     ],
     "composition": [
@@ -9115,7 +9115,7 @@ export default [
       "This model's 2 Heavy Flamers can be replaced with one of the following: 2 Heavy Bolters, 2 Lascannons, 2 Volkite Culverins",
       "This model's 2 Lascannons can be replaced with one of the following: 2 Heavy Bolters, 2 Heavy Flamers, 2 Volkite Culverins"
     ],
-    "transport": "This model has a transport capacity of 45 Adeptus Astartes Infantry models. And 2 Dreadnought models. Each Jump Pack, Gravis, Terminator model takes up the space of 2 models. Each Centurion model takes up the space of 3 models. Each DREADNOUGHT model take up the space of a number of models equal to their **W** characteristic.",
+    "transport": "This model has a transport capacity of 45 Adeptus Astartes Infantry models. And 2 Dreadnought models. Each Jump Pack, Gravis, Terminator model takes up the space of 2 models. Each Centurion model takes up the space of 3 models. Each DREADNOUGHT model take up the space of a number of models equal to their **[gloss:wounds:W]** characteristic.",
     "keywords": [
       "Frame",
       "Imperium",
@@ -9252,7 +9252,7 @@ export default [
     "abilities": [
       {
         "name": "Full-throttle Assault",
-        "text": "If this unit made a **charge move** this turn, this unit’s:\n▪ Thunder Hammer weapons have +1 to **hit rolls** and [SUSTAINED HITS 1].\n▪ Other melee weapons have +1 **D** and [SUSTAINED HITS 1]."
+        "text": "If this unit made a **[gloss:charge-move:charge move]** this turn, this unit’s:\n▪ Thunder Hammer weapons have +1 to **[gloss:hit-roll:hit rolls]** and [SUSTAINED HITS 1].\n▪ Other melee weapons have +1 **[gloss:damage-roll:D]** and [SUSTAINED HITS 1]."
       }
     ],
     "composition": [
@@ -9378,7 +9378,7 @@ export default [
     "abilities": [
       {
         "name": "Annihilator",
-        "text": "This unit's ranged attacks that target a MONSTER/VEHICLE unit can re-roll **damage rolls**."
+        "text": "This unit's ranged attacks that target a MONSTER/VEHICLE unit can re-roll **[gloss:damage-roll:damage rolls]**."
       }
     ],
     "composition": [
@@ -9506,7 +9506,7 @@ export default [
     "abilities": [
       {
         "name": "Destructor",
-        "text": "This unit's ranged attacks that target an INFANTRY unit have +1 **AP**."
+        "text": "This unit's ranged attacks that target an INFANTRY unit have +1 **[gloss:armour-penetration:AP]**."
       }
     ],
     "composition": [
@@ -9647,7 +9647,7 @@ export default [
     "abilities": [
       {
         "name": "Powerful Volley",
-        "text": "In a turn this unit **remained stationary**, ranged attacks that have [HEAVY] also have [LETHAL HITS]."
+        "text": "In a turn this unit **[gloss:remain-stationary:remained stationary]**, ranged attacks that have [HEAVY] also have [LETHAL HITS]."
       }
     ],
     "composition": [
@@ -9758,7 +9758,7 @@ export default [
     "abilities": [
       {
         "name": "Fire Support",
-        "text": "In your Shooting phase, when this unit has shot, select one enemy unit hit by those attacks. Attacks that target that unit made by friendly ADEPTUS ASTARTES units that **Disembarked** from this TRANSPORT this turn can re-roll **wound rolls**."
+        "text": "In your Shooting phase, when this unit has shot, select one enemy unit hit by those attacks. Attacks that target that unit made by friendly ADEPTUS ASTARTES units that **[gloss:disembark:Disembarked]** from this TRANSPORT this turn can re-roll **[gloss:wound-roll:wound rolls]**."
       }
     ],
     "composition": [
@@ -9929,7 +9929,7 @@ export default [
     "abilities": [
       {
         "name": "Duty Eternal",
-        "text": "Attacks that target this unit with a **S** greater than this unit’s **T** have -1 to **wound rolls**."
+        "text": "Attacks that target this unit with a **[gloss:strength:S]** greater than this unit’s **[gloss:toughness:T]** have -1 to **[gloss:wound-roll:wound rolls]**."
       }
     ],
     "composition": [
@@ -10033,17 +10033,17 @@ export default [
     "abilities": [
       {
         "name": "Terror Troops (Aura)",
-        "text": "While an enemy model is within 3\" of this unit, that enemy model has -1 **OC**."
+        "text": "While an enemy model is within 3\" of this unit, that enemy model has -1 **[gloss:objective-control:OC]**."
       },
       {
         "name": "Fearsome Assault",
-        "text": "At the start of the Fight phase, each enemy unit **engaged** with a unit with this ability makes a **battle‑shock roll**, with -1 to that **battle-shock roll**."
+        "text": "At the start of the Fight phase, each enemy unit **[gloss:engaged:engaged]** with a unit with this ability makes a **[gloss:battle-shock-test:battle‑shock roll]**, with -1 to that **[gloss:battle-shock-test:battle-shock roll]**."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Grav-chutes",
-        "text": "This unit has **Deep Strike**."
+        "text": "This unit has [core:Deep Strike]."
       },
       {
         "name": "Grapnel Launchers",
@@ -10184,7 +10184,7 @@ export default [
     "abilities": [
       {
         "name": "Fire Supprt",
-        "text": "In your Shooting phase, when this unit has shot, select one enemy unit hit by those attacks. Attacks that target that unit made by friendly ADEPTUS ASTARTES units that **Disembarked** from this TRANSPORT this turn can re-roll **wound rolls**."
+        "text": "In your Shooting phase, when this unit has shot, select one enemy unit hit by those attacks. Attacks that target that unit made by friendly ADEPTUS ASTARTES units that **[gloss:disembark:Disembarked]** from this TRANSPORT this turn can re-roll **[gloss:wound-roll:wound rolls]**."
       }
     ],
     "composition": [
@@ -10328,14 +10328,14 @@ export default [
     "abilities": [
       {
         "name": "Combat Embarkation",
-        "text": "In your opponent’s Charge phase, when an enemy unit has selected **charge targets**, you can select one friendly **unengaged** ADEPTUS ASTARTES unit that was one of those **charge targets** and is eligible to embark within this TRANSPORT. If every model in that unit is within 3\" of this TRANSPORT, that unit can embark within this TRANSPORT. That enemy unit can then select new **charge targets** for that **charge move**."
+        "text": "In your opponent’s Charge phase, when an enemy unit has selected **[gloss:charge-target:charge targets]**, you can select one friendly **[gloss:unengaged:unengaged]** ADEPTUS ASTARTES unit that was one of those **[gloss:charge-target:charge targets]** and is eligible to embark within this TRANSPORT. If every model in that unit is within 3\" of this TRANSPORT, that unit can embark within this TRANSPORT. That enemy unit can then select new **[gloss:charge-target:charge targets]** for that **[gloss:charge-move:charge move]**."
       }
     ],
     "composition": [
       "1 Repulsor model"
     ],
     "loadout": "**This model is equipped with:** 1 Armoured Hull; 1 Defensive Array; 1 Heavy Onslaught Gatling Cannon; 1 Hunter-slayer Missile; 1 Twin Heavy Bolter.",
-    "transport": "This model has a **transport capacity** of 14 ADEPTUS ASTARTES INFANTRY models. It cannot transport JUMP PACK models. Each GRAVIS/TERMINATOR model takes up the space of 2 models.",
+    "transport": "This model has a **[gloss:transport-capacity:transport capacity]** of 14 ADEPTUS ASTARTES INFANTRY models. It cannot transport JUMP PACK models. Each GRAVIS/TERMINATOR model takes up the space of 2 models.",
     "keywords": [
       "Frame",
       "Imperium",
@@ -10468,14 +10468,14 @@ export default [
     "abilities": [
       {
         "name": "Executioner",
-        "text": "This unit’s ranged attacks that target a unit not **below half-strength** have +1 to **hit rolls**."
+        "text": "This unit’s ranged attacks that target a unit not **[gloss:half-strength:below half-strength]** have +1 to **[gloss:hit-roll:hit rolls]**."
       }
     ],
     "composition": [
       "1 Repulsor Executioner model"
     ],
     "loadout": "**This model is equipped with:** 1 Armoured Hull; 1 Defensive Array; 1 Heavy Laser Destroyer; 1 Heavy Onslaught Gatling Cannon; 1 Twin Heavy Bolter.",
-    "transport": "This model has a **transport capacity** of 7 ADEPTUS ASTARTES INFANTRY models. It cannot transport JUMP PACK models. Each GRAVIS/TERMINATOR model takes up the space of 2 models.",
+    "transport": "This model has a **[gloss:transport-capacity:transport capacity]** of 7 ADEPTUS ASTARTES INFANTRY models. It cannot transport JUMP PACK models. Each GRAVIS/TERMINATOR model takes up the space of 2 models.",
     "keywords": [
       "Frame",
       "Imperium",
@@ -10557,7 +10557,7 @@ export default [
     "abilities": [
       {
         "name": "Veiling Smoke (Once per phase, per unit)",
-        "text": "You can target this unit with the **Smokescreen stratagem**, regardless of any other uses of that **stratagem** this phase. If you do:\n▪ That use is -1 CP.\n▪ That use does not prevent any uses of that **stratagem** on other units this phase."
+        "text": "You can target this unit with the **Smokescreen stratagem**, regardless of any other uses of that **[gloss:stratagem:stratagem]** this phase. If you do:\n▪ That use is -1 CP.\n▪ That use does not prevent any uses of that **[gloss:stratagem:stratagem]** on other units this phase."
       }
     ],
     "composition": [
@@ -10567,7 +10567,7 @@ export default [
     "options": [
       "This model can be equipped with 1 Hunter-killer Missile."
     ],
-    "transport": "This model has a **transport capacity** of 12 ADEPTUS ASTARTES INFANTRY models. It cannot transport GRAVIS/JUMP PACK/TERMINATOR models.",
+    "transport": "This model has a **[gloss:transport-capacity:transport capacity]** of 12 ADEPTUS ASTARTES INFANTRY models. It cannot transport GRAVIS/JUMP PACK/TERMINATOR models.",
     "keywords": [
       "Dedicated Transport",
       "Frame",
@@ -10658,11 +10658,11 @@ export default [
     "abilities": [
       {
         "name": "Self-repair",
-        "text": "In your Command phase, this unit **heals** 1 wound."
+        "text": "In your Command phase, this unit **[gloss:heal:heals]** 1 wound."
       },
       {
         "name": "Orbital Comms Array",
-        "text": "While a friendly ADEPTUS ASTARTES unit is within 6\" of this unit, each time you target that unit with a **stratagem** roll 1D6:\n▪ On a 5+, you gain 1 CP."
+        "text": "While a friendly ADEPTUS ASTARTES unit is within 6\" of this unit, each time you target that unit with a **[gloss:stratagem:stratagem]** roll 1D6:\n▪ On a 5+, you gain 1 CP."
       }
     ],
     "composition": [
@@ -10753,19 +10753,19 @@ export default [
     "abilities": [
       {
         "name": "Codex Adept",
-        "text": "The **assault doctrine**, **devastator doctrine** and **tactical doctrine** are active for this unit."
+        "text": "The **[gloss:sm-combat-doctrine:assault doctrine]**, **[gloss:sm-combat-doctrine:devastator doctrine]** and **[gloss:sm-combat-doctrine:tactical doctrine]** are active for this unit."
       },
       {
         "name": "Primarch of the XIII (Aura)",
-        "text": "While a friendly ADEPTUS ASTARTES unit is within 6\" of this unit, that unit’s attacks can:\n▪ Re-roll **hit rolls** of 1.\n▪ Re-roll **wound rolls** of 1."
+        "text": "While a friendly ADEPTUS ASTARTES unit is within 6\" of this unit, that unit’s attacks can:\n▪ Re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ Re-roll **[gloss:wound-roll:wound rolls]** of 1."
       },
       {
         "name": "Author of the Codex",
-        "text": "In your Movement phase, you can select one **visible** friendly ADEPTUS ASTARTES unit within 12\" of this model, and select one **combat doctrine**. That **combat doctrine** is active for that unit __in addition__ to any other **combat doctrines** that are active for that unit until the start of your next Command phase."
+        "text": "In your Movement phase, you can select one **[gloss:visible:visible]** friendly ADEPTUS ASTARTES unit within 12\" of this model, and select one **[gloss:sm-combat-doctrine:combat doctrine]**. That **[gloss:sm-combat-doctrine:combat doctrine]** is active for that unit __in addition__ to any other **[gloss:sm-combat-doctrine:combat doctrines]** that are active for that unit until the start of your next Command phase."
       },
       {
         "name": "Leader of Astartes",
-        "text": "While this unit is within 3\" of a friendly ADEPTUS ASTARTES INFANTRY unit, this unit has **Lone Operative**."
+        "text": "While this unit is within 3\" of a friendly ADEPTUS ASTARTES INFANTRY unit, this unit has [core:Lone Operative]."
       }
     ],
     "composition": [
@@ -11066,7 +11066,7 @@ export default [
     "abilities": [
       {
         "name": "Outflank",
-        "text": "When this unit makes an **ingress move**, it can be set up within your opponent's deployment zone."
+        "text": "When this unit makes an **[gloss:ingress-move:ingress move]**, it can be set up within your opponent's deployment zone."
       }
     ],
     "composition": [
@@ -11238,7 +11238,7 @@ export default [
     "abilities": [
       {
         "name": "Flexible Asset",
-        "text": "When this unit is selected to make an **advance/fall-back move**, that **advance/fall-back move** does not prevent this unit from being **eligible to start an action**."
+        "text": "When this unit is selected to make an **[gloss:advance:advance]/[gloss:fall-back-move:fall-back move]**, that **[gloss:advance:advance]/[gloss:fall-back-move:fall-back move]** does not prevent this unit from being **[gloss:eligible-to-act:eligible to start an action]**."
       }
     ],
     "composition": [
@@ -11419,7 +11419,7 @@ export default [
     "abilities": [
       {
         "name": "Armoured Spearhead",
-        "text": "This unit's ranged attacks can re-roll __one__:\n▪ **Hit roll**.\n▪ **Wound roll**.\n▪ **Damage roll**."
+        "text": "This unit's ranged attacks can re-roll __one__:\n▪ **[gloss:hit-roll:Hit roll]**.\n▪ **[gloss:wound-roll:Wound roll]**.\n▪ **[gloss:damage-roll:Damage roll]**."
       }
     ],
     "composition": [
@@ -11612,7 +11612,7 @@ export default [
     "abilities": [
       {
         "name": "Veteran Marksmen",
-        "text": "This unit’s ranged attacks can re-roll **hit rolls** of 1."
+        "text": "This unit’s ranged attacks can re-roll **[gloss:hit-roll:hit rolls]** of 1."
       }
     ],
     "composition": [
@@ -11815,7 +11815,7 @@ export default [
     "abilities": [
       {
         "name": "Hammerstrike",
-        "text": "This unit’s ranged attacks that target an enemy unit within a **terrain area** have [SUSTAINED HITS 1]."
+        "text": "This unit’s ranged attacks that target an enemy unit within a **[gloss:terrain-area:terrain area]** have [SUSTAINED HITS 1]."
       }
     ],
     "composition": [
@@ -11911,11 +11911,11 @@ export default [
     "abilities": [
       {
         "name": "Shattered Defences",
-        "text": "In your Shooting phase, when this unit has shot, select one enemy MONSTER/VEHICLE unit hit by those attacks. Friendly ADEPTUS ASTARTES units’ ranged attacks that target that enemy unit have +1 **AP**."
+        "text": "In your Shooting phase, when this unit has shot, select one enemy MONSTER/VEHICLE unit hit by those attacks. Friendly ADEPTUS ASTARTES units’ ranged attacks that target that enemy unit have +1 **[gloss:armour-penetration:AP]**."
       },
       {
         "name": "Thunderstrike",
-        "text": "This unit’s ranged attacks that target a MONSTER/VEHICLE unit have +1 to **wound rolls**."
+        "text": "This unit’s ranged attacks that target a MONSTER/VEHICLE unit have +1 to **[gloss:wound-roll:wound rolls]**."
       }
     ],
     "composition": [
@@ -12056,7 +12056,7 @@ export default [
     "abilities": [
       {
         "name": "Interceptor",
-        "text": "This unit's ranged attacks that target a FLY unit have +1 to **hit rolls**."
+        "text": "This unit's ranged attacks that target a FLY unit have +1 to **[gloss:hit-roll:hit rolls]**."
       }
     ],
     "composition": [
@@ -12251,7 +12251,7 @@ export default [
     "abilities": [
       {
         "name": "Armoured Resilience",
-        "text": "Attacks that target this unit have -1 **D**."
+        "text": "Attacks that target this unit have -1 **[gloss:damage-roll:D]**."
       }
     ],
     "composition": [
@@ -12389,7 +12389,7 @@ export default [
     "abilities": [
       {
         "name": "Strafing Run",
-        "text": "This unit's ranged attacks that target a NON-FLY unit have +1 to **hit rolls**."
+        "text": "This unit's ranged attacks that target a NON-FLY unit have +1 to **[gloss:hit-roll:hit rolls]**."
       }
     ],
     "composition": [
@@ -12490,7 +12490,7 @@ export default [
     "abilities": [
       {
         "name": "Spear of Chogoris",
-        "text": "▪ This unit’s ranged attacks have [ASSAULT].\n▪ When this unit is selected to make an **advance move**, that **advance move** does not prevent this unit from being **eligible to declare a charge**.\n▪ If the **assault doctrine** is active for this unit, this unit has +1 to **advance rolls** and **charge rolls**."
+        "text": "▪ This unit’s ranged attacks have [ASSAULT].\n▪ When this unit is selected to make an **[gloss:advance-move:advance move]**, that **[gloss:advance-move:advance move]** does not prevent this unit from being **[gloss:eligible-to-charge:eligible to declare a charge]**.\n▪ If the **[gloss:sm-combat-doctrine:assault doctrine]** is active for this unit, this unit has +1 to **[gloss:advance-roll:advance rolls]** and **[gloss:charge-roll:charge rolls]**."
       },
       {
         "name": "Skilled Riders",
@@ -12572,7 +12572,7 @@ export default [
     "abilities": [
       {
         "name": "Sentry Programming (Once per phase, per unit)",
-        "text": "You can target this unit with the **Fire Overwatch stratagem**, regardless of any other uses of that **stratagem** this phase. If you do:\n▪ That use is -1 CP.\n▪ That use does not prevent any uses of that **stratagem** on other units this phase."
+        "text": "You can target this unit with the **Fire Overwatch stratagem**, regardless of any other uses of that **[gloss:stratagem:stratagem]** this phase. If you do:\n▪ That use is -1 CP.\n▪ That use does not prevent any uses of that **[gloss:stratagem:stratagem]** on other units this phase."
       }
     ],
     "composition": [
@@ -12661,7 +12661,7 @@ export default [
     "abilities": [
       {
         "name": "Sentinel Protocols (Once per phase, per unit)",
-        "text": "When you target this unit with the **Fire Overwatch stratagem**, this unit's **snap shooting** attacks hit on unmodified **hit rolls** of 4+ until that **stratagem** is resolved."
+        "text": "When you target this unit with the **Fire Overwatch stratagem**, this unit's **[gloss:snap-shooting:snap shooting]** attacks hit on unmodified **[gloss:hit-roll:hit rolls]** of 4+ until that **[gloss:stratagem:stratagem]** is resolved."
       }
     ],
     "composition": [
@@ -12747,11 +12747,11 @@ export default [
     "abilities": [
       {
         "name": "Techmarine",
-        "text": "While this model is within 3\" of a friendly ADEPTUS ASTARTES VEHICLE unit, this model has **Lone Operative**."
+        "text": "While this model is within 3\" of a friendly ADEPTUS ASTARTES VEHICLE unit, this model has [core:Lone Operative]."
       },
       {
         "name": "Blessings of the Omnissiah",
-        "text": "In your Movement phase, at the start or end of this unit’s move, you can select one friendly ADEPTUS ASTARTES VEHICLE model within 3\" of this model:\n▪ That VEHICLE model **heals** D3 wounds.\n▪ That VEHICLE model’s attacks can ignore modifiers to **hit rolls** and **wound rolls** until the start of your next Movement phase."
+        "text": "In your Movement phase, at the start or end of this unit’s move, you can select one friendly ADEPTUS ASTARTES VEHICLE model within 3\" of this model:\n▪ That VEHICLE model **[gloss:heal:heals]** D3 wounds.\n▪ That VEHICLE model’s attacks can ignore modifiers to **[gloss:hit-roll:hit rolls]** and **[gloss:wound-roll:wound rolls]** until the start of your next Movement phase."
       }
     ],
     "composition": [
@@ -12859,17 +12859,17 @@ export default [
     "abilities": [
       {
         "name": "Teleport Homer (Once per battle, per unit)",
-        "text": "At the start of the battle, you can set up one Teleport Homer token for this unit on the battlefield. If you do:\n▪ When you target this unit with the **Rapid Ingress stratagem**, you can use that Teleport Homer token. If you do, that use is -1 CP, but when resolving that **stratagem**, this unit must be set up within 3\" of that Teleport Homer token and not within 8\" of an enemy unit. That Teleport Homer token is then removed from the battlefield.\n▪ If an enemy unit ends a move within 1\" of that Teleport Homer token, that Teleport Homer token is removed from the battlefield."
+        "text": "At the start of the battle, you can set up one Teleport Homer token for this unit on the battlefield. If you do:\n▪ When you target this unit with the **Rapid Ingress stratagem**, you can use that Teleport Homer token. If you do, that use is -1 CP, but when resolving that **[gloss:stratagem:stratagem]**, this unit must be set up within 3\" of that Teleport Homer token and not within 8\" of an enemy unit. That Teleport Homer token is then removed from the battlefield.\n▪ If an enemy unit ends a move within 1\" of that Teleport Homer token, that Teleport Homer token is removed from the battlefield."
       },
       {
         "name": "Terminatus Assault",
-        "text": "If this unit made a **charge move** this turn, this unit’s:\n▪ Lightning Claws weapons have [SUSTAINED HITS 1: NON-MONSTER/VEHICLE].\n▪ Thunder Hammer weapons have [SUSTAINED HITS 1: MONSTER/VEHICLE]."
+        "text": "If this unit made a **[gloss:charge-move:charge move]** this turn, this unit’s:\n▪ Lightning Claws weapons have [SUSTAINED HITS 1: NON-MONSTER/VEHICLE].\n▪ Thunder Hammer weapons have [SUSTAINED HITS 1: MONSTER/VEHICLE]."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Storm Shield",
-        "text": "This model has +1 **W**."
+        "text": "This model has +1 **[gloss:wounds:W]**."
       }
     ],
     "composition": [
@@ -13042,11 +13042,11 @@ export default [
     "abilities": [
       {
         "name": "Fury of the First",
-        "text": "This unit’s attacks that target a unit within 9\" of this unit have +1 **AP.**"
+        "text": "This unit’s attacks that target a unit within 9\" of this unit have +1 **[gloss:armour-penetration:AP].**"
       },
       {
         "name": "Teleport Homer (Once per battle, per unit)",
-        "text": "At the start of the battle, you can set up one Teleport Homer token for this unit on the battlefield. If you do:\n▪ When you target this unit with the **Rapid Ingress stratagem**, you can use that Teleport Homer token. If you do, that use is -1 CP, but when resolving that **stratagem**, this unit must be set up within 3\" of that Teleport Homer token and not within 8\" of an enemy unit. That Teleport Homer token is then removed from the battlefield.\n▪ If an enemy unit ends a move within 1\" of that Teleport Homer token, that Teleport Homer token is removed from the battlefield."
+        "text": "At the start of the battle, you can set up one Teleport Homer token for this unit on the battlefield. If you do:\n▪ When you target this unit with the **Rapid Ingress stratagem**, you can use that Teleport Homer token. If you do, that use is -1 CP, but when resolving that **[gloss:stratagem:stratagem]**, this unit must be set up within 3\" of that Teleport Homer token and not within 8\" of an enemy unit. That Teleport Homer token is then removed from the battlefield.\n▪ If an enemy unit ends a move within 1\" of that Teleport Homer token, that Teleport Homer token is removed from the battlefield."
       }
     ],
     "composition": [
@@ -13181,7 +13181,7 @@ export default [
     "abilities": [
       {
         "name": "Termite Assault",
-        "text": "▪ This unit must start the battle in **strategic reserves**.\n▪ In your first Movement phase, this unit can make an **ingress move**.\n▪ When this unit is set up, all units embarked within this unit must make a **disembark/assault disembark move** (pg 157), and those units must be set up more than 8\" away from all enemy units."
+        "text": "▪ This unit must start the battle in **[gloss:strategic-reserves:strategic reserves]**.\n▪ In your first Movement phase, this unit can make an **[gloss:ingress-move:ingress move]**.\n▪ When this unit is set up, all units embarked within this unit must make a **[gloss:disembark:disembark]/[gloss:assault-disembark-move:assault disembark move]** (pg 157), and those units must be set up more than 8\" away from all enemy units."
       }
     ],
     "composition": [
@@ -13310,11 +13310,11 @@ export default [
     "abilities": [
       {
         "name": "Thunderhawk Cluster Bombs",
-        "text": "In your Movement phase, when this unit ends a **normal/advance move**, you can select one enemy unit this unit moved over during that move and roll six D6:\n▪ For each 3+, that enemy unit suffers 1 **mortal wound**."
+        "text": "In your Movement phase, when this unit ends a **[gloss:normal-move:normal]/[gloss:advance-move:advance move]**, you can select one enemy unit this unit moved over during that move and roll six D6:\n▪ For each 3+, that enemy unit suffers 1 **[gloss:mortal-wound:mortal wound]**."
       },
       {
         "name": "Aerial Assault",
-        "text": "In your Movement phase, when this unit ends a **normal move**, units embarked within this unit can make an **assault disembark move**, provided every model in the embarked unit has Deep Strike."
+        "text": "In your Movement phase, when this unit ends a **[gloss:normal-move:normal move]**, units embarked within this unit can make an **[gloss:assault-disembark-move:assault disembark move]**, provided every model in the embarked unit has Deep Strike."
       }
     ],
     "composition": [
@@ -13390,11 +13390,11 @@ export default [
     "abilities": [
       {
         "name": "Siege Captain",
-        "text": "This model’s attacks that target a FORTIFICATION/MONSTER/VEHICLE unit have +2 **S**, **AP** and **D**."
+        "text": "This model’s attacks that target a FORTIFICATION/MONSTER/VEHICLE unit have +2 **[gloss:strength:S]**, **[gloss:armour-penetration:AP]** and **[gloss:damage-roll:D]**."
       },
       {
         "name": "Signum Array",
-        "text": "In your Shooting phase, you can select one **visible** enemy unit within 18\" of this unit. That enemy unit cannot have the **benefit of cover**."
+        "text": "In your Shooting phase, you can select one **[gloss:visible:visible]** enemy unit within 18\" of this unit. That enemy unit cannot have the **[gloss:benefit-of-cover:benefit of cover]**."
       }
     ],
     "composition": [
@@ -13535,7 +13535,7 @@ export default [
     "abilities": [
       {
         "name": "Sunderer of Fortresses",
-        "text": "This unit's ranged attacks that:\n▪ Target a VEHICLE unit have +1 **S** and **D**.\n▪ Target a FORTIFICATION unit have +2 **S** and **D**."
+        "text": "This unit's ranged attacks that:\n▪ Target a VEHICLE unit have +1 **[gloss:strength:S]** and **[gloss:damage-roll:D]**.\n▪ Target a FORTIFICATION unit have +2 **[gloss:strength:S]** and **[gloss:damage-roll:D]**."
       }
     ],
     "composition": [
@@ -13684,13 +13684,13 @@ export default [
     "abilities": [
       {
         "name": "Vanguard Assault",
-        "text": "If this unit made a **charge move** this turn, this unit's melee attacks have [LETHAL HITS]."
+        "text": "If this unit made a **[gloss:charge-move:charge move]** this turn, this unit's melee attacks have [LETHAL HITS]."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Storm Shield",
-        "text": "This model has a 4+ **InSv**."
+        "text": "This model has a 4+ **[gloss:invulnerable-save:InSv]**."
       }
     ],
     "composition": [
@@ -13834,13 +13834,13 @@ export default [
     "abilities": [
       {
         "name": "Vanguard Assault",
-        "text": "If this unit made a **charge move** this turn, this unit’s melee attacks have + 1 **A**."
+        "text": "If this unit made a **[gloss:charge-move:charge move]** this turn, this unit’s melee attacks have + 1 **[gloss:attack-dice:A]**."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Combat Shield",
-        "text": "This model has 5+ **InSv**."
+        "text": "This model has 5+ **[gloss:invulnerable-save:InSv]**."
       }
     ],
     "composition": [
@@ -14078,7 +14078,7 @@ export default [
     "abilities": [
       {
         "name": "Wisdom of the Ancients",
-        "text": "While a friendly ADEPTUS ASTARTES INFANTRY unit is within 6\" of this unit, this unit's attacks can re-roll **hit rolls** of 1."
+        "text": "While a friendly ADEPTUS ASTARTES INFANTRY unit is within 6\" of this unit, this unit's attacks can re-roll **[gloss:hit-roll:hit rolls]** of 1."
       }
     ],
     "composition": [
@@ -14202,17 +14202,17 @@ export default [
     "abilities": [
       {
         "name": "Glory of Ultramar",
-        "text": "In your opponent’s Shooting phase, when an enemy unit has shot, if a model in this unit was **destroyed** by those attacks, this unit can make a **surge move** of up to D6\"."
+        "text": "In your opponent’s Shooting phase, when an enemy unit has shot, if a model in this unit was **[gloss:destroyed:destroyed]** by those attacks, this unit can make a **[gloss:surge-move:surge move]** of up to D6\"."
       },
       {
         "name": "Honour Guard of Macragge",
-        "text": "Attacks that target this unit have -1 to **wound rolls**."
+        "text": "Attacks that target this unit have -1 to **[gloss:wound-roll:wound rolls]**."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Banner of Macragge",
-        "text": "▪ At the end of your Movement phase, if this unit is controlling an **objective**, that **objective** is **secured**.\n▪ (Once per battle, per army) When this unit is **selected to fight**, you can use this ability. If you do, this unit’s melee attacks have +1 **A** and **S**."
+        "text": "▪ At the end of your Movement phase, if this unit is controlling an **[gloss:objective:objective]**, that **[gloss:objective:objective]** is **[gloss:secured-objective:secured]**.\n▪ (Once per battle, per army) When this unit is **[gloss:selected-to-fight:selected to fight]**, you can use this ability. If you do, this unit’s melee attacks have +1 **[gloss:attack-dice:A]** and **[gloss:strength:S]**."
       }
     ],
     "composition": [
@@ -14313,7 +14313,7 @@ export default [
     "abilities": [
       {
         "name": "Siege Shield",
-        "text": "In your Shooting phase, when this unit is **selected to shoot** using **close-quarters shooting**:\n▪ This unit's attacks that target a unit **engaged** with this unit can ignore modifiers to:\n▪ **BS**.\n▪ **Hit rolls**.\n▪ For each of this unit's [BLAST] weapons, you can choose for that weapon to not have [BLAST]:\n▪ If you do, that weapon can only target an enemy unit that is not **engaged** with another friendly unit."
+        "text": "In your Shooting phase, when this unit is **[gloss:selected-to-shoot:selected to shoot]** using **[gloss:close-quarters:close-quarters shooting]**:\n▪ This unit's attacks that target a unit **[gloss:engaged:engaged]** with this unit can ignore modifiers to:\n▪ **[gloss:ballistic-skill:BS]**.\n▪ **[gloss:hit-roll:Hit rolls]**.\n▪ For each of this unit's [BLAST] weapons, you can choose for that weapon to not have [BLAST]:\n▪ If you do, that weapon can only target an enemy unit that is not **[gloss:engaged:engaged]** with another friendly unit."
       }
     ],
     "composition": [
@@ -14403,11 +14403,11 @@ export default [
     "abilities": [
       {
         "name": "Seeker of the Unfound",
-        "text": "The first time this model is set up on the battlefield, select one objective on the battlefield. While this model is within range of that **objective**, this model has:\n▪ 10 **OC**.\n▪ 5+ **Ld**.\n▪ **Feel No Pain 4+**."
+        "text": "The first time this model is set up on the battlefield, select one objective on the battlefield. While this model is within range of that **[gloss:objective:objective]**, this model has:\n▪ 10 **[gloss:objective-control:OC]**.\n▪ 5+ **[gloss:leadership:Ld]**.\n▪ [core:Feel No Pain 4+]."
       },
       {
         "name": "Forgefather",
-        "text": "In your Shooting phase, select one **visible** enemy unit within 24\" of this model. Friendly ADEPTUS ASTARTES units’ [MELTA]/[TORRENT] attacks that target that enemy unit have +2 **S**."
+        "text": "In your Shooting phase, select one **[gloss:visible:visible]** enemy unit within 24\" of this model. Friendly ADEPTUS ASTARTES units’ [MELTA]/[TORRENT] attacks that target that enemy unit have +2 **[gloss:strength:S]**."
       }
     ],
     "composition": [
@@ -14631,11 +14631,11 @@ export default [
     "abilities": [
       {
         "name": "Raise the Banner",
-        "text": "At the end of your Movement phase, if this unit is controlling an **objective**, that **objective** is **secured**."
+        "text": "At the end of your Movement phase, if this unit is controlling an **[gloss:objective:objective]**, that **[gloss:objective:objective]** is **[gloss:secured-objective:secured]**."
       },
       {
         "name": "Strategium Command",
-        "text": "When both players have deployed their armies, you can redeploy up to three friendly ADEPTUS ASTARTES units. When doing so, you can set those units up in **strategic reserves**, regardless of how many units are already in **strategic reserves**."
+        "text": "When both players have deployed their armies, you can redeploy up to three friendly ADEPTUS ASTARTES units. When doing so, you can set those units up in **[gloss:strategic-reserves:strategic reserves]**, regardless of how many units are already in **[gloss:strategic-reserves:strategic reserves]**."
       }
     ],
     "composition": [
@@ -14752,7 +14752,7 @@ export default [
     "abilities": [
       {
         "name": "Punishing Bombardment",
-        "text": "In your Shooting phase, when this unit has shot, select one enemy INFANTRY unit hit by Whirlwind Vengeance Launcher attacks. That enemy unit makes a **battle-shock roll**."
+        "text": "In your Shooting phase, when this unit has shot, select one enemy INFANTRY unit hit by Whirlwind Vengeance Launcher attacks. That enemy unit makes a **[gloss:battle-shock-test:battle-shock roll]**."
       }
     ],
     "composition": [

@@ -22,7 +22,7 @@ const en = {
     "id": "combat-doctrines",
     "name": "Combat Doctrines",
     "flavor": "",
-    "body": "At the start of your Command phase, you can select one **combat doctrine** listed below. If you do, that **combat doctrine** is active for friendly ADEPTUS ASTARTES units with this ability until the start of your next Command phase.\n\n### Assault Doctrine\nWhen this unit is selected to make an **advance move**, that **advance move** does not prevent this unit from being **eligible to declare a charge**.\n\n### Devastator Doctrine\nThis unit’s ranged attacks have [ASSAULT].\n\n### Tactical Doctrine\nWhen this unit is selected to make a **fall-back move**, that **fall-back move** does not prevent this unit from being **eligible to shoot** and **eligible to declare a charge**.\n\nUnless otherwise stated:\n▪ You can only select each **combat doctrine** once per battle.\n▪ Only one **combat doctrine** can be active for each unit. If a rule makes a **combat doctrine** active for a unit, any **combat doctrine** previously active for that unit is no longer active for that unit.\n\n### Transhuman Strategist\nAt the start of the battle round, if a model with this ability is your WARLORD, gain 1CP.\n\n### Curse of the Wulfen\nWhile this unit is within 6” of a friendly SPACE WOLVES CHARACTER model (excluding WULFEN models) or within 12” of a friendly WOLF PRIEST model, if this unit is not **battle-shocked**:\n▪ If this unit has INFANTRY, this unit has +1 **OC**.\n▪ If this unit has VEHICLE, this unit has +3 **OC**.\n\nBestial Forms: For the purposes of **transport capacity**, each WULFEN model takes up the space of 2 models.\n\n### Sons of Russ\nYour army cannot include APOTHECARY units."
+    "body": "At the start of your Command phase, you can select one **[gloss:sm-combat-doctrine:combat doctrine]** listed below. If you do, that **[gloss:sm-combat-doctrine:combat doctrine]** is active for friendly ADEPTUS ASTARTES units with this ability until the start of your next Command phase.\n\n### Assault Doctrine\nWhen this unit is selected to make an **[gloss:advance-move:advance move]**, that **[gloss:advance-move:advance move]** does not prevent this unit from being **[gloss:eligible-to-charge:eligible to declare a charge]**.\n\n### Devastator Doctrine\nThis unit’s ranged attacks have [ASSAULT].\n\n### Tactical Doctrine\nWhen this unit is selected to make a **[gloss:fall-back-move:fall-back move]**, that **[gloss:fall-back-move:fall-back move]** does not prevent this unit from being **[gloss:eligible-to-shoot:eligible to shoot]** and **[gloss:eligible-to-charge:eligible to declare a charge]**.\n\nUnless otherwise stated:\n▪ You can only select each **[gloss:sm-combat-doctrine:combat doctrine]** once per battle.\n▪ Only one **[gloss:sm-combat-doctrine:combat doctrine]** can be active for each unit. If a rule makes a **[gloss:sm-combat-doctrine:combat doctrine]** active for a unit, any **[gloss:sm-combat-doctrine:combat doctrine]** previously active for that unit is no longer active for that unit.\n\n### Transhuman Strategist\nAt the start of the battle round, if a model with this ability is your WARLORD, gain 1CP.\n\n### Curse of the Wulfen\nWhile this unit is within 6” of a friendly SPACE WOLVES CHARACTER model (excluding WULFEN models) or within 12” of a friendly WOLF PRIEST model, if this unit is not **[gloss:battle-shocked:battle-shocked]**:\n▪ If this unit has INFANTRY, this unit has +1 **[gloss:objective-control:OC]**.\n▪ If this unit has VEHICLE, this unit has +3 **[gloss:objective-control:OC]**.\n\nBestial Forms: For the purposes of **[gloss:transport-capacity:transport capacity]**, each WULFEN model takes up the space of 2 models.\n\n### Sons of Russ\nYour army cannot include APOTHECARY units."
   },
   detachments: [
     {
@@ -34,7 +34,7 @@ const en = {
       "rule": {
         "name": "Master of Wolves",
         "flavor": "When the Great Wolf Logan Grimnar leads his packs to war, it is certain that mighty deeds will be done and epic verses added to the sagas of many a Space Wolf. There is none amongst the sons of Russ who can command such instinctive authority throughout his Chapter, none who so deftly wields warrior and war engine like a single great pack. In the sight of their lord, every Space Wolf aspires to be a champion of Fenris and strives with ever-greater determination to prove themselves worthy of his regard. Grimnar masterfully directs the hunt from its very heart, orchestrating every element like an apex predator herding its prey to destruction. Where restraint is needed, he sees it exercised. Where focused fury must be unleashed, he is its master and embodiment both. So does the saga of Logan Grimnar grow ever greater for the telling.\n\nHOWLING ONSLAUGHT\n\nWhen the Great Wolf gives the command, his packs descend upon the foe in a coordinated and utterly devastating strike.",
-        "body": "Friendly ADEPTUS ASTARTES units (excluding MONSTER/VEHICLES units) with this ability have the following abilities:\n\n**Encircling Jaws**: If the **assault doctrine** is active for your unit, your unit has +1 to **advance rolls** and **charge rolls**.\n\n**Hunter’s Eye**: If the **devastator doctrine** is active for your unit, your unit’s ranged attacks can re-roll **hit rolls** of 1.\n\n**Ferocious Strike**: If the **tactical doctrine** is active for your unit, your unit’s attacks that target an enemy unit with 9” have [SUSTAINED HITS 1].\n\nFriendly LOGAN GRIMNAR units have the following ability:\n\n**Howling Onslaught**: **(Once per battle, per army)** In your command phase, you can use this ability. If you do, friendly ADEPTUS ASTARTES MONSTER/VEHICLE units benefit from the **Master of Wolves** rule until the start of your next command phase.\n\n**Restrictions**: Your army can include SPACE WOLVES units, but it cannot include any ADEPTUS ASTARTES units drawn from any other Chapter."
+        "body": "Friendly ADEPTUS ASTARTES units (excluding MONSTER/VEHICLES units) with this ability have the following abilities:\n\n**Encircling Jaws**: If the **[gloss:sm-combat-doctrine:assault doctrine]** is active for your unit, your unit has +1 to **[gloss:advance-roll:advance rolls]** and **[gloss:charge-roll:charge rolls]**.\n\n**Hunter’s Eye**: If the **[gloss:sm-combat-doctrine:devastator doctrine]** is active for your unit, your unit’s ranged attacks can re-roll **[gloss:hit-roll:hit rolls]** of 1.\n\n**Ferocious Strike**: If the **[gloss:sm-combat-doctrine:tactical doctrine]** is active for your unit, your unit’s attacks that target an enemy unit with 9” have [SUSTAINED HITS 1].\n\nFriendly LOGAN GRIMNAR units have the following ability:\n\n**Howling Onslaught**: **(Once per battle, per army)** In your command phase, you can use this ability. If you do, friendly ADEPTUS ASTARTES MONSTER/VEHICLE units benefit from the **Master of Wolves** rule until the start of your next command phase.\n\n**Restrictions**: Your army can include SPACE WOLVES units, but it cannot include any ADEPTUS ASTARTES units drawn from any other Chapter."
       },
       "stratagems": [
         {
@@ -43,7 +43,7 @@ const en = {
           "cp": "1CP",
           "turn": "either",
           "flavor": "Fighting as one, these champions of Fenris fall upon an enemy champion and drag them down with single‑minded savagery.",
-          "when": "Fight phase, when a friendly ADEPTUS ASTARTES INFANTRY/MOUNTED unit is **selected to fight**.",
+          "when": "Fight phase, when a friendly ADEPTUS ASTARTES INFANTRY/MOUNTED unit is **[gloss:selected-to-fight:selected to fight]**.",
           "target": "That ADEPTUS ASTARTES INFANTRY/MOUNTED unit.",
           "effect": "Your unit’s melee attacks have [PRECISION].",
           "restrictions": ""
@@ -56,7 +56,7 @@ const en = {
           "flavor": "Pivotal as they are to the Great Wolf’s plans, this pack have their own orders to fulfil in this moment that come directly from Grimnar himself.",
           "when": "Your Command phase.",
           "target": "One friendly ADEPTUS ASTARTES unit (excluding MONSTER/VEHICLE units).",
-          "effect": "Select one **combat doctrine**. That **combat doctrine** is active for your unit until the start of your next Command phase.",
+          "effect": "Select one **[gloss:sm-combat-doctrine:combat doctrine]**. That **[gloss:sm-combat-doctrine:combat doctrine]** is active for your unit until the start of your next Command phase.",
           "restrictions": ""
         },
         {
@@ -65,7 +65,7 @@ const en = {
           "cp": "1CP",
           "turn": "your",
           "flavor": "Even the most challenging terrain or formidable fortifications cannot stop the Great Wolf’s chief hunters once they are in motion.",
-          "when": "Your Movement/Charge phase, when a friendly ADEPTUS ASTARTES MOUNTED/WALKER unit is **selected to move** or **declares a charge**.",
+          "when": "Your Movement/Charge phase, when a friendly ADEPTUS ASTARTES MOUNTED/WALKER unit is **[gloss:selected-to-move:selected to move]** or **[gloss:declare-charge:declares a charge]**.",
           "target": "That ADEPTUS ASTARTES MOUNTED/WALKER unit.",
           "effect": "Your unit has MOBILE.",
           "restrictions": ""
@@ -76,9 +76,9 @@ const en = {
           "cp": "1CP",
           "turn": "either",
           "flavor": "Once a pack of Fenrisian warriors has perceived some slight weakness in the defences of a foe, they all strike at once, like encircling predators dragging down their prey.",
-          "when": "Your Shooting phase, or the Fight phase, when a friendly ADEPTUS ASTARTES INFANTRY unit is **selected to attack**.",
+          "when": "Your Shooting phase, or the Fight phase, when a friendly ADEPTUS ASTARTES INFANTRY unit is **[gloss:selected-to-attack:selected to attack]**.",
           "target": "That ADEPTUS ASTARTES INFANTRY unit.",
-          "effect": "Your unit’s attacks can re-roll **wound rolls** of 1 and 2.",
+          "effect": "Your unit’s attacks can re-roll **[gloss:wound-roll:wound rolls]** of 1 and 2.",
           "restrictions": ""
         },
         {
@@ -87,9 +87,9 @@ const en = {
           "cp": "1CP",
           "turn": "either",
           "flavor": "Be it the power of belief or something a little more eldritch, the Space Wolves’ trust in their various protective amulets and totems is often borne out.",
-          "when": "Any phase, when a friendly ADEPTUS ASTARTES INFANTRY/MOUNTED unit suffers a **mortal wound**.",
+          "when": "Any phase, when a friendly ADEPTUS ASTARTES INFANTRY/MOUNTED unit suffers a **[gloss:mortal-wound:mortal wound]**.",
           "target": "That ADEPTUS ASTARTES INFANTRY/MOUNTED unit.",
-          "effect": "Your unit has **Feel No Pain 5+** against **mortal wounds**.",
+          "effect": "Your unit has [core:Feel No Pain 5+] against **[gloss:mortal-wound:mortal wounds]**.",
           "restrictions": ""
         },
         {
@@ -98,9 +98,9 @@ const en = {
           "cp": "1CP",
           "turn": "opponent",
           "flavor": "These champions of Fenris respond to enemy fire with instinctive swiftness, rarely giving their foes a second chance to shoot at them.",
-          "when": "Your opponent’s Shooting phase, when an enemy unit that targeted a friendly **unengaged** ADEPTUS ASTARTES INFANTRY/MOUNTED unit has shot.",
+          "when": "Your opponent’s Shooting phase, when an enemy unit that targeted a friendly **[gloss:unengaged:unengaged]** ADEPTUS ASTARTES INFANTRY/MOUNTED unit has shot.",
           "target": "That ADEPTUS ASTARTES INFANTRY/MOUNTED unit.",
-          "effect": "Your unit can make a **normal move** of up to D3+3”.",
+          "effect": "Your unit can make a **[gloss:normal-move:normal move]** of up to D3+3”.",
           "restrictions": ""
         }
       ],
@@ -109,13 +109,13 @@ const en = {
           "name": "Grimnar’s Mark",
           "points": 15,
           "flavor": "This moonsilver wolf-talisman is bestowed by the Great Wolf himself before battle, a mark of favour that fills the bearer with an eagerness to slay the foe.",
-          "body": "ADEPTUS ASTARTES TERMINATOR CAPTAIN model only. **(Once per battle round, per army)** You can target this unit with the **Rapid Ingress/Heroic Intervention stratagem**, regardless of any other uses of that **stratagem** this phase. If you do:\n▪ That use is -1CP.\n▪ That use does not prevent any uses of that **stratagem** on other units this phase."
+          "body": "ADEPTUS ASTARTES TERMINATOR CAPTAIN model only. **(Once per battle round, per army)** You can target this unit with the **Rapid Ingress/Heroic Intervention stratagem**, regardless of any other uses of that **[gloss:stratagem:stratagem]** this phase. If you do:\n▪ That use is -1CP.\n▪ That use does not prevent any uses of that **[gloss:stratagem:stratagem]** on other units this phase."
         },
         {
           "name": "Howlmaw",
           "points": 15,
           "flavor": "An ancient hunting horn with a built-in vox amplification unit, this relic’s stirring howl can be heard even through the wild clangour of battle.",
-          "body": "WOLF PRIEST model only. (Once per turn, per unit) At the start of the fight phase, you can select one enemy unit within 6” of this model. That unit makes a **battle-shock roll** with -1 to that **battle-shock roll**."
+          "body": "WOLF PRIEST model only. (Once per turn, per unit) At the start of the fight phase, you can select one enemy unit within 6” of this model. That unit makes a **[gloss:battle-shock-test:battle-shock roll]** with -1 to that **[gloss:battle-shock-test:battle-shock roll]**."
         },
         {
           "name": "Skjald’s Foretelling",
@@ -127,7 +127,7 @@ const en = {
           "name": "Chariots of the Storm",
           "points": 25,
           "flavor": "This dedicated flight of gunships attends the Great Wolf and his packs, and can be called in to rapidly reposition his forces in the moments before battle is joined.",
-          "body": "ADEPTUS ASTARTES model only. When both players have deployed their armies, you can redeploy up to three friendly ADEPTUS ASTARTES units. When doing so, you can set those units up in **strategic reserves**, regardless of how many units are already in **strategic reserves**."
+          "body": "ADEPTUS ASTARTES model only. When both players have deployed their armies, you can redeploy up to three friendly ADEPTUS ASTARTES units. When doing so, you can set those units up in **[gloss:strategic-reserves:strategic reserves]**, regardless of how many units are already in **[gloss:strategic-reserves:strategic reserves]**."
         }
       ]
     },
@@ -152,7 +152,7 @@ const en = {
           "flavor": "This warrior’s indomitable fortitude is the stuff of legend, galvanizing his pack to remain standing before an avalanche of incoming attacks.",
           "when": "Your opponent’s Shooting phase or the Fight phase, when an enemy unit targets a friendly ADEPTUS ASTARTES CHARACTER unit.",
           "target": "That ADEPTUS ASTARTES CHARACTER unit.",
-          "effect": "Attacks that target your unit have ‑1 **D** until that enemy unit has attacked.",
+          "effect": "Attacks that target your unit have ‑1 **[gloss:damage-roll:D]** until that enemy unit has attacked.",
           "restrictions": ""
         },
         {
@@ -172,9 +172,9 @@ const en = {
           "cp": "1CP",
           "turn": "either",
           "flavor": "A paragon of Fenrisian savagery, this champion guides his warriors with confidence and precision.",
-          "when": "Fight phase, when a friendly ADEPTUS ASTARTES CHARACTER unit is **selected to fight**.",
+          "when": "Fight phase, when a friendly ADEPTUS ASTARTES CHARACTER unit is **[gloss:selected-to-fight:selected to fight]**.",
           "target": "That ADEPTUS ASTARTES CHARACTER unit.",
-          "effect": "Your unit’s melee attacks can re-roll **hit rolls** of 1 and **wound rolls** of 1.",
+          "effect": "Your unit’s melee attacks can re-roll **[gloss:hit-roll:hit rolls]** of 1 and **[gloss:wound-roll:wound rolls]** of 1.",
           "restrictions": ""
         }
       ],
@@ -183,13 +183,13 @@ const en = {
           "name": "A Giant Amongst Giants",
           "points": 15,
           "flavor": "Likened to a walking pinnacle of Fenrisian granite come to life, this hulking champion is an echo of Russ himself.",
-          "body": "ADEPTUS ASTARTES INFANTRY model only.\n▪ This model has +2**W**.\n▪ This model’s melee attacks have +1 **S**."
+          "body": "ADEPTUS ASTARTES INFANTRY model only.\n▪ This model has +2**[gloss:wounds:W]**.\n▪ This model’s melee attacks have +1 **[gloss:strength:S]**."
         },
         {
           "name": "Preyslayer",
           "points": 15,
           "flavor": "Possessed of a ferocious predatory instinct, this warrior leads swift and deadly encirclements and ambushes with peerless skill.",
-          "body": "ADEPTUS ASTARTES INFANTRY model only. This unit can re-roll **charge rolls**."
+          "body": "ADEPTUS ASTARTES INFANTRY model only. This unit can re-roll **[gloss:charge-roll:charge rolls]**."
         }
       ]
     },
@@ -211,9 +211,9 @@ const en = {
           "cp": "1CP",
           "turn": "opponent",
           "flavor": "Severe losses only drive Blood Claws and Wulfen forward into the midst of the foe.",
-          "when": "Your opponent’s Shooting phase, when an enemy unit that targeted a friendly **unengaged** BLOOD CLAWS/THUNDERWOLF CAVALRY/WULFEN unit has shot.",
+          "when": "Your opponent’s Shooting phase, when an enemy unit that targeted a friendly **[gloss:unengaged:unengaged]** BLOOD CLAWS/THUNDERWOLF CAVALRY/WULFEN unit has shot.",
           "target": "That BLOOD CLAWS/THUNDERWOLF CAVALRY/WULFEN unit.",
-          "effect": "Your unit can make a **surge move** of up to D6”.",
+          "effect": "Your unit can make a **[gloss:surge-move:surge move]** of up to D6”.",
           "restrictions": ""
         },
         {
@@ -223,8 +223,8 @@ const en = {
           "turn": "opponent",
           "flavor": "Space Wolves officers rein in their warriors’ impulsive fury, repositioning them to strike exposed flanks.",
           "when": "End of your opponent’s Fight phase.",
-          "target": "One **unengaged** BLOOD CLAWS/THUNDERWOLF CAVALRY/WULFEN unit that is within 9\" of one or more battlefield edges.",
-          "effect": "Place your unit in **strategic reserves**.",
+          "target": "One **[gloss:unengaged:unengaged]** BLOOD CLAWS/THUNDERWOLF CAVALRY/WULFEN unit that is within 9\" of one or more battlefield edges.",
+          "effect": "Place your unit in **[gloss:strategic-reserves:strategic reserves]**.",
           "restrictions": ""
         },
         {
@@ -233,7 +233,7 @@ const en = {
           "cp": "1CP",
           "turn": "either",
           "flavor": "The Space Wolves fight with a savage fury that enables them to overcome even the most resilient targets.",
-          "when": "Fight phase, when a friendly BLOOD CLAWS/THUNDERWOLF CAVALRY/WULFEN unit is **selected to fight**.",
+          "when": "Fight phase, when a friendly BLOOD CLAWS/THUNDERWOLF CAVALRY/WULFEN unit is **[gloss:selected-to-fight:selected to fight]**.",
           "target": "That BLOOD CLAWS/THUNDERWOLF CAVALRY/WULFEN unit.",
           "effect": "Your unit’s melee attacks have [LANCE].",
           "restrictions": ""
@@ -244,13 +244,13 @@ const en = {
           "name": "Wolf-Touched",
           "points": 15,
           "flavor": "Whilst the Canis Helix has yet to overcome this champion fully, it is stirred to life by the thrill of battle and the scent of blood.",
-          "body": "ADEPTUS ASTARTES model only. This unit has:\n▪ WULFEN.\n▪ +2” **M**.\n\nIn the Declare Battle Formations step, the bearer can be attached to a Wulfen or Wulfen with Storm Shields unit."
+          "body": "ADEPTUS ASTARTES model only. This unit has:\n▪ WULFEN.\n▪ +2” **[gloss:move-characteristic:M]**.\n\nIn the Declare Battle Formations step, the bearer can be attached to a Wulfen or Wulfen with Storm Shields unit."
         },
         {
           "name": "Hunter’s Guile",
           "points": 20,
-          "flavor": "ADEPTUS ASTARTES model only. When both players have deployed their armies, you can redeploy up to three friendly BLOOD CLAWS/THUNDERWOLF CAVALRY/WULFEN units. When doing so, you can set those units up in **strategic reserves**, regardless of how many units are already in **strategic reserves**.",
-          "body": "ADEPTUS ASTARTES model only. When both players have deployed their armies, you can redeploy up to three friendly BLOOD CLAWS/THUNDERWOLF CAVALRY/WULFEN units. When doing so, you can set those units up in **strategic reserves**, regardless of how many units are already in **strategic reserves**."
+          "flavor": "ADEPTUS ASTARTES model only. When both players have deployed their armies, you can redeploy up to three friendly BLOOD CLAWS/THUNDERWOLF CAVALRY/WULFEN units. When doing so, you can set those units up in **[gloss:strategic-reserves:strategic reserves]**, regardless of how many units are already in **[gloss:strategic-reserves:strategic reserves]**.",
+          "body": "ADEPTUS ASTARTES model only. When both players have deployed their armies, you can redeploy up to three friendly BLOOD CLAWS/THUNDERWOLF CAVALRY/WULFEN units. When doing so, you can set those units up in **[gloss:strategic-reserves:strategic reserves]**, regardless of how many units are already in **[gloss:strategic-reserves:strategic reserves]**."
         }
       ]
     }

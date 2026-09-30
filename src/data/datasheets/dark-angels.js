@@ -184,11 +184,11 @@ export default [
     "abilities": [
       {
         "name": "Feared Interrogator",
-        "text": "At the start of the Fight phase, each enemy CHARACTER unit within 6\" of this model makes a **battle-shock roll**, with -1 to that **battle-shock roll**."
+        "text": "At the start of the Fight phase, each enemy CHARACTER unit within 6\" of this model makes a **[gloss:battle-shock-test:battle-shock roll]**, with -1 to that **[gloss:battle-shock-test:battle-shock roll]**."
       },
       {
         "name": "Exemplar of Hate",
-        "text": "This unit's melee attacks can re-roll **hit rolls**."
+        "text": "This unit's melee attacks can re-roll **[gloss:hit-roll:hit rolls]**."
       }
     ],
     "composition": [
@@ -279,11 +279,11 @@ export default [
     "abilities": [
       {
         "name": "Masterful Tactician",
-        "text": "In your Movement phase, select up to one **visible** friendly ADEPTUS ASTARTES unit within 9\" of this model, and select one **combat doctrine**. That **combat doctrine** is active for that unit until the start of your next Command phase."
+        "text": "In your Movement phase, select up to one **[gloss:visible:visible]** friendly ADEPTUS ASTARTES unit within 9\" of this model, and select one **[gloss:sm-combat-doctrine:combat doctrine]**. That **[gloss:sm-combat-doctrine:combat doctrine]** is active for that unit until the start of your next Command phase."
       },
       {
         "name": "Watcher in the Dark (Once per battle, per unit)",
-        "text": "In any phase, when this unit suffers a **mortal wound**, this unit can summon a Watcher in the Dark. If it does, this unit has **Feel No Pain 4+** against **mortal wounds**."
+        "text": "In any phase, when this unit suffers a **[gloss:mortal-wound:mortal wound]**, this unit can summon a Watcher in the Dark. If it does, this unit has [core:Feel No Pain 4+] against **[gloss:mortal-wound:mortal wounds]**."
       },
       {
         "name": "Supreme Grand Master",
@@ -293,7 +293,7 @@ export default [
     "wargearAbilities": [
       {
         "name": "The Lion Helm",
-        "text": "This unit has 4+ **InSv**."
+        "text": "This unit has 4+ **[gloss:invulnerable-save:InSv]**."
       }
     ],
     "composition": [
@@ -381,11 +381,11 @@ export default [
     "abilities": [
       {
         "name": "Grand Master of the Deathwing",
-        "text": "This unit's attacks that target an enemy CHARACTER unit have +1 to **wound rolls**."
+        "text": "This unit's attacks that target an enemy CHARACTER unit have +1 to **[gloss:wound-roll:wound rolls]**."
       },
       {
         "name": "Strikes of Retribution",
-        "text": "In the fight phase, when this model is **destroyed**, if this unit has not been **selected to fight** this phase, roll one D6:\n▪ On a 2+, do not remove this model from the battlefield. When your unit has fought, or at the end of the phase (whichever comes first), this model is removed from the battlefield."
+        "text": "In the fight phase, when this model is **[gloss:destroyed:destroyed]**, if this unit has not been **[gloss:selected-to-fight:selected to fight]** this phase, roll one D6:\n▪ On a 2+, do not remove this model from the battlefield. When your unit has fought, or at the end of the phase (whichever comes first), this model is removed from the battlefield."
       }
     ],
     "composition": [
@@ -736,11 +736,11 @@ export default [
     "abilities": [
       {
         "name": "Inner Circle",
-        "text": "▪ Attacks that target this unit have -1**D**.\n▪ This unit cannot be targeted with the **Tactical Dreadnought Fortitude stratagem**."
+        "text": "▪ Attacks that target this unit have -1**[gloss:damage-roll:D]**.\n▪ This unit cannot be targeted with the **Tactical Dreadnought Fortitude stratagem**."
       },
       {
         "name": "Teleport Homer (Once per battle, per unit)",
-        "text": "At the start of the battle, you can set up one Teleport Homer token for this unit on the battlefield. If you do:\n▪ When you target this unit with the **Rapid Ingress stratagem**, you can use that Teleport Homer token. If you do, that use is -1 CP, but when resolving that **stratagem**, this unit must be set up within 3\" of that Teleport Homer token and not within 8\" of an enemy unit. That Teleport Homer token is then removed from the battlefield.\n▪ If an enemy unit ends a move within 1\" of that Teleport Homer token, that Teleport Homer token is removed from the battlefield."
+        "text": "At the start of the battle, you can set up one Teleport Homer token for this unit on the battlefield. If you do:\n▪ When you target this unit with the **Rapid Ingress stratagem**, you can use that Teleport Homer token. If you do, that use is -1 CP, but when resolving that **[gloss:stratagem:stratagem]**, this unit must be set up within 3\" of that Teleport Homer token and not within 8\" of an enemy unit. That Teleport Homer token is then removed from the battlefield.\n▪ If an enemy unit ends a move within 1\" of that Teleport Homer token, that Teleport Homer token is removed from the battlefield."
       }
     ],
     "wargearAbilities": [
@@ -1098,7 +1098,7 @@ export default [
     "abilities": [
       {
         "name": "Deathwing",
-        "text": "This unit's attacks can ignore modifiers to:\n▪ **BS** and **WS**.\n▪ **Hit rolls**."
+        "text": "This unit's attacks can ignore modifiers to:\n▪ **[gloss:ballistic-skill:BS]** and **[gloss:weapon-skill:WS]**.\n▪ **[gloss:hit-roll:Hit rolls]**."
       }
     ],
     "wargearAbilities": [
@@ -1217,15 +1217,15 @@ export default [
     "abilities": [
       {
         "name": "Psychic Hood",
-        "text": "This unit has **Feel No Pain 4+** against **psychic attacks** and **mortal wounds**."
+        "text": "This unit has [core:Feel No Pain 4+] against **[gloss:psychic-attack:psychic attacks]** and **[gloss:mortal-wound:mortal wounds]**."
       },
       {
         "name": "Book of Salvation",
-        "text": "This unit's melee attacks have +1 **A**."
+        "text": "This unit's melee attacks have +1 **[gloss:attack-dice:A]**."
       },
       {
         "name": "Chief Librarian (psyker level 3)",
-        "text": "This model has the **psychic abilities** listed in the Psychic Abilities section."
+        "text": "This model has the **[gloss:psychic-ability:psychic abilities]** listed in the Psychic Abilities section."
       }
     ],
     "composition": [
@@ -1250,11 +1250,11 @@ export default [
         "options": [
           {
             "name": "Engulfing Fear (psychic level 1)",
-            "text": "In your Shooting phase, if this unit is not **battle-shocked**, you can make a **psychic roll** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ Select one enemy unit within 12” of this model. That unit makes a **battle-shock roll** with -1 to that **battle-shock roll**."
+            "text": "In your Shooting phase, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **[gloss:battle-shocked:battle-shocked]**.\n▪ Select one enemy unit within 12” of this model. That unit makes a **[gloss:battle-shock-test:battle-shock roll]** with -1 to that **[gloss:battle-shock-test:battle-shock roll]**."
           },
           {
             "name": "Whispers of the Shadow Forest (psychic level 1)",
-            "text": "When an enemy unit targets this unit, if this unit is not **battle-shocked**, you can make a **psychic roll** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ Attacks that target this unit have -1 to **hit rolls** until the end of the phase."
+            "text": "When an enemy unit targets this unit, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **[gloss:battle-shocked:battle-shocked]**.\n▪ Attacks that target this unit have -1 to **[gloss:hit-roll:hit rolls]** until the end of the phase."
           }
         ]
       }
@@ -1355,11 +1355,11 @@ export default [
     "abilities": [
       {
         "name": "Braziers of Judgement",
-        "text": "▪ This unit has **Stealth**.\n▪ Melee attacks that target this unit have -1 to **hit rolls**."
+        "text": "▪ This unit has [core:Stealth].\n▪ Melee attacks that target this unit have -1 to **[gloss:hit-roll:hit rolls]**."
       },
       {
         "name": "Emnity for the Unworthy",
-        "text": "This unit's attacks that target a CHARACTER unit have +1 to **hit rolls**."
+        "text": "This unit's attacks that target a CHARACTER unit have +1 to **[gloss:hit-roll:hit rolls]**."
       }
     ],
     "composition": [
@@ -1476,7 +1476,7 @@ export default [
     "abilities": [
       {
         "name": "Storm of Vengeance (Once per turn, per unit)",
-        "text": "In your opponent's Shooting phase, when an enemy unit has shot, if those attacks **destroyed** a friendly DARK ANGELS unit within 6\" of this unit, you can use this ability. If you do, this unit shoots using **normal shooting** but while doing so this unit can only target that enemy unit."
+        "text": "In your opponent's Shooting phase, when an enemy unit has shot, if those attacks **[gloss:destroyed:destroyed]** a friendly DARK ANGELS unit within 6\" of this unit, you can use this ability. If you do, this unit shoots using **[gloss:normal-shooting:normal shooting]** but while doing so this unit can only target that enemy unit."
       }
     ],
     "composition": [
@@ -1554,11 +1554,11 @@ export default [
     "abilities": [
       {
         "name": "The Spiritshield Helm",
-        "text": "This unit has **Feel No Pain 3+** against **psychic attacks** and **mortal wounds**."
+        "text": "This unit has [core:Feel No Pain 3+] against **[gloss:psychic-attack:psychic attacks]** and **[gloss:mortal-wound:mortal wounds]**."
       },
       {
         "name": "Intractable Will",
-        "text": "In the Fight phase, when a model in this unit is **destroyed**, if this unit has not been **selected to fight** this phase, roll one D6:\n▪ On a 4+, do not remove that model from the battlefield. When your unit has fought, or at the end of the phase (whichever comes first), that model is removed from the battlefield."
+        "text": "In the Fight phase, when a model in this unit is **[gloss:destroyed:destroyed]**, if this unit has not been **[gloss:selected-to-fight:selected to fight]** this phase, roll one D6:\n▪ On a 4+, do not remove that model from the battlefield. When your unit has fought, or at the end of the phase (whichever comes first), that model is removed from the battlefield."
       }
     ],
     "composition": [
@@ -1671,15 +1671,15 @@ export default [
     "abilities": [
       {
         "name": "The Emperor's Shield",
-        "text": "Attacks that target this unit with a **S** greater than this unit's **T** have -1 to **wound rolls**."
+        "text": "Attacks that target this unit with a **[gloss:strength:S]** greater than this unit's **[gloss:toughness:T]** have -1 to **[gloss:wound-roll:wound rolls]**."
       },
       {
         "name": "Dark Angels Bodyguard",
-        "text": "While this unit is within 3\" of a friendly DARK ANGELS INFANTRY unit, this unit has **Lone Operative**."
+        "text": "While this unit is within 3\" of a friendly DARK ANGELS INFANTRY unit, this unit has [core:Lone Operative]."
       },
       {
         "name": "Master Strategist",
-        "text": "In your Command phase, you can use this ability. If you do, select one **combat doctrine** to be active for this unit until the start of your next Command phase, __in addition__ to any other **combat doctrine**."
+        "text": "In your Command phase, you can use this ability. If you do, select one **[gloss:sm-combat-doctrine:combat doctrine]** to be active for this unit until the start of your next Command phase, __in addition__ to any other **[gloss:sm-combat-doctrine:combat doctrine]**."
       },
       {
         "name": "Primarch of the First Legion",
@@ -1687,7 +1687,7 @@ export default [
       },
       {
         "name": "The Watchers",
-        "text": "This unit has **Feel No Pain 4+** against **psychic attacks** and **mortal wounds**."
+        "text": "This unit has [core:Feel No Pain 4+] against **[gloss:psychic-attack:psychic attacks]** and **[gloss:mortal-wound:mortal wounds]**."
       }
     ],
     "composition": [
@@ -1706,15 +1706,15 @@ export default [
         "options": [
           {
             "name": "Mist-wreathed Shadow Realms",
-            "text": "In your Command phase, if this unit is **unengaged**, you can use this ability. If you do:\n▫ Place this unit in **strategic reserves**.\n▫ This unit can make an **ingress move** in your next Movement phase (including in your first turn)."
+            "text": "In your Command phase, if this unit is **[gloss:unengaged:unengaged]**, you can use this ability. If you do:\n▫ Place this unit in **[gloss:strategic-reserves:strategic reserves]**.\n▫ This unit can make an **[gloss:ingress-move:ingress move]** in your next Movement phase (including in your first turn)."
           },
           {
             "name": "Martial Exemplar",
-            "text": "While a friendly DARK ANGELS unit is within 6\" of this unit, that unit's melee attacks can:\n▪ Re-roll **hit rolls** of 1.\n▪ Re-roll **wound rolls** of 1."
+            "text": "While a friendly DARK ANGELS unit is within 6\" of this unit, that unit's melee attacks can:\n▪ Re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ Re-roll **[gloss:wound-roll:wound rolls]** of 1."
           },
           {
             "name": "No Hiding from the Watchers",
-            "text": "While a friendly DARK ANGELS unit is within 6\" of this unit, that unit has **Feel No Pain 5+** against **psychic attacks** and **mortal wounds**."
+            "text": "While a friendly DARK ANGELS unit is within 6\" of this unit, that unit has [core:Feel No Pain 5+] against **[gloss:psychic-attack:psychic attacks]** and **[gloss:mortal-wound:mortal wounds]**."
           }
         ]
       }
@@ -1821,7 +1821,7 @@ export default [
     "abilities": [
       {
         "name": "Lightning-fast Manoeuvres",
-        "text": "Ranged attacks that target this unit have -1 to **wound rolls**."
+        "text": "Ranged attacks that target this unit have -1 to **[gloss:wound-roll:wound rolls]**."
       }
     ],
     "composition": [
@@ -1972,7 +1972,7 @@ export default [
     "abilities": [
       {
         "name": "Knights of Caliban",
-        "text": "If this unit made a **charge move** this turn, this unit's melee attacks have [ANTI-MONSTER/VEHICLE 4+]."
+        "text": "If this unit made a **[gloss:charge-move:charge move]** this turn, this unit's melee attacks have [ANTI-MONSTER/VEHICLE 4+]."
       }
     ],
     "composition": [
@@ -2133,15 +2133,15 @@ export default [
     "abilities": [
       {
         "name": "Narthecium",
-        "text": "While this unit contains a RAVENWING APOTHECARY, in your Command phase, this unit **heals** D3+1 wounds."
+        "text": "While this unit contains a RAVENWING APOTHECARY, in your Command phase, this unit **[gloss:heal:heals]** D3+1 wounds."
       },
       {
         "name": "Astartes Banner",
-        "text": "While this unit contains a RAVENWING ANCIENT, this unit has +1 **OC**."
+        "text": "While this unit contains a RAVENWING ANCIENT, this unit has +1 **[gloss:objective-control:OC]**."
       },
       {
         "name": "Honour or Death",
-        "text": "While this unit contains a RAVENWING CHAMPION:\n▪ This unit has +1 to **advance rolls** and **charge rolls**.\n▪ When you target this unit with the **Heroic Intervention stratagem**, that use is -1CP."
+        "text": "While this unit contains a RAVENWING CHAMPION:\n▪ This unit has +1 to **[gloss:advance-roll:advance rolls]** and **[gloss:charge-roll:charge rolls]**.\n▪ When you target this unit with the **Heroic Intervention stratagem**, that use is -1CP."
       }
     ],
     "composition": [
@@ -2238,7 +2238,7 @@ export default [
     "abilities": [
       {
         "name": "Stasis Bomb",
-        "text": "At the end of your opponent’s Fight phase, select one visible enemy unit (excluding AIRCRAFT/**Lone Operative** units) within 24\" of this unit. That enemy unit is **slowed** until the end of your opponent's next Movement phase:\n▪ While a unit is **slowed**, in your opponent's Movement phase, when that unit is **selected to move**, unless that unit **remains stationary**, roll one D6:\n▪ On a 1-4, that unit suffers D3 **mortal wounds** and that unit has -2” **M**.\n▪ On a 5-6, that unit suffers 2D3 **mortal wounds** and that unit has -3” **M**."
+        "text": "At the end of your opponent’s Fight phase, select one visible enemy unit (excluding AIRCRAFT/[core:Lone Operative] units) within 24\" of this unit. That enemy unit is **slowed** until the end of your opponent's next Movement phase:\n▪ While a unit is **slowed**, in your opponent's Movement phase, when that unit is **[gloss:selected-to-move:selected to move]**, unless that unit **[gloss:remain-stationary:remains stationary]**, roll one D6:\n▪ On a 1-4, that unit suffers D3 **[gloss:mortal-wound:mortal wounds]** and that unit has -2” **[gloss:move-characteristic:M]**.\n▪ On a 5-6, that unit suffers 2D3 **[gloss:mortal-wound:mortal wounds]** and that unit has -3” **[gloss:move-characteristic:M]**."
       }
     ],
     "composition": [
@@ -2323,7 +2323,7 @@ export default [
     "abilities": [
       {
         "name": "Icon of Old Caliban",
-        "text": "While a friendly DARK ANGELS unit is within 6\" of this unit, that unit has **Stealth**."
+        "text": "While a friendly DARK ANGELS unit is within 6\" of this unit, that unit has [core:Stealth]."
       }
     ],
     "composition": [
@@ -2523,11 +2523,11 @@ export default [
     "abilities": [
       {
         "name": "Cut Off Their Escape",
-        "text": "When an enemy unit **engaged** with this unit (excluding MONSTER/VEHICLE units) makes a **fall-back move**, that enemy unit must use the **desperate escape mode**. If that enemy unit is **battle‑shocked**, ‑1 from those **hazard rolls**."
+        "text": "When an enemy unit **[gloss:engaged:engaged]** with this unit (excluding MONSTER/VEHICLE units) makes a **[gloss:fall-back-move:fall-back move]**, that enemy unit must use the **[gloss:desperate-escape:desperate escape mode]**. If that enemy unit is **[gloss:battle-shocked:battle‑shocked]**, ‑1 from those **[gloss:hazard-roll:hazard rolls]**."
       },
       {
         "name": "Grand Master of the Ravenwing",
-        "text": "▪ This unit has MOBILE.\n▪ In your Command phase, you can use this ability. If you do, select one **combat doctrine** to be active for this unit until the start of your next Command phase."
+        "text": "▪ This unit has MOBILE.\n▪ In your Command phase, you can use this ability. If you do, select one **[gloss:sm-combat-doctrine:combat doctrine]** to be active for this unit until the start of your next Command phase."
       }
     ],
     "composition": [

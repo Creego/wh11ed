@@ -27,10 +27,14 @@ export const changelog = [
     en: [
       { h: 'Rules pages' },
       'Subheadings inside army and detachment rules are bigger now, for example the Assault, Devastator and Tactical Doctrines. Their Russian captions are bigger too.',
+      { h: 'Space Marines: game terms explained' },
+      'In the rules and datasheets of Space Marines and the five Chapters, bold game terms now open a short explanation when you tap them, for example hit roll, engaged or combat doctrine. The popup shows the English term. Core abilities such as Stealth or Feel No Pain open their full rule.',
     ],
     ru: [
       { h: 'Страницы правил' },
       'Подзаголовки внутри правил армии и детачментов стали крупнее, например Assault, Devastator и Tactical Doctrine. Русские подписи под ними тоже стали крупнее.',
+      { h: 'Space Marines: пояснения к терминам' },
+      'В правилах и листах данных Space Marines и пяти орденов жирные игровые термины теперь открывают короткое пояснение по нажатию, например бросок на попадание, в ближнем бою или боевая доктрина. Во всплывающем окне есть английское название термина. Базовые способности, например Stealth или Feel No Pain, открывают своё полное правило.',
     ],
   },
   {

@@ -22,7 +22,7 @@ const en = {
     "id": "combat-doctrines",
     "name": "Combat Doctrines",
     "flavor": "",
-    "body": "At the start of your Command phase, you can select one **combat doctrine** listed below. If you do, that **combat doctrine** is active for friendly ADEPTUS ASTARTES units with this ability until the start of your next Command phase.\n\n### Assault Doctrine\nWhen this unit is selected to make an **advance move**, that **advance move** does not prevent this unit from being **eligible to declare a charge**.\n\n### Devastator Doctrine\nThis unit’s ranged attacks have [ASSAULT].\n\n### Tactical Doctrine\nWhen this unit is selected to make a **fall-back move**, that **fall-back move** does not prevent this unit from being **eligible to shoot** and **eligible to declare a charge**.\n\nUnless otherwise stated:\n▪ You can only select each **combat doctrine** once per battle.\n▪ Only one **combat doctrine** can be active for each unit. If a rule makes a **combat doctrine** active for a unit, any **combat doctrine** previously active for that unit is no longer active for that unit.\n\n### Transhuman Strategist\nAt the start of the battle round, if a model with this ability is your WARLORD, gain 1CP.\n\n### Veteran Recruits\nYour army cannot include the following ADEPTUS ASTARTES units:\n▪ SCOUT SQUAD units.\n▪ TERMINATOR SQUAD units.\n▪ TERMINATOR ASSAULT SQUAD units."
+    "body": "At the start of your Command phase, you can select one **[gloss:sm-combat-doctrine:combat doctrine]** listed below. If you do, that **[gloss:sm-combat-doctrine:combat doctrine]** is active for friendly ADEPTUS ASTARTES units with this ability until the start of your next Command phase.\n\n### Assault Doctrine\nWhen this unit is selected to make an **[gloss:advance-move:advance move]**, that **[gloss:advance-move:advance move]** does not prevent this unit from being **[gloss:eligible-to-charge:eligible to declare a charge]**.\n\n### Devastator Doctrine\nThis unit’s ranged attacks have [ASSAULT].\n\n### Tactical Doctrine\nWhen this unit is selected to make a **[gloss:fall-back-move:fall-back move]**, that **[gloss:fall-back-move:fall-back move]** does not prevent this unit from being **[gloss:eligible-to-shoot:eligible to shoot]** and **[gloss:eligible-to-charge:eligible to declare a charge]**.\n\nUnless otherwise stated:\n▪ You can only select each **[gloss:sm-combat-doctrine:combat doctrine]** once per battle.\n▪ Only one **[gloss:sm-combat-doctrine:combat doctrine]** can be active for each unit. If a rule makes a **[gloss:sm-combat-doctrine:combat doctrine]** active for a unit, any **[gloss:sm-combat-doctrine:combat doctrine]** previously active for that unit is no longer active for that unit.\n\n### Transhuman Strategist\nAt the start of the battle round, if a model with this ability is your WARLORD, gain 1CP.\n\n### Veteran Recruits\nYour army cannot include the following ADEPTUS ASTARTES units:\n▪ SCOUT SQUAD units.\n▪ TERMINATOR SQUAD units.\n▪ TERMINATOR ASSAULT SQUAD units."
   },
   detachments: [
     {
@@ -34,7 +34,7 @@ const en = {
       "rule": {
         "name": "Mission Tactics",
         "flavor": "Thousands of years of collated strategic data and hard-won combat experience have provided the Deathwatch with the ultimate battlefield tactics to combat almost any foe.\n\nFUROR TACTICS When the enemy horde grows close, the Deathwatch will be tasked with the decimation of their core. Aiming not for clinical kills but for maximum destruction over a wide area, they tear the heart from the enemy army.\n\nMALLEUS TACTICS When the giants of war lumber forth, the Deathwatch will adopt Malleus tactics. Even the largest behemoth has a weak point, and the archives of the Deathwatch number them all.\n\nPURGATUS TACTICS By adopting Purgatus tactics, the Deathwatch focus their deadly ire upon the commanders of the enemy host, assassinating them one after another with pitiless head shots and killing thrusts of the blade.",
-        "body": "Friendly KILL TEAM units with this ability have the following abilities:\n\n**Furor Tactics**: If the **devastator doctrine** is active for your unit, your unit’s attacks have [SUSTAINED HITS 1].\n\n**Malleus Tactics**: If the **tactical doctrine** is active for your unit, your unit’s attacks have [LETHAL HITS].\n\n**Purgatus Tactics**: If the **assault doctrine** is active for your unit, your unit’s attacks that target an enemy unit within 9\" of this unit have [PRECISION].\n\nRESTRICTIONS: Your army can include ADEPTUS ASTARTES DEATHWATCH units, but it cannot include any ADEPTUS ASTARTES units drawn from any other Chapter.\n\nWith the exception of KILL TEAM CASSIUS (see Legends: Agents of the Imperium), your army cannot include any AGENTS OF THE IMPERIUM DEATHWATCH units."
+        "body": "Friendly KILL TEAM units with this ability have the following abilities:\n\n**Furor Tactics**: If the **[gloss:sm-combat-doctrine:devastator doctrine]** is active for your unit, your unit’s attacks have [SUSTAINED HITS 1].\n\n**Malleus Tactics**: If the **[gloss:sm-combat-doctrine:tactical doctrine]** is active for your unit, your unit’s attacks have [LETHAL HITS].\n\n**Purgatus Tactics**: If the **[gloss:sm-combat-doctrine:assault doctrine]** is active for your unit, your unit’s attacks that target an enemy unit within 9\" of this unit have [PRECISION].\n\nRESTRICTIONS: Your army can include ADEPTUS ASTARTES DEATHWATCH units, but it cannot include any ADEPTUS ASTARTES units drawn from any other Chapter.\n\nWith the exception of KILL TEAM CASSIUS (see Legends: Agents of the Imperium), your army cannot include any AGENTS OF THE IMPERIUM DEATHWATCH units."
       },
       "stratagems": [
         {
@@ -45,7 +45,7 @@ const en = {
           "flavor": "The belligerence of the Adeptus Astartes combined with their post‑human physiology makes them unyielding foes to face.",
           "when": "Your opponent’s Shooting phase or the Fight phase, when an enemy unit targets a friendly ADEPTUS ASTARTES unit.",
           "target": "That ADEPTUS ASTARTES unit.",
-          "effect": "Attacks that target your unit have -1 **AP** until that enemy unit has attacked.",
+          "effect": "Attacks that target your unit have -1 **[gloss:armour-penetration:AP]** until that enemy unit has attacked.",
           "restrictions": ""
         },
         {
@@ -56,7 +56,7 @@ const en = {
           "flavor": "Only a truly versatile approach to warfare allows the tactical genius of the Deathwatch to best the myriad xenos foes they face.",
           "when": "Your Command phase.",
           "target": "One friendly ADEPTUS ASTARTES unit.",
-          "effect": "Select one **combat doctrine**. That **combat doctrine** is active for your unit until the start of your next Command phase.",
+          "effect": "Select one **[gloss:sm-combat-doctrine:combat doctrine]**. That **[gloss:sm-combat-doctrine:combat doctrine]** is active for your unit until the start of your next Command phase.",
           "restrictions": ""
         },
         {
@@ -78,7 +78,7 @@ const en = {
           "flavor": "Kraken rounds utilise adamantine cores and improved propellants to penetrate the thickest hide.",
           "when": "Your Shooting phase when a KILL TEAM unit is selected to shoot.",
           "target": "That KILL TEAM unit.",
-          "effect": "Your unit’s ranged attacks:\n▪ Have +6” **R**.\n▪ Have +1 **S**.",
+          "effect": "Your unit’s ranged attacks:\n▪ Have +6” **[gloss:range:R]**.\n▪ Have +1 **[gloss:strength:S]**.",
           "restrictions": ""
         },
         {
@@ -89,7 +89,7 @@ const en = {
           "flavor": "Dragonfire rounds are designed to explode just before contact, saturating foes in cover with searing gas and flames.",
           "when": "Your Shooting phase when a KILL TEAM unit is selected to shoot.",
           "target": "That KILL TEAM unit.",
-          "effect": "Your unit’s ranged attacks:\n▪ Can re-roll **wound rolls** of 1.\n▪ Have [IGNORES COVER].",
+          "effect": "Your unit’s ranged attacks:\n▪ Can re-roll **[gloss:wound-roll:wound rolls]** of 1.\n▪ Have [IGNORES COVER].",
           "restrictions": ""
         },
         {
@@ -99,8 +99,8 @@ const en = {
           "turn": "opponent",
           "flavor": "Site-to-site battlefield teleportation is a rare capability indeed, used only by the Deathwatch in extreme situations.",
           "when": "End of your opponent’s Fight phase.",
-          "target": "One friendly **unengaged** ADEPTUS ASTARTES INFANTRY unit.",
-          "effect": "▪ Place your unit in **strategic reserves**.\n▪ If your unit has KILL TEAM, your unit has DEEP STRIKE until the end of your next Movement phase.",
+          "target": "One friendly **[gloss:unengaged:unengaged]** ADEPTUS ASTARTES INFANTRY unit.",
+          "effect": "▪ Place your unit in **[gloss:strategic-reserves:strategic reserves]**.\n▪ If your unit has KILL TEAM, your unit has DEEP STRIKE until the end of your next Movement phase.",
           "restrictions": ""
         }
       ],
@@ -109,13 +109,13 @@ const en = {
           "name": "Osseus Key (Aura)",
           "points": 20,
           "flavor": "The ancient clavis known as the Osseus Key is said to be the most powerful of its kind. Where other such devices are made from sanctified platinum, the Osseus Key is made from the hand and finger bones of deceased Imperial Fists heroes that fought in the Horus Heresy, scrimshawed with inhuman care and imbued with the fiercest machine spirits of the age. No portal can bar its bearer from entry, and no xenos machine can stand before his wrath.",
-          "body": "WATCH MASTER/TECHMARINE model only. While an enemy VEHICLE unit is within 6” of this model, that enemy unit’s attacks have -1 **A**."
+          "body": "WATCH MASTER/TECHMARINE model only. While an enemy VEHICLE unit is within 6” of this model, that enemy unit’s attacks have -1 **[gloss:attack-dice:A]**."
         },
         {
           "name": "The Tome of Ectoclades",
           "points": 15,
           "flavor": "This grimoire, bound in the skin of the alien, holds the most powerful truths the Deathwatch have uncovered about their foes – whether xenos or those who harbour them – arming them with the best tactics and strategies to use against such threats.",
-          "body": "WATCH MASTER/CAPTAIN model only. (Once per battle, per army) In your Command phase, you can use this ability. If you do, the **assault doctrine**, **devastator doctrine** and **tactical doctrine** are active for this unit until the start of your next Command phase."
+          "body": "WATCH MASTER/CAPTAIN model only. (Once per battle, per army) In your Command phase, you can use this ability. If you do, the **[gloss:sm-combat-doctrine:assault doctrine]**, **[gloss:sm-combat-doctrine:devastator doctrine]** and **[gloss:sm-combat-doctrine:tactical doctrine]** are active for this unit until the start of your next Command phase."
         },
         {
           "name": "The Thief of Secrets",
@@ -127,7 +127,7 @@ const en = {
           "name": "Beacon Angelis",
           "points": 25,
           "flavor": "The Beacon Angelis was devised to guide the Deathwatch to the threshold of the alien adversary. Housed within a reliquary, it calls out to the warriors’ augur arrays with the voices of a hundred electric cherubim, its summons so strong that it draws the righteous unto its locale regardless of what darkness may surround it.",
-          "body": "ADEPTUS ASTARTES model only. If this unit is a KILL TEAM unit, this unit has:\n▪ **Deep Strike**.\n▪ When you target this unit with the **Rapid Ingress Stratagem**, that use is -1CP."
+          "body": "ADEPTUS ASTARTES model only. If this unit is a KILL TEAM unit, this unit has:\n▪ [core:Deep Strike].\n▪ When you target this unit with the **Rapid Ingress Stratagem**, that use is -1CP."
         }
       ]
     },
@@ -140,7 +140,7 @@ const en = {
       "rule": {
         "name": "Mission Tactics",
         "flavor": "Thousands of years of collated strategic data and hard-won combat experience have provided the Deathwatch with the ultimate battlefield tactics to combat almost any foe.\n\nFUROR TACTICS When the enemy horde grows close, the Deathwatch will be tasked with the decimation of their core. Aiming not for clinical kills but for maximum destruction over a wide area, they tear the heart from the enemy army.\n\nMALLEUS TACTICS When the giants of war lumber forth, the Deathwatch will adopt Malleus tactics. Even the largest behemoth has a weak point, and the archives of the Deathwatch number them all.\n\nPURGATUS TACTICS By adopting Purgatus tactics, the Deathwatch focus their deadly ire upon the commanders of the enemy host, assassinating them one after another with pitiless head shots and killing thrusts of the blade.",
-        "body": "Friendly KILL TEAM units with this ability have the following abilities:\n\n**Furor Tactics**: If the **devastator doctrine** is active for your unit, your unit’s attacks have [SUSTAINED HITS 1].\n\n**Malleus Tactics**: If the **tactical doctrine** is active for your unit, your unit’s attacks have [LETHAL HITS].\n\n**Purgatus Tactics**: If the **assault doctrine** is active for your unit, your unit’s attacks that target an enemy unit within 9\" of this unit have [PRECISION].\n\nDEATHWATCH ALLIES\n\nYou can include DEATHWATCH units in your army, even though they do not have the same Chapter faction keyword as other units in your army. The combined points value of such units cannot exceed 500 points.\n\nWhen mustering your army, unless otherwise stated, you cannot select a DEATHWATCH model to be your WARLORD. In addition KILL TEAM units can only contain enhancements taken from this detachment.\n\nThis an exception to the Space Marine Chapters Army Rules (pg156)."
+        "body": "Friendly KILL TEAM units with this ability have the following abilities:\n\n**Furor Tactics**: If the **[gloss:sm-combat-doctrine:devastator doctrine]** is active for your unit, your unit’s attacks have [SUSTAINED HITS 1].\n\n**Malleus Tactics**: If the **[gloss:sm-combat-doctrine:tactical doctrine]** is active for your unit, your unit’s attacks have [LETHAL HITS].\n\n**Purgatus Tactics**: If the **[gloss:sm-combat-doctrine:assault doctrine]** is active for your unit, your unit’s attacks that target an enemy unit within 9\" of this unit have [PRECISION].\n\nDEATHWATCH ALLIES\n\nYou can include DEATHWATCH units in your army, even though they do not have the same Chapter faction keyword as other units in your army. The combined points value of such units cannot exceed 500 points.\n\nWhen mustering your army, unless otherwise stated, you cannot select a DEATHWATCH model to be your WARLORD. In addition KILL TEAM units can only contain enhancements taken from this detachment.\n\nThis an exception to the Space Marine Chapters Army Rules (pg156)."
       },
       "stratagems": [
         {
@@ -151,7 +151,7 @@ const en = {
           "flavor": "Dragonfire rounds are designed to explode just before contact, saturating foes in cover with searing gas and flames.",
           "when": "Your Shooting phase when a KILL TEAM unit is selected to shoot.",
           "target": "That KILL TEAM unit.",
-          "effect": "Your unit’s ranged attacks:\n▪ Can re-roll **wound rolls** of 1.\n▪ Have [IGNORES COVER].",
+          "effect": "Your unit’s ranged attacks:\n▪ Can re-roll **[gloss:wound-roll:wound rolls]** of 1.\n▪ Have [IGNORES COVER].",
           "restrictions": ""
         },
         {
@@ -173,7 +173,7 @@ const en = {
           "flavor": "Kraken rounds utilise adamantine cores and improved propellants to penetrate the thickest hide.",
           "when": "Your Shooting phase when a KILL TEAM unit is selected to shoot.",
           "target": "That KILL TEAM unit.",
-          "effect": "Your unit’s ranged attacks have:\n▪ Have +6” **R**.\n▪ Have +1 **S**.",
+          "effect": "Your unit’s ranged attacks have:\n▪ Have +6” **[gloss:range:R]**.\n▪ Have +1 **[gloss:strength:S]**.",
           "restrictions": ""
         },
         {
@@ -183,8 +183,8 @@ const en = {
           "turn": "opponent",
           "flavor": "Swooping low with transport bays yawning wide, Corvus Blackstar gunships extract Deathwatch warriors from the battlefield and convey them to locations where their lethal talents are most required.",
           "when": "End of your opponent’s Fight phase.",
-          "target": "One friendly **unengaged** KILL TEAM unit.",
-          "effect": "Place your unit in **strategic reserves**.",
+          "target": "One friendly **[gloss:unengaged:unengaged]** KILL TEAM unit.",
+          "effect": "Place your unit in **[gloss:strategic-reserves:strategic reserves]**.",
           "restrictions": ""
         }
       ],
@@ -193,7 +193,7 @@ const en = {
           "name": "Beacon Angelis",
           "points": 25,
           "flavor": "The Beacon Angelis was devised to guide the Deathwatch to the threshold of the alien adversary. Housed within a reliquary, it calls out to the warriors’ augur arrays with the voices of a hundred electric cherubim, its summons so strong that it draws the righteous unto its locale regardless of what darkness may surround it.",
-          "body": "ADEPTUS ASTARTES model only. If this unit is a KILL TEAM unit, this unit has:\n▪ **Deep Strike**.\n▪ When you target this unit with the **Rapid Ingress Stratagem**, that use is -1CP."
+          "body": "ADEPTUS ASTARTES model only. If this unit is a KILL TEAM unit, this unit has:\n▪ [core:Deep Strike].\n▪ When you target this unit with the **Rapid Ingress Stratagem**, that use is -1CP."
         }
       ]
     }

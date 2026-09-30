@@ -204,7 +204,7 @@ export default [
     "abilities": [
       {
         "name": "Blackstar Cluster Launcher",
-        "text": "In your Movement phase, when this unit ends a **normal move**, select up to one enemy unit this unit moved over during that move and roll six D6:\n▪ For each 4+, that unit suffers 1 **mortal wound**."
+        "text": "In your Movement phase, when this unit ends a **[gloss:normal-move:normal move]**, select up to one enemy unit this unit moved over during that move and roll six D6:\n▪ For each 4+, that unit suffers 1 **[gloss:mortal-wound:mortal wound]**."
       }
     ],
     "wargearAbilities": [
@@ -222,7 +222,7 @@ export default [
       "This model's 2 Blackstar Rocket Launchers can be replaced with 2 Stormstrike Missile Launchers.",
       "This model's Twin Assault Cannon can be replaced with 1 Twin Lascannon."
     ],
-    "transport": "This model has a **transport capacity** of 12 DEATHWATCH INFANTRY models. Each GRAVIS/JUMP PACK/TERMINATOR model takes up the space of 2 models.",
+    "transport": "This model has a **[gloss:transport-capacity:transport capacity]** of 12 DEATHWATCH INFANTRY models. Each GRAVIS/JUMP PACK/TERMINATOR model takes up the space of 2 models.",
     "keywords": [
       "Fly",
       "Imperium",
@@ -435,17 +435,17 @@ export default [
     "abilities": [
       {
         "name": "Terminatus Assault",
-        "text": "▪ This unit can re-roll **charge rolls**.\n▪ After this unit ends a **charge move**, each enemy unit **engaged** with this unit makes a **battle-shock roll**, with -1 to that **battle-shock roll** if it's a NON-IMPERIUM/CHAOS unit."
+        "text": "▪ This unit can re-roll **[gloss:charge-roll:charge rolls]**.\n▪ After this unit ends a **[gloss:charge-move:charge move]**, each enemy unit **[gloss:engaged:engaged]** with this unit makes a **[gloss:battle-shock-test:battle-shock roll]**, with -1 to that **[gloss:battle-shock-test:battle-shock roll]** if it's a NON-IMPERIUM/CHAOS unit."
       },
       {
         "name": "Teleport Homer",
-        "text": "At the start of the battle, you can set up one Teleport Homer token for this unit on the battlefield. If you do:\n▪ When you target this unit with the **Rapid Ingress stratagem**, you can use that Teleport Homer token. If you do, that use is -1 CP, but when resolving that **stratagem**, this unit must be set up within 3\" of that Teleport Homer token and not within 8\" of an enemy unit. That Teleport Homer token is then removed from the battlefield.\n▪ If an enemy unit ends a move within 1\" of that Teleport Homer token, that Teleport Homer token is removed from the battlefield."
+        "text": "At the start of the battle, you can set up one Teleport Homer token for this unit on the battlefield. If you do:\n▪ When you target this unit with the **Rapid Ingress stratagem**, you can use that Teleport Homer token. If you do, that use is -1 CP, but when resolving that **[gloss:stratagem:stratagem]**, this unit must be set up within 3\" of that Teleport Homer token and not within 8\" of an enemy unit. That Teleport Homer token is then removed from the battlefield.\n▪ If an enemy unit ends a move within 1\" of that Teleport Homer token, that Teleport Homer token is removed from the battlefield."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Storm Shield",
-        "text": "This model has +1 **W**."
+        "text": "This model has +1 **[gloss:wounds:W]**."
       }
     ],
     "composition": [
@@ -676,13 +676,13 @@ export default [
     "abilities": [
       {
         "name": "Death to the Alien",
-        "text": "This unit's attacks can:\n▪ Re-roll **hit rolls** of 1.\n▪ __Or:__ If the target of those attacks does not have IMPERIUM/CHAOS, re-roll **hit rolls**."
+        "text": "This unit's attacks can:\n▪ Re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ __Or:__ If the target of those attacks does not have IMPERIUM/CHAOS, re-roll **[gloss:hit-roll:hit rolls]**."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Storm Shield",
-        "text": "This model has a 4+ **InSv**."
+        "text": "This model has a 4+ **[gloss:invulnerable-save:InSv]**."
       }
     ],
     "composition": [
@@ -1019,13 +1019,13 @@ export default [
     "abilities": [
       {
         "name": "Death to the Alien",
-        "text": "This unit's attacks can:\n▪ Re-roll **hit rolls** of 1.\n▪ __Or:__ If the target of those attacks does not have IMPERIUM/CHAOS, re-roll **hit rolls**."
+        "text": "This unit's attacks can:\n▪ Re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ __Or:__ If the target of those attacks does not have IMPERIUM/CHAOS, re-roll **[gloss:hit-roll:hit rolls]**."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Storm Shield",
-        "text": "This model has a 4+ **InSv**."
+        "text": "This model has a 4+ **[gloss:invulnerable-save:InSv]**."
       }
     ],
     "composition": [
@@ -1373,7 +1373,7 @@ export default [
     "abilities": [
       {
         "name": "Fortis Doctrines",
-        "text": "This unit's attacks that target a unit\n▪ **Below starting strength**, have +1 to **hit rolls**.\n▪ __Or:__ at or **below half-strength** have +1 to **hit rolls** and **wound rolls**."
+        "text": "This unit's attacks that target a unit\n▪ **[gloss:below-starting-strength:Below starting strength]**, have +1 to **[gloss:hit-roll:hit rolls]**.\n▪ __Or:__ at or **[gloss:half-strength:below half-strength]** have +1 to **[gloss:hit-roll:hit rolls]** and **[gloss:wound-roll:wound rolls]**."
       }
     ],
     "composition": [
@@ -1621,7 +1621,7 @@ export default [
     "abilities": [
       {
         "name": "Indomitor Doctrines",
-        "text": "▪ This unit's ranged attacks that target the closest eligible enemy unit, have +1 **S**.\n▪ If this unit made a **charge move** this turn, this unit's melee attacks have +1 **S**."
+        "text": "▪ This unit's ranged attacks that target the closest eligible enemy unit, have +1 **[gloss:strength:S]**.\n▪ If this unit made a **[gloss:charge-move:charge move]** this turn, this unit's melee attacks have +1 **[gloss:strength:S]**."
       }
     ],
     "composition": [
@@ -1846,17 +1846,17 @@ export default [
     "abilities": [
       {
         "name": "Helix Gauntlet",
-        "text": "In your Command phase, this unit **heals** D3 wounds."
+        "text": "In your Command phase, this unit **[gloss:heal:heals]** D3 wounds."
       },
       {
         "name": "Spectrus Doctrines",
-        "text": "At the end of your opponent's Fight phase, if this unit is **unengaged**, you can place this unit in **strategic reserves**."
+        "text": "At the end of your opponent's Fight phase, if this unit is **[gloss:unengaged:unengaged]**, you can place this unit in **[gloss:strategic-reserves:strategic reserves]**."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Helix Gauntlet",
-        "text": "In your Command phase, this unit **heals** D3 wounds."
+        "text": "In your Command phase, this unit **[gloss:heal:heals]** D3 wounds."
       }
     ],
     "composition": [
@@ -2070,7 +2070,7 @@ export default [
     "abilities": [
       {
         "name": "Talonstrike Doctrines",
-        "text": "In a turn this unit was set up on the battlefield:\n▪ This unit's attacks have +1 **AP**.\n▪ This unit's melee attacks have [LANCE]."
+        "text": "In a turn this unit was set up on the battlefield:\n▪ This unit's attacks have +1 **[gloss:armour-penetration:AP]**.\n▪ This unit's melee attacks have [LANCE]."
       }
     ],
     "composition": [
@@ -2158,7 +2158,7 @@ export default [
       },
       {
         "name": "Unstoppable Champion (Once per battle, per army)",
-        "text": "At the end of a phase in which this model is **destroyed**, roll one D6:\n▪ On a 2+, set this model back up on the battlefield as close as possible to where it was **destroyed, unengaged** with 3 wounds remaining."
+        "text": "At the end of a phase in which this model is **[gloss:destroyed:destroyed]**, roll one D6:\n▪ On a 2+, set this model back up on the battlefield as close as possible to where it was **destroyed, unengaged** with 3 wounds remaining."
       }
     ],
     "composition": [
@@ -2240,15 +2240,15 @@ export default [
     "abilities": [
       {
         "name": "Watch Master",
-        "text": "This model’s attacks that target a CHARACTER unit can:\n▪ Re-roll **hit rolls** of 1.\n▪ Re-roll **wound rolls** of 1."
+        "text": "This model’s attacks that target a CHARACTER unit can:\n▪ Re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ Re-roll **[gloss:wound-roll:wound rolls]** of 1."
       },
       {
         "name": "Strategic Knowledge",
-        "text": "▪ This unit’s ranged attacks have [ASSAULT].\n▪ When this unit is selected to make an **advance move**, that **advance move** does not prevent this unit from being **eligible to declare a charge**.\n▪ When this unit is selected to make a **fall-back move**, that **fall-back move** does not prevent this unit from being **eligible to shoot** and **eligible to declare a charge**."
+        "text": "▪ This unit’s ranged attacks have [ASSAULT].\n▪ When this unit is selected to make an **[gloss:advance-move:advance move]**, that **[gloss:advance-move:advance move]** does not prevent this unit from being **[gloss:eligible-to-charge:eligible to declare a charge]**.\n▪ When this unit is selected to make a **[gloss:fall-back-move:fall-back move]**, that **[gloss:fall-back-move:fall-back move]** does not prevent this unit from being **[gloss:eligible-to-shoot:eligible to shoot]** and **[gloss:eligible-to-charge:eligible to declare a charge]**."
       },
       {
         "name": "Purgatus Quarry",
-        "text": "At the start of the first battle round, select up to one enemy unit to be this unit’s **hunted**:\n▪ This unit’s attacks that target this unit’s **hunted** unit can re-roll **wound rolls** of 1.\n▪ Each time this unit’s **hunted** is **destroyed**, select up to one enemy unit to be this unit’s **hunted**."
+        "text": "At the start of the first battle round, select up to one enemy unit to be this unit’s **hunted**:\n▪ This unit’s attacks that target this unit’s **hunted** unit can re-roll **[gloss:wound-roll:wound rolls]** of 1.\n▪ Each time this unit’s **hunted** is **[gloss:destroyed:destroyed]**, select up to one enemy unit to be this unit’s **hunted**."
       }
     ],
     "composition": [

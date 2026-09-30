@@ -293,4 +293,7 @@ if (WRITE) {
   if (oldMod.pointsOverrides) extra.push(`export const pointsOverrides = ${JSON.stringify(oldMod.pointsOverrides, null, 2)}\n`)
   fs.writeFileSync(file, `${header}${extra.join('\n')}export default ${JSON.stringify(all, null, 2)}\n`)
   console.log(`  wrote ${path.relative(ROOT, file)}`)
+  // The regenerated English comes back without the bold-term popovers; put them back.
+  const { glossFaction, GLOSS_SLUGS } = await import('./gloss-bold-terms.mjs')
+  if (GLOSS_SLUGS.includes(slug)) await glossFaction(slug)
 }

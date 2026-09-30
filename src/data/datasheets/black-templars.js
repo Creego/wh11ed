@@ -209,7 +209,7 @@ export default [
     "abilities": [
       {
         "name": "Vehement Aggression",
-        "text": "In the Fight phase, when this unit is **selected to fight**, you can use this ability. If you do, make a **leadership roll** for this unit:\n▪ This unit's melee attacks can re-roll **hit rolls** of 1.\n▪ __Or:__ If that roll succeeds: This unit's melee attacks:\n▪ Can re-roll **hit rolls** of 1.\n▪ Can re-roll **wound rolls** of 1."
+        "text": "In the Fight phase, when this unit is **[gloss:selected-to-fight:selected to fight]**, you can use this ability. If you do, make a **[gloss:leadership-roll:leadership roll]** for this unit:\n▪ This unit's melee attacks can re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ __Or:__ If that roll succeeds: This unit's melee attacks:\n▪ Can re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ Can re-roll **[gloss:wound-roll:wound rolls]** of 1."
       }
     ],
     "composition": [
@@ -335,11 +335,11 @@ export default [
       },
       {
         "name": "Litanies of the Devout",
-        "text": "This unit's melee attacks can re-roll **hit rolls**."
+        "text": "This unit's melee attacks can re-roll **[gloss:hit-roll:hit rolls]**."
       },
       {
         "name": "Faithful Cenobytes",
-        "text": "▪ If this unit’s Chaplain Grimaldus model is **destroyed**, this unit’s remaining Cenobyte Servitor models are also **destroyed**.\n▪ Each Cenobyte Servitor model in this unit takes up 0 **transport capacity**."
+        "text": "▪ If this unit’s Chaplain Grimaldus model is **[gloss:destroyed:destroyed]**, this unit’s remaining Cenobyte Servitor models are also **[gloss:destroyed:destroyed]**.\n▪ Each Cenobyte Servitor model in this unit takes up 0 **[gloss:transport-capacity:transport capacity]**."
       }
     ],
     "composition": [
@@ -363,15 +363,15 @@ export default [
         "options": [
           {
             "name": "Banner of the Emperor Victorious",
-            "text": "This unit has +1 to **advance rolls** and **charge rolls**."
+            "text": "This unit has +1 to **[gloss:advance-roll:advance rolls]** and **[gloss:charge-roll:charge rolls]**."
           },
           {
             "name": "Column from the Major Altar",
-            "text": "This unit has +1 **T**."
+            "text": "This unit has +1 **[gloss:toughness:T]**."
           },
           {
             "name": "Water from the Stoup of Elucidation",
-            "text": "This unit's melee attacks have +1 **AP**."
+            "text": "This unit's melee attacks have +1 **[gloss:armour-penetration:AP]**."
           }
         ]
       }
@@ -442,11 +442,11 @@ export default [
     "abilities": [
       {
         "name": "Vengeful Exhortation",
-        "text": "In the Fight phase, you can use this ability. If you do, when a model in this unit is **destroyed**, if this unit has not been **selected to fight** this phase, roll one D6:\n▪ On a 4+, do not remove this model from the battlefield. When your unit has fought, or at the end of the phase (whichever comes first), this model is removed from the battlefield."
+        "text": "In the Fight phase, you can use this ability. If you do, when a model in this unit is **[gloss:destroyed:destroyed]**, if this unit has not been **[gloss:selected-to-fight:selected to fight]** this phase, roll one D6:\n▪ On a 4+, do not remove this model from the battlefield. When your unit has fought, or at the end of the phase (whichever comes first), this model is removed from the battlefield."
       },
       {
         "name": "Martial Honour (Once per battle, per unit)",
-        "text": "If this unit's melee attacks **destroyed** an enemy unit this phase, you can use this ability. If you do, until the end of the battle, this model has +5 **OC**."
+        "text": "If this unit's melee attacks **[gloss:destroyed:destroyed]** an enemy unit this phase, you can use this ability. If you do, until the end of the battle, this model has +5 **[gloss:objective-control:OC]**."
       }
     ],
     "composition": [
@@ -673,7 +673,7 @@ export default [
     "abilities": [
       {
         "name": "Righteous Zeal",
-        "text": "In your opponent's Shooting phase, when an enemy unit has shot, if a model in this unit was **destroyed** by those attacks, this unit can make a **surge move** of up to D6+1\"."
+        "text": "In your opponent's Shooting phase, when an enemy unit has shot, if a model in this unit was **[gloss:destroyed:destroyed]** by those attacks, this unit can make a **[gloss:surge-move:surge move]** of up to D6+1\"."
       }
     ],
     "composition": [
@@ -770,11 +770,11 @@ export default [
       },
       {
         "name": "Armour of Faith",
-        "text": "Attacks allocated to this model have ‑1 **D**."
+        "text": "Attacks allocated to this model have ‑1 **[gloss:damage-roll:D]**."
       },
       {
         "name": "Sigismund's Heir",
-        "text": "This unit has +1 to **charge rolls**."
+        "text": "This unit has +1 to **[gloss:charge-roll:charge rolls]**."
       }
     ],
     "composition": [
@@ -883,11 +883,11 @@ export default [
     "abilities": [
       {
         "name": "Remorseless Persecution",
-        "text": "In your Movement phase, when this unit is selected to make an **advance move**, that **advance move** does not prevent this unit from being **eligible to declare a charge**."
+        "text": "In your Movement phase, when this unit is selected to make an **[gloss:advance-move:advance move]**, that **[gloss:advance-move:advance move]** does not prevent this unit from being **[gloss:eligible-to-charge:eligible to declare a charge]**."
       },
       {
         "name": "Condemnatory Annihilation",
-        "text": "After this unit has fought, if this unit **destroyed** an enemy model this phase, each enemy unit **engaged** with this unit makes a **battle-shock roll**, with -1 to that **battle-shock roll**."
+        "text": "After this unit has fought, if this unit **[gloss:destroyed:destroyed]** an enemy model this phase, each enemy unit **[gloss:engaged:engaged]** with this unit makes a **[gloss:battle-shock-test:battle-shock roll]**, with -1 to that **[gloss:battle-shock-test:battle-shock roll]**."
       }
     ],
     "composition": [
@@ -1000,7 +1000,7 @@ export default [
     "abilities": [
       {
         "name": "Aquilon Optics",
-        "text": "This unit’s ranged attacks that target a MONSTER/VEHICLE unit can:\n▪ Re-roll __one__ **hit roll**.\n▪ Re-roll __one__ **wound roll**.\n▪ Re-roll __one__ **damage roll**."
+        "text": "This unit’s ranged attacks that target a MONSTER/VEHICLE unit can:\n▪ Re-roll __one__ **[gloss:hit-roll:hit roll]**.\n▪ Re-roll __one__ **[gloss:wound-roll:wound roll]**.\n▪ Re-roll __one__ **[gloss:damage-roll:damage roll]**."
       }
     ],
     "composition": [
@@ -1105,7 +1105,7 @@ export default [
     "abilities": [
       {
         "name": "Reaping Tally",
-        "text": "This unit’s ranged attacks that target a unit (excluding MONSTER/VEHICLE units) have +1 **AP**."
+        "text": "This unit’s ranged attacks that target a unit (excluding MONSTER/VEHICLE units) have +1 **[gloss:armour-penetration:AP]**."
       }
     ],
     "composition": [
@@ -1208,7 +1208,7 @@ export default [
     "abilities": [
       {
         "name": "Priority Target Acquisition",
-        "text": "This unit’s ranged attacks that target a unit within 12\" of this unit have +1 **S**."
+        "text": "This unit’s ranged attacks that target a unit within 12\" of this unit have +1 **[gloss:strength:S]**."
       }
     ],
     "composition": [
@@ -1292,11 +1292,11 @@ export default [
     "abilities": [
       {
         "name": "High Marshal",
-        "text": "At the start of the Fight phase, select up to one enemy unit **engaged** with this unit and roll one D6:\n▪ On a 2-3, that enemy unit suffers D3 **mortal wounds**.\n▪ On a 4-5, that enemy unit suffers 3 **mortal wounds**.\n▪ On a 6+, that enemy unit suffers D3+3 **mortal wounds**."
+        "text": "At the start of the Fight phase, select up to one enemy unit **[gloss:engaged:engaged]** with this unit and roll one D6:\n▪ On a 2-3, that enemy unit suffers D3 **[gloss:mortal-wound:mortal wounds]**.\n▪ On a 4-5, that enemy unit suffers 3 **[gloss:mortal-wound:mortal wounds]**.\n▪ On a 6+, that enemy unit suffers D3+3 **[gloss:mortal-wound:mortal wounds]**."
       },
       {
         "name": "Crusade of Wrath",
-        "text": "This unit's melee attacks have:\n▪ +1 **A**.\n▪ +1 **S**."
+        "text": "This unit's melee attacks have:\n▪ +1 **[gloss:attack-dice:A]**.\n▪ +1 **[gloss:strength:S]**."
       }
     ],
     "composition": [
@@ -1456,17 +1456,17 @@ export default [
     "abilities": [
       {
         "name": "Rapid Disembarkation",
-        "text": "In your Movement phase, when this unit ends an **advance move**, units embarked within this unit can make a **shock disembark move** (pg 157)."
+        "text": "In your Movement phase, when this unit ends an **[gloss:advance-move:advance move]**, units embarked within this unit can make a **[gloss:shock-disembark-move:shock disembark move]** (pg 157)."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Orbital Comms Array",
-        "text": "This unit has **Scouts 6\"**."
+        "text": "This unit has [core:Scouts 6\"]."
       },
       {
         "name": "Shield Dome",
-        "text": "This unit has 5+ **InSv**."
+        "text": "This unit has 5+ **[gloss:invulnerable-save:InSv]**."
       }
     ],
     "composition": [
@@ -1571,11 +1571,11 @@ export default [
     "abilities": [
       {
         "name": "Inspirational Exemplar",
-        "text": "This unit's melee attacks have +1 to **hit rolls**."
+        "text": "This unit's melee attacks have +1 to **[gloss:hit-roll:hit rolls]**."
       },
       {
         "name": "Pious Fervour",
-        "text": "When this unit is **selected to fight**, you can use this ability. If you do, this model's melee attacks have +1 **A** for each enemy unit within 6\" of this model (to a maximum of +3 **A**)."
+        "text": "When this unit is **[gloss:selected-to-fight:selected to fight]**, you can use this ability. If you do, this model's melee attacks have +1 **[gloss:attack-dice:A]** for each enemy unit within 6\" of this model (to a maximum of +3 **[gloss:attack-dice:A]**)."
       }
     ],
     "composition": [
@@ -1740,7 +1740,7 @@ export default [
     "abilities": [
       {
         "name": "Combat Embarkation",
-        "text": "In your opponent’s Charge phase, when an enemy unit has selected **charge targets**, you can select one friendly **unengaged** ADEPTUS ASTARTES unit that was one of those **charge targets** and is eligible to embark within this TRANSPORT. If every model in that unit is within 3\" of this TRANSPORT, that unit can embark within this TRANSPORT. That enemy unit can then select new **charge targets** for that **charge move**."
+        "text": "In your opponent’s Charge phase, when an enemy unit has selected **[gloss:charge-target:charge targets]**, you can select one friendly **[gloss:unengaged:unengaged]** ADEPTUS ASTARTES unit that was one of those **[gloss:charge-target:charge targets]** and is eligible to embark within this TRANSPORT. If every model in that unit is within 3\" of this TRANSPORT, that unit can embark within this TRANSPORT. That enemy unit can then select new **[gloss:charge-target:charge targets]** for that **[gloss:charge-move:charge move]**."
       }
     ],
     "composition": [
@@ -1898,7 +1898,7 @@ export default [
     "abilities": [
       {
         "name": "Executioner",
-        "text": "This unit’s ranged attacks that target a unit not **below half-strength** have +1 to **hit rolls**."
+        "text": "This unit’s ranged attacks that target a unit not **[gloss:half-strength:below half-strength]** have +1 to **[gloss:hit-roll:hit rolls]**."
       }
     ],
     "composition": [
@@ -2082,7 +2082,7 @@ export default [
     "abilities": [
       {
         "name": "Exploit their Cowardice",
-        "text": "In your opponent's Movement phase, when an enemy unit that was **engaged** with this unit ends a **fall-back move**, if this unit is **unengaged** it can make a **normal move** of up to 6\"."
+        "text": "In your opponent's Movement phase, when an enemy unit that was **[gloss:engaged:engaged]** with this unit ends a **[gloss:fall-back-move:fall-back move]**, if this unit is **[gloss:unengaged:unengaged]** it can make a **[gloss:normal-move:normal move]** of up to 6\"."
       }
     ],
     "composition": [

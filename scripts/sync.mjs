@@ -14,6 +14,9 @@
 //     current with src/data/roster/items.js?
 //   - roster data      — are the roster builder's generated faction files (points, brackets,
 //     wargear groups) still what the generator produces from today's appdata + MFM?
+//   - bold-term popovers — in the factions glossed so far (Space Marines + Chapters), is every bold
+//     term the glossary knows a popover? A regenerated EN file comes back plain; a reminder, never
+//     a failure (scripts/gloss-bold-terms.mjs)
 //   - rosterModifiers  — are the roster builder's numeric modifiers still tied to the rule wording
 //     they were read from? Reports stale (the prose moved under a reviewed record), new (prose
 //     that now looks like it changes a number), orphaned and unreviewed — see
@@ -147,6 +150,7 @@ const legendsStale = await run('factionLegends sidecar (--check)', './gen-factio
 const textsRuStale = await run('rosterTextsRu (--check)', './gen-roster-texts-ru.mjs', ['--check'])
 const modsDirty = await run('rosterModifiers (--check)', './gen-roster-modifiers.mjs', ['--check'])
 const rosterStale = await run('roster data (--check)', './gen-roster-data.mjs', ['--check'])
+const glossStale = await run('bold-term popovers (--check)', './gloss-bold-terms.mjs', ['--check'])
 // The gate goes FIRST: it is the one section of this audit that can fail, and it is three lines
 // long. Everything below it is a long report-only diff, and a verdict printed after 5000 lines of
 // those is a verdict nobody reads.
@@ -185,6 +189,7 @@ if (legendsStale) console.log('⚠ src/data/factionLegends.json is stale or a pr
 if (textsRuStale) console.log('⚠ src/data/roster/ru/texts.js is stale — run `npm run roster:texts-ru`.')
 if (modsDirty) console.log('⚠ roster modifiers need attention — `npm run modifiers` then `npm run modifiers:queue`.')
 if (rosterStale) console.log('⚠ src/data/roster/*.js is stale — run `npm run roster:data`.')
+if (glossStale) console.log('⚠ bold terms the glossary knows are not popovers yet (Space Marines family) — run `npm run gloss`.')
 if (omissionsFailed) console.log('✗ core rules are MISSING appdata text — see the check-rule-omissions section (`npm run omissions`).')
 if (detMetaFailed) console.log('✗ a faction rules page disagrees with the MFM on dp / Force Disposition (`npm run detmeta`).')
 if (wTagsFailed) console.log('✗ a weapon tag on a datasheet has no text anywhere (`npm run wtags`).')

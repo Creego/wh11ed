@@ -160,11 +160,11 @@ export default [
     "abilities": [
       {
         "name": "Mass of Doom",
-        "text": "If this unit made a **charge move** this turn, this unit's melee attacks have [DEVASTATING WOUNDS: non-MONSTER/VEHICLE]."
+        "text": "If this unit made a **[gloss:charge-move:charge move]** this turn, this unit's melee attacks have [DEVASTATING WOUNDS: non-MONSTER/VEHICLE]."
       },
       {
         "name": "Redeemer of the Lost",
-        "text": "In the Fight phase, when a model in this unit is **destroyed**, if this unit has not been **selected to fight** this phase, roll one D6, with +1 to that roll if that model was **engaged** with an enemy unit with a **T** greater than or equal to this unit's **T**:\n▪ On a 4+, do not remove that model from the battlefield. When this unit has fought, or at the end of the phase (whichever comes first), that model is removed from the battlefield."
+        "text": "In the Fight phase, when a model in this unit is **[gloss:destroyed:destroyed]**, if this unit has not been **[gloss:selected-to-fight:selected to fight]** this phase, roll one D6, with +1 to that roll if that model was **[gloss:engaged:engaged]** with an enemy unit with a **[gloss:toughness:T]** greater than or equal to this unit's **[gloss:toughness:T]**:\n▪ On a 4+, do not remove that model from the battlefield. When this unit has fought, or at the end of the phase (whichever comes first), that model is removed from the battlefield."
       }
     ],
     "composition": [
@@ -320,7 +320,7 @@ export default [
     "abilities": [
       {
         "name": "Overcharged Engines",
-        "text": "This unit can re-roll **advance rolls**."
+        "text": "This unit can re-roll **[gloss:advance-roll:advance rolls]**."
       }
     ],
     "composition": [
@@ -428,11 +428,11 @@ export default [
     "abilities": [
       {
         "name": "Finest Hour (Once per battle, per unit)",
-        "text": "In the Fight phase, when this unit is **selected to fight**, you can use this ability. If you do, this model’s melee attacks have:\n▪ +3 **A**.\n▪ [DEVASTATING WOUNDS]."
+        "text": "In the Fight phase, when this unit is **[gloss:selected-to-fight:selected to fight]**, you can use this ability. If you do, this model’s melee attacks have:\n▪ +3 **[gloss:attack-dice:A]**.\n▪ [DEVASTATING WOUNDS]."
       },
       {
         "name": "Strategic Acumen",
-        "text": "In your Command phase, you can use this ability. If you do, select one **combat doctrine** to be active for this unit until the start of your next Command phase."
+        "text": "In your Command phase, you can use this ability. If you do, select one **[gloss:sm-combat-doctrine:combat doctrine]** to be active for this unit until the start of your next Command phase."
       }
     ],
     "composition": [
@@ -785,7 +785,7 @@ export default [
     "abilities": [
       {
         "name": "Chief Librarian (psyker level 3)",
-        "text": "This model has the **psychic abilities** listed in the Psychic Abilities section."
+        "text": "This model has the **[gloss:psychic-ability:psychic abilities]** listed in the Psychic Abilities section."
       }
     ],
     "composition": [
@@ -798,11 +798,11 @@ export default [
         "options": [
           {
             "name": "Quickening (psychic level 1)",
-            "text": "In your Command phase, if this unit is not **battle-shocked**, you can make a **psychic roll** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ The **assault doctrine** is active for this unit __in addition__ to any other **combat doctrine** until the start of your next Command phase."
+            "text": "In your Command phase, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **[gloss:battle-shocked:battle-shocked]**.\n▪ The **[gloss:sm-combat-doctrine:assault doctrine]** is active for this unit __in addition__ to any other **[gloss:sm-combat-doctrine:combat doctrine]** until the start of your next Command phase."
           },
           {
             "name": "Transfixing Gaze (psychic level 2)",
-            "text": "Start of your opponent's Movement phase, if this unit is not **battle-shocked**, you can make a **psychic roll** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ When an enemy unit within 6\" makes a **fall-back move**, that enemy unit must take a **leadership roll**. If that test is failed, that enemy unit must Remain Stationary (Core Rules, 09.04)."
+            "text": "Start of your opponent's Movement phase, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **[gloss:battle-shocked:battle-shocked]**.\n▪ When an enemy unit within 6\" makes a **[gloss:fall-back-move:fall-back move]**, that enemy unit must take a **[gloss:leadership-roll:leadership roll]**. If that test is failed, that enemy unit must Remain Stationary (Core Rules, 09.04)."
           }
         ]
       }
@@ -878,11 +878,11 @@ export default [
     "abilities": [
       {
         "name": "Death Mask of Sanguinius",
-        "text": "At the start of the Fight phase, each enemy unit within 6\" of this model makes a **battle-shock roll**, with -1 to that **battle-shock roll**."
+        "text": "At the start of the Fight phase, each enemy unit within 6\" of this model makes a **[gloss:battle-shock-test:battle-shock roll]**, with -1 to that **[gloss:battle-shock-test:battle-shock roll]**."
       },
       {
         "name": "Warden of the Imperium Nihilus",
-        "text": "The **assault doctrine** and **tactical doctrine** are active for this unit __in addition__ to any other **combat doctrine**."
+        "text": "The **[gloss:sm-combat-doctrine:assault doctrine]** and **[gloss:sm-combat-doctrine:tactical doctrine]** are active for this unit __in addition__ to any other **[gloss:sm-combat-doctrine:combat doctrine]**."
       }
     ],
     "composition": [
@@ -999,15 +999,15 @@ export default [
     "abilities": [
       {
         "name": "Forlorn Hero",
-        "text": "This unit has **Scouts 6\"**."
+        "text": "This unit has [core:Scouts 6\"]."
       },
       {
         "name": "Black Rage",
-        "text": "▪ This unit's melee attacks can re-roll **hit rolls** of 1.\n▪ While this unit is not within 6\" of one or more friendly BLOOD ANGELS CHARACTER models, or not within 12\" of one or more friendly CHAPLAIN models, it cannot make a **fall-back** move and it's **OC** is modified to 0."
+        "text": "▪ This unit's melee attacks can re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ While this unit is not within 6\" of one or more friendly BLOOD ANGELS CHARACTER models, or not within 12\" of one or more friendly CHAPLAIN models, it cannot make a **fall-back** move and it's **[gloss:objective-control:OC]** is modified to 0."
       },
       {
         "name": "Death Visions of Sanguinius",
-        "text": "In the Fight phase, when an enemy unit has fought, if this model was **destroyed** by those attacks, you can use this ability. If you do, roll one D6, with +2 to that roll if this model was **engaged** with an enemy WARLORD unit:\n▪ On a 2-3, that enemy unit suffers D3 **mortal wounds**.\n▪ On a 4-5, that enemy unit suffers 3 **mortal wounds**.\n▪ On a 6+, that enemy unit suffers D3+3 **mortal wounds**."
+        "text": "In the Fight phase, when an enemy unit has fought, if this model was **[gloss:destroyed:destroyed]** by those attacks, you can use this ability. If you do, roll one D6, with +2 to that roll if this model was **[gloss:engaged:engaged]** with an enemy WARLORD unit:\n▪ On a 2-3, that enemy unit suffers D3 **[gloss:mortal-wound:mortal wounds]**.\n▪ On a 4-5, that enemy unit suffers 3 **[gloss:mortal-wound:mortal wounds]**.\n▪ On a 6+, that enemy unit suffers D3+3 **[gloss:mortal-wound:mortal wounds]**."
       }
     ],
     "composition": [
@@ -1157,7 +1157,7 @@ export default [
     "abilities": [
       {
         "name": "Death Visions of Sanguinius",
-        "text": "In the Fight phase, when an enemy unit has fought, if this model was **destroyed** by those attacks, you can use this ability. If you do, roll one D6, with +2 to that roll if this model was **engaged** with an enemy WARLORD unit:\n▪ On a 2-3, that enemy unit suffers D3 **mortal wounds**.\n▪ On a 4-5, that enemy unit suffers 3 **mortal wounds**.\n▪ On a 6+, that enemy unit suffers D3+3 **mortal wounds**."
+        "text": "In the Fight phase, when an enemy unit has fought, if this model was **[gloss:destroyed:destroyed]** by those attacks, you can use this ability. If you do, roll one D6, with +2 to that roll if this model was **[gloss:engaged:engaged]** with an enemy WARLORD unit:\n▪ On a 2-3, that enemy unit suffers D3 **[gloss:mortal-wound:mortal wounds]**.\n▪ On a 4-5, that enemy unit suffers 3 **[gloss:mortal-wound:mortal wounds]**.\n▪ On a 6+, that enemy unit suffers D3+3 **[gloss:mortal-wound:mortal wounds]**."
       },
       {
         "name": "Lost to Fury",
@@ -1165,13 +1165,13 @@ export default [
       },
       {
         "name": "Black Rage",
-        "text": "▪ This unit's melee attacks can re-roll **hit rolls** of 1.\n▪ While this unit is not within 6\" of one or more friendly BLOOD ANGELS CHARACTER models, or not within 12\" of one or more friendly CHAPLAIN models, it cannot make a **fall-back** move and it's **OC** is modified to 0."
+        "text": "▪ This unit's melee attacks can re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ While this unit is not within 6\" of one or more friendly BLOOD ANGELS CHARACTER models, or not within 12\" of one or more friendly CHAPLAIN models, it cannot make a **fall-back** move and it's **[gloss:objective-control:OC]** is modified to 0."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Relic Shield",
-        "text": "This model has +1 **W**."
+        "text": "This model has +1 **[gloss:wounds:W]**."
       }
     ],
     "composition": [
@@ -1318,11 +1318,11 @@ export default [
     "abilities": [
       {
         "name": "Black Rage",
-        "text": "▪ This unit's melee attacks can re-roll **hit rolls** of 1.\n▪ While this unit is not within 6\" of one or more friendly BLOOD ANGELS CHARACTER models, or not within 12\" of one or more friendly CHAPLAIN models, it cannot make a **fall-back** move and it's **OC** is modified to 0."
+        "text": "▪ This unit's melee attacks can re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ While this unit is not within 6\" of one or more friendly BLOOD ANGELS CHARACTER models, or not within 12\" of one or more friendly CHAPLAIN models, it cannot make a **fall-back** move and it's **[gloss:objective-control:OC]** is modified to 0."
       },
       {
         "name": "Driven by Fury",
-        "text": "In your opponent's Shooting phase, when an enemy unit has shot, if this unit was hit by those attacks, it can make a **surge move** of up to D6+1\"."
+        "text": "In your opponent's Shooting phase, when an enemy unit has shot, if this unit was hit by those attacks, it can make a **[gloss:surge-move:surge move]** of up to D6+1\"."
       }
     ],
     "composition": [
@@ -1694,11 +1694,11 @@ export default [
     "abilities": [
       {
         "name": "Black Rage",
-        "text": "▪ This unit's melee attacks can re-roll **hit rolls** of 1.\n▪ While this unit is not within 6\" of one or more friendly BLOOD ANGELS CHARACTER models, or not within 12\" of one or more friendly CHAPLAIN models, it cannot make a **fall-back move** and it's **OC** is modified to 0."
+        "text": "▪ This unit's melee attacks can re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ While this unit is not within 6\" of one or more friendly BLOOD ANGELS CHARACTER models, or not within 12\" of one or more friendly CHAPLAIN models, it cannot make a **[gloss:fall-back-move:fall-back move]** and it's **[gloss:objective-control:OC]** is modified to 0."
       },
       {
         "name": "An Honourable Death in Combat",
-        "text": "This unit's attacks:\n▪ Have [SUSTAINED HITS 1], if this unit is below **starting strength**.\n▪ __Or:__ have [SUSTAINED HITS 2], if this unit is below **half-strength**."
+        "text": "This unit's attacks:\n▪ Have [SUSTAINED HITS 1], if this unit is below **[gloss:starting-strength:starting strength]**.\n▪ __Or:__ have [SUSTAINED HITS 2], if this unit is below **[gloss:half-strength:half-strength]**."
       }
     ],
     "composition": [
@@ -2260,11 +2260,11 @@ export default [
     "abilities": [
       {
         "name": "Savage Fury",
-        "text": "This unit has +1 to **charge rolls**."
+        "text": "This unit has +1 to **[gloss:charge-roll:charge rolls]**."
       },
       {
         "name": "Black Rage",
-        "text": "▪ This unit's melee attacks can re-roll **hit rolls** of 1.\n▪ While this unit is not within 6\" of one or more friendly BLOOD ANGELS CHARACTER models, or not within 12\" of one or more friendly CHAPLAIN models, it cannot make a **fall-back** move and it's **OC** is modified to 0."
+        "text": "▪ This unit's melee attacks can re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ While this unit is not within 6\" of one or more friendly BLOOD ANGELS CHARACTER models, or not within 12\" of one or more friendly CHAPLAIN models, it cannot make a **fall-back** move and it's **[gloss:objective-control:OC]** is modified to 0."
       }
     ],
     "composition": [
@@ -2606,7 +2606,7 @@ export default [
       },
       {
         "name": "Guardian of the Lost",
-        "text": "Attacks that target this unit have -1 **D**."
+        "text": "Attacks that target this unit have -1 **[gloss:damage-roll:D]**."
       }
     ],
     "composition": [
@@ -2868,11 +2868,11 @@ export default [
     "abilities": [
       {
         "name": "Angelic Visage",
-        "text": "Melee attacks that target this unit have -1 to **hit rolls**."
+        "text": "Melee attacks that target this unit have -1 to **[gloss:hit-roll:hit rolls]**."
       },
       {
         "name": "Heirs of Azkaellon",
-        "text": "Attacks that target this unit with a **S** greater than this unit’s **T** have ‑1 to **wound rolls**."
+        "text": "Attacks that target this unit with a **[gloss:strength:S]** greater than this unit’s **[gloss:toughness:T]** have ‑1 to **[gloss:wound-roll:wound rolls]**."
       }
     ],
     "composition": [
@@ -2947,11 +2947,11 @@ export default [
     "abilities": [
       {
         "name": "Blood Chalice",
-        "text": "This unit has +1 **T**."
+        "text": "This unit has +1 **[gloss:toughness:T]**."
       },
       {
         "name": "Narthecium (Once per turn, per unit)",
-        "text": "In your Command phase, this unit **heals** D3+1 wounds."
+        "text": "In your Command phase, this unit **[gloss:heal:heals]** D3+1 wounds."
       }
     ],
     "composition": [
@@ -3115,11 +3115,11 @@ export default [
     "abilities": [
       {
         "name": "Aura of Fervour",
-        "text": "Friendly ADEPTUS ASTARTES units within 12\" of this model can re-roll **leadership rolls**."
+        "text": "Friendly ADEPTUS ASTARTES units within 12\" of this model can re-roll **[gloss:leadership-roll:leadership rolls]**."
       },
       {
         "name": "Miraculous Saviour (Once per battle, per army)",
-        "text": "At the end of your opponent's Charge phase (excluding the first battle round), select up to one enemy unit that made a **charge move** this phase. This unit can make an **ingress move** and must be set up **engaged** with that enemy unit. That move does not prevent this unit from being **eligible to move**."
+        "text": "At the end of your opponent's Charge phase (excluding the first battle round), select up to one enemy unit that made a **[gloss:charge-move:charge move]** this phase. This unit can make an **[gloss:ingress-move:ingress move]** and must be set up **[gloss:engaged:engaged]** with that enemy unit. That move does not prevent this unit from being **[gloss:eligible-to-move:eligible to move]**."
       }
     ],
     "composition": [

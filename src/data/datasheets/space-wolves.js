@@ -172,11 +172,11 @@ export default [
     "abilities": [
       {
         "name": "Anvil of Endurance",
-        "text": "In the Fight phase, when a model in this unit is **destroyed**, if this unit has not been **selected to fight** this phase, roll one D6:\n▪ On a 4+, do not remove that model from the battlefield. When your unit has fought, or at the end of the phase (whichever comes first), that model is then removed from the battlefield."
+        "text": "In the Fight phase, when a model in this unit is **[gloss:destroyed:destroyed]**, if this unit has not been **[gloss:selected-to-fight:selected to fight]** this phase, roll one D6:\n▪ On a 4+, do not remove that model from the battlefield. When your unit has fought, or at the end of the phase (whichever comes first), that model is then removed from the battlefield."
       },
       {
         "name": "Champion of the Kingsguard",
-        "text": "This model’s attacks that target a CHARACTER unit:\n▪ Can re-roll **hit rolls** of 1.\n▪ Can re-roll **wound rolls** of 1."
+        "text": "This model’s attacks that target a CHARACTER unit:\n▪ Can re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ Can re-roll **[gloss:wound-roll:wound rolls]** of 1."
       }
     ],
     "composition": [
@@ -305,11 +305,11 @@ export default [
     "abilities": [
       {
         "name": "Legendary Tenacity",
-        "text": "Attacks that target this unit with a **S** greater than this unit's **T** have -1 to **wound rolls**."
+        "text": "Attacks that target this unit with a **[gloss:strength:S]** greater than this unit's **[gloss:toughness:T]** have -1 to **[gloss:wound-roll:wound rolls]**."
       },
       {
         "name": "Ancient Tactician (Once per turn, per army)",
-        "text": "When you target this unit with a **stratagem**, that use is -1CP"
+        "text": "When you target this unit with a **[gloss:stratagem:stratagem]**, that use is -1CP"
       }
     ],
     "composition": [
@@ -431,7 +431,7 @@ export default [
     "abilities": [
       {
         "name": "Berserk Charge",
-        "text": "When this unit is selected to make an **advance move**, that **advance move** does not prevent this unit from being **eligible to declare a charge**."
+        "text": "When this unit is selected to make an **[gloss:advance-move:advance move]**, that **[gloss:advance-move:advance move]** does not prevent this unit from being **[gloss:eligible-to-charge:eligible to declare a charge]**."
       }
     ],
     "composition": [
@@ -686,11 +686,11 @@ export default [
     "abilities": [
       {
         "name": "Predatory Instinct (Once per battle round, per unit)",
-        "text": "In your opponent's Movement phase, when an enemy unit ends a move within 8\" of this unit, if this unit is **unengaged**, this unit can make a **normal move** of up to D6\"."
+        "text": "In your opponent's Movement phase, when an enemy unit ends a move within 8\" of this unit, if this unit is **[gloss:unengaged:unengaged]**, this unit can make a **[gloss:normal-move:normal move]** of up to D6\"."
       },
       {
         "name": "Hunting Hounds",
-        "text": "While this unit is within 6\" of a friendly SPACE WOLVES CHARACTER model (excluding WULFEN), if this unit is not **battle-shocked**, this unit has +1 **OC**."
+        "text": "While this unit is within 6\" of a friendly SPACE WOLVES CHARACTER model (excluding WULFEN), if this unit is not **[gloss:battle-shocked:battle-shocked]**, this unit has +1 **[gloss:objective-control:OC]**."
       }
     ],
     "composition": [
@@ -822,7 +822,7 @@ export default [
     "abilities": [
       {
         "name": "Cunning Hunters",
-        "text": "In the Fight phase, if this unit is within range of an **objective**, this unit’s melee attacks:\n▪ Have +1 **S**.\n▪ Have +1 **AP**."
+        "text": "In the Fight phase, if this unit is within range of an **[gloss:objective:objective]**, this unit’s melee attacks:\n▪ Have +1 **[gloss:strength:S]**.\n▪ Have +1 **[gloss:armour-penetration:AP]**."
       },
       {
         "name": "Old Greymanes",
@@ -1112,15 +1112,15 @@ export default [
     "abilities": [
       {
         "name": "Gift of the Iron Wolf",
-        "text": "In your Movement phase, at the start or end of this unit's move, select up to one friendly SPACE WOLVES VEHICLE model within 3\" of this model:\n▪ That VEHICLE model **heals** D3 wounds.\n▪ That VEHICLE model’s attacks can ignore modifiers to **hit rolls** and **wound rolls** until the start of your next Movement phase.\n\nYou cannot select the same VEHICLE model for this ability more than once per phase."
+        "text": "In your Movement phase, at the start or end of this unit's move, select up to one friendly SPACE WOLVES VEHICLE model within 3\" of this model:\n▪ That VEHICLE model **[gloss:heal:heals]** D3 wounds.\n▪ That VEHICLE model’s attacks can ignore modifiers to **[gloss:hit-roll:hit rolls]** and **[gloss:wound-roll:wound rolls]** until the start of your next Movement phase.\n\nYou cannot select the same VEHICLE model for this ability more than once per phase."
       },
       {
         "name": "Iron Priest",
-        "text": "While this model is within 3\" of a friendly SPACE WOLVES VEHICLE unit, this model has **Lone Operative**."
+        "text": "While this model is within 3\" of a friendly SPACE WOLVES VEHICLE unit, this model has [core:Lone Operative]."
       },
       {
         "name": "Judgement of the Omnissiah",
-        "text": "This model's attacks that target an enemy unit **engaged** with a friendly SPACE WOLVES VEHICLE can re-roll **wound rolls**."
+        "text": "This model's attacks that target an enemy unit **[gloss:engaged:engaged]** with a friendly SPACE WOLVES VEHICLE can re-roll **[gloss:wound-roll:wound rolls]**."
       }
     ],
     "composition": [
@@ -1313,11 +1313,11 @@ export default [
     "abilities": [
       {
         "name": "Guile of the Wolf",
-        "text": "At the start of each phase, the **assault doctrine**, **devastator doctrine** and **tactical doctrine** are active for this unit."
+        "text": "At the start of each phase, the **[gloss:sm-combat-doctrine:assault doctrine]**, **[gloss:sm-combat-doctrine:devastator doctrine]** and **[gloss:sm-combat-doctrine:tactical doctrine]** are active for this unit."
       },
       {
         "name": "High King of Fenris (Once per battle round, per unit)",
-        "text": "In your Movement phase, select up to one friendly SPACE WOLVES unit in **strategic reserves**. If you do, when that unit makes an **ingress move**, treat the current battle round number as being one higher than it actually is."
+        "text": "In your Movement phase, select up to one friendly SPACE WOLVES unit in **[gloss:strategic-reserves:strategic reserves]**. If you do, when that unit makes an **[gloss:ingress-move:ingress move]**, treat the current battle round number as being one higher than it actually is."
       }
     ],
     "composition": [
@@ -1964,11 +1964,11 @@ export default [
     "abilities": [
       {
         "name": "Murder-maker",
-        "text": "In the Fight phase, when a friendly WULFEN model within 6\" of this unit is **destroyed**, if that model's unit has not been **selected to fight** this phase, roll one D6:\n▪ On a 4+, do not remove that model from the battlefield. When your unit has fought, or at the end of the phase (whichever comes first), that model is removed from the battlefield."
+        "text": "In the Fight phase, when a friendly WULFEN model within 6\" of this unit is **[gloss:destroyed:destroyed]**, if that model's unit has not been **[gloss:selected-to-fight:selected to fight]** this phase, roll one D6:\n▪ On a 4+, do not remove that model from the battlefield. When your unit has fought, or at the end of the phase (whichever comes first), that model is removed from the battlefield."
       },
       {
         "name": "Bestial Fury",
-        "text": "This unit:\n▪ Can re-roll **advance rolls**.\n▪ Can re-roll **charge rolls**."
+        "text": "This unit:\n▪ Can re-roll **[gloss:advance-roll:advance rolls]**.\n▪ Can re-roll **[gloss:charge-roll:charge rolls]**."
       }
     ],
     "composition": [
@@ -2078,11 +2078,11 @@ export default [
     "abilities": [
       {
         "name": "Wind Walker",
-        "text": "▪ This unit's ranged attacks have [ASSAULT].\n▪ When this unit is selected to make an **advance move**, this unit can change **advance rolls** to a 6."
+        "text": "▪ This unit's ranged attacks have [ASSAULT].\n▪ When this unit is selected to make an **[gloss:advance-move:advance move]**, this unit can change **[gloss:advance-roll:advance rolls]** to a 6."
       },
       {
         "name": "High Rune Priest (psyker level 3)",
-        "text": "This model has the **psychic abilities** listed in the Runic Abilities section."
+        "text": "This model has the **[gloss:psychic-ability:psychic abilities]** listed in the Runic Abilities section."
       }
     ],
     "composition": [
@@ -2106,15 +2106,15 @@ export default [
         "options": [
           {
             "name": "Murderous Hurricane (psychic level 1)",
-            "text": "In your Movement phase, if this unit is not **battle-shocked**, you can make a **psychic roll** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ Select one **visible** enemy unit within 12\". That enemy unit cannot make **Snap shooting** attacks."
+            "text": "In your Movement phase, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **[gloss:battle-shocked:battle-shocked]**.\n▪ Select one **[gloss:visible:visible]** enemy unit within 12\". That enemy unit cannot make **[gloss:snap-shooting:Snap shooting]** attacks."
           },
           {
             "name": "Storm Caller (psychic level 1)",
-            "text": "When an enemy unit targets this unit, if this unit is not **battle-shocked**, you can make a **psychic roll** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ This unit has -3\" **detection range** until the end of the phase."
+            "text": "When an enemy unit targets this unit, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **[gloss:battle-shocked:battle-shocked]**.\n▪ This unit has -3\" **[gloss:detection-range:detection range]** until the end of the phase."
           },
           {
             "name": "Tempest's Wrath (psychic level 1)",
-            "text": "In your Shooting phase, if this unit is not **battle-shocked**, you can make a **psychic roll** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ Select one **visible** enemy unit within 18\". That enemy unit is **suppressed** until the start of your next turn:\n▪ While a unit is **suppressed**, that unit’s attacks have -1 to **hit rolls**."
+            "text": "In your Shooting phase, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **[gloss:battle-shocked:battle-shocked]**.\n▪ Select one **[gloss:visible:visible]** enemy unit within 18\". That enemy unit is **[gloss:sm-suppressed:suppressed]** until the start of your next turn:\n▪ While a unit is **[gloss:sm-suppressed:suppressed]**, that unit’s attacks have -1 to **[gloss:hit-roll:hit rolls]**."
           }
         ]
       }
@@ -2185,11 +2185,11 @@ export default [
     "abilities": [
       {
         "name": "War Howl",
-        "text": "▪ While this model is attached to a BLOOD CLAWS unit, this unit's melee attacks have +1 **S** and [SUSTAINED HITS 1].\n▪ While this model is attached to a WOLF GUARD HEADTAKERS unit, when this unit is selected to make an **advance move**, that **advance move** does not prevent this unit from being **eligible to declare a charge**."
+        "text": "▪ While this model is attached to a BLOOD CLAWS unit, this unit's melee attacks have +1 **[gloss:strength:S]** and [SUSTAINED HITS 1].\n▪ While this model is attached to a WOLF GUARD HEADTAKERS unit, when this unit is selected to make an **[gloss:advance-move:advance move]**, that **[gloss:advance-move:advance move]** does not prevent this unit from being **[gloss:eligible-to-charge:eligible to declare a charge]**."
       },
       {
         "name": "Battle-lust",
-        "text": "If this unit made a **charge move** this turn, this model's melee attacks have +2 **A**."
+        "text": "If this unit made a **[gloss:charge-move:charge move]** this turn, this model's melee attacks have +2 **[gloss:attack-dice:A]**."
       }
     ],
     "composition": [
@@ -2852,13 +2852,13 @@ export default [
     "abilities": [
       {
         "name": "Thunderous Charge",
-        "text": "If this unit made a **charge move** this turn, this unit's melee attacks have:\n▪ +1 **S**.\n▪ +1 **D**."
+        "text": "If this unit made a **[gloss:charge-move:charge move]** this turn, this unit's melee attacks have:\n▪ +1 **[gloss:strength:S]**.\n▪ +1 **[gloss:damage-roll:D]**."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Storm Shield",
-        "text": "This model has a 4+ **InSv**."
+        "text": "This model has a 4+ **[gloss:invulnerable-save:InSv]**."
       }
     ],
     "composition": [
@@ -2948,11 +2948,11 @@ export default [
     "abilities": [
       {
         "name": "Slayer's Oath",
-        "text": "At the start of the first battle round, you select up to one enemy CHARACTER/MONSTER/VEHICLE unit to be this unit's **slayer's oath**:\n▪ This unit's attacks that target this unit's **slayer's oath** can ignore modifiers to your unit's:\n▪ **BS** and **WS**.\n▪ **Hit rolls**."
+        "text": "At the start of the first battle round, you select up to one enemy CHARACTER/MONSTER/VEHICLE unit to be this unit's **slayer's oath**:\n▪ This unit's attacks that target this unit's **slayer's oath** can ignore modifiers to your unit's:\n▪ **[gloss:ballistic-skill:BS]** and **[gloss:weapon-skill:WS]**.\n▪ **[gloss:hit-roll:Hit rolls]**."
       },
       {
         "name": "Oathbound",
-        "text": "▪ This unit's melee attacks have +1 to **hit rolls**.\n▪ __Or:__ This unit's melee attacks that target this unit's **slayer's oath** have +1 to **hit rolls** and **wound rolls**."
+        "text": "▪ This unit's melee attacks have +1 to **[gloss:hit-roll:hit rolls]**.\n▪ __Or:__ This unit's melee attacks that target this unit's **slayer's oath** have +1 to **[gloss:hit-roll:hit rolls]** and **[gloss:wound-roll:wound rolls]**."
       }
     ],
     "composition": [
@@ -3118,13 +3118,13 @@ export default [
     "abilities": [
       {
         "name": "Fervour of the Ancients",
-        "text": "Friendly SPACE WOLVES units within 6\" of this unit:\n▪ Have +1 to **advance rolls**.\n▪ Have +1 to **charge rolls**."
+        "text": "Friendly SPACE WOLVES units within 6\" of this unit:\n▪ Have +1 to **[gloss:advance-roll:advance rolls]**.\n▪ Have +1 to **[gloss:charge-roll:charge rolls]**."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Blizzard Shield",
-        "text": "This model has 4+ **InSv**"
+        "text": "This model has 4+ **[gloss:invulnerable-save:InSv]**"
       }
     ],
     "composition": [
@@ -3371,17 +3371,17 @@ export default [
     "abilities": [
       {
         "name": "Tempered Ferocity",
-        "text": "▪ This unit's attacks have [SUSTAINED HITS 1].\n▪ This unit's attacks that target an enemy unit within 6\" of this unit can re-roll **hit rolls** of 1."
+        "text": "▪ This unit's attacks have [SUSTAINED HITS 1].\n▪ This unit's attacks that target an enemy unit within 6\" of this unit can re-roll **[gloss:hit-roll:hit rolls]** of 1."
       },
       {
         "name": "Heroic Last Stand",
-        "text": "In the Fight phase, when this model is **destroyed**, if this unit has not been **selected to fight** this phase, roll one D6:\n▪ On a 2+, do not remove this model from the battlefield. When your unit has fought, or at the end of the phase (whichever comes first), this model is removed from the battlefield."
+        "text": "In the Fight phase, when this model is **[gloss:destroyed:destroyed]**, if this unit has not been **[gloss:selected-to-fight:selected to fight]** this phase, roll one D6:\n▪ On a 2+, do not remove this model from the battlefield. When your unit has fought, or at the end of the phase (whichever comes first), this model is removed from the battlefield."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Storm Shield",
-        "text": "This model has +1 **W**."
+        "text": "This model has +1 **[gloss:wounds:W]**."
       }
     ],
     "composition": [
@@ -3888,21 +3888,21 @@ export default [
     "abilities": [
       {
         "name": "Let Loose the Wolves",
-        "text": "At the start of the Declare Battle Formations step, you can split this unit into two units, one containing all Wolf Guard Headtaker models and all **leader/support** models, the other containing all Hunting Wolves models, with new **starting strengths** accordingly."
+        "text": "At the start of the Declare Battle Formations step, you can split this unit into two units, one containing all Wolf Guard Headtaker models and all **[gloss:leader:leader]/[gloss:support:support]** models, the other containing all Hunting Wolves models, with new **[gloss:starting-strength:starting strengths]** accordingly."
       },
       {
         "name": "Hunting Hounds",
-        "text": "While this unit is within 6\" of a friendly SPACE WOLVES CHARACTER model (excluding WULFEN), if this unit is not **battle-shocked**, Hunting Wolf models have +1 **OC**."
+        "text": "While this unit is within 6\" of a friendly SPACE WOLVES CHARACTER model (excluding WULFEN), if this unit is not **[gloss:battle-shocked:battle-shocked]**, Hunting Wolf models have +1 **[gloss:objective-control:OC]**."
       },
       {
         "name": "Headhunters",
-        "text": "At the start of the first battle round, select up to one enemy unit to be this unit's **quarry**:\n▪ This unit's attacks that target this unit's **quarry** have [DEVASTATING WOUNDS] and [PRECISION].\n▪ Each time this unit's **quarry** is **destroyed**, select one enemy unit to be this unit's **quarry**."
+        "text": "At the start of the first battle round, select up to one enemy unit to be this unit's **quarry**:\n▪ This unit's attacks that target this unit's **quarry** have [DEVASTATING WOUNDS] and [PRECISION].\n▪ Each time this unit's **quarry** is **[gloss:destroyed:destroyed]**, select one enemy unit to be this unit's **quarry**."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Storm Shield",
-        "text": "This model has a 4+ **InSv**."
+        "text": "This model has a 4+ **[gloss:invulnerable-save:InSv]**."
       }
     ],
     "composition": [
@@ -4636,13 +4636,13 @@ export default [
     "abilities": [
       {
         "name": "Rugged Resilience",
-        "text": "Attacks that target this unit with a **S** greater than this unit's **T** have -1 to **wound rolls**."
+        "text": "Attacks that target this unit with a **[gloss:strength:S]** greater than this unit's **[gloss:toughness:T]** have -1 to **[gloss:wound-roll:wound rolls]**."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Storm Shield",
-        "text": "This model has +1 **W**."
+        "text": "This model has +1 **[gloss:wounds:W]**."
       }
     ],
     "composition": [
@@ -4929,7 +4929,7 @@ export default [
       },
       {
         "name": "Healing Balms",
-        "text": "In your Command phase, this unit **heals** D3+1 wounds."
+        "text": "In your Command phase, this unit **[gloss:heal:heals]** D3+1 wounds."
       }
     ],
     "composition": [
@@ -5149,17 +5149,17 @@ export default [
     "abilities": [
       {
         "name": "Hunting Hounds",
-        "text": "While this unit is within 6\" of a friendly SPACE WOLVES CHARACTER model (excluding WULFEN), if this unit is not **battle-shocked**, Hunting Wolf models have +1 **OC**."
+        "text": "While this unit is within 6\" of a friendly SPACE WOLVES CHARACTER model (excluding WULFEN), if this unit is not **[gloss:battle-shocked:battle-shocked]**, Hunting Wolf models have +1 **[gloss:objective-control:OC]**."
       },
       {
         "name": "Deadly Stalkers",
-        "text": "This unit's attacks that target an enemy unit more than 6\" from any other enemy units have +1 to **wound rolls**."
+        "text": "This unit's attacks that target an enemy unit more than 6\" from any other enemy units have +1 to **[gloss:wound-roll:wound rolls]**."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Haywire Mine (Once per battle, per unit)",
-        "text": "In your Shooting phase, select up to one **visible** enemy unit within 6\" of this unit and roll one D6. On a 2+:\n▪ That enemy unit suffers D3 **mortal wounds**.\n▪ __Or:__ If that enemy unit is a VEHICLE unit, that enemy unit suffers 2D3 **mortal wounds**."
+        "text": "In your Shooting phase, select up to one **[gloss:visible:visible]** enemy unit within 6\" of this unit and roll one D6. On a 2+:\n▪ That enemy unit suffers D3 **[gloss:mortal-wound:mortal wounds]**.\n▪ __Or:__ If that enemy unit is a VEHICLE unit, that enemy unit suffers 2D3 **[gloss:mortal-wound:mortal wounds]**."
       }
     ],
     "composition": [
@@ -5256,13 +5256,13 @@ export default [
     "abilities": [
       {
         "name": "Savage Frenzy",
-        "text": "When an enemy unit **engaged** with your unit (excluding MONSTER/VEHICLE units) makes a **fall-back move** that enemy unit must use the **desperate escape mode**. If that enemy unit is **battle-shocked**, -1 from those **hazard rolls**."
+        "text": "When an enemy unit **[gloss:engaged:engaged]** with your unit (excluding MONSTER/VEHICLE units) makes a **[gloss:fall-back-move:fall-back move]** that enemy unit must use the **[gloss:desperate-escape:desperate escape mode]**. If that enemy unit is **[gloss:battle-shocked:battle-shocked]**, -1 from those **[gloss:hazard-roll:hazard rolls]**."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Death Totem",
-        "text": "This unit's melee attacks can re-roll **hit rolls** of 1."
+        "text": "This unit's melee attacks can re-roll **[gloss:hit-roll:hit rolls]** of 1."
       }
     ],
     "composition": [
@@ -5368,7 +5368,7 @@ export default [
     "abilities": [
       {
         "name": "Bestial Rage",
-        "text": "In your opponent's Shooting phase, when an enemy unit has shot, if this unit lost a wound as a result of those attacks, this unit can make a **surge move** of up to D6+1\"."
+        "text": "In your opponent's Shooting phase, when an enemy unit has shot, if this unit lost a wound as a result of those attacks, this unit can make a **[gloss:surge-move:surge move]** of up to D6+1\"."
       },
       {
         "name": "Violent Fury",
@@ -5378,7 +5378,7 @@ export default [
     "wargearAbilities": [
       {
         "name": "Blizzard Shield",
-        "text": "This model has 4+ **InSv**"
+        "text": "This model has 4+ **[gloss:invulnerable-save:InSv]**"
       }
     ],
     "composition": [
@@ -5483,13 +5483,13 @@ export default [
     "abilities": [
       {
         "name": "Hammer Blow",
-        "text": "In the Fight phase, when this unit has fought, select up to one enemy MONSTER/VEHICLE unit hit by those attacks. If you do, that enemy unit is **suppressed** until the start of your next turn:\n▪ While a unit is **suppressed**, that unit's attacks have -1 to **hit rolls**."
+        "text": "In the Fight phase, when this unit has fought, select up to one enemy MONSTER/VEHICLE unit hit by those attacks. If you do, that enemy unit is **[gloss:sm-suppressed:suppressed]** until the start of your next turn:\n▪ While a unit is **[gloss:sm-suppressed:suppressed]**, that unit's attacks have -1 to **[gloss:hit-roll:hit rolls]**."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Death Totem",
-        "text": "This unit's melee attacks can re-roll **hit rolls** of 1."
+        "text": "This unit's melee attacks can re-roll **[gloss:hit-roll:hit rolls]** of 1."
       }
     ],
     "composition": [

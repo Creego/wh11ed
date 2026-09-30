@@ -49,7 +49,7 @@ export default {
       'Corvus Blackstar — обтекаемые, скрытные летательные аппараты, что используются для высадки kill team в кишащие врагом зоны или даже в цитадели ксеносов. Залпом ракет Blackstar добывают господство в воздухе и зачищают целевую точку, прежде чем включить парящие двигатели и доставить свой смертоносный груз элитных воинов.',
     abilities: {
       'Blackstar Cluster Launcher':
-        'В вашей фазе движения, когда этот юнит завершает **обычный манёвр**, выберите не более одного вражеского юнита, над которым этот юнит прошёл во время этого манёвра, и бросьте шесть D6:\n▪ За каждый 4+ тот юнит получает 1 **смертельную рану**.',
+        'В вашей фазе движения, когда этот юнит завершает **[gloss:normal-move:обычный манёвр]**, выберите не более одного вражеского юнита, над которым этот юнит прошёл во время этого манёвра, и бросьте шесть D6:\n▪ За каждый 4+ тот юнит получает 1 **[gloss:mortal-wound:смертельную рану]**.',
     },
     wargearAbilities: {
       'Auspex Array':
@@ -63,7 +63,7 @@ export default {
       'Twin Assault Cannon этой модели можно заменить на 1 Twin Lascannon.',
     ],
     transport:
-      'Эта модель имеет **вместимость транспорта** 12 моделей DEATHWATCH INFANTRY. Каждая модель GRAVIS/JUMP PACK/TERMINATOR занимает место 2 моделей.',
+      'Эта модель имеет **[gloss:transport-capacity:вместимость транспорта]** 12 моделей DEATHWATCH INFANTRY. Каждая модель GRAVIS/JUMP PACK/TERMINATOR занимает место 2 моделей.',
   },
 
   'deathwatch-terminator-squad': {
@@ -71,12 +71,12 @@ export default {
       'Несокрушимые воины, удостоенные носить громоздкую броню Terminator, — вдохновляющее зрелище для братьев. Deathwatch Terminator несут мощнейшее оружие ближнего боя, а сила и прочность их брони позволяет им вносить тяжелейший огонь прямо в скрытые логова ксеносов.',
     abilities: {
       'Terminatus Assault':
-        '▪ Этот юнит может перебрасывать **броски нападения**.\n▪ После того как этот юнит завершил **манёвр нападения**, каждый вражеский юнит **в ближнем бою** с этим юнитом совершает **бросок на боевой шок**, с -1 к этому **броску на боевой шок**, если это юнит NON-IMPERIUM/CHAOS.',
+        '▪ Этот юнит может перебрасывать **[gloss:charge-roll:броски нападения]**.\n▪ После того как этот юнит завершил **[gloss:charge-move:манёвр нападения]**, каждый вражеский юнит **[gloss:engaged:в ближнем бою]** с этим юнитом совершает **[gloss:battle-shock-test:бросок на боевой шок]**, с -1 к этому **[gloss:battle-shock-test:броску на боевой шок]**, если это юнит NON-IMPERIUM/CHAOS.',
       'Teleport Homer':
-        'В начале битвы вы можете выставить на поле боя один жетон Teleport Homer для этого юнита. Если вы это делаете:\n▪ Когда вы выбираете этот юнит целью **стратагемы Rapid Ingress**, вы можете использовать тот жетон Teleport Homer. Если вы это делаете, это применение стоит на 1 CP меньше, но при отыгрыше этой **стратагемы** этот юнит должен быть выставлен в пределах 3" от того жетона Teleport Homer и не в пределах 8" от вражеского юнита. Затем тот жетон Teleport Homer убирается с поля боя.\n▪ Если вражеский юнит завершает манёвр в пределах 1" от того жетона Teleport Homer, тот жетон Teleport Homer убирается с поля боя.',
+        'В начале битвы вы можете выставить на поле боя один жетон Teleport Homer для этого юнита. Если вы это делаете:\n▪ Когда вы выбираете этот юнит целью **стратагемы Rapid Ingress**, вы можете использовать тот жетон Teleport Homer. Если вы это делаете, это применение стоит на 1 CP меньше, но при отыгрыше этой **[gloss:stratagem:стратагемы]** этот юнит должен быть выставлен в пределах 3" от того жетона Teleport Homer и не в пределах 8" от вражеского юнита. Затем тот жетон Teleport Homer убирается с поля боя.\n▪ Если вражеский юнит завершает манёвр в пределах 1" от того жетона Teleport Homer, тот жетон Teleport Homer убирается с поля боя.',
     },
     wargearAbilities: {
-      'Storm Shield': 'Эта модель имеет +1 **W**.',
+      'Storm Shield': 'Эта модель имеет +1 **[gloss:wounds:W]**.',
     },
     loadout: '**Каждая модель вооружена:** 1 Power Fist; 1 Storm Bolter.',
     options: [
@@ -90,10 +90,10 @@ export default {
       'Навыки Deathwatch Veteran оттачивались в их прежнем Ордене десятилетиями, порой веками. За долгую вахту против многоликих угроз ксеносов каждый ветеран учится вооружаться так, чтобы наилучшим образом послужить текущей миссии, и отряды несут набор оружия, способного повергнуть любого врага.',
     abilities: {
       'Death to the Alien':
-        'Атаки этого юнита могут:\n▪ Перебрасывать **броски на попадание**, равные 1.\n▪ __Или:__ если цель этих атак не имеет IMPERIUM/CHAOS — перебрасывать **броски на попадание**.',
+        'Атаки этого юнита могут:\n▪ Перебрасывать **[gloss:hit-roll:броски на попадание]**, равные 1.\n▪ __Или:__ если цель этих атак не имеет IMPERIUM/CHAOS — перебрасывать **[gloss:hit-roll:броски на попадание]**.',
     },
     wargearAbilities: {
-      'Storm Shield': 'Эта модель имеет 4+ **InSv**.',
+      'Storm Shield': 'Эта модель имеет 4+ **[gloss:invulnerable-save:InSv]**.',
     },
     loadout: '**Каждая модель вооружена:** 1 Boltgun; 1 Power Weapon.',
     options: [
@@ -114,10 +114,10 @@ export default {
       'Decimus Kill Team обеспечивает соразмерный угрозе ответ любой инопланетной опасности на уровне отряда. Каждый воин этого отборного отряда обладает собственной специализацией и набором мощного вооружения, что делает их погибелью не только для ксеносов, но и для любого врага, которому не повезло встать у них на пути.',
     abilities: {
       'Death to the Alien':
-        'Атаки этого юнита могут:\n▪ Перебрасывать **броски на попадание**, равные 1.\n▪ __Или:__ если цель этих атак не имеет IMPERIUM/CHAOS — перебрасывать **броски на попадание**.',
+        'Атаки этого юнита могут:\n▪ Перебрасывать **[gloss:hit-roll:броски на попадание]**, равные 1.\n▪ __Или:__ если цель этих атак не имеет IMPERIUM/CHAOS — перебрасывать **[gloss:hit-roll:броски на попадание]**.',
     },
     wargearAbilities: {
-      'Storm Shield': 'Эта модель имеет 4+ **InSv**.',
+      'Storm Shield': 'Эта модель имеет 4+ **[gloss:invulnerable-save:InSv]**.',
     },
     loadout:
       '**Модель Deathwatch Veteran with Xenophase Blade and Special-issue Bolt Pistol вооружена:** 1 Special-issue Bolt Pistol; 1 Xenophase Blade.\n**Модель Kill Team Sergeant вооружена:** 1 Plasma Pistol; 1 Power Weapon.\n**Каждая модель Deathwatch Veteran with Deathwatch Marksman Bolt Carbine, Special-issue Bolt Pistol and Knives and Fists вооружена:** 1 Deathwatch Marksman Bolt Carbine; 1 Knives and Fists; 1 Special-issue Bolt Pistol.\n**Каждая модель Deathwatch Veteran with Heavy Thunder Hammer and Bolt Pistol вооружена:** 1 Bolt Pistol; 1 Heavy Thunder Hammer.\n**Каждая модель Deathwatch Veteran with Stalker Bolt Rifle, Bolt Pistol and Knives and Fists вооружена:** 1 Bolt Pistol; 1 Knives and Fists; 1 Stalker Bolt Rifle.\n**Каждая модель Gravis Veteran вооружена:** 1 Bolt Pistol; 1 Infernus Heavy Bolter; 1 Knives and Fists.',
@@ -133,7 +133,7 @@ export default {
       'Ещё более отточенные из первоначального замысла Watch Master Морделая, Fortis Kill Team являют высшую приспособляемость варианта Tacticus брони Mk X, безупречно сочетая целый ряд ролей ближней поддержки со смертоносной огневой мощью.',
     abilities: {
       'Fortis Doctrines':
-        'Атаки этого юнита, нацеленные на юнит,\n▪ **ниже начальной численности**, имеют +1 к **броскам на попадание**.\n▪ __Или:__ на **половинной численности** или ниже — имеют +1 к **броскам на попадание** и **броскам на ранение**.',
+        'Атаки этого юнита, нацеленные на юнит,\n▪ **[gloss:below-starting-strength:ниже начальной численности]**, имеют +1 к **[gloss:hit-roll:броскам на попадание]**.\n▪ __Или:__ на **[gloss:half-strength:половинной численности]** или ниже — имеют +1 к **[gloss:hit-roll:броскам на попадание]** и **[gloss:wound-roll:броскам на ранение]**.',
     },
     loadout:
       '**Модель Kill Team Intercessor with Castellan Launcher, Superfrag Rocket Launcher and Knives and Fists вооружена:** 1 Castellan Launcher; 1 Knives and Fists; 1 Superfrag Rocket Launcher.\n**Модель Kill Team Sergeant вооружена:** 1 Bolt Pistol; 1 Deathwatch Bolt Rifle; 1 Knives and Fists.\n**Каждая модель Deathwatch Intercessor with Plasma Incinerator, Bolt Pistol and Knives and Fists вооружена:** 1 Bolt Pistol; 1 Knives and Fists; 1 Plasma Incinerator.\n**Каждая модель Kill Team Intercessor with Deathwatch Bolt Rifle, Bolt Pistol and Knives and Fists вооружена:** 1 Bolt Pistol; 1 Deathwatch Bolt Rifle; 1 Knives and Fists.\n**Каждая модель Kill Team Intercessor with Heavy Bolt Pistol and Chainsword вооружена:** 1 Chainsword; 1 Heavy Bolt Pistol.\n**Каждая модель Kill Team Intercessor with Pyreblaster, Bolt Pistol and Knives and Fists вооружена:** 1 Bolt Pistol; 1 Knives and Fists; 1 Pyreblaster.',
@@ -152,7 +152,7 @@ export default {
       'Составленные из воинов в более тяжёлом варианте Gravis брони Mk X, Indomitor Kill Team — подвижные бастионы, способные обрушить огневую мощь эскадрона боевых танков. Перед ними разрываются на части и полчища ксеносов, и чудовищные твари.',
     abilities: {
       'Indomitor Doctrines':
-        '▪ Дальнобойные атаки этого юнита, нацеленные на ближайший доступный вражеский юнит, имеют +1 **S**.\n▪ Если этот юнит совершил **манёвр нападения** в этот ход, атаки ближнего боя этого юнита имеют +1 **S**.',
+        '▪ Дальнобойные атаки этого юнита, нацеленные на ближайший доступный вражеский юнит, имеют +1 **[gloss:strength:S]**.\n▪ Если этот юнит совершил **[gloss:charge-move:манёвр нападения]** в этот ход, атаки ближнего боя этого юнита имеют +1 **[gloss:strength:S]**.',
     },
     loadout:
       '**Каждая модель Kill Team Heavy Intercessor with Flamestorm Gauntlets and Twin Power Fists вооружена:** 1 Flamestorm Gauntlets; 1 Twin Power Fists.\n**Каждая модель Kill Team Heavy Intercessor with Melta Rifle, Bolt Pistol and Ceramite Fists вооружена:** 1 Bolt Pistol; 1 Ceramite Fists; 1 Melta Rifle.\n**Каждая модель Kill Team Heavy Intercessor with Deathwatch Heavy Bolt Rifle and Ceramite Fists вооружена:** 1 Ceramite Fists; 1 Deathwatch Heavy Bolt Rifle.',
@@ -168,13 +168,13 @@ export default {
       'Зловещие, безмолвные и почти невидимые до удара, Spectrus Kill Team искусны в том, чтобы нести смерть и вблизи, и издали. Облачённые в облегающую броню Mk X Phobos, они специализируются на контроле поля боя и дестабилизации врага.',
     abilities: {
       'Helix Gauntlet':
-        'В вашей фазе командования этот юнит **восстанавливает** D3 ран.',
+        'В вашей фазе командования этот юнит **[gloss:heal:восстанавливает]** D3 ран.',
       'Spectrus Doctrines':
-        'В конце фазы ближнего боя вашего оппонента, если этот юнит **не в ближнем бою**, вы можете поместить этот юнит в **стратегические резервы**.',
+        'В конце фазы ближнего боя вашего оппонента, если этот юнит **[gloss:unengaged:не в ближнем бою]**, вы можете поместить этот юнит в **[gloss:strategic-reserves:стратегические резервы]**.',
     },
     wargearAbilities: {
       'Helix Gauntlet':
-        'В вашей фазе командования этот юнит **восстанавливает** D3 ран.',
+        'В вашей фазе командования этот юнит **[gloss:heal:восстанавливает]** D3 ран.',
     },
     loadout:
       '**Каждая модель Kill Team Infiltrator with Bolt Sniper Rifle, Bolt Pistol and Ceramite Fists вооружена:** 1 Bolt Pistol; 1 Bolt Sniper Rifle; 1 Ceramite Fists.\n**Каждая модель Kill Team Infiltrator with Deathwatch Occulus Bolt Carbine, Bolt Pistol and Paired Combat Blades вооружена:** 1 Bolt Pistol; 1 Deathwatch Occulus Bolt Carbine; 1 Paired Combat Blades.\n**Каждая модель Kill Team Infiltrator with Special-issue Bolt Pistol and Combat Knife вооружена:** 1 Combat Knife; 1 Special-issue Bolt Pistol.\n**Каждая модель Kill Team Infiltrator with Deathwatch Marksman Bolt Carbine, Bolt Pistol and Ceramite Fists вооружена:** 1 Bolt Pistol; 1 Ceramite Fists; 1 Deathwatch Marksman Bolt Carbine.',
@@ -191,7 +191,7 @@ export default {
       'Ныряя с ганшипов или продвигаясь силовыми прыжками через зону боевых действий, братья Talonstrike Kill Team сокрушают добычу в ошеломляюще внезапных штурмах. Они атакуют воющими chainsword и залпами тяжёлого огня в упор. Рёв их jump pack следует за каждым стремительным убийством, пока они настигают следующую цель.',
     abilities: {
       'Talonstrike Doctrines':
-        'В ход, в который этот юнит был выставлен на поле боя:\n▪ Атаки этого юнита имеют +1 **AP**.\n▪ Атаки ближнего боя этого юнита имеют [LANCE].',
+        'В ход, в который этот юнит был выставлен на поле боя:\n▪ Атаки этого юнита имеют +1 **[gloss:armour-penetration:AP]**.\n▪ Атаки ближнего боя этого юнита имеют [LANCE].',
     },
     loadout:
       '**Модель Kill Team Sergeant with Jump Pack вооружена:** 1 Chainsword; 1 Heavy Bolt Pistol.\n**Каждая модель Kill Team Heavy Intercessor with Jump Pack вооружена:** 1 Assault Bolters; 1 Ceramite Fists.\n**Каждая модель Kill Team Intercessor with Jump Pack вооружена:** 1 Chainsword; 1 Heavy Bolt Pistol.',
@@ -210,7 +210,7 @@ export default {
     abilities: {
       'Tactical Instinct': 'Атаки этого юнита имеют [SUSTAINED HITS 1].',
       'Unstoppable Champion (Once per battle, per army)':
-        'В конце фазы, в которой эта модель была **уничтожена**, бросьте один D6:\n▪ На 2+ снова выставьте эту модель на поле боя как можно ближе к месту, где она была **уничтожена, не в ближнем бою**, с 3 оставшимися ранами.',
+        'В конце фазы, в которой эта модель была **[gloss:destroyed:уничтожена]**, бросьте один D6:\n▪ На 2+ снова выставьте эту модель на поле боя как можно ближе к месту, где она была **уничтожена, не в ближнем бою**, с 3 оставшимися ранами.',
     },
     loadout:
       '**Эта модель вооружена:** 1 Hellfire Extremis; 1 Master-crafted Power Weapon.',
@@ -223,11 +223,11 @@ export default {
       'Первейшие охотники на ксеносов в галактике, каждый Watch Master командует одной из бдительных крепостей Ордена. Эти вожди обладают веками стратегических и эзотерических знаний об ужасах, что осаждают человечество. В бою трещащие клинки и особые болты их vigil spear уничтожают любого ксеноса перед ними.',
     abilities: {
       'Watch Master':
-        'Атаки этой модели, нацеленные на юнит CHARACTER, могут:\n▪ Перебрасывать **броски на попадание**, равные 1.\n▪ Перебрасывать **броски на ранение**, равные 1.',
+        'Атаки этой модели, нацеленные на юнит CHARACTER, могут:\n▪ Перебрасывать **[gloss:hit-roll:броски на попадание]**, равные 1.\n▪ Перебрасывать **[gloss:wound-roll:броски на ранение]**, равные 1.',
       'Strategic Knowledge':
-        '▪ Дальнобойные атаки этого юнита имеют [ASSAULT].\n▪ Когда этот юнит выбран для совершения **продвижения**, это **продвижение** не лишает этот юнит права **объявлять нападение**.\n▪ Когда этот юнит выбран для совершения **отступления**, это **отступление** не лишает этот юнит права **стрелять** и **объявлять нападение**.',
+        '▪ Дальнобойные атаки этого юнита имеют [ASSAULT].\n▪ Когда этот юнит выбран для совершения **[gloss:advance-move:продвижения]**, это **[gloss:advance-move:продвижение]** не лишает этот юнит права **[gloss:declare-charge:объявлять нападение]**.\n▪ Когда этот юнит выбран для совершения **[gloss:fall-back-move:отступления]**, это **[gloss:fall-back-move:отступление]** не лишает этот юнит права **стрелять** и **[gloss:declare-charge:объявлять нападение]**.',
       'Purgatus Quarry':
-        'В начале первого раунда боя выберите не более одного вражеского юнита, который станет **целью охоты** этого юнита:\n▪ Атаки этого юнита, нацеленные на **цель охоты** этого юнита, могут перебрасывать **броски на ранение**, равные 1.\n▪ Каждый раз, когда **цель охоты** этого юнита **уничтожена**, выберите не более одного вражеского юнита, который станет **целью охоты** этого юнита.',
+        'В начале первого раунда боя выберите не более одного вражеского юнита, который станет **целью охоты** этого юнита:\n▪ Атаки этого юнита, нацеленные на **цель охоты** этого юнита, могут перебрасывать **[gloss:wound-roll:броски на ранение]**, равные 1.\n▪ Каждый раз, когда **цель охоты** этого юнита **[gloss:destroyed:уничтожена]**, выберите не более одного вражеского юнита, который станет **целью охоты** этого юнита.',
     },
     loadout: '**Эта модель вооружена:** 1 Vigil Spear.',
     leader: { text: LEADER_TEXT },

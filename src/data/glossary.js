@@ -1301,6 +1301,47 @@ export const glossary = {
     ru: 'Армейское правило Space Marines. В начале вашей фазы командования можно сделать активной одну из трёх доктрин для ваших юнитов Adeptus Astartes до следующей — **Assault** (charge после advance move), **Devastator** (ranged-атаки получают [ASSAULT]) или **Tactical** (стрельба и charge после fall-back move). Каждую можно выбрать раз за бой, и у юнита активна одна доктрина: правило, делающее активной другую, заменяет первую.',
   },
 
+  // Codex: Space Marines (app data 963) — terms several rules of the codex and its Supplements share.
+  'psyker-level': {
+    term: 'Psyker Level / Psychic Level',
+    en: 'A PSYKER unit’s psyker level (in its abilities) is how much it can cast in a battle round; each psychic ability carries a psychic level in its name. In a battle round the unit can use psychic abilities whose psychic levels add up to no more than its psyker level.',
+    ru: 'Псайкерский уровень юнита PSYKER (указан в его способностях) — сколько он может использовать за раунд боя; у каждой псайкерской способности свой псайкерский уровень в названии. За раунд боя юнит может использовать способности, чьи уровни в сумме не превышают его псайкерский уровень.',
+  },
+  'psychic-roll': {
+    term: 'Psychic Roll',
+    en: 'The D6 a PSYKER unit rolls to use a psychic ability, if it is not battle-shocked. On a 1 the unit becomes battle-shocked; the ability’s effect applies either way unless the rule says otherwise.',
+    ru: 'Бросок D6, который юнит PSYKER делает, чтобы применить псайкерскую способность, если он не в боевом шоке. На 1 юнит попадает в боевой шок; эффект способности срабатывает в любом случае, если правило не говорит иначе.',
+  },
+  'shock-disembark-move': {
+    term: 'Shock Disembark Move',
+    en: 'A disembark from a TRANSPORT that made an advance move this turn (Core Rules 18.07): the unit is set up wholly within 3" of the transport, and afterwards cannot declare a charge this turn.',
+    ru: 'Высадка из TRANSPORT, который в этот ход совершил продвижение (основные правила, 18.07): юнит размещается полностью в пределах 3" от транспорта и после этого не может объявить нападение в этот ход.',
+  },
+  'assault-disembark-move': {
+    term: 'Assault Disembark Move',
+    en: 'A disembark that leaves the unit able to declare a charge afterwards (Core Rules 18.06): the unit is set up wholly within 3" of a TRANSPORT that has not advanced or fallen back this phase.',
+    ru: 'Высадка, после которой юнит может объявить нападение (основные правила, 18.06): юнит размещается полностью в пределах 3" от TRANSPORT, который в этой фазе не продвигался и не отступал.',
+  },
+  'sm-suppressed': {
+    term: 'Suppressed',
+    en: 'An enemy unit a Space Marines rule has pinned down. While suppressed, its attacks have -1 to hit rolls; the rule that suppresses it says for how long.',
+    ru: 'Вражеский юнит, прижатый огнём по правилу Space Marines. Пока он подавлен, его атаки имеют -1 к броскам на попадание; сколько это длится, сказано в правиле, которое его подавило.',
+  },
+  'sm-entrenched': {
+    term: 'Entrenched',
+    en: 'Ceramite Sentinels (Imperial Fists): a friendly ADEPTUS ASTARTES unit is entrenched while it is within a terrain area, was not set up this turn and no model in it moved more than 3" this turn. Several of the detachment’s rules only work on entrenched units.',
+    ru: 'Ceramite Sentinels (Imperial Fists): дружественный юнит ADEPTUS ASTARTES окопался, пока он находится на участке укрытия, не был размещён в этот ход и ни одна его модель не переместилась в этот ход больше чем на 3". Часть правил детачмента работает только для окопавшихся юнитов.',
+  },
+  'sm-snared': {
+    term: 'Snared (objective)',
+    en: 'An objective a Phobos unit has mined. When an enemy unit ends a move within range of a snared objective, roll one D6: on a 2+ that unit suffers D6 mortal wounds, and the objective stops being snared.',
+    ru: 'Цель, заминированная юнитом Phobos. Когда вражеский юнит заканчивает манёвр в зоне опутанной цели, бросьте D6: на 2+ этот юнит получает D6 смертельных ран, а цель перестаёт быть опутанной.',
+  },
+  'sm-assailed': {
+    term: 'Assailed',
+    en: 'Gauntlet Task Force: an enemy unit hit by a friendly ADEPTUS ASTARTES TRANSPORT’s shooting. Until the end of the turn, ADEPTUS ASTARTES units that disembarked this turn have [SUSTAINED HITS 1] against it.',
+    ru: 'Gauntlet Task Force: вражеский юнит, по которому попал обстрел дружественного ADEPTUS ASTARTES TRANSPORT. До конца хода юниты ADEPTUS ASTARTES, высадившиеся в этот ход, имеют против него [SUSTAINED HITS 1].',
+  },
   'sm-psychic-discipline': {
     term: 'Psychic Discipline',
     en: 'The Librarius Conclave detachment rule. At the start of each battle round you pick one of five Disciplines — Biomancy, Divination, Pyromancy, Telekinesis or Telepathy — and every friendly Adeptus Astartes Psyker unit gains that ability until the end of the round. Several of the detachment’s Enhancements do more when a specific Discipline is active.',
