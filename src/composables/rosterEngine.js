@@ -1654,6 +1654,15 @@ export function sectionsOf(items, { faction, detachments = [], defOf, idOf = (x)
   ]
 }
 
+// The one exception to the Detachment-Points budget (core rules 25.04, the note at its foot): "If
+// you are playing an Incursion battle, you can select a 3DP detachment as your only detachment."
+// No detachment costs more than 3 DP and only Incursion has a smaller budget, so this is exactly
+// "a single detachment over budget". `dets` are the selected detachments' records (with `dp`).
+export function dpOverAllowed(dets, battle) {
+  const spent = dets.reduce((s, d) => s + (d.dp || 0), 0)
+  return dets.length === 1 && spent > (battle?.dp ?? Infinity) && spent <= 3
+}
+
 // The effective battle-size limits for a roster. A 'custom' size carries its own points total
 // and borrows the duplicate / enhancement / DP limits of the standard bracket it falls within.
 export function effectiveBattle(roster, core) {
