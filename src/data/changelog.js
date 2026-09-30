@@ -29,12 +29,18 @@ export const changelog = [
       'Subheadings inside army and detachment rules are bigger now, for example the Assault, Devastator and Tactical Doctrines. Their Russian captions are bigger too.',
       { h: 'Space Marines: game terms explained' },
       'In the rules and datasheets of Space Marines and the five Chapters, bold game terms now open a short explanation when you tap them, for example hit roll, engaged or combat doctrine. The popup shows the English term. Core abilities such as Stealth or Feel No Pain open their full rule.',
+      { h: 'Fixes' },
+      'The roster card of a Raptors unit used to show Close combat weapon several times in a row when several Raptors took it with different weapon options. Now it is one row with the right count.',
+      'The explanation of move types used to list only four of them. Now it names every move type from the core rules.',
     ],
     ru: [
       { h: 'Страницы правил' },
       'Подзаголовки внутри правил армии и детачментов стали крупнее, например Assault, Devastator и Tactical Doctrine. Русские подписи под ними тоже стали крупнее.',
       { h: 'Space Marines: пояснения к терминам' },
       'В правилах и листах данных Space Marines и пяти орденов жирные игровые термины теперь открывают короткое пояснение по нажатию, например бросок на попадание, в ближнем бою или боевая доктрина. Во всплывающем окне есть английское название термина. Базовые способности, например Stealth или Feel No Pain, открывают своё полное правило.',
+      { h: 'Исправления' },
+      'Раньше в карточке ростера у Raptors Close combat weapon повторялся несколько раз подряд, если его получили несколько моделей через разные варианты вооружения. Теперь это одна строка с правильным количеством.',
+      'Раньше пояснение к типам манёвров называло только четыре из них. Теперь в нём все типы манёвров из основных правил.',
     ],
   },
   {

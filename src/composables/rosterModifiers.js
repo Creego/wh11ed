@@ -245,7 +245,13 @@ export function weaponRowClaimer(def, items) {
 // [EXTRA ATTACKS] weapons are not split: the model attacks with ALL of them (24.11), so two Extra
 // Klaws on a Deff Dread really are twice the attacks and "×2" says so. Neither is a row whose
 // count is unknown anywhere — an unknown says nothing, as everywhere in this file.
-function meleeRowsFor(w, slots) {
+//
+// Two grants to one profile are only a SECOND copy when the profile has too few models to hold
+// them one each. Raptors take a close combat weapon with each of several bundles ("1 flamer and 1
+// close combat weapon", "1 meltagun and …") — four grants, four different Raptors out of ten, and
+// read as ranks they printed four identical rows (player report, 2026-09-30). Where the grants fit
+// the profile's models, they are one row with their sum.
+function meleeRowsFor(w, slots, perMini) {
   if ((w.tags || []).some((t) => /^extra attacks$/i.test(t))) return null
   if (slots.some((s) => s.n == null)) return null
   const byProfile = new Map()
@@ -254,6 +260,11 @@ function meleeRowsFor(w, slots) {
     const k = s.m == null ? 'all' : s.m
     if (!byProfile.has(k)) byProfile.set(k, [])
     byProfile.get(k).push(s.n)
+  }
+  for (const [k, list] of byProfile) {
+    const models = k === 'all' ? null : perMini?.get(k)
+    const sum = list.reduce((a, n) => a + n, 0)
+    if (models != null && list.length > 1 && sum <= models) byProfile.set(k, [sum])
   }
   const ranks = []
   for (const list of byProfile.values()) list.forEach((n, r) => { ranks[r] = (ranks[r] || 0) + n })
@@ -320,6 +331,7 @@ export function wargearConditions(def, entry, items, sheet) {
 function filterWeapons(sheet, def, entry, items) {
   const copies = loadoutItemCopies(def, entry)
   const counts = loadoutItemCounts(def, entry)
+  const perMini = modelsPerMini(def, entry)
   if (!counts) return sheet
   const claim = weaponRowClaimer(def, items)
   if (!claim) return sheet
@@ -337,7 +349,7 @@ function filterWeapons(sheet, def, entry, items) {
       if (!ids) { out.push(w); continue } // unclaimed → always shown, never counted, see above
       const fielded = ids.filter((id) => counts.has(id))
       if (!fielded.length) { changed = true; continue } // claimed, and no id behind it survived
-      const split = melee ? meleeRowsFor(w, fielded.flatMap((id) => copies.get(id) || [])) : null
+      const split = melee ? meleeRowsFor(w, fielded.flatMap((id) => copies.get(id) || []), perMini) : null
       if (split) { out.push(...split); changed = true; continue }
       // A weapon name interns to exactly one item id in every unit def in the data, and no
       // datasheet lists a name twice (both asserted in src/data/roster/index.test.js), so this

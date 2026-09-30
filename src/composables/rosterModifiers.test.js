@@ -214,6 +214,21 @@ describe('overlaySheet — a second copy of a melee weapon', () => {
     expect(rows(out, 'Extra talons').map((w) => w.qty)).toEqual([2])
   })
 
+  // Raptors, player report 2026-09-30: each bundle hands one Raptor a close combat weapon, so two
+  // grants from two option lines are two different models out of ten, not a second copy on one.
+  it('keeps one row when the grants fit the models of the profile', () => {
+    const squad = {
+      id: 'raptors', sizes: [{ pts: 100, per: [10, 10], default: 1 }],
+      defaults: [[0, [[1, 1]]]],
+      gear: [
+        { m: 0, t: 1, in: 'stepper', o: [[3]], rep: [1] },
+        { m: 0, t: 2, in: 'stepper', o: [[3]], rep: [1] },
+      ],
+    }
+    const out = overlaySheet(beastSheet, { def: squad, entry: { size: 0, wg: [[0, 0, 1], [1, 0, 1]] }, items: it9 }).sheet
+    expect(rows(out, 'Crushing claws').map((w) => w.qty)).toEqual([2])
+  })
+
   it('does not split the same weapon held once by each of two profiles', () => {
     // Boyz and their Nob both carry a choppa: two profiles, one copy each — one row, ×10.
     const boyz = {

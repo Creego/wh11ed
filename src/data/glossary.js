@@ -1314,13 +1314,13 @@ export const glossary = {
   },
   'shock-disembark-move': {
     term: 'Shock Disembark Move',
-    en: 'A disembark from a TRANSPORT that made an advance move this turn (Core Rules 18.07): the unit is set up wholly within 3" of the transport, and afterwards cannot declare a charge this turn.',
-    ru: 'Высадка из TRANSPORT, который в этот ход совершил продвижение (основные правила, 18.07): юнит размещается полностью в пределах 3" от транспорта и после этого не может объявить нападение в этот ход.',
+    en: 'A disembark from a TRANSPORT that made an advance move this turn (18.07): the unit is set up wholly within 3" of the transport, and afterwards cannot declare a charge this turn.',
+    ru: 'Высадка из TRANSPORT, который в этот ход совершил продвижение (18.07): юнит размещается полностью в пределах 3" от транспорта и после этого не может объявить нападение в этот ход.',
   },
   'assault-disembark-move': {
     term: 'Assault Disembark Move',
-    en: 'A disembark that leaves the unit able to declare a charge afterwards (Core Rules 18.06): the unit is set up wholly within 3" of a TRANSPORT that has not advanced or fallen back this phase.',
-    ru: 'Высадка, после которой юнит может объявить нападение (основные правила, 18.06): юнит размещается полностью в пределах 3" от TRANSPORT, который в этой фазе не продвигался и не отступал.',
+    en: 'A disembark that leaves the unit able to declare a charge afterwards (18.06): the unit is set up wholly within 3" of a TRANSPORT that has not advanced or fallen back this phase.',
+    ru: 'Высадка, после которой юнит может объявить нападение (18.06): юнит размещается полностью в пределах 3" от TRANSPORT, который в этой фазе не продвигался и не отступал.',
   },
   'sm-suppressed': {
     term: 'Suppressed',
