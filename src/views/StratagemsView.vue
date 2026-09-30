@@ -106,6 +106,7 @@
 import ChevronIcon from '../components/ChevronIcon.vue'
 import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { SM_CHAPTERS } from '../data/smChapters.js'
 import StratCard from '../components/StratCard.vue'
 import CollapseTransition from '../components/CollapseTransition.vue'
 import { battlefields } from '../data/battlefields.js'
@@ -145,11 +146,6 @@ const coreStrats = computed(() =>
 // which is dynamically imported so it never rides in this page's chunk unless a game is on.
 const youStrats = ref([])
 const oppStrats = ref([])
-
-// These chapters share the Codex Space Marines detachments (Gladius Task Force, etc.), which
-// live only in the space-marines faction data — fall back to it for detachments not defined
-// in the chapter's own file.
-const SM_CHAPTERS = new Set(['black-templars', 'blood-angels', 'dark-angels', 'deathwatch', 'space-wolves'])
 
 // Detachment names come from the MFM dataset (tracker) but stratagems from the faction rules
 // data; the two occasionally disagree on apostrophe glyph / letter case, so match loosely.
@@ -201,6 +197,8 @@ async function loadArmyStrats(m, loc) {
     return (f.stratagems || []).map((s, i) => ({ ...s, _phases: phasesOf(enF?.stratagems?.[i]?.when) }))
   }
   const sources = [m.factionSlug]
+  // The Chapters share the Codex Space Marines detachments (Gladius Task Force, etc.), which live
+  // only in the space-marines faction data — fall back to it for detachments not in the Chapter's file.
   if (SM_CHAPTERS.has(m.factionSlug)) sources.push('space-marines')
   // normName(detachment) → { det, stratNamesRu }; the chapter's own data wins over the shared one.
   const lookup = new Map()

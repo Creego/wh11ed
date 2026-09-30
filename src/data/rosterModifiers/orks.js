@@ -982,8 +982,8 @@ export default {
       "ref": {
         "kind": "armyRule"
       },
-      "hash": "ee2f2827",
-      "ver": 946,
+      "hash": "990aa2dc",
+      "ver": 963,
       "reviewed": true,
       "effects": [
         {
@@ -2021,57 +2021,27 @@ export default {
       "dur": "phase"
     },
     {
-      "sid": "aee34635-59e6-4c77-9f7c-6334aff37fb3:big-mek-in-mega-armour",
+      "sid": "3fff9f1f-547f-4e75-9549-b8cdcf17ff97:tankbustas",
       "kind": "wargear",
-      "name": "Big Mek in Mega Armour: Kustom Force Field",
-      "det": null,
-      "ref": {
-        "kind": "wargear",
-        "unit": "big-mek-in-mega-armour",
-        "item": "kustom force field"
-      },
-      "hash": "2d6a2c10",
-      "ver": 925,
-      "reviewed": true,
-      "effects": [
-        {
-          "on": "profile",
-          "stat": "inv",
-          "op": "set",
-          "value": "4+",
-          "when": {
-            "en": "against ranged attacks",
-            "ru": "против дальних атак"
-          },
-          "cond": [
-            "never"
-          ],
-          "target": "unit"
-        }
-      ]
-    },
-    {
-      "sid": "7ecf9be2-3858-40d3-9f14-9bdcd9a2d04b:tankbustas",
-      "kind": "wargear",
-      "name": "Tankbustas: Pulsa Rokkit",
+      "name": "Tankbustas: Pulsa Rokkit (Once per battle, per unit)",
       "det": null,
       "ref": {
         "kind": "wargear",
         "unit": "tankbustas",
-        "item": "pulsa rokkit"
+        "item": "pulsa rokkit (once per battle, per unit)"
       },
-      "hash": "a6321189",
-      "ver": 925,
+      "hash": "c41c8608",
+      "ver": 963,
       "reviewed": true,
       "effects": [
         {
           "on": "ranged",
-          "stat": "s",
+          "stat": "ap",
           "op": "add",
-          "value": 1,
+          "value": -1,
           "when": {
-            "en": "once per battle, while this ability is used",
-            "ru": "раз за битву, пока способность использована"
+            "en": "once per battle, against the MONSTER/VEHICLE unit selected within 24\" when this unit is selected to shoot",
+            "ru": "раз за битву, по отряду MONSTER/VEHICLE в пределах 24\", выбранному при выборе отряда для стрельбы"
           },
           "cond": [
             "never"
@@ -2079,39 +2049,16 @@ export default {
         },
         {
           "on": "ranged",
-          "stat": "ap",
-          "op": "add",
-          "value": -1,
+          "stat": "ability",
+          "op": "grant",
+          "value": "LETHAL HITS",
           "when": {
-            "en": "once per battle, while this ability is used",
-            "ru": "раз за битву, пока способность использована"
+            "en": "once per battle, against the MONSTER/VEHICLE unit selected within 24\" when this unit is selected to shoot",
+            "ru": "раз за битву, по отряду MONSTER/VEHICLE в пределах 24\", выбранному при выборе отряда для стрельбы"
           },
           "cond": [
             "never"
           ]
-        }
-      ]
-    },
-    {
-      "sid": "b64d38b3-82f0-49af-8259-d35ae3f6c065:wazbom-blastajet",
-      "kind": "wargear",
-      "name": "Wazbom Blastajet: Blastajet Force Field",
-      "det": null,
-      "ref": {
-        "kind": "wargear",
-        "unit": "wazbom-blastajet",
-        "item": "blastajet force field"
-      },
-      "hash": "9cd825f5",
-      "ver": 925,
-      "reviewed": true,
-      "effects": [
-        {
-          "on": "profile",
-          "stat": "inv",
-          "op": "set",
-          "value": "4+",
-          "when": null
         }
       ]
     }

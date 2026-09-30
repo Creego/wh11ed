@@ -10,13 +10,11 @@
 // NEVER import src/data/factions/* statically from a view. The bundle is 30-60 KB per faction and
 // this is the reason every caller here is dynamic — see wh11ed/CLAUDE.md.
 import { phasesOf, phaseSidesOf } from './stratagemPhases.js'
+import { SM_CHAPTERS } from '../data/smChapters.js'
 
 // Apostrophes travel badly between datasets: the roster stores the detachment name the MFM prints,
 // the faction file spells it its own way. Compare through this, never raw.
 export const normName = (s) => s.replace(/[\u2019'`]/g, "'").trim().toLowerCase()
-
-const SM_CHAPTERS = new Set(['black-templars', 'blood-angels', 'dark-angels', 'deathwatch', 'space-wolves'])
-
 
 async function loadFactionSource(slug, loc) {
   const { loadFaction } = await import('../data/factions/index.js')

@@ -1,13 +1,21 @@
 // Space Marines — army-rule tracker spec: Combat Doctrines (Codex: Space Marines, 11th edition).
+// The same spec serves the five Chapters with a Codex Supplement (Black Templars, Blood Angels,
+// Dark Angels, Deathwatch, Space Wolves): since app data 963 every one of them has Combat Doctrines
+// as its army rule, word for word — see the registry in index.js.
 //
 // A per-round `selection` (like AdMech's Doctrina Imperatives) with a per-battle budget: at the
 // start of your Command phase you can select one doctrine, active until your next Command phase,
-// and each doctrine can be selected only once per battle (`perBattle`). Four detachments stretch
-// that — Assault / Devastator / Tactical Brethren one more time for their own doctrine
-// (`bonusUses`), Gladius Task Force one more time for any (`spareUses`); see selectionBudget.js.
+// and each doctrine can be selected only once per battle (`perBattle`). Detachments stretch that —
+// see selectionBudget.js for how the extras are counted:
+//   - Assault / Devastator / Tactical Brethren, Forgefather's Seekers: their own doctrine once more
+//     (`bonusUses`);
+//   - Gladius Task Force: any one once more (`spareUses`);
+//   - Spearpoint Task Force: the assault or the tactical doctrine once more (`limitedSpares`);
+//   - Blade of Ultramar: each doctrine once more "if your army includes a MARNEUS CALGAR unit" —
+//     the tracker cannot see the list, so it allows them and leaves the condition to the player.
 //
-// Out of the tracker on purpose: a doctrine made active for ONE unit (Adept of the Codex, a
-// stratagem) — the army's pick is what this card follows, the unit's own is on its card.
+// Out of the tracker on purpose: a doctrine made active for ONE unit (Adept of the Codex, Tactical
+// Insight, a stratagem) — the army's pick is what this card follows, the unit's own is on its card.
 //
 // The option bodies condense each doctrine's effect; keyword and move-type names stay English.
 export default {
@@ -55,5 +63,8 @@ export default {
     'assault brethren': { bonusUses: { assault: 1 } },
     'devastator brethren': { bonusUses: { devastator: 1 } },
     'tactical brethren': { bonusUses: { tactical: 1 } },
+    "forgefather's seekers": { bonusUses: { devastator: 1 } },
+    'spearpoint task force': { limitedSpares: [{ ids: ['assault', 'tactical'], n: 1 }] },
+    'blade of ultramar': { bonusUses: { assault: 1, devastator: 1, tactical: 1 } },
   },
 }

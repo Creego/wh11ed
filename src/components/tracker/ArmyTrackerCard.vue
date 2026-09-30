@@ -619,7 +619,7 @@ const poolRemaining = computed(
   () => player.value?.army?.poolByRound?.[currentRound.value] ?? roundStart.value,
 )
 // Selection primitive: the picked option. A per-round choice (AdMech Doctrina — resets each round,
-// keyed by round) unless the spec is `once` (Black Templars' Templar Vows — one battle-long pick).
+// keyed by round) unless the spec is `once` (Death Guard's Plague — one battle-long pick).
 const selectedId = computed(() =>
   view.value?.once
     ? player.value?.army?.choice ?? null
@@ -647,7 +647,7 @@ function pickOption(id) {
   else setArmySelection(props.pi, currentRound.value, id, props.mi)
 }
 // A battle-long (`once`) pick is chosen at the start of the first battle round and committed for the
-// rest of the game (Templar Vows, Death Guard's Plague). Once made, from round 2 on the picker is
+// rest of the game (Death Guard's Plague). Once made, from round 2 on the picker is
 // hidden and only the chosen option's rule is shown; round 1 stays editable (scroll back to change).
 const choiceLocked = computed(
   () => !!view.value?.once && currentRound.value !== 1 && selectedId.value != null,

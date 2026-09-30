@@ -36,6 +36,20 @@ describe('selectionBudget — Combat Doctrines', () => {
     expect(open(spentSpare)).toEqual(['tactical'])
   })
 
+  // Spearpoint Task Force: "the assault doctrine or tactical doctrine one additional time" — a spare
+  // that devastator cannot take.
+  it('gives Spearpoint one more assault or tactical, never devastator', () => {
+    const spent = { 1: 'devastator', 2: 'tactical', 3: 'assault' }
+    expect(open(selectionBudget(sm(['Spearpoint Task Force']), spent, 4))).toEqual(['assault', 'tactical'])
+    expect(open(selectionBudget(sm(['Spearpoint Task Force']), { ...spent, 4: 'tactical' }, 5))).toEqual([])
+  })
+
+  it('tracks Combat Doctrines for every Chapter the codex covers', () => {
+    for (const slug of ['black-templars', 'blood-angels', 'dark-angels', 'deathwatch', 'space-wolves']) {
+      expect(resolveArmyTracker(slug)?.ruleName).toBe('Combat Doctrines')
+    }
+  })
+
   // An army can field several detachments; their extra picks add up rather than overwrite.
   it('adds up the extras of several detachments', () => {
     const spec = sm(['Gladius Task Force', 'Tactical Brethren', 'Assault Brethren'])

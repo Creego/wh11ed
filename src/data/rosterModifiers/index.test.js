@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { usableEntries } from './index.js'
 import { conditions, SENTINELS, isSentinel, isAnswerable } from './conditions.js'
+import { coreModifiers } from './coreRules.js'
 
 // Every faction file in this directory, read eagerly — this is a test, not the app (the app
 // loads one faction at a time; see index.js).
@@ -219,7 +220,9 @@ describe('rosterModifiers data', () => {
   // switch that turns the effect on.
   it('keeps the condition vocabulary in step with the records that use it', () => {
     const used = new Set()
-    for (const { e } of allEntries) for (const eff of e.effects || []) for (const id of eff.cond || []) used.add(id)
+    // The Core Rules records count too: Battle-shock's OC '-' is the one user `unit-battle-shocked`
+    // has had since Codex: Space Marines (963) retired the faction records that also named it.
+    for (const e of [...allEntries.map((x) => x.e), ...coreModifiers]) for (const eff of e.effects || []) for (const id of eff.cond || []) used.add(id)
     for (const id of Object.keys(conditions)) {
       expect(used.has(id), `condition "${id}" is defined but no effect uses it`).toBe(true)
     }

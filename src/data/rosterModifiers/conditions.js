@@ -106,8 +106,6 @@ export const conditions = {
   'imperative-protector': { scope: 'army', duration: 'round', label: { en: 'Protector Imperative', ru: 'Protector Imperative' } },
   'imperative-conqueror': { scope: 'army', duration: 'round', label: { en: 'Conqueror Imperative', ru: 'Conqueror Imperative' } },
   'benediction-citation-in-savagery': { scope: 'army', duration: 'round', label: { en: 'Citation in Savagery', ru: 'Citation in Savagery' } },
-  'discipline-biomancy': { scope: 'army', duration: 'round', group: 'psychic-discipline', label: { en: 'Biomancy Discipline', ru: 'Biomancy Discipline' } },
-  'discipline-pyromancy': { scope: 'army', duration: 'round', group: 'psychic-discipline', label: { en: 'Pyromancy Discipline', ru: 'Pyromancy Discipline' } },
   // Both Blessings that carry a modifier have an auto reader (rosterGameContext's AUTO): the World
   // Eaters army-rule tracker already records which up-to-two are active this round.
   'blessing-martial-excellence': { scope: 'army', duration: 'round', label: { en: 'Martial Excellence', ru: 'Martial Excellence' } },
@@ -123,15 +121,15 @@ export const conditions = {
   // Necrons' Cursed Legion: the trigger is one Destroyer Cult unit killing something, but the
   // bonus is the army's for the rest of the turn — an army switch, not a per-unit one.
   'cold-fervour': { scope: 'army', duration: 'turn', label: { en: 'Cold Fervour triggered', ru: 'Cold Fervour сработал' } },
-  'vision-momentous-brutality': { scope: 'army', duration: 'battle', label: { en: 'Vision of Momentous Brutality chosen', ru: 'Выбран Vision of Momentous Brutality' } },
   // Codex: Space Marines (11th) — Combat Doctrines. The army's pick is read from the tracker
   // (rosterGameContext's SOFT_AUTO), but a doctrine can also be made active for ONE unit (Adept of
   // the Codex, stratagems), and "only one combat doctrine can be active for each unit": a per-unit
   // group, where the unit's own later switch evicts the army's (capGroups drops the oldest, and
-  // the tracker's pick carries no stamp). `doctrine-tactical` joins when a record needs it — the
-  // vocabulary gate refuses an id nothing uses.
+  // the tracker's pick carries no stamp). Tactical is read by Deathwatch's Malleus Tactics and
+  // Space Wolves' Ferocious Strike (app data 963).
   'doctrine-assault': { scope: 'unit', duration: 'round', group: 'combat-doctrine', label: { en: 'Assault Doctrine', ru: 'Assault Doctrine' } },
   'doctrine-devastator': { scope: 'unit', duration: 'round', group: 'combat-doctrine', label: { en: 'Devastator Doctrine', ru: 'Devastator Doctrine' } },
+  'doctrine-tactical': { scope: 'unit', duration: 'round', group: 'combat-doctrine', label: { en: 'Tactical Doctrine', ru: 'Tactical Doctrine' } },
   'manifestation-imbued': { scope: 'army', duration: 'round', label: { en: 'Imbued Manifestation selected', ru: 'Выбран Imbued Manifestation' } },
   'manifestation-wrath': { scope: 'army', duration: 'round', label: { en: 'Wrath of the Immaterium selected', ru: 'Выбран Wrath of the Immaterium' } },
   'manifestation-maelstrom': { scope: 'army', duration: 'round', label: { en: 'Psychic Maelstrom selected', ru: 'Выбран Psychic Maelstrom' } },
@@ -280,7 +278,6 @@ export const conditions = {
   },
   'unit-selected-command-phase': { scope: 'unit', duration: 'round', label: { en: 'Selected this Command phase', ru: 'Выбран в эту Command phase' } },
   'unit-favoured-champions': { scope: 'unit', duration: 'round', label: { en: "Army's Favoured Champions", ru: 'Favoured Champions армии' } },
-  'unit-achieved-boast': { scope: 'unit', duration: 'battle', label: { en: 'Achieved a Boast', ru: 'Выполнил Boast' } },
   // Not casualty TRACKING (out of scope) — one switch the player flips when it stops being true.
   'unit-at-starting-strength': {
     scope: 'unit', duration: 'battle',
@@ -291,7 +288,6 @@ export const conditions = {
     },
   },
   'unit-lost-wounds': { scope: 'unit', duration: 'battle', label: { en: 'Has lost wounds', ru: 'Потерял раны' } },
-  'unit-destroyed-model-melee': { scope: 'unit', duration: 'battle', label: { en: 'Destroyed a model in melee', ru: 'Уничтожил модель в мели' } },
   'unit-dark-pact-invoked': { scope: 'unit', duration: 'phase', label: { en: 'Invoked its Dark Pact contract', ru: 'Призвал контракт Dark Pact' } },
   'unit-desperate-pact': { scope: 'unit', duration: 'phase', label: { en: 'Made a Desperate Pact', ru: 'Совершил Desperate Pact' } },
   'unit-manoeuvre-swift-as-the-wind': { scope: 'unit', duration: 'phase', label: { en: 'Swift as the Wind performed', ru: 'Выполнен Swift as the Wind' } },
