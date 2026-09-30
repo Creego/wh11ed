@@ -158,6 +158,10 @@ const positionStyle = computed(() => (anchor.value ? placeByAnchor(anchor.value)
 
 .kw-name {
   font-size: 0.8rem;
+  /* A tag with its keywords ("[SUSTAINED HITS 2: NON-MONSTER/VEHICLE]") is wider than a 320px
+     phone's header; the pill's own nowrap would push the close button off the edge. */
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .kw-name-ru {
