@@ -22,6 +22,18 @@
 
 export const changelog = [
   {
+    version: '2.7.8',
+    date: '2026-10-01',
+    en: [
+      { h: 'Rules pages' },
+      'Subheadings inside army and detachment rules are bigger now, for example the Assault, Devastator and Tactical Doctrines. Their Russian captions are bigger too.',
+    ],
+    ru: [
+      { h: 'Страницы правил' },
+      'Подзаголовки внутри правил армии и детачментов стали крупнее, например Assault, Devastator и Tactical Doctrine. Русские подписи под ними тоже стали крупнее.',
+    ],
+  },
+  {
     version: '2.7.7',
     date: '2026-09-30',
     en: [
