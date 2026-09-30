@@ -169,7 +169,7 @@ other; the 60 older Faction Pack Legends the MFM no longer prints were retired (
 `datasheetRenames.json`). A Chapter's own pack Legends (Blood Angels, Dark Angels, Space Wolves) stay
 for as long as the MFM prices them. The RU `SHARED` lists mirror `sharedUnitIds` because
 `gen-seo-routes.mjs` reads a Chapter's RU default directly rather than through `loadDatasheetsRu`'s
-fold. Hub journal: `journal/active/2026-09-24-sm-codex-prep.md`.
+fold. Hub journal: `journal/archive/2026/2026-09-24-sm-codex-prep.md`.
 
 ## Data gates
 
