@@ -14,7 +14,7 @@
 // an attributed note instead — the same "mark it, don't fake it" treatment DatasheetCard already
 // gives rule-granted keywords via its `grantedKeywords` prop.
 
-import { wargearGroupLive, findEnhancement, mandatoryEnhancementFor, optionItems, modelsPerMini, swapsByMini, allegFor, allegKeyword, allegItems, grantedKeywordsFor } from './rosterEngine.js'
+import { wargearGroupCap, wargearGroupLive, findEnhancement, mandatoryEnhancementFor, optionItems, modelsPerMini, swapsByMini, allegFor, allegKeyword, allegItems, grantedKeywordsFor } from './rosterEngine.js'
 import { conditions } from '../data/rosterModifiers/conditions.js'
 // Rule-granted keywords moved to rosterEngine.js, which needs them to answer whether a unit can
 // carry an enhancement; re-exported here because this is where every caller already imports them.
@@ -152,14 +152,26 @@ export function loadoutItemCopies(def, entry) {
     // checkbox is one model unless the instruction hands the swap to the whole profile (`repall`).
     // A unit-wide group belongs to no profile, so there is no per-profile count to clamp its
     // stepper by — the group's own cap has already done that, and none of the 81 is a `repall`.
+    //
+    // A stepper is clamped to what the profile can hold, and that is not always its model count: a
+    // Wraithknight takes two of the same heavy weapon (the group's cap, 2 on one model) and a
+    // Wraithlord two flamers for its two shuriken catapults (`cp`, copies per model) — clamped to
+    // the model count, both read as one (a player's report, 2026-09-30). The clamp is still there
+    // for what it was for: a squad shrunk under a stale pick.
     const models = g.all ? null : perMini?.get(g.m ?? 0)
+    const room = models == null ? null : Math.max(models * (g.cp || 1), wargearGroupCap(def, entry, gi)?.limit ?? 0)
     let picks = 1
-    if (g.in === 'stepper') picks = models == null ? (n || 1) : Math.min(n || 1, models)
+    if (g.in === 'stepper') picks = room == null ? (n || 1) : Math.min(n || 1, room)
     else if (g.repall && !g.all) picks = models == null ? null : models
+    // A slot's `n` counts MODELS, so picks past the model count are further copies on the same
+    // models — a second slot, not one slot on a model that does not exist.
+    const layers = []
+    if (picks == null || !models) layers.push(picks)
+    else for (let left = picks; left > 0; left -= models) layers.push(Math.min(left, models))
     // An option can grant more than one item (a bundle) — see rosterEngine's optionItems — and
     // "2 X" in one option is two slots on each model that took it.
     for (const [id, c] of optionItems(opt)) {
-      for (let k = 0; k < c; k++) slot(id, g.all ? null : (g.m ?? 0), picks)
+      for (let k = 0; k < c; k++) for (const held of layers) slot(id, g.all ? null : (g.m ?? 0), held)
     }
   }
   // The Soul Grinder's mark arms it: "this model is additionally equipped with: phlegm
