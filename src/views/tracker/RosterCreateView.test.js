@@ -71,9 +71,14 @@ describe('RosterCreateView', () => {
     await pickDet(byFd('Purge the Foe'))
     const seg = w.find('.disp-opts')
     expect(seg.findAll('button').map((b) => b.text())).toEqual(['Take and Hold', 'Purge the Foe'])
+    const undeclared = () => w.vm.validation.issues.some((i) => i.code === 'dispositionUndeclared')
+    expect(undeclared()).toBe(true)
     await seg.findAll('button')[1].trigger('click')
     const store = useRosters()
     expect(store.rosters.value[0].disposition).toBe('Purge the Foe')
+    // The warning reads the wizard's own draft, which carried no disposition until 2026-09-30:
+    // the button lit up and the list kept asking for the declaration (player report).
+    expect(undeclared()).toBe(false)
   })
 
   it('walks the wizard — faction, detachment, unit — then creates the roster', async () => {

@@ -368,6 +368,7 @@ const { factionData } = useRosterFactionData(() => factionSlug.value)
 const draftRoster = computed(() => ({
   faction: factionSlug.value,
   detachments: detachments.value,
+  disposition: disposition.value,
   battleSize: battleSize.value,
   customPoints: customPoints.value,
   checkLegality: checkLegality.value,
