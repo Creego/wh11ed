@@ -41,6 +41,10 @@ const slugify = (s) => (s || '').toLowerCase().replace(/[’'`]/g, '').replace(/
 // Matching only; the page shows the corrected form, since the link text IS the datasheet.
 const USE_TYPOS = {
   'Biltza Bommer': 'Blitza-bommer', // Legends: Orks, data_version 946
+  // Legends: Space Marines, data_version 963 — the proxy table names the unit as its model:
+  Outriders: 'Outrider Squad',
+  'Firestrike Servo-turret': 'Firestrike Servo-turrets',
+  'Invader ATV': 'Invader ATVs',
 }
 
 const INTRO_SECTION = 'warhammer legends'
@@ -54,7 +58,9 @@ function parseProxies(text) {
   for (const raw of (text || '').split('\n')) {
     const line = raw.trim()
     if (!line) continue
-    const head = line.match(/^\*\*(.+?):?\*\*:?$/)
+    // Orks bold the heading ("**Ufthak Blackhawk:**"); Legends: Space Marines (963) writes it plain
+    // ("Tactical Squad:") — a line that is not a bullet and ends in a colon is a heading either way.
+    const head = line.match(/^\*\*(.+?):?\*\*:?$/) || (!/^[•▪■]/.test(line) && line.match(/^(.+):$/))
     if (head) {
       legacy = head[1].split(',').map((s) => s.trim()).filter(Boolean)
       continue
