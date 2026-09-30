@@ -560,7 +560,7 @@ if (!only) {
   const legEn = JSON.parse(fs.readFileSync(path.join(ROOT, 'src', 'data', 'factionLegends.json'), 'utf8'))
   const legRu = JSON.parse(fs.readFileSync(path.join(ROOT, 'src', 'data', 'factionLegendsRu.json'), 'utf8'))
   for (const [slug, entry] of Object.entries(legEn)) {
-    if (!entry.intro) continue
+    if (!entry.intro || entry.of) continue // a Chapter's copy of the Codex publication — checked there
     if (!legRu[slug]?.intro) { notes.push(`faction Legends ${slug}: EN intro, no RU overlay`); continue }
     pairs++
     checkPair(`faction Legends ${slug} · intro`, entry.intro, legRu[slug].intro, errors, notes)

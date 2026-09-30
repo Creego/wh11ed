@@ -259,7 +259,8 @@ async function loadLegends(s) {
   if (!en) return null
   let ru = null
   if (locale.value === 'ru' && legendsRuLoader) {
-    try { ru = (await legendsRuLoader())?.[s] || null } catch { ru = null }
+    // A Chapter carries the Codex publication (`of`), whose RU intro lives under the Codex slug.
+    try { ru = (await legendsRuLoader())?.[en.of || s] || null } catch { ru = null }
   }
   return { ...en, intro: ru?.intro || en.intro }
 }
