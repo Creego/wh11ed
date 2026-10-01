@@ -1,0 +1,209 @@
+<template>
+  <div class="pb">
+    <p
+      v-if="!blocks.length"
+      class="pb-empty"
+    >
+      {{ labels.patchesNothing }}
+    </p>
+    <section
+      v-for="b in blocks"
+      :key="b.key"
+      class="pb-fac"
+    >
+      <button
+        type="button"
+        class="pb-fac-head"
+        :aria-expanded="isOpen(b.key)"
+        @click="toggle(b.key)"
+      >
+        <FactionBadge
+          v-if="b.entry"
+          :faction="b.entry"
+        />
+        <span class="pb-fac-name">{{ b.name }}</span>
+        <span class="pb-count">{{ b.count }}</span>
+        <i
+          class="bi bi-chevron-down pb-chev"
+          :class="{ open: isOpen(b.key) }"
+        />
+      </button>
+      <CollapseTransition :show="isOpen(b.key)">
+        <div
+          v-if="isOpen(b.key) || wasOpened.has(b.key)"
+          class="pb-fac-body"
+        >
+          <div
+            v-for="g in b.groups"
+            :key="g.key"
+            class="pb-group"
+          >
+            <h4
+              v-if="b.key !== 'core'"
+              class="pb-group-title"
+            >
+              {{ g.title }}
+            </h4>
+            <!-- A detachment's changes under its name: DP, disposition, rule, stratagems,
+                 enhancements and their points, one heading for them all. -->
+            <template v-if="g.key === 'det'">
+              <div
+                v-for="d in g.dets"
+                :key="d.name"
+                class="pb-det"
+              >
+                <ul class="pb-list">
+                  <PatchEntry
+                    v-for="(x, i) in d.items"
+                    :key="i"
+                    :item="x"
+                  />
+                </ul>
+              </div>
+            </template>
+            <ul
+              v-else
+              class="pb-list"
+            >
+              <PatchEntry
+                v-for="(x, i) in g.items"
+                :key="i"
+                :item="x"
+              />
+            </ul>
+          </div>
+        </div>
+      </CollapseTransition>
+    </section>
+  </div>
+</template>
+
+<script setup>
+// One GW update's changes, faction by faction (the core rules first), each faction's in the order a
+// player reads a codex: books, army rules, detachments, units, points, FAQ. A faction opens on
+// request when the update touches many of them — the Space Marines codex alone is 600 entries — and
+// is open from the start when the reader has narrowed the list to their own.
+import { computed, reactive, watch } from 'vue'
+import CollapseTransition from '../CollapseTransition.vue'
+import FactionBadge from '../FactionBadge.vue'
+import PatchEntry from './PatchEntry.vue'
+import { factionIndexBySlug } from '../../data/factionsIndex.js'
+import { ui } from '../../i18n/ui.js'
+import { useLocale } from '../../composables/useLocale.js'
+
+const props = defineProps({
+  items: { type: Array, required: true },
+  // Open every faction from the start (the reader picked theirs).
+  expanded: { type: Boolean, default: false },
+})
+const { locale } = useLocale()
+const labels = computed(() => ui[locale.value])
+
+const GROUPS = [
+  ['pub', 'patchesPublications', (x) => x.kind === 'publication' || x.kind === 'faction'],
+  ['army', 'patchesArmyRules', (x) => x.kind === 'armyRule'],
+  ['core', 'patchesCore', (x) => x.kind === 'coreRule'],
+  ['det', 'patchesDetachments', (x) => x.kind === 'detachment' || !!x.parent],
+  ['unit', 'patchesUnits', (x) => x.kind === 'datasheet'],
+  ['pts', 'patchesPoints', (x) => x.kind === 'points'],
+  ['faq', 'patchesFaq', (x) => x.kind === 'faq'],
+]
+
+const blocks = computed(() => {
+  const l = labels.value
+  const byFaction = new Map()
+  for (const x of props.items) {
+    const k = x.faction || 'core'
+    if (!byFaction.has(k)) byFaction.set(k, [])
+    byFaction.get(k).push(x)
+  }
+  const out = []
+  for (const [key, items] of byFaction) {
+    const entry = key === 'core' ? null : factionIndexBySlug(key)
+    const groups = []
+    for (const [gk, title, test] of GROUPS) {
+      const gi = items.filter(test)
+      if (!gi.length) continue
+      if (gk === 'det') {
+        // The detachment's own line first, then what it holds, in the order the app lists them.
+        const dets = new Map()
+        for (const x of gi) {
+          const name = x.parent || x.name
+          if (!dets.has(name)) dets.set(name, [])
+          dets.get(name)[x.parent ? 'push' : 'unshift'](x)
+        }
+        groups.push({ key: gk, title: l[title], dets: [...dets].map(([name, its]) => ({ name, items: withHeader(name, its) })) })
+      } else {
+        groups.push({ key: gk, title: l[title], items: gi })
+      }
+    }
+    out.push({
+      key,
+      entry,
+      name: key === 'core' ? l.patchesCore : (entry?.name || key),
+      count: items.length,
+      groups,
+    })
+  }
+  return out.sort((a, b) => (a.key === 'core' ? -1 : b.key === 'core' ? 1 : a.name.localeCompare(b.name)))
+})
+
+// A detachment that only changed inside (a stratagem, an enhancement's points) still gets its own
+// name on top — the entries under it name their kind, not the detachment.
+function withHeader(name, items) {
+  return items[0] && !items[0].parent ? items : [{ kind: 'detachment', name, change: 'inside' }, ...items]
+}
+
+const open = reactive(new Set())
+// A faction once opened keeps its rendered list while it folds away, so closing animates.
+const wasOpened = reactive(new Set())
+const isOpen = (k) => props.expanded || blocks.value.length === 1 || open.has(k)
+function toggle(k) {
+  if (props.expanded || blocks.value.length === 1) return
+  if (open.has(k)) open.delete(k)
+  else { open.add(k); wasOpened.add(k) }
+}
+watch(() => props.items, () => { open.clear(); wasOpened.clear() })
+</script>
+
+<style scoped>
+.pb-empty { color: var(--text-muted); font-size: 0.9rem; margin: 0.5rem 0; }
+.pb-fac { border-top: 1px solid var(--border-light); }
+.pb-fac:first-child { border-top: none; }
+.pb-fac-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.65rem 0;
+  background: none;
+  border: none;
+  font: inherit;
+  text-align: left;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+.pb-fac-name { flex: 1; font-weight: 600; font-size: 0.95rem; }
+.pb-count {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+.pb-chev { font-size: 0.8rem; color: var(--text-muted); transition: transform var(--motion-fast) ease; }
+.pb-chev.open { transform: rotate(180deg); }
+.pb-fac-body { padding: 0 0 0.6rem; }
+.pb-group { margin-top: 0.4rem; }
+.pb-group-title {
+  margin: 0.4rem 0 0;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent);
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.pb-list { margin: 0; padding: 0; }
+.pb-det + .pb-det { border-top: 1px solid var(--border); }
+</style>

@@ -4,7 +4,7 @@
        (FactionLayout, owner 2026-10-01), the other faction pages by their own tabs. -->
   <Transition name="fade">
     <nav
-      v-if="!isLanding && !isLinksRoute && !isRulesLandingRoute && !isCombatPatrolRoute && !isRosterRoute && !isFactionRoute"
+      v-if="!isLanding && !isLinksRoute && !isRulesLandingRoute && !isCombatPatrolRoute && !isRosterRoute && !isFactionRoute && !isPatchesRoute"
       class="subnav"
     >
       <div class="subnav-inner">
@@ -49,6 +49,8 @@ import { useNavGroups } from '../composables/useNavGroups.js'
 import { ui } from '../i18n/ui.js'
 
 const route = useRoute()
+// The patch notes are about every part of the game at once — no chapter strip over them.
+const isPatchesRoute = computed(() => stripLocale(route.path) === '/patches')
 
 // Subnav targets are bare paths; the address may carry the `/ru` prefix.
 const isItemActive = (item) => {

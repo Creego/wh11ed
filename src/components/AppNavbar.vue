@@ -97,6 +97,13 @@
         >
           {{ labels.navRoster }}
         </RouterLink>
+        <RouterLink
+          to="/patches"
+          class="nav-link"
+          :class="{ active: isPatchesRoute }"
+        >
+          {{ labels.navPatches }}
+        </RouterLink>
       </nav>
 
       <div class="navbar-actions">
@@ -296,7 +303,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useLocale } from '../composables/useLocale.js'
-import { localePath } from '../router/locale.js'
+import { localePath, stripLocale } from '../router/locale.js'
 import { useTheme } from '../composables/useTheme.js'
 import { useLoreVisibility } from '../composables/useLoreVisibility.js'
 import { useInstallPrompt } from '../composables/useInstallPrompt.js'
@@ -330,6 +337,7 @@ const { theme, toggleTheme } = useTheme()
 const { hideLore, toggleLore } = useLoreVisibility()
 const { canInstall, isStandalone, iosInstall, promptInstall } = useInstallPrompt()
 const { isRulesRoute, isFactionRoute, isTrackerRoute, isRosterRoute } = useRouteSection()
+const isPatchesRoute = computed(() => stripLocale(route.path) === '/patches')
 const {
   status: accountStatus,
   accountName,

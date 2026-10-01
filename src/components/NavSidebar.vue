@@ -280,12 +280,15 @@ const navSections = computed(() => [
   { key: 'factions', label: labels.value.navFactions,      groups: localizedFactionGroups.value },
   { key: 'tracker', label: labels.value.navTracker,        groups: localizedTrackerGroups.value },
   { key: 'roster',   label: labels.value.navRoster,        groups: localizedRosterGroups.value },
+  // A page, not a section: the label goes straight there (isDirect).
+  { key: 'patches',  label: labels.value.navPatches,       groups: [{ label: labels.value.navPatches, path: '/patches', sections: [] }] },
 ])
 
 const currentSection = computed(() => {
   const p = stripLocale(route.path)
   if (p.startsWith('/tracker')) return 'tracker'
   if (p.startsWith('/roster')) return 'roster'
+  if (p === '/patches') return 'patches'
   if (p.startsWith('/factions')) return 'factions'
   // Core Rules, Event Companion, Combat Patrol, /rules itself, and everything else
   // (landing, links, disclaimer, …) all fall under the merged "rules" section.
