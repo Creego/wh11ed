@@ -33,6 +33,7 @@
       <span>{{ labels.rosterFactionLabel }}</span>
       <PickerDropdown
         v-model:open="factionPickerOpen"
+        class="rw-fac"
         :label="labels.trackerSelectFaction"
       >
         <template #trigger="{ toggle, open }">
@@ -46,6 +47,7 @@
           </button>
         </template>
         <FactionPickerList
+          compact
           :selected="factionSlug"
           @pick="(slug) => { factionPickerOpen = false; $emit('pick-faction', slug) }"
         />
@@ -360,6 +362,7 @@ const moreOpen = ref(false)
 .rw-choose .bi { flex-shrink: 0; color: var(--text-muted); }
 /* The declared Force Disposition: the chip in its colour, on the field and in the list — the colour
    is how a disposition is told apart everywhere else (dispositionColors.js). */
+.rw-fac { --pd-width: 32rem; }
 .rw-det { --pd-width: 30rem; }
 .rw-fd { --pd-width: 15rem; }
 /* The last field on the line: its panel opens leftwards, or at 1200px it would leave the screen. */

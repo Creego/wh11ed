@@ -3,6 +3,7 @@
   <div
     ref="listEl"
     class="modal-list"
+    :class="{ 'fp-compact': compact }"
   >
     <template v-if="pinned.length">
       <h4
@@ -18,6 +19,7 @@
         :slug="f.slug"
         :name="f.name"
         :on="selected === f.slug"
+        :compact="compact"
         @pick="$emit('pick', f.slug)"
       />
     </template>
@@ -38,6 +40,7 @@
         :slug="f.slug"
         :name="f.name"
         :on="selected === f.slug"
+        :compact="compact"
         @pick="$emit('pick', f.slug)"
       />
     </template>
@@ -63,6 +66,8 @@ const props = defineProps({
   // When true, only factions with a Combat Patrol box are shown (Game Setup's "Тип игры" ===
   // Combat Patrol) — see COMBAT_PATROL_FACTION_GROUPS.
   combatPatrolOnly: { type: Boolean, default: false },
+  // The desk's dropdown: low rows in two columns, the group headings across both.
+  compact: { type: Boolean, default: false },
 })
 defineEmits(['pick'])
 
@@ -78,3 +83,13 @@ useFlipMove(() => pinned.value.map((f) => f.slug), listEl)
 
 function groupLabel(id) { return labels.value[factionGroupLabelKey(id)] || '' }
 </script>
+
+<style scoped>
+.fp-compact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+.fp-compact .fp-group { grid-column: 1 / -1; margin: 0.4rem 0 0; }
+.fp-compact .fp-group:first-child { margin-top: 0; }
+</style>
