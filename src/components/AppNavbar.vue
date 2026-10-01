@@ -131,6 +131,7 @@
         </button>
         <button
           class="lang-btn"
+          data-press
           role="switch"
           :aria-checked="locale === 'ru'"
           :title="locale === 'en' ? labels.langToRu : labels.langToEn"
@@ -611,6 +612,9 @@ a.nd-link:hover {
   align-items: center;
   gap: 0.5rem;
   margin-left: auto;
+  /* A move that runs a little past its stop and settles back — the language thumb and the gear
+     (owner, 2026-10-01). Durations are motion tokens, so reduced motion still turns them off. */
+  --ease-inertia: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .lang-btn {
@@ -632,7 +636,9 @@ a.nd-link:hover {
 }
 
 /* Sliding thumb — sits behind the two labels, ~half the track, and slides to
-   whichever side (EN/RU) is the current locale. */
+   whichever side (EN/RU) is the current locale, with inertia. A transform rather than `left`: the
+   switch re-renders the whole page in the other language, and only a compositor animation keeps
+   moving through that. */
 .lang-thumb {
   position: absolute;
   top: 0;
@@ -641,11 +647,11 @@ a.nd-link:hover {
   width: 50%;
   background: color-mix(in srgb, var(--accent) 55%, transparent);
   border: 1px solid var(--accent);
-  transition: left 0.18s ease;
+  transition: transform var(--motion-move) var(--ease-inertia);
 }
 
 .lang-btn[aria-checked="true"] .lang-thumb {
-  left: 50%;
+  transform: translateX(100%);
 }
 
 .lang-opt {
@@ -720,6 +726,16 @@ a.nd-link:hover {
   background: color-mix(in srgb, var(--accent) 30%, transparent);
   border-color: var(--accent);
   color: #fff;
+}
+
+/* The gear turns as the menu opens and turns back as it closes, however it closes. The press
+   sinks the button, the turn is the icon's — two elements, so neither overrides the other. */
+.settings-btn i {
+  display: inline-block;
+  transition: transform var(--motion-move) var(--ease-inertia);
+}
+.settings-btn.active i {
+  transform: rotate(180deg);
 }
 
 .settings-backdrop {
