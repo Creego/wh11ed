@@ -52,7 +52,6 @@
           :key="t.to"
           :to="t.to"
           class="fab-btn"
-          :title="t.label"
           :aria-label="t.label"
         >
           <i :class="t.icon" />
@@ -64,7 +63,6 @@
           type="button"
           class="fab-btn"
           data-press="pop"
-          :title="labels.backToTop"
           :aria-label="labels.backToTop"
           @click="scrollToTop"
         >
@@ -87,7 +85,6 @@
           v-if="t.prefix"
           type="button"
           class="fab-btn"
-          :title="t.label"
           :aria-label="t.label"
           @click="backToUnits"
         >
@@ -97,7 +94,6 @@
           v-else
           :to="t.to"
           class="fab-btn"
-          :title="t.label"
           :aria-label="t.label"
         >
           <i :class="t.icon" />
@@ -279,7 +275,7 @@ function backToUnits() {
 /* Floating controls column — hidden by default, shown only >900px (the exact inverse of
    App.vue's bottom-nav breakpoint). Fixed in the bottom-right corner; sits inside
    .faction-view.themed so the FABs pick up the faction accent. Stacks the two tab-jump
-   FABs above the back-to-top button; all names ride in the native title tooltip. */
+   FABs above the back-to-top button; each name slides out beside it on hover (.fab-btn::after). */
 .faction-fabs {
   display: none;
   position: fixed;

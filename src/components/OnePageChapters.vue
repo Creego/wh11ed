@@ -35,7 +35,6 @@
       :class="{ 'book-toc-fab--hidden': !backToTopVisible }"
       :aria-hidden="!backToTopVisible"
       :tabindex="backToTopVisible ? 0 : -1"
-      :title="labels.openContents"
       :aria-label="labels.openContents"
       @click="tocOpen = true"
     >

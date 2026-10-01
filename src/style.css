@@ -236,6 +236,35 @@
 .fab-btn:active {
   transform: scale(0.94);
 }
+/* Its name slides out to the left on hover or keyboard focus (owner, 2026-10-01): the buttons are
+   bare icons, and the native title tooltip took a second to come. The text is the aria-label, so
+   a button cannot carry one name for the screen reader and another for the eye — and a FAB needs
+   no `title` of its own (it would pop up over this one). */
+.fab-btn { position: relative; }
+.fab-btn::after {
+  content: attr(aria-label);
+  position: absolute;
+  right: calc(100% + 0.6rem);
+  top: 50%;
+  padding: 0.3rem 0.6rem;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(0.4rem, -50%);
+  transition: opacity var(--motion-fast) ease, transform var(--motion-fast) ease;
+}
+.fab-btn:focus-visible::after { opacity: 1; transform: translate(0, -50%); }
+@media (hover: hover) {
+  .fab-btn:hover::after { opacity: 1; transform: translate(0, -50%); }
+}
 
 /* Mobile shrink for the two largest heading levels (shared scale). */
 @media (max-width: 900px) {
