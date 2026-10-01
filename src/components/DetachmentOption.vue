@@ -195,10 +195,11 @@ const crowded = computed(() => props.forceDispositions.length + (props.unique ||
 .det.compact.stacked .det-foot { margin-left: 0; }
 .det.compact .det-name { font-size: 1.15rem; }
 /* The RU caption in the name's own narrow face, so the pair reads as one heading (owner, 2026-10-01). */
-.det.compact .det-name-ru { font-family: var(--font-display); font-size: 1rem; font-weight: 400; }
+.det.compact .det-name-ru { font-family: var(--font-display); font-size: 1rem; font-weight: 400; line-height: 1; margin-top: -0.1rem; }
 .det.compact .det-foot { flex-wrap: nowrap; }
 .det.compact .det-fds { flex-wrap: nowrap; }
 /* Smaller chips than the card's: two of them beside a long name must still leave it one line. */
 .det.compact .tone-chip { font-size: 0.6rem; padding: 0.05rem 0.3rem; }
-.det.compact .det-dp { order: 1; padding: 0.15rem 0.45rem; font-size: 0.9rem; }
+/* The cost's plate the height of a disposition chip beside it. */
+.det.compact .det-dp { order: 1; padding: 0.05rem 0.35rem; font-size: 0.7rem; line-height: 1.3; }
 </style>
