@@ -36,6 +36,7 @@ export const changelog = [
       'In Russian, the note under an invulnerable save used to stay in English, for example “Against ranged attacks only”. Now it is in Russian on every datasheet.',
       'The plasma pistol of the Space Marines Vanguard Veteran Squad with Jump Packs used to have only its supercharge profile: the official app lost the standard one in its last update. Now the datasheet has both, as the codex prints them.',
       'If one of two Mortifiers took an Anchorite Sarcophagus, the roster builder used to show M 7" and Sv 3+ for both. Now only the model with the sarcophagus has them.',
+      'At 1000 points you may take one 3 DP detachment if it is your only one. The roster builder allowed it before, but showed “3 / 2 DP” with a question mark. Now it shows “3 / 3 DP”.',
     ],
     ru: [
       { h: 'Листы данных: эррата к способностям «на выбор»' },
@@ -49,6 +50,7 @@ export const changelog = [
       'Раньше в русской версии сноска под неуязвимым спас-броском оставалась английской, например «Against ranged attacks only». Теперь она по-русски во всех листах данных.',
       'Раньше у плазменного пистолета Vanguard Veteran Squad with Jump Packs из Space Marines был только профиль supercharge: официальное приложение потеряло обычный профиль в последнем обновлении. Теперь в листе данных оба профиля, как в кодексе.',
       'Раньше, если один из двух Mortifiers брал Anchorite Sarcophagus, конструктор показывал M 7" и Sv 3+ у обоих. Теперь они только у модели с саркофагом.',
+      'На 1000 очков можно взять один детачмент за 3 DP, если он единственный. Конструктор и раньше это разрешал, но показывал «3 / 2 DP» со знаком вопроса. Теперь там «3 / 3 DP».',
     ],
   },
   {
