@@ -183,7 +183,7 @@
           class="ues-req"
         >+{{ defaultPts }}{{ labels.rosterPointsLabel }}</em>
       </h4>
-      <div class="ues-default-row">
+      <div class="opt-tile ues-default-row">
         <div class="ues-default-list">
           <p
             v-for="(l, i) in defaultLines"
@@ -1058,12 +1058,12 @@ const writeNote = (obj, key, value) => setNote(obj, key, value)
   line-height: 1.5;
 }
 .ues-mini { color: var(--text-dim); font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.03em; margin-right: 0.3rem; }
-.ues-default { font-size: 0.82rem; color: var(--text-muted); margin: 0.15rem 0; }
-/* The info button sits in the same right-hand column as an option tile's, beside the list rather
-   than under it — no row of its own. Its height is the list's, with a floor so a one-line loadout
-   still gives the finger a target. */
-.ues-default-row { display: flex; align-items: stretch; gap: 0.5rem; }
-.ues-default-list { flex: 1; min-width: 0; }
+.ues-default { font-size: 0.85rem; margin: 0.15rem 0; }
+/* The default loadout is a tile like the options under it (owner, 2026-10-01): the same frame and
+   ground, its info button in the same right-hand column. Inside a tile the names read at full
+   strength — muted text in a frame reads as a disabled pick. The button keeps a floor so a one-line
+   loadout still gives the finger a target. */
+.ues-default-list { flex: 1; min-width: 0; align-self: center; padding: 0.5rem 0.6rem; }
 .ues-default-row .opt-info { min-height: 2.4rem; }
 /* The option list under a group's instruction — indented under the heading it belongs to, and
    muted so the heading still reads as the heading. */
@@ -1186,7 +1186,7 @@ const writeNote = (obj, key, value) => setNote(obj, key, value)
    else shrinks a step so the checkbox tiles/info button/pill row don't force horizontal
    crowding or wrap awkwardly at this width. */
 @media (max-width: 360px) {
-  .ues-default { font-size: 0.76rem; }
+  .ues-default { font-size: 0.78rem; }
   .ues-blist li { font-size: 0.78rem; }
   .pill { padding: 0.22rem 0.45rem; font-size: 0.72rem; }
   .opt-select { padding: 0.4rem 0.45rem; gap: 0.4rem; font-size: 0.78rem; }
