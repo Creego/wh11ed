@@ -1118,3 +1118,10 @@ and appdata state fresh; a data model can change between now and when this is ne
     --only` used to rebuild a sheet without its MFM copy tiers and glossary popovers; it keeps the
     tiers while appdata's base price is unchanged (and names the sheets where it moved) and re-glosses
     the file, so a clean `--only` run is a no-op.
+
+76. **A "disagreement" between two sources can be one source read half-way.** Seventeen detachments
+    sat in the sync baseline as "MFM ≠ appdata" Force Dispositions, and on 2026-10-01 the owner was
+    asked which source wins. Neither: the MFM page prints two dispositions for 39 detachments, the
+    scraper kept only the first banner, and appdata carries one of the two. A player found it
+    (Warpbane Task Force). Before asking which side is right, look at the raw page for what the
+    parser dropped; a field that is a list in the world must not be scraped into a string.
