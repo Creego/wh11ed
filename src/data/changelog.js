@@ -22,6 +22,36 @@
 
 export const changelog = [
   {
+    version: '2.7.9',
+    date: '2026-10-01',
+    en: [
+      { h: 'Datasheets: errata to “pick one” abilities' },
+      'Some abilities on the sheets of Angron, Mortarion and Commissar Yarrick still had their text from before the errata. Now they match the official app. Angron’s Driven by Ultimate Rage lets melee attacks re-roll hit rolls of 1 and wound rolls of 1. Mortarion’s Diseased Influence works within 8", and Inflamed Reprisal shoots with −1 BS. Yarrick’s Counterstrategist works within 8", and its third option is now a charge.',
+      { h: 'Roster builder: wargear that changes its bearer' },
+      'Some wargear changes only the model that carries it, for example a Storm Shield gives +1 W. A unit’s card now shows those models as a line of their own with the new numbers, for example “Terminator · Storm Shield ×2” with W 4. If every model has the item, the card simply shows the new number. Weapons work the same way, for example the bladevanes of a Reaver with a Grav-talon.',
+      'The default wargear in the unit editor now has its own {btn:info} button, like each option. It shows the profiles of every default weapon and the rules of the rest, for example the Flare launcher of Achilles Ridgerunners.',
+      { h: 'Fixes' },
+      'The total on a list’s card in the roster builder used to stay as it was on the day you last edited the list, even after a points update. The list itself already used the new prices. Now the cards update after every app update too.',
+      'The datasheet of the Space Marines Astraeus used to show a 5+ invulnerable save without its condition. Now it says that the save works only against ranged attacks.',
+      'In Russian, the note under an invulnerable save used to stay in English, for example “Against ranged attacks only”. Now it is in Russian on every datasheet.',
+      'The plasma pistol of the Space Marines Vanguard Veteran Squad with Jump Packs used to have only its supercharge profile: the official app lost the standard one in its last update. Now the datasheet has both, as the codex prints them.',
+      'If one of two Mortifiers took an Anchorite Sarcophagus, the roster builder used to show M 7" and Sv 3+ for both. Now only the model with the sarcophagus has them.',
+    ],
+    ru: [
+      { h: 'Листы данных: эррата к способностям «на выбор»' },
+      'У Angron, Mortarion и Commissar Yarrick часть способностей оставалась с текстом до эрраты. Теперь они совпадают с официальным приложением. Driven by Ultimate Rage у Angron даёт атакам ближнего боя переброс единиц на попадание и на ранение. Diseased Influence у Mortarion действует в пределах 8", а Inflamed Reprisal стреляет с −1 к BS. Counterstrategist у Yarrick действует в пределах 8", а третий вариант теперь нападение.',
+      { h: 'Конструктор: снаряжение, которое меняет носителя' },
+      'Некоторое снаряжение меняет только модель, которая его несёт: например, Storm Shield даёт +1 W. Теперь карточка юнита показывает такие модели отдельной строкой с новыми числами, например «Terminator · Storm Shield ×2» с W 4. Если предмет есть у всех моделей, в карточке просто меняется число. Так же с оружием: например, bladevanes у Reaver с Grav-talon.',
+      'У стандартного снаряжения в редакторе юнита теперь есть своя кнопка {btn:info}, как у каждого варианта замены. Она показывает профили всего стандартного оружия и правила остального снаряжения, например Flare launcher у Achilles Ridgerunners.',
+      { h: 'Исправления' },
+      'Раньше сумма очков на карточке списка в конструкторе оставалась такой, какой была в день последней правки, даже после обновления очков. Сам список уже считался по новым ценам. Теперь карточки тоже обновляются после каждого обновления приложения.',
+      'Раньше в листе данных Astraeus у Space Marines неуязвимый спас-бросок 5+ был без условия. Теперь там сказано, что он действует только против стрельбы.',
+      'Раньше в русской версии сноска под неуязвимым спас-броском оставалась английской, например «Against ranged attacks only». Теперь она по-русски во всех листах данных.',
+      'Раньше у плазменного пистолета Vanguard Veteran Squad with Jump Packs из Space Marines был только профиль supercharge: официальное приложение потеряло обычный профиль в последнем обновлении. Теперь в листе данных оба профиля, как в кодексе.',
+      'Раньше, если один из двух Mortifiers брал Anchorite Sarcophagus, конструктор показывал M 7" и Sv 3+ у обоих. Теперь они только у модели с саркофагом.',
+    ],
+  },
+  {
     version: '2.7.8',
     date: '2026-09-30',
     en: [
