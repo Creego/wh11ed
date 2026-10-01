@@ -6,8 +6,8 @@
     <template #aside>
       <span
         class="mh-count"
-        :class="{ over: dpSpent > maxDp && !overAllowed }"
-      >{{ dpSpent }} / {{ maxDp }} DP</span>
+        :class="{ over: dpSpent > limit }"
+      >{{ dpSpent }} / {{ limit }} DP</span>
     </template>
 
     <div class="modal-body modal-list">
@@ -52,6 +52,7 @@ import BaseModal from '../BaseModal.vue'
 import DetachmentOption from '../DetachmentOption.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
+import { dpLimitFor } from '../../composables/rosterEngine.js'
 
 const props = defineProps({
   detachments: { type: Array, required: true },
@@ -64,10 +65,9 @@ defineEmits(['toggle', 'clear', 'close'])
 const { locale } = useLocale()
 const labels = computed(() => ui[locale.value])
 
-// A single Detachment is always allowed even over budget (see the toggle-disable rule
-// below) — not official yet, but GW has said it's fine as long as it's the only one taken.
-// Don't flag that legal case as an error.
-const overAllowed = computed(() => props.selected.length === 1 && props.dpSpent > props.maxDp)
+// The budget the selection is held to: `maxDp` is the battle's, and a lone 3 DP detachment at
+// Incursion makes it 3 (core rules 25.04 — rosterEngine's dpLimitFor).
+const limit = computed(() => dpLimitFor(props.detachments.filter((d) => props.selected.includes(d.name)), props.maxDp))
 
 // A detachment's TAG bars a second detachment sharing it ("this detachment has the DYNASTY tag and
 // cannot be taken with another DYNASTY detachment", core rules 25.04). 26 tags across 17 factions,
@@ -79,8 +79,9 @@ const takenTags = computed(() => new Set(props.detachments
 const clashes = (d) => !props.selected.includes(d.name) && !!d.unique && takenTags.value.has(d.unique.toUpperCase())
 
 // Everything a tap could actually do: what is already taken (so it can be given back), and what
-// still fits the budget and clashes with nothing. The first detachment is always affordable — you
-// may take one whatever it costs — which is what keeps a full list on offer at the start.
+// still fits the budget and clashes with nothing. The first detachment is always affordable — no
+// detachment costs more than the 3 DP a lone one may (25.04) — which keeps a full list on offer at
+// the start. A second is judged against the battle's own budget: beside another, the exception is gone.
 const offered = computed(() => props.detachments.filter((d) => props.selected.includes(d.name)
   || (!clashes(d) && (props.selected.length === 0 || props.dpSpent + d.dp <= props.maxDp))))
 const hidden = computed(() => props.detachments.length - offered.value.length)

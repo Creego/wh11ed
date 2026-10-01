@@ -314,17 +314,8 @@
                 <span>
                   {{ labels.trackerDpBudget }} <em
                     class="dp-count"
-                    :class="{ over: dpSpent(m) > memberMaxDp && m.detachments.length !== 1 }"
-                  >{{ dpSpent(m) }} / {{ memberMaxDp }} DP</em>
-                  <button
-                    v-if="m.detachments.length === 1 && dpSpent(m) > memberMaxDp"
-                    type="button"
-                    class="help-btn"
-                    :aria-label="labels.trackerDpOverHelp"
-                    @click="dpHelpOpen = true"
-                  >
-                    <i class="bi bi-question-circle" />
-                  </button>
+                    :class="{ over: dpSpent(m) > dpLimit(m) }"
+                  >{{ dpSpent(m) }} / {{ dpLimit(m) }} DP</em>
                 </span>
                 <button
                   v-if="m.factionSlug && detachmentsFor(m.factionSlug).length"
@@ -1059,25 +1050,11 @@
       :text="labels.trackerRoleHelp"
       @close="roleHelpOpen = false"
     />
-
-    <BaseModal
-      v-if="dpHelpOpen"
-      :title="labels.trackerDpOverTitle"
-      max-width="380px"
-      @close="dpHelpOpen = false"
-    >
-      <div class="modal-body">
-        <p class="dp-help-text">
-          {{ labels.trackerDpOverText }}
-        </p>
-      </div>
-    </BaseModal>
   </div>
 </template>
 
 <script setup>
 import { reactive, ref, computed, watch, nextTick, onMounted, onUnmounted } from 'vue'
-import BaseModal from '../BaseModal.vue'
 import LayoutCard from '../event/LayoutCard.vue'
 import LayoutTabs from './LayoutTabs.vue'
 import { useMediaQuery } from '../../composables/useMediaQuery.js'
@@ -1085,6 +1062,7 @@ import MissionCard from '../event/MissionCard.vue'
 import RuleBody from '../RuleBody.vue'
 import TwistPickerModal from './TwistPickerModal.vue'
 import DetachmentPickerModal from './DetachmentPickerModal.vue'
+import { dpLimitFor } from '../../composables/rosterEngine.js'
 import FactionPickerModal from './FactionPickerModal.vue'
 import SecondaryPickerModal from './SecondaryPickerModal.vue'
 import MissionPickerModal from './MissionPickerModal.vue'
@@ -1460,7 +1438,6 @@ function randomTwist() {
 }
 
 const scoreHelpOpen = ref(false)
-const dpHelpOpen = ref(false)
 const forceTypeHelpOpen = ref(false)
 const roleHelpOpen = ref(false)
 // Step 3's two-column desktop layout (`.two-col`, >700px): the layout tabs move into the side
@@ -1643,6 +1620,10 @@ function detSummary(p) {
 
 function dpSpent(p) {
   return p.detachments.reduce((s, name) => s + (detachmentInfo(p.factionSlug, name)?.dp || 0), 0)
+}
+// The budget this army's detachments are held to — 3 for a lone 3 DP one at Incursion.
+function dpLimit(p) {
+  return dpLimitFor(p.detachments.map((name) => ({ dp: detachmentInfo(p.factionSlug, name)?.dp || 0 })), memberMaxDp.value)
 }
 function candidateDispositions(p) {
   // Combat Patrol: exactly one, fixed disposition — already resolved onto p.disposition by
@@ -2195,7 +2176,6 @@ function cancel() {
 }
 .twist-chosen-body { padding: 0 0.7rem 0.6rem; font-size: 0.86rem; line-height: 1.5; }
 .twist-mission { margin-top: 0.8rem; }
-.dp-help-text { margin: 0; font-size: 0.88rem; line-height: 1.5; color: var(--text-muted); }
 .det-empty { font-size: 0.82rem; color: var(--text-dim); font-style: italic; margin: 0.25rem 0 0; }
 
 /* The faction control and "attach a list" share a row; the button stretches to whichever of the

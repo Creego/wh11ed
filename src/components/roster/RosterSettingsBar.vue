@@ -44,17 +44,8 @@
         <em
           v-if="factionSlug"
           class="dp-count"
-          :class="{ over: dpSpent > maxDp && !dpOverAllowed }"
-        >{{ dpSpent }} / {{ maxDp }} DP</em>
-        <button
-          v-if="dpOverAllowed"
-          type="button"
-          class="help-btn"
-          :aria-label="labels.trackerDpOverHelp"
-          @click="dpHelpOpen = true"
-        >
-          <i class="bi bi-question-circle" />
-        </button>
+          :class="{ over: dpSpent > dpLimit }"
+        >{{ dpSpent }} / {{ dpLimit }} DP</em>
       </span>
       <button
         class="rw-choose"
@@ -156,18 +147,6 @@
       @close="detachmentPickerOpen = false"
     />
     <BaseModal
-      v-if="dpHelpOpen"
-      :title="labels.trackerDpOverTitle"
-      max-width="380px"
-      @close="dpHelpOpen = false"
-    >
-      <div class="modal-body">
-        <p class="rw-help">
-          {{ labels.trackerDpOverText }}
-        </p>
-      </div>
-    </BaseModal>
-    <BaseModal
       v-if="moreOpen"
       :title="labels.rosterMoreSettings"
       max-width="480px"
@@ -231,10 +210,10 @@ defineProps({
   detachmentSummary: { type: String, default: '' },
   detachmentOptions: { type: Array, default: () => [] },
   dpSpent: { type: Number, default: 0 },
+  // The battle size's budget — what the picker spends against — and the budget the count shows,
+  // which is 3 for a lone 3 DP detachment at Incursion (rosterEngine's dpLimitFor).
   maxDp: { type: Number, default: 0 },
-  // The tracker's "one detachment may cost more DP than the battle size grants" case, which only
-  // the wizard computes; absent here it simply isn't offered.
-  dpOverAllowed: { type: Boolean, default: false },
+  dpLimit: { type: Number, default: 0 },
   battleSize: { type: String, default: '' },
   battleSizes: { type: Array, default: () => [] },
   customPoints: { type: [Number, String], default: 0 },
@@ -255,7 +234,6 @@ const { showPointsLeft } = useRosterPrefs()
 
 const factionPickerOpen = ref(false)
 const detachmentPickerOpen = ref(false)
-const dpHelpOpen = ref(false)
 const moreOpen = ref(false)
 </script>
 
@@ -366,7 +344,6 @@ const moreOpen = ref(false)
   font-size: 0.9rem;
   resize: vertical;
 }
-.rw-help { margin: 0; padding: 1rem; font-size: 0.9rem; color: var(--text-muted); }
 
 .dp-count { font-style: normal; color: var(--text-dim); }
 .dp-count.over { color: var(--danger); }
