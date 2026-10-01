@@ -9,7 +9,7 @@
 //
 // Points are not read here: the Munitorum Field Manual is the points canon (src/data/mfm), and
 // its history is diffed on its own. Combat Patrol content is a separate game mode and is skipped.
-import { appdataToMarkup, bodyText, norm, looseName } from '../lib/sync-common.mjs'
+import { appdataToMarkup, appdataToParagraphs, bodyText, norm, looseName } from '../lib/sync-common.mjs'
 
 // Text as a player reads it: no markup, one kind of quote, dash and space.
 export function plain(s) {
@@ -26,6 +26,33 @@ export function plain(s) {
     .replace(/\s+/g, ' ')
     .trim()
 }
+// The same text for the page to SHOW: its paragraphs and list items kept, one per line ("Eligible
+// If: …", "• You can only target…"). `plain` folds those breaks — right for telling two versions
+// apart (a re-wrapped paragraph is not a change), wrong for reading: a core rule came out as one
+// block (owner, 2026-10-01).
+export function readable(s) {
+  return appdataToParagraphs(s || '')
+    .split('\n')
+    .map((line) => line
+      .replace(/\*\*|__/g, '')
+      .replace(/^[▪▫■•]\s*/, '• ')
+      .replace(/[‘’‚‛`]/g, "'")
+      .replace(/[“”„]/g, '"')
+      .replace(/[‐‑‒–—―]/g, '-')
+      .replace(/\u00a0/g, ' ')
+      .replace(/\s*\(see (?:left|right|above|below)\)/gi, '')
+      .replace(/\s+/g, ' ')
+      .trim())
+    .filter(Boolean)
+    .join('\n')
+}
+// A rule body (appdata's typed blocks), readable — the blocks bodyText reads, each kept apart.
+const bodyReadable = (body) => (body || [])
+  .filter((b) => b.type !== 'loreAccordion' && b.type !== 'quote' && b.type !== 'image')
+  .flatMap((b) => [b.text, b.trigger, b.effect].filter(Boolean).map(readable))
+  .filter(Boolean)
+  .join('\n')
+
 // Two texts are the same rule when they read the same, case and a closing full stop aside.
 const sameText = (a, b) => plain(a).toLowerCase().replace(/\.$/, '') === plain(b).toLowerCase().replace(/\.$/, '')
 const key = (s) => plain(s).toLowerCase()
@@ -118,10 +145,10 @@ function diffDatasheet(a, b) {
   if (sh.added.length || sh.removed.length) f.push({ field: 'coreAbilities', ...sh })
   const own = (d) => (d.abilities || []).filter((x) => x.type !== 'core' && x.type !== 'faction' && !isDamagedAbility(x))
   const ab = pair(own(a), own(b))
-  for (const x of ab.added) f.push({ field: 'ability', change: 'added', name: x.name, to: plain(x.rules) })
+  for (const x of ab.added) f.push({ field: 'ability', change: 'added', name: x.name, to: readable(x.rules) })
   for (const x of ab.removed) f.push({ field: 'ability', change: 'removed', name: x.name })
   for (const [o, n] of ab.both) {
-    if (!sameText(o.rules, n.rules)) f.push({ field: 'ability', change: 'changed', name: n.name, from: plain(o.rules), to: plain(n.rules) })
+    if (!sameText(o.rules, n.rules)) f.push({ field: 'ability', change: 'changed', name: n.name, from: readable(o.rules), to: readable(n.rules) })
   }
   const dmg = (d) => (d.damageAbility || []).map((x) => [x.damagedAt ? `1-${x.damagedAt}` : '', plain(x.rules || '')].filter(Boolean).join(': ')).join(' ')
   if (!sameText(dmg(a), dmg(b))) f.push({ field: 'damaged', from: dmg(a), to: dmg(b) })
@@ -167,7 +194,7 @@ const STRAT_TEXT = ['when', 'target', 'effect', 'restriction']
 function diffStratagem(a, b) {
   const f = []
   if (val(a.cp) !== val(b.cp)) f.push({ field: 'cp', from: val(a.cp), to: val(b.cp) })
-  for (const t of STRAT_TEXT) if (!sameText(a[t], b[t])) f.push({ field: t, from: plain(a[t]), to: plain(b[t]) })
+  for (const t of STRAT_TEXT) if (!sameText(a[t], b[t])) f.push({ field: t, from: readable(a[t]), to: readable(b[t]) })
   return f
 }
 
@@ -178,10 +205,10 @@ function diffDetachment(a, b, out, faction) {
   if (fd(a) !== fd(b)) out.push({ faction, kind: 'detachment', name: det, change: 'changed', fields: [{ field: 'forceDisposition', from: fd(a), to: fd(b) }] })
 
   const rules = pair(a.rules, b.rules)
-  for (const x of rules.added) out.push({ faction, kind: 'detachmentRule', parent: det, name: x.name, change: 'added', to: bodyPlain(x.body) })
+  for (const x of rules.added) out.push({ faction, kind: 'detachmentRule', parent: det, name: x.name, change: 'added', to: bodyReadable(x.body) })
   for (const x of rules.removed) out.push({ faction, kind: 'detachmentRule', parent: det, name: x.name, change: 'removed' })
   for (const [o, n] of rules.both) {
-    if (!sameText(bodyPlain(o.body), bodyPlain(n.body))) out.push({ faction, kind: 'detachmentRule', parent: det, name: n.name, change: 'changed', fields: [{ field: 'text', from: bodyPlain(o.body), to: bodyPlain(n.body) }] })
+    if (!sameText(bodyPlain(o.body), bodyPlain(n.body))) out.push({ faction, kind: 'detachmentRule', parent: det, name: n.name, change: 'changed', fields: [{ field: 'text', from: bodyReadable(o.body), to: bodyReadable(n.body) }] })
   }
   const st = pair(a.stratagems, b.stratagems)
   for (const x of st.added) out.push({ faction, kind: 'stratagem', parent: det, name: x.name, change: 'added' })
@@ -194,7 +221,7 @@ function diffDetachment(a, b, out, faction) {
   for (const x of en.added) out.push({ faction, kind: 'enhancement', parent: det, name: x.name, change: 'added' })
   for (const x of en.removed) out.push({ faction, kind: 'enhancement', parent: det, name: x.name, change: 'removed' })
   for (const [o, n] of en.both) {
-    if (!sameText(o.rules, n.rules)) out.push({ faction, kind: 'enhancement', parent: det, name: n.name, change: 'changed', fields: [{ field: 'text', from: plain(o.rules), to: plain(n.rules) }] })
+    if (!sameText(o.rules, n.rules)) out.push({ faction, kind: 'enhancement', parent: det, name: n.name, change: 'changed', fields: [{ field: 'text', from: readable(o.rules), to: readable(n.rules) }] })
   }
 }
 
@@ -221,10 +248,10 @@ export function diffBundles(a, b, faction, { announce = true } = {}) {
     if (val(o.errataDate) !== val(n.errataDate) && n.errataDate) out.push({ faction, kind: 'publication', name: n.name, change: 'changed', date: n.errataDate })
   }
   const ar = pair(a.armyRules, b.armyRules)
-  for (const x of ar.added) out.push({ faction, kind: 'armyRule', name: x.name, change: 'added', to: bodyPlain(x.body) })
+  for (const x of ar.added) out.push({ faction, kind: 'armyRule', name: x.name, change: 'added', to: bodyReadable(x.body) })
   for (const x of ar.removed) out.push({ faction, kind: 'armyRule', name: x.name, change: 'removed' })
   for (const [o, n] of ar.both) {
-    if (!sameText(bodyPlain(o.body), bodyPlain(n.body))) out.push({ faction, kind: 'armyRule', name: n.name, change: 'changed', fields: [{ field: 'text', from: bodyPlain(o.body), to: bodyPlain(n.body) }] })
+    if (!sameText(bodyPlain(o.body), bodyPlain(n.body))) out.push({ faction, kind: 'armyRule', name: n.name, change: 'changed', fields: [{ field: 'text', from: bodyReadable(o.body), to: bodyReadable(n.body) }] })
   }
 
   const dt = pair((a.detachments || []).filter(notCP), (b.detachments || []).filter(notCP))
@@ -250,8 +277,8 @@ export function diffCore(a, b) {
   const out = []
   for (const [k, r] of B) {
     const o = A.get(k)
-    if (!o) out.push({ faction: null, kind: 'coreRule', num: r.num, name: r.title, section: r.section, change: 'added', to: plain(r.text) })
-    else if (!sameText(o.text, r.text)) out.push({ faction: null, kind: 'coreRule', num: r.num, name: r.title, section: r.section, change: 'changed', fields: [{ field: 'text', from: plain(o.text), to: plain(r.text) }] })
+    if (!o) out.push({ faction: null, kind: 'coreRule', num: r.num, name: r.title, section: r.section, change: 'added', to: readable(r.text) })
+    else if (!sameText(o.text, r.text)) out.push({ faction: null, kind: 'coreRule', num: r.num, name: r.title, section: r.section, change: 'changed', fields: [{ field: 'text', from: readable(o.text), to: readable(r.text) }] })
   }
   for (const [k, r] of A) if (!B.has(k)) out.push({ faction: null, kind: 'coreRule', num: r.num, name: r.title, section: r.section, change: 'removed' })
   return out

@@ -9,8 +9,11 @@ const CAP = 600 * 600
 
 // → [{ t: 'same' | 'del' | 'ins', s: 'words' }], neighbouring runs of one kind joined.
 export function wordDiff(a, b) {
-  const A = (a || '').split(/\s+/).filter(Boolean)
-  const B = (b || '').split(/\s+/).filter(Boolean)
+  // A line break is a word of its own, so a rule's paragraphs and list items survive the diff
+  // (the page prints it with `white-space: pre-line`).
+  const words = (t) => (t || '').match(/\n|[^\s]+/g) || []
+  const A = words(a)
+  const B = words(b)
   const out = []
   const push = (t, w) => {
     const last = out[out.length - 1]
@@ -18,8 +21,8 @@ export function wordDiff(a, b) {
     else out.push({ t, s: w })
   }
   if (A.length * B.length > CAP) {
-    if (A.length) out.push({ t: 'del', s: A.join(' ') })
-    if (B.length) out.push({ t: 'ins', s: B.join(' ') })
+    if (A.length) out.push({ t: 'del', s: a.trim() })
+    if (B.length) out.push({ t: 'ins', s: b.trim() })
     return out
   }
   const n = A.length

@@ -19,4 +19,11 @@ describe('wordDiff', () => {
     const long = (w) => Array.from({ length: 700 }, () => w).join(' ')
     expect(wordDiff(long('a'), long('b')).map((x) => x.t)).toEqual(['del', 'ins'])
   })
+
+  it('keeps a text’s line breaks as words of their own', () => {
+    expect(wordDiff('Effect: shoot.\n• Hit on 6.', 'Effect: shoot.\n• Hit on 6. Not critical.')).toEqual([
+      { t: 'same', s: 'Effect: shoot. \n • Hit on 6.' },
+      { t: 'ins', s: 'Not critical.' },
+    ])
+  })
 })
