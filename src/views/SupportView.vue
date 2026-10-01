@@ -6,12 +6,16 @@
       </h1>
     </div>
 
+    <!-- A grid of three areas. On a phone they stack in reading order — the case, the button
+         (the phone is already in your hand), the fine print. On a wide screen the text takes the
+         left column and the payment its own on the right: the code first, since a desktop link
+         cannot reach a bank app, and the button under it (owner, 2026-10-01). -->
     <div class="support-body">
-      <p>{{ s.intro }}</p>
-      <p>{{ s.what }}</p>
+      <div class="support-case">
+        <p>{{ s.intro }}</p>
+        <p>{{ s.what }}</p>
+      </div>
 
-      <!-- Both ways in, side by side: the button for the phone that is already in your hand,
-           the code for the desktop, where a link cannot reach your bank app. -->
       <div class="support-pay">
         <a
           class="btn-primary btn-lg pay-btn"
@@ -31,12 +35,14 @@
         >
       </div>
 
-      <p class="pay-how">
-        {{ s.how }}
-      </p>
-      <p class="pay-thanks">
-        {{ s.thanks }}
-      </p>
+      <div class="support-notes">
+        <p class="pay-how">
+          {{ s.how }}
+        </p>
+        <p class="pay-thanks">
+          {{ s.thanks }}
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -79,12 +85,17 @@ const s = computed(() => landing[locale.value].footer.support)
 }
 
 .support-body {
+  display: grid;
+  grid-template-areas: "case" "pay" "notes";
   max-width: 640px;
   margin: 0 auto;
   font-size: 0.95rem;
   line-height: 1.6;
   color: var(--text-secondary, var(--text-primary));
 }
+.support-case { grid-area: case; }
+.support-pay { grid-area: pay; }
+.support-notes { grid-area: notes; }
 .support-body p { margin: 0 0 0.9rem; }
 
 .support-pay {
@@ -93,7 +104,7 @@ const s = computed(() => landing[locale.value].footer.support)
   align-items: center;
   justify-content: center;
   gap: 1.2rem;
-  margin: 1.4rem 0 1rem;
+  margin: 0.5rem 0 1rem;
   padding: 1rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -117,5 +128,25 @@ const s = computed(() => landing[locale.value].footer.support)
 @media (max-width: 480px) {
   .support-pay { gap: 0.9rem; padding: 0.8rem; }
   .pay-qr { width: 170px; }
+}
+/* Wide: text left, the payment card right — code on top, the button under it, as wide as it. */
+@media (min-width: 760px) {
+  .support-body {
+    max-width: 920px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: "case pay" "notes pay";
+    column-gap: 2.5rem;
+    font-size: 1rem;
+  }
+  .support-pay {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-self: start;
+    gap: 1rem;
+    margin: 0;
+  }
+  .pay-qr { order: -1; width: 240px; }
+  .pay-btn { align-self: stretch; text-align: center; }
 }
 </style>
