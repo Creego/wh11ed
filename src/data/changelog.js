@@ -30,6 +30,8 @@ export const changelog = [
       'On a computer the list under the field is tidier: the cost is always next to the name, and the Russian name sits right under the English one in the same narrow type.',
       { h: 'Menu' },
       'The gear menu now has a “Support the project” link. On a computer, signing in, hiding the lore and reporting a bug have moved into the gear menu too, so the top bar is less crowded.',
+      'On a computer the “…” menus now open as a short list right under the button, not in a separate window. This works for a list’s card and header, a unit in the roster builder, the extra roster settings and the secondary cards in the tracker. On a phone nothing changes.',
+      'On a computer, a faction keyword in rule text now opens its list of units right under the word, like the explanation of a term.',
     ],
     ru: [
       { h: 'Выбор детачмента' },
@@ -37,6 +39,8 @@ export const changelog = [
       'На компьютере список под полем стал аккуратнее: цена всегда рядом с названием, а русское название стоит сразу под английским тем же узким шрифтом.',
       { h: 'Меню' },
       'В меню под шестерёнкой появилась ссылка «Поддержать проект». На компьютере вход в аккаунт, скрытие лора и сообщение об ошибке тоже переехали в это меню, и верхняя панель стала свободнее.',
+      'На компьютере меню «…» теперь открывается коротким списком прямо под кнопкой, а не в отдельном окне. Так работает у карточки и заголовка списка, у юнита в конструкторе, в дополнительных настройках списка и у карт вторичных миссий в трекере. На телефоне всё как раньше.',
+      'На компьютере ключевое слово фракции в тексте правила теперь открывает список юнитов прямо под словом, как пояснение к термину.',
     ],
   },
   {
