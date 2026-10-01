@@ -22,6 +22,20 @@
 
 export const changelog = [
   {
+    version: '2.7.10',
+    date: '2026-10-01',
+    en: [
+      { h: 'Picking a detachment' },
+      'On a phone a detachment’s tag and its Force Disposition now sit on their own line under the name, so a long name stays on one line.',
+      'On a computer the list under the field is tidier: the cost is always next to the name, and the Russian name sits right under the English one in the same narrow type.',
+    ],
+    ru: [
+      { h: 'Выбор детачмента' },
+      'На телефоне тег детачмента и его Force Disposition теперь стоят отдельной строкой под названием, поэтому длинное название больше не переносится.',
+      'На компьютере список под полем стал аккуратнее: цена всегда рядом с названием, а русское название стоит сразу под английским тем же узким шрифтом.',
+    ],
+  },
+  {
     version: '2.7.9',
     date: '2026-10-01',
     en: [
