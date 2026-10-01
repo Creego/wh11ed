@@ -99,24 +99,13 @@ export function useRosterUnitCard(props) {
       rulesFactionEn.value = null
       stratNamesRu.value = null
       if (!slug || !hasCtx) return
-      const [{ loadFaction }, { loadFactionRu, deepOverlay }] = await Promise.all([
-        import('../data/factions/index.js'),
-        import('../data/factions/ru/index.js'),
-      ])
-      const data = await loadFaction(slug)
-      if (props.factionSlug !== slug) return
-      rulesFactionEn.value = data?.en || null
-      let fac = data?.en
-      if (fac && loc === 'ru') {
-        const mod = await loadFactionRu(slug)
-        if (props.factionSlug !== slug || locale.value !== loc) return
-        if (mod) fac = deepOverlay(fac, mod.default)
-        // A stratagem's NAME is not part of the overlay: it stays English on the card (project
-        // convention — that is what the physical card and the GW app both say), and its translation
-        // travels beside it as a display line. Same map the faction page uses (useFactionPage).
-        stratNamesRu.value = mod?.stratNamesRu || null
-      }
-      rulesFaction.value = fac || null
+      // A Chapter's cards read the Codex: Space Marines detachments too (loadFactionWithCodex).
+      const { loadFactionWithCodex } = await import('./rosterFactionRules.js')
+      const { en, local, stratNamesRu: namesRu } = await loadFactionWithCodex(slug, loc)
+      if (props.factionSlug !== slug || locale.value !== loc) return
+      rulesFactionEn.value = en
+      stratNamesRu.value = namesRu
+      rulesFaction.value = local
     },
     { immediate: true },
   )
@@ -130,8 +119,8 @@ export function useRosterUnitCard(props) {
     async ([slug, hasCtx]) => {
       modifierData.value = null
       if (!slug || !hasCtx) return
-      const { loadRosterModifiers } = await import('../data/rosterModifiers/index.js')
-      const data = await loadRosterModifiers(slug)
+      const { loadRosterModifiersFor } = await import('../data/rosterModifiers/index.js')
+      const data = await loadRosterModifiersFor(slug)
       if (props.factionSlug === slug) modifierData.value = data
     },
     { immediate: true },

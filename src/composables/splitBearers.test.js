@@ -3,7 +3,7 @@
 // placement was written for, and for the one it must leave alone.
 import { describe, it, expect } from 'vitest'
 import { loadRosterFaction, rosterItems } from '../data/roster/index.js'
-import { loadRosterModifiers } from '../data/rosterModifiers/index.js'
+import { loadRosterModifiersFor } from '../data/rosterModifiers/index.js'
 import { loadDatasheets } from '../data/datasheets/index.js'
 import { overlaySheet, loadoutItemNames, itemKey } from './rosterModifiers.js'
 import { applyStatMods, datasheetEntriesFor, splitBearers } from './rosterStatMods.js'
@@ -23,7 +23,7 @@ function pick(def, item) {
 async function card(slug, unitId, size, picks) {
   const def = (await loadRosterFaction(slug)).units.find((u) => u.id === unitId)
   const printed = (await loadDatasheets(slug)).find((d) => d.id === unitId)
-  const records = (await loadRosterModifiers(slug)).entries.filter((e) => e.reviewed && e.effects?.length)
+  const records = (await loadRosterModifiersFor(slug)).entries.filter((e) => e.reviewed && e.effects?.length)
   const entry = { uid: 'u', id: unitId, size, wg: picks.map(([item, n]) => [...pick(def, item), n]) }
   const sheet = overlaySheet(printed, { def, entry, items }).sheet
   const entries = datasheetEntriesFor(records, { unitId, itemNames: loadoutItemNames(def, entry, items) })
@@ -44,6 +44,16 @@ describe('splitBearers', () => {
     ])
     expect(res.marks).toEqual(expect.arrayContaining(['profile:w:0', 'profile:w:2']))
     expect(res.marks).not.toContain('profile:w:1')
+  })
+
+  // A Chapter fields the Codex unit, and reads its records from the Space Marines file (2026-10-01).
+  it('does the same for a Chapter fielding the Codex squad', async () => {
+    const res = await card('blood-angels', 'terminator-assault-squad', 1, [['Storm Shield', 3]])
+    expect(res.sheet.profiles.map((p) => [row(p), p.w])).toEqual([
+      ['Terminator Sergeant', '4'],
+      ['Terminator ×7', '3'],
+      ['Terminator · Storm Shield ×2', '4'],
+    ])
   })
 
   it('splits nothing when every model carries the shield — the number moves', async () => {

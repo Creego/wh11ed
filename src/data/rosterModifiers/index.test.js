@@ -441,3 +441,20 @@ describe('a rule that rewards a set of weapons', () => {
     expect(found.length).toBeGreaterThanOrEqual(8)
   })
 })
+
+// A Chapter's list reads the Codex: Space Marines records too (2026-10-01) — but not its army rule,
+// which the Chapter's own file already carries.
+describe('loadRosterModifiersFor — a Chapter', () => {
+  it('adds the Space Marines records a Chapter fields, without the army rule twice', async () => {
+    const { loadRosterModifiersFor, loadRosterModifiers } = await import('./index.js')
+    const ba = await loadRosterModifiersFor('blood-angels')
+    const own = await loadRosterModifiers('blood-angels')
+    expect(ba.entries.length).toBeGreaterThan(own.entries.length)
+    expect(ba.entries.some((e) => e.det === 'Gladius Task Force')).toBe(true)
+    expect(ba.entries.some((e) => e.name === 'Terminator Assault Squad: Storm Shield')).toBe(true)
+    expect(ba.entries.filter((e) => e.kind === 'armyRule')).toEqual(own.entries.filter((e) => e.kind === 'armyRule'))
+    expect(new Set(ba.entries.map((e) => e.sid)).size).toBe(ba.entries.length)
+    // A faction that is not a Chapter reads its own file as before.
+    expect(await loadRosterModifiersFor('necrons')).toEqual(await loadRosterModifiers('necrons'))
+  })
+})

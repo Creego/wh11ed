@@ -972,15 +972,16 @@ watch(() => roster.value?.faction, async (slug) => {
   pickRecords.value = []
   factionEn.value = null
   if (!slug) return
-  const [{ loadRosterModifiers, usableEntries, pickEntries }, { loadFaction }] = await Promise.all([
+  // A Chapter's list reads the Codex: Space Marines records and detachments too (2026-10-01).
+  const [{ loadRosterModifiersFor, usableEntries, pickEntries }, { loadFactionWithCodex }] = await Promise.all([
     import('../../data/rosterModifiers/index.js'),
-    import('../../data/factions/index.js'),
+    import('../../composables/rosterFactionRules.js'),
   ])
-  const [mods, fac] = await Promise.all([loadRosterModifiers(slug), loadFaction(slug)])
+  const [mods, fac] = await Promise.all([loadRosterModifiersFor(slug), loadFactionWithCodex(slug, 'en')])
   if (roster.value?.faction !== slug) return
   modifierRecords.value = usableEntries(mods)
   pickRecords.value = pickEntries(mods)
-  factionEn.value = fac?.en || null
+  factionEn.value = fac.en
 }, { immediate: true })
 
 const factionKeywordSets = computed(() =>

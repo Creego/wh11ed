@@ -79,3 +79,33 @@ export async function loadRosterFactionRules(slug, loc) {
   }
   return { faction, lookup }
 }
+
+// The faction's prose as a CARD reads it — English (the modifier layer and the rule gates read EN)
+// and the reader's language — with, for a Chapter, the Codex: Space Marines detachments after its
+// own: a Chapter fields those too, and they live in the Space Marines file (a Blood Angels list on
+// Gladius Task Force had no detachment rule, enhancement or stratagem on its cards — a player's
+// report, 2026-10-01). Its own come first, so a name it reprints is read from the Chapter.
+// `stratNamesRu` is the RU name map of every file read (stratagem names stay English on the card).
+export async function loadFactionWithCodex(slug, loc) {
+  const [{ loadFaction }, { loadFactionRu, deepOverlay }] = await Promise.all([
+    import('../data/factions/index.js'),
+    import('../data/factions/ru/index.js'),
+  ])
+  let en = null
+  let local = null
+  let stratNamesRu = null
+  for (const src of SM_CHAPTERS.has(slug) ? [slug, 'space-marines'] : [slug]) {
+    const data = await loadFaction(src)
+    if (!data?.en) continue
+    let l = data.en
+    if (loc === 'ru') {
+      const mod = await loadFactionRu(src)
+      if (mod) l = deepOverlay(l, mod.default)
+      if (mod?.stratNamesRu) stratNamesRu = { ...mod.stratNamesRu, ...stratNamesRu }
+    }
+    if (!en) { en = data.en; local = l; continue }
+    en = { ...en, detachments: [...(en.detachments || []), ...(data.en.detachments || [])] }
+    local = { ...local, detachments: [...(local.detachments || []), ...(l.detachments || [])] }
+  }
+  return { en, local, stratNamesRu }
+}
