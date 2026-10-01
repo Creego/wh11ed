@@ -874,6 +874,7 @@ a.nd-link:hover {
   font-size: 0.7rem;
   opacity: 0.55;
   font-family: var(--font-mono);
+  white-space: nowrap; /* a crowded bar at 901px broke it into "Ctrl" over "K" */
 }
 
 .hamburger {
