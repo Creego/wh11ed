@@ -19,6 +19,10 @@
           >{{ kindLabel }}</span>
           <span class="pe-name">{{ item.name }}</span>
           <span
+            v-if="item.was"
+            class="pe-note"
+          >({{ labels.patchesWas }}: {{ item.was }})</span>
+          <span
             v-if="item.change === 'added'"
             class="pe-badge pe-badge-new"
           >{{ labels.patchesNew }}</span>

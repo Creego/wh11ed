@@ -9,37 +9,37 @@ export const patches = [
       "app": 963,
       "mfm": "1.5"
     },
-    "total": 1206,
+    "total": 1207,
     "byFaction": {
       "core": 3,
       "adepta-sororitas": 8,
-      "space-marines": 417,
+      "space-marines": 413,
       "adeptus-custodes": 22,
-      "adeptus-mechanicus": 17,
+      "adeptus-mechanicus": 16,
       "imperial-agents": 14,
       "astra-militarum": 14,
       "aeldari": 12,
-      "black-templars": 57,
-      "blood-angels": 70,
+      "black-templars": 59,
+      "blood-angels": 72,
       "chaos-knights": 6,
-      "dark-angels": 101,
+      "dark-angels": 105,
       "death-guard": 28,
       "deathwatch": 44,
       "emperors-children": 29,
-      "genestealer-cults": 6,
       "grey-knights": 41,
       "chaos-space-marines": 79,
       "leagues-of-votann": 6,
-      "chaos-daemons": 8,
-      "necrons": 13,
-      "orks": 38,
-      "space-wolves": 97,
-      "tau-empire": 4,
+      "chaos-daemons": 7,
+      "necrons": 12,
+      "orks": 37,
+      "space-wolves": 101,
       "thousand-sons": 28,
       "tyranids": 13,
       "world-eaters": 25,
       "drukhari": 2,
-      "imperial-knights": 4
+      "genestealer-cults": 5,
+      "imperial-knights": 4,
+      "tau-empire": 2
     }
   },
   {
@@ -49,11 +49,11 @@ export const patches = [
       "app": 946,
       "mfm": "1.4"
     },
-    "total": 340,
+    "total": 339,
     "byFaction": {
       "core": 1,
       "space-marines": 2,
-      "orks": 337
+      "orks": 336
     }
   },
   {
@@ -63,7 +63,7 @@ export const patches = [
       "app": 931,
       "mfm": "1.3"
     },
-    "total": 206,
+    "total": 207,
     "byFaction": {
       "core": 6,
       "adepta-sororitas": 11,
@@ -74,7 +74,7 @@ export const patches = [
       "aeldari": 19,
       "chaos-knights": 10,
       "dark-angels": 5,
-      "death-guard": 11,
+      "death-guard": 12,
       "drukhari": 4,
       "emperors-children": 10,
       "chaos-space-marines": 7,
@@ -182,11 +182,11 @@ export const patches = [
     "labels": {
       "app": 909
     },
-    "total": 298,
+    "total": 296,
     "byFaction": {
       "core": 14,
       "adepta-sororitas": 11,
-      "space-marines": 44,
+      "space-marines": 43,
       "adeptus-custodes": 7,
       "adeptus-mechanicus": 8,
       "titan-legions": 1,
@@ -202,15 +202,15 @@ export const patches = [
       "drukhari": 8,
       "emperors-children": 8,
       "genestealer-cults": 8,
-      "grey-knights": 15,
+      "grey-knights": 16,
       "chaos-space-marines": 4,
       "imperial-knights": 6,
       "leagues-of-votann": 2,
       "chaos-daemons": 8,
-      "necrons": 14,
-      "orks": 22,
+      "necrons": 15,
+      "orks": 20,
       "space-wolves": 5,
-      "tau-empire": 9,
+      "tau-empire": 8,
       "thousand-sons": 12,
       "tyranids": 6,
       "world-eaters": 5

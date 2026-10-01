@@ -10,7 +10,11 @@ Field Manual's points, the FAQ & errata. Nothing on the page is written by hand.
 - **The update list** is `scripts/patch-notes/patches.mjs` — one line per update with the commit
   pairs. A data bump adds its line (the hub's `appdata-update` skill) and re-runs `npm run patches`.
 - **Noise rules** live in `scripts/patch-notes/diff-*.mjs`, each pinned by a case in
-  `diff-bundles.test.js`. Entities are matched **by name, not app id** (GW reissued ~2,300 ids in 963);
+  `diff-bundles.test.js`. Entities are matched **by app id where both sides share it, then by name** (GW reissued ~2,300
+  ids in 963; but two of one name — a codex army rule and its Combat Patrol copy — need the id: the
+  app swapped Necrons' two Reanimation Protocols in 963 and a name match reported the 909 errata as
+  new). Combat Patrol army rules are dropped (`tables/army_rule.json` → a CP publication); a rename
+  seen through the id is reported with `was`;
   texts are compared as read (markup, quotes, dashes, "(see left)"); BS `N/A`≡`-`, OC `-1`≡`-`; core
   and faction abilities by name only (their text is the core/army rule's, reported once); `Damaged N`
   is the damage bracket again; a weapon profile is named with its weapon ("Tank Kannon – Blasta" —

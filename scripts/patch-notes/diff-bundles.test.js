@@ -112,4 +112,14 @@ describe('patch notes: what is a change', () => {
     const b = { 'space-marines': { entries: [e] }, 'blood-angels': { entries: [e] } }
     expect(diffFaq({}, b).map((x) => x.faction)).toEqual(['space-marines'])
   })
+
+  // Necrons, 963: the codex rule and its Combat Patrol copy share a name, and the app swapped their
+  // order — paired by name, the old CP wording read as a new errata.
+  it('pairs two rules of one name by id, and leaves Combat Patrol copies out', () => {
+    const codex = { id: 'c', name: 'Reanimation Protocols', body: [{ type: 'text', text: 'heals D3 wounds' }] }
+    const cp = { id: 'p', name: 'Reanimation Protocols', body: [{ type: 'text', text: 'reanimates D3 wounds' }] }
+    expect(diffBundles({ armyRules: [cp, codex] }, { armyRules: [codex, cp] }, 'necrons')).toEqual([])
+    const cpIds = [new Set(['p']), new Set(['p'])]
+    expect(diffBundles({ armyRules: [cp, codex] }, { armyRules: [{ ...codex, id: 'c2' }, cp] }, 'necrons', { cpArmyRules: cpIds })).toEqual([])
+  })
 })

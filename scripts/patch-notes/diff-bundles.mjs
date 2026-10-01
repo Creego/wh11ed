@@ -66,11 +66,20 @@ function byName(list) {
   return m
 }
 
-// Added / removed / kept, by name.
+// Added / removed / kept. By app id first, where both sides carry the same one — two entities of
+// one name (a codex rule and its Combat Patrol copy) are told apart that way, whatever order the app
+// lists them in — then by name for the rest, since GW reissues ids wholesale (946 → 963).
 function pair(a, b) {
-  const A = byName(a)
-  const B = byName(b)
   const out = { added: [], removed: [], both: [] }
+  const bIds = new Map((b || []).filter((x) => x?.id).map((x) => [x.id, x]))
+  const takenA = new Set()
+  const takenB = new Set()
+  for (const x of a || []) {
+    const y = x?.id && bIds.get(x.id)
+    if (y) { out.both.push([x, y]); takenA.add(x); takenB.add(y) }
+  }
+  const A = byName((a || []).filter((x) => !takenA.has(x)))
+  const B = byName((b || []).filter((x) => !takenB.has(x)))
   for (const [k, x] of B) (A.has(k) ? out.both.push([A.get(k), x]) : out.added.push(x))
   for (const [k, x] of A) if (!B.has(k)) out.removed.push(x)
   return out
@@ -200,6 +209,7 @@ function diffStratagem(a, b) {
 
 function diffDetachment(a, b, out, faction) {
   const det = b.name
+  pushIf(out, changed(a, b, { faction, kind: 'detachment' }, []))
   if (val(a.dp) !== val(b.dp)) out.push({ faction, kind: 'detachment', name: det, change: 'changed', fields: [{ field: 'dp', from: val(a.dp), to: val(b.dp) }] })
   const fd = (d) => [].concat(d.forceDisposition || []).map(plain).sort().join(', ')
   if (fd(a) !== fd(b)) out.push({ faction, kind: 'detachment', name: det, change: 'changed', fields: [{ field: 'forceDisposition', from: fd(a), to: fd(b) }] })
@@ -207,25 +217,29 @@ function diffDetachment(a, b, out, faction) {
   const rules = pair(a.rules, b.rules)
   for (const x of rules.added) out.push({ faction, kind: 'detachmentRule', parent: det, name: x.name, change: 'added', to: bodyReadable(x.body) })
   for (const x of rules.removed) out.push({ faction, kind: 'detachmentRule', parent: det, name: x.name, change: 'removed' })
-  for (const [o, n] of rules.both) {
-    if (!sameText(bodyPlain(o.body), bodyPlain(n.body))) out.push({ faction, kind: 'detachmentRule', parent: det, name: n.name, change: 'changed', fields: [{ field: 'text', from: bodyReadable(o.body), to: bodyReadable(n.body) }] })
-  }
+  for (const [o, n] of rules.both) pushIf(out, changed(o, n, { faction, kind: 'detachmentRule', parent: det }, bodyField(o.body, n.body)))
   const st = pair(a.stratagems, b.stratagems)
   for (const x of st.added) out.push({ faction, kind: 'stratagem', parent: det, name: x.name, change: 'added' })
   for (const x of st.removed) out.push({ faction, kind: 'stratagem', parent: det, name: x.name, change: 'removed' })
-  for (const [o, n] of st.both) {
-    const fields = diffStratagem(o, n)
-    if (fields.length) out.push({ faction, kind: 'stratagem', parent: det, name: n.name, change: 'changed', fields })
-  }
+  for (const [o, n] of st.both) pushIf(out, changed(o, n, { faction, kind: 'stratagem', parent: det }, diffStratagem(o, n)))
   const en = pair(a.enhancements, b.enhancements)
   for (const x of en.added) out.push({ faction, kind: 'enhancement', parent: det, name: x.name, change: 'added' })
   for (const x of en.removed) out.push({ faction, kind: 'enhancement', parent: det, name: x.name, change: 'removed' })
-  for (const [o, n] of en.both) {
-    if (!sameText(o.rules, n.rules)) out.push({ faction, kind: 'enhancement', parent: det, name: n.name, change: 'changed', fields: [{ field: 'text', from: readable(o.rules), to: readable(n.rules) }] })
-  }
+  for (const [o, n] of en.both) pushIf(out, changed(o, n, { faction, kind: 'enhancement', parent: det }, textField(o.rules, n.rules)))
 }
 
 const bodyPlain = (body) => plain(bodyText(body))
+
+// A kept entity that changed — its fields moved, or it was renamed (paired by id, so a rename is
+// seen: "Wartrakk" → "Wartrakks"). The old name rides as `was`. Null when neither.
+function changed(o, n, base, fields) {
+  const renamed = nameKey(o.name) !== nameKey(n.name)
+  if (!fields.length && !renamed) return null
+  return { ...base, name: n.name, ...(renamed ? { was: o.name } : {}), change: 'changed', fields }
+}
+const textField = (from, to) => (sameText(from, to) ? [] : [{ field: 'text', from: readable(from), to: readable(to) }])
+const bodyField = (o, n) => (sameText(bodyPlain(o), bodyPlain(n)) ? [] : [{ field: 'text', from: bodyReadable(o), to: bodyReadable(n) }])
+const pushIf = (out, x) => { if (x) out.push(x) }
 const notCP = (x) => !x?.isCombatPatrol
 
 // Every difference between two bundles of one faction. Either side may be null (a faction that
@@ -234,7 +248,12 @@ const notCP = (x) => !x?.isCombatPatrol
 // A side that is missing is read as empty, so a faction that arrived lists what it brought. A Codex
 // Supplement (one detachment, its own bundle since 963) arrives under its parent faction, and its
 // arrival is told by its publication rather than as a new faction.
-export function diffBundles(a, b, faction, { announce = true } = {}) {
+//
+// `cpArmyRules`: the ids of the army rules printed in Combat Patrol boxes, at each side's version.
+// The bundle does not flag them (it does flag CP detachments and datasheets); their wording is often
+// the pre-errata one, so a CP copy paired with the codex rule reported a long-standing errata as new
+// (Necrons' Reanimation Protocols in 963 — the app swapped the two copies' order).
+export function diffBundles(a, b, faction, { announce = true, cpArmyRules = [new Set(), new Set()] } = {}) {
   const out = []
   if ((!a || !b) && announce) out.push({ faction, kind: 'faction', name: (b || a).faction?.name || faction, change: a ? 'removed' : 'added' })
   a ||= {}
@@ -247,12 +266,10 @@ export function diffBundles(a, b, faction, { announce = true } = {}) {
   for (const [o, n] of pp.both) {
     if (val(o.errataDate) !== val(n.errataDate) && n.errataDate) out.push({ faction, kind: 'publication', name: n.name, change: 'changed', date: n.errataDate })
   }
-  const ar = pair(a.armyRules, b.armyRules)
+  const ar = pair((a.armyRules || []).filter((x) => !cpArmyRules[0].has(x.id)), (b.armyRules || []).filter((x) => !cpArmyRules[1].has(x.id)))
   for (const x of ar.added) out.push({ faction, kind: 'armyRule', name: x.name, change: 'added', to: bodyReadable(x.body) })
   for (const x of ar.removed) out.push({ faction, kind: 'armyRule', name: x.name, change: 'removed' })
-  for (const [o, n] of ar.both) {
-    if (!sameText(bodyPlain(o.body), bodyPlain(n.body))) out.push({ faction, kind: 'armyRule', name: n.name, change: 'changed', fields: [{ field: 'text', from: bodyReadable(o.body), to: bodyReadable(n.body) }] })
-  }
+  for (const [o, n] of ar.both) pushIf(out, changed(o, n, { faction, kind: 'armyRule' }, bodyField(o.body, n.body)))
 
   const dt = pair((a.detachments || []).filter(notCP), (b.detachments || []).filter(notCP))
   for (const x of dt.added) out.push({ faction, kind: 'detachment', name: x.name, change: 'added' })
@@ -262,10 +279,7 @@ export function diffBundles(a, b, faction, { announce = true } = {}) {
   const ds = pair((a.datasheets || []).filter(notCP), (b.datasheets || []).filter(notCP))
   for (const x of ds.added) out.push({ faction, kind: 'datasheet', name: x.name, change: 'added' })
   for (const x of ds.removed) out.push({ faction, kind: 'datasheet', name: x.name, change: 'removed' })
-  for (const [o, n] of ds.both) {
-    const fields = diffDatasheet(o, n)
-    if (fields.length) out.push({ faction, kind: 'datasheet', name: n.name, change: 'changed', fields })
-  }
+  for (const [o, n] of ds.both) pushIf(out, changed(o, n, { faction, kind: 'datasheet' }, diffDatasheet(o, n)))
   return out
 }
 

@@ -55,17 +55,24 @@ function withUnit(x) {
   return hit && x.change !== 'removed' ? { ...x, unit: hit[0] === x.faction ? hit[1] : hit } : x
 }
 
+// Combat Patrol army rules at one appdata version: army_rule rows whose publication is a CP box.
+function cpArmyRulesAt(ref) {
+  const pubs = new Set((json(APPDATA, ref, 'tables/publication.json') || []).filter((x) => x.isCombatPatrol).map((x) => x.id))
+  return new Set((json(APPDATA, ref, 'tables/army_rule.json') || []).filter((r) => pubs.has(r.publicationId)).map((r) => r.id))
+}
+
 async function build(p) {
   const items = []
   if (p.app) {
     const [from, to] = p.app
+    const cpArmyRules = [cpArmyRulesAt(from), cpArmyRulesAt(to)]
     items.push(...diffCore(json(APPDATA, from, 'factions/_core-rules.json'), json(APPDATA, to, 'factions/_core-rules.json')))
     const files = new Set([...lsTree(APPDATA, from, 'factions'), ...lsTree(APPDATA, to, 'factions')])
     for (const f of [...files].filter((x) => /\/[a-z][^/]*\.json$/.test(x))) {
       const app = path.basename(f, '.json')
       const supplement = SM_SUPPLEMENT_BUNDLES.includes(app)
       const slug = supplement ? 'space-marines' : (toWh11ed[app] || app)
-      items.push(...diffBundles(json(APPDATA, from, f), json(APPDATA, to, f), slug, { announce: !supplement }))
+      items.push(...diffBundles(json(APPDATA, from, f), json(APPDATA, to, f), slug, { announce: !supplement, cpArmyRules }))
     }
   }
   if (p.mfm) {
