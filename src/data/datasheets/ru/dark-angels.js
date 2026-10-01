@@ -274,7 +274,7 @@ export default {
       'Astartes Banner':
         'Пока этот юнит содержит RAVENWING ANCIENT, этот юнит имеет +1 **[gloss:objective-control:OC]**.',
       'Honour or Death':
-        'Пока этот юнит содержит RAVENWING CHAMPION:\n▪ Этот юнит имеет +1 к **[gloss:advance-roll:броскам продвижения]** и **[gloss:charge-roll:броскам нападения]**.\n▪ Когда вы выбираете этот юнит целью **стратагемы Heroic Intervention**, это применение стоит на 1 CP меньше.',
+        'Пока этот юнит содержит RAVENWING CHAMPION:\n▪ Этот юнит имеет +1 к **[gloss:advance-roll:броскам продвижения]** и **[gloss:charge-roll:броскам нападения]**.\n▪ Когда вы выбираете этот юнит целью **[gloss:heroic-intervention:стратагемы Heroic Intervention]**, это применение стоит на 1 CP меньше.',
     },
     loadout:
       '**Модель Ravenwing Ancient вооружена:** 1 Bolt Pistol; 1 Corvus Hammers; 1 Plasma Talon.\n**Модель Ravenwing Apothecary вооружена:** 1 Bolt Pistol; 1 Corvus Hammers; 1 Plasma Talon.\n**Модель Ravenwing Champion вооружена:** 1 Bolt Pistol; 1 Master-crafted Power Weapon; 1 Plasma Talon.',

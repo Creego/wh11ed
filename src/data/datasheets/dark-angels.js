@@ -2141,7 +2141,7 @@ export default [
       },
       {
         "name": "Honour or Death",
-        "text": "While this unit contains a RAVENWING CHAMPION:\n▪ This unit has +1 to **[gloss:advance-roll:advance rolls]** and **[gloss:charge-roll:charge rolls]**.\n▪ When you target this unit with the **Heroic Intervention stratagem**, that use is -1CP."
+        "text": "While this unit contains a RAVENWING CHAMPION:\n▪ This unit has +1 to **[gloss:advance-roll:advance rolls]** and **[gloss:charge-roll:charge rolls]**.\n▪ When you target this unit with the **[gloss:heroic-intervention:Heroic Intervention stratagem]**, that use is -1CP."
       }
     ],
     "composition": [

@@ -1355,6 +1355,38 @@ export const glossary = {
     ru: 'Боевой приказ, который модель OFFICER отдаёт подходящему дружественному юниту в пределах дистанции по способности Voice of Command (или похожей способности): **Move! Move! Move!**, **Fix Bayonets!**, **Take Aim!**, **First Rank, Fire! Second Rank, Fire!**, **Take Cover!** или **Duty and Honour!**. Юнит одновременно может быть затронут только одним приказом, а юнитам в боевом шоке приказы отдавать нельзя.',
   },
 
+  // Faction terms the canon bolds outside Space Marines (owner, 2026-10-01: all six on the list).
+  'orks-riled-up': {
+    term: 'Riled Up',
+    en: 'Orks (Waaagh!): a unit becomes riled up when a rule says so — the War Cry makes every unit with the Waaagh! ability riled up until the end of the next turn. While riled up, the unit has 5+ InSv, its ranged attacks have [ASSAULT], and advancing does not stop it declaring a charge.',
+    ru: 'Orks (Waaagh!): юнит становится riled up, когда это говорит правило, — War Cry делает riled up все юниты со способностью Waaagh! до конца следующего хода. Пока юнит riled up, он имеет 5+ InSv, его атаки дальнего боя имеют [ASSAULT], а продвижение не мешает ему объявить нападение.',
+  },
+  'csm-dark-pact': {
+    term: 'Dark Pact',
+    en: 'Heretic Astartes: each time a unit with this ability is selected to shoot or fight, it can make a Dark Pact. It first takes a Leadership test — if that is failed, it suffers D3 mortal wounds — then its weapons gain [LETHAL HITS] or [SUSTAINED HITS 1], your choice, until the end of the phase.',
+    ru: 'Heretic Astartes: каждый раз, когда юнит с этой способностью выбран для стрельбы или боя, он может заключить Dark Pact. Сначала он проходит проверку лидерства — при провале получает D3 смертельных ран, — затем его оружие получает [LETHAL HITS] или [SUSTAINED HITS 1], на ваш выбор, до конца фазы.',
+  },
+  'nec-resurrect': {
+    term: 'Resurrect',
+    en: 'Necrons: when a unit resurrects, its Reanimation Protocols activate, but it heals D6 wounds instead of D3. You cannot resurrect more than one unit per turn.',
+    ru: 'Necrons: когда юнит воскресает, активируются его Reanimation Protocols, но он исцеляет D6 ран вместо D3. Воскрешать можно не больше одного юнита за ход.',
+  },
+  'ik-bondsman': {
+    term: 'Bondsman',
+    en: 'Imperial Knights: some models have a Bondsman ability. In your Command phase each of them can use it on one friendly ARMIGER model within 12" that no Bondsman ability already affects; that model is affected until the start of your next Command phase.',
+    ru: 'Imperial Knights: у некоторых моделей есть способность Bondsman. В вашей фазе командования каждая из них может применить её к одной дружественной модели ARMIGER в пределах 12", которую ещё не затрагивает способность Bondsman; эффект длится до начала вашей следующей фазы командования.',
+  },
+  'pinned': {
+    term: 'Pinned',
+    en: 'An enemy unit an Aeldari or Grey Knights rule has pinned down: subtract 2 from its Move characteristic and from its Charge rolls. The rule that pins it says for how long.',
+    ru: 'Вражеский юнит, скованный правилом Aeldari или Grey Knights: вычтите 2 из его характеристики движения и из его бросков нападения. Сколько это длится, сказано в правиле, которое его сковало.',
+  },
+  'heroic-intervention': {
+    term: 'Heroic Intervention',
+    en: 'A core Stratagem, Heroic Intervention (15.11): at the end of your opponent’s Charge phase, one friendly unengaged unit within 12" of one or more enemy units resolves a charge.',
+    ru: 'Стратагема основных правил, Heroic Intervention (15.11): в конце фазы нападения оппонента один дружественный юнит вне ближнего боя в пределах 12" от одного или нескольких вражеских юнитов совершает нападение.',
+  },
+
   // Translation-only glosses: popover shows just the English original, no definition body.
   'controlling-player': {
     term: 'Controlling Player',

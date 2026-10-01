@@ -118,7 +118,7 @@ export default {
         // Instinctive Interception
         {
           flavor: 'С гордостью вспоминают Сангвиния за его стремительное вмешательство ради защиты генетических сыновей. Гонимый видениями смерти, этот потерянный воин — трагический памятник той славе.',
-          body: 'Только модель DEATH COMPANY. Когда вы выбираете этот юнит целью **стратагемы Heroic Intervention**, это применение стоит -1 **[gloss:command-points:CP]**.',
+          body: 'Только модель DEATH COMPANY. Когда вы выбираете этот юнит целью **[gloss:heroic-intervention:стратагемы Heroic Intervention]**, это применение стоит -1 **[gloss:command-points:CP]**.',
         },
       ],
     },

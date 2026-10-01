@@ -1552,7 +1552,7 @@ The combined points value of such units you can include in your army depends on 
       rule: {
         name: "Empyric Wellspring",
         flavor: "The sorcerous powers wielded by a cabal inevitably draw the attention of the Dark Gods, flooding the battlefield with immaterial energies that empower their dark magicks and their daemonically gifted comrades alike.",
-        body: "▪ In your Shooting phase, when a friendly HERETIC ASTARTES PSYKER unit (excluding DAEMON units) is **[gloss:selected-to-shoot:selected to shoot]**, if that unit makes a Dark Pact, that unit’s ranged attacks have +1 S.\n▪ In the Fight phase, when a friendly HERETIC ASTARTES DAEMON PRINCE/DAEMON PRINCE WITH WINGS unit (excluding KHORNE units) is **[gloss:selected-to-fight:selected to fight]**, if that unit makes a Dark Pact, that unit’s melee attacks have:\n▪ +2 S.\n▪ +1 AP.",
+        body: "▪ In your Shooting phase, when a friendly HERETIC ASTARTES PSYKER unit (excluding DAEMON units) is **[gloss:selected-to-shoot:selected to shoot]**, if that unit makes a **[gloss:csm-dark-pact:Dark Pact]**, that unit’s ranged attacks have +1 S.\n▪ In the Fight phase, when a friendly HERETIC ASTARTES DAEMON PRINCE/DAEMON PRINCE WITH WINGS unit (excluding KHORNE units) is **[gloss:selected-to-fight:selected to fight]**, if that unit makes a **Dark Pact**, that unit’s melee attacks have:\n▪ +2 S.\n▪ +1 AP.",
       },
       stratagems: [
         {
@@ -1625,7 +1625,7 @@ The combined points value of such units you can include in your army depends on 
           flavor: "As the murderous rain of projectiles redoubles and the fires of ruin burn higher, so the favour of the Dark Gods falls upon the architects of this devastation.",
           when: "Your Shooting phase, when a friendly HAVOCS/OBLITERATORS unit is **[gloss:selected-to-shoot:selected to shoot]**.",
           target: "That HAVOCS/OBLITERATORS unit.",
-          effect: "When your unit uses the Dark Pacts ability, your unit\u2019s ranged attacks have:\n▪ [LETHAL HITS].\n▪ [SUSTAINED HITS 1].",
+          effect: "When your unit uses the **[gloss:csm-dark-pact:Dark Pacts]** ability, your unit’s ranged attacks have:\n▪ [LETHAL HITS].\n▪ [SUSTAINED HITS 1].",
           restrictions: "",
         },
         {
@@ -1656,7 +1656,7 @@ The combined points value of such units you can include in your army depends on 
           name: "Pact of Destruction",
           points: 15,
           flavor: "There are those daemonic entities within the Warp that are willing to offer their boons to any who will wreak wholesale devastation in their name, at least for as long as the carnage holds their capricious attention.",
-          body: "WARPSMITH model only.\n▪ When this unit uses its Dark Pacts ability, this unit can re-roll Leadership rolls.\n▪ In your Shooting phase, when this unit has shot, if this unit used its Dark Pacts ability and if those attacks **[gloss:destroyed:destroyed]** an enemy model, this unit **[gloss:heal:heals]** 3 wounds.",
+          body: "WARPSMITH model only.\n▪ When this unit uses its **[gloss:csm-dark-pact:Dark Pacts]** ability, this unit can re-roll Leadership rolls.\n▪ In your Shooting phase, when this unit has shot, if this unit used its **Dark Pacts** ability and if those attacks **[gloss:destroyed:destroyed]** an enemy model, this unit **[gloss:heal:heals]** 3 wounds.",
         },
         {
           name: "Eye of Oblivion",

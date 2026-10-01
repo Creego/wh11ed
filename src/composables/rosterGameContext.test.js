@@ -81,7 +81,8 @@ describe('activeConditions', () => {
       // "while…", "until…"), which is what every other grant in the codex does.
       for (const t of texts) {
         for (const line of (t || '').split('\n')) {
-          if (/^(?:▪\s*)?This unit is \*\*riled up\*\*\.$/.test(line.trim())) flat.push(u.id)
+          // The term may carry its glossary popover (2026-10-01) — same sentence either way.
+          if (/^(?:▪\s*)?This unit is \*\*(?:\[gloss:orks-riled-up:)?riled up\]?\*\*\.$/.test(line.trim())) flat.push(u.id)
         }
       }
     }

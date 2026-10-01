@@ -43,7 +43,7 @@ const en = {
       'The infamous war cry of the Orks is known and feared throughout the galaxy. When it echoes across the battlefield, bellowed from countless toothy maws, it galvanises the Orks and riles them into a raucous state of excited aggression.',
     body: `Friendly ORKS units with this ability can:
 ▪ Re-roll **[gloss:advance-roll:advance rolls]**.
-▪ Become **riled up**, as stated in other rules.
+▪ Become **[gloss:orks-riled-up:riled up]**, as stated in other rules.
 
 While a unit is **riled up**:
 ▪ That unit has 5+ **[gloss:invulnerable-save:InSv]**.
@@ -141,7 +141,7 @@ Some Orks rules allow a unit to make a **pulse jet move**, as described below. (
           flavor: 'These sparkly optiks and other elaborate gitfindas help focus a wagon’s dakka, but it takes a really clever Mek to know how to work them.',
           body: `WAGON unit only. While a BIG MEK model is embarked within this unit:
 ▪ This unit’s ranged attacks have [IGNORES COVER].
-▪ If this unit is **riled up**, this unit’s ranged attacks have [SUSTAINED HITS 1].`,
+▪ If this unit is **[gloss:orks-riled-up:riled up]**, this unit’s ranged attacks have [SUSTAINED HITS 1].`,
         },
       ],
     },
@@ -154,7 +154,7 @@ Some Orks rules allow a unit to make a **pulse jet move**, as described below. (
       rule: {
         name: '’Ard as Nails',
         flavor: 'The largest Orks have risen to their position through strength, savagery and being harder than anyone else.',
-        body: `When a friendly WARBOSS model is **[gloss:destroyed:destroyed]**, if this unit has not been **[gloss:selected-to-fight:selected to fight]** this phase, roll one D6, with +1 to the roll if your unit is **riled up**:
+        body: `When a friendly WARBOSS model is **[gloss:destroyed:destroyed]**, if this unit has not been **[gloss:selected-to-fight:selected to fight]** this phase, roll one D6, with +1 to the roll if your unit is **[gloss:orks-riled-up:riled up]**:
 ▪ On a 3+, do not remove this WARBOSS model from the battlefield. When this unit has fought, or at the end of the phase (whichever comes first), this WARBOSS model is removed from the battlefield.`,
       },
       stratagems: [
@@ -191,7 +191,7 @@ Some Orks rules allow a unit to make a **pulse jet move**, as described below. (
           flavor: 'Thanks to the tangle of stolen empyric electrodes wired into this helmet, a powerful Ork wearing it is capable of thinking a little further ahead than his next fight.',
           body: `WARBOSS model only. (Once per battle, per army) At the end of your opponent’s Movement phase, if this unit is **[gloss:unengaged:unengaged]**, this unit can make a **[gloss:normal-move:normal move]** of:
 ▪ Up to D6".
-▪ If this unit is **riled up**, you can re-roll that D6.`,
+▪ If this unit is **[gloss:orks-riled-up:riled up]**, you can re-roll that D6.`,
         },
         {
           name: 'Proper Killy',
@@ -239,7 +239,7 @@ Some Orks rules allow a unit to make a **pulse jet move**, as described below. (
           flavor: 'With bone‐headed arrogance, Nobz will carry on killing before their deaths finally dawn on them.',
           when: `Fight phase, when an enemy unit targets a friendly MEGANOBZ/NOBZ unit.`,
           target: `That MEGANOBZ/NOBZ unit.`,
-          effect: `When a model in your unit is **[gloss:destroyed:destroyed]**, if your unit has not been **[gloss:selected-to-fight:selected to fight]** this phase, roll one D6, with +1 to that roll if your unit is **riled up**:
+          effect: `When a model in your unit is **[gloss:destroyed:destroyed]**, if your unit has not been **[gloss:selected-to-fight:selected to fight]** this phase, roll one D6, with +1 to that roll if your unit is **[gloss:orks-riled-up:riled up]**:
 ▪ On a 4+, do not remove that model from the battlefield. When your unit has fought, or at the end of the phase (whichever comes first), that model is removed from the battlefield.`,
           restrictions: ``,
         },
@@ -253,7 +253,7 @@ Some Orks rules allow a unit to make a **pulse jet move**, as described below. (
           target: `That MEGANOBZ/NOBZ unit.`,
           effect: `Your unit’s attacks can:
 ▪ Re-roll **[gloss:hit-roll:hit rolls]** of 1.
-▪ If your unit is **riled up**, re-roll **hit rolls**.`,
+▪ If your unit is **[gloss:orks-riled-up:riled up]**, re-roll **hit rolls**.`,
           restrictions: ``,
         },
       ],
@@ -270,7 +270,7 @@ Some Orks rules allow a unit to make a **pulse jet move**, as described below. (
           flavor: 'Any snivelling gitz attempting to back away from a good fight with these arrogant Nobz get a good kicking to see them on their way.',
           body: `NOBZ unit only. When an enemy unit **[gloss:engaged:engaged]** with this unit is selected to make a **[gloss:fall-back-move:fall-back move]**:
 ▪ That enemy unit must select the **[gloss:desperate-escape:desperate escape]** mode.
-▪ If this unit is **riled up**, that enemy unit has -1 to the **[gloss:hazard-roll:hazard rolls]** made for that **desperate escape**.`,
+▪ If this unit is **[gloss:orks-riled-up:riled up]**, that enemy unit has -1 to the **[gloss:hazard-roll:hazard rolls]** made for that **desperate escape**.`,
         },
       ],
     },
@@ -316,7 +316,7 @@ Some Orks rules allow a unit to make a **pulse jet move**, as described below. (
           flavor: 'Should attempts to obliterate the Beast Snaggas from afar fail, it is often the foe’s last mistake as the hunters turn their baleful attention on them.',
           when: `Your opponent’s Shooting phase, when an enemy unit has shot.`,
           target: `One friendly **[gloss:unengaged:unengaged]** BEAST SNAGGA unit that lost a wound as a result of those attacks.`,
-          effect: `Your unit can make a **[gloss:surge-move:surge move]** of up to D6". If your unit is **riled up**, it can re-roll that D6.`,
+          effect: `Your unit can make a **[gloss:surge-move:surge move]** of up to D6". If your unit is **[gloss:orks-riled-up:riled up]**, it can re-roll that D6.`,
           restrictions: ``,
         },
       ],
@@ -386,7 +386,7 @@ If you rolled two D6, when this unit has attacked, this unit makes one **[gloss:
           flavor: 'Fuelled by the pilot’s obsession or psychosis – and powered up by varied erratic gubbinz – it is little wonder that a Kan’s stomping rampages are constantly reignited.',
           when: `Your Movement phase.`,
           target: `One friendly ORKS WALKER unit.`,
-          effect: `Your unit is **riled up** until the start of your next turn.`,
+          effect: `Your unit is **[gloss:orks-riled-up:riled up]** until the start of your next turn.`,
           restrictions: ``,
         },
       ],
@@ -417,7 +417,7 @@ If you rolled two D6, when this unit has attacked, this unit makes one **[gloss:
         name: 'Skyborne Loons',
         flavor: 'When attacking en masse, crazed and excitable Flyboyz unleash torrential quantities of dakka.',
         body: `▪ Friendly ORKS AIRCRAFT units do not count towards the combined points value of your **[gloss:strategic-reserves:strategic reserves]** units.
-▪ While a friendly ORKS AIRCRAFT/DEFFKOPTAS unit is **riled up**, this unit’s ranged attacks have +1 to **[gloss:hit-roll:hit rolls]**.`,
+▪ While a friendly ORKS AIRCRAFT/DEFFKOPTAS unit is **[gloss:orks-riled-up:riled up]**, this unit’s ranged attacks have +1 to **[gloss:hit-roll:hit rolls]**.`,
       },
       stratagems: [
         {
@@ -441,7 +441,7 @@ If you rolled two D6, when this unit has attacked, this unit makes one **[gloss:
           target: `One friendly **[gloss:unengaged:unengaged]** DEFFKOPTAS unit within 8" of that enemy unit.`,
           effect: `Your unit can make a **[gloss:normal-move:normal move]** of:
 ▪ Up to D6".
-▪ __Or:__ If your unit is **riled up**, up to 6".`,
+▪ __Or:__ If your unit is **[gloss:orks-riled-up:riled up]**, up to 6".`,
           restrictions: ``,
         },
         {
@@ -464,7 +464,7 @@ If you rolled two D6, when this unit has attacked, this unit makes one **[gloss:
           flavor: 'Brutish aces who have survived enough dogfights to rise to positions of superiority, Flybosses inspire other Ork aviators to heights of psychotic enthusiasm.',
           body: `ORKS AIRCRAFT unit only.
 ▪ This unit has CHARACTER.
-▪ When this unit ends an **[gloss:ingress-move:ingress move]**, each friendly ORKS AIRCRAFT/DEFFKOPTAS unit within 6" of this unit is **riled up** until the start of your next turn.`,
+▪ When this unit ends an **[gloss:ingress-move:ingress move]**, each friendly ORKS AIRCRAFT/DEFFKOPTAS unit within 6" of this unit is **[gloss:orks-riled-up:riled up]** until the start of your next turn.`,
         },
         {
           name: 'Impulsive Recon (Upgrade)',
@@ -648,7 +648,7 @@ If you rolled two D6, when this unit has attacked, this unit makes one **[gloss:
           name: 'Mekwaaagh! Mastermind',
           points: 30,
           flavor: 'This Big Mek’s obsession with feverish inventing and his dreams of ludicrous technological destruction are infectious, inspiring other Orks to excitable aggression.',
-          body: `BIG MEK model only. This unit is **riled up**.`,
+          body: `BIG MEK model only. This unit is **[gloss:orks-riled-up:riled up]**.`,
         },
         {
           name: 'Temperamental Shokka (Upgrade)',
@@ -736,7 +736,7 @@ If you rolled two D6, when this unit has attacked, this unit makes one **[gloss:
         flavor: 'Always hunting for something to kill, when Orks spot a target they saturate it with dakka.',
         body: `Friendly ORKS INFANTRY units’ ranged attacks have:
 ▪ [ASSAULT].
-▪ While this unit is **riled up**, +3" **[gloss:range:R]**.`,
+▪ While this unit is **[gloss:orks-riled-up:riled up]**, +3" **[gloss:range:R]**.`,
       },
       stratagems: [
         {
@@ -906,7 +906,7 @@ In the Declare Battle Formations step, the bearer can be attached to a Kommandos
           flavor: 'So resilient is Ork physiology – and so slow are Orks on the uptake – even death can take time to register.',
           when: `Fight phase, when an enemy unit targets a friendly ORKS unit (excluding TITANIC units).`,
           target: `That ORKS unit.`,
-          effect: `When a model in your unit is **[gloss:destroyed:destroyed]**, if your unit has not been **[gloss:selected-to-fight:selected to fight]** this phase, roll one D6, with +1 to that roll if your unit is **riled up**:
+          effect: `When a model in your unit is **[gloss:destroyed:destroyed]**, if your unit has not been **[gloss:selected-to-fight:selected to fight]** this phase, roll one D6, with +1 to that roll if your unit is **[gloss:orks-riled-up:riled up]**:
 ▪ On a 4+, do not remove that model from the battlefield. When your unit has fought, or at the end of the phase (whichever comes first), that model is removed from the battlefield.`,
           restrictions: ``,
         },
@@ -951,7 +951,7 @@ In the Declare Battle Formations step, the bearer can be attached to a Kommandos
           name: 'Da Boss is Watchin\'',
           points: 25,
           flavor: 'This war leader is a glowering incarnation of violence, his brutality so contagious that when he bellows his blind fury and releases his pent-up aggression, Orks nearby are excitedly swept along with him.',
-          body: `ORKS model only. (Once per battle, per army) In your Movement phase, you can use this ability. If you do, this unit is **riled up** until the start of your next turn.`,
+          body: `ORKS model only. (Once per battle, per army) In your Movement phase, you can use this ability. If you do, this unit is **[gloss:orks-riled-up:riled up]** until the start of your next turn.`,
         },
         {
           name: 'Follow Me Ladz',

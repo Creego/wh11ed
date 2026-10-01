@@ -82,7 +82,7 @@ const en = {
           "name": "Instinctive Interception",
           "points": 10,
           "flavor": "Proudly is Sanguinius remembered for his rapid intercession in the protection of his gene-sons. Driven on by death visions, this lost warrior is a tragic monument to such glory.",
-          "body": "DEATH COMPANY model only. When you target this unit with the **Heroic Intervention stratagem**, that use is -1 **[gloss:command-points:CP]**."
+          "body": "DEATH COMPANY model only. When you target this unit with the **[gloss:heroic-intervention:Heroic Intervention stratagem]**, that use is -1 **[gloss:command-points:CP]**."
         }
       ]
     },

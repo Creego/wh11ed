@@ -748,7 +748,7 @@ const en = {
       rule: {
         name: "Searing Soulflame",
         flavor: "Through potent psychic focus and the channelling of their vehement wrath, Purgators imbue their salvoes with bursts of soul-burning psyfire.",
-        body: "When you select a unit to be pinned by a friendly PURGATION SQUAD unit\u2019s Righteous Persecution ability, that enemy unit makes a Battle-shock roll, with -1 to that Battle-shock roll.",
+        body: "When you select a unit to be **[gloss:pinned:pinned]** by a friendly PURGATION SQUAD unit’s Righteous Persecution ability, that enemy unit makes a Battle-shock roll, with -1 to that Battle-shock roll.",
       },
       stratagems: [
         {

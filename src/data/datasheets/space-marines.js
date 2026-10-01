@@ -157,7 +157,7 @@ export default [
       },
       {
         "name": "Blackwing Mantle (Once per phase, per army)",
-        "text": "You can target this unit with the **Heroic Intervention stratagem**, regardless of any other uses of that **[gloss:stratagem:stratagem]** this phase. If you do:\n▪ That use is -1 CP.\n▪ That use does not prevent any uses of that **stratagem** on other units this phase."
+        "text": "You can target this unit with the **[gloss:heroic-intervention:Heroic Intervention stratagem]**, regardless of any other uses of that **[gloss:stratagem:stratagem]** this phase. If you do:\n▪ That use is -1 CP.\n▪ That use does not prevent any uses of that **stratagem** on other units this phase."
       }
     ],
     "composition": [
@@ -2777,7 +2777,7 @@ export default [
       },
       {
         "name": "Honour or Death",
-        "text": "When you target this unit with the **Heroic Intervention stratagem**, that use is -1 CP."
+        "text": "When you target this unit with the **[gloss:heroic-intervention:Heroic Intervention stratagem]**, that use is -1 CP."
       }
     ],
     "composition": [

@@ -172,7 +172,7 @@ export default [
       },
       {
         "name": "Relentless Avalanche",
-        "text": "You can target this unit with the **Heroic Intervention stratagem**, regardless of any other uses of that **[gloss:stratagem:stratagem]** this phase. If you do:\n▪ That use is -1 CP.\n▪ That use does not prevent any uses of that **stratagem** on other units this phase."
+        "text": "You can target this unit with the **[gloss:heroic-intervention:Heroic Intervention stratagem]**, regardless of any other uses of that **[gloss:stratagem:stratagem]** this phase. If you do:\n▪ That use is -1 CP.\n▪ That use does not prevent any uses of that **stratagem** on other units this phase."
       }
     ],
     "composition": [
@@ -2410,7 +2410,7 @@ export default [
       },
       {
         "name": "Predictive Guidance",
-        "text": "Once per battle round, when you target this unit with the **Fire Overwatch**/**Heroic Intervention stratagem**, you can use this ability. If you do, that use of that **[gloss:stratagem:stratagem]** is -1 CP."
+        "text": "Once per battle round, when you target this unit with the **Fire Overwatch**/**[gloss:heroic-intervention:Heroic Intervention stratagem]**, you can use this ability. If you do, that use of that **[gloss:stratagem:stratagem]** is -1 CP."
       }
     ],
     "composition": [

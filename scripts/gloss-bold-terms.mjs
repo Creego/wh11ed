@@ -47,6 +47,7 @@ const EXTRA_EN = {
   'move types': 'move-type', 'hazard rolls': 'hazard-roll', 'leadership rolls': 'leadership-roll', 'damage rolls': 'damage-roll',
   heals: 'heal', secured: 'secured-objective', suppressed: 'sm-suppressed', entrenched: 'sm-entrenched', snared: 'sm-snared', assailed: 'sm-assailed',
   'advance rolls': 'advance-roll', 'charge rolls': 'charge-roll', 'mortal wound': 'mortal-wound',
+  'heroic intervention stratagem': 'heroic-intervention', resurrects: 'nec-resurrect', 'dark pacts': 'csm-dark-pact',
 }
 const EN_PATTERNS = [[/^(psyker|psychic) levels?( \d+)?$/, 'psyker-level']]
 
@@ -85,7 +86,9 @@ export const RU_FORMS = [
   [/^способн\S* начать действие$/, 'eligible-to-act'], [/^способн\S* стрелять$/, 'eligible-to-shoot'], [/^способн\S* объявлять нападение$/, 'eligible-to-charge'],
   [/^действи(е|я|ю|ем|и)$/, 'action'], [/^(проверк\S*|брос\S*) боевого шока$/, 'battle-shock-test'], [/^проверк\S* лидерства$/, 'leadership-roll'],
   [/^максимальн\S* дистанци\S*$/, 'maximum-distance'], [/^элемент\S* укрытия$/, 'terrain-area'], [/^snap shooting$/, 'snap-shooting'],
-  [/^брос\S* опасности$/, 'hazard-roll'], [/^приказ\S*$/, 'am-order'], [/^уничтожил\S*$/, 'destroyed'], [/^выбира\S* сражаться$/, 'selected-to-fight'], [/^выбира\S* стрелять$/, 'selected-to-shoot'],
+  [/^брос\S* опасности$/, 'hazard-roll'], [/^приказ\S*$/, 'am-order'],
+  [/^riled up$/, 'orks-riled-up'], [/^dark pacts?$/, 'csm-dark-pact'], [/^воскреса\S*$/, 'nec-resurrect'], [/^bondsman$/, 'ik-bondsman'],
+  [/^скован\S*$/, 'pinned'], [/^пригвожд\S*$/, 'pinned'], [/^прижат\S* к земле$/, 'pinned'], [/^стратагем\S* heroic intervention$/, 'heroic-intervention'], [/^уничтожил\S*$/, 'destroyed'], [/^выбира\S* сражаться$/, 'selected-to-fight'], [/^выбира\S* стрелять$/, 'selected-to-shoot'],
   [/^подавлен\S*$/, 'sm-suppressed'], [/^окопавш\S*$/, 'sm-entrenched'], [/^опутан\S*$/, 'sm-snared'], [/^под натиском$/, 'sm-assailed'],
 ]
 

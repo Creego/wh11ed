@@ -2504,7 +2504,7 @@ export default [
       },
       {
         "name": "Resurrection Orb",
-        "text": "Once per battle, per unit, at the end of any phase, you can use this ability. If you do, this unit resurrects: when a unit resurrects, that unit’s Reanimation Protocols activate, but that unit **[gloss:heal:heals]** D6 wounds (instead of D3 wounds). You cannot resurrect more than one unit per turn."
+        "text": "Once per battle, per unit, at the end of any phase, you can use this ability. If you do, this unit **[gloss:nec-resurrect:resurrects]**: when a unit **resurrects**, that unit’s Reanimation Protocols activate, but that unit **[gloss:heal:heals]** D6 wounds (instead of D3 wounds). You cannot resurrect more than one unit per turn."
       }
     ],
     "composition": [
@@ -3310,7 +3310,7 @@ export default [
     "wargearAbilities": [
       {
         "name": "Resurrection Orb",
-        "text": "Once per battle, per unit, at the end of any phase, you can use this ability. If you do, this unit resurrects: when a unit resurrects, that unit’s Reanimation Protocols activate, but that unit **[gloss:heal:heals]** D6 wounds (instead of D3 wounds). You cannot resurrect more than one unit per turn."
+        "text": "Once per battle, per unit, at the end of any phase, you can use this ability. If you do, this unit **[gloss:nec-resurrect:resurrects]**: when a unit **resurrects**, that unit’s Reanimation Protocols activate, but that unit **[gloss:heal:heals]** D6 wounds (instead of D3 wounds). You cannot resurrect more than one unit per turn."
       }
     ],
     "composition": [
@@ -3390,7 +3390,7 @@ export default [
     "wargearAbilities": [
       {
         "name": "Resurrection Orb",
-        "text": "Once per battle, per unit, at the end of any phase, you can use this ability. If you do, this unit resurrects: when a unit resurrects, that unit’s Reanimation Protocols activate, but that unit **[gloss:heal:heals]** D6 wounds (instead of D3 wounds). You cannot resurrect more than one unit per turn."
+        "text": "Once per battle, per unit, at the end of any phase, you can use this ability. If you do, this unit **[gloss:nec-resurrect:resurrects]**: when a unit **resurrects**, that unit’s Reanimation Protocols activate, but that unit **[gloss:heal:heals]** D6 wounds (instead of D3 wounds). You cannot resurrect more than one unit per turn."
       }
     ],
     "composition": [

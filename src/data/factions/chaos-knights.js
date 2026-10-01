@@ -788,7 +788,7 @@ Each time a model with this ability makes a Normal, Advance or Fall Back move, i
           points: 20,
           aura: true,
           flavor: "Chanting mortal thralls have pledged their lives and souls to this Chaos Knight\u2019s defence, and throw themselves at any who dare threaten the object of their idolatry.",
-          body: "CHAOS KNIGHTS model only. While a friendly DAMNED unit is within 6\" of this model, when you target that unit with the Heroic Intervention Stratagem, that use is -1 CP.",
+          body: "CHAOS KNIGHTS model only. While a friendly DAMNED unit is within 6\" of this model, when you target that unit with the **[gloss:heroic-intervention:Heroic Intervention Stratagem]**, that use is -1 CP.",
         },
       ],
     },

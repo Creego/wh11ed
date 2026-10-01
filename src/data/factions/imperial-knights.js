@@ -729,7 +729,7 @@ If every model in your army has the IMPERIUM keyword, you can include either one
       rule: {
         name: "Driven from Their Lairs",
         flavor: "The moment the loyal bondsmen locate and identify the foe, they share targeting data-choristry with their ruling lords and ladies.",
-        body: "While a friendly ARMIGER unit is affected by a Bondsman ability, that unit’s ranged attacks have [IGNORES COVER].\n\nThis **[gloss:detachments:detachment]** has the **ARMIGERS** tag and cannot be taken with another **ARMIGERS** **detachment**.",
+        body: "While a friendly ARMIGER unit is affected by a **[gloss:ik-bondsman:Bondsman]** ability, that unit’s ranged attacks have [IGNORES COVER].\n\nThis **[gloss:detachments:detachment]** has the **ARMIGERS** tag and cannot be taken with another **ARMIGERS** **detachment**.",
       },
       stratagems: [
         {
@@ -749,9 +749,9 @@ If every model in your army has the IMPERIUM keyword, you can include either one
           cp: "1CP",
           turn: "your",
           flavor: "Some longer-serving bondsmen become so conditioned to efficient obedience by their Helm Mechanicum that they can be issued neural commands from ever-greater distances.",
-          when: "Your Command phase, when a friendly IMPERIAL KNIGHTS unit uses a Bondsman ability.",
+          when: "Your Command phase, when a friendly IMPERIAL KNIGHTS unit uses a **[gloss:ik-bondsman:Bondsman]** ability.",
           target: "That IMPERIAL KNIGHTS unit.",
-          effect: "When selecting an ARMIGER model for that Bondsman ability, you can select one within 18\" of your unit (excluding models already affected by a Bondsman ability).",
+          effect: "When selecting an ARMIGER model for that **[gloss:ik-bondsman:Bondsman]** ability, you can select one within 18\" of your unit (excluding models already affected by a **Bondsman** ability).",
           restrictions: "",
         },
         {

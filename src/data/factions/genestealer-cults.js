@@ -246,7 +246,7 @@ Use a circular 32mm diameter marker for Cult Ambush markers. If an enemy model (
           name: "Adaptive Reprisal",
           points: 15,
           flavor: "Whether through intensive cross-training with tainted officers or some symbiotic neuro-mimicry, this insurrectionist is adept in daring tactical manoeuvres.",
-          body: "GENESTEALER CULTS INFANTRY model only. When you target this unit with the Heroic Intervention Stratagem, that use is -1 CP.",
+          body: "GENESTEALER CULTS INFANTRY model only. When you target this unit with the **[gloss:heroic-intervention:Heroic Intervention Stratagem]**, that use is -1 CP.",
         },
         {
           name: "The Hero Returned",

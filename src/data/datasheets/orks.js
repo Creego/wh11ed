@@ -385,7 +385,7 @@ export default [
     "abilities": [
       {
         "name": "Keep Huntin’! (Once per battle round, per army)",
-        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly BEAST SNAGGA unit within 6\" of this unit. That unit:\n▪ Is no longer **[gloss:battle-shocked:battle-shocked]**.\n▪ Is **riled up** until the start of your next turn."
+        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly BEAST SNAGGA unit within 6\" of this unit. That unit:\n▪ Is no longer **[gloss:battle-shocked:battle-shocked]**.\n▪ Is **[gloss:orks-riled-up:riled up]** until the start of your next turn."
       },
       {
         "name": "Dodge Dis!",
@@ -511,7 +511,7 @@ export default [
       },
       {
         "name": "Keep Huntin’! (Once per battle round, per army)",
-        "text": "In your Movement phase, at the start or end of this unit’s move, you can select one friendly BEAST SNAGGA unit within 6\" of this unit. That unit:\n▪ Is no longer **[gloss:battle-shocked:battle-shocked]**.\n▪ Is **riled up** until the start of your next turn."
+        "text": "In your Movement phase, at the start or end of this unit’s move, you can select one friendly BEAST SNAGGA unit within 6\" of this unit. That unit:\n▪ Is no longer **[gloss:battle-shocked:battle-shocked]**.\n▪ Is **[gloss:orks-riled-up:riled up]** until the start of your next turn."
       },
       {
         "name": "Boss of da Hunt",
@@ -614,7 +614,7 @@ export default [
     "abilities": [
       {
         "name": "More Dakka",
-        "text": "This unit’s ranged attacks have:\n▪ [IGNORES COVER].\n▪ If this unit is **riled up**, [SUSTAINED HITS 1]."
+        "text": "This unit’s ranged attacks have:\n▪ [IGNORES COVER].\n▪ If this unit is **[gloss:orks-riled-up:riled up]**, [SUSTAINED HITS 1]."
       },
       {
         "name": "Shokk-boosta",
@@ -722,7 +722,7 @@ export default [
     "abilities": [
       {
         "name": "Even More Dakka",
-        "text": "If this unit is **riled up**, this unit’s ranged attacks have [SUSTAINED HITS 1]."
+        "text": "If this unit is **[gloss:orks-riled-up:riled up]**, this unit’s ranged attacks have [SUSTAINED HITS 1]."
       },
       {
         "name": "Blitz Dem Gitz!",
@@ -881,7 +881,7 @@ export default [
       },
       {
         "name": "More Dakka",
-        "text": "This unit’s ranged attacks have:\n▪ [IGNORES COVER].\n▪ If this unit is **riled up**, [SUSTAINED HITS 1]."
+        "text": "This unit’s ranged attacks have:\n▪ [IGNORES COVER].\n▪ If this unit is **[gloss:orks-riled-up:riled up]**, [SUSTAINED HITS 1]."
       }
     ],
     "wargearAbilities": [
@@ -975,7 +975,7 @@ export default [
     "abilities": [
       {
         "name": "More Dakka",
-        "text": "This unit’s ranged attacks have:\n▪ [IGNORES COVER].\n▪ If this unit is **riled up**, [SUSTAINED HITS 1]."
+        "text": "This unit’s ranged attacks have:\n▪ [IGNORES COVER].\n▪ If this unit is **[gloss:orks-riled-up:riled up]**, [SUSTAINED HITS 1]."
       },
       {
         "name": "Support Shokka",
@@ -2485,7 +2485,7 @@ export default [
     "abilities": [
       {
         "name": "Get Back in da Race! (Once per battle round, per army)",
-        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly SPEED FREEKS unit within 6\" of this unit. That unit (and any units embarked within that unit):\n▪ Is no longer **[gloss:battle-shocked:battle-shocked]**.\n▪ Is **riled up** until the start of your next turn."
+        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly SPEED FREEKS unit within 6\" of this unit. That unit (and any units embarked within that unit):\n▪ Is no longer **[gloss:battle-shocked:battle-shocked]**.\n▪ Is **[gloss:orks-riled-up:riled up]** until the start of your next turn."
       },
       {
         "name": "Fuel-mixa Grot",
@@ -2966,7 +2966,7 @@ export default [
       },
       {
         "name": "Makari, Hoist Dat Banner! (Once per battle, per army)",
-        "text": "In your Movement phase, you can select a number of friendly ORKS units equal to or less than the current battle round number. Those units are **riled up** until the start of your next turn.\n\nPlace one Makari token next to the unit, removing it after this ability is used."
+        "text": "In your Movement phase, you can select a number of friendly ORKS units equal to or less than the current battle round number. Those units are **[gloss:orks-riled-up:riled up]** until the start of your next turn.\n\nPlace one Makari token next to the unit, removing it after this ability is used."
       },
       {
         "name": "Prophet of da Great Waaagh! (Aura)",
@@ -5074,7 +5074,7 @@ export default [
       },
       {
         "name": "Krumpin’ Time",
-        "text": "In the Fight phase, if this unit is **riled up**, this unit has +1 to **[gloss:hit-roll:hit rolls]**."
+        "text": "In the Fight phase, if this unit is **[gloss:orks-riled-up:riled up]**, this unit has +1 to **[gloss:hit-roll:hit rolls]**."
       }
     ],
     "composition": [
@@ -5690,7 +5690,7 @@ export default [
     "abilities": [
       {
         "name": "Intimidating Motivation (Once per battle round, per army)",
-        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly ORKS unit within 6\" of this unit. That unit:\n▪ Is no longer **[gloss:battle-shocked:battle-shocked]**.\n▪ Is **riled up** until the start of your next turn."
+        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly ORKS unit within 6\" of this unit. That unit:\n▪ Is no longer **[gloss:battle-shocked:battle-shocked]**.\n▪ Is **[gloss:orks-riled-up:riled up]** until the start of your next turn."
       },
       {
         "name": "Nazdreg’s Know‑wotz",
@@ -5698,7 +5698,7 @@ export default [
       },
       {
         "name": "Supreme Kunnin’ (Once per phase, per army)",
-        "text": "In your opponent's Movement phase, when an enemy unit ends a move within 8\" of this unit, if this unit is **[gloss:unengaged:unengaged]**, this unit can:\n▪ Make a **[gloss:normal-move:normal move]** of up to D6\".\n▪ __Or:__ If this unit is **riled up**, make a **normal move** of up to 5\"."
+        "text": "In your opponent's Movement phase, when an enemy unit ends a move within 8\" of this unit, if this unit is **[gloss:unengaged:unengaged]**, this unit can:\n▪ Make a **[gloss:normal-move:normal move]** of up to D6\".\n▪ __Or:__ If this unit is **[gloss:orks-riled-up:riled up]**, make a **normal move** of up to 5\"."
       }
     ],
     "composition": [
@@ -6472,11 +6472,11 @@ export default [
     "abilities": [
       {
         "name": "Idol of Belligerence",
-        "text": "In your Movement phase, when a unit embarked within this unit is selected to make a **[gloss:disembark:disembark move]**, that unit is **riled up** until the start of your next turn."
+        "text": "In your Movement phase, when a unit embarked within this unit is selected to make a **[gloss:disembark:disembark move]**, that unit is **[gloss:orks-riled-up:riled up]** until the start of your next turn."
       },
       {
         "name": "Waaagh! Effigy",
-        "text": "This unit is **riled up**."
+        "text": "This unit is **[gloss:orks-riled-up:riled up]**."
       }
     ],
     "composition": [
@@ -7112,7 +7112,7 @@ export default [
       },
       {
         "name": "Intimidating Motivation (Once per battle round, per army)",
-        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly ORKS unit within 6\" of this unit. That unit:\n▪ Is no longer **[gloss:battle-shocked:battle-shocked]**.\n▪ Is **riled up** until the start of your next turn."
+        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly ORKS unit within 6\" of this unit. That unit:\n▪ Is no longer **[gloss:battle-shocked:battle-shocked]**.\n▪ Is **[gloss:orks-riled-up:riled up]** until the start of your next turn."
       }
     ],
     "composition": [
@@ -7207,7 +7207,7 @@ export default [
       },
       {
         "name": "Intimidating Motivation (Once per battle round, per army)",
-        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly ORKS unit within 6\" of this unit. That unit:\n▪ Is no longer **[gloss:battle-shocked:battle-shocked]**.\n▪ Is **riled up** until the start of your next turn."
+        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly ORKS unit within 6\" of this unit. That unit:\n▪ Is no longer **[gloss:battle-shocked:battle-shocked]**.\n▪ Is **[gloss:orks-riled-up:riled up]** until the start of your next turn."
       }
     ],
     "composition": [
@@ -7303,7 +7303,7 @@ export default [
     "abilities": [
       {
         "name": "Get Back in Da Race",
-        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly SPEED FREEKS unit within 6\" of this unit. That unit (and any units embarked within that unit):\n▪ Is no longer **[gloss:battle-shocked:battle-shocked]**.\n▪ Is **riled up** until the start of your next turn."
+        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly SPEED FREEKS unit within 6\" of this unit. That unit (and any units embarked within that unit):\n▪ Is no longer **[gloss:battle-shocked:battle-shocked]**.\n▪ Is **[gloss:orks-riled-up:riled up]** until the start of your next turn."
       },
       {
         "name": "Speedboss",
@@ -7964,7 +7964,7 @@ export default [
     "abilities": [
       {
         "name": "Super Runts",
-        "text": "▪ This unit is **riled up**.\n▪ This unit's Scavenged Shivs weapons have +1 **[gloss:attack-dice:A]**, **[gloss:weapon-skill:WS]** and **[gloss:strength:S]**."
+        "text": "▪ This unit is **[gloss:orks-riled-up:riled up]**.\n▪ This unit's Scavenged Shivs weapons have +1 **[gloss:attack-dice:A]**, **[gloss:weapon-skill:WS]** and **[gloss:strength:S]**."
       }
     ],
     "composition": [

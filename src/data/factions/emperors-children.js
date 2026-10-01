@@ -115,7 +115,7 @@ When mustering your army, unless specifically stated otherwise, you cannot selec
           name: "Empyric Suffusion",
           points: 15,
           flavor: "Swirling clouds of perfumed empyric energy suffuse this leader s followers, granting them daemonic vigour.",
-          body: "EMPEROR\u2019S CHILDREN model only. When you target this unit with the Heroic Intervention Stratagem, that use is -1 CP.",
+          body: "EMPEROR’S CHILDREN model only. When you target this unit with the **[gloss:heroic-intervention:Heroic Intervention Stratagem]**, that use is -1 CP.",
         },
         {
           name: "Dark Blessings",

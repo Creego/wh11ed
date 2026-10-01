@@ -141,7 +141,7 @@ const en = {
       "rule": {
         "name": "The Great Wolf Watches",
         "flavor": "The battle‑brothers of this Great Company know what their lord expects of them and stand ready to pounce the moment the foe are fool enough to stray within range.",
-        "body": "Friendly ADEPTUS ASTARTES CHARACTER units have the following ability:\n\n**Countercharge**: **(Once per battle round, per unit)** When you target this unit with the **Heroic Intervention stratagem**, that use is -1CP."
+        "body": "Friendly ADEPTUS ASTARTES CHARACTER units have the following ability:\n\n**Countercharge**: **(Once per battle round, per unit)** When you target this unit with the **[gloss:heroic-intervention:Heroic Intervention stratagem]**, that use is -1CP."
       },
       "stratagems": [
         {
