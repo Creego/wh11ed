@@ -35,11 +35,16 @@
         class="det-dp"
       >{{ dp }} DP</span>
       <span
-        v-for="fd in forceDispositions"
-        :key="fd"
-        class="tone tone-chip"
-        :style="toneVars(dispositionColor(fd))"
-      >{{ fd }}</span>
+        v-if="forceDispositions.length"
+        class="det-fds"
+      >
+        <span
+          v-for="fd in forceDispositions"
+          :key="fd"
+          class="tone tone-chip"
+          :style="toneVars(dispositionColor(fd))"
+        >{{ fd }}</span>
+      </span>
     </span>
   </button>
 </template>
@@ -146,6 +151,15 @@ defineProps({
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  gap: 0.3rem;
+}
+
+/* Two dispositions sit side by side under the price, not stacked — stacked, they made the row a
+   third taller than its neighbours (owner, 2026-10-01). They wrap only where the row is too narrow. */
+.det-fds {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 0.3rem;
 }
 
