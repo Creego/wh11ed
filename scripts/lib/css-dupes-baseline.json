@@ -111,10 +111,6 @@
     "src/components/tracker/GameEndModal.vue",
     "src/components/tracker/GameSummaryModal.vue"
   ],
-  ".nd-link { display: flex; align-items: baseline; gap: 0.4rem; padding: 0.16rem 0; font-size: 0.85rem; color: var(--text-primary); text-decoration: none; white-space: nowrap; transition: color var(--motion-fast); }": [
-    "src/components/AppNavbar.vue",
-    "src/components/AppSubnav.vue"
-  ],
   ".or { font-style: normal; font-size: 0.62rem; font-weight: 700; text-transform: uppercase; color: var(--text-dim); margin-right: 0.2rem; }": [
     "src/components/event/MissionCard.vue",
     "src/components/tracker/ScoringModal.vue"

@@ -37,8 +37,8 @@
     <!-- Desktop-only floating controls, bottom-right, shown only while the hero tabs are
          scrolled out of view (>900px has no bottom nav). Stacked in a column: a button for
          each of the two OTHER tabs (jump straight to either without cycling), then a "back
-         to top" button at the bottom. Hidden on the per-unit page (hero=false) — the top
-         subnav with the same links stays visible there (see App.vue isFactionUnitPage). -->
+         to top" button at the bottom. The per-unit page (hero=false) has its own column
+         below. -->
     <div
       v-if="faction && hero"
       class="faction-fabs"
@@ -71,6 +71,38 @@
           <i class="bi bi-arrow-up" />
         </button>
       </Transition>
+    </div>
+    <!-- The per-unit page has no tabs: all three are corner buttons there, at any scroll — they
+         replaced the desktop subnav strip over the sheet (owner, 2026-10-01). Units goes back to
+         the list when the page was opened from it, like the phone's button (backToUnits). -->
+    <div
+      v-else-if="faction && route.params.unit"
+      class="faction-fabs"
+    >
+      <template
+        v-for="t in tabs"
+        :key="t.to"
+      >
+        <button
+          v-if="t.prefix"
+          type="button"
+          class="fab-btn"
+          :title="t.label"
+          :aria-label="t.label"
+          @click="backToUnits"
+        >
+          <i :class="t.icon" />
+        </button>
+        <RouterLink
+          v-else
+          :to="t.to"
+          class="fab-btn"
+          :title="t.label"
+          :aria-label="t.label"
+        >
+          <i :class="t.icon" />
+        </RouterLink>
+      </template>
     </div>
   </div>
 </template>
