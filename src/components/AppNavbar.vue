@@ -101,7 +101,9 @@
 
       <div class="navbar-actions">
         <button
+          ref="searchBtn"
           class="search-btn"
+          data-press
           :title="labels.ariaSearchTitle"
           :aria-label="labels.ariaSearchTitle"
           @click="$emit('open-search')"
@@ -357,6 +359,22 @@ function onMockToggle() {
 }
 
 const labels = computed(() => ui[locale.value])
+
+// Where the search field unfolds from on a wide screen (SearchModal's docked shape). Its layout
+// box, not getBoundingClientRect: the click that asks is mid-press, the button scaled down round
+// its centre — so the centre is true and the size comes from offsetWidth/Height.
+const searchBtn = ref(null)
+function searchRect() {
+  const el = searchBtn.value
+  if (!el) return null
+  const r = el.getBoundingClientRect()
+  const cx = (r.left + r.right) / 2
+  const cy = (r.top + r.bottom) / 2
+  const w = el.offsetWidth
+  const h = el.offsetHeight
+  return { left: cx - w / 2, right: cx + w / 2, top: cy - h / 2, bottom: cy + h / 2, width: w, height: h }
+}
+defineExpose({ searchRect })
 
 const settingsOpen = ref(false)
 

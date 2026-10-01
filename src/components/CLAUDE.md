@@ -221,6 +221,10 @@ screens that had copied each other and drifted. The pairs that existed then are 
   desk's "More settings" is a plain `PickerDropdown` — that line exists only on a wide screen.
   A faction keyword tapped in rule prose (`KeywordUnitsModal`) hangs its unit list from the word on
   a wide screen, placed by the glossary popover's own rule (`utils/anchorPlacement.js`).
+  Search (`SearchModal`) docks in the navbar on a wide screen: the button stretches left into the
+  field and the results drop under it, no dimming; a phone keeps the full-screen sheet, faded in.
+  The unfold is a `clip-path` on the overlay — the root of App's `<Transition name="search">`,
+  because Vue times enter/leave by the root's own animation and would cut a child's short.
 
 
 ## Modals
