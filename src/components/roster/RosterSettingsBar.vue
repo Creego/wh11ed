@@ -364,15 +364,16 @@ const moreOpen = ref(false)
    is how a disposition is told apart everywhere else (dispositionColors.js). */
 .rw-fac { --pd-width: 32rem; }
 .rw-det { --pd-width: 30rem; }
-.rw-fd { --pd-width: 15rem; }
+.rw-fd { --pd-width: 12rem; }
 /* The last field on the line: its panel opens leftwards, or at 1200px it would leave the screen. */
 .rw-fd :deep(.pd-panel) { left: auto; right: 0; }
 .rw-fd .rw-choose { min-width: 11rem; }
+.rw-fd .modal-list { gap: 0.25rem; }
 .rw-fd-opt {
   display: flex;
   align-items: center;
-  min-height: 40px;
-  padding: 0.35rem 0.55rem;
+  min-height: 30px;
+  padding: 0.2rem 0.4rem;
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   cursor: pointer;

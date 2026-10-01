@@ -203,6 +203,12 @@ screens that had copied each other and drifted. The pairs that existed then are 
   and the desk's settings line wraps them in `PickerDropdown.vue` — the account menu's recipe
   (backdrop for the outside click, Escape, `fade-pop`), the modal's surface, its own scroll. The
   declared Force Disposition there is a `PickerDropdown` too, its chips in their colours.
+  Everywhere else a picker serves both widths, **`AdaptivePicker.vue`** picks the shape: the
+  dropdown from 901px up, the modal below, the same list in both (its slot hands the list
+  `compact` and `bodyClass`). In use: the faction pages' chapter and detachment pickers
+  (`FactionPickerBar`, rows from `FactionDetachmentList`) and the tracker's game setup (faction,
+  detachments). Not for pickers whose rows unfold rich content (missions, secondaries, twists,
+  layouts) or carry a form (the roster picker's share-link field) — a dropdown is for a short list.
 
 
 ## Modals

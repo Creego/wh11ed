@@ -265,17 +265,38 @@
                       ✕
                     </button>
                   </div>
-                  <button
+                  <!-- A dropdown under the button on a wide screen, the modal on a phone. -->
+                  <AdaptivePicker
                     v-else
-                    class="btn-choose-twist faction-btn"
-                    @click="factionPickerKey = ak(i, mi)"
+                    class="faction-pick"
+                    panel-width="32rem"
+                    :title="labels.trackerSelectFaction"
+                    :open="factionPickerKey === ak(i, mi)"
+                    @update:open="v => (factionPickerKey = v ? ak(i, mi) : '')"
                   >
-                    <span
-                      class="ct-name"
-                      :class="{ placeholder: !m.factionSlug }"
-                    >{{ m.factionSlug ? factionName(m.factionSlug) : labels.trackerSelectFaction }}</span>
-                    <i class="bi bi-chevron-right ct-chev" />
-                  </button>
+                    <template #trigger="{ toggle, open }">
+                      <button
+                        class="btn-choose-twist faction-btn"
+                        :aria-expanded="open"
+                        @click="toggle"
+                      >
+                        <span
+                          class="ct-name"
+                          :class="{ placeholder: !m.factionSlug }"
+                        >{{ m.factionSlug ? factionName(m.factionSlug) : labels.trackerSelectFaction }}</span>
+                        <i class="bi bi-chevron-down ct-chev" />
+                      </button>
+                    </template>
+                    <template #default="{ compact, bodyClass }">
+                      <FactionPickerList
+                        :class="bodyClass"
+                        :compact="compact"
+                        :selected="m.factionSlug"
+                        :combat-patrol-only="settings.combatPatrol"
+                        @pick="slug => selectFaction(m, slug)"
+                      />
+                    </template>
+                  </AdaptivePicker>
                   <!-- No list in Combat Patrol: the box IS the army (one fixed detachment, a
                        fixed Force Disposition, a fixed set of models), so a 2000-point list
                        attached here would describe a different game. -->
@@ -291,13 +312,6 @@
                     <i class="bi bi-card-list" />
                   </button>
                 </div>
-                <FactionPickerModal
-                  v-if="factionPickerKey === ak(i, mi)"
-                  :selected="m.factionSlug"
-                  :combat-patrol-only="settings.combatPatrol"
-                  @pick="slug => selectFaction(m, slug)"
-                  @close="factionPickerKey = ''"
-                />
                 <RosterPickerModal
                   v-if="rosterPickerKey === ak(i, mi)"
                   :selected="m.roster ? (m.rosterId || '') : null"
@@ -317,33 +331,53 @@
                     :class="{ over: dpSpent(m) > dpLimit(m) }"
                   >{{ dpSpent(m) }} / {{ dpLimit(m) }} DP</em>
                 </span>
-                <button
+                <!-- Several can be taken under the DP budget, so a pick leaves it open. -->
+                <AdaptivePicker
                   v-if="m.factionSlug && detachmentsFor(m.factionSlug).length"
-                  class="btn-choose-twist"
-                  @click="detPickerKey = ak(i, mi)"
+                  panel-width="30rem"
+                  modal-width="520px"
+                  :title="labels.trackerDpBudget"
+                  :open="detPickerKey === ak(i, mi)"
+                  @update:open="v => (detPickerKey = v ? ak(i, mi) : '')"
                 >
-                  <span
-                    class="ct-name"
-                    :class="{ placeholder: !m.detachments.length }"
-                  >{{ detSummary(m) }}</span>
-                  <i class="bi bi-chevron-right ct-chev" />
-                </button>
+                  <template #trigger="{ toggle, open }">
+                    <button
+                      class="btn-choose-twist"
+                      :aria-expanded="open"
+                      @click="toggle"
+                    >
+                      <span
+                        class="ct-name"
+                        :class="{ placeholder: !m.detachments.length }"
+                      >{{ detSummary(m) }}</span>
+                      <i class="bi bi-chevron-down ct-chev" />
+                    </button>
+                  </template>
+                  <template #aside>
+                    <span
+                      class="mh-count"
+                      :class="{ over: dpSpent(m) > dpLimit(m) }"
+                    >{{ dpSpent(m) }} / {{ dpLimit(m) }} DP</span>
+                  </template>
+                  <template #default="{ compact, bodyClass }">
+                    <DetachmentPickerList
+                      :class="bodyClass"
+                      :compact="compact"
+                      :detachments="detachmentsFor(m.factionSlug)"
+                      :selected="m.detachments"
+                      :max-dp="memberMaxDp"
+                      :dp-spent="dpSpent(m)"
+                      @toggle="d => toggleDetachment(m, d)"
+                      @clear="m.detachments.splice(0)"
+                    />
+                  </template>
+                </AdaptivePicker>
                 <p
                   v-else
                   class="det-empty"
                 >
                   {{ m.factionSlug ? labels.trackerNoDetachments : labels.trackerSelectFaction }}
                 </p>
-                <DetachmentPickerModal
-                  v-if="detPickerKey === ak(i, mi)"
-                  :detachments="detachmentsFor(m.factionSlug)"
-                  :selected="m.detachments"
-                  :max-dp="memberMaxDp"
-                  :dp-spent="dpSpent(m)"
-                  @toggle="d => toggleDetachment(m, d)"
-                  @clear="m.detachments.splice(0)"
-                  @close="detPickerKey = ''"
-                />
               </div>
               <div
                 v-else
@@ -1061,9 +1095,10 @@ import { useMediaQuery } from '../../composables/useMediaQuery.js'
 import MissionCard from '../event/MissionCard.vue'
 import RuleBody from '../RuleBody.vue'
 import TwistPickerModal from './TwistPickerModal.vue'
-import DetachmentPickerModal from './DetachmentPickerModal.vue'
+import DetachmentPickerList from './DetachmentPickerList.vue'
+import AdaptivePicker from '../AdaptivePicker.vue'
 import { dpLimitFor } from '../../composables/rosterEngine.js'
-import FactionPickerModal from './FactionPickerModal.vue'
+import FactionPickerList from './FactionPickerList.vue'
 import SecondaryPickerModal from './SecondaryPickerModal.vue'
 import MissionPickerModal from './MissionPickerModal.vue'
 import ScoreHelpModal from './ScoreHelpModal.vue'
@@ -2182,7 +2217,7 @@ function cancel() {
    two is beside it (the picker is min-height 44px, the attached line is shorter) instead of
    carrying a height of its own. */
 .faction-row { display: flex; align-items: stretch; gap: 0.4rem; }
-.faction-row > .btn-choose-twist,
+.faction-row > .faction-pick,
 .faction-row > .roster-line { flex: 1; min-width: 0; }
 .rp-open {
   display: inline-flex; align-items: center; justify-content: center;

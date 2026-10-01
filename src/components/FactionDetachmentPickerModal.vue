@@ -7,34 +7,24 @@
     <!-- `modal-body` is not cosmetic: it carries the global `overscroll-behavior: contain`
          (style.css) that keeps a scroll at the list's end from chaining to the page behind.
          There is deliberately no body scroll-lock, so this class is what contains it. -->
-    <div class="modal-body modal-list">
-      <DetachmentOption
-        v-for="d in detachments"
-        :key="d.id"
-        :name="d.name"
-        :name-ru="d.nameRu || ''"
-        :force-dispositions="d.forceDispositions || []"
-        :unique="d.unique || ''"
-        :tag="d.tag || ''"
-        :dp="d.dp || 0"
-        :on="d.id === activeId"
-        @click="$emit('pick', d.id)"
-      />
-    </div>
+    <FactionDetachmentList
+      class="modal-body"
+      :detachments="detachments"
+      :active-id="activeId"
+      @pick="(id) => $emit('pick', id)"
+    />
   </BaseModal>
 </template>
 
 <script setup>
 import { computed } from 'vue'
 import BaseModal from './BaseModal.vue'
-import DetachmentOption from './DetachmentOption.vue'
+import FactionDetachmentList from './FactionDetachmentList.vue'
 import { ui } from '../i18n/ui.js'
 import { useLocale } from '../composables/useLocale.js'
 
-// Also reused as a generic option picker (e.g. the Chapter picker in
-// FactionPickerBar) — pass plain { id, name } items and a `title`; the
-// detachment-only fields (nameRu / dp / unique / forceDispositions) simply don't render. An optional
-// `tag` renders as a quiet corner keyword (the chapter lock on SM detachments).
+// Also reused as a generic option picker (e.g. the Chapter picker in FactionPickerBar) — pass plain
+// { id, name } items and a `title`. The rows are FactionDetachmentList.
 defineProps({
   detachments: { type: Array, required: true },
   activeId: { type: String, default: null },
