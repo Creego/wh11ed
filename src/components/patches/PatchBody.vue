@@ -14,6 +14,7 @@
       <button
         type="button"
         class="pb-fac-head"
+        :style="b.tone"
         :aria-expanded="isOpen(b.key)"
         @click="toggle(b.key)"
       >
@@ -80,9 +81,8 @@
 
 <script setup>
 // One GW update's changes, faction by faction (the core rules first), each faction's in the order a
-// player reads a codex: books, army rules, detachments, units, points, FAQ. A faction opens on
-// request when the update touches many of them — the Space Marines codex alone is 600 entries — and
-// is open from the start when the reader has narrowed the list to their own.
+// player reads a codex: books, army rules, detachments, units, points, FAQ. Each is a plate of its
+// own with a dark header, folded until tapped — the Space Marines codex alone is 600 entries.
 import { computed, reactive, watch } from 'vue'
 import CollapseTransition from '../CollapseTransition.vue'
 import FactionBadge from '../FactionBadge.vue'
@@ -93,8 +93,6 @@ import { useLocale } from '../../composables/useLocale.js'
 
 const props = defineProps({
   items: { type: Array, required: true },
-  // Open every faction from the start (the reader picked theirs).
-  expanded: { type: Boolean, default: false },
 })
 const { locale } = useLocale()
 const labels = computed(() => ui[locale.value])
@@ -143,6 +141,8 @@ const blocks = computed(() => {
       name: key === 'core' ? l.patchesCore : (entry?.name || key),
       count: items.length,
       groups,
+      // The faction's own colour as the header's edge (dark theme reads the light pair).
+      tone: entry?.color ? { '--pb-edge': entry.color.dark } : null,
     })
   }
   return out.sort((a, b) => (a.key === 'core' ? -1 : b.key === 'core' ? 1 : a.name.localeCompare(b.name)))
@@ -154,60 +154,67 @@ function withHeader(name, items) {
   return items[0] && !items[0].parent ? items : [{ kind: 'detachment', name, change: 'inside' }, ...items]
 }
 
-// Open by default when the reader narrowed the list (or there is one block), folded otherwise —
-// and either way every block opens and closes on a tap: `flipped` holds the ones turned from
-// their default. A block once opened keeps its rendered list while it folds, so closing animates.
-const openByDefault = computed(() => props.expanded || blocks.value.length === 1)
-const flipped = reactive(new Set())
+// Every block starts folded (owner, 2026-10-01) and opens on a tap of its whole header. A block
+// once opened keeps its rendered list while it folds, so closing animates.
+const open = reactive(new Set())
 const wasOpened = reactive(new Set())
-const isOpen = (k) => openByDefault.value !== flipped.has(k)
+const isOpen = (k) => open.has(k)
 function toggle(k) {
-  if (flipped.has(k)) flipped.delete(k)
-  else flipped.add(k)
-  if (isOpen(k)) wasOpened.add(k)
+  if (open.has(k)) open.delete(k)
+  else { open.add(k); wasOpened.add(k) }
 }
-// A different list (another update, another filter) starts from its defaults.
-watch(() => [props.items.length, props.expanded], () => { flipped.clear(); wasOpened.clear() })
+// A different list (another update, another filter) starts folded again.
+watch(() => props.items, () => { open.clear(); wasOpened.clear() })
 </script>
 
 <style scoped>
 .pb-empty { color: var(--text-muted); font-size: 0.9rem; margin: 0.5rem 0; }
-.pb-fac { border-top: 1px solid var(--border-light); }
-.pb-fac:first-child { border-top: none; }
+
+/* One plate per block: a dark header (the navbar's ground, so it reads as a bar in either theme)
+   with the faction's colour on its edge, the changes on the card below it. */
+.pb-fac {
+  margin-bottom: 0.45rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
 .pb-fac-head {
   display: flex;
   align-items: center;
   gap: 0.6rem;
   width: 100%;
-  padding: 0.45rem 0;
-  background: none;
+  min-height: 2.75rem;
+  padding: 0.4rem 0.75rem;
+  background: var(--bg-insert);
   border: none;
+  border-left: 4px solid var(--pb-edge, var(--accent-on-dark));
   font: inherit;
   text-align: left;
-  color: var(--text-primary);
+  color: var(--text-on-dark);
   cursor: pointer;
+  transition: background var(--motion-fast);
 }
-.pb-fac-name { flex: 1; font-weight: 600; font-size: 0.95rem; }
+.pb-fac-head:hover { background: color-mix(in srgb, var(--bg-insert) 85%, white); }
+.pb-fac-name { flex: 1; font-weight: 700; font-size: 0.95rem; }
 .pb-count {
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  color: var(--text-muted);
+  font-weight: 700;
+  padding: 0 0.35rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
-.pb-chev { font-size: 0.8rem; color: var(--text-muted); transition: transform var(--motion-fast) ease; }
+.pb-chev { font-size: 0.85rem; transition: transform var(--motion-fast) ease; }
 .pb-chev.open { transform: rotate(180deg); }
-.pb-fac-body { padding: 0 0 0.4rem; }
-.pb-group { margin-top: 0.2rem; }
+.pb-fac-body { padding: 0.15rem 0.6rem 0.6rem; }
+.pb-group { margin-top: 0.35rem; }
 .pb-group-title {
-  margin: 0.3rem 0 0;
+  margin: 0.3rem 0 0.35rem;
   font-family: var(--font-sans);
   font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--accent);
-  padding-bottom: 0.15rem;
-  border-bottom: 1px solid var(--border);
 }
 .pb-list { margin: 0; padding: 0; }
-.pb-det + .pb-det { border-top: 1px solid var(--border); }
+.pb-det + .pb-det { margin-top: 0.5rem; }
 </style>

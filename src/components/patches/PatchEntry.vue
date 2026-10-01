@@ -1,36 +1,55 @@
 <template>
+  <!-- A plate. One with rule text to show opens on a tap anywhere on its header line — the text
+       used to hang off a small "Text changed" link that was hard to hit (owner, 2026-10-01). -->
   <li
     class="pe"
-    :class="`pe-${item.change}`"
+    :class="[`pe-${item.change}`, { open }]"
   >
-    <div class="pe-head">
-      <span
-        v-if="kindLabel"
-        class="pe-kind"
-      >{{ kindLabel }}</span>
+    <div class="pe-top">
+      <component
+        :is="texts.length ? 'button' : 'div'"
+        class="pe-head"
+        v-bind="texts.length ? { type: 'button', 'aria-expanded': open } : {}"
+        @click="texts.length && toggle()"
+      >
+        <span class="pe-title">
+          <span
+            v-if="kindLabel"
+            class="pe-kind"
+          >{{ kindLabel }}</span>
+          <span class="pe-name">{{ item.name }}</span>
+          <span
+            v-if="item.change === 'added'"
+            class="pe-badge pe-badge-new"
+          >{{ labels.patchesNew }}</span>
+          <span
+            v-else-if="item.change === 'removed'"
+            class="pe-badge pe-badge-gone"
+          >{{ labels.patchesRemoved }}</span>
+          <span
+            v-if="item.kind === 'publication' && item.date"
+            class="pe-note"
+          >{{ item.change === 'changed' ? `${labels.patchesErrata} ` : '' }}{{ item.date }}</span>
+        </span>
+        <!-- What opening it shows: the abilities, the stratagem's parts, or just "text". -->
+        <span
+          v-if="texts.length"
+          class="pe-summary"
+        >{{ texts.map((t) => t.label).join(' · ') }}</span>
+        <i
+          v-if="texts.length"
+          class="bi bi-chevron-down pe-chev"
+        />
+      </component>
       <RouterLink
         v-if="unitPath"
         :to="unitPath"
-        class="pe-name"
+        class="pe-go"
+        :title="labels.patchesOpenUnit"
+        :aria-label="`${labels.patchesOpenUnit}: ${item.name}`"
       >
-        {{ item.name }}
+        <i class="bi bi-box-arrow-up-right" />
       </RouterLink>
-      <span
-        v-else
-        class="pe-name"
-      >{{ item.name }}</span>
-      <span
-        v-if="item.change === 'added'"
-        class="pe-badge pe-badge-new"
-      >{{ labels.patchesNew }}</span>
-      <span
-        v-else-if="item.change === 'removed'"
-        class="pe-badge pe-badge-gone"
-      >{{ labels.patchesRemoved }}</span>
-      <span
-        v-if="item.kind === 'publication' && item.date"
-        class="pe-note"
-      >{{ item.change === 'changed' ? `${labels.patchesErrata} ` : '' }}{{ item.date }}</span>
     </div>
 
     <!-- The numbers: one chip each, "T 4 → 5". -->
@@ -98,36 +117,33 @@
       </template>
     </p>
 
-    <!-- Rule texts: what came is shown as it reads; what changed, on request, struck and marked. -->
-    <div
-      v-for="(t, i) in texts"
-      :key="'t' + i"
-      class="pe-text"
-    >
-      <button
-        type="button"
-        class="pe-toggle"
-        :aria-expanded="openText === i"
-        @click="openText = openText === i ? null : i"
+    <CollapseTransition :show="open">
+      <div
+        v-if="open || wasOpen"
+        class="pe-texts"
       >
-        <span
-          v-if="t.prefix"
-          :class="t.prefixClass"
-        >{{ t.prefix }}</span>
-        {{ t.label }}
-        <i
-          class="bi bi-chevron-down pe-chev"
-          :class="{ open: openText === i }"
-        />
-      </button>
-      <CollapseTransition :show="openText === i">
-        <PatchTextDiff
-          v-if="openText === i"
-          :from="t.from"
-          :to="t.to"
-        />
-      </CollapseTransition>
-    </div>
+        <div
+          v-for="(t, i) in texts"
+          :key="i"
+          class="pe-text"
+        >
+          <h5
+            v-if="texts.length > 1 || t.named"
+            class="pe-text-label"
+          >
+            <span
+              v-if="t.prefix"
+              class="pe-plus"
+            >{{ t.prefix }}</span>
+            {{ t.label }}
+          </h5>
+          <PatchTextDiff
+            :from="t.from"
+            :to="t.to"
+          />
+        </div>
+      </div>
+    </CollapseTransition>
   </li>
 </template>
 
@@ -148,7 +164,13 @@ const props = defineProps({
 })
 const { locale } = useLocale()
 const labels = computed(() => ui[locale.value])
-const openText = ref(null)
+const open = ref(false)
+// Rendered once opened, kept while it folds, so closing animates.
+const wasOpen = ref(false)
+function toggle() {
+  open.value = !open.value
+  if (open.value) wasOpen.value = true
+}
 
 const fields = computed(() => props.item.fields || [])
 
@@ -220,24 +242,43 @@ const texts = computed(() => {
   const part = { when: l.patchesWhen, target: l.patchesTarget, effect: l.patchesEffect, restriction: l.patchesRestriction }
   for (const f of fields.value) {
     if (f.field === 'ability') {
-      if (f.change !== 'removed') out.push({ label: f.name, prefix: f.change === 'added' ? '+' : '', prefixClass: 'pe-plus', from: f.from || '', to: f.to || '' })
+      if (f.change !== 'removed') out.push({ label: f.name, named: true, prefix: f.change === 'added' ? '+' : '', from: f.from || '', to: f.to || '' })
     } else if (f.field === 'text') out.push({ label: l.patchesTextChanged, from: f.from, to: f.to })
-    else if (part[f.field]) out.push({ label: part[f.field], from: f.from, to: f.to })
+    else if (part[f.field]) out.push({ label: part[f.field], named: true, from: f.from, to: f.to })
   }
   // An added rule, FAQ answer or core rule: its text as it reads.
-  if (x.change === 'added' && x.to) out.push({ label: labels.value.patchesShowText, from: '', to: x.to })
+  if (x.change === 'added' && x.to) out.push({ label: labels.value.patchesText, from: '', to: x.to })
   return out.filter((t) => t.from || t.to)
 })
 </script>
 
 <style scoped>
 .pe {
-  padding: 0.35rem 0;
-  border-bottom: 1px solid var(--border-light);
   list-style: none;
+  margin-bottom: 0.35rem;
+  background: var(--bg-row-alt);
+  border: 1px solid var(--border-light);
 }
-.pe:last-child { border-bottom: none; }
+.pe:last-child { margin-bottom: 0; }
+.pe-top { display: flex; align-items: stretch; }
 .pe-head {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.6rem;
+  padding: 0.45rem 0.6rem;
+  background: none;
+  border: none;
+  font: inherit;
+  text-align: left;
+  color: var(--text-primary);
+}
+button.pe-head { cursor: pointer; transition: background var(--motion-fast); }
+button.pe-head:hover { background: color-mix(in srgb, var(--accent) 7%, transparent); }
+.pe-title {
+  flex: 1 1 auto;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
@@ -248,14 +289,9 @@ const texts = computed(() => {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--text-dim);
+  color: var(--text-muted);
 }
-.pe-name {
-  font-weight: 600;
-  font-size: 0.92rem;
-  color: var(--text-primary);
-}
-a.pe-name { color: var(--link-accent); }
+.pe-name { font-weight: 600; font-size: 0.9rem; }
 .pe-removed .pe-name { color: var(--text-muted); text-decoration: line-through; }
 .pe-badge {
   font-size: 0.65rem;
@@ -266,8 +302,30 @@ a.pe-name { color: var(--link-accent); }
   border: 1px solid currentColor;
 }
 .pe-badge-new { color: var(--accent); }
-.pe-badge-gone { color: var(--text-dim); }
+.pe-badge-gone { color: var(--text-muted); }
 .pe-note { font-size: 0.78rem; color: var(--text-muted); }
+.pe-summary {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+.pe-chev {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  transition: transform var(--motion-fast) ease;
+}
+.pe.open .pe-chev { transform: rotate(180deg); }
+.pe-go {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  border-left: 1px solid var(--border-light);
+  color: var(--link-accent);
+  text-decoration: none;
+}
+.pe-go:hover { background: color-mix(in srgb, var(--accent) 7%, transparent); }
 
 .pe-chips,
 .pe-line {
@@ -275,7 +333,8 @@ a.pe-name { color: var(--link-accent); }
   flex-wrap: wrap;
   align-items: baseline;
   gap: 0.25rem 0.45rem;
-  margin: 0.2rem 0 0;
+  margin: 0;
+  padding: 0 0.6rem 0.45rem;
   font-size: 0.82rem;
 }
 .pe-chip {
@@ -283,28 +342,21 @@ a.pe-name { color: var(--link-accent); }
   font-weight: 700;
   font-size: 0.78rem;
   padding: 0.05rem 0.35rem;
-  background: var(--bg-row-alt);
+  background: var(--bg-card);
   border: 1px solid var(--border-light);
   white-space: nowrap;
 }
 .pe-label { color: var(--text-muted); }
 .pe-plus { color: var(--accent); }
-.pe-minus { color: var(--text-dim); text-decoration: line-through; }
+.pe-minus { color: var(--text-muted); text-decoration: line-through; }
 
-.pe-text { margin-top: 0.1rem; }
-.pe-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.1rem 0;
-  background: none;
-  border: none;
-  font: inherit;
-  font-size: 0.82rem;
-  color: var(--text-muted);
-  cursor: pointer;
+.pe-texts { padding: 0 0.6rem 0.5rem; border-top: 1px solid var(--border-light); }
+.pe-text + .pe-text { margin-top: 0.4rem; }
+.pe-text-label {
+  margin: 0.4rem 0 0;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-primary);
 }
-.pe-toggle:hover { color: var(--text-primary); }
-.pe-chev { font-size: 0.7rem; transition: transform var(--motion-fast) ease; }
-.pe-chev.open { transform: rotate(180deg); }
 </style>

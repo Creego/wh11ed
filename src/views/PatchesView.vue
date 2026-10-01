@@ -124,7 +124,6 @@
       <PatchBody
         v-else
         :items="itemsOf(current.id)"
-        :expanded="filter !== 'all'"
       />
     </div>
   </div>
@@ -308,11 +307,6 @@ const titleOf = (p) => [
   margin-top: 0;
 }
 
-.pv-patch {
-  padding: 0 0.75rem 0.3rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-}
 .pv-patch > .pv-empty { margin: 0.6rem 0; }
 
 /* The update picker's rows: the name, and under it when and how much. */

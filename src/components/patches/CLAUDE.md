@@ -20,9 +20,10 @@ Field Manual's points, the FAQ & errata. Nothing on the page is written by hand.
   was 650 KB with it.
 - **Page** — `PatchesView.vue`: two pickers, the faction (`?f=` = slug / `mine` = pinned / `all`; the
   core rules stay in every filter) and the update (`?p=`, one on the page at a time, its file fetched
-  when picked — not accordions, owner 2026-10-01; both picks push, see `pick()`), `PatchBody.vue` (faction blocks, folded when an update touches many —
-  open from the start when filtered), `PatchEntry.vue` (chips for numbers, +/− for lists, a rule
-  text on request), `PatchTextDiff.vue` (`utils/wordDiff.js`, word LCS; a text that only arrived
+  when picked — not accordions, owner 2026-10-01; both picks push, see `pick()`), `PatchBody.vue` (the core rules and each faction a plate with a dark
+  header, **all folded until tapped**), `PatchEntry.vue` (each change a plate: chips for numbers, +/−
+  for lists; one with rule text opens on a tap of its whole header line — not a small link, owner
+  2026-10-01; a unit's page is the icon beside it), `PatchTextDiff.vue` (`utils/wordDiff.js`, word LCS; a text that only arrived
   renders through `renderRichText`). Units link to today's page (`unit` in the data, resolved by
   name through `datasheetIndex.js` at generation).
 - **RU**: labels translate; rule texts are English as GW printed them (no old RU to compare
