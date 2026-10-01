@@ -90,8 +90,10 @@
       </div>
     </div>
 
-    <!-- An army has ONE Force Disposition. One detachment settles it and there is nothing to ask;
-         several make it a declaration, and the list is where it is declared. -->
+    <!-- An army has ONE Force Disposition. One on offer settles it and there is nothing to ask;
+         several make it a declaration, and the list is where it is declared — here a dropdown, in
+         the shape of the faction and detachment fields beside it (owner, 2026-10-01: on one line
+         a row of buttons was the odd one out). The phone's form keeps its segmented control. -->
     <div
       v-if="factionSlug && dispositionCands.length"
       class="rw-field"
@@ -101,19 +103,28 @@
         v-if="dispositionCands.length === 1"
         class="rw-static"
       >{{ dispositionCands[0] }}</span>
-      <div
+      <label
         v-else
-        class="seg"
+        class="rw-choose rw-select"
       >
-        <button
-          v-for="d in dispositionCands"
-          :key="d"
-          :class="{ on: disposition === d }"
-          @click="$emit('update:disposition', d)"
+        <select
+          :value="dispositionCands.includes(disposition) ? disposition : ''"
+          :class="{ placeholder: !dispositionCands.includes(disposition) }"
+          :aria-label="labels.rosterDispositionDeclared"
+          @change="$emit('update:disposition', $event.target.value)"
         >
-          {{ d }}
-        </button>
-      </div>
+          <option
+            value=""
+            disabled
+          >{{ labels.rosterChoose }}</option>
+          <option
+            v-for="d in dispositionCands"
+            :key="d"
+            :value="d"
+          >{{ d }}</option>
+        </select>
+        <i class="bi bi-chevron-down" />
+      </label>
     </div>
 
     <!-- The notes and the legality switch are decided once and then left alone; giving each a
@@ -307,6 +318,23 @@ const moreOpen = ref(false)
    until it clears AA in both themes, and still a step quieter than a real answer. */
 .rw-choose .placeholder { color: color-mix(in srgb, var(--text-muted) 55%, var(--text-primary)); }
 .rw-choose .bi { flex-shrink: 0; color: var(--text-muted); }
+/* The declared Force Disposition: a native select dressed as the buttons beside it. The select
+   itself is the whole hit area (the chevron is drawn over it and lets clicks through). */
+.rw-select { position: relative; padding: 0; }
+.rw-select select {
+  appearance: none;
+  width: 100%;
+  padding: 0.35rem 1.9rem 0.35rem 0.5rem;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.rw-select select.placeholder { color: color-mix(in srgb, var(--text-muted) 55%, var(--text-primary)); }
+.rw-select .bi { position: absolute; right: 0.5rem; pointer-events: none; }
+/* The open list is drawn by the browser; without this the dark theme gets a light one. */
+.rw-select option { background: var(--bg-secondary); color: var(--text-primary); }
 
 .rw-row { display: flex; align-items: center; gap: 0.4rem; }
 .rw-num {
