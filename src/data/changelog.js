@@ -28,11 +28,15 @@ export const changelog = [
       { h: 'Picking a detachment' },
       'On a phone a detachment’s tag and its Force Disposition now sit on their own line under the name, so a long name stays on one line.',
       'On a computer the list under the field is tidier: the cost is always next to the name, and the Russian name sits right under the English one in the same narrow type.',
+      { h: 'Menu' },
+      'The gear menu now has a “Support the project” link. On a computer, signing in, hiding the lore and reporting a bug have moved into the gear menu too, so the top bar is less crowded.',
     ],
     ru: [
       { h: 'Выбор детачмента' },
       'На телефоне тег детачмента и его Force Disposition теперь стоят отдельной строкой под названием, поэтому длинное название больше не переносится.',
       'На компьютере список под полем стал аккуратнее: цена всегда рядом с названием, а русское название стоит сразу под английским тем же узким шрифтом.',
+      { h: 'Меню' },
+      'В меню под шестерёнкой появилась ссылка «Поддержать проект». На компьютере вход в аккаунт, скрытие лора и сообщение об ошибке тоже переехали в это меню, и верхняя панель стала свободнее.',
     ],
   },
   {
