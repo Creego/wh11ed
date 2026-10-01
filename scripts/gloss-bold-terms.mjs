@@ -85,7 +85,7 @@ export const RU_FORMS = [
   [/^способн\S* начать действие$/, 'eligible-to-act'], [/^способн\S* стрелять$/, 'eligible-to-shoot'], [/^способн\S* объявлять нападение$/, 'eligible-to-charge'],
   [/^действи(е|я|ю|ем|и)$/, 'action'], [/^(проверк\S*|брос\S*) боевого шока$/, 'battle-shock-test'], [/^проверк\S* лидерства$/, 'leadership-roll'],
   [/^максимальн\S* дистанци\S*$/, 'maximum-distance'], [/^элемент\S* укрытия$/, 'terrain-area'], [/^snap shooting$/, 'snap-shooting'],
-  [/^брос\S* опасности$/, 'hazard-roll'], [/^уничтожил\S*$/, 'destroyed'], [/^выбира\S* сражаться$/, 'selected-to-fight'], [/^выбира\S* стрелять$/, 'selected-to-shoot'],
+  [/^брос\S* опасности$/, 'hazard-roll'], [/^приказ\S*$/, 'am-order'], [/^уничтожил\S*$/, 'destroyed'], [/^выбира\S* сражаться$/, 'selected-to-fight'], [/^выбира\S* стрелять$/, 'selected-to-shoot'],
   [/^подавлен\S*$/, 'sm-suppressed'], [/^окопавш\S*$/, 'sm-entrenched'], [/^опутан\S*$/, 'sm-snared'], [/^под натиском$/, 'sm-assailed'],
 ]
 
