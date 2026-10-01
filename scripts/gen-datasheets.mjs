@@ -214,12 +214,28 @@ if (only.length) {
   const fresh = new Map(appSheets.filter((d) => only.includes(norm(d.name))).map((d) => [norm(d.name), convert(d)]))
   const missing = only.filter((n) => !fresh.has(n))
   if (missing.length) { console.error(`  not in appdata: ${missing.join(', ')}`); process.exit(1) }
+  // A sheet's points come from appdata's BASE price, and the MFM's copy tiers ("1st-2nd" /
+  // "3rd+") go on top in a separate pass (sync:mfm) — which rewrites the whole faction file, not
+  // just these sheets. So while appdata's base price is what the old sheet's tiers were built on,
+  // the old points stand; when it moved, the sheet says so and sync:mfm is the next step.
+  const repriced = []
+  for (const [k, d] of fresh) {
+    const old = oldByName.get(k)
+    if (!old?.points?.some((p) => p.note)) continue
+    const base = (pts) => JSON.stringify(pts.filter((p) => !p.note || /^1st/.test(p.note)).map((p) => [p.models, p.points]))
+    if (base(old.points) === base(d.points)) d.points = old.points
+    else repriced.push(d.id)
+  }
   const out = oldSheets.map((d) => fresh.get(norm(d.name)) || d)
   console.log(`${slug}: rewrote ${fresh.size} sheet(s): ${[...fresh.values()].map((d) => d.id).join(', ')}`)
+  if (repriced.length) console.log(`  appdata's base price moved for ${repriced.join(', ')} — run \`npm run sync:mfm -- ${slug} --write\` for the copy tiers`)
   if (WRITE) {
     const src = fs.readFileSync(file, 'utf8')
     const at = src.indexOf('export default ')
     fs.writeFileSync(file, `${src.slice(0, at)}export default ${JSON.stringify(out, null, 2)}\n`)
+    // The same as a full write below: the regenerated English comes back without its popovers.
+    const { glossFaction, GLOSS_SLUGS } = await import('./gloss-bold-terms.mjs')
+    if (GLOSS_SLUGS.includes(slug)) await glossFaction(slug)
   }
   process.exit(0)
 }

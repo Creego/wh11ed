@@ -1114,6 +1114,7 @@ and appdata state fresh; a data model can change between now and when this is ne
     we match appdata again and nothing reports anything; the two wargear typos we had corrected were
     in that state already, held only by sync-baseline entries. Every departure now lives in
     `scripts/lib/appdata-exceptions.mjs` as a patch to appdata's input — applied by the generator and
-    the audits, checked by `npm run exceptions` against RAW appdata in both directions. Note also
-    that `gen-datasheets --only` rebuilds a sheet without its MFM copy tiers and glossary popovers:
-    follow it with `npm run sync:mfm -- <slug> --write` and `npm run gloss`, then read the diff.
+    the audits, checked by `npm run exceptions` against RAW appdata in both directions. `gen-datasheets
+    --only` used to rebuild a sheet without its MFM copy tiers and glossary popovers; it keeps the
+    tiers while appdata's base price is unchanged (and names the sheets where it moved) and re-glosses
+    the file, so a clean `--only` run is a no-op.
