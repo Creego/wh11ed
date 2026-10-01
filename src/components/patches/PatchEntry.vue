@@ -232,7 +232,7 @@ const texts = computed(() => {
 
 <style scoped>
 .pe {
-  padding: 0.55rem 0;
+  padding: 0.35rem 0;
   border-bottom: 1px solid var(--border-light);
   list-style: none;
 }
@@ -275,7 +275,7 @@ a.pe-name { color: var(--link-accent); }
   flex-wrap: wrap;
   align-items: baseline;
   gap: 0.25rem 0.45rem;
-  margin: 0.3rem 0 0;
+  margin: 0.2rem 0 0;
   font-size: 0.82rem;
 }
 .pe-chip {
@@ -291,12 +291,12 @@ a.pe-name { color: var(--link-accent); }
 .pe-plus { color: var(--accent); }
 .pe-minus { color: var(--text-dim); text-decoration: line-through; }
 
-.pe-text { margin-top: 0.2rem; }
+.pe-text { margin-top: 0.1rem; }
 .pe-toggle {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.15rem 0;
+  padding: 0.1rem 0;
   background: none;
   border: none;
   font: inherit;

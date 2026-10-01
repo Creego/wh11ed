@@ -45,7 +45,7 @@ const runs = computed(() => wordDiff(bare(props.from), bare(props.to)))
 .ptd {
   margin: 0.3rem 0 0;
   font-size: 0.85rem;
-  line-height: 1.55;
+  line-height: 1.45;
   color: var(--text-primary);
   white-space: pre-line;
 }

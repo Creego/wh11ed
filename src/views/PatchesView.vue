@@ -60,13 +60,6 @@
     </div>
 
     <p
-      v-if="labels.patchesTextNote"
-      class="pv-note"
-    >
-      {{ labels.patchesTextNote }}
-    </p>
-
-    <p
       v-if="!shown.length"
       class="pv-empty"
     >
@@ -85,19 +78,17 @@
         :aria-expanded="openId === p.id"
         @click="toggle(p.id)"
       >
-        <span class="pv-title">
-          <template v-if="p.labels.app">{{ labels.patchesAppData }} {{ p.labels.app }}</template>
-          <template v-if="p.labels.app && p.labels.mfm"> · </template>
-          <template v-if="p.labels.mfm">MFM v{{ p.labels.mfm }}</template>
+        <span class="pv-head-main">
+          <span class="pv-title">
+            <template v-if="p.labels.app">{{ labels.patchesAppData }} {{ p.labels.app }}</template>
+            <template v-if="p.labels.app && p.labels.mfm"> · </template>
+            <template v-if="p.labels.mfm">MFM v{{ p.labels.mfm }}</template>
+          </span>
+          <span class="pv-meta">
+            <time :datetime="p.date">{{ formatDate(p.date) }}</time>
+            · {{ labels.patchesChanges }}: {{ p.count }}
+          </span>
         </span>
-        <time
-          class="pv-date"
-          :datetime="p.date"
-        >{{ formatDate(p.date) }}</time>
-        <span
-          class="pv-count"
-          :aria-label="`${labels.patchesChanges}: ${p.count}`"
-        >{{ p.count }}</span>
         <i
           class="bi bi-chevron-down pv-chev"
           :class="{ open: openId === p.id }"
@@ -168,9 +159,12 @@ const filterName = computed(() => (filter.value === 'all' ? labels.value.patches
     : factionIndexBySlug(filter.value)?.name || filter.value))
 
 const pickerOpen = ref(false)
+// A push, not a replace: on a phone the picker is a sheet whose closing steps Back over its own
+// history entry (useBackToClose) — a replace swapped that very entry and the step undid the pick.
+// As a push it is also what Back should undo: the previous filter.
 function pick(f) {
   pickerOpen.value = false
-  router.replace({ query: { ...route.query, f } })
+  if (f !== filter.value) router.push({ query: { ...route.query, f } })
 }
 
 // The core rules belong to every army, so they stay in a narrowed list.
@@ -218,9 +212,9 @@ watch(shown, (list) => {
 
 .hero {
   text-align: center;
-  padding: 1rem 0 0.6rem;
+  padding: 0.6rem 0 0.5rem;
   border-bottom: 2px solid var(--accent);
-  margin-bottom: 1rem;
+  margin-bottom: 0.6rem;
 }
 .hero-title {
   font-family: var(--font-display);
@@ -230,25 +224,25 @@ watch(shown, (list) => {
   margin: 0;
 }
 .hero-sub {
-  margin: 0.3rem 0 0;
-  font-size: 0.9rem;
+  margin: 0.2rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
   color: var(--text-muted);
 }
 
 .pv-bar,
-.pv-note,
 .pv-empty,
 .pv-patch {
   max-width: 760px;
   margin-left: auto;
   margin-right: auto;
 }
-.pv-bar { display: flex; margin-bottom: 0.6rem; }
+.pv-bar { display: flex; margin-bottom: 0.5rem; }
 .pv-trigger {
   display: inline-flex;
   align-items: baseline;
   gap: 0.5rem;
-  padding: 0.5rem 0.75rem;
+  padding: 0.4rem 0.7rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
   font: inherit;
@@ -288,7 +282,6 @@ watch(shown, (list) => {
   font-weight: 600;
 }
 
-.pv-note,
 .pv-empty {
   font-size: 0.82rem;
   color: var(--text-muted);
@@ -298,15 +291,16 @@ watch(shown, (list) => {
 .pv-patch {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.4rem;
 }
+/* Every fold on the page reads the same way: what it is on the left, the chevron on the right
+   edge, the whole line the button. */
 .pv-head {
   display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 0.2rem 0.75rem;
+  align-items: center;
+  gap: 0.6rem;
   width: 100%;
-  padding: 0.75rem 0.9rem;
+  padding: 0.5rem 0.75rem;
   background: none;
   border: none;
   font: inherit;
@@ -314,15 +308,10 @@ watch(shown, (list) => {
   color: var(--text-primary);
   cursor: pointer;
 }
-.pv-title { flex: 1 1 auto; font-weight: 700; font-size: 1rem; }
-.pv-date { font-size: 0.8rem; color: var(--text-muted); }
-.pv-count {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--text-muted);
-}
+.pv-head-main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.pv-title { font-weight: 700; font-size: 0.95rem; line-height: 1.3; }
+.pv-meta { font-size: 0.75rem; color: var(--text-muted); }
 .pv-chev { font-size: 0.8rem; color: var(--text-muted); transition: transform var(--motion-fast) ease; }
 .pv-chev.open { transform: rotate(180deg); }
-.pv-body { padding: 0 0.9rem 0.4rem; }
+.pv-body { padding: 0 0.75rem 0.3rem; border-top: 1px solid var(--border-light); }
 </style>

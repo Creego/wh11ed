@@ -154,16 +154,20 @@ function withHeader(name, items) {
   return items[0] && !items[0].parent ? items : [{ kind: 'detachment', name, change: 'inside' }, ...items]
 }
 
-const open = reactive(new Set())
-// A faction once opened keeps its rendered list while it folds away, so closing animates.
+// Open by default when the reader narrowed the list (or there is one block), folded otherwise —
+// and either way every block opens and closes on a tap: `flipped` holds the ones turned from
+// their default. A block once opened keeps its rendered list while it folds, so closing animates.
+const openByDefault = computed(() => props.expanded || blocks.value.length === 1)
+const flipped = reactive(new Set())
 const wasOpened = reactive(new Set())
-const isOpen = (k) => props.expanded || blocks.value.length === 1 || open.has(k)
+const isOpen = (k) => openByDefault.value !== flipped.has(k)
 function toggle(k) {
-  if (props.expanded || blocks.value.length === 1) return
-  if (open.has(k)) open.delete(k)
-  else { open.add(k); wasOpened.add(k) }
+  if (flipped.has(k)) flipped.delete(k)
+  else flipped.add(k)
+  if (isOpen(k)) wasOpened.add(k)
 }
-watch(() => props.items, () => { open.clear(); wasOpened.clear() })
+// A different list (another update, another filter) starts from its defaults.
+watch(() => [props.items.length, props.expanded], () => { flipped.clear(); wasOpened.clear() })
 </script>
 
 <style scoped>
@@ -175,7 +179,7 @@ watch(() => props.items, () => { open.clear(); wasOpened.clear() })
   align-items: center;
   gap: 0.6rem;
   width: 100%;
-  padding: 0.65rem 0;
+  padding: 0.45rem 0;
   background: none;
   border: none;
   font: inherit;
@@ -191,17 +195,17 @@ watch(() => props.items, () => { open.clear(); wasOpened.clear() })
 }
 .pb-chev { font-size: 0.8rem; color: var(--text-muted); transition: transform var(--motion-fast) ease; }
 .pb-chev.open { transform: rotate(180deg); }
-.pb-fac-body { padding: 0 0 0.6rem; }
-.pb-group { margin-top: 0.4rem; }
+.pb-fac-body { padding: 0 0 0.4rem; }
+.pb-group { margin-top: 0.2rem; }
 .pb-group-title {
-  margin: 0.4rem 0 0;
+  margin: 0.3rem 0 0;
   font-family: var(--font-sans);
   font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--accent);
-  padding-bottom: 0.25rem;
+  padding-bottom: 0.15rem;
   border-bottom: 1px solid var(--border);
 }
 .pb-list { margin: 0; padding: 0; }
