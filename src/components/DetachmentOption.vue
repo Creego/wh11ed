@@ -198,5 +198,7 @@ const crowded = computed(() => props.forceDispositions.length + (props.unique ||
 .det.compact .det-name-ru { font-family: var(--font-display); font-size: 1rem; font-weight: 400; }
 .det.compact .det-foot { flex-wrap: nowrap; }
 .det.compact .det-fds { flex-wrap: nowrap; }
+/* Smaller chips than the card's: two of them beside a long name must still leave it one line. */
+.det.compact .tone-chip { font-size: 0.6rem; padding: 0.05rem 0.3rem; }
 .det.compact .det-dp { order: 1; padding: 0.15rem 0.45rem; font-size: 0.9rem; }
 </style>
