@@ -49,16 +49,15 @@ const runs = computed(() => wordDiff(bare(props.from), bare(props.to)))
   color: var(--text-primary);
   white-space: pre-line;
 }
-/* Struck in the danger tint, added in a green one — both as a wash behind the words, so the text
-   stays the text colour and reads in either theme. */
+/* Struck and added, each in its theme's pair (--diff-* in style.css). */
 .ptd-del {
-  background: color-mix(in srgb, var(--danger) 14%, transparent);
-  color: var(--text-muted);
+  background: var(--diff-del-bg);
+  color: var(--diff-del-ink);
   text-decoration: line-through;
 }
 .ptd-ins {
-  --ptd-green: #2e7d32;
-  background: color-mix(in srgb, var(--ptd-green) 18%, transparent);
+  background: var(--diff-ins-bg);
+  color: var(--diff-ins-ink);
   text-decoration: none;
 }
 </style>
