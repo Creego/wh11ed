@@ -27,15 +27,29 @@
       >
     </label>
 
+    <!-- The pickers drop down under their fields rather than covering the screen (owner,
+         2026-10-01), with the modal's own rows inside (PickerDropdown). -->
     <div class="rw-field">
       <span>{{ labels.rosterFactionLabel }}</span>
-      <button
-        class="rw-choose"
-        @click="factionPickerOpen = true"
+      <PickerDropdown
+        v-model:open="factionPickerOpen"
+        :label="labels.trackerSelectFaction"
       >
-        <span :class="{ placeholder: !factionSlug }">{{ factionName || labels.rosterChoose }}</span>
-        <i class="bi bi-chevron-down" />
-      </button>
+        <template #trigger="{ toggle, open }">
+          <button
+            class="rw-choose"
+            :aria-expanded="open"
+            @click="toggle"
+          >
+            <span :class="{ placeholder: !factionSlug }">{{ factionName || labels.rosterChoose }}</span>
+            <i class="bi bi-chevron-down" />
+          </button>
+        </template>
+        <FactionPickerList
+          :selected="factionSlug"
+          @pick="(slug) => { factionPickerOpen = false; $emit('pick-faction', slug) }"
+        />
+      </PickerDropdown>
     </div>
 
     <div class="rw-field">
@@ -47,14 +61,32 @@
           :class="{ over: dpSpent > dpLimit }"
         >{{ dpSpent }} / {{ dpLimit }} DP</em>
       </span>
-      <button
-        class="rw-choose"
-        :disabled="!factionSlug"
-        @click="detachmentPickerOpen = true"
+      <!-- Several can be taken under the DP budget, so a pick leaves it open; a click outside or
+           Escape closes it. -->
+      <PickerDropdown
+        v-model:open="detachmentPickerOpen"
+        :label="labels.trackerDpBudget"
       >
-        <span :class="{ placeholder: !detachments.length }">{{ detachmentSummary || labels.rosterChoose }}</span>
-        <i class="bi bi-chevron-down" />
-      </button>
+        <template #trigger="{ toggle, open }">
+          <button
+            class="rw-choose"
+            :disabled="!factionSlug"
+            :aria-expanded="open"
+            @click="toggle"
+          >
+            <span :class="{ placeholder: !detachments.length }">{{ detachmentSummary || labels.rosterChoose }}</span>
+            <i class="bi bi-chevron-down" />
+          </button>
+        </template>
+        <DetachmentPickerList
+          :detachments="detachmentOptions"
+          :selected="detachments"
+          :max-dp="maxDp"
+          :dp-spent="dpSpent"
+          @toggle="(d) => $emit('toggle-detachment', d)"
+          @clear="$emit('clear-detachments')"
+        />
+      </PickerDropdown>
     </div>
 
     <div class="rw-field">
@@ -103,28 +135,46 @@
         v-if="dispositionCands.length === 1"
         class="rw-static"
       >{{ dispositionCands[0] }}</span>
-      <label
+      <PickerDropdown
         v-else
-        class="rw-choose rw-select"
+        v-model:open="dispositionPickerOpen"
+        class="rw-fd"
+        :label="labels.rosterDispositionDeclared"
       >
-        <select
-          :value="dispositionCands.includes(disposition) ? disposition : ''"
-          :class="{ placeholder: !dispositionCands.includes(disposition) }"
-          :aria-label="labels.rosterDispositionDeclared"
-          @change="$emit('update:disposition', $event.target.value)"
-        >
-          <option
-            value=""
-            disabled
-          >{{ labels.rosterChoose }}</option>
-          <option
+        <template #trigger="{ toggle, open }">
+          <button
+            class="rw-choose"
+            :aria-expanded="open"
+            @click="toggle"
+          >
+            <span
+              v-if="dispositionCands.includes(disposition)"
+              class="tone tone-chip"
+              :style="toneVars(dispositionColor(disposition))"
+            >{{ disposition }}</span>
+            <span
+              v-else
+              class="placeholder"
+            >{{ labels.rosterChoose }}</span>
+            <i class="bi bi-chevron-down" />
+          </button>
+        </template>
+        <div class="modal-list">
+          <button
             v-for="d in dispositionCands"
             :key="d"
-            :value="d"
-          >{{ d }}</option>
-        </select>
-        <i class="bi bi-chevron-down" />
-      </label>
+            type="button"
+            class="rw-fd-opt"
+            :class="{ on: disposition === d }"
+            @click="dispositionPickerOpen = false; $emit('update:disposition', d)"
+          >
+            <span
+              class="tone tone-chip"
+              :style="toneVars(dispositionColor(d))"
+            >{{ d }}</span>
+          </button>
+        </div>
+      </PickerDropdown>
     </div>
 
     <!-- The notes and the legality switch are decided once and then left alone; giving each a
@@ -141,22 +191,6 @@
       <i class="bi bi-three-dots" />
     </button>
 
-    <FactionPickerModal
-      v-if="factionPickerOpen"
-      :selected="factionSlug"
-      @pick="(slug) => { factionPickerOpen = false; $emit('pick-faction', slug) }"
-      @close="factionPickerOpen = false"
-    />
-    <DetachmentPickerModal
-      v-if="detachmentPickerOpen"
-      :detachments="detachmentOptions"
-      :selected="detachments"
-      :max-dp="maxDp"
-      :dp-spent="dpSpent"
-      @toggle="(d) => $emit('toggle-detachment', d)"
-      @clear="$emit('clear-detachments')"
-      @close="detachmentPickerOpen = false"
-    />
     <BaseModal
       v-if="moreOpen"
       :title="labels.rosterMoreSettings"
@@ -205,8 +239,11 @@
 <script setup>
 import { computed, ref } from 'vue'
 import BaseModal from '../BaseModal.vue'
-import FactionPickerModal from '../tracker/FactionPickerModal.vue'
-import DetachmentPickerModal from '../tracker/DetachmentPickerModal.vue'
+import PickerDropdown from '../PickerDropdown.vue'
+import FactionPickerList from '../tracker/FactionPickerList.vue'
+import DetachmentPickerList from '../tracker/DetachmentPickerList.vue'
+import { toneVars } from '../../utils/tone.js'
+import { dispositionColor } from '../../data/dispositionColors.js'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
 import { ROSTER_NOTES_MAX } from '../../composables/rosterEngine.js'
@@ -245,6 +282,7 @@ const { showPointsLeft } = useRosterPrefs()
 
 const factionPickerOpen = ref(false)
 const detachmentPickerOpen = ref(false)
+const dispositionPickerOpen = ref(false)
 const moreOpen = ref(false)
 </script>
 
@@ -318,23 +356,23 @@ const moreOpen = ref(false)
    until it clears AA in both themes, and still a step quieter than a real answer. */
 .rw-choose .placeholder { color: color-mix(in srgb, var(--text-muted) 55%, var(--text-primary)); }
 .rw-choose .bi { flex-shrink: 0; color: var(--text-muted); }
-/* The declared Force Disposition: a native select dressed as the buttons beside it. The select
-   itself is the whole hit area (the chevron is drawn over it and lets clicks through). */
-.rw-select { position: relative; padding: 0; }
-.rw-select select {
-  appearance: none;
-  width: 100%;
-  padding: 0.35rem 1.9rem 0.35rem 0.5rem;
-  background: transparent;
-  border: 0;
-  color: inherit;
-  font: inherit;
+/* The declared Force Disposition: the chip in its colour, on the field and in the list — the colour
+   is how a disposition is told apart everywhere else (dispositionColors.js). */
+.rw-fd { --pd-width: 15rem; }
+/* The last field on the line: its panel opens leftwards, or at 1200px it would leave the screen. */
+.rw-fd :deep(.pd-panel) { left: auto; right: 0; }
+.rw-fd .rw-choose { min-width: 11rem; }
+.rw-fd-opt {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0.35rem 0.55rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
   cursor: pointer;
 }
-.rw-select select.placeholder { color: color-mix(in srgb, var(--text-muted) 55%, var(--text-primary)); }
-.rw-select .bi { position: absolute; right: 0.5rem; pointer-events: none; }
-/* The open list is drawn by the browser; without this the dark theme gets a light one. */
-.rw-select option { background: var(--bg-secondary); color: var(--text-primary); }
+.rw-fd-opt.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 16%, transparent); }
+@media (hover: hover) { .rw-fd-opt:hover { border-color: var(--accent); } }
 
 .rw-row { display: flex; align-items: center; gap: 0.4rem; }
 .rw-num {

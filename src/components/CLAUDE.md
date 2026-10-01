@@ -197,6 +197,12 @@ screens that had copied each other and drifted. The pairs that existed then are 
   draw `components/DetachmentOption.vue` now; the modals around it stay separate. The disposition
   is its chip under the price; the row wore a `.tone-bar` stripe too until the owner dropped it
   (2026-09-25). Its rows must not shrink (`flex-shrink: 0`): the lists are flex columns.
+  **A picker's list is a component of its own, so it can live in a modal OR a dropdown**
+  (2026-10-01): `tracker/FactionPickerList.vue` and `tracker/DetachmentPickerList.vue` are the
+  rows; `FactionPickerModal`/`DetachmentPickerModal` wrap them in `BaseModal` (phones, the tracker),
+  and the desk's settings line wraps them in `PickerDropdown.vue` — the account menu's recipe
+  (backdrop for the outside click, Escape, `fade-pop`), the modal's surface, its own scroll. The
+  declared Force Disposition there is a `PickerDropdown` too, its chips in their colours.
 
 
 ## Modals
