@@ -913,6 +913,13 @@ a.nd-link:hover {
 }
 
 /* ── Mobile ── */
+/* Just above the phone layout the RU links ("Изменения правил GW") need the room the bar's own
+   padding and gaps take at full width. */
+@media (min-width: 901px) and (max-width: 1023px) {
+  .navbar-inner { padding: 0 1rem; gap: 1rem; }
+  .nav-link { padding: 0.4rem 0.6rem; }
+}
+
 @media (max-width: 900px) {
   .navbar-inner {
     /* +side insets so the logo/hamburger clear the landscape notch */
