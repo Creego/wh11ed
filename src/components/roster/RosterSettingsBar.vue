@@ -33,7 +33,7 @@
       <span>{{ labels.rosterFactionLabel }}</span>
       <PickerDropdown
         v-model:open="factionPickerOpen"
-        class="rw-fac"
+        width="32rem"
         :label="labels.trackerSelectFaction"
       >
         <template #trigger="{ toggle, open }">
@@ -67,7 +67,7 @@
            Escape closes it. -->
       <PickerDropdown
         v-model:open="detachmentPickerOpen"
-        class="rw-det"
+        width="30rem"
         :label="labels.trackerDpBudget"
       >
         <template #trigger="{ toggle, open }">
@@ -143,6 +143,8 @@
         v-else
         v-model:open="dispositionPickerOpen"
         class="rw-fd"
+        width="12rem"
+        align="right"
         :label="labels.rosterDispositionDeclared"
       >
         <template #trigger="{ toggle, open }">
@@ -163,7 +165,7 @@
             <i class="bi bi-chevron-down" />
           </button>
         </template>
-        <div class="modal-list">
+        <div class="modal-list rw-fd-list">
           <button
             v-for="d in dispositionCands"
             :key="d"
@@ -185,23 +187,25 @@
          permanent slot would spend the line on the two things nobody looks at twice. The points
          and the way out are not on this line: they are the fixed bar's at the bottom, where they
          sit at every width (owner, 2026-09-26). -->
-    <button
-      type="button"
-      class="rw-more"
-      :aria-label="labels.rosterMoreSettings"
-      :title="labels.rosterMoreSettings"
-      @click="moreOpen = true"
+    <PickerDropdown
+      v-model:open="moreOpen"
+      width="24rem"
+      align="right"
+      :label="labels.rosterMoreSettings"
     >
-      <i class="bi bi-three-dots" />
-    </button>
-
-    <BaseModal
-      v-if="moreOpen"
-      :title="labels.rosterMoreSettings"
-      max-width="480px"
-      @close="moreOpen = false"
-    >
-      <div class="modal-body rw-more-body">
+      <template #trigger="{ toggle }">
+        <button
+          type="button"
+          class="rw-more"
+          :aria-label="labels.rosterMoreSettings"
+          :title="labels.rosterMoreSettings"
+          :aria-expanded="moreOpen"
+          @click="toggle"
+        >
+          <i class="bi bi-three-dots" />
+        </button>
+      </template>
+      <div class="rw-more-body">
         <label class="field">
           <span>{{ labels.rosterNotes }}</span>
           <textarea
@@ -236,13 +240,12 @@
           <span>{{ labels.rosterShowPointsLeft }}</span>
         </label>
       </div>
-    </BaseModal>
+    </PickerDropdown>
   </div>
 </template>
 
 <script setup>
 import { computed, ref } from 'vue'
-import BaseModal from '../BaseModal.vue'
 import PickerDropdown from '../PickerDropdown.vue'
 import FactionPickerList from '../tracker/FactionPickerList.vue'
 import DetachmentPickerList from '../tracker/DetachmentPickerList.vue'
@@ -362,13 +365,8 @@ const moreOpen = ref(false)
 .rw-choose .bi { flex-shrink: 0; color: var(--text-muted); }
 /* The declared Force Disposition: the chip in its colour, on the field and in the list — the colour
    is how a disposition is told apart everywhere else (dispositionColors.js). */
-.rw-fac { --pd-width: 32rem; }
-.rw-det { --pd-width: 30rem; }
-.rw-fd { --pd-width: 12rem; }
-/* The last field on the line: its panel opens leftwards, or at 1200px it would leave the screen. */
-.rw-fd :deep(.pd-panel) { left: auto; right: 0; }
 .rw-fd .rw-choose { min-width: 11rem; }
-.rw-fd .modal-list { gap: 0.25rem; }
+.rw-fd-list { gap: 0.25rem; }
 .rw-fd-opt {
   display: flex;
   align-items: center;
@@ -406,7 +404,7 @@ const moreOpen = ref(false)
 }
 @media (hover: hover) { .rw-more:hover { color: var(--accent); border-color: var(--accent); } }
 
-.rw-more-body { padding: 1rem; display: flex; flex-direction: column; gap: 1rem; }
+.rw-more-body { padding: 0.5rem; display: flex; flex-direction: column; gap: 1rem; }
 .rw-more-body textarea {
   width: 100%;
   background: var(--bg-secondary);

@@ -86,6 +86,7 @@
       :keyword="fkwShown.keyword"
       :units="fkwShown.units"
       :faction-slug="fkwShown.factionSlug"
+      :anchor="fkwShown.anchor"
       @close="closeFactionKeyword"
     />
     <MobileUtilityBar
@@ -300,7 +301,7 @@ function onGlobalClick(e) {
   const fkwEl = e.target.closest('.fkw')
   if (fkwEl) {
     closeKeyword()
-    openFactionKeyword(fkwEl.dataset.fkw, pageFaction.value)
+    openFactionKeyword(fkwEl.dataset.fkw, pageFaction.value, { anchor: fkwEl.getBoundingClientRect() })
     return
   }
   // `.core-ability` is the same popover from a quieter span — a core ability named in rule prose,

@@ -51,15 +51,37 @@
           </span>
           <span class="card-vp">{{ secondaryCardVp(pi, m.slug) }} VP</span>
         </button>
-        <button
+        <!-- Per-card actions: set aside (keep VP) or return to deck (full undo). -->
+        <ActionMenu
           v-if="mode === 'tactical' && inHand(m.slug)"
-          class="manage"
-          :title="labels.trackerCardActions"
-          :aria-label="labels.trackerCardActions"
-          @click="actionSlug = m.slug"
+          :open="actionSlug === m.slug"
+          :title="m.name"
+          :subtitle="labels.trackerCardActions"
+          @update:open="(v) => (actionSlug = v ? m.slug : null)"
         >
-          ⋯
-        </button>
+          <template #trigger="{ toggle }">
+            <button
+              class="manage manage-more"
+              :title="labels.trackerCardActions"
+              :aria-label="labels.trackerCardActions"
+              @click="toggle"
+            >
+              ⋯
+            </button>
+          </template>
+          <button
+            class="act-btn"
+            @click="onSetAside(m.slug)"
+          >
+            {{ labels.trackerSetAside }}
+          </button>
+          <button
+            class="act-btn act-danger"
+            @click="onReturn(m.slug)"
+          >
+            {{ labels.trackerReturnToDeck }}
+          </button>
+        </ActionMenu>
         <button
           v-else-if="mode === 'tactical' && isSetAside(m.slug)"
           class="manage restore"
@@ -120,31 +142,6 @@
         </p>
       </div>
     </BaseModal>
-
-    <!-- Per-card actions: set aside (keep VP) or return to deck (full undo) -->
-    <BaseModal
-      v-if="actionMission"
-      :title="actionMission.name"
-      :subtitle="labels.trackerCardActions"
-      dense
-      max-width="340px"
-      @close="actionSlug = null"
-    >
-      <div class="modal-body act-list">
-        <button
-          class="act-btn"
-          @click="onSetAside(actionMission.slug)"
-        >
-          {{ labels.trackerSetAside }}
-        </button>
-        <button
-          class="act-btn act-danger"
-          @click="onReturn(actionMission.slug)"
-        >
-          {{ labels.trackerReturnToDeck }}
-        </button>
-      </div>
-    </BaseModal>
   </div>
 </template>
 
@@ -152,6 +149,7 @@
 import { ref, computed } from 'vue'
 import ScoringModal from './ScoringModal.vue'
 import BaseModal from '../BaseModal.vue'
+import ActionMenu from '../ActionMenu.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
 import { useTracker, missionBySlug, scorableBlocks } from '../../composables/useTracker.js'
@@ -203,7 +201,6 @@ const openMission = computed(() => openSlug.value ? missionBySlug(openSlug.value
 
 const pickerOpen = ref(false)
 const actionSlug = ref(null)
-const actionMission = computed(() => actionSlug.value ? missionBySlug(actionSlug.value, player.value.role, locale.value) : null)
 
 // Blocks scorable this round (round-gated) and matching the player's mode.
 function relevantBlocks(m) {
@@ -276,6 +273,7 @@ function onRestore(slug) { restoreSecondaryToHand(props.pi, slug) }
 }
 .manage:hover { color: var(--accent); border-color: var(--accent); }
 .manage.restore { display: flex; align-items: center; }
+.manage-more { flex: 1; }
 .manage.restore .bi { font-size: 0.95rem; }
 
 /* Set-aside (discarded) card: dimmed, dashed border, a "Discarded" badge. Only the card

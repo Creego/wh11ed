@@ -58,16 +58,51 @@
           <!-- Everything else this list can become — a printed sheet, a text export, a clipboard
              full of it — behind one "…" instead of an icon each. The printer stood here alone
              until export and copy joined it, and three icons beside the pencil is a toolbar, not
-             a header. Same kebab-into-a-sheet the list page's own cards use. -->
-          <button
+             a header. Same kebab-into-a-sheet the list page's own cards use. Copy sits beside Export
+             rather than inside it because the export dialog's own Copy is a choice of dialect
+             first — this one is the answer for the player who just wants the list in their
+             clipboard, in the format the GW app writes. -->
+          <ActionMenu
             v-if="!inGame"
-            type="button"
-            class="hdr-icon"
-            :aria-label="labels.rosterMoreActions"
-            @click="menuOpen = true"
+            v-model:open="menuOpen"
+            :title="roster.name || labels.rosterUntitled"
           >
-            <i class="bi bi-three-dots-vertical" />
-          </button>
+            <template #trigger="{ toggle }">
+              <button
+                type="button"
+                class="hdr-icon"
+                :aria-label="labels.rosterMoreActions"
+                @click="toggle"
+              >
+                <i class="bi bi-three-dots-vertical" />
+              </button>
+            </template>
+            <!-- Both of these WRITE the list out, so both wait for the faction data that names its
+                 units — a copy taken a beat too early would be a list with no army in it. -->
+            <button
+              type="button"
+              class="act-btn"
+              :disabled="!ready"
+              @click="openExport"
+            >
+              {{ labels.rosterExportTitle }}
+            </button>
+            <button
+              type="button"
+              class="act-btn"
+              @click="goPrint"
+            >
+              {{ labels.printAction }}
+            </button>
+            <button
+              type="button"
+              class="act-btn"
+              :disabled="!ready"
+              @click="copyWholeList"
+            >
+              {{ copiedList ? labels.rosterCopied : labels.rosterCopyList }}
+            </button>
+          </ActionMenu>
         </div>
       </header>
 
@@ -497,46 +532,6 @@
         </Transition>
       </template>
 
-      <!-- The "…" sheet: what to DO with this list, as opposed to what is in it. Copy sits beside
-         Export rather than inside it because the export dialog's own Copy is a choice of dialect
-         first — this one is the answer for the player who just wants the list in their clipboard,
-         in the format the GW app writes. -->
-      <BaseModal
-        v-if="menuOpen"
-        :title="roster.name || labels.rosterUntitled"
-        dense
-        max-width="340px"
-        @close="menuOpen = false"
-      >
-        <div class="modal-body act-list">
-          <!-- Both of these WRITE the list out, so both wait for the faction data that names its
-             units — a copy taken a beat too early would be a list with no army in it. -->
-          <button
-            type="button"
-            class="act-btn"
-            :disabled="!ready"
-            @click="openExport"
-          >
-            {{ labels.rosterExportTitle }}
-          </button>
-          <button
-            type="button"
-            class="act-btn"
-            @click="goPrint"
-          >
-            {{ labels.printAction }}
-          </button>
-          <button
-            type="button"
-            class="act-btn"
-            :disabled="!ready"
-            @click="copyWholeList"
-          >
-            {{ copiedList ? labels.rosterCopied : labels.rosterCopyList }}
-          </button>
-        </div>
-      </BaseModal>
-
       <RosterExportModal
         v-if="exportOpen"
         :roster="roster"
@@ -593,7 +588,7 @@ import RosterUnitRulesCard from '../../components/roster/RosterUnitRulesCard.vue
 import RosterCloudToast from '../../components/roster/RosterCloudToast.vue'
 import RosterIssuesModal from '../../components/roster/RosterIssuesModal.vue'
 import RosterExportModal from '../../components/roster/RosterExportModal.vue'
-import BaseModal from '../../components/BaseModal.vue'
+import ActionMenu from '../../components/ActionMenu.vue'
 import ConditionChips from '../../components/ConditionChips.vue'
 import PageTabs from '../../components/PageTabs.vue'
 import { ui } from '../../i18n/ui.js'

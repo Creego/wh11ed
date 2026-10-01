@@ -1,13 +1,11 @@
 <template>
   <!-- One root either way, so a parent's class and layout land on it in both shapes. -->
-  <div
-    class="ap"
-    :class="{ 'ap-right': align === 'right' }"
-  >
+  <div class="ap">
     <PickerDropdown
       v-if="wide"
       v-model:open="open"
-      :style="{ '--pd-width': panelWidth }"
+      :width="panelWidth"
+      :align="align"
       :label="title"
     >
       <template #trigger="t">
@@ -27,7 +25,9 @@
       <BaseModal
         v-if="open"
         :title="title"
+        :subtitle="subtitle"
         :max-width="modalWidth"
+        :dense="dense"
         @close="close"
       >
         <template
@@ -55,10 +55,13 @@ import BaseModal from './BaseModal.vue'
 
 defineProps({
   title: { type: String, default: '' },
+  subtitle: { type: String, default: '' },
   panelWidth: { type: String, default: '26rem' },
   modalWidth: { type: String, default: '480px' },
   // The last control on a line opens leftwards, or its panel leaves the screen.
   align: { type: String, default: 'left' },
+  // BaseModal's compact header, for a modal titled by a name that may wrap (the action menus).
+  dense: { type: Boolean, default: false },
 })
 const open = defineModel('open', { type: Boolean, default: false })
 const close = () => { open.value = false }
@@ -69,5 +72,4 @@ const wide = useMediaQuery('(min-width: 901px)')
 <style scoped>
 .ap { display: flex; flex-direction: column; min-width: 0; }
 .ap > :deep(.pd) { display: flex; }
-.ap-right :deep(.pd-panel) { left: auto; right: 0; }
 </style>

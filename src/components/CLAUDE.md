@@ -209,6 +209,18 @@ screens that had copied each other and drifted. The pairs that existed then are 
   (`FactionPickerBar`, rows from `FactionDetachmentList`) and the tracker's game setup (faction,
   detachments). Not for pickers whose rows unfold rich content (missions, secondaries, twists,
   layouts) or carry a form (the roster picker's share-link field) — a dropdown is for a short list.
+  **The panel is teleported to `<body>`** and placed from the trigger's rect (`position: fixed`,
+  `width`/`align` props, it follows scroll and resize): a dropdown inside a roster card
+  (`contain: paint`) or the desk's scrolling list column was clipped by it. It copies the faction
+  accent variables from where it was opened, since `useFactionAccent` does not reach `<body>`.
+  **The "…" menus are `ActionMenu.vue`** (2026-10-01): an `AdaptivePicker` holding the `.act-list`,
+  as menu rows (`.act-compact`) under the button on a wide screen, the sheet on a phone. In use:
+  the roster list's cards, the list view's header, a unit row in the editor (its `#body` slot
+  carries the block-name form and the faction accent the modal needs), the datasheet page's
+  folded buttons, the tracker's secondary cards. Delete still asks through `ConfirmModal`. The
+  desk's "More settings" is a plain `PickerDropdown` — that line exists only on a wide screen.
+  A faction keyword tapped in rule prose (`KeywordUnitsModal`) hangs its unit list from the word on
+  a wide screen, placed by the glossary popover's own rule (`utils/anchorPlacement.js`).
 
 
 ## Modals
