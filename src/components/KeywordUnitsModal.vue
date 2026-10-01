@@ -4,8 +4,9 @@
     max-width="480px"
     @close="$emit('close')"
   >
-    <!-- `modal-body` carries the global `overscroll-behavior: contain` (style.css) — see
-         FactionDetachmentPickerModal.vue's identical comment. -->
+    <!-- `modal-body` is not cosmetic: it carries the global `overscroll-behavior: contain`
+         (style.css) that keeps a scroll at the list's end from chaining to the page behind.
+         There is deliberately no body scroll-lock, so this class is what contains it. -->
     <div class="modal-body modal-list">
       <RouterLink
         v-for="u in units"

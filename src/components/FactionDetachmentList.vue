@@ -22,7 +22,7 @@ import DetachmentOption from './DetachmentOption.vue'
 // A single-pick list of detachments — or of anything else with an `id` and a `name` (the Chapter
 // picker in FactionPickerBar passes plain items; the detachment-only fields simply don't render).
 // An optional `tag` renders as a quiet corner keyword (the chapter lock on SM detachments). Drawn
-// by FactionDetachmentPickerModal and, compact, by an AdaptivePicker's dropdown.
+// inside an AdaptivePicker: in its modal on a phone, compact in its dropdown on a wide screen.
 defineProps({
   detachments: { type: Array, required: true },
   activeId: { type: String, default: null },

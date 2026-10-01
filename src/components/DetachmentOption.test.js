@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import DetachmentOption from './DetachmentOption.vue'
-import FactionDetachmentPickerModal from './FactionDetachmentPickerModal.vue'
+import FactionDetachmentList from './FactionDetachmentList.vue'
 import { dispositionColor } from '../data/dispositionColors.js'
 
 // The faction pages' detachment picker drew its own rows and never got the Force Disposition
@@ -37,9 +37,8 @@ describe('DetachmentOption', () => {
   })
 
   it('is what the faction picker draws, disposition included', () => {
-    const w = mount(FactionDetachmentPickerModal, {
+    const w = mount(FactionDetachmentList, {
       props: { detachments: [{ id: 'a', name: 'Awakened Dynasty', forceDispositions: ['Take and Hold'], dp: 2 }] },
-      global: { stubs: { Teleport: true } },
     })
     expect(w.find('.det .tone-chip').text()).toBe('Take and Hold')
   })
