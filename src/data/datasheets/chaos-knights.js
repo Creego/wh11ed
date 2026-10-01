@@ -1228,7 +1228,7 @@ export default [
     "abilities": [
       {
         "name": "Obsessive Ruthlessness",
-        "text": "This unit’s ranged attacks that target a **MONSTER/VEHICLE** unit can ignore modifiers to this unit’s:\n▪ **BS**.\n▪ **Hit rolls** and **wound rolls**."
+        "text": "This unit’s ranged attacks that target a **MONSTER/VEHICLE** unit can ignore modifiers to this unit’s:\n▪ **[gloss:ballistic-skill:BS]**.\n▪ **[gloss:hit-roll:Hit rolls]** and **[gloss:wound-roll:wound rolls]**."
       },
       {
         "name": "Taskmaster (Aura)",
@@ -2461,7 +2461,7 @@ export default [
     "abilities": [
       {
         "name": "Protection Protocols",
-        "text": "You can target this unit with the **Heroic Intervention stratagem**, regardless of any other uses of that **stratagem** this phase. If you do:\n▪ That use is -1 CP.\n▪ That use does not prevent any uses of that stratagem on other units this phase."
+        "text": "You can target this unit with the **Heroic Intervention stratagem**, regardless of any other uses of that **[gloss:stratagem:stratagem]** this phase. If you do:\n▪ That use is -1 CP.\n▪ That use does not prevent any uses of that stratagem on other units this phase."
       }
     ],
     "damaged": {

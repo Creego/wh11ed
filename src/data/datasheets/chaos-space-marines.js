@@ -71,7 +71,7 @@ export default [
       },
       {
         "name": "Dark Destiny",
-        "text": "Each time this model’s unit makes a Dark Pact and does not fail the resulting Leadership roll, if the result of that roll was 7+, you gain 1CP."
+        "text": "Each time this model’s unit makes a Dark Pact and does not fail the resulting **[gloss:leadership-roll:Leadership roll]**, if the result of that roll was 7+, you gain 1CP."
       }
     ],
     "composition": [
@@ -197,7 +197,7 @@ export default [
     "abilities": [
       {
         "name": "Howling Horde",
-        "text": "In your opponent’s Shooting phase, when an enemy unit has shot, if a model from this unit was destroyed as a result of those attacks, this unit can make a surge move of up to D6\"."
+        "text": "In your opponent’s Shooting phase, when an enemy unit has shot, if a model from this unit was **[gloss:destroyed:destroyed]** as a result of those attacks, this unit can make a **[gloss:surge-move:surge move]** of up to D6\"."
       }
     ],
     "composition": [
@@ -7158,7 +7158,7 @@ export default [
       },
       {
         "name": "Spirit Thief",
-        "text": "At the start of your Shooting phase, select one visible enemy **VEHICLE** unit. Until the end of the phase, each time a friendly **HERETIC ASTARTES** model makes an attack that targets that unit, re-roll a Wound roll of 1."
+        "text": "At the start of your Shooting phase, select one visible enemy **[gloss:vehicle:VEHICLE]** unit. Until the end of the phase, each time a friendly **HERETIC ASTARTES** model makes an attack that targets that unit, re-roll a Wound roll of 1."
       }
     ],
     "composition": [
@@ -8196,7 +8196,7 @@ export default [
     "abilities": [
       {
         "name": "Malevolent Locus (Aura)",
-        "text": "While a friendly **HERETIC ASTARTES** unit is within 9\" of this **FORTIFICATION**, improve that unit’s Leadership characteristic by 1."
+        "text": "While a friendly **HERETIC ASTARTES** unit is within 9\" of this **[gloss:fortification:FORTIFICATION]**, improve that unit’s Leadership characteristic by 1."
       },
       {
         "name": "Malign Cover",
@@ -8204,7 +8204,7 @@ export default [
       },
       {
         "name": "Fortification",
-        "text": "While an enemy unit is only within Engagement Range of one or more **FORTIFICATIONS** from your army:\n▪ That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol, subtract 1 from the Hit roll.\n▪ Models in that unit do not need to take Desperate Escape tests due to Falling Back while Battle-shocked, except for those that will move over enemy models when doing so."
+        "text": "While an enemy unit is only within Engagement Range of one or more **[gloss:fortification:FORTIFICATIONS]** from your army:\n▪ That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol, subtract 1 from the Hit roll.\n▪ Models in that unit do not need to take Desperate Escape tests due to Falling Back while Battle-shocked, except for those that will move over enemy models when doing so."
       }
     ],
     "composition": [
@@ -8848,7 +8848,7 @@ export default [
       },
       {
         "name": "Raider’s Due",
-        "text": "When this unit **declares a charge**, If an enemy unit within range of an **objective** is within 12\" of this unit, you can use this ability. If you do: This unit can re-roll that **charge roll**. This unit must end that **charge move engaged** with one or more of those enemy units."
+        "text": "When this unit **[gloss:declare-charge:declares a charge]**, If an enemy unit within range of an **[gloss:objective:objective]** is within 12\" of this unit, you can use this ability. If you do: This unit can re-roll that **[gloss:charge-roll:charge roll]**. This unit must end that **charge move engaged** with one or more of those enemy units."
       }
     ],
     "composition": [
@@ -10856,7 +10856,7 @@ export default [
     "abilities": [
       {
         "name": "Twisted Defence Force",
-        "text": "While this unit is within range of an objective, this unit has +1 Sv against ranged attacks."
+        "text": "While this unit is within range of an **[gloss:objective:objective]**, this unit has +1 Sv against ranged attacks."
       }
     ],
     "composition": [

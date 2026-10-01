@@ -172,7 +172,7 @@ export default [
       },
       {
         "name": "Relentless Avalanche",
-        "text": "You can target this unit with the **Heroic Intervention stratagem**, regardless of any other uses of that **stratagem** this phase. If you do:\n▪ That use is -1 CP.\n▪ That use does not prevent any uses of that **stratagem** on other units this phase."
+        "text": "You can target this unit with the **Heroic Intervention stratagem**, regardless of any other uses of that **[gloss:stratagem:stratagem]** this phase. If you do:\n▪ That use is -1 CP.\n▪ That use does not prevent any uses of that **stratagem** on other units this phase."
       }
     ],
     "composition": [
@@ -544,7 +544,7 @@ export default [
       },
       {
         "name": "Unhinged Vengeance",
-        "text": "In your opponent’s Shooting phase, when an enemy unit has shot, if this model lost one or more wounds as a result of those attacks, this unit can make a surge move of up to D6+2\"."
+        "text": "In your opponent’s Shooting phase, when an enemy unit has shot, if this model lost one or more wounds as a result of those attacks, this unit can make a **[gloss:surge-move:surge move]** of up to D6+2\"."
       }
     ],
     "composition": [
@@ -2410,7 +2410,7 @@ export default [
       },
       {
         "name": "Predictive Guidance",
-        "text": "Once per battle round, when you target this unit with the **Fire Overwatch**/**Heroic Intervention stratagem**, you can use this ability. If you do, that use of that **stratagem** is -1 CP."
+        "text": "Once per battle round, when you target this unit with the **Fire Overwatch**/**Heroic Intervention stratagem**, you can use this ability. If you do, that use of that **[gloss:stratagem:stratagem]** is -1 CP."
       }
     ],
     "composition": [

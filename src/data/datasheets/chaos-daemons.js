@@ -2316,7 +2316,7 @@ export default [
     "abilities": [
       {
         "name": "Beast Handler",
-        "text": "While this model is leading a unit, you can re-roll Charge rolls made for that unit. In addition, once per battle, you can target this unit with the Heroic Intervention Stratagem, regardless of any other uses of that Stratagem this phase. If you do:\n▪ That use is -1 CP.\n▪ That use does not prevent any uses of that Stratagem on other units this phase."
+        "text": "While this model is leading a unit, you can re-roll Charge rolls made for that unit. In addition, once per battle, you can target this unit with the Heroic Intervention **[gloss:stratagem:Stratagem]**, regardless of any other uses of that **Stratagem** this phase. If you do:\n▪ That use is -1 CP.\n▪ That use does not prevent any uses of that **Stratagem** on other units this phase."
       },
       {
         "name": "Seed the Garden of Nurgle",
@@ -2528,7 +2528,7 @@ export default [
       },
       {
         "name": "One Head Looks Back (Aura)",
-        "text": "Once per turn, when your opponent targets a unit from their army within 12\" of this model with a Stratagem, you can use this ability. If you do, increase the CP cost of the use of that Stratagem by 1CP."
+        "text": "Once per turn, when your opponent targets a unit from their army within 12\" of this model with a **[gloss:stratagem:Stratagem]**, you can use this ability. If you do, increase the CP cost of the use of that **Stratagem** by 1CP."
       }
     ],
     "damaged": {

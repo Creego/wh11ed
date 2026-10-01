@@ -1325,7 +1325,7 @@ export default [
       },
       {
         "name": "Destroyer of Futures",
-        "text": "You can target this unit with the Counteroffensive Stratagem, regardless of any other uses of that Stratagem this phase. If you do:\n▪ That use is -1 CP.\n▪ That use does not prevent any uses of that Stratagem on other units this phase."
+        "text": "You can target this unit with the Counteroffensive **[gloss:stratagem:Stratagem]**, regardless of any other uses of that **Stratagem** this phase. If you do:\n▪ That use is -1 CP.\n▪ That use does not prevent any uses of that **Stratagem** on other units this phase."
       }
     ],
     "damaged": {
@@ -2255,7 +2255,7 @@ export default [
       },
       {
         "name": "One Head Looks Back (Aura)",
-        "text": "Each time your opponent targets a unit from their army with a Stratagem, if that unit is within 12\" of this model, increase the cost of that use of that Stratagem by 1CP."
+        "text": "Each time your opponent targets a unit from their army with a **[gloss:stratagem:Stratagem]**, if that unit is within 12\" of this model, increase the cost of that use of that **Stratagem** by 1CP."
       }
     ],
     "damaged": {
@@ -2622,7 +2622,7 @@ export default [
     "abilities": [
       {
         "name": "Snarling Protector",
-        "text": "▪ You can target this unit with the Heroic Intervention Stratagem, regardless of any other uses of that Stratagem this phase. If you do:\n▪ That use is -1 CP.\n▪ That use does not prevent any uses of that Stratagem on other units this phase.\n▪ When this unit declares a charge, if a friendly engaged PSYKER unit is within 12\" of this unit, you can use this part of this ability. If you do:\n▪ This unit can re-roll that charge roll.\n▪ This unit __must__ end that charge move engaged with an enemy unit engaged with that friendly PSYKER unit."
+        "text": "▪ You can target this unit with the Heroic Intervention **[gloss:stratagem:Stratagem]**, regardless of any other uses of that **Stratagem** this phase. If you do:\n▪ That use is -1 CP.\n▪ That use does not prevent any uses of that **Stratagem** on other units this phase.\n▪ When this unit **[gloss:declare-charge:declares a charge]**, if a friendly **[gloss:engaged:engaged]** PSYKER unit is within 12\" of this unit, you can use this part of this ability. If you do:\n▪ This unit can re-roll that **[gloss:charge-roll:charge roll]**.\n▪ This unit __must__ end that charge move **engaged** with an enemy unit **engaged** with that friendly PSYKER unit."
       }
     ],
     "damaged": {

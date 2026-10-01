@@ -165,7 +165,7 @@ export default [
     "abilities": [
       {
         "name": "Strafing Run",
-        "text": "Each time this model makes a ranged attack that targets a unit that cannot **FLY**, add 1 to the Hit roll."
+        "text": "Each time this model makes a ranged attack that targets a unit that cannot **[gloss:fly:FLY]**, add 1 to the Hit roll."
       }
     ],
     "wargearAbilities": [
@@ -251,7 +251,7 @@ export default [
     "abilities": [
       {
         "name": "Aerial Deployment",
-        "text": "In your first Movement phase, this unit can make an **ingress move**."
+        "text": "In your first Movement phase, this unit can make an **[gloss:ingress-move:ingress move]**."
       }
     ],
     "wargearAbilities": [
@@ -1113,7 +1113,7 @@ export default [
       },
       {
         "name": "Repulsor Grid",
-        "text": "When an enemy unit targets this unit with ranged attacks, until that enemy unit has shot, when this unit makes a **save roll**: On an unmodified 6, that enemy unit suffers 1 **mortal wound** after that enemy unit has shot."
+        "text": "When an enemy unit targets this unit with ranged attacks, until that enemy unit has shot, when this unit makes a **[gloss:save-roll:save roll]**: On an unmodified 6, that enemy unit suffers 1 **[gloss:mortal-wound:mortal wound]** after that enemy unit has shot."
       }
     ],
     "composition": [
@@ -3759,7 +3759,7 @@ export default [
       },
       {
         "name": "Omnissiah’s Blessing",
-        "text": "In your Command phase, select one friendly **ADEPTUS MECHANICUS** model within 3\" of this model. That model regains up to D3 lost wounds and, if it is a **VEHICLE** model, until the start of your next Command phase, that model has the Feel No Pain 5+ ability. Each model can only be selected for this ability once per Command phase"
+        "text": "In your Command phase, select one friendly **ADEPTUS MECHANICUS** model within 3\" of this model. That model regains up to D3 lost wounds and, if it is a **[gloss:vehicle:VEHICLE]** model, until the start of your next Command phase, that model has the Feel No Pain 5+ ability. Each model can only be selected for this ability once per Command phase"
       },
       {
         "name": "Vengeance for the Omnissiah",

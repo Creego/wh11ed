@@ -105,7 +105,7 @@ export default [
     "wargearAbilities": [
       {
         "name": "Shadowfield",
-        "text": "While this model has an InSv, this unit cannot re-roll **save rolls**. When this model loses a wound (excluding from **mortal wounds**), this model has no InSv until the end of the battle."
+        "text": "While this model has an **[gloss:invulnerable-save:InSv]**, this unit cannot re-roll **[gloss:save-roll:save rolls]**. When this model loses a wound (excluding from **[gloss:mortal-wound:mortal wounds]**), this model has no **InSv** until the end of the battle."
       },
       {
         "name": "Soul Trap",

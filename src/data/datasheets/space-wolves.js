@@ -3744,7 +3744,7 @@ export default [
       },
       {
         "name": "Aggressive Hunter",
-        "text": "In your opponent’s Shooting phase, when an enemy unit has shot, if a model in this unit was destroyed as a result of those attacks, this unit can make a surge move of up to D6\"."
+        "text": "In your opponent’s Shooting phase, when an enemy unit has shot, if a model in this unit was destroyed as a result of those attacks, this unit can make a **[gloss:surge-move:surge move]** of up to D6\"."
       }
     ],
     "wargearAbilities": [

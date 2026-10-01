@@ -2216,7 +2216,7 @@ export default [
     "abilities": [
       {
         "name": "Cadia Stands!",
-        "text": "While this unit contains an OFFICER model and this unit is within range of an objective, this unit can re-roll battle-shock rolls."
+        "text": "While this unit contains an OFFICER model and this unit is within range of an **[gloss:objective:objective]**, this unit can re-roll battle-shock rolls."
       }
     ],
     "wargearAbilities": [
@@ -3446,7 +3446,7 @@ export default [
     "abilities": [
       {
         "name": "Bring it Down!",
-        "text": "Each time a model in this unit makes a ranged attack that targets a **MONSTER** or **VEHICLE** unit, re-roll a Hit roll of 1 and re-roll a Wound roll of 1."
+        "text": "Each time a model in this unit makes a ranged attack that targets a **MONSTER** or **[gloss:vehicle:VEHICLE]** unit, re-roll a Hit roll of 1 and re-roll a Wound roll of 1."
       }
     ],
     "composition": [
@@ -5882,7 +5882,7 @@ export default [
     "abilities": [
       {
         "name": "Close-range Titan Killer",
-        "text": "Each time this model’s magma cannon targets an enemy **MONSTER** or **VEHICLE** unit, that target is always considered to be within half range of that weapon."
+        "text": "Each time this model’s magma cannon targets an enemy **MONSTER** or **[gloss:vehicle:VEHICLE]** unit, that target is always considered to be within half range of that weapon."
       }
     ],
     "damaged": {
@@ -6541,7 +6541,7 @@ export default [
       },
       {
         "name": "Covert Stealth Team",
-        "text": "At the end of your opponent’s turn, if this unit is **unengaged**, you can use this ability. If you do:\n▪ Place this unit in **strategic reserves**.\n▪ This unit has **Deep Strike** until the start of your next Shooting phase.\n▪ This unit must make an **ingress move** in your next Movement phase (including in your first turn)."
+        "text": "At the end of your opponent’s turn, if this unit is **[gloss:unengaged:unengaged]**, you can use this ability. If you do:\n▪ Place this unit in **[gloss:strategic-reserves:strategic reserves]**.\n▪ This unit has [core:Deep Strike] until the start of your next Shooting phase.\n▪ This unit must make an **[gloss:ingress-move:ingress move]** in your next Movement phase (including in your first turn)."
       }
     ],
     "composition": [
@@ -9338,7 +9338,7 @@ export default [
       },
       {
         "name": "Death Befitting An Officer",
-        "text": "In your opponent’s Shooting phase, when this unit is **destroyed**, before this unit’s **deadly demise** roll, roll one D6:\n▪ On a 2+, do not remove this unit from the battlefield. After the attacking unit has shot, this unit can shoot using **normal shooting**, but while doing so this unit can only target that enemy unit. When this unit has shot, or at the end of the phase (whichever comes first), resolve this unit’s **deadly demise** roll, then this unit is removed from the battlefield."
+        "text": "In your opponent’s Shooting phase, when this unit is **[gloss:destroyed:destroyed]**, before this unit’s [core:Deadly Demise] roll, roll one D6:\n▪ On a 2+, do not remove this unit from the battlefield. After the attacking unit has shot, this unit can shoot using **[gloss:normal-shooting:normal shooting]**, but while doing so this unit can only target that enemy unit. When this unit has shot, or at the end of the phase (whichever comes first), resolve this unit’s [core:Deadly Demise] roll, then this unit is removed from the battlefield."
       }
     ],
     "damaged": {

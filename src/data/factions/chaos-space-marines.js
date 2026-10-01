@@ -1552,7 +1552,7 @@ The combined points value of such units you can include in your army depends on 
       rule: {
         name: "Empyric Wellspring",
         flavor: "The sorcerous powers wielded by a cabal inevitably draw the attention of the Dark Gods, flooding the battlefield with immaterial energies that empower their dark magicks and their daemonically gifted comrades alike.",
-        body: "▪ In your Shooting phase, when a friendly HERETIC ASTARTES PSYKER unit (excluding DAEMON units) is selected to shoot, if that unit makes a Dark Pact, that unit\u2019s ranged attacks have +1 S.\n▪ In the Fight phase, when a friendly HERETIC ASTARTES DAEMON PRINCE/DAEMON PRINCE WITH WINGS unit (excluding KHORNE units) is selected to fight, if that unit makes a Dark Pact, that unit\u2019s melee attacks have:\n▪ +2 S.\n▪ +1 AP.",
+        body: "▪ In your Shooting phase, when a friendly HERETIC ASTARTES PSYKER unit (excluding DAEMON units) is **[gloss:selected-to-shoot:selected to shoot]**, if that unit makes a Dark Pact, that unit’s ranged attacks have +1 S.\n▪ In the Fight phase, when a friendly HERETIC ASTARTES DAEMON PRINCE/DAEMON PRINCE WITH WINGS unit (excluding KHORNE units) is **[gloss:selected-to-fight:selected to fight]**, if that unit makes a Dark Pact, that unit’s melee attacks have:\n▪ +2 S.\n▪ +1 AP.",
       },
       stratagems: [
         {
@@ -1563,7 +1563,7 @@ The combined points value of such units you can include in your army depends on 
           flavor: "With the unbound energies of the Warp surging through them, this infernal champion heals of their hurts as quickly as the enemy can inflict them.",
           when: "Your Command phase.",
           target: "One friendly HERETIC ASTARTES PSYKER/DAEMON unit (excluding KHORNE units).",
-          effect: "Your unit heals D3+1 wounds.",
+          effect: "Your unit **[gloss:heal:heals]** D3+1 wounds.",
           restrictions: "",
         },
         {
@@ -1583,7 +1583,7 @@ The combined points value of such units you can include in your army depends on 
           cp: "1CP",
           turn: "your",
           flavor: "Secondary cantrips blossom out like poisoned flowers from the heart of this sorcerous manifestation, raining mutating flame upon the foe in roiling clouds.",
-          when: "Your Shooting phase, when a friendly HERETIC ASTARTES PSYKER unit is selected to shoot.",
+          when: "Your Shooting phase, when a friendly HERETIC ASTARTES PSYKER unit is **[gloss:selected-to-shoot:selected to shoot]**.",
           target: "That HERETIC ASTARTES PSYKER unit.",
           effect: "Your unit\u2019s ranged attacks have [IGNORES COVER].",
           restrictions: "",
@@ -1623,7 +1623,7 @@ The combined points value of such units you can include in your army depends on 
           cp: "1CP",
           turn: "your",
           flavor: "As the murderous rain of projectiles redoubles and the fires of ruin burn higher, so the favour of the Dark Gods falls upon the architects of this devastation.",
-          when: "Your Shooting phase, when a friendly HAVOCS/OBLITERATORS unit is selected to shoot.",
+          when: "Your Shooting phase, when a friendly HAVOCS/OBLITERATORS unit is **[gloss:selected-to-shoot:selected to shoot]**.",
           target: "That HAVOCS/OBLITERATORS unit.",
           effect: "When your unit uses the Dark Pacts ability, your unit\u2019s ranged attacks have:\n▪ [LETHAL HITS].\n▪ [SUSTAINED HITS 1].",
           restrictions: "",
@@ -1636,7 +1636,7 @@ The combined points value of such units you can include in your army depends on 
           flavor: "Even as the foe attempts to escape the rain of ruination, or to close with the foes so cruelly winnowing their ranks, so these Havocs move to establish new sight lines and draw their victims into an inescapable crossfire.",
           when: "Your opponent\u2019s Movement phase, when an enemy unit ends a move within 8\" of a friendly unengaged HAVOCS unit.",
           target: "That HAVOCS unit.",
-          effect: "Your unit can make a Normal move of up to D3+3\".",
+          effect: "Your unit can make a **[gloss:normal-move:Normal move]** of up to D3+3\".",
           restrictions: "",
         },
         {
@@ -1656,13 +1656,13 @@ The combined points value of such units you can include in your army depends on 
           name: "Pact of Destruction",
           points: 15,
           flavor: "There are those daemonic entities within the Warp that are willing to offer their boons to any who will wreak wholesale devastation in their name, at least for as long as the carnage holds their capricious attention.",
-          body: "WARPSMITH model only.\n▪ When this unit uses its Dark Pacts ability, this unit can re-roll Leadership rolls.\n▪ In your Shooting phase, when this unit has shot, if this unit used its Dark Pacts ability and if those attacks destroyed an enemy model, this unit heals 3 wounds.",
+          body: "WARPSMITH model only.\n▪ When this unit uses its Dark Pacts ability, this unit can re-roll Leadership rolls.\n▪ In your Shooting phase, when this unit has shot, if this unit used its Dark Pacts ability and if those attacks **[gloss:destroyed:destroyed]** an enemy model, this unit **[gloss:heal:heals]** 3 wounds.",
         },
         {
           name: "Eye of Oblivion",
           points: 20,
           flavor: "This vile techno-daemonic parasite nests within the emptied eye socket of its host, driving filament tendrils deep into their brain and feeding on their animus in exchange for revealing the secrets of its supernatural vision.",
-          body: "WARPSMITH model only. When this unit is selected to shoot, select one enemy unit within 24\" of this unit. That enemy unit has +6\" detection range until this unit has shot.",
+          body: "WARPSMITH model only. When this unit is **[gloss:selected-to-shoot:selected to shoot]**, select one enemy unit within 24\" of this unit. That enemy unit has +6\" **[gloss:detection-range:detection range]** until this unit has shot.",
         },
       ],
     },
@@ -1677,7 +1677,7 @@ The combined points value of such units you can include in your army depends on 
       rule: {
         name: "Prey on the Weak",
         flavor: "The more bloodied, scattered and thinned are the ranks of the enemy, the more frenzied and brutal the attacks of these sadistic Chaos Space Marines become.",
-        body: "▪ Friendly HERETIC ASTARTES INFANTRY FLY units\u2019 attacks that target a Battle-shocked unit or a unit at or below half-strength can re-roll Hit rolls of 1.\n▪ When an enemy unit\u2019s attacks target a friendly HERETIC ASTARTES INFANTRY FLY unit, if that enemy unit is Battle-shocked or at or below half-strength, those attacks have -1 to Hit rolls.\n\nThis detachment has the **NIGHTMARE** tag and cannot be taken with another **NIGHTMARE** detachment.",
+        body: "▪ Friendly HERETIC ASTARTES INFANTRY FLY units’ attacks that target a Battle-shocked unit or a unit at or below half-strength can re-roll Hit rolls of 1.\n▪ When an enemy unit’s attacks target a friendly HERETIC ASTARTES INFANTRY FLY unit, if that enemy unit is Battle-shocked or at or below half-strength, those attacks have -1 to Hit rolls.\n\nThis **[gloss:detachments:detachment]** has the **NIGHTMARE** tag and cannot be taken with another **NIGHTMARE** **detachment**.",
       },
       stratagems: [
         {
@@ -1686,7 +1686,7 @@ The combined points value of such units you can include in your army depends on 
           cp: "1CP",
           turn: "either",
           flavor: "With a last-second blast of speed from their jump packs, the Chaos Space Marines slam into their enemies blades-first.",
-          when: "Fight phase, when a friendly HERETIC ASTARTES INFANTRY FLY unit that made a Charge move this turn is selected to fight.",
+          when: "Fight phase, when a friendly HERETIC ASTARTES INFANTRY FLY unit that made a **[gloss:charge-move:Charge move]** this turn is **[gloss:selected-to-fight:selected to fight]**.",
           target: "That HERETIC ASTARTES INFANTRY FLY unit.",
           effect: "Your unit\u2019s melee attacks have [LANCE].",
           restrictions: "",
@@ -1697,7 +1697,7 @@ The combined points value of such units you can include in your army depends on 
           cp: "1CP",
           turn: "your",
           flavor: "Surging in and out of the enemy lines on wings of dark fire, these predatory killers wreak bloody havoc.",
-          when: "Your Movement phase, when a friendly HERETIC ASTARTES INFANTRY FLY unit is selected to make a fall-back move.",
+          when: "Your Movement phase, when a friendly HERETIC ASTARTES INFANTRY FLY unit is selected to make a **[gloss:fall-back-move:fall-back move]**.",
           target: "That HERETIC ASTARTES INFANTRY FLY unit.",
           effect: "That move does not prevent your unit from being eligible to declare a charge.",
           restrictions: "",
@@ -1710,7 +1710,7 @@ The combined points value of such units you can include in your army depends on 
           flavor: "So hideous and otherworldly have many Warp Talons been rendered by the energies of the Warp, that merely to look upon their approach is enough to scare the enemy out of their minds.",
           when: "Your Movement phase, when a friendly WARP TALONS unit ends a move.",
           target: "That WARP TALONS unit.",
-          effect: "Select one visible enemy unit (excluding MONSTER/VEHICLE units) within 9\" of your unit. That enemy unit makes a Battle-shock roll, with -1 to that Battle-shock roll.",
+          effect: "Select one **[gloss:visible:visible]** enemy unit (excluding MONSTER/VEHICLE units) within 9\" of your unit. That enemy unit makes a Battle-shock roll, with -1 to that Battle-shock roll.",
           restrictions: "",
         },
       ],
@@ -1719,7 +1719,7 @@ The combined points value of such units you can include in your army depends on 
           name: "Shadowcowl Talisman",
           points: 20,
           flavor: "Worked with diabolical incantations of occlusion, wound about with subtle enchantments, this onyx disc draws a penumbral aura about the bearer that hides him from the eyes of his prey.",
-          body: "CHAOS LORD WITH JUMP PACK model only. This unit has 5+ InSv.",
+          body: "CHAOS LORD WITH JUMP PACK model only. This unit has 5+ **[gloss:invulnerable-save:InSv]**.",
         },
         {
           name: "Pact of Cursed Pinions",

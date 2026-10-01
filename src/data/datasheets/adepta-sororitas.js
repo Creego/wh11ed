@@ -2602,7 +2602,7 @@ export default [
     "abilities": [
       {
         "name": "The Pulpit of Saint Holline’s Basilica",
-        "text": "This unit has **STEALTH** Melee attacks that target this unit have -1 to **hit rolls**"
+        "text": "This unit has [core:Stealth] Melee attacks that target this unit have -1 to **[gloss:hit-roll:hit rolls]**"
       },
       {
         "name": "Fiery Conviction",

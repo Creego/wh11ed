@@ -462,7 +462,7 @@ export default {
             'Выпускаемые с пролетающих тяжёлых стелс-дронов-носителей, эти крошечные машины обеспечивают стелс-специалистам т’ау разностороннюю поддержку даже в разгар жестоких перестрелок.',
           when: 'Ваша фаза стрельбы, когда [gloss:friendly:дружественный] юнит PATHFINDER TEAM/STEALTH BATTLESUITS начинает [gloss:action:действие].',
           target: 'Этот юнит PATHFINDER TEAM/STEALTH BATTLESUITS.',
-          effect: 'Это действие не лишает ваш юнит [gloss:eligible-to-shoot:права стрелять].',
+          effect: 'Это **[gloss:action:действие]** не лишает ваш юнит [gloss:eligible-to-shoot:права стрелять].',
         },
         {
           flavor:
@@ -497,7 +497,7 @@ export default {
 Дружественные юниты GHOSTKEEL BATTLESUIT/STEALTH BATTLESUITS имеют следующую способность:
 ▪ **Localised Stealth Projectors ([gloss:aura:Aura]):** когда дружественный юнит KROOT/VESPID STINGWINGS в пределах 6" от этого юнита отстрелялся, эти атаки не лишают этот юнит статуса [gloss:hidden:скрытого].
 
-Этот детачмент имеет метку **AUXILIARIES** и не может быть взят вместе с другим детачментом **AUXILIARIES**.`,
+Этот **[gloss:detachments:детачмент]** имеет метку **AUXILIARIES** и не может быть взят вместе с другим **детачментом** **AUXILIARIES**.`,
       },
       stratagems: [
         {
@@ -543,7 +543,7 @@ export default {
           'Отделы прикладной науки касты Земли трудятся без устали, снабжая передовые юниты превосходными оружейными системами для уничтожения врага издалека.',
         body: `[gloss:ranged-attacks:Атаки дальнего боя] [gloss:friendly:дружественных] юнитов BATTLESUIT CHARACTER имеют +6" [gloss:range:R].
 
-Этот детачмент имеет метку **RETALIATION** и не может быть взят вместе с другим детачментом **RETALIATION**.`,
+Этот **[gloss:detachments:детачмент]** имеет метку **RETALIATION** и не может быть взят вместе с другим **детачментом** **RETALIATION**.`,
       },
       stratagems: [
         {

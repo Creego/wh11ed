@@ -2504,7 +2504,7 @@ export default [
       },
       {
         "name": "Resurrection Orb",
-        "text": "Once per battle, per unit, at the end of any phase, you can use this ability. If you do, this unit resurrects: when a unit resurrects, that unit’s Reanimation Protocols activate, but that unit heals D6 wounds (instead of D3 wounds). You cannot resurrect more than one unit per turn."
+        "text": "Once per battle, per unit, at the end of any phase, you can use this ability. If you do, this unit resurrects: when a unit resurrects, that unit’s Reanimation Protocols activate, but that unit **[gloss:heal:heals]** D6 wounds (instead of D3 wounds). You cannot resurrect more than one unit per turn."
       }
     ],
     "composition": [
@@ -2693,7 +2693,7 @@ export default [
     "abilities": [
       {
         "name": "Eternity Gate",
-        "text": "In your movement phase (excluding the first battle round), you can select one friendly NECRONS INFANTRY unit that is either in strategic reserves or on the battlefield (if you select a unit on the battlefield, remove that unit from the battlefield and place it into strategic reserves). That unit can make an ingress move, and while making that ingress move, that unit must be set up wholly within 6\" of this unit and unengaged (instead of more than 8\" horizontally from all enemy units), even if that is within your opponent’s deployment zone. That unit cannot make a charge move this turn."
+        "text": "In your movement phase (excluding the first battle round), you can select one friendly NECRONS INFANTRY unit that is either in **[gloss:strategic-reserves:strategic reserves]** or on the battlefield (if you select a unit on the battlefield, remove that unit from the battlefield and place it into **strategic reserves**). That unit can make an **[gloss:ingress-move:ingress move]**, and while making that **ingress move**, that unit must be set up wholly within 6\" of this unit and unengaged (instead of more than 8\" horizontally from all enemy units), even if that is within your opponent’s deployment zone. That unit cannot make a **[gloss:charge-move:charge move]** this turn."
       }
     ],
     "damaged": {
@@ -3119,7 +3119,7 @@ export default [
     "abilities": [
       {
         "name": "Tunnelling Horrors",
-        "text": "At the end of your opponent’s turn, if this unit is unengaged, you can use this ability. If you do:\n▪ Place this unit in strategic reserves.\n▪ This unit must make an ingress move in your next Movement phase (including in your first turn)."
+        "text": "At the end of your opponent’s turn, if this unit is unengaged, you can use this ability. If you do:\n▪ Place this unit in **[gloss:strategic-reserves:strategic reserves]**.\n▪ This unit must make an ingress move in your next Movement phase (including in your first turn)."
       }
     ],
     "wargearAbilities": [
@@ -3310,7 +3310,7 @@ export default [
     "wargearAbilities": [
       {
         "name": "Resurrection Orb",
-        "text": "Once per battle, per unit, at the end of any phase, you can use this ability. If you do, this unit resurrects: when a unit resurrects, that unit’s Reanimation Protocols activate, but that unit heals D6 wounds (instead of D3 wounds). You cannot resurrect more than one unit per turn."
+        "text": "Once per battle, per unit, at the end of any phase, you can use this ability. If you do, this unit resurrects: when a unit resurrects, that unit’s Reanimation Protocols activate, but that unit **[gloss:heal:heals]** D6 wounds (instead of D3 wounds). You cannot resurrect more than one unit per turn."
       }
     ],
     "composition": [
@@ -3390,7 +3390,7 @@ export default [
     "wargearAbilities": [
       {
         "name": "Resurrection Orb",
-        "text": "Once per battle, per unit, at the end of any phase, you can use this ability. If you do, this unit resurrects: when a unit resurrects, that unit’s Reanimation Protocols activate, but that unit heals D6 wounds (instead of D3 wounds). You cannot resurrect more than one unit per turn."
+        "text": "Once per battle, per unit, at the end of any phase, you can use this ability. If you do, this unit resurrects: when a unit resurrects, that unit’s Reanimation Protocols activate, but that unit **[gloss:heal:heals]** D6 wounds (instead of D3 wounds). You cannot resurrect more than one unit per turn."
       }
     ],
     "composition": [
@@ -4518,7 +4518,7 @@ export default [
     "abilities": [
       {
         "name": "Transdimensional Displacement",
-        "text": "In your Movement phase, when this unit is selected to make an Advance move, you can use this ability. If you do:\n▪ That Advance move has no maximum distance.\n▪ This unit can move through all types of model (including enemy models and MONSTER/VEHICLE models).\n▪ After moving, this unit must be more than 8\" horizontally from all enemy units."
+        "text": "In your Movement phase, when this unit is selected to make an **[gloss:advance-move:Advance move]**, you can use this ability. If you do:\n▪ That **Advance move** has no **[gloss:maximum-distance:maximum distance]**.\n▪ This unit can move through all types of model (including enemy models and MONSTER/VEHICLE models).\n▪ After moving, this unit must be more than 8\" horizontally from all enemy units."
       },
       {
         "name": "Necrodermis",

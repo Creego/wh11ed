@@ -196,7 +196,7 @@ export default {
       'Black Rage':
         '▪ Атаки ближнего боя этого юнита могут перебрасывать **[gloss:hit-roll:броски на попадание]**, равные 1.\n▪ Пока этот юнит не находится в пределах 6" от одной или более дружественных моделей BLOOD ANGELS CHARACTER или не в пределах 12" от одной или более дружественных моделей CHAPLAIN, он не может совершать **[gloss:fall-back-move:отступление]**, а его **[gloss:objective-control:OC]** изменяется до 0.',
       'An Honourable Death in Combat':
-        'Атаки этого юнита:\n▪ Имеют [SUSTAINED HITS 1], если этот юнит ниже **начальной численности**.\n▪ __Или:__ имеют [SUSTAINED HITS 2], если этот юнит ниже **[gloss:half-strength:половинной численности]**.',
+        'Атаки этого юнита:\n▪ Имеют [SUSTAINED HITS 1], если этот юнит ниже **[gloss:starting-strength:начальной численности]**.\n▪ __Или:__ имеют [SUSTAINED HITS 2], если этот юнит ниже **[gloss:half-strength:половинной численности]**.',
     },
     loadout:
       '**Каждая модель вооружена:** 1 Chainsword; 1 Heavy Bolt Pistol.',

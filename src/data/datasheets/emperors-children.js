@@ -220,7 +220,7 @@ export default [
     "abilities": [
       {
         "name": "Assault Vehicle",
-        "text": "Units can disembark from this **TRANSPORT** after it has Advanced. Units that do so count as having made a Normal move, and cannot declare a charge that turn."
+        "text": "Units can disembark from this **[gloss:transport:TRANSPORT]** after it has Advanced. Units that do so count as having made a Normal move, and cannot declare a charge that turn."
       }
     ],
     "composition": [
@@ -425,7 +425,7 @@ export default [
     "abilities": [
       {
         "name": "Lethal Obsession",
-        "text": "In your Shooting phase, after this unit has shot, you can use this ability. If you do, select one enemy unit hit by those ranged attacks. Until the end of the turn, when this unit **declares a charge**:\n▪ This unit can re-roll that **charge roll**.\n▪ This unit __must__ end that **charge move engaged** with that enemy unit."
+        "text": "In your Shooting phase, after this unit has shot, you can use this ability. If you do, select one enemy unit hit by those ranged attacks. Until the end of the turn, when this unit **[gloss:declare-charge:declares a charge]**:\n▪ This unit can re-roll that **[gloss:charge-roll:charge roll]**.\n▪ This unit __must__ end that **charge move engaged** with that enemy unit."
       }
     ],
     "composition": [

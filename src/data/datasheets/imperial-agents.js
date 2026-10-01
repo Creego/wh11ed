@@ -306,17 +306,17 @@ export default [
     "abilities": [
       {
         "name": "Death to the Alien",
-        "text": "This unit's attacks can:\n▪ Re-roll **hit rolls** of 1.\n▪ __Or:__ If the target of those attacks does not have IMPERIUM/CHAOS, re-roll **hit rolls**."
+        "text": "This unit's attacks can:\n▪ Re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ __Or:__ If the target of those attacks does not have IMPERIUM/CHAOS, re-roll **hit rolls**."
       },
       {
         "name": "Kill Team",
-        "text": "Each time an attack targets this unit, if it contains models with different **T** characteristics, until the attacking models has finished making it's attacks, use the **T** characteristic of the majority of the models in the unit when determining what roll is required for that attack to successfully wound. If two or more **T** characteristics are tied for majority, use the highest value.\n\nFor the purpose of determining which models in this unit can embark within a TRANSPORT, Gravis Veteran models take up the space of 2 models, but can otherwise embark within any TRANSPORT their unit can embark within, even though similar models in other units have the GRAVIS keyword."
+        "text": "Each time an attack targets this unit, if it contains models with different **[gloss:toughness:T]** characteristics, until the attacking models has finished making it's attacks, use the **T** characteristic of the majority of the models in the unit when determining what roll is required for that attack to successfully wound. If two or more **T** characteristics are tied for majority, use the highest value.\n\nFor the purpose of determining which models in this unit can embark within a TRANSPORT, Gravis Veteran models take up the space of 2 models, but can otherwise embark within any TRANSPORT their unit can embark within, even though similar models in other units have the GRAVIS keyword."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Storm Shield",
-        "text": "This model has a 4+ **InSv**."
+        "text": "This model has a 4+ **[gloss:invulnerable-save:InSv]**."
       }
     ],
     "composition": [
@@ -404,11 +404,11 @@ export default [
     "abilities": [
       {
         "name": "Acrobatic Escape",
-        "text": "▪ At the end of the Fight phase, if this unit is engaged, this unit can make a fall-back move of up to D6\".\n▪ At the end of your opponent's turn, if this unit is more than 3\" from all enemy units, you can use this ability. If you do:\n▪ Place this unit in strategic reserves.\n▪ This unit must make an ingress move in your next Movement phase (including in your first turn)."
+        "text": "▪ At the end of the Fight phase, if this unit is engaged, this unit can make a **[gloss:fall-back-move:fall-back move]** of up to D6\".\n▪ At the end of your opponent's turn, if this unit is more than 3\" from all enemy units, you can use this ability. If you do:\n▪ Place this unit in **[gloss:strategic-reserves:strategic reserves]**.\n▪ This unit must make an **[gloss:ingress-move:ingress move]** in your next Movement phase (including in your first turn)."
       },
       {
         "name": "Reign of Confusion",
-        "text": "Once per turn, when your opponent targets a unit from their army within 12\" of this model with a Stratagem, this model can use this ability. If you do, increase the CP cost of that use of that Stratagem by 1CP."
+        "text": "Once per turn, when your opponent targets a unit from their army within 12\" of this model with a **[gloss:stratagem:Stratagem]**, this model can use this ability. If you do, increase the CP cost of that use of that **Stratagem** by 1CP."
       }
     ],
     "composition": [
@@ -532,7 +532,7 @@ export default [
     "abilities": [
       {
         "name": "Blackstar Cluster Launcher",
-        "text": "In your Movement phase, when this unit ends a **normal move**, select up to one enemy unit this unit moved over during that move and roll six D6:\n▪ For each 4+, that unit suffers 1 **mortal wound**."
+        "text": "In your Movement phase, when this unit ends a **[gloss:normal-move:normal move]**, select up to one enemy unit this unit moved over during that move and roll six D6:\n▪ For each 4+, that unit suffers 1 **[gloss:mortal-wound:mortal wound]**."
       },
       {
         "name": "Auspex Array",
@@ -1180,13 +1180,13 @@ export default [
     "abilities": [
       {
         "name": "Death to the Alien",
-        "text": "This unit's attacks can:\n▪ Re-roll **hit rolls** of 1.\n▪ __Or:__ If the target of those attacks does not have IMPERIUM/CHAOS, re-roll **hit rolls**."
+        "text": "This unit's attacks can:\n▪ Re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ __Or:__ If the target of those attacks does not have IMPERIUM/CHAOS, re-roll **hit rolls**."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Storm Shield",
-        "text": "This model has a 4+ **InSv**."
+        "text": "This model has a 4+ **[gloss:invulnerable-save:InSv]**."
       }
     ],
     "composition": [
@@ -6799,7 +6799,7 @@ export default [
     "abilities": [
       {
         "name": "Dead-shot",
-        "text": "When this unit is selected to shoot, until this unit has shot: enemy units do not have [core:Lone Operative]; hidden enemy units have +15\" detection range."
+        "text": "When this unit is selected to shoot, until this unit has shot: enemy units do not have [core:Lone Operative]; **[gloss:hidden:hidden]** enemy units have +15\" **[gloss:detection-range:detection range]**."
       },
       {
         "name": "Shieldbreaker",
@@ -7017,7 +7017,7 @@ export default [
       },
       {
         "name": "Unstoppable Champion (Once per battle, per army)",
-        "text": "At the end of a phase in which this model is **destroyed**, roll one D6:\n▪ On a 2+, set this model back up on the battlefield as close as possible to where it was **destroyed, unengaged** with 3 wounds remaining."
+        "text": "At the end of a phase in which this model is **[gloss:destroyed:destroyed]**, roll one D6:\n▪ On a 2+, set this model back up on the battlefield as close as possible to where it was **destroyed, unengaged** with 3 wounds remaining."
       }
     ],
     "composition": [
@@ -7100,15 +7100,15 @@ export default [
     "abilities": [
       {
         "name": "Watch Master",
-        "text": "This model’s attacks that target a CHARACTER unit can:\n▪ Re-roll **hit rolls** of 1.\n▪ Re-roll **wound rolls** of 1."
+        "text": "This model’s attacks that target a CHARACTER unit can:\n▪ Re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ Re-roll **[gloss:wound-roll:wound rolls]** of 1."
       },
       {
         "name": "Strategic Acumen",
-        "text": "In your Command phase, you can use this ability. If you do, select one **combat doctrine** to be active for this unit until the start of your next Command phase."
+        "text": "In your Command phase, you can use this ability. If you do, select one **[gloss:sm-combat-doctrine:combat doctrine]** to be active for this unit until the start of your next Command phase."
       },
       {
         "name": "Watch That (new)",
-        "text": "At the start of the first battle round, select up to one enemy unit to be this unit’s **hunted**:\n▪ This unit’s attacks that target this unit’s **hunted** unit can re-roll **wound rolls** of 1.\n▪ Each time this unit’s **hunted** is **destroyed**, select up to one enemy unit to be this unit’s **hunted**."
+        "text": "At the start of the first battle round, select up to one enemy unit to be this unit’s **hunted**:\n▪ This unit’s attacks that target this unit’s **hunted** unit can re-roll **[gloss:wound-roll:wound rolls]** of 1.\n▪ Each time this unit’s **hunted** is **[gloss:destroyed:destroyed]**, select up to one enemy unit to be this unit’s **hunted**."
       }
     ],
     "composition": [

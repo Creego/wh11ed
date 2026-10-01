@@ -507,7 +507,7 @@ If you have upgraded a model to have a drone, place a Drone token next to your m
           flavor: "Deployed from overflights of heavier stealth-capable carrier drones, these tiny machines provide versatile battlefield support for T’au stealth specialists, even in the midst of vicious firefights.",
           when: "Your Shooting phase, when a [gloss:friendly:friendly] PATHFINDER TEAM/STEALTH BATTLESUITS unit starts an [gloss:action:Action].",
           target: "That PATHFINDER TEAM/STEALTH BATTLESUITS unit.",
-          effect: "That Action does not prevent your unit from being [gloss:eligible-to-shoot:eligible to shoot].",
+          effect: "That **[gloss:action:Action]** does not prevent your unit from being [gloss:eligible-to-shoot:eligible to shoot].",
           restrictions: "",
         },
         {
@@ -552,7 +552,7 @@ If you have upgraded a model to have a drone, place a Drone token next to your m
       rule: {
         name: "Integrated Command Structure",
         flavor: "T’au officers given charge of auxiliary cadres receive additional training in optimised doctrinal and strategic alien amalgamation; this – coupled with specialised translation drones and endless integrated combat drills – allows them to get the best out of their alien subordinates.",
-        body: "[gloss:friendly:Friendly] KROOT/VESPID STINGWINGS units have the following ability:\n▪ **Harnessed Alien Instincts:** In your Shooting phase, this unit can select one [gloss:visible:visible] enemy unit [gloss:within:within] 12\". That enemy unit is prey-marked: while a unit is prey-marked, that unit has +3\" [gloss:detection-range:detection range].\n\nFriendly GHOSTKEEL BATTLESUIT/STEALTH BATTLESUITS units have the following ability:\n▪ **Localised Stealth Projectors ([gloss:aura:Aura]):** When a friendly KROOT/VESPID STINGWINGS unit within 6\" of this unit has shot, those attacks do not prevent that unit from being [gloss:hidden:hidden].\n\nThis detachment has the **AUXILIARIES** tag and cannot be taken with another **AUXILIARIES** detachment.",
+        body: "[gloss:friendly:Friendly] KROOT/VESPID STINGWINGS units have the following ability:\n▪ **Harnessed Alien Instincts:** In your Shooting phase, this unit can select one [gloss:visible:visible] enemy unit [gloss:within:within] 12\". That enemy unit is prey-marked: while a unit is prey-marked, that unit has +3\" [gloss:detection-range:detection range].\n\nFriendly GHOSTKEEL BATTLESUIT/STEALTH BATTLESUITS units have the following ability:\n▪ **Localised Stealth Projectors ([gloss:aura:Aura]):** When a friendly KROOT/VESPID STINGWINGS unit within 6\" of this unit has shot, those attacks do not prevent that unit from being [gloss:hidden:hidden].\n\nThis **[gloss:detachments:detachment]** has the **AUXILIARIES** tag and cannot be taken with another **AUXILIARIES** **detachment**.",
       },
       stratagems: [
         {
@@ -617,7 +617,7 @@ If you have upgraded a model to have a drone, place a Drone token next to your m
       rule: {
         name: "Superior Craftsmanship",
         flavor: "The applied science divisions of the Earth caste labour endlessly to provide frontline units with superior weapons systems with which to destroy the foe from afar.",
-        body: "[gloss:friendly:Friendly] BATTLESUIT CHARACTER units’ [gloss:ranged-attacks:ranged attacks] have +6\" [gloss:range:R].\n\nThis detachment has the **RETALIATION** tag and cannot be taken with another **RETALIATION** detachment.",
+        body: "[gloss:friendly:Friendly] BATTLESUIT CHARACTER units’ [gloss:ranged-attacks:ranged attacks] have +6\" [gloss:range:R].\n\nThis **[gloss:detachments:detachment]** has the **RETALIATION** tag and cannot be taken with another **RETALIATION** **detachment**.",
       },
       stratagems: [
         {

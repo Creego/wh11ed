@@ -650,10 +650,10 @@ This detachment has the **ACROBATIC** tag and cannot be taken with another **ACR
         body: `You can use the following rules:
 
 ### Lethal Intent
-At the end of your opponent's Shooting phase, if one or more **Ynnari** units from your army were destroyed this phase, select one **Ynnari Infantry** or **Ynnari Mounted** unit from your army that was within 6" of your destroyed unit. That unit can make a Normal move of up to D6+1".
+At the end of your opponent's Shooting phase, if one or more **Ynnari** units from your army were destroyed this phase, select one **Ynnari Infantry** or **Ynnari Mounted** unit from your army that was within 6" of your destroyed unit. That unit can make a **[gloss:normal-move:Normal move]** of up to D6+1".
 
 ### Lethal Surge
-Once per turn, when a **Ynnari** unit from your army performs the Fade Back Agile Manoeuvre, it can make a surge move of up to D6+1" instead of a Normal move.
+Once per turn, when a **Ynnari** unit from your army performs the Fade Back Agile Manoeuvre, it can make a surge move of up to D6+1" instead of a **[gloss:normal-move:Normal move]**.
 
 ### Lethal Reprisal
 At the start of the Fight phase, select one **Ynnari** unit from your army (excluding TITANIC units) that is below its Starting Strength. Until the end of the phase, that unit has the Fights First ability.
@@ -661,7 +661,7 @@ At the start of the Fight phase, select one **Ynnari** unit from your army (excl
 **Servants of the Whispering God:**
 ▪ You can include **Ynnari** units in your army, even though they do not have the **Asuryani** Faction keyword.
 ▪ **Asuryani** units (excluding **Epic Heroes**) from your army gain the **Ynnari** keyword.
-▪ You must include Yvraine and/or The Yncarne in your army, and one of those models must be your **Warlord**.`,
+▪ You must include Yvraine and/or The Yncarne in your army, and one of those models must be your **[gloss:warlord:Warlord]**.`,
       },
       stratagems: [
         {
@@ -815,9 +815,9 @@ Each time you use one of the Stratagems opposite, if your Fate dice pool contain
           // Faction-Pack Rules Update rewrote the Target and Effect sections (errata): the target
           // range is 9" and the effect now moves the unit via strategic reserves + ingress.
           target: 'One ASURYANI INFANTRY unit from your army (excluding WRAITH CONSTRUCT units) that has not been selected to move this phase, was not set up on the battlefield this phase, and is within 9" of one or more friendly ASURYANI PSYKER models.',
-          effect: `▪ Place your unit in strategic reserves.
+          effect: `▪ Place your unit in **[gloss:strategic-reserves:strategic reserves]**.
 ▪ Your unit has [core:Deep Strike].
-▪ Your unit must make an ingress move this phase.`,
+▪ Your unit must make an **[gloss:ingress-move:ingress move]** this phase.`,
           restrictions: 'Until the end of the phase, your unit is not eligible to be selected to move.',
         },
         {
@@ -1013,9 +1013,9 @@ Each time you use one of the Stratagems opposite, if your Fate dice pool contain
           cp: '1CP',
           turn: 'either',
           flavor: 'The wraithbone superstructure of this vehicle has been interlaced with warding runes, enabling its hull to resist incoming fire.',
-          when: 'Any phase, when a friendly AELDARI VEHICLE unit suffers a mortal wound.',
+          when: 'Any phase, when a friendly AELDARI VEHICLE unit suffers a **[gloss:mortal-wound:mortal wound]**.',
           target: 'That AELDARI VEHICLE unit.',
-          effect: 'Your unit has [core:Feel No Pain 5+] against mortal wounds.',
+          effect: 'Your unit has [core:Feel No Pain 5+] against **[gloss:mortal-wound:mortal wounds]**.',
           restrictions: '',
         },
         {
@@ -1024,12 +1024,12 @@ Each time you use one of the Stratagems opposite, if your Fate dice pool contain
           cp: '1CP',
           turn: 'your',
           flavor: 'Spirit stones containing the souls of gifted seers have been embedded into this vehicle’s targeting matrices. The essences within lend guidance even in death.',
-          when: 'Your Shooting phase, when a friendly AELDARI VEHICLE unit is selected to shoot.',
+          when: 'Your Shooting phase, when a friendly AELDARI VEHICLE unit is **[gloss:selected-to-shoot:selected to shoot]**.',
           target: 'That AELDARI VEHICLE unit.',
           effect: `Your unit's attacks can re-roll:
 ▪ One Hit roll.
 ▪ One Wound roll.
-▪ One Damage roll.`,
+▪ One **[gloss:damage-roll:Damage roll]**.`,
           restrictions: '',
         },
         {
@@ -1051,13 +1051,13 @@ Each time you use one of the Stratagems opposite, if your Fate dice pool contain
           flavor: 'This spirit stone contains the essence of Bonesinger Raelyth. Those Asuryani psykers who bear this item to battle can draw upon the fallen artisan’s talents.',
           body: `AELDARI PSYKER model only.
 ▪ While this model is within 3" of a friendly AELDARI VEHICLE unit, this model has [core:Lone Operative].
-▪ In your Movement phase, at the start or end of this unit's move, you can select one friendly AELDARI VEHICLE model within 3" of this model. That VEHICLE model heals D3 wounds.`,
+▪ In your Movement phase, at the start or end of this unit's move, you can select one friendly AELDARI VEHICLE model within 3" of this model. That VEHICLE model **[gloss:heal:heals]** D3 wounds.`,
         },
         {
           name: 'Guiding Presence',
           points: 25,
           flavor: 'This seer is closely attuned to their craftworld’s vehicles. Communicating with the souls inhabiting hull-mounted spirit stones can sharpen the tactical awareness of spirits and crew.',
-          body: `AELDARI PSYKER model only. At the start of your Shooting phase, select one visible friendly AELDARI VEHICLE unit within 6" of this model. That VEHICLE unit's ranged attacks have +1 to Hit rolls.`,
+          body: `AELDARI PSYKER model only. At the start of your Shooting phase, select one **[gloss:visible:visible]** friendly AELDARI VEHICLE unit within 6" of this model. That VEHICLE unit's ranged attacks have +1 to Hit rolls.`,
         },
       ],
     },
@@ -1073,9 +1073,9 @@ Each time you use one of the Stratagems opposite, if your Fate dice pool contain
         name: 'Acrobatic Onslaught',
         flavor:
           'Trying to fight the Harlequins of the Laughing God is like battling bladed smoke. They flip and bound through the enemy ranks with contemptuous ease, springing across the heads and shoulders of dumbfounded combatants, sprinting across the hulls of war engines, all the while bearing down with murderous intent upon their true intended victims.',
-        body: `While a friendly **HARLEQUINS** unit is making a Charge move, that unit can move through enemy models.
+        body: `While a friendly **HARLEQUINS** unit is making a **[gloss:charge-move:Charge move]**, that unit can move through enemy models.
 
-This detachment has the **ACROBATIC** tag and cannot be taken with another **ACROBATIC** detachment.`,
+This **[gloss:detachments:detachment]** has the **ACROBATIC** tag and cannot be taken with another **ACROBATIC** **detachment**.`,
       },
       stratagems: [
         {
@@ -1086,7 +1086,7 @@ This detachment has the **ACROBATIC** tag and cannot be taken with another **ACR
           flavor: 'Though they may be slain, this step of the saedath calls on the players to act out the demise of tragic heroes who take their enemies with them to death.',
           when: 'Fight phase, when an enemy unit targets a friendly HARLEQUINS unit.',
           target: 'That HARLEQUINS unit.',
-          effect: 'When a model in your unit is destroyed, if your unit has not been selected to fight this phase, roll one D6: on a 4+, do not remove that model from the battlefield. When your unit has fought, or at the end of the phase (whichever comes first), that model is removed from the battlefield.',
+          effect: 'When a model in your unit is **[gloss:destroyed:destroyed]**, if your unit has not been **[gloss:selected-to-fight:selected to fight]** this phase, roll one D6: on a 4+, do not remove that model from the battlefield. When your unit has fought, or at the end of the phase (whichever comes first), that model is removed from the battlefield.',
           restrictions: '',
         },
         {
@@ -1096,8 +1096,8 @@ This detachment has the **ACROBATIC** tag and cannot be taken with another **ACR
           turn: 'opponent',
           flavor: 'Players know when to fade back from the stage of war, ready to strike again when their moment comes.',
           when: "End of your opponent's Fight phase.",
-          target: 'One friendly unengaged HARLEQUINS unit.',
-          effect: 'Place your unit in Strategic Reserves.',
+          target: 'One friendly **[gloss:unengaged:unengaged]** HARLEQUINS unit.',
+          effect: 'Place your unit in **[gloss:strategic-reserves:Strategic Reserves]**.',
           restrictions: '',
         },
         {
@@ -1106,9 +1106,9 @@ This detachment has the **ACROBATIC** tag and cannot be taken with another **ACR
           cp: '1CP',
           turn: 'opponent',
           flavor: 'Advancing foes assured of cutting the Harlequins down are often left thwarted with naught but a swirl of holofield shards where their prey once stood.',
-          when: "Your opponent's Movement phase, when an enemy unit ends a move within 8\" of a friendly unengaged HARLEQUINS INFANTRY unit.",
+          when: "Your opponent's Movement phase, when an enemy unit ends a move within 8\" of a friendly **[gloss:unengaged:unengaged]** HARLEQUINS INFANTRY unit.",
           target: 'That HARLEQUINS INFANTRY unit.',
-          effect: 'Your unit can make a Normal move of up to D3+3".',
+          effect: 'Your unit can make a **[gloss:normal-move:Normal move]** of up to D3+3".',
           restrictions: '',
         },
       ],
@@ -1117,7 +1117,7 @@ This detachment has the **ACROBATIC** tag and cannot be taken with another **ACR
           name: 'A Foot in the Future',
           points: 15,
           flavor: 'Flowing like starlight across the field of battle, this warrior-artiste leads their chorus in a dance whose speed peaks as they surge into the foe.',
-          body: `TROUPE MASTER model only. This unit can re-roll Charge rolls.`,
+          body: `TROUPE MASTER model only. This unit can re-roll **[gloss:charge-roll:Charge rolls]**.`,
         },
         {
           name: 'Mistweave',
@@ -1138,7 +1138,7 @@ This detachment has the **ACROBATIC** tag and cannot be taken with another **ACR
         name: 'Far-Reaching Doom',
         flavor:
           'With snipers’ instincts and psychoresponsive gunsights, the Asuryani frontier scouts can pierce almost any barrier to find the hearts of their targets.',
-        body: `When a friendly **RANGERS**/**SHROUD RUNNERS** unit is selected to shoot, enemy units have +6" detection range until that friendly unit has shot.`,
+        body: `When a friendly **RANGERS**/**SHROUD RUNNERS** unit is **[gloss:selected-to-shoot:selected to shoot]**, enemy units have +6" **[gloss:detection-range:detection range]** until that friendly unit has shot.`,
       },
       stratagems: [
         {
@@ -1149,7 +1149,7 @@ This detachment has the **ACROBATIC** tag and cannot be taken with another **ACR
           flavor: 'Struck by a sudden volley of precision shots when no foe can be pinpointed can shake the resolve of the most stoic warriors.',
           when: 'Your Shooting phase, when a friendly RANGERS/SHROUD RUNNERS unit has shot.',
           target: 'That RANGERS/SHROUD RUNNERS unit.',
-          effect: 'Select one enemy unit hit by those ranged attacks. That enemy unit makes a Battle-shock roll, with -1 to that Battle-shock roll if a model in that enemy unit was destroyed by those attacks.',
+          effect: 'Select one enemy unit hit by those ranged attacks. That enemy unit makes a Battle-shock roll, with -1 to that Battle-shock roll if a model in that enemy unit was **[gloss:destroyed:destroyed]** by those attacks.',
           restrictions: '',
         },
         {
@@ -1160,7 +1160,7 @@ This detachment has the **ACROBATIC** tag and cannot be taken with another **ACR
           flavor: 'Once these snipers have found their range to a shrouded foe with marksmen’s instincts and esoteric targeting technology, they swiftly pass this knowledge onto their allies.',
           when: 'Your Shooting phase, when a friendly RANGERS/SHROUD RUNNERS unit has shot.',
           target: 'That RANGERS/SHROUD RUNNERS unit.',
-          effect: 'Select one enemy unit hit by those ranged attacks. That enemy unit has +6" detection range.',
+          effect: 'Select one enemy unit hit by those ranged attacks. That enemy unit has +6" **[gloss:detection-range:detection range]**.',
           restrictions: '',
         },
         {
@@ -1171,7 +1171,7 @@ This detachment has the **ACROBATIC** tag and cannot be taken with another **ACR
           flavor: 'The unconstrained nomadism of a craftworld’s outcasts extends to the battlefield, such that few foes can respond before they melt back into hiding to hunt elsewhere.',
           when: 'Your Shooting phase, when a friendly RANGERS/SHROUD RUNNERS unit has shot.',
           target: 'That RANGERS/SHROUD RUNNERS unit.',
-          effect: `▪ Your unit can make a Normal move of up to D6".
+          effect: `▪ Your unit can make a **[gloss:normal-move:Normal move]** of up to D6".
 ▪ Your unit is not eligible to declare a charge or embark within a TRANSPORT until the end of the turn.`,
           restrictions: '',
         },
@@ -1182,7 +1182,7 @@ This detachment has the **ACROBATIC** tag and cannot be taken with another **ACR
           points: 10,
           upgrade: true,
           flavor: 'Aeldari Rangers rely upon fieldcraft and marksmanship to defeat their foes. They conceal themselves so expertly that even the act of firing upon the enemy does not reveal their precise location.',
-          body: `RANGERS unit only. This unit's ranged attacks do not prevent this unit from being hidden.`,
+          body: `RANGERS unit only. This unit's ranged attacks do not prevent this unit from being **[gloss:hidden:hidden]**.`,
         },
         {
           name: "Assassins' Eye",
@@ -1207,7 +1207,7 @@ This detachment has the **ACROBATIC** tag and cannot be taken with another **ACR
           'With their holofields attuned to a mistwreathed shadow performance, the Harlequins are insubstantial blurs as they dash through cover to reach their chosen stage.',
         body: `Friendly **HARLEQUINS** units have [core:Stealth].
 
-This detachment has the **ACROBATIC** tag and cannot be taken with another **ACROBATIC** detachment.`,
+This **[gloss:detachments:detachment]** has the **ACROBATIC** tag and cannot be taken with another **ACROBATIC** **detachment**.`,
       },
       stratagems: [
         {
@@ -1216,7 +1216,7 @@ This detachment has the **ACROBATIC** tag and cannot be taken with another **ACR
           cp: '1CP',
           turn: 'either',
           flavor: 'Amongst the performances of a saedath is the climactic sundering of monstrous foes or the enemy’s hateful barques, acts the Harlequins have long mastered.',
-          when: 'Fight phase, when a friendly TROUPE unit is selected to fight.',
+          when: 'Fight phase, when a friendly TROUPE unit is **[gloss:selected-to-fight:selected to fight]**.',
           target: 'That TROUPE unit.',
           effect: "Your unit's melee attacks have [LANCE].",
           restrictions: '',
@@ -1240,7 +1240,7 @@ This detachment has the **ACROBATIC** tag and cannot be taken with another **ACR
           flavor: 'The mirage launchers carried by a masque’s graceful craft can be triggered to produce haunting simulacra long enough to deceive the foe and allow a crew to manoeuvre away again to their next stage.',
           when: 'Your Shooting phase, when a friendly HARLEQUINS VEHICLE unit has shot.',
           target: 'That HARLEQUINS VEHICLE unit.',
-          effect: `▪ Your unit can make a Normal move of up to D6".
+          effect: `▪ Your unit can make a **[gloss:normal-move:Normal move]** of up to D6".
 ▪ Your unit is not eligible to declare a charge until the end of the turn.`,
           restrictions: '',
         },

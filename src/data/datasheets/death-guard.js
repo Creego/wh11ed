@@ -3306,7 +3306,7 @@ export default [
       },
       {
         "name": "Diseased Cover",
-        "text": "Each time a ranged attack is allocated to a model, if that model is not fully visible to every model in the attacking unit because of this **FORTIFICATION**, that model has the Benefit of Cover against that attack."
+        "text": "Each time a ranged attack is allocated to a model, if that model is not fully visible to every model in the attacking unit because of this **[gloss:fortification:FORTIFICATION]**, that model has the Benefit of Cover against that attack."
       },
       {
         "name": "Fortification",
@@ -3735,7 +3735,7 @@ export default [
     "abilities": [
       {
         "name": "Mischief Makers",
-        "text": "Each time an enemy unit (excluding **TITANIC** units) within Engagement Range of one or more units with this ability is selected to fight, until the end of the phase, each time a model in that enemy unit makes a melee attack, subtract 1 from the Hit roll."
+        "text": "Each time an enemy unit (excluding **[gloss:titanic:TITANIC]** units) within Engagement Range of one or more units with this ability is selected to fight, until the end of the phase, each time a model in that enemy unit makes a melee attack, subtract 1 from the Hit roll."
       }
     ],
     "composition": [
@@ -4456,7 +4456,7 @@ export default [
     "abilities": [
       {
         "name": "Curse of the Walking Pox",
-        "text": "Each time a **POXWALKER** model in this unit makes an attack that destroys an enemy model (excluding **MONSTER** and **VEHICLE** models). after this unit has resolved its attacks, you can return one destroyed **POXWALKER** model to this unit. While **TYPHUS** is leading this unit, enemy models destroyed as a result of **TYPHUS**’ Eater Plague ability count as enemy models destroyed by an attack made by a **POXWALKER** model in this unit for the purposes of this ability."
+        "text": "Each time a **POXWALKER** model in this unit makes an attack that destroys an enemy model (excluding **MONSTER** and **[gloss:vehicle:VEHICLE]** models). after this unit has resolved its attacks, you can return one destroyed **POXWALKER** model to this unit. While **TYPHUS** is leading this unit, enemy models destroyed as a result of **TYPHUS**’ Eater Plague ability count as enemy models destroyed by an attack made by a **POXWALKER** model in this unit for the purposes of this ability."
       }
     ],
     "composition": [

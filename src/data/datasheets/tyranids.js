@@ -441,7 +441,7 @@ export default [
     "abilities": [
       {
         "name": "Blistering Assault",
-        "text": "In your opponent’s Shooting phase, when an enemy unit has shot, if a model in this unit lost a wound as a result of those attacks, this unit can make a surge move of up to D6+2\"."
+        "text": "In your opponent’s Shooting phase, when an enemy unit has shot, if a model in this unit lost a wound as a result of those attacks, this unit can make a **[gloss:surge-move:surge move]** of up to D6+2\"."
       }
     ],
     "composition": [
@@ -899,7 +899,7 @@ export default [
     "abilities": [
       {
         "name": "Spore Mine Cysts",
-        "text": "At the end of your opponent’s Fight phase, you can do one of the following:\n▪ Select one visible enemy unit (excluding [core:Lone Operative] units) within 24\" of this unit and roll six D6 for that unit: for each 3+, that unit suffers 1 mortal wound.\n▪ Add a new SPORE MINES unit containing D3 models to your army and set it up anywhere on the battlefield that is within 6\" of this model and more than 8\" horizontally away from all enemy units. You cannot select this option for more than one model per turn."
+        "text": "At the end of your opponent’s Fight phase, you can do one of the following:\n▪ Select one **[gloss:visible:visible]** enemy unit (excluding [core:Lone Operative] units) within 24\" of this unit and roll six D6 for that unit: for each 3+, that unit suffers 1 **[gloss:mortal-wound:mortal wound]**.\n▪ Add a new SPORE MINES unit containing D3 models to your army and set it up anywhere on the battlefield that is within 6\" of this model and more than 8\" horizontally away from all enemy units. You cannot select this option for more than one model per turn."
       }
     ],
     "damaged": {
@@ -1687,7 +1687,7 @@ export default [
       },
       {
         "name": "Hypersensory Array",
-        "text": "Once per battle round, you can target this unit with the Rapid Ingress/Heroic Intervention Stratagem, regardless of any other uses of that Stratagem this phase. If you do:\n▪ That use is -1 CP.\n▪ That use does not prevent any uses of that Stratagem on other units this phase."
+        "text": "Once per battle round, you can target this unit with the Rapid Ingress/Heroic Intervention **[gloss:stratagem:Stratagem]**, regardless of any other uses of that **Stratagem** this phase. If you do:\n▪ That use is -1 CP.\n▪ That use does not prevent any uses of that **Stratagem** on other units this phase."
       }
     ],
     "composition": [
@@ -3713,7 +3713,7 @@ export default [
       },
       {
         "name": "Malign Presence (Aura)",
-        "text": "Once per turn, when your opponent targets a unit from their army within 12\" of this model with a Stratagem, you can use this ability. If you do increase the CP cost of that use of that Stratagem by 1CP."
+        "text": "Once per turn, when your opponent targets a unit from their army within 12\" of this model with a **[gloss:stratagem:Stratagem]**, you can use this ability. If you do increase the CP cost of that use of that **Stratagem** by 1CP."
       },
       {
         "name": "Domination of the Hive Mind (Aura)",

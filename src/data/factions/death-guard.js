@@ -39,7 +39,7 @@ Contagion Range changes over the course of the battle:
 
 ### Afflicted
 During the Declare Battle Formations step, select one of the Plagues below. Until the end of the battle, while an enemy unit is Afflicted, subtract 1 from the Toughness characteristic of models in that unit, and that unit has the effect of your chosen Plague.
-▪ **Skullsquirm Blight:** Each time a model in this unit makes a ranged attack, enemy units have the Benefit of Cover against the attack. Each time a model in this unit makes a melee attack, subtract 1 from the Hit roll.
+▪ **Skullsquirm Blight:** Each time a model in this unit makes a ranged attack, enemy units have the **[gloss:benefit-of-cover:Benefit of Cover]** against the attack. Each time a model in this unit makes a melee attack, subtract 1 from the Hit roll.
 ▪ **Rattlejoint Ague:** Worsen the Save characteristic of models in this unit by 1.
 ▪ **Scabrous Soulrot:** Worsen the Move, Leadership and Objective Control characteristics of models in this unit by 1 (this rule can only worsen a model's Objective Control characteristic to a minimum of 1).
 
@@ -592,7 +592,7 @@ During the Declare Battle Formations step, select one of the Plagues below. Unti
       rule: {
         name: "Worldblight",
         flavor: "As the foul tendrils of the Death Guard quest further across the battlefield, they infest even the most secure, holy and heavily warded sites with supernatural disease. To fight amidst such foulness is a virtual death sentence to the foe, win or lose.",
-        body: "At the end of your Command phase, if a friendly DEATH GUARD unit is controlling an objective, that objective is secured. Until you lose control of that objective, while an enemy unit is within range of that objective, that enemy unit is Afflicted.",
+        body: "At the end of your Command phase, if a friendly DEATH GUARD unit is controlling an **[gloss:objective:objective]**, that **objective** is **[gloss:secured-objective:secured]**. Until you lose control of that **objective**, while an enemy unit is within range of that **objective**, that enemy unit is Afflicted.",
       },
       stratagems: [
         {
@@ -709,7 +709,7 @@ During the Declare Battle Formations step, select one of the Plagues below. Unti
           cp: "1CP",
           turn: "either",
           flavor: "As if drawn to flesh and matter yet to be blessed by corruption, infected weapons unerringly find their mark.",
-          when: "Your Shooting phase or the Fight phase, when a friendly CONTAGION ENGINE unit is selected to attack.",
+          when: "Your Shooting phase or the Fight phase, when a friendly CONTAGION ENGINE unit is **[gloss:selected-to-attack:selected to attack]**.",
           target: "That CONTAGION ENGINE unit.",
           effect: "Your unit\u2019s attacks can re-roll Wound rolls of 1.",
           restrictions: "",
@@ -720,9 +720,9 @@ During the Declare Battle Formations step, select one of the Plagues below. Unti
           cp: "1CP",
           turn: "your",
           flavor: "Warp-tainted saturation oozes through this aggressive vehicle, leeching into its weapons, which spit the infection into foes at a distance.",
-          when: "Your Shooting phase, when a friendly CONTAGION ENGINE unit is selected to shoot.",
+          when: "Your Shooting phase, when a friendly CONTAGION ENGINE unit is **[gloss:selected-to-shoot:selected to shoot]**.",
           target: "That CONTAGION ENGINE unit.",
-          effect: "Select one visible enemy unit. That enemy unit is Afflicted until your unit has attacked.",
+          effect: "Select one **[gloss:visible:visible]** enemy unit. That enemy unit is Afflicted until your unit has attacked.",
           restrictions: "",
         },
         {
@@ -743,7 +743,7 @@ During the Declare Battle Formations step, select one of the Plagues below. Unti
           points: 15,
           upgrade: true,
           flavor: "The diseased suffering inflicted by this war machine establishes an empyric barb in its victims through which it feasts, its bloated form pulsing with new growth after every attack.",
-          body: "CONTAGION ENGINE unit only. When this unit has fought, one model in this unit heals D3 wounds.",
+          body: "CONTAGION ENGINE unit only. When this unit has fought, one model in this unit **[gloss:heal:heals]** D3 wounds.",
         },
         {
           name: "Lancet of the Worldsore",
@@ -786,7 +786,7 @@ During the Declare Battle Formations step, select one of the Plagues below. Unti
           cp: "1CP",
           turn: "your",
           flavor: "Clouds of droning daemon flies sweep across the battlefield to envelop the enemies of the Death Guard. As their victims claw and scratch at the seething swarms, Mortarion\u2019s sons pick off their targets at leisure.",
-          when: "Your Shooting phase, when a friendly PLAGUE MARINES unit is selected to shoot.",
+          when: "Your Shooting phase, when a friendly PLAGUE MARINES unit is **[gloss:selected-to-shoot:selected to shoot]**.",
           target: "That PLAGUE MARINES unit.",
           effect: "Your unit\u2019s ranged attacks:\n▪ Can re-roll Hit rolls of 1.\n▪ That target a unit within half range, can re-roll Wound rolls of 1.",
           restrictions: "",
@@ -797,7 +797,7 @@ During the Declare Battle Formations step, select one of the Plagues below. Unti
           cp: "1CP",
           turn: "your",
           flavor: "The vermin swarms intensify as the Death Guard close in upon the enemy. As their foes clutch and tear their crawling skin, pitiless Plague Marines unleash volleys of point-blank fire into their tormented foes.",
-          when: "Your Shooting phase, when a friendly PLAGUE MARINES unit is selected to shoot.",
+          when: "Your Shooting phase, when a friendly PLAGUE MARINES unit is **[gloss:selected-to-shoot:selected to shoot]**.",
           target: "That PLAGUE MARINES unit.",
           effect: "Your unit\u2019s ranged attacks have [CLOSE-QUARTERS].",
           restrictions: "",
@@ -816,7 +816,7 @@ During the Declare Battle Formations step, select one of the Plagues below. Unti
           points: 15,
           upgrade: true,
           flavor: "Nurgle\u2019s blessings manifest as a buzzing clot of darkness that falls over these diseased pilgrims, enveloping them like an enshrouding fog.",
-          body: "PLAGUE MARINES unit only. This unit has -3\" detection range.",
+          body: "PLAGUE MARINES unit only. This unit has -3\" **[gloss:detection-range:detection range]**.",
         },
       ],
     },
@@ -852,7 +852,7 @@ During the Declare Battle Formations step, select one of the Plagues below. Unti
           flavor: "There is no hiding from contagion, and particular pathogens can incite neurological paroxysms that force their victims to give away their positions in painful throes.",
           when: "Start of your Shooting phase.",
           target: "One friendly DEATH GUARD CHARACTER unit.",
-          effect: "Select one visible enemy unit within Contagion Range of your unit. That enemy unit has +6\" detection range.",
+          effect: "Select one **[gloss:visible:visible]** enemy unit within Contagion Range of your unit. That enemy unit has +6\" **[gloss:detection-range:detection range]**.",
           restrictions: "",
         },
         {
@@ -861,9 +861,9 @@ During the Declare Battle Formations step, select one of the Plagues below. Unti
           cp: "1CP",
           turn: "your",
           flavor: "The worst infections spread both visibly and subtly. Thus do the Death Guard\u2019s champions attack, ordering vile operations, the two vectors more deadly than either alone.",
-          when: "Your Shooting phase, when a friendly DEATH GUARD CHARACTER unit starts an Action.",
+          when: "Your Shooting phase, when a friendly DEATH GUARD CHARACTER unit **[gloss:action:starts an Action]**.",
           target: "That DEATH GUARD CHARACTER unit.",
-          effect: "That Action does not prevent your unit from being eligible to shoot.",
+          effect: "That **[gloss:action:Action]** does not prevent your unit from being **[gloss:eligible-to-shoot:eligible to shoot]**.",
           restrictions: "",
         },
       ],

@@ -637,7 +637,7 @@ export default [
     "abilities": [
       {
         "name": "Infernus Firebombs",
-        "text": "At the end of your Movement phase, select one **visible** enemy unit (excluding **AIRCRAFT**/**Lone Operative** units) within 24\" of this unit:\n▪ That enemy unit cannot have the **benefit of cover** until the end of your next Shooting phase.\n▪ Roll one D6 for each model in that enemy unit: for each 6, that enemy unit suffers 1 **mortal wound**."
+        "text": "At the end of your Movement phase, select one **[gloss:visible:visible]** enemy unit (excluding **[gloss:aircraft:AIRCRAFT]**/[core:Lone Operative] units) within 24\" of this unit:\n▪ That enemy unit cannot have the **[gloss:benefit-of-cover:benefit of cover]** until the end of your next Shooting phase.\n▪ Roll one D6 for each model in that enemy unit: for each 6, that enemy unit suffers 1 **[gloss:mortal-wound:mortal wound]**."
       }
     ],
     "damaged": {
@@ -1139,7 +1139,7 @@ export default [
     "abilities": [
       {
         "name": "Fire Support",
-        "text": "In your Shooting phase, after this model has shot, select one enemy unit that was hit by one or more of those attacks. Until the end of the phase, each time a friendly model that disembarked from this **TRANSPORT** this turn makes an attack that targets that enemy unit, you can re-roll the Wound roll."
+        "text": "In your Shooting phase, after this model has shot, select one enemy unit that was hit by one or more of those attacks. Until the end of the phase, each time a friendly model that disembarked from this **[gloss:transport:TRANSPORT]** this turn makes an attack that targets that enemy unit, you can re-roll the Wound roll."
       }
     ],
     "damaged": {
@@ -1498,7 +1498,7 @@ export default [
     "abilities": [
       {
         "name": "Resolute Will",
-        "text": "While a **CHARACTER** model is leading this unit, each time an attack targets this unit, if the Strength characteristic of that attack is greater than the Toughness characteristic of this unit, subtract 1 from the Wound roll."
+        "text": "While a **[gloss:character:CHARACTER]** model is leading this unit, each time an attack targets this unit, if the Strength characteristic of that attack is greater than the Toughness characteristic of this unit, subtract 1 from the Wound roll."
       },
       {
         "name": "Living Fortress",
@@ -3112,7 +3112,7 @@ export default [
       },
       {
         "name": "Quicksilver Execution",
-        "text": "Once per battle, after this unit ends a Normal or Advance move, you can select one enemy unit (excluding **MONSTERS** and **VEHICLES**) that it moved over during that move, then roll one D6 for each model in this unit: for each 2+, that enemy unit suffers 2 mortal wounds."
+        "text": "Once per battle, after this unit ends a Normal or Advance move, you can select one enemy unit (excluding **MONSTERS** and **[gloss:vehicle:VEHICLES]**) that it moved over during that move, then roll one D6 for each model in this unit: for each 2+, that enemy unit suffers 2 mortal wounds."
       }
     ],
     "composition": [

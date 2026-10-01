@@ -986,7 +986,7 @@ export default [
       },
       {
         "name": "Cornered Prey",
-        "text": "When an enemy unit engaged with this unit is selected to make a fall-back move, that enemy unit must use the desperate escape mode. If that enemy unit is Battle-shocked, -1 from those hazard rolls."
+        "text": "When an enemy unit **[gloss:engaged:engaged]** with this unit is selected to make a **[gloss:fall-back-move:fall-back move]**, that enemy unit must use the desperate escape mode. If that enemy unit is **[gloss:battle-shocked:Battle-shocked]**, -1 from those **[gloss:hazard-roll:hazard rolls]**."
       }
     ],
     "composition": [
@@ -2844,17 +2844,17 @@ export default [
     "abilities": [
       {
         "name": "On the Hunt",
-        "text": "When this unit is selected to make a fall-back move, that fall-back move does not prevent this unit from being eligible to shoot and eligible to declare a charge."
+        "text": "When this unit is selected to make a **[gloss:fall-back-move:fall-back move]**, that **fall-back move** does not prevent this unit from being eligible to shoot and eligible to declare a charge."
       },
       {
         "name": "Agile Reach",
-        "text": "When this unit is selected to fight, melee weapons equipped by unengaged models in this unit that are within 3\" of an enemy unit that is engaged with this unit can target that enemy unit."
+        "text": "When this unit is **[gloss:selected-to-fight:selected to fight]**, melee weapons equipped by unengaged models in this unit that are within 3\" of an enemy unit that is **[gloss:engaged:engaged]** with this unit can target that enemy unit."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Drakolithe",
-        "text": "When an enemy unit ends a move within 8\" of this unit, if this unit is unengaged or if that enemy unit ended that move engaged with this unit, you can use this ability. If you do, roll one D6:\n▪ On a 3+, that enemy unit suffers 1 mortal wound. Place one Drakolithe token next to the unit for each Drakolithe the unit is equipped with, removing one each time this ability is used."
+        "text": "When an enemy unit ends a move within 8\" of this unit, if this unit is **[gloss:unengaged:unengaged]** or if that enemy unit ended that move **[gloss:engaged:engaged]** with this unit, you can use this ability. If you do, roll one D6:\n▪ On a 3+, that enemy unit suffers 1 **[gloss:mortal-wound:mortal wound]**. Place one Drakolithe token next to the unit for each Drakolithe the unit is equipped with, removing one each time this ability is used."
       }
     ],
     "composition": [
@@ -4939,7 +4939,7 @@ export default [
     "wargearAbilities": [
       {
         "name": "Drakolithe",
-        "text": "When an enemy unit ends a move within 8\" of this unit, if this unit is unengaged or if that enemy unit ended that move engaged with this unit, you can use this ability. If you do, roll one D6:\n▪ On a 3+, that enemy unit suffers 1 mortal wound. Place one Drakolithe token next to the unit for each Drakolithe the unit is equipped with, removing one each time this ability is used."
+        "text": "When an enemy unit ends a move within 8\" of this unit, if this unit is **[gloss:unengaged:unengaged]** or if that enemy unit ended that move **[gloss:engaged:engaged]** with this unit, you can use this ability. If you do, roll one D6:\n▪ On a 3+, that enemy unit suffers 1 **[gloss:mortal-wound:mortal wound]**. Place one Drakolithe token next to the unit for each Drakolithe the unit is equipped with, removing one each time this ability is used."
       }
     ],
     "composition": [
@@ -7435,7 +7435,7 @@ export default [
     "abilities": [
       {
         "name": "Elemental Ensnarement",
-        "text": "At the end of your Fight phase, if this unit is not Battle-shocked, you can use this ability. If you do, roll one D6:\n▪ On a 1, this unit is Battle-shocked.\n▪ Select one visible enemy MONSTER/VEHICLE unit (excluding TITANIC units) within 18\" of this unit. That enemy unit is ensnared until the start of your next turn. While a unit is ensnared, that unit has -2\" M and cannot be pinned."
+        "text": "At the end of your Fight phase, if this unit is not **[gloss:battle-shocked:Battle-shocked]**, you can use this ability. If you do, roll one D6:\n▪ On a 1, this unit is **Battle-shocked**.\n▪ Select one **[gloss:visible:visible]** enemy MONSTER/VEHICLE unit (excluding TITANIC units) within 18\" of this unit. That enemy unit is ensnared until the start of your next turn. While a unit is ensnared, that unit has -2\" M and cannot be pinned."
       }
     ],
     "composition": [

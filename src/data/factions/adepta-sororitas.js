@@ -399,8 +399,8 @@ Before making a dice roll for a model or unit from your army with the Acts of Fa
           turn: "either",
           flavor: "The pious believe that, in their moment of greatest need, the Emperor protects.",
           when: "Any phase.",
-          target: "One ADEPTA SORORITAS CHARACTER model from your army that was just destroyed. You can use this Stratagem on that model even though it was just destroyed.",
-          effect: "You can discard 1-3 Miracle dice. At the end of the phase, set up that model on the battlefield, unengaged and as close as possible to where it was destroyed. That model is not part of an attached unit and its unit has a starting strength of 1. Roll one D3, adding 1 to the result for each Miracle dice you discarded. That model has that number of wounds remaining (up to its starting number of wounds).",
+          target: "One ADEPTA SORORITAS CHARACTER model from your army that was just **[gloss:destroyed:destroyed]**. You can use this Stratagem on that model even though it was just **destroyed**.",
+          effect: "You can discard 1-3 Miracle dice. At the end of the phase, set up that model on the battlefield, **[gloss:unengaged:unengaged]** and as close as possible to where it was **[gloss:destroyed:destroyed]**. That model is not part of an **[gloss:attached-unit:attached]** unit and its unit has a **[gloss:starting-strength:starting strength]** of 1. Roll one D3, adding 1 to the result for each Miracle dice you discarded. That model has that number of wounds remaining (up to its starting number of wounds).",
           restrictions: "You cannot select Saint Celestine as the target of this Stratagem. You cannot select the same CHARACTER as the target of this Stratagem more than once per battle.",
         },
         {
@@ -593,7 +593,7 @@ Before making a dice roll for a model or unit from your army with the Acts of Fa
       rule: {
         name: "Angelic Judgement",
         flavor: "Granted a greater perspective of the heretical foe\u2019s disposition, an Order\u2019s angelic veterans roar condemnatory psalms of revelation that unmask the enemy\u2019s evil for all to see.",
-        body: "Friendly ADEPTA SORORITAS INFANTRY FLY units have the following ability:\n▪ **Condemnatory Psalms:** In your Shooting phase, this unit can select one visible enemy unit within 12\". That enemy unit is condemned: while a unit is condemned, that unit has +3\" detection range.",
+        body: "Friendly ADEPTA SORORITAS INFANTRY FLY units have the following ability:\n▪ **Condemnatory Psalms:** In your Shooting phase, this unit can select one **[gloss:visible:visible]** enemy unit within 12\". That enemy unit is condemned: while a unit is condemned, that unit has +3\" **[gloss:detection-range:detection range]**.",
       },
       stratagems: [
         {
@@ -613,9 +613,9 @@ Before making a dice roll for a model or unit from your army with the Acts of Fa
           cp: "1CP",
           turn: "your",
           flavor: "In harmony with the targeting hymnals of angelic warriors, an Exorcist\u2019s devastating rockets seem drawn to the heresy of the foe.",
-          when: "Your Shooting phase, when a friendly EXORCIST unit is selected to shoot.",
+          when: "Your Shooting phase, when a friendly EXORCIST unit is **[gloss:selected-to-shoot:selected to shoot]**.",
           target: "That EXORCIST unit.",
-          effect: "Select one unit visible to and within 9\" of a friendly ADEPTA SORORITAS INFANTRY FLY unit. Your unit\u2019s ranged attacks that target that unit have +1 to Hit rolls.",
+          effect: "Select one unit **[gloss:visible:visible]** to and within 9\" of a friendly ADEPTA SORORITAS INFANTRY FLY unit. Your unit’s ranged attacks that target that unit have +1 to Hit rolls.",
           restrictions: "",
         },
         {
@@ -635,7 +635,7 @@ Before making a dice roll for a model or unit from your army with the Acts of Fa
           name: "Clarion of Urgency",
           points: 15,
           flavor: "This passionate slayer of the blasphemous leads her warriors in powered jet-leaps to reach the condemned foe, no matter where they lurk.",
-          body: "CANONESS WITH JUMP PACK model only. At the end of your opponent\u2019s Fight phase, if this unit is unengaged, you can place this unit in Strategic Reserves.",
+          body: "CANONESS WITH JUMP PACK model only. At the end of your opponent’s Fight phase, if this unit is **[gloss:unengaged:unengaged]**, you can place this unit in **[gloss:strategic-reserves:Strategic Reserves]**.",
         },
         {
           name: "Symphonic Payload",
@@ -657,7 +657,7 @@ Before making a dice roll for a model or unit from your army with the Acts of Fa
       rule: {
         name: "Holy Quest",
         flavor: "Charged with a holy quest in service to the God-Emperor, the veteran Sacresant elite of an Order Militant are relentless in their pursuit of victory.",
-        body: "Friendly CELESTIAN units\u2019 attacks have +1 BS and WS.\n\nThis detachment has the **REVEREND** tag and cannot be taken with another **REVEREND** detachment.",
+        body: "Friendly CELESTIAN units’ attacks have +1 BS and WS.\n\nThis **[gloss:detachments:detachment]** has the **REVEREND** tag and cannot be taken with another **REVEREND** **detachment**.",
       },
       stratagems: [
         {
@@ -666,7 +666,7 @@ Before making a dice roll for a model or unit from your army with the Acts of Fa
           cp: "1CP",
           turn: "either",
           flavor: "To stand against the dutiful zealots of the Adepta Sororitas is to be condemned and destroyed by the power of their righteous fury.",
-          when: "Fight phase, when a friendly CELESTIAN SACRESANTS unit is selected to fight.",
+          when: "Fight phase, when a friendly CELESTIAN SACRESANTS unit is **[gloss:selected-to-fight:selected to fight]**.",
           target: "That CELESTIAN SACRESANTS unit.",
           effect: "Your unit\u2019s melee attacks have +1 A and S.",
           restrictions: "",
@@ -677,9 +677,9 @@ Before making a dice roll for a model or unit from your army with the Acts of Fa
           cp: "1CP",
           turn: "either",
           flavor: "Drawing upon their deep wells of piety, Sacresant elite can fight on even through overwhelming or eldritch assaults.",
-          when: "Any phase, when a friendly CELESTIAN SACRESANTS unit suffers a mortal wound.",
+          when: "Any phase, when a friendly CELESTIAN SACRESANTS unit suffers a **[gloss:mortal-wound:mortal wound]**.",
           target: "That CELESTIAN SACRESANTS unit.",
-          effect: "Your unit has [core:Feel No Pain 5+] against mortal wounds until the end of the phase.",
+          effect: "Your unit has [core:Feel No Pain 5+] against **[gloss:mortal-wound:mortal wounds]** until the end of the phase.",
           restrictions: "",
         },
         {
@@ -720,7 +720,7 @@ Before making a dice roll for a model or unit from your army with the Acts of Fa
       rule: {
         name: "Hymns of Battle",
         flavor: "On the battlefield, the faithful warriors of the Adepta Sororitas heed the stirring hymns recited by their commanders, whose inspirational words stoke their righteous fervour.",
-        body: "▪ Enhancements selected from this detachment do not count towards the total number of enhancements in your army.\n▪ Friendly ADEPTA SORORITAS CHARACTER units have +1 Ld.",
+        body: "▪ Enhancements selected from this **[gloss:detachments:detachment]** do not count towards the total number of enhancements in your army.\n▪ Friendly ADEPTA SORORITAS CHARACTER units have +1 Ld.",
       },
       stratagems: [],
       enhancements: [
@@ -729,7 +729,7 @@ Before making a dice roll for a model or unit from your army with the Acts of Fa
           points: 25,
           upgrade: true,
           flavor: "A master of martial saintly lore, this vehement orator knows there is no form of enemy that the God-Emperor\u2019s holiest martyrs have not overcome. With vox-augmented sermonising, they roar the sacred hymns of the saints\u2019 deeds to embolden the faithful.",
-          body: "ADEPTA SORORITAS CHARACTER model only (excluding PENITENT units). (Once per turn, per unit) At the start of a phase, you can use this ability. If you do, select one of the abilities below:\n▪ **Rite of Revelation:** While this unit is shooting, enemy units have +6\" detection range.\n▪ **Sermon of Intolerance:** This unit\u2019s Battle-shock rolls automatically succeed.\n▪ **Catechism of Raging Fervour:** This unit has +1\" M.\n▪ **Psalm of Righteous Smiting:** This unit\u2019s attacks have +1 S.\n▪ **Chorus of Repudiation:** Attacks that target this unit with a S greater than this unit\u2019s T have -1 to Wound rolls.",
+          body: "ADEPTA SORORITAS CHARACTER model only (excluding PENITENT units). (Once per turn, per unit) At the start of a phase, you can use this ability. If you do, select one of the abilities below:\n▪ **Rite of Revelation:** While this unit is shooting, enemy units have +6\" **[gloss:detection-range:detection range]**.\n▪ **Sermon of Intolerance:** This unit’s Battle-shock rolls automatically succeed.\n▪ **Catechism of Raging Fervour:** This unit has +1\" M.\n▪ **Psalm of Righteous Smiting:** This unit’s attacks have +1 S.\n▪ **Chorus of Repudiation:** Attacks that target this unit with a S greater than this unit’s T have -1 to Wound rolls.",
         },
       ],
     },

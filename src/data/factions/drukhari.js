@@ -49,7 +49,7 @@ Each time you gain a Pain token, keep it to one side — this is your Pain token
 Each Pain ability will state when you can spend Pain tokens to Empower that unit. When you do, until the end of the phase, that unit is Empowered and all Pain abilities it has take effect. While an Attached unit is Empowered, the Pain abilities of all Leader and Bodyguard units in that unit take effect — you do not need to spend additional Pain tokens to activate each of those Pain abilities.
 
 ### Corsairs and Travelling Players
-If your Army Faction is Drukhari, you can include **Harlequins** and **Anhrathe** units in your army, even though they do not have the Drukhari Faction keyword. The combined points value of Harlequins and/or Anhrathe units you can include depends on the battle size: Incursion — up to 250 pts; Strike Force — up to 500 pts; Onslaught — up to 750 pts. No Harlequins or Anhrathe models included in your army in this way can be your **Warlord**, and they cannot be given Enhancements.`,
+If your Army Faction is Drukhari, you can include **Harlequins** and **Anhrathe** units in your army, even though they do not have the Drukhari Faction keyword. The combined points value of Harlequins and/or Anhrathe units you can include depends on the battle size: Incursion — up to 250 pts; Strike Force — up to 500 pts; Onslaught — up to 750 pts. No Harlequins or Anhrathe models included in your army in this way can be your **[gloss:warlord:Warlord]**, and they cannot be given Enhancements.`,
   },
 
   detachments: [
@@ -179,7 +179,7 @@ If your Army Faction is Drukhari, you can include **Harlequins** and **Anhrathe*
         name: 'Rain of Cruelty',
         flavor:
           'Few warriors in the galaxy are as adept at launching punishing skyborne raids as the Drukhari. Before their prey even realise the peril, the killers of Commorragh are amongst their lines like grinning ghouls. Splinter fire lays low defenders still scrambling into position. Quicksilver assaults leave dozens screaming in maimed agony. Often, the battle is over before it has even truly begun.',
-        body: `Each time a **Drukhari** unit from your army disembarks from a **Transport**, until the end of the turn:
+        body: `Each time a **Drukhari** unit from your army disembarks from a **[gloss:transport:Transport]**, until the end of the turn:
 ▪ Ranged weapons equipped by models in that disembarking unit have the [IGNORES COVER] ability.
 ▪ Melee weapons equipped by models in that disembarking unit have the [LANCE] ability.`,
       },
@@ -368,7 +368,7 @@ Improve the Leadership characteristic of **Wych Cult** models from your army by 
           // Faction-Pack Rules Update rewrote When / Target / Effect and removed Restrictions.
           when: "Your opponent's Movement phase, when an enemy unit ends a fall-back move.",
           target: 'One friendly unengaged Wych Cult unit that is within 6" of that enemy unit.',
-          effect: 'Declare a charge with your unit. When selecting charge targets, you can only select enemy units that made a fall-back move this phase and are within the maximum distance.',
+          effect: 'Declare a charge with your unit. When selecting **[gloss:charge-target:charge targets]**, you can only select enemy units that made a fall-back move this phase and are within the **[gloss:maximum-distance:maximum distance]**.',
           restrictions: '',
         },
         {
@@ -433,7 +433,7 @@ Improve the Leadership characteristic of **Wych Cult** models from your army by 
           flavor: 'To the greatest Haemonculi, death is but an intriguing and temporary state to be experienced.',
           when: 'Any phase.',
           target: 'One HAEMONCULUS model from your army that was just destroyed. You can use this Stratagem on that model even though it was just destroyed.',
-          effect: 'Spend 1-3 Pain tokens. At the end of the phase, set up the destroyed model on the battlefield, unengaged and as close as possible to where it was destroyed. That model is not part of an attached unit and its unit has a starting strength of 1. That model has a number of wounds remaining equal to the number of Pain tokens you just spent.',
+          effect: 'Spend 1-3 Pain tokens. At the end of the phase, set up the **[gloss:destroyed:destroyed]** model on the battlefield, **[gloss:unengaged:unengaged]** and as close as possible to where it was **destroyed**. That model is not part of an **[gloss:attached-unit:attached]** unit and its unit has a **[gloss:starting-strength:starting strength]** of 1. That model has a number of wounds remaining equal to the number of Pain tokens you just spent.',
           restrictions: 'You cannot use this Stratagem if you have 0 Pain tokens, and you cannot target the same HAEMONCULUS model with this Stratagem more than once per battle.',
         },
         {
@@ -658,7 +658,7 @@ Improve the Leadership characteristic of **Wych Cult** models from your army by 
           "With long lives spent honing their murderous skills against the most powerful opponents, the renowned fighters of Commorragh's arenas have an instinct for just where to strike to bring their prey low in the most painful and elegant manner possible.",
         body: `Friendly WYCH CULT units' melee attacks have [LETHAL HITS: non-MONSTER/VEHICLE].
 
-This detachment has the **WYCH CULT** tag and cannot be taken with another **WYCH CULT** detachment.`,
+This **[gloss:detachments:detachment]** has the **WYCH CULT** tag and cannot be taken with another **WYCH CULT** **detachment**.`,
       },
       stratagems: [
         {
@@ -667,7 +667,7 @@ This detachment has the **WYCH CULT** tag and cannot be taken with another **WYC
           cp: '1CP',
           turn: 'either',
           flavor: 'Murderous rehearsals ensure that those who survive can bring down the most resilient of prey in puissant displays.',
-          when: 'Fight phase, when a friendly WYCH CULT unit is selected to fight.',
+          when: 'Fight phase, when a friendly WYCH CULT unit is **[gloss:selected-to-fight:selected to fight]**.',
           target: 'That WYCH CULT unit.',
           effect: "Your unit's melee attacks have [LETHAL HITS].",
           restrictions: '',
@@ -680,7 +680,7 @@ This detachment has the **WYCH CULT** tag and cannot be taken with another **WYC
           flavor: 'Gauche are the gladiators who kill too relentlessly. Preparing the stage with a variety of torments in order to build the tension for a delightful crescendo is the mark of a true artist.',
           when: 'Your Movement phase, when a friendly WYCH CULT unit is selected to make an advance/fall-back move.',
           target: 'That WYCH CULT unit.',
-          effect: 'That move does not prevent your unit from being eligible to start an action.',
+          effect: 'That move does not prevent your unit from being **[gloss:eligible-to-act:eligible to start an action]**.',
           restrictions: '',
         },
         {
@@ -706,7 +706,7 @@ This detachment has the **WYCH CULT** tag and cannot be taken with another **WYC
           name: 'Periapt of Torments',
           points: 20,
           flavor: 'This hollow black stone is worn as warrior jewellery. The sinister organism that lurks within it can detect those who intend malice to its bearer and punishes them by lashing their psyches with its psi-barbs.',
-          body: `SUCCUBUS model only. Enemy units cannot target this unit with snap shooting attacks.`,
+          body: `SUCCUBUS model only. Enemy units cannot target this unit with **[gloss:snap-shooting:snap shooting]** attacks.`,
         },
       ],
     },
@@ -724,7 +724,7 @@ This detachment has the **WYCH CULT** tag and cannot be taken with another **WYC
           "Directed to inflict as much suffering as possible amongst the enemy's soldiers – on pain of their own torment – a kabal's vicious warriors spare no opportunity to unleash deluges of painful firepower.",
         body: `Friendly BLADES FOR HIRE/KABAL units' ranged attacks have [SUSTAINED HITS 1: non-MONSTER/VEHICLE].
 
-This detachment has the **KABAL** tag and cannot be taken with another **KABAL** detachment.`,
+This **[gloss:detachments:detachment]** has the **KABAL** tag and cannot be taken with another **KABAL** **detachment**.`,
       },
       stratagems: [
         {
@@ -748,7 +748,7 @@ This detachment has the **KABAL** tag and cannot be taken with another **KABAL**
           flavor: 'The capability of militant kabals to project their killing power is rightfully feared, as is the fact that the perpetrators can usually never be found.',
           when: 'Your Shooting phase, when a friendly BLADES FOR HIRE/KABAL unit has shot.',
           target: 'That BLADES FOR HIRE/KABAL unit.',
-          effect: 'Those attacks do not prevent your unit from being hidden.',
+          effect: 'Those attacks do not prevent your unit from being **[gloss:hidden:hidden]**.',
           restrictions: '',
         },
         {
@@ -757,7 +757,7 @@ This detachment has the **KABAL** tag and cannot be taken with another **KABAL**
           cp: '1CP',
           turn: 'your',
           flavor: "Defensive barriers or camouflage are little protection against those who have honed their talents hunting amongst the twisted and dark spires of their kabal's territory.",
-          when: 'Your Shooting phase, when a friendly KABALITE WARRIORS unit is selected to shoot.',
+          when: 'Your Shooting phase, when a friendly KABALITE WARRIORS unit is **[gloss:selected-to-shoot:selected to shoot]**.',
           target: 'That KABALITE WARRIORS unit.',
           effect: "Your unit's ranged attacks have [IGNORES COVER].",
           restrictions: '',
@@ -792,7 +792,7 @@ This detachment has the **KABAL** tag and cannot be taken with another **KABAL**
           "A Haemonculus' most resilient Engines of Pain are each a dark triumph valued as a work of malevolent genius. Their finely wrought armoured carapaces shield toughened mechorganic strata and slabs of mutated cartilage.",
         body: `Attacks that target friendly CRONOS/TALOS units with a S greater than that unit's T have -1 to Wound rolls.
 
-This detachment has the **COVENS** tag and cannot be taken with another **COVENS** detachment.`,
+This **[gloss:detachments:detachment]** has the **COVENS** tag and cannot be taken with another **COVENS** **detachment**.`,
       },
       stratagems: [
         {
@@ -801,7 +801,7 @@ This detachment has the **COVENS** tag and cannot be taken with another **COVENS
           cp: '1CP',
           turn: 'either',
           flavor: "Confusion, terror, and panic are triggers for a Haemonculus' Engines of Pain, which stimulate them to drive their evil augmentations even deeper into the foe.",
-          when: 'Fight phase, when a friendly CRONOS/TALOS unit is selected to fight.',
+          when: 'Fight phase, when a friendly CRONOS/TALOS unit is **[gloss:selected-to-fight:selected to fight]**.',
           target: 'That CRONOS/TALOS unit.',
           effect: "Your unit's attacks that target a Battle-shocked unit have [DEVASTATING WOUNDS].",
           restrictions: '',
@@ -814,7 +814,7 @@ This detachment has the **COVENS** tag and cannot be taken with another **COVENS
           flavor: 'Sharing is typically anathema to the self-centred Drukhari, except where horror can be fruitfully reinvested in those marked for later harvest.',
           when: 'Fight phase, when a friendly HAEMONCULUS COVENS unit destroys an enemy unit.',
           target: 'That HAEMONCULUS COVENS unit.',
-          effect: 'Select one visible enemy unit within 12" of your unit. That enemy unit makes a Battle-shock roll, with -1 to that Battle-shock roll.',
+          effect: 'Select one **[gloss:visible:visible]** enemy unit within 12" of your unit. That enemy unit makes a Battle-shock roll, with -1 to that Battle-shock roll.',
           restrictions: '',
         },
         {
@@ -841,7 +841,7 @@ This detachment has the **COVENS** tag and cannot be taken with another **COVENS
           points: 15,
           upgrade: true,
           flavor: 'Flowing from surgically grafted vials, this milky substance causes tumorous masses of pallid and nerve-deadened flesh to grow. It sloughs away in sickly lumps when struck, but is soon replaced in a regenecyst cycle of cutaneous ablative armour.',
-          body: `CRONOS/TALOS unit only. This unit has 5+ InSv.`,
+          body: `CRONOS/TALOS unit only. This unit has 5+ **[gloss:invulnerable-save:InSv]**.`,
         },
       ],
     },
@@ -863,7 +863,7 @@ This detachment has the **COVENS** tag and cannot be taken with another **COVENS
 
 Each time a DRUKHARI or HARLEQUINS model from your army makes an attack, if that model's unit is winning the wager, re-roll a Hit roll of 1. If that model's unit is losing the wager, re-roll a Hit roll of 1 and re-roll a Wound roll of 1 instead.
 
-**Harlequins:** You can include Harlequins units in your army (see Codex: Aeldari). The combined points cost of such units depends on your battle size: Incursion — up to 500 pts; Strike Force — up to 1000 pts; Onslaught — up to 1500 pts. No Harlequins models from your army can be your **Warlord**. If you select this Detachment, you cannot use the Corsairs and Travelling Players army rule.`,
+**Harlequins:** You can include Harlequins units in your army (see Codex: Aeldari). The combined points cost of such units depends on your battle size: Incursion — up to 500 pts; Strike Force — up to 1000 pts; Onslaught — up to 1500 pts. No Harlequins models from your army can be your **[gloss:warlord:Warlord]**. If you select this Detachment, you cannot use the Corsairs and Travelling Players army rule.`,
       },
       stratagems: [
         {

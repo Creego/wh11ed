@@ -68,7 +68,7 @@ export default [
     "abilities": [
       {
         "name": "Waaagh! Banner",
-        "text": "This unit has +1 to **charge rolls**."
+        "text": "This unit has +1 to **[gloss:charge-roll:charge rolls]**."
       }
     ],
     "composition": [
@@ -175,7 +175,7 @@ export default [
     "abilities": [
       {
         "name": "Mobile Fortress",
-        "text": "Ranged attacks that target this unit have -1 **D**."
+        "text": "Ranged attacks that target this unit have -1 **[gloss:damage-roll:D]**."
       }
     ],
     "composition": [
@@ -187,7 +187,7 @@ export default [
       "This model can be equipped with up to 4 Big Shoota.",
       "This model can be equipped with 1 Grabbin’ Klaw."
     ],
-    "transport": "This model has a **transport capacity** of 22 ORKS INFANTRY models. Each MEGA ARMOUR/JUMP PACK model takes up the space of 2 models. Each GHAZGHKULL THRAKA model takes up the space of 4 models.",
+    "transport": "This model has a **[gloss:transport-capacity:transport capacity]** of 22 ORKS INFANTRY models. Each MEGA ARMOUR/JUMP PACK model takes up the space of 2 models. Each GHAZGHKULL THRAKA model takes up the space of 4 models.",
     "keywords": [
       "Frame",
       "Transport",
@@ -308,7 +308,7 @@ export default [
     "abilities": [
       {
         "name": "Mobbed",
-        "text": "When this unit ends a **charge move**, each enemy MONSTER/VEHICLE unit **engaged** with this unit makes a **battle-shock roll**:\n▪ With -1 to that **battle-shock roll**.\n▪ __Or:__ With -2 to that **battle-shock roll** if this unit has 13+ models."
+        "text": "When this unit ends a **[gloss:charge-move:charge move]**, each enemy MONSTER/VEHICLE unit **[gloss:engaged:engaged]** with this unit makes a **[gloss:battle-shock-test:battle-shock roll]**:\n▪ With -1 to that **battle-shock roll**.\n▪ __Or:__ With -2 to that **battle-shock roll** if this unit has 13+ models."
       }
     ],
     "composition": [
@@ -385,11 +385,11 @@ export default [
     "abilities": [
       {
         "name": "Keep Huntin’! (Once per battle round, per army)",
-        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly BEAST SNAGGA unit within 6\" of this unit. That unit:\n▪ Is no longer **battle-shocked**.\n▪ Is **riled up** until the start of your next turn."
+        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly BEAST SNAGGA unit within 6\" of this unit. That unit:\n▪ Is no longer **[gloss:battle-shocked:battle-shocked]**.\n▪ Is **riled up** until the start of your next turn."
       },
       {
         "name": "Dodge Dis!",
-        "text": "This unit's attacks have +1 to **hit rolls**."
+        "text": "This unit's attacks have +1 to **[gloss:hit-roll:hit rolls]**."
       }
     ],
     "composition": [
@@ -507,15 +507,15 @@ export default [
     "abilities": [
       {
         "name": "Thundering Stampede (Aura)",
-        "text": "Friendly BEAST SNAGGA units within 6\" of this unit have +1 to **charge rolls**."
+        "text": "Friendly BEAST SNAGGA units within 6\" of this unit have +1 to **[gloss:charge-roll:charge rolls]**."
       },
       {
         "name": "Keep Huntin’! (Once per battle round, per army)",
-        "text": "In your Movement phase, at the start or end of this unit’s move, you can select one friendly BEAST SNAGGA unit within 6\" of this unit. That unit:\n▪ Is no longer **battle-shocked**.\n▪ Is **riled up** until the start of your next turn."
+        "text": "In your Movement phase, at the start or end of this unit’s move, you can select one friendly BEAST SNAGGA unit within 6\" of this unit. That unit:\n▪ Is no longer **[gloss:battle-shocked:battle-shocked]**.\n▪ Is **riled up** until the start of your next turn."
       },
       {
         "name": "Boss of da Hunt",
-        "text": "While this unit is within 3\" of a friendly BEAST SNAGGA unit (excluding MONSTER CHARACTER units), this unit has **Lone Operative**."
+        "text": "While this unit is within 3\" of a friendly BEAST SNAGGA unit (excluding MONSTER CHARACTER units), this unit has [core:Lone Operative]."
       }
     ],
     "composition": [
@@ -618,7 +618,7 @@ export default [
       },
       {
         "name": "Shokk-boosta",
-        "text": "In your Movement phase, when this unit is selected to make an **advance move**, you can use this ability. If you do:\n▪ This unit can change that **advance roll** to a 6.\n▪ This unit can move through all types of model.\n▪ When this unit ends that **advance move**, make a **hazard roll** for each model in this unit."
+        "text": "In your Movement phase, when this unit is selected to make an **[gloss:advance-move:advance move]**, you can use this ability. If you do:\n▪ This unit can change that **[gloss:advance-roll:advance roll]** to a 6.\n▪ This unit can move through all types of model.\n▪ When this unit ends that **advance move**, make a **[gloss:hazard-roll:hazard roll]** for each model in this unit."
       }
     ],
     "composition": [
@@ -726,7 +726,7 @@ export default [
       },
       {
         "name": "Blitz Dem Gitz!",
-        "text": "In your Shooting phase, if this unit’s Blitzkannon weapon targets a unit (excluding MONSTER/VEHICLE units), that weapon has +6 **A**."
+        "text": "In your Shooting phase, if this unit’s Blitzkannon weapon targets a unit (excluding MONSTER/VEHICLE units), that weapon has +6 **[gloss:attack-dice:A]**."
       }
     ],
     "composition": [
@@ -877,7 +877,7 @@ export default [
     "abilities": [
       {
         "name": "Fix Dat Armour Up (Once per battle, per unit)",
-        "text": "In your Command phase, this unit **heals** 3 wounds.\n\nPlace a Grot Oiler token next to the unit, removing it when this ability is used."
+        "text": "In your Command phase, this unit **[gloss:heal:heals]** 3 wounds.\n\nPlace a Grot Oiler token next to the unit, removing it when this ability is used."
       },
       {
         "name": "More Dakka",
@@ -887,7 +887,7 @@ export default [
     "wargearAbilities": [
       {
         "name": "Kustom Force Field",
-        "text": "This unit has 4+ **InSv** against ranged attacks."
+        "text": "This unit has 4+ **[gloss:invulnerable-save:InSv]** against ranged attacks."
       }
     ],
     "composition": [
@@ -979,7 +979,7 @@ export default [
       },
       {
         "name": "Support Shokka",
-        "text": "While this model is within 3\" of a friendly ORKS INFANTRY unit (excluding BIG MEK WITH SHOKK ATTACK GUN units), this model has **Lone Operative**."
+        "text": "While this model is within 3\" of a friendly ORKS INFANTRY unit (excluding BIG MEK WITH SHOKK ATTACK GUN units), this model has [core:Lone Operative]."
       }
     ],
     "composition": [
@@ -1102,7 +1102,7 @@ export default [
     "abilities": [
       {
         "name": "Spiked Ram",
-        "text": "When this unit ends a **charge move**, you can select one enemy unit **engaged** with this unit. If you do, roll one D6:\n▪ On a 2-5, that enemy unit suffers D3 **mortal wounds**.\n▪ On a 6, that enemy unit suffers 3 **mortal wounds**."
+        "text": "When this unit ends a **[gloss:charge-move:charge move]**, you can select one enemy unit **[gloss:engaged:engaged]** with this unit. If you do, roll one D6:\n▪ On a 2-5, that enemy unit suffers D3 **[gloss:mortal-wound:mortal wounds]**.\n▪ On a 6, that enemy unit suffers 3 **mortal wounds**."
       }
     ],
     "composition": [
@@ -1178,7 +1178,7 @@ export default [
     "abilities": [
       {
         "name": "Sumfin’ to Prove",
-        "text": "This unit’s melee attacks have +1 to **hit rolls**."
+        "text": "This unit’s melee attacks have +1 to **[gloss:hit-roll:hit rolls]**."
       }
     ],
     "composition": [
@@ -1264,15 +1264,15 @@ export default [
     "abilities": [
       {
         "name": "Raucous Occupants",
-        "text": "While this model is within range of your **home objective**, add the **OC** of models embarked within this model to this model's **OC**."
+        "text": "While this model is within range of your **home objective**, add the **[gloss:objective-control:OC]** of models embarked within this model to this model's **OC**."
       },
       {
         "name": "Fortification",
-        "text": "While an enemy unit is **engaged** with only FORTIFICATION units:\n▪ That enemy unit can be selected as a target of ranged attacks.\n▪ When shooting that enemy unit, those ranged attacks have -1 to **hit rolls** (excluding [CLOSE-QUARTERS] attacks).\n▪ When that enemy unit is selected to make a **fall-back move**, if that enemy unit is only **engaged** with FORTIFICATION units, and that enemy unit is not **battle-shocked**, **hazard rolls** made for that enemy unit are automatically passed."
+        "text": "While an enemy unit is **[gloss:engaged:engaged]** with only FORTIFICATION units:\n▪ That enemy unit can be selected as a target of ranged attacks.\n▪ When shooting that enemy unit, those ranged attacks have -1 to **[gloss:hit-roll:hit rolls]** (excluding [CLOSE-QUARTERS] attacks).\n▪ When that enemy unit is selected to make a **[gloss:fall-back-move:fall-back move]**, if that enemy unit is only **engaged** with FORTIFICATION units, and that enemy unit is not **[gloss:battle-shocked:battle-shocked]**, **[gloss:hazard-roll:hazard rolls]** made for that enemy unit are automatically passed."
       },
       {
         "name": "Ramshackle Cover",
-        "text": "When an attack targets a unit that is not **fully visible** to the attacking model because of this unit, the target has the **benefit of cover** against that attack."
+        "text": "When an attack targets a unit that is not **[gloss:fully-visible:fully visible]** to the attacking model because of this unit, the target has the **[gloss:benefit-of-cover:benefit of cover]** against that attack."
       }
     ],
     "composition": [
@@ -1282,7 +1282,7 @@ export default [
     "options": [
       "This model can be equipped with up to 3 Big Shootas."
     ],
-    "transport": "This model has a **transport capacity** of 11 ORKS INFANTRY models. It cannot transport GHAZGHKULL THRAKA models. Each MEGA ARMOUR/JUMP PACK model takes up the space of 2 models.",
+    "transport": "This model has a **[gloss:transport-capacity:transport capacity]** of 11 ORKS INFANTRY models. It cannot transport GHAZGHKULL THRAKA models. Each MEGA ARMOUR/JUMP PACK model takes up the space of 2 models.",
     "keywords": [
       "Fortification",
       "Frame",
@@ -1359,7 +1359,7 @@ export default [
     "abilities": [
       {
         "name": "Boom Bomb",
-        "text": "At the end of your opponent’s Fight phase, select one **visible** enemy unit (excluding **Lone Operative** units) within 24\" of this unit, and roll one D6 for that unit:\n▪ On a 1-3, that enemy unit suffers D3 **mortal wounds**.\n▪ On a 4-5, that enemy unit suffers 3 **mortal wounds**.\n▪ On a 6, that enemy unit suffers D3+3 **mortal wounds**."
+        "text": "At the end of your opponent’s Fight phase, select one **[gloss:visible:visible]** enemy unit (excluding [core:Lone Operative] units) within 24\" of this unit, and roll one D6 for that unit:\n▪ On a 1-3, that enemy unit suffers D3 **[gloss:mortal-wound:mortal wounds]**.\n▪ On a 4-5, that enemy unit suffers 3 **mortal wounds**.\n▪ On a 6, that enemy unit suffers D3+3 **mortal wounds**."
       }
     ],
     "composition": [
@@ -1434,11 +1434,11 @@ export default [
     "abilities": [
       {
         "name": "Kunnin’ Infiltrator",
-        "text": "At the end of your opponent's Fight phase, if each model in this unit is **hidden** and **unengaged**, you can place this unit in **strategic reserves**."
+        "text": "At the end of your opponent's Fight phase, if each model in this unit is **[gloss:hidden:hidden]** and **[gloss:unengaged:unengaged]**, you can place this unit in **[gloss:strategic-reserves:strategic reserves]**."
       },
       {
         "name": "Deff from the Shadows (First battle round onwards)",
-        "text": "At the end of your opponent's Movement phase, if this unit is in **strategic reserves**, this unit can make an **ingress move**."
+        "text": "At the end of your opponent's Movement phase, if this unit is in **[gloss:strategic-reserves:strategic reserves]**, this unit can make an **[gloss:ingress-move:ingress move]**."
       }
     ],
     "composition": [
@@ -1515,11 +1515,11 @@ export default [
     "abilities": [
       {
         "name": "Drill Boss",
-        "text": "This unit's melee attacks have +1 to **hit rolls**."
+        "text": "This unit's melee attacks have +1 to **[gloss:hit-roll:hit rolls]**."
       },
       {
         "name": "Plummeting Descent",
-        "text": "If this unit made an **ingress move** this turn, this unit can re-roll **charge rolls**."
+        "text": "If this unit made an **[gloss:ingress-move:ingress move]** this turn, this unit can re-roll **[gloss:charge-roll:charge rolls]**."
       }
     ],
     "composition": [
@@ -1773,15 +1773,15 @@ export default [
     "abilities": [
       {
         "name": "Ammo Runts (Once per battle, per unit)",
-        "text": "In your Shooting phase, when this unit is **selected to shoot**, you can use this ability. If you do, this unit’s ranged attacks have +1 to **hit rolls**.\n\nPlace any number of Ammo Runt tokens next to the unit, removing them when this ability is used."
+        "text": "In your Shooting phase, when this unit is **[gloss:selected-to-shoot:selected to shoot]**, you can use this ability. If you do, this unit’s ranged attacks have +1 to **[gloss:hit-roll:hit rolls]**.\n\nPlace any number of Ammo Runt tokens next to the unit, removing them when this ability is used."
       },
       {
         "name": "Tide of Muscle",
-        "text": "In the Fight phase, if this unit made a **charge move** this turn, this unit's melee attacks have [LETHAL HITS]."
+        "text": "In the Fight phase, if this unit made a **[gloss:charge-move:charge move]** this turn, this unit's melee attacks have [LETHAL HITS]."
       },
       {
         "name": "Never Too Busy to Fight",
-        "text": "Being **engaged** does not prevent this unit from being **eligible to start an action**."
+        "text": "Being **[gloss:engaged:engaged]** does not prevent this unit from being **[gloss:eligible-to-act:eligible to start an action]**."
       }
     ],
     "composition": [
@@ -1914,11 +1914,11 @@ export default [
     "abilities": [
       {
         "name": "Bomb Squigs (Once per turn, twice per battle, per unit)",
-        "text": "In your Movement phase, when this unit ends a **normal move**, you can select one **visible** enemy unit within 12\" of this unit and roll one D6:\n▪ On a 3+, that enemy unit suffers D3 **mortal wounds**.\n\nPlace two Bomb Squig tokens next to the unit, removing one each time this ability is used."
+        "text": "In your Movement phase, when this unit ends a **[gloss:normal-move:normal move]**, you can select one **[gloss:visible:visible]** enemy unit within 12\" of this unit and roll one D6:\n▪ On a 3+, that enemy unit suffers D3 **[gloss:mortal-wound:mortal wounds]**.\n\nPlace two Bomb Squig tokens next to the unit, removing one each time this ability is used."
       },
       {
         "name": "Trophy Hunters",
-        "text": "This unit has +1 to **charge rolls**."
+        "text": "This unit has +1 to **[gloss:charge-roll:charge rolls]**."
       }
     ],
     "composition": [
@@ -2020,7 +2020,7 @@ export default [
     "abilities": [
       {
         "name": "Burna Bomb",
-        "text": "At the end of your opponent’s Fight phase, select one **visible** enemy unit (excluding **Lone Operative** and MONSTER/VEHICLE units) within 36\" of this unit, and roll one D6 for that unit. On a 2+:\n▪ That enemy unit suffers D3 **mortal wounds**.\n▪ That enemy unit cannot be **hidden** until the end of your next turn.\n▪ Ranged attacks that target that enemy unit have [IGNORES COVER] until the end of your next turn."
+        "text": "At the end of your opponent’s Fight phase, select one **[gloss:visible:visible]** enemy unit (excluding [core:Lone Operative] and MONSTER/VEHICLE units) within 36\" of this unit, and roll one D6 for that unit. On a 2+:\n▪ That enemy unit suffers D3 **[gloss:mortal-wound:mortal wounds]**.\n▪ That enemy unit cannot be **[gloss:hidden:hidden]** until the end of your next turn.\n▪ Ranged attacks that target that enemy unit have [IGNORES COVER] until the end of your next turn."
       }
     ],
     "composition": [
@@ -2161,7 +2161,7 @@ export default [
     "abilities": [
       {
         "name": "Pyromaniaks",
-        "text": "This unit's attacks that target a unit within 6\" of this unit can re-roll **wound rolls** of 1."
+        "text": "This unit's attacks that target a unit within 6\" of this unit can re-roll **[gloss:wound-roll:wound rolls]** of 1."
       }
     ],
     "composition": [
@@ -2234,7 +2234,7 @@ export default [
     "abilities": [
       {
         "name": "Strafing Run",
-        "text": "In your Shooting phase, this unit's ranged attacks that target a unit (excluding FLY units) have +1 to **hit rolls**."
+        "text": "In your Shooting phase, this unit's ranged attacks that target a unit (excluding FLY units) have +1 to **[gloss:hit-roll:hit rolls]**."
       }
     ],
     "composition": [
@@ -2374,7 +2374,7 @@ export default [
     "abilities": [
       {
         "name": "Dread ’Ard",
-        "text": "Attacks that target this unit have -1 **D**."
+        "text": "Attacks that target this unit have -1 **[gloss:damage-roll:D]**."
       }
     ],
     "composition": [
@@ -2485,11 +2485,11 @@ export default [
     "abilities": [
       {
         "name": "Get Back in da Race! (Once per battle round, per army)",
-        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly SPEED FREEKS unit within 6\" of this unit. That unit (and any units embarked within that unit):\n▪ Is no longer **battle-shocked**.\n▪ Is **riled up** until the start of your next turn."
+        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly SPEED FREEKS unit within 6\" of this unit. That unit (and any units embarked within that unit):\n▪ Is no longer **[gloss:battle-shocked:battle-shocked]**.\n▪ Is **riled up** until the start of your next turn."
       },
       {
         "name": "Fuel-mixa Grot",
-        "text": "This unit has +1 to **advance rolls**."
+        "text": "This unit has +1 to **[gloss:advance-roll:advance rolls]**."
       }
     ],
     "composition": [
@@ -2630,11 +2630,11 @@ export default [
     "abilities": [
       {
         "name": "Deff from Above",
-        "text": "In your Shooting phase, if this unit made an **ingress move** this turn, this unit's ranged attacks have +1 to **hit rolls**."
+        "text": "In your Shooting phase, if this unit made an **[gloss:ingress-move:ingress move]** this turn, this unit's ranged attacks have +1 to **[gloss:hit-roll:hit rolls]**."
       },
       {
         "name": "Aerial Manoover",
-        "text": "At the end of your opponent's Fight phase, if this unit is **unengaged**, you can place this unit in **strategic reserves**."
+        "text": "At the end of your opponent's Fight phase, if this unit is **[gloss:unengaged:unengaged]**, you can place this unit in **[gloss:strategic-reserves:strategic reserves]**."
       }
     ],
     "composition": [
@@ -2756,7 +2756,7 @@ export default [
     "abilities": [
       {
         "name": "Finderz Keeperz",
-        "text": "In your Shooting phase, if any of the following apply, this unit’s ranged attacks have +1 **AP**:\n▪ This unit is within range of an **objective**.\n▪ The target of that attack is within range of an **objective**."
+        "text": "In your Shooting phase, if any of the following apply, this unit’s ranged attacks have +1 **[gloss:armour-penetration:AP]**:\n▪ This unit is within range of an **[gloss:objective:objective]**.\n▪ The target of that attack is within range of an **objective**."
       }
     ],
     "composition": [
@@ -2857,7 +2857,7 @@ export default [
     "abilities": [
       {
         "name": "Walking Bastion",
-        "text": "This unit's attacks can ignore modifiers to:\n▪ **BS/WS**.\n▪ **Hit rolls**."
+        "text": "This unit's attacks can ignore modifiers to:\n▪ **[gloss:bs-ws:BS/WS]**.\n▪ **[gloss:hit-roll:Hit rolls]**."
       }
     ],
     "composition": [
@@ -2962,7 +2962,7 @@ export default [
     "abilities": [
       {
         "name": "Da Grand Warlord's Ladz",
-        "text": "While this unit is within 3\" of another friendly ORKS INFANTRY unit, this unit has **Lone Operative**."
+        "text": "While this unit is within 3\" of another friendly ORKS INFANTRY unit, this unit has [core:Lone Operative]."
       },
       {
         "name": "Makari, Hoist Dat Banner! (Once per battle, per army)",
@@ -2970,7 +2970,7 @@ export default [
       },
       {
         "name": "Prophet of da Great Waaagh! (Aura)",
-        "text": "While a friendly ORKS unit is within 6\" of this unit, that unit’s melee attacks have:\n▪ +1 to **hit rolls**.\n▪ +1 to **wound rolls**."
+        "text": "While a friendly ORKS unit is within 6\" of this unit, that unit’s melee attacks have:\n▪ +1 to **[gloss:hit-roll:hit rolls]**.\n▪ +1 to **[gloss:wound-roll:wound rolls]**."
       }
     ],
     "composition": [
@@ -3115,18 +3115,18 @@ export default [
     "abilities": [
       {
         "name": "Gut Hatch",
-        "text": "In your Movement phase, when this unit ends a **normal move**, units embarked within this unit can make an **assault disembark move** (pg 121)."
+        "text": "In your Movement phase, when this unit ends a **[gloss:normal-move:normal move]**, units embarked within this unit can make an **[gloss:assault-disembark-move:assault disembark move]** (pg 121)."
       },
       {
         "name": "Big an’ Stompy",
-        "text": "This unit’s melee attacks can re‑roll **hit rolls** of 1."
+        "text": "This unit’s melee attacks can re‑roll **[gloss:hit-roll:hit rolls]** of 1."
       }
     ],
     "composition": [
       "1 Gorkanaut model"
     ],
     "loadout": "**This model is equipped with:** 1 Deffstorm mega‑shoota; 2 Dual Big Shoota; 1 Klaw of Gork; 2 Rokkit Launcha; 1 Skorcha.",
-    "transport": "This model has a **transport capacity** of 12 ORKS INFANTRY models. It cannot transport GHAZGHKULL THRAKA models. Each MEGA ARMOUR/JUMP PACK model takes up the space of 2 models.",
+    "transport": "This model has a **[gloss:transport-capacity:transport capacity]** of 12 ORKS INFANTRY models. It cannot transport GHAZGHKULL THRAKA models. Each MEGA ARMOUR/JUMP PACK model takes up the space of 2 models.",
     "keywords": [
       "Titanic",
       "Towering",
@@ -3192,11 +3192,11 @@ export default [
     "abilities": [
       {
         "name": "Downtrodden",
-        "text": "For the purposes of **transport capacity**, each 2 Gretchin models (rounding up) take up the space of 1 model."
+        "text": "For the purposes of **[gloss:transport-capacity:transport capacity]**, each 2 Gretchin models (rounding up) take up the space of 1 model."
       },
       {
         "name": "Thievin’ Scavengers",
-        "text": "At the end of your Movement phase, if this unit is controlling an **objective**, that **objective** is **secured**."
+        "text": "At the end of your Movement phase, if this unit is controlling an **[gloss:objective:objective]**, that **objective** is **[gloss:secured-objective:secured]**."
       }
     ],
     "composition": [
@@ -3341,7 +3341,7 @@ export default [
     "abilities": [
       {
         "name": "Bizarrely Resilient",
-        "text": "Attacks that target this unit have -1 **AP**."
+        "text": "Attacks that target this unit have -1 **[gloss:armour-penetration:AP]**."
       }
     ],
     "composition": [
@@ -3478,7 +3478,7 @@ export default [
     "abilities": [
       {
         "name": "Scatter! (Once per phase, per unit)",
-        "text": "In your opponent's Movement phase, when an enemy unit ends a move within 8\" of this unit, if this unit is **unengaged**, this unit can make a **normal move** of up to 6\"."
+        "text": "In your opponent's Movement phase, when an enemy unit ends a move within 8\" of this unit, if this unit is **[gloss:unengaged:unengaged]**, this unit can make a **[gloss:normal-move:normal move]** of up to 6\"."
       }
     ],
     "composition": [
@@ -3650,7 +3650,7 @@ export default [
     "abilities": [
       {
         "name": "Mobile Arsenal",
-        "text": "In your Shooting phase, this unit’s ranged attacks can re‑roll **hit rolls** of 1."
+        "text": "In your Shooting phase, this unit’s ranged attacks can re‑roll **[gloss:hit-roll:hit rolls]** of 1."
       }
     ],
     "composition": [
@@ -3664,7 +3664,7 @@ export default [
       "This model can be equipped with up to 4 Big Shoota.",
       "This model’s Kannon can be replaced with one of the following:\n▪ 1 Killkannon\n▪ 1 Zzap Gun"
     ],
-    "transport": "This model has a **transport capacity** of 12 ORKS INFANTRY models. Each MEGA ARMOUR/JUMP PACK model takes up the space of 2 models. Each GHAZGHKULL THRAKA model takes up the space of 4 models.",
+    "transport": "This model has a **[gloss:transport-capacity:transport capacity]** of 12 ORKS INFANTRY models. Each MEGA ARMOUR/JUMP PACK model takes up the space of 2 models. Each GHAZGHKULL THRAKA model takes up the space of 4 models.",
     "keywords": [
       "Frame",
       "Transport",
@@ -3773,7 +3773,7 @@ export default [
     "abilities": [
       {
         "name": "Fully Loaded Butchery",
-        "text": "This unit’s Butcha Boyz weapon has +2 **A** for each model embarked within this unit (to a maximum of +22 **A**)."
+        "text": "This unit’s Butcha Boyz weapon has +2 **[gloss:attack-dice:A]** for each model embarked within this unit (to a maximum of +22 **A**)."
       },
       {
         "name": "Tramplasquig Charge",
@@ -3784,7 +3784,7 @@ export default [
       "1 Hunta Rig model"
     ],
     "loadout": "**This model is equipped with:** 1 Butcha Boyz; 1 ’Eavy Lobba; 1 Savage Horns and Hooves; 1 Saw Blades; 1 Stikka Kannon.",
-    "transport": "This model has a **transport capacity** of 22 BEAST SNAGGAS INFANTRY models.",
+    "transport": "This model has a **[gloss:transport-capacity:transport capacity]** of 22 BEAST SNAGGAS INFANTRY models.",
     "keywords": [
       "Beast Snagga",
       "Monster",
@@ -3875,11 +3875,11 @@ export default [
     "abilities": [
       {
         "name": "Flashiest Gitz",
-        "text": "This unit's ranged attacks can re-roll **hit rolls**."
+        "text": "This unit's ranged attacks can re-roll **[gloss:hit-roll:hit rolls]**."
       },
       {
         "name": "Ded Glowy Ammo",
-        "text": "Enemy units within 6\" of this model have -1 **T**."
+        "text": "Enemy units within 6\" of this model have -1 **[gloss:toughness:T]**."
       }
     ],
     "composition": [
@@ -4015,25 +4015,25 @@ export default [
     "abilities": [
       {
         "name": "Wurrboy (psyker level 1)",
-        "text": "This model has the **psychic abilities** listed in the Psychic Abilities section."
+        "text": "This model has the **[gloss:psychic-ability:psychic abilities]** listed in the Psychic Abilities section."
       }
     ],
     "composition": [
       "1 Kill Rig model"
     ],
     "loadout": "**This model is equipped with:** 1 Butcha Boyz; 1 ’Eavy Lobba; 1 Savage Horns and Hooves; 1 Saw Blades; 1 Stikka Kannon; 1 Wurrtower.",
-    "transport": "This model has a **transport capacity** of 12 BEAST SNAGGAS INFANTRY models.",
+    "transport": "This model has a **[gloss:transport-capacity:transport capacity]** of 12 BEAST SNAGGAS INFANTRY models.",
     "abilitySets": [
       {
         "name": "Wurrboy (psyker level 1)",
         "options": [
           {
             "name": "Beastscent (psychic level 1)",
-            "text": "In your Movement phase, when a unit embarked within this unit is selected to make a **disembark move**, if this unit is not **battle-shocked**, you can make a **psychic roll** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ That disembarking unit's attacks that target a MONSTER/VEHICLE unit have +1 to **wound rolls** until the end of the turn."
+            "text": "In your Movement phase, when a unit embarked within this unit is selected to make a **[gloss:disembark:disembark move]**, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ That disembarking unit's attacks that target a MONSTER/VEHICLE unit have +1 to **[gloss:wound-roll:wound rolls]** until the end of the turn."
           },
           {
             "name": "Warpath (psychic level 1)",
-            "text": "In the Fight phase, when this unit is **selected to fight**, if this unit is not **battle-shocked**, you can make a **psychic roll** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ This unit's melee attacks have [LETHAL HITS] and [PSYCHIC]."
+            "text": "In the Fight phase, when this unit is **[gloss:selected-to-fight:selected to fight]**, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ This unit's melee attacks have [LETHAL HITS] and [PSYCHIC]."
           }
         ]
       }
@@ -4223,11 +4223,11 @@ export default [
     "abilities": [
       {
         "name": "Rolling Fortress",
-        "text": "When an attack targets a friendly ORKS unit that is not **fully visible** to the attacking model because of this unit, the target has the **benefit of cover** against that attack."
+        "text": "When an attack targets a friendly ORKS unit that is not **[gloss:fully-visible:fully visible]** to the attacking model because of this unit, the target has the **[gloss:benefit-of-cover:benefit of cover]** against that attack."
       },
       {
         "name": "Da Biggest Boom",
-        "text": "In your Shooting phase, when this unit has shot, you can select one enemy unit hit by this unit's Tank Kannon attacks. If you do, enemy units (excluding MONSTER/VEHICLE units) within 3\" of that enemy unit make a **battle-shock roll**."
+        "text": "In your Shooting phase, when this unit has shot, you can select one enemy unit hit by this unit's Tank Kannon attacks. If you do, enemy units (excluding MONSTER/VEHICLE units) within 3\" of that enemy unit make a **[gloss:battle-shock-test:battle-shock roll]**."
       }
     ],
     "composition": [
@@ -4346,7 +4346,7 @@ export default [
     "abilities": [
       {
         "name": "Spiteful Power Trip",
-        "text": "This unit’s attacks that target a unit that has no models with a **T** of 7+ have +1 to **hit rolls**."
+        "text": "This unit’s attacks that target a unit that has no models with a **[gloss:toughness:T]** of 7+ have +1 to **[gloss:hit-roll:hit rolls]**."
       }
     ],
     "composition": [
@@ -4501,19 +4501,19 @@ export default [
     "abilities": [
       {
         "name": "Found ’Em!",
-        "text": "In your Movement phase, you can select one enemy unit within 12\" of this unit. That unit has +3\" **detection range** until the end of the turn.\n\nPlace one Kommando Grot token next to that enemy unit to remind you."
+        "text": "In your Movement phase, you can select one enemy unit within 12\" of this unit. That unit has +3\" **[gloss:detection-range:detection range]** until the end of the turn.\n\nPlace one Kommando Grot token next to that enemy unit to remind you."
       },
       {
         "name": "Taktikal Know-wotz",
-        "text": "In the Declare Battle Formations step, you can split this unit into two units, each with a **starting strength** of 5. If you do, select which one of those units will have the **Bomb Squig** ability and which one of those units will have the **Found ’Em!** ability."
+        "text": "In the Declare Battle Formations step, you can split this unit into two units, each with a **[gloss:starting-strength:starting strength]** of 5. If you do, select which one of those units will have the **Bomb Squig** ability and which one of those units will have the **Found ’Em!** ability."
       },
       {
         "name": "Nowhere to Hide",
-        "text": "This unit’s attacks that target a **hidden** unit have +1 to **hit rolls**."
+        "text": "This unit’s attacks that target a **[gloss:hidden:hidden]** unit have +1 to **[gloss:hit-roll:hit rolls]**."
       },
       {
         "name": "Bomb Squig (Once per battle, per unit)",
-        "text": "In your Movement phase, when this unit ends a **normal move**, you can select one **visible** enemy unit within 12\" of this unit and roll one D6:\n▪ On a 3+, that enemy unit suffers D3 **mortal wounds**.\n\nPlace one Bomb Squig token next to the unit, removing it after this ability is used."
+        "text": "In your Movement phase, when this unit ends a **[gloss:normal-move:normal move]**, you can select one **[gloss:visible:visible]** enemy unit within 12\" of this unit and roll one D6:\n▪ On a 3+, that enemy unit suffers D3 **[gloss:mortal-wound:mortal wounds]**.\n\nPlace one Bomb Squig token next to the unit, removing it after this ability is used."
       }
     ],
     "composition": [
@@ -4649,7 +4649,7 @@ export default [
     "abilities": [
       {
         "name": "Da Bigger Dey Are, Da Better Dey Drop",
-        "text": "In your Shooting phase, when this unit's Lifta-droppa destroys an enemy MONSTER/VEHICLE model with **Deadly Demise**, that enemy model suffers a **Deadly Demise** on a roll of 3+, instead of a 6."
+        "text": "In your Shooting phase, when this unit's Lifta-droppa destroys an enemy MONSTER/VEHICLE model with [core:Deadly Demise], that enemy model suffers a [core:Deadly Demise] on a roll of 3+, instead of a 6."
       }
     ],
     "composition": [
@@ -4795,7 +4795,7 @@ export default [
     "abilities": [
       {
         "name": "Dat's Our Loot",
-        "text": "▪ This unit's ranged attacks can re-roll **hit rolls** of 1.\n▪ This unit's ranged attacks that target a unit within range of an **objective** can re-roll **hit rolls**."
+        "text": "▪ This unit's ranged attacks can re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ This unit's ranged attacks that target a unit within range of an **[gloss:objective:objective]** can re-roll **hit rolls**."
       }
     ],
     "composition": [
@@ -4881,11 +4881,11 @@ export default [
     "abilities": [
       {
         "name": "One Scalpel Short of a Medpack",
-        "text": "When this unit is selected to make a **fall-back move**, that **fall-back move** does not prevent this unit from being **eligible to declare a charge**."
+        "text": "When this unit is selected to make a **[gloss:fall-back-move:fall-back move]**, that **fall-back move** does not prevent this unit from being **[gloss:eligible-to-charge:eligible to declare a charge]**."
       },
       {
         "name": "Mad Dok",
-        "text": "In your Command phase, select one friendly ORKS INFANTRY unit within 6\" of this model, and select one of the following:\n▪ That unit **heals** 3 wounds.\n▪ __Or:__ If all models in that unit have their starting number of wounds, **revive** one CHARACTER model in that unit."
+        "text": "In your Command phase, select one friendly ORKS INFANTRY unit within 6\" of this model, and select one of the following:\n▪ That unit **[gloss:heal:heals]** 3 wounds.\n▪ __Or:__ If all models in that unit have their starting number of wounds, **[gloss:revive:revive]** one CHARACTER model in that unit."
       }
     ],
     "composition": [
@@ -5070,11 +5070,11 @@ export default [
     "abilities": [
       {
         "name": "Arrogant Invulnerability",
-        "text": "Attacks that target this unit have -1 **AP**."
+        "text": "Attacks that target this unit have -1 **[gloss:armour-penetration:AP]**."
       },
       {
         "name": "Krumpin’ Time",
-        "text": "In the Fight phase, if this unit is **riled up**, this unit has +1 to **hit rolls**."
+        "text": "In the Fight phase, if this unit is **riled up**, this unit has +1 to **[gloss:hit-roll:hit rolls]**."
       }
     ],
     "composition": [
@@ -5152,7 +5152,7 @@ export default [
       },
       {
         "name": "Clever Know-wotz",
-        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly ORKS VEHICLE model (excluding AIRCRAFT/TITANIC models) within 3\" of this model:\n▪ That VEHICLE model **heals** D3 wounds.\n▪ That VEHICLE model's attacks have +1 to **hit rolls** until the start of your next Movement phase."
+        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly ORKS VEHICLE model (excluding AIRCRAFT/TITANIC models) within 3\" of this model:\n▪ That VEHICLE model **[gloss:heal:heals]** D3 wounds.\n▪ That VEHICLE model's attacks have +1 to **[gloss:hit-roll:hit rolls]** until the start of your next Movement phase."
       }
     ],
     "composition": [
@@ -5294,7 +5294,7 @@ export default [
     "abilities": [
       {
         "name": "Madcap Artillery",
-        "text": "In your Shooting phase, when this unit has shot, if all ranged weapons equipped by each Mek Gunz model in this unit are the same, select one enemy unit hit by those attacks. That enemy unit has the ability below that matches that weapon's name until the start of your next turn:\n▪ **Bubblechukka:** This unit is **wobbled**. While a **wobbled** unit is attacking, its targets have the **benefit of cover** against those attacks.\n▪ **Kustom Mega-kannon:** This unit is **zapped**. While a unit is **zapped**, that unit has -1 **Ld**.\n▪ **Smasha Gun:** This unit is **smashed**. While a unit is **smashed**, that unit has -2\" **M**.\n▪ **Traktor Kannon:** This unit is **grounded**. While a unit is **grounded**, it cannot **take to the skies**.\n\nPlace five Grot Crew tokens next to each Mek Gun model, removing one each time its Mek Gun model loses a wound (a Mek Gun model itself is considered to represent its final wound)."
+        "text": "In your Shooting phase, when this unit has shot, if all ranged weapons equipped by each Mek Gunz model in this unit are the same, select one enemy unit hit by those attacks. That enemy unit has the ability below that matches that weapon's name until the start of your next turn:\n▪ **Bubblechukka:** This unit is **wobbled**. While a **wobbled** unit is attacking, its targets have the **[gloss:benefit-of-cover:benefit of cover]** against those attacks.\n▪ **Kustom Mega-kannon:** This unit is **zapped**. While a unit is **zapped**, that unit has -1 **[gloss:leadership:Ld]**.\n▪ **Smasha Gun:** This unit is **smashed**. While a unit is **smashed**, that unit has -2\" **[gloss:move-characteristic:M]**.\n▪ **Traktor Kannon:** This unit is **grounded**. While a unit is **grounded**, it cannot **[gloss:take-to-the-skies:take to the skies]**.\n\nPlace five Grot Crew tokens next to each Mek Gun model, removing one each time its Mek Gun model loses a wound (a Mek Gun model itself is considered to represent its final wound)."
       }
     ],
     "composition": [
@@ -5339,15 +5339,15 @@ export default [
     "abilities": [
       {
         "name": "Workshop",
-        "text": "▪ When this unit is set up, all parts of it must be set up in a single group, in which each part is within 1\" of another part.\n▪ At the end of the Movement phase, each friendly ORKS VEHICLE within 6\" of this unit **heals** D3 wounds. Each friendly ORKS VEHICLE unit can only be affected by this ability once per turn."
+        "text": "▪ When this unit is set up, all parts of it must be set up in a single group, in which each part is within 1\" of another part.\n▪ At the end of the Movement phase, each friendly ORKS VEHICLE within 6\" of this unit **[gloss:heal:heals]** D3 wounds. Each friendly ORKS VEHICLE unit can only be affected by this ability once per turn."
       },
       {
         "name": "Fortification",
-        "text": "While an enemy unit is **engaged** with only FORTIFICATION units:\n▪ That enemy unit can be selected as a target of ranged attacks.\n▪ When shooting that enemy unit, those ranged attacks have -1 to **hit rolls** (excluding [CLOSE-QUARTERS] attacks).\n▪ When that enemy unit is selected to make a **fall-back move**, if that enemy unit is only **engaged** with FORTIFICATION units, and that enemy unit is not **battle-shocked**, **hazard rolls** made for that enemy unit are automatically passed."
+        "text": "While an enemy unit is **[gloss:engaged:engaged]** with only FORTIFICATION units:\n▪ That enemy unit can be selected as a target of ranged attacks.\n▪ When shooting that enemy unit, those ranged attacks have -1 to **[gloss:hit-roll:hit rolls]** (excluding [CLOSE-QUARTERS] attacks).\n▪ When that enemy unit is selected to make a **[gloss:fall-back-move:fall-back move]**, if that enemy unit is only **engaged** with FORTIFICATION units, and that enemy unit is not **[gloss:battle-shocked:battle-shocked]**, **[gloss:hazard-roll:hazard rolls]** made for that enemy unit are automatically passed."
       },
       {
         "name": "Ramshackle Cover",
-        "text": "When an attack targets a unit that is not **fully visible** to the attacking model because of this unit, the target has the **benefit of cover** against that attack."
+        "text": "When an attack targets a unit that is not **[gloss:fully-visible:fully visible]** to the attacking model because of this unit, the target has the **[gloss:benefit-of-cover:benefit of cover]** against that attack."
       }
     ],
     "composition": [
@@ -5472,18 +5472,18 @@ export default [
     "abilities": [
       {
         "name": "Big an’ Shooty",
-        "text": "In your Shooting phase, this unit’s ranged attacks can re‑roll **hit rolls** of 1."
+        "text": "In your Shooting phase, this unit’s ranged attacks can re‑roll **[gloss:hit-roll:hit rolls]** of 1."
       },
       {
         "name": "Gut Hatch",
-        "text": "In your Movement phase, when this unit ends a **normal move**, units embarked within this unit can make an **assault disembark move** (pg 121)."
+        "text": "In your Movement phase, when this unit ends a **[gloss:normal-move:normal move]**, units embarked within this unit can make an **[gloss:assault-disembark-move:assault disembark move]** (pg 121)."
       }
     ],
     "composition": [
       "1 Morkanaut model"
     ],
     "loadout": "**This model is equipped with:** 2 Dual Big Shoota; 1 Klaw of Mork; 1 Kustom Mega‑blasta; 1 Kustom Mega‑zappa; 2 Rokkit Launcha.",
-    "transport": "This model has a **transport capacity** of 12 ORKS INFANTRY models. It cannot transport GHAZGHKULL THRAKA models. Each MEGA ARMOUR/JUMP PACK model takes up the space of 2 models.",
+    "transport": "This model has a **[gloss:transport-capacity:transport capacity]** of 12 ORKS INFANTRY models. It cannot transport GHAZGHKULL THRAKA models. Each MEGA ARMOUR/JUMP PACK model takes up the space of 2 models.",
     "keywords": [
       "Titanic",
       "Towering",
@@ -5572,15 +5572,15 @@ export default [
     "abilities": [
       {
         "name": "One Last Kill",
-        "text": "In the Fight phase, when this model is **destroyed**, if this unit has not been **selected to fight** this phase, roll one D6:\n▪ On a 2+, do not remove this model from the battlefield. When this unit has fought, or at the end of the phase (whichever comes first), this model is removed from the battlefield."
+        "text": "In the Fight phase, when this model is **[gloss:destroyed:destroyed]**, if this unit has not been **[gloss:selected-to-fight:selected to fight]** this phase, roll one D6:\n▪ On a 2+, do not remove this model from the battlefield. When this unit has fought, or at the end of the phase (whichever comes first), this model is removed from the battlefield."
       },
       {
         "name": "Da Bigger Dey Iz…",
-        "text": "This unit’s melee attacks that target a MONSTER/VEHICLE unit can re‑roll **wound rolls**."
+        "text": "This unit’s melee attacks that target a MONSTER/VEHICLE unit can re‑roll **[gloss:wound-roll:wound rolls]**."
       },
       {
         "name": "Beast Snagga Following",
-        "text": "While this unit is within 3\" of a friendly BEAST SNAGGA unit (excluding MONSTER CHARACTER units), this unit has **Lone Operative**."
+        "text": "While this unit is within 3\" of a friendly BEAST SNAGGA unit (excluding MONSTER CHARACTER units), this unit has [core:Lone Operative]."
       }
     ],
     "composition": [
@@ -5690,15 +5690,15 @@ export default [
     "abilities": [
       {
         "name": "Intimidating Motivation (Once per battle round, per army)",
-        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly ORKS unit within 6\" of this unit. That unit:\n▪ Is no longer **battle-shocked**.\n▪ Is **riled up** until the start of your next turn."
+        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly ORKS unit within 6\" of this unit. That unit:\n▪ Is no longer **[gloss:battle-shocked:battle-shocked]**.\n▪ Is **riled up** until the start of your next turn."
       },
       {
         "name": "Nazdreg’s Know‑wotz",
-        "text": "▪ This unit has **Deep Strike**.\n▪ This unit's ranged attacks have [IGNORES COVER]."
+        "text": "▪ This unit has [core:Deep Strike].\n▪ This unit's ranged attacks have [IGNORES COVER]."
       },
       {
         "name": "Supreme Kunnin’ (Once per phase, per army)",
-        "text": "In your opponent's Movement phase, when an enemy unit ends a move within 8\" of this unit, if this unit is **unengaged**, this unit can:\n▪ Make a **normal move** of up to D6\".\n▪ __Or:__ If this unit is **riled up**, make a **normal move** of up to 5\"."
+        "text": "In your opponent's Movement phase, when an enemy unit ends a move within 8\" of this unit, if this unit is **[gloss:unengaged:unengaged]**, this unit can:\n▪ Make a **[gloss:normal-move:normal move]** of up to D6\".\n▪ __Or:__ If this unit is **riled up**, make a **normal move** of up to 5\"."
       }
     ],
     "composition": [
@@ -5858,17 +5858,17 @@ export default [
     "abilities": [
       {
         "name": "Get Out da Way!",
-        "text": "While making a **charge move**, this unit can move through models (excluding MONSTER/VEHICLE models)."
+        "text": "While making a **[gloss:charge-move:charge move]**, this unit can move through models (excluding MONSTER/VEHICLE models)."
       },
       {
         "name": "Ammo Runts (Once per battle, per unit)",
-        "text": "In your Shooting phase, when this unit is **selected to shoot**, you can use this ability. If you do, this unit’s ranged attacks have +1 to **hit rolls**.\n\nPlace any number of Ammo Runt tokens next to the unit, removing them when this ability is used."
+        "text": "In your Shooting phase, when this unit is **[gloss:selected-to-shoot:selected to shoot]**, you can use this ability. If you do, this unit’s ranged attacks have +1 to **[gloss:hit-roll:hit rolls]**.\n\nPlace any number of Ammo Runt tokens next to the unit, removing them when this ability is used."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Paired Krumpas",
-        "text": "Attacks made with this model’s Kustom Krumpa weapon can re-roll **hit rolls** and **wound rolls**."
+        "text": "Attacks made with this model’s Kustom Krumpa weapon can re-roll **[gloss:hit-roll:hit rolls]** and **[gloss:wound-roll:wound rolls]**."
       }
     ],
     "composition": [
@@ -5937,15 +5937,15 @@ export default [
     "abilities": [
       {
         "name": "Push Dat Bit Back In (Once per battle, per unit)",
-        "text": "In your Command phase, select one friendly BEAST SNAGGA unit within 6\" of this unit. That unit **heals** 3 wounds.\n\nPlace a Grot Orderly token next to the unit, removing it when this ability is used."
+        "text": "In your Command phase, select one friendly BEAST SNAGGA unit within 6\" of this unit. That unit **[gloss:heal:heals]** 3 wounds.\n\nPlace a Grot Orderly token next to the unit, removing it when this ability is used."
       },
       {
         "name": "Hardy Bioniks",
-        "text": "Attacks that target this unit with a **S** greater than this unit’s **T** have -1 to **wound rolls**."
+        "text": "Attacks that target this unit with a **[gloss:strength:S]** greater than this unit’s **[gloss:toughness:T]** have -1 to **[gloss:wound-roll:wound rolls]**."
       },
       {
         "name": "Runnin’ wiv da Herd",
-        "text": "While this model is attached to a MOUNTED unit, this model:\n▪ Does not have INFANTRY.\n▪ Has MOBILE and MOUNTED.\n▪ Has +4\" **M**."
+        "text": "While this model is attached to a MOUNTED unit, this model:\n▪ Does not have INFANTRY.\n▪ Has MOBILE and MOUNTED.\n▪ Has +4\" **[gloss:move-characteristic:M]**."
       }
     ],
     "composition": [
@@ -6019,7 +6019,7 @@ export default [
     "abilities": [
       {
         "name": "Crude Surgery",
-        "text": "In your Command phase, this unit **heals** 3 wounds."
+        "text": "In your Command phase, this unit **[gloss:heal:heals]** 3 wounds."
       },
       {
         "name": "Catch Dat Red Bit (Once per battle, per unit)",
@@ -6120,7 +6120,7 @@ export default [
     "abilities": [
       {
         "name": "Squig Barrage",
-        "text": "In your Shooting phase, when this unit has shot, select one enemy unit (excluding MONSTER/VEHICLE units) hit by this unit’s Squig Launchas weapons. That enemy unit is **covered in Squigs** until the start of your next turn:\n▪ While a unit is **covered in Squigs**, that unit’s attacks have -1 to **hit rolls**."
+        "text": "In your Shooting phase, when this unit has shot, select one enemy unit (excluding MONSTER/VEHICLE units) hit by this unit’s Squig Launchas weapons. That enemy unit is **covered in Squigs** until the start of your next turn:\n▪ While a unit is **covered in Squigs**, that unit’s attacks have -1 to **[gloss:hit-roll:hit rolls]**."
       }
     ],
     "composition": [
@@ -6188,7 +6188,7 @@ export default [
     "abilities": [
       {
         "name": "That’ll Learn Ya (Once per battle round, per unit)",
-        "text": "When this unit becomes **battle‑shocked**, if this unit contains 4+ Gretchin models, you can roll one D3:\n▪ That number of Gretchin models in this unit are **destroyed**.\n▪ This unit is no longer **battle‑shocked**."
+        "text": "When this unit becomes **[gloss:battle-shocked:battle‑shocked]**, if this unit contains 4+ Gretchin models, you can roll one D3:\n▪ That number of Gretchin models in this unit are **[gloss:destroyed:destroyed]**.\n▪ This unit is no longer **battle‑shocked**."
       }
     ],
     "composition": [
@@ -6338,11 +6338,11 @@ export default [
     "abilities": [
       {
         "name": "Bomb Squig (Once per battle, per unit)",
-        "text": "In your Movement phase, when this unit ends a **normal move**, you can select one **visible** enemy unit within 12\" of this unit and roll one D6:\n▪ On a 3+, that enemy unit suffers D3 **mortal wounds**.\n\nPlace one Bomb Squig token next to the unit, removing it after this ability is used."
+        "text": "In your Movement phase, when this unit ends a **[gloss:normal-move:normal move]**, you can select one **[gloss:visible:visible]** enemy unit within 12\" of this unit and roll one D6:\n▪ On a 3+, that enemy unit suffers D3 **[gloss:mortal-wound:mortal wounds]**.\n\nPlace one Bomb Squig token next to the unit, removing it after this ability is used."
       },
       {
         "name": "Brutal Impact",
-        "text": "If this unit made a **charge move** this turn, this unit’s attacks have +1 **D**."
+        "text": "If this unit made a **[gloss:charge-move:charge move]** this turn, this unit’s attacks have +1 **[gloss:damage-roll:D]**."
       }
     ],
     "composition": [
@@ -6472,7 +6472,7 @@ export default [
     "abilities": [
       {
         "name": "Idol of Belligerence",
-        "text": "In your Movement phase, when a unit embarked within this unit is selected to make a **disembark move**, that unit is **riled up** until the start of your next turn."
+        "text": "In your Movement phase, when a unit embarked within this unit is selected to make a **[gloss:disembark:disembark move]**, that unit is **riled up** until the start of your next turn."
       },
       {
         "name": "Waaagh! Effigy",
@@ -6483,7 +6483,7 @@ export default [
       "1 Stompa model"
     ],
     "loadout": "**This model is equipped with:** 5 Big Shoota; 1 Deffkannon and Supa‑rokkits; 1 Mega‑choppa; 1 Skorcha; 1 Supa‑gatler.",
-    "transport": "This model has a **transport capacity** of 22 ORKS INFANTRY models. Each MEGA ARMOUR/JUMP PACK model takes up the space of 2 models. Each GHAZGHKULL THRAKA model takes up the space of 4 models.",
+    "transport": "This model has a **[gloss:transport-capacity:transport capacity]** of 22 ORKS INFANTRY models. Each MEGA ARMOUR/JUMP PACK model takes up the space of 2 models. Each GHAZGHKULL THRAKA model takes up the space of 4 models.",
     "keywords": [
       "Frame",
       "Titanic",
@@ -6580,7 +6580,7 @@ export default [
     "abilities": [
       {
         "name": "Rokkit Charge",
-        "text": "When this unit is **selected to fight**, if this unit made a **charge move** this turn, you can use this ability. If you do, this unit’s melee attacks have:\n▪ +1 **A** and **S**.\n▪ [HAZARDOUS]."
+        "text": "When this unit is **[gloss:selected-to-fight:selected to fight]**, if this unit made a **[gloss:charge-move:charge move]** this turn, you can use this ability. If you do, this unit’s melee attacks have:\n▪ +1 **[gloss:attack-dice:A]** and **[gloss:strength:S]**.\n▪ [HAZARDOUS]."
       }
     ],
     "composition": [
@@ -6714,17 +6714,17 @@ export default [
     "abilities": [
       {
         "name": "Rokkit Barrage",
-        "text": "In your Shooting phase, when this unit has shot, select one enemy unit hit by those attacks. That unit makes a **battle-shock roll**, with -1 to that **battle-shock roll**."
+        "text": "In your Shooting phase, when this unit has shot, select one enemy unit hit by those attacks. That unit makes a **[gloss:battle-shock-test:battle-shock roll]**, with -1 to that **battle-shock roll**."
       },
       {
         "name": "Bomb Squigs (Once per turn, twice per battle, per unit)",
-        "text": "In your Movement phase, when this unit ends a **normal move**, you can select one **visible** enemy unit within 12\" of this unit and roll one D6:\n▪ On a 3+, that enemy unit suffers D3 **mortal wounds**.\n\nPlace two Bomb Squig tokens next to the unit, removing one each time this ability is used."
+        "text": "In your Movement phase, when this unit ends a **[gloss:normal-move:normal move]**, you can select one **[gloss:visible:visible]** enemy unit within 12\" of this unit and roll one D6:\n▪ On a 3+, that enemy unit suffers D3 **[gloss:mortal-wound:mortal wounds]**.\n\nPlace two Bomb Squig tokens next to the unit, removing one each time this ability is used."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Pulsa Rokkit (Once per battle, per unit)",
-        "text": "In your Shooting phase, when this unit is **selected to shoot**, you can select one enemy MONSTER/VEHICLE unit within 24\" of this unit. If you do, this unit’s attacks that target that unit have:\n▪ +1 **AP**.\n▪ [LETHAL HITS]."
+        "text": "In your Shooting phase, when this unit is **[gloss:selected-to-shoot:selected to shoot]**, you can select one enemy MONSTER/VEHICLE unit within 24\" of this unit. If you do, this unit’s attacks that target that unit have:\n▪ +1 **[gloss:armour-penetration:AP]**.\n▪ [LETHAL HITS]."
       }
     ],
     "composition": [
@@ -6851,7 +6851,7 @@ export default [
     "abilities": [
       {
         "name": "Pilin’ Out",
-        "text": "In your opponent's Movement phase, when an enemy unit ends a move within 8\" of this model, units embarked within this model can make a **disembark move** using the **rapid disembark mode**."
+        "text": "In your opponent's Movement phase, when an enemy unit ends a move within 8\" of this model, units embarked within this model can make a **[gloss:disembark:disembark move]** using the **rapid disembark mode**."
       }
     ],
     "composition": [
@@ -6862,7 +6862,7 @@ export default [
       "This model’s Dual Big Shoota can be replaced with 1 Rokkit Launcha.",
       "This model can be equipped with one of the following:\n▪ 1 Buzzsaw\n▪ 1 Grabbin' Klaw"
     ],
-    "transport": "This model has a **transport capacity** of 12 ORKS INFANTRY models. It cannot transport GHAZGHKULL THRAKA/JUMP PACK models. Each MEGA ARMOUR model takes up the space of 2 models.",
+    "transport": "This model has a **[gloss:transport-capacity:transport capacity]** of 12 ORKS INFANTRY models. It cannot transport GHAZGHKULL THRAKA/JUMP PACK models. Each MEGA ARMOUR model takes up the space of 2 models.",
     "keywords": [
       "Dedicated Transport",
       "Frame",
@@ -6974,7 +6974,7 @@ export default [
     "abilities": [
       {
         "name": "High‑speed Carnage",
-        "text": "If this unit made a **charge move** this turn, this unit’s melee attacks have:\n▪ +1 **S** and **D**."
+        "text": "If this unit made a **[gloss:charge-move:charge move]** this turn, this unit’s melee attacks have:\n▪ +1 **[gloss:strength:S]** and **[gloss:damage-roll:D]**."
       }
     ],
     "composition": [
@@ -7104,15 +7104,15 @@ export default [
     "abilities": [
       {
         "name": "Might Is Right",
-        "text": "If this unit made a **charge move** this turn, this model’s melee attacks have:\n▪ +3 **A**.\n▪ +2 **S**."
+        "text": "If this unit made a **[gloss:charge-move:charge move]** this turn, this model’s melee attacks have:\n▪ +3 **[gloss:attack-dice:A]**.\n▪ +2 **[gloss:strength:S]**."
       },
       {
         "name": "Boss’ Ammo Runt (Once per battle, per unit)",
-        "text": "In your Shooting phase, when this unit is **selected to shoot**, you can use this ability. If you do, this model’s ranged attacks have +1 to **hit rolls**.\n\nPlace a Boss’ Ammo Runt token next to the unit, removing it when this ability is used."
+        "text": "In your Shooting phase, when this unit is **[gloss:selected-to-shoot:selected to shoot]**, you can use this ability. If you do, this model’s ranged attacks have +1 to **[gloss:hit-roll:hit rolls]**.\n\nPlace a Boss’ Ammo Runt token next to the unit, removing it when this ability is used."
       },
       {
         "name": "Intimidating Motivation (Once per battle round, per army)",
-        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly ORKS unit within 6\" of this unit. That unit:\n▪ Is no longer **battle-shocked**.\n▪ Is **riled up** until the start of your next turn."
+        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly ORKS unit within 6\" of this unit. That unit:\n▪ Is no longer **[gloss:battle-shocked:battle-shocked]**.\n▪ Is **riled up** until the start of your next turn."
       }
     ],
     "composition": [
@@ -7203,11 +7203,11 @@ export default [
     "abilities": [
       {
         "name": "Krushin’ Impetus",
-        "text": "When this unit ends a **charge move**, you can select one enemy unit **engaged** with this unit. If you do, roll one D6 for each model in this unit **engaged** with that enemy unit:\n▪ For each 3+, that enemy unit suffers 1 **mortal wound**."
+        "text": "When this unit ends a **[gloss:charge-move:charge move]**, you can select one enemy unit **[gloss:engaged:engaged]** with this unit. If you do, roll one D6 for each model in this unit **engaged** with that enemy unit:\n▪ For each 3+, that enemy unit suffers 1 **[gloss:mortal-wound:mortal wound]**."
       },
       {
         "name": "Intimidating Motivation (Once per battle round, per army)",
-        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly ORKS unit within 6\" of this unit. That unit:\n▪ Is no longer **battle-shocked**.\n▪ Is **riled up** until the start of your next turn."
+        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly ORKS unit within 6\" of this unit. That unit:\n▪ Is no longer **[gloss:battle-shocked:battle-shocked]**.\n▪ Is **riled up** until the start of your next turn."
       }
     ],
     "composition": [
@@ -7303,11 +7303,11 @@ export default [
     "abilities": [
       {
         "name": "Get Back in Da Race",
-        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly SPEED FREEKS unit within 6\" of this unit. That unit (and any units embarked within that unit):\n▪ Is no longer **battle-shocked**.\n▪ Is **riled up** until the start of your next turn."
+        "text": "In your Movement phase, at the start or end of this unit's move, you can select one friendly SPEED FREEKS unit within 6\" of this unit. That unit (and any units embarked within that unit):\n▪ Is no longer **[gloss:battle-shocked:battle-shocked]**.\n▪ Is **riled up** until the start of your next turn."
       },
       {
         "name": "Speedboss",
-        "text": "This unit's melee attacks have +1 to **hit rolls**."
+        "text": "This unit's melee attacks have +1 to **[gloss:hit-roll:hit rolls]**."
       }
     ],
     "composition": [
@@ -7450,7 +7450,7 @@ export default [
     "abilities": [
       {
         "name": "Drive-by Skorchin’",
-        "text": "In your Movement phase, you can select one **visible** enemy unit (excluding MONSTER/VEHICLE units) within 6\" of this unit:\n▪ That enemy unit cannot be targeted with the **Fire Overwatch stratagem** until the end of the turn."
+        "text": "In your Movement phase, you can select one **[gloss:visible:visible]** enemy unit (excluding MONSTER/VEHICLE units) within 6\" of this unit:\n▪ That enemy unit cannot be targeted with the **Fire Overwatch stratagem** until the end of the turn."
       }
     ],
     "composition": [
@@ -7536,7 +7536,7 @@ export default [
     "abilities": [
       {
         "name": "Speednob Support",
-        "text": "While each model in this unit is within 3\" of a friendly SPEED FREEKS unit (excluding WARTRAKK units), this unit has **Lone Operative**."
+        "text": "While each model in this unit is within 3\" of a friendly SPEED FREEKS unit (excluding WARTRAKK units), this unit has [core:Lone Operative]."
       },
       {
         "name": "Bust ’Em",
@@ -7654,13 +7654,13 @@ export default [
     "abilities": [
       {
         "name": "Go fer da Weak Spot",
-        "text": "In your Shooting phase, this unit's ranged attacks that target a MONSTER/VEHICLE unit have +1 to **wound rolls**."
+        "text": "In your Shooting phase, this unit's ranged attacks that target a MONSTER/VEHICLE unit have +1 to **[gloss:wound-roll:wound rolls]**."
       }
     ],
     "wargearAbilities": [
       {
         "name": "Blastajet Force Field",
-        "text": "Models in this unit:\n▪ Have 5+ **InSv**.\n▪ Do not have SMOKE."
+        "text": "Models in this unit:\n▪ Have 5+ **[gloss:invulnerable-save:InSv]**.\n▪ Do not have SMOKE."
       }
     ],
     "composition": [
@@ -7790,15 +7790,15 @@ export default [
         "options": [
           {
             "name": "Turbo Engine",
-            "text": "When this unit is selected to make an **advance**/**fall-back move**, that move does not prevent this unit from being **eligible to declare a charge**."
+            "text": "When this unit is selected to make an **[gloss:advance:advance]**/**[gloss:fall-back-move:fall-back move]**, that move does not prevent this unit from being **[gloss:eligible-to-charge:eligible to declare a charge]**."
           },
           {
             "name": "Shokk Attack Engine",
-            "text": "In your Command phase, if this unit is **unengaged**, you can place this unit in **strategic reserves**."
+            "text": "In your Command phase, if this unit is **[gloss:unengaged:unengaged]**, you can place this unit in **[gloss:strategic-reserves:strategic reserves]**."
           },
           {
             "name": "Pulse Jet",
-            "text": "In your Movement phase, when this unit is **selected to move**, if this unit is **unengaged**, this unit can make a **pulse jet move** (pg 121)."
+            "text": "In your Movement phase, when this unit is **[gloss:selected-to-move:selected to move]**, if this unit is **[gloss:unengaged:unengaged]**, this unit can make a **pulse jet move** (pg 121)."
           }
         ]
       }
@@ -7871,7 +7871,7 @@ export default [
     "abilities": [
       {
         "name": "Waaagh! Energy (psyker level 1)",
-        "text": "This model has the **psychic abilities** listed in the Psychic Abilities section."
+        "text": "This model has the **[gloss:psychic-ability:psychic abilities]** listed in the Psychic Abilities section."
       }
     ],
     "composition": [
@@ -7891,11 +7891,11 @@ export default [
         "options": [
           {
             "name": "Da Jump (psychic level 1, once per army, per battle round)",
-            "text": "In your Movement phase, if this unit is not **battle-shocked**, you can make a **psychic roll** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ Place this unit in **strategic reserves**.\n▪ This unit has **Deep Strike**."
+            "text": "In your Movement phase, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ Place this unit in **[gloss:strategic-reserves:strategic reserves]**.\n▪ This unit has [core:Deep Strike]."
           },
           {
             "name": "Warpath (psychic level 1)",
-            "text": "In the Fight phase, when this unit is **selected to fight**, if this unit is not **battle-shocked**, you can make a **psychic roll** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ This unit's melee attacks can re-roll **wound rolls** of 1.\n▪ This unit’s melee attacks have [PSYCHIC]."
+            "text": "In the Fight phase, when this unit is **[gloss:selected-to-fight:selected to fight]**, if this unit is not **[gloss:battle-shocked:battle-shocked]**, you can make a **[gloss:psychic-roll:psychic roll]** for this unit by rolling one D6. If you do:\n▪ On a 1, this unit is **battle-shocked**.\n▪ This unit's melee attacks can re-roll **[gloss:wound-roll:wound rolls]** of 1.\n▪ This unit’s melee attacks have [PSYCHIC]."
           }
         ]
       }
@@ -7964,7 +7964,7 @@ export default [
     "abilities": [
       {
         "name": "Super Runts",
-        "text": "▪ This unit is **riled up**.\n▪ This unit's Scavenged Shivs weapons have +1 **A**, **WS** and **S**."
+        "text": "▪ This unit is **riled up**.\n▪ This unit's Scavenged Shivs weapons have +1 **[gloss:attack-dice:A]**, **[gloss:weapon-skill:WS]** and **[gloss:strength:S]**."
       }
     ],
     "composition": [

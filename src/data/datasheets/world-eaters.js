@@ -103,7 +103,7 @@ export default [
           },
           {
             "name": "Driven by Ultimate Rage (Aura)",
-            "text": "While a friendly **WORLD EATERS** unit is within 6\" of this unit, that unit’s melee attacks can:\n▪ Re-roll **hit rolls** of 1.\n▪ Re-roll **wound rolls** of 1."
+            "text": "While a friendly **WORLD EATERS** unit is within 6\" of this unit, that unit’s melee attacks can:\n▪ Re-roll **[gloss:hit-roll:hit rolls]** of 1.\n▪ Re-roll **[gloss:wound-roll:wound rolls]** of 1."
           }
         ]
       }
@@ -1164,7 +1164,7 @@ export default [
     "abilities": [
       {
         "name": "Bloody Fury",
-        "text": "This unit’s ranged attacks that target the closest eligible target can re-roll Hit rolls. When this unit declares a charge, you can use this part of this ability. If you do: this unit can re-roll that charge roll; this unit must end that charge move engaged with the closest charge target."
+        "text": "This unit’s ranged attacks that target the closest eligible target can re-roll Hit rolls. When this unit **[gloss:declare-charge:declares a charge]**, you can use this part of this ability. If you do: this unit can re-roll that **[gloss:charge-roll:charge roll]**; this unit must end that charge move engaged with the closest **[gloss:charge-target:charge target]**."
       }
     ],
     "composition": [
@@ -2636,11 +2636,11 @@ export default [
     "abilities": [
       {
         "name": "Blood Surge",
-        "text": "In your opponent’s Shooting phase, when an enemy unit has shot, if a model in this unit was destroyed as a result of those attacks, this unit can make a surge move of up to D6+2\"."
+        "text": "In your opponent’s Shooting phase, when an enemy unit has shot, if a model in this unit was **[gloss:destroyed:destroyed]** as a result of those attacks, this unit can make a **[gloss:surge-move:surge move]** of up to D6+2\"."
       },
       {
         "name": "Murderous Charge",
-        "text": "If this unit made a **charge move** this turn, this unit’s melee attacks have +1 **S**."
+        "text": "If this unit made a **[gloss:charge-move:charge move]** this turn, this unit’s melee attacks have +1 **[gloss:strength:S]**."
       }
     ],
     "wargearAbilities": [
@@ -3185,7 +3185,7 @@ export default [
     "abilities": [
       {
         "name": "The Scent of Blood",
-        "text": "In the Charge phase, when this unit declares a charge:\n▪ If an enemy unit below starting strength is within 9\" of this unit, this unit has +1 to Charge rolls.\n▪ __Or__: If an enemy unit below half strength is within 9\" of this unit, this unit has +2 to Charge rolls."
+        "text": "In the Charge phase, when this unit **[gloss:declare-charge:declares a charge]**:\n▪ If an enemy unit below starting strength is within 9\" of this unit, this unit has +1 to **[gloss:charge-roll:Charge rolls]**.\n▪ __Or__: If an enemy unit below half strength is within 9\" of this unit, this unit has +2 to **Charge rolls**."
       },
       {
         "name": "Savage Exaltation",
