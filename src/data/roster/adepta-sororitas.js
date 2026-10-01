@@ -3690,7 +3690,9 @@ export default {
       "name": "Army of Faith",
       "sid": "f3dbfd5c-d553-436f-9617-4c8269cb5b09",
       "dp": 2,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "enhancements": [
         {
           "name": "Litanies of Faith",
@@ -3751,7 +3753,9 @@ export default {
       "name": "Bringers of Flame",
       "sid": "c0a5cd98-3a84-4074-ad62-b4d848d2bcf6",
       "dp": 2,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "enhancements": [
         {
           "name": "Righteous Rage",
@@ -3812,7 +3816,9 @@ export default {
       "name": "Champions of Faith",
       "sid": "c1eaf854-a425-4cc8-b29e-557b8b89f8c1",
       "dp": 2,
-      "fd": "Disruption",
+      "fds": [
+        "Disruption"
+      ],
       "unique": "REVEREND",
       "enhancements": [
         {
@@ -3869,7 +3875,9 @@ export default {
       "name": "Chorus of Condemnation",
       "sid": "730c8f71-c997-4071-98f0-8aa377e762f3",
       "dp": 1,
-      "fd": "Reconnaissance",
+      "fds": [
+        "Reconnaissance"
+      ],
       "enhancements": [
         {
           "name": "Clarion of Urgency",
@@ -3906,7 +3914,10 @@ export default {
       "name": "Hallowed Martyrs",
       "sid": "5e3bb5a9-1e75-455e-a87d-13e59948be68",
       "dp": 3,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold",
+        "Priority Assets"
+      ],
       "enhancements": [
         {
           "name": "Saintly Example",
@@ -3967,7 +3978,9 @@ export default {
       "name": "Penitent Host",
       "sid": "530ae43e-f733-4100-afdf-19d165fb9983",
       "dp": 2,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Psalm of Righteous Judgement",
@@ -4039,7 +4052,9 @@ export default {
       "name": "Sacred Champions",
       "sid": "d8dfdc5f-4e0b-4233-8f2f-2ee703664afb",
       "dp": 1,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "unique": "REVEREND",
       "enhancements": [
         {
@@ -4077,7 +4092,9 @@ export default {
       "name": "Sanctified Orators",
       "sid": "7cf2f061-bc54-4c2f-be17-2959cf840fdf",
       "dp": 1,
-      "fd": "Disruption",
+      "fds": [
+        "Disruption"
+      ],
       "enhancements": [
         {
           "name": "Hagiomnifex (Upgrade)",

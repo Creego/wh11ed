@@ -10,7 +10,7 @@
 //     (Ritual of Regeneration, Sekhetar Cohort, Servants of Change, Hexwarp Thrallband) +
 //     Rules Updates.
 //   MFM (src/data/mfm/thousand-sons.js) → per-enhancement points, per-detachment dp /
-//     forceDisposition, and the MUTANT `unique` tag.
+//     forceDispositions, and the MUTANT `unique` tag.
 //
 // 9 detachments total, matching the MFM list. Faction-Pack "Rules Updates" have been folded
 // into the army rule / codex detachment rules / stratagems (they are the authoritative
@@ -61,7 +61,7 @@ Select one enemy unit within 24" of and visible to the manifesting model. Until 
       name: 'Grand Coven',
       source: 'codex',
       dp: 3,
-      forceDisposition: 'Disruption',
+      forceDispositions: ["Disruption", "Priority Assets"],
       rule: {
         name: 'Kindred Sorcery',
         flavor:
@@ -177,7 +177,7 @@ Select one enemy unit within 24" of and visible to the manifesting model. Until 
       name: 'Changehost of Deceit',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Reconnaissance',
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: 'Infernal Pacts',
         flavor:
@@ -293,7 +293,7 @@ Thousand Sons units from your army have the following ability:
       name: 'Warpmeld Pact',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Purge the Foe',
+      forceDispositions: ["Purge the Foe"],
       unique: 'MUTANT',
       rule: {
         name: 'Warpmeld Sacrifice',
@@ -414,7 +414,7 @@ In the Declare Battle Formations step, the bearer can be attached to a Tzaangors
       name: 'Rubricae Phalanx',
       source: 'codex',
       dp: 3,
-      forceDisposition: 'Take and Hold',
+      forceDispositions: ["Take and Hold", "Priority Assets"],
       rule: {
         name: 'All Is Dust',
         flavor:
@@ -523,7 +523,7 @@ In the Declare Battle Formations step, the bearer can be attached to a Tzaangors
       name: 'Warpforged Cabal',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Priority Assets',
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: 'Warpfire Infusion',
         flavor:
@@ -639,7 +639,7 @@ Each time a Thousand Sons Vehicle model from your army with the Deadly Demise ab
       name: 'Ritual of Regeneration',
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: 'Take and Hold',
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: 'Sorcerous Invigoration',
         flavor:
@@ -703,7 +703,7 @@ Each time a Thousand Sons Vehicle model from your army with the Deadly Demise ab
       name: 'Sekhetar Cohort',
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: 'Disruption',
+      forceDispositions: ["Disruption"],
       rule: {
         name: 'Ensorcelled Animus',
         flavor:
@@ -770,7 +770,7 @@ Each time a Thousand Sons Vehicle model from your army with the Deadly Demise ab
       name: 'Servants of Change',
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: 'Reconnaissance',
+      forceDispositions: ["Reconnaissance"],
       unique: 'MUTANT',
       rule: {
         name: 'All-Seeing Mutant Hordes',
@@ -840,7 +840,7 @@ This **[gloss:detachments:detachment]** has the MUTANT tag and cannot be taken w
       name: 'Hexwarp Thrallband',
       source: 'faction-pack',
       dp: 3,
-      forceDisposition: 'Take and Hold',
+      forceDispositions: ["Take and Hold", "Reconnaissance"],
       rule: {
         name: 'Flow of Magic',
         flavor:

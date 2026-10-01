@@ -235,6 +235,7 @@ describe('RosterViewView', () => {
     const r = store.createRoster('Fine list')
     r.faction = 'space-marines'
     r.detachments = ['Gladius Task Force']
+    r.disposition = 'Take and Hold' // Gladius offers two; a list that breaks nothing has declared one
     r.units.push({ uid: 'u1', id: 'captain-in-terminator-armour', size: 0, warlord: true })
     ROSTER_ID = r.id
 

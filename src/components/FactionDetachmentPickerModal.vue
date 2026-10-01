@@ -13,7 +13,7 @@
         :key="d.id"
         :name="d.name"
         :name-ru="d.nameRu || ''"
-        :force-disposition="d.forceDisposition || ''"
+        :force-dispositions="d.forceDispositions || []"
         :unique="d.unique || ''"
         :tag="d.tag || ''"
         :dp="d.dp || 0"
@@ -33,7 +33,7 @@ import { useLocale } from '../composables/useLocale.js'
 
 // Also reused as a generic option picker (e.g. the Chapter picker in
 // FactionPickerBar) — pass plain { id, name } items and a `title`; the
-// detachment-only fields (nameRu / dp / unique / forceDisposition) simply don't render. An optional
+// detachment-only fields (nameRu / dp / unique / forceDispositions) simply don't render. An optional
 // `tag` renders as a quiet corner keyword (the chapter lock on SM detachments).
 defineProps({
   detachments: { type: Array, required: true },

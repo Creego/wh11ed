@@ -10,7 +10,7 @@
 //     the older 6-stratagem version) and Rules Updates (incl. the army-rule Unbridled
 //     Bloodlust rewrite).
 //   MFM (src/data/mfm/world-eaters.js) → per-enhancement points, per-detachment dp /
-//     forceDisposition. The ONSLAUGHT `unique` tag is NOT the MFM's — that page has never
+//     forceDispositions. The ONSLAUGHT `unique` tag is NOT the MFM's — that page has never
 //     printed it, in v1.2 or v1.3 — it comes from the detachment rule's own prose, which is
 //     why `npm run roster:data` lists these two as disagreeing with appdata's tag table and
 //     why they were left alone when v1.3 struck the Chaos Knights / Death Guard tags.
@@ -45,7 +45,7 @@ const en = {
       name: "Berzerker Warband",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Purge the Foe",
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: "Relentless Rage",
         flavor: "The World Eaters fight in a perpetual fury, driven ever onward to slaughter all who stand in their path. All of their warriors have been subject to horrific surgery, implanted with crude devices that amplify their aggression. Some even submit to possession by the Blood God’s daemonic servants. These warriors will only stop killing when every foe lies in bloody ruin at their feet - and sometimes not even then.",
@@ -152,7 +152,7 @@ const en = {
       name: "Cult of Blood",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: "Idols of Khorne",
         flavor: "Titanic Khornate war engines draw teeming masses of cultists to war.",
@@ -259,7 +259,7 @@ const en = {
       name: "Goretrack Onslaught",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold"],
       unique: "ONSLAUGHT",
       rule: {
         name: "Rush to the Fray",
@@ -367,7 +367,7 @@ const en = {
       name: "Khorne Daemonkin",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Reconnaissance",
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: "Blood Tithe",
         flavor: "To call forth the blood legions requires the spilling of oceans of crimson gore.",
@@ -474,7 +474,7 @@ const en = {
       name: "Possessed Slaughterband",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Purge the Foe",
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: "Brazen Fury",
         flavor: "Incoming fire serves only to fan the flames of daemonic fury, driving Khorne’s possessed into a malicious rage.",
@@ -583,7 +583,7 @@ const en = {
       name: "Brazen Engines",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption"],
       unique: "ONSLAUGHT",
       rule: {
         name: "Rampaging Terrors",
@@ -648,7 +648,7 @@ const en = {
       name: "Butchers of Khorne",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: "Adamantine Avalanche",
         flavor: "Hurling themselves into battle with savage ferocity, the sheer armoured bulk of the World Eaters\u2019 Terminator elites is enough to shatter armour and crush bone.",
@@ -714,7 +714,7 @@ const en = {
       name: "Vessels of Wrath",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: "Wrath of Khorne",
         flavor: "Every Khornate champion treads a personal Path to Glory. Through carnage and bloodshed, they earn empowering boons of martial might.",

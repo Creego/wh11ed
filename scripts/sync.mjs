@@ -27,7 +27,7 @@
 //   - check-rule-omissions — THE GATE: appdata Core Rules text (a line, or one load-bearing word
 //     inside a line) that wh11ed does not carry. Non-zero exit; everything else here is report-only
 //   - check-detachment-meta — THE OTHER GATE: a faction rules page's detachment dp /
-//     forceDisposition vs the MFM (the surface sync-tracker's MFM↔appdata diff never looked at).
+//     forceDispositions vs the MFM (the surface sync-tracker's MFM↔appdata diff never looked at).
 //     Non-zero exit
 //   - check-weapon-abilities — GATE: every weapon tag printed on a datasheet ([BLAST],
 //     [PLASMA WARHEAD], …) must have text either in reference.js or on that datasheet. Non-zero exit

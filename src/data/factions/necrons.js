@@ -5,7 +5,7 @@
 //         > Index (launch rules; superseded, kept only where nothing above covers it).
 //
 // The 12 detachments below match the Munitorum Field Manual list. Each carries `dp`
-// (Detachment/Deployment cost), `forceDisposition` and (where relevant) `unique` from the MFM,
+// (Detachment/Deployment cost), `forceDispositions` and (where relevant) `unique` from the MFM,
 // and per-enhancement `points`. Faction-Pack "Rules Updates" have been folded into the codex
 // detachments' text (they are the authoritative newer wording) — see inline notes.
 //
@@ -40,7 +40,7 @@ const en = {
       name: 'Awakened Dynasty',
       source: 'codex',
       dp: 3,
-      forceDisposition: 'Take and Hold',
+      forceDispositions: ["Take and Hold", "Priority Assets"],
       unique: 'DYNASTY',
       rule: {
         name: 'Command Protocols',
@@ -169,7 +169,7 @@ const en = {
       name: 'Annihilation Legion',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Purge the Foe',
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: 'Annihilation Protocol',
         flavor:
@@ -294,7 +294,7 @@ Each time a Destroyer Cult unit from your army makes a ranged attack that target
       name: 'Canoptek Court',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Take and Hold',
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: 'Power Matrix',
         flavor:
@@ -419,7 +419,7 @@ Each time a model in a Cryptek or Canoptek unit from your army makes an attack, 
       name: 'Hypercrypt Legion',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Reconnaissance',
+      forceDispositions: ["Reconnaissance"],
       unique: 'HYPERCRYPT',
       rule: {
         name: 'Hyperphasing',
@@ -542,7 +542,7 @@ Once you have made your selections, remove those units from the battlefield and 
       name: 'Obeisance Phalanx',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Disruption',
+      forceDispositions: ["Disruption"],
       rule: {
         name: 'Worthy Foes',
         flavor:
@@ -657,7 +657,7 @@ Once you have made your selections, remove those units from the battlefield and 
       name: 'Hand of the Dynasty',
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: 'Take and Hold',
+      forceDispositions: ["Take and Hold"],
       unique: 'DYNASTY',
       rule: {
         name: 'Hypermotility Protocols',
@@ -726,7 +726,7 @@ This **[gloss:detachments:detachment]** has the Dynasty tag and cannot be taken 
       name: 'Skyshroud Spearhead',
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: 'Reconnaissance',
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: 'Transdimensional Deployment',
         flavor:
@@ -792,7 +792,7 @@ This **[gloss:detachments:detachment]** has the Dynasty tag and cannot be taken 
       name: "The Phaeron's Armoury",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: 'Priority Assets',
+      forceDispositions: ["Priority Assets"],
       unique: 'HYPERCRYPT',
       rule: {
         name: 'Empowered Engines',
@@ -860,7 +860,7 @@ This **[gloss:detachments:detachment]** has the Hypercrypt tag and cannot be tak
       name: 'Starshatter Arsenal',
       source: 'faction-pack',
       dp: 3,
-      forceDisposition: 'Priority Assets',
+      forceDispositions: ["Priority Assets", "Purge the Foe"],
       rule: {
         name: 'Relentless Onslaught',
         flavor:
@@ -969,7 +969,7 @@ This **[gloss:detachments:detachment]** has the Hypercrypt tag and cannot be tak
       name: 'Cryptek Conclave',
       source: 'faction-pack',
       dp: 2,
-      forceDisposition: 'Priority Assets',
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: 'Techno-sorcerous Augmentations',
         flavor:
@@ -1078,7 +1078,7 @@ This **[gloss:detachments:detachment]** has the Hypercrypt tag and cannot be tak
       name: 'Cursed Legion',
       source: 'faction-pack',
       dp: 2,
-      forceDisposition: 'Purge the Foe',
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: 'Cold Fervour',
         flavor:
@@ -1189,7 +1189,7 @@ In the Declare Battle Formations step, the bearer can be attached to a Lokhust D
       name: 'Pantheon of Woe',
       source: 'faction-pack',
       dp: 2,
-      forceDisposition: 'Disruption',
+      forceDispositions: ["Disruption"],
       rule: {
         name: 'Cosmic Distortion',
         flavor:

@@ -12,7 +12,7 @@
 // field). For space-marines it defaults to SM_SUPPLEMENT_BUNDLES (scripts/lib/sync-common.mjs).
 //
 // Sources, highest wins: the MFM (src/data/mfm/<slug>.js — enhancement points, detachment dp /
-// forceDisposition / unique tag, and the "(Upgrade)"/"(Aura)" suffix appdata leaves off some
+// forceDispositions / unique tag, and the "(Upgrade)"/"(Aura)" suffix appdata leaves off some
 // names) over appdata (everything else). Combat Patrol army rules and detachments are dropped.
 // Several army rules become one block — the page renders exactly one `armyRule` — with the others
 // as `### ` subheadings, which the search index lists individually. Any other top-level field of
@@ -112,7 +112,7 @@ function grantedWeapons(enhId) {
 
 function detachment(d, chapter) {
   const m = mfmDet.get(loose(d.name))
-  if (!m) console.log(`  ! detachment "${d.name}" is not in the MFM — dp/forceDisposition from appdata`)
+  if (!m) console.log(`  ! detachment "${d.name}" is not in the MFM — dp/forceDispositions from appdata`)
   const mfmEnh = new Map((m?.enhancements || []).map((e) => [loose(e.name), e]))
   const rules = d.rules || []
   const main = rules[0] ? ruleBody(rules[0].body) : { flavor: '', body: '' }
@@ -121,7 +121,7 @@ function detachment(d, chapter) {
   const out = { id: slugify(d.name), name: d.name, source: 'codex' }
   if (chapter) out.chapter = chapter
   out.dp = m?.dp ?? d.dp
-  out.forceDisposition = m?.forceDisposition ?? d.forceDisposition
+  out.forceDispositions = m?.forceDispositions ?? (d.forceDisposition ? [d.forceDisposition] : [])
   if (m?.unique) out.unique = m.unique
   out.rule = { name: rules[0]?.name || d.name, flavor: main.flavor, body: [main.body, ...extra].filter(Boolean).join('\n\n') }
   out.stratagems = (d.stratagems || []).map((s) => stratagem(d.name, s))

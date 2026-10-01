@@ -6,7 +6,7 @@
 //   wh40k-appdata (Codex: Space Marines) → army rules + 15 detachments, prose through
 //     scripts/lib/sync-common.mjs's markup converter.
 //   MFM v1.5 (src/data/mfm/space-marines.js) → enhancement points, detachment dp /
-//     forceDisposition / unique tag.
+//     forceDispositions / unique tag.
 //   The six Codex Supplements (Ultramarines, Imperial Fists, Iron Hands, Raven Guard,
 //     Salamanders, White Scars) ship one detachment each, as one-detachment "factions" in
 //     appdata; they live here, locked to their Chapter by `chapter:` (the chapter picker).
@@ -41,7 +41,7 @@ const en = {
       "name": "Gauntlet Task Force",
       "source": "codex",
       "dp": 1,
-      "forceDisposition": "Reconnaissance",
+      "forceDispositions": ["Reconnaissance"],
       "rule": {
         "name": "Combined Deployment",
         "flavor": "Space Marine crews train to provide armoured fire support to their debarked passengers while on the attack.",
@@ -102,7 +102,7 @@ const en = {
       "name": "Ironclad Champions",
       "source": "codex",
       "dp": 1,
-      "forceDisposition": "Priority Assets",
+      "forceDispositions": ["Priority Assets"],
       "rule": {
         "name": "Enduring Vengeance",
         "flavor": "Those who pilot Dreadnoughts combine the skill of undying champions with a cold and vengeful hatred of the Emperor’s countless enemies.",
@@ -163,7 +163,7 @@ const en = {
       "name": "Ironstorm Spearhead",
       "source": "codex",
       "dp": 1,
-      "forceDisposition": "Purge the Foe",
+      "forceDispositions": ["Purge the Foe"],
       "unique": "IRONSTORM",
       "rule": {
         "name": "Ironstorm Auto-targeters",
@@ -225,7 +225,7 @@ const en = {
       "name": "Tacticus Attack Force",
       "source": "codex",
       "dp": 1,
-      "forceDisposition": "Take and Hold",
+      "forceDispositions": ["Take and Hold"],
       "unique": "TACTICUS",
       "rule": {
         "name": "Wrath of the Chapter",
@@ -287,7 +287,7 @@ const en = {
       "name": "Tacticus Firestorm Force",
       "source": "codex",
       "dp": 1,
-      "forceDisposition": "Priority Assets",
+      "forceDispositions": ["Priority Assets"],
       "unique": "TACTICUS",
       "rule": {
         "name": "Codex Fire-patterns",
@@ -349,7 +349,7 @@ const en = {
       "name": "Stormlance Task Force",
       "source": "codex",
       "dp": 1,
-      "forceDisposition": "Reconnaissance",
+      "forceDispositions": ["Reconnaissance"],
       "rule": {
         "name": "Lightning-fast Strike",
         "flavor": "Racing into battle at breakneck speeds, Space Marine fast-attack squadrons often punch into the enemy lines before the foe even realises their peril.",
@@ -410,7 +410,7 @@ const en = {
       "name": "Gladius Task Force",
       "source": "codex",
       "dp": 3,
-      "forceDisposition": "Take and Hold",
+      "forceDispositions": ["Take and Hold", "Priority Assets"],
       "rule": {
         "name": "Codex Discipline",
         "flavor": "Deployed as a mutually supportive strike force that epitomises the flexibility and martial wisdom of the Codex Astartes, Space Marines have the answer to any strategic or tactical challenge.",
@@ -516,7 +516,7 @@ const en = {
       "name": "Terminator Storm Force",
       "source": "codex",
       "dp": 1,
-      "forceDisposition": "Priority Assets",
+      "forceDispositions": ["Priority Assets"],
       "unique": "TERMINATOR",
       "rule": {
         "name": "Death Blow",
@@ -578,7 +578,7 @@ const en = {
       "name": "Devastator Brethren",
       "source": "codex",
       "dp": 1,
-      "forceDisposition": "Purge the Foe",
+      "forceDispositions": ["Purge the Foe"],
       "unique": "DOCTRINES",
       "rule": {
         "name": "Devastator Mastery",
@@ -640,7 +640,7 @@ const en = {
       "name": "Gravis Siege Force",
       "source": "codex",
       "dp": 1,
-      "forceDisposition": "Take and Hold",
+      "forceDispositions": ["Take and Hold"],
       "unique": "GRAVIS",
       "rule": {
         "name": "Indomitable Defence",
@@ -702,7 +702,7 @@ const en = {
       "name": "Tactical Brethren",
       "source": "codex",
       "dp": 1,
-      "forceDisposition": "Priority Assets",
+      "forceDispositions": ["Priority Assets"],
       "unique": "DOCTRINES",
       "rule": {
         "name": "Tactical Mastery",
@@ -764,7 +764,7 @@ const en = {
       "name": "Phobos Shock Force",
       "source": "codex",
       "dp": 1,
-      "forceDisposition": "Disruption",
+      "forceDispositions": ["Disruption"],
       "unique": "PHOBOS",
       "rule": {
         "name": "Vanguard Ambushers",
@@ -826,7 +826,7 @@ const en = {
       "name": "Assault Brethren",
       "source": "codex",
       "dp": 1,
-      "forceDisposition": "Take and Hold",
+      "forceDispositions": ["Take and Hold"],
       "unique": "DOCTRINES",
       "rule": {
         "name": "Assault Mastery",
@@ -888,7 +888,7 @@ const en = {
       "name": "Phobos Shadow Force",
       "source": "codex",
       "dp": 1,
-      "forceDisposition": "Disruption",
+      "forceDispositions": ["Disruption"],
       "unique": "PHOBOS",
       "rule": {
         "name": "Shadow Masters",
@@ -950,7 +950,7 @@ const en = {
       "name": "Gravis Linebreaker Force",
       "source": "codex",
       "dp": 1,
-      "forceDisposition": "Take and Hold",
+      "forceDispositions": ["Take and Hold"],
       "unique": "GRAVIS",
       "rule": {
         "name": "Walking Fortress",
@@ -1013,7 +1013,7 @@ const en = {
       "source": "codex",
       "chapter": "Ultramarines",
       "dp": 3,
-      "forceDisposition": "Take and Hold",
+      "forceDispositions": ["Take and Hold", "Priority Assets"],
       "rule": {
         "name": "Mastered Doctrines",
         "flavor": "Marneus Calgar deploys the complete and nuanced wisdom of the Codex Astartes as easily and instinctively as drawing breath.",
@@ -1120,7 +1120,7 @@ const en = {
       "source": "codex",
       "chapter": "Imperial Fists",
       "dp": 2,
-      "forceDisposition": "Take and Hold",
+      "forceDispositions": ["Take and Hold"],
       "rule": {
         "name": "Adaptive Defence",
         "flavor": "These Space Marines are experts in fighting from rapidly prepared defensive positions. They are able to maximise the potential of almost any terrain to serve as an ad‑hoc strongpoint, rapidly assessing optimal firing lines and punishing the foe’s every attempt to advance and dislodge them.",
@@ -1227,7 +1227,7 @@ const en = {
       "source": "codex",
       "chapter": "Iron Hands",
       "dp": 2,
-      "forceDisposition": "Purge the Foe",
+      "forceDispositions": ["Purge the Foe"],
       "unique": "IRONSTORM",
       "rule": {
         "name": "Armoured Wrath",
@@ -1335,7 +1335,7 @@ const en = {
       "source": "codex",
       "chapter": "Raven Guard",
       "dp": 2,
-      "forceDisposition": "Disruption",
+      "forceDispositions": ["Disruption"],
       "unique": "PHOBOS",
       "rule": {
         "name": "Shadow Tactics",
@@ -1443,7 +1443,7 @@ const en = {
       "source": "codex",
       "chapter": "Salamanders",
       "dp": 2,
-      "forceDisposition": "Priority Assets",
+      "forceDispositions": ["Priority Assets"],
       "rule": {
         "name": "Vulkan's Quest",
         "flavor": "Tireless in his pursuit of the Primarch’s legacy, Forgefather Vulkan He’stan annihilates any who impede his quest. Favouring swift, aggressive assaults, he and his warriors close rapidly with the enemy, destroying them at close range with ruthless efficiency",
@@ -1550,7 +1550,7 @@ const en = {
       "source": "codex",
       "chapter": "White Scars",
       "dp": 2,
-      "forceDisposition": "Reconnaissance",
+      "forceDispositions": ["Reconnaissance"],
       "rule": {
         "name": "Storm-swift Onslaught",
         "flavor": "The White Scars are masters of high‑speed tactics and hit‑and‑run warfare. They do battle on the move and from the saddle, outwitting their enemies with breakneck manoeuvres and melting away one moment only to crash home with bone‑crushing force the next.",

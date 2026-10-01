@@ -8,7 +8,7 @@
 //     (Exhibition of Slaughter, Kabalite Agonysts, Tools of Torment, Reaper's Wager), the
 //     "Corsairs and Travelling Players" army-rule addition, and Rules Updates.
 //   MFM (src/data/mfm/drukhari.js) → per-enhancement points, per-detachment dp /
-//     forceDisposition, and the KABAL / WYCH CULT / COVENS `unique` tags.
+//     forceDispositions, and the KABAL / WYCH CULT / COVENS `unique` tags.
 //
 // 9 detachments total, matching the MFM list. Faction-Pack "Rules Updates" have been folded
 // into the army rule / codex detachment stratagems (they are the authoritative newer wording)
@@ -59,7 +59,7 @@ If your Army Faction is Drukhari, you can include **Harlequins** and **Anhrathe*
       name: 'Realspace Raiders',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Priority Assets',
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: 'Alliance of Agony',
         flavor:
@@ -174,7 +174,7 @@ If your Army Faction is Drukhari, you can include **Harlequins** and **Anhrathe*
       name: 'Skysplinter Assault',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Reconnaissance',
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: 'Rain of Cruelty',
         flavor:
@@ -288,7 +288,7 @@ If your Army Faction is Drukhari, you can include **Harlequins** and **Anhrathe*
       name: 'Spectacle of Spite',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Purge the Foe',
+      forceDispositions: ["Purge the Foe"],
       unique: 'WYCH CULT',
       rule: {
         name: 'Combat Drugs',
@@ -416,7 +416,7 @@ Improve the Leadership characteristic of **Wych Cult** models from your army by 
       name: 'Covenite Coterie',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Take and Hold',
+      forceDispositions: ["Take and Hold"],
       unique: 'COVENS',
       rule: {
         name: 'Stitchflesh Abominations',
@@ -528,7 +528,7 @@ Improve the Leadership characteristic of **Wych Cult** models from your army by 
       name: 'Kabalite Cartel',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Disruption',
+      forceDispositions: ["Disruption"],
       unique: 'KABAL',
       rule: {
         name: 'Murderous Agenda',
@@ -650,7 +650,7 @@ Improve the Leadership characteristic of **Wych Cult** models from your army by 
       name: 'Exhibition of Slaughter',
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: 'Reconnaissance',
+      forceDispositions: ["Reconnaissance"],
       unique: 'WYCH CULT',
       rule: {
         name: 'Exacting Cruelty',
@@ -716,7 +716,7 @@ This **[gloss:detachments:detachment]** has the **WYCH CULT** tag and cannot be 
       name: 'Kabalite Agonysts',
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: 'Disruption',
+      forceDispositions: ["Disruption"],
       unique: 'KABAL',
       rule: {
         name: 'Contracted Harvest',
@@ -784,7 +784,7 @@ This **[gloss:detachments:detachment]** has the **KABAL** tag and cannot be take
       name: 'Tools of Torment',
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: 'Take and Hold',
+      forceDispositions: ["Take and Hold"],
       unique: 'COVENS',
       rule: {
         name: 'Darkest Artifice',
@@ -851,7 +851,7 @@ This **[gloss:detachments:detachment]** has the **COVENS** tag and cannot be tak
       name: "Reaper's Wager",
       source: 'faction-pack',
       dp: 3,
-      forceDisposition: 'Priority Assets',
+      forceDispositions: ["Priority Assets", "Purge the Foe"],
       rule: {
         name: 'Callous Competition',
         flavor:

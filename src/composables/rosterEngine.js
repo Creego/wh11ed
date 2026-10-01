@@ -581,15 +581,16 @@ export function isBattlelineNow(unit, granted = null) {
 }
 
 // ── Force Disposition: the one an army declares ───────────────────────────────────────────────
-// Every Detachment carries one of the five (`fd` on the generated detachment), and an ARMY has
-// exactly one: the card a player selects after mustering, on which the opponent's symbol names
-// their Primary Mission. So a list fielding several detachments has to DECLARE which of their
-// dispositions it plays — `roster.disposition` is that declaration, stored as the name `fd`
-// itself spells it. Not the tracker's own id: that vocabulary lives in the Event Companion data,
+// Every Detachment gives access to one or more of the five (`fds` on the generated detachment —
+// core rules 25.04: "each one will give you access to different force dispositions"; 39 carry two
+// in MFM v1.5), and an ARMY has exactly one: the card a player selects after mustering, on which the
+// opponent's symbol names their Primary Mission. So a list whose detachments offer more than one —
+// one detachment with two is enough — has to DECLARE which it plays: `roster.disposition` is that
+// declaration, stored as the name `fds` spells it. Not the tracker's own id: that vocabulary lives in the Event Companion data,
 // which the roster screens deliberately never load, and the one place both are in scope
 // (rosterHandoff) can translate.
 export function dispositionCandidates(detachments) {
-  return [...new Set((detachments || []).map((d) => d?.fd).filter(Boolean))]
+  return [...new Set((detachments || []).flatMap((d) => d?.fds || []).filter(Boolean))]
 }
 
 // What this list's disposition IS — the only candidate when there is one, the declaration while it

@@ -1301,12 +1301,12 @@ describe('defaultLoadoutLines on a multi-profile squad', () => {
 })
 
 // One army, one Force Disposition: the card selected after mustering, whose symbols name each
-// player's Primary Mission. The detachment carries it (`fd`); an army fielding several that
-// disagree has to declare which one it plays.
+// player's Primary Mission. A detachment gives access to one or more (`fds`); an army offered more
+// than one has to declare which it plays.
 describe('the army’s Force Disposition', () => {
-  const takeAndHold = { name: 'Gladius Task Force', fd: 'Take and Hold' }
-  const purge = { name: 'Anvil Siege Force', fd: 'Purge the Foe' }
-  const alsoPurge = { name: 'Vanguard Spearhead', fd: 'Purge the Foe' }
+  const takeAndHold = { name: 'Gladius Task Force', fds: ['Take and Hold'] }
+  const purge = { name: 'Anvil Siege Force', fds: ['Purge the Foe'] }
+  const alsoPurge = { name: 'Vanguard Spearhead', fds: ['Purge the Foe'] }
 
   it('lists what the chosen detachments offer, once each', () => {
     expect(dispositionCandidates([])).toEqual([])
@@ -1322,6 +1322,16 @@ describe('the army’s Force Disposition', () => {
     const dets = [takeAndHold, purge]
     expect(dispositionOf({}, dets)).toBeNull()
     expect(dispositionOf({ disposition: 'Purge the Foe' }, dets)).toBe('Purge the Foe')
+  })
+
+  // Core rules 25.04: "each one will give you access to different force dispositions". One
+  // detachment with two (Warpbane Task Force — a player's report, 2026-10-01) is a choice on its own.
+  it('asks for a declaration when one detachment gives access to two', () => {
+    const warpbane = { name: 'Warpbane Task Force', fds: ['Take and Hold', 'Purge the Foe'] }
+    expect(dispositionCandidates([warpbane])).toEqual(['Take and Hold', 'Purge the Foe'])
+    expect(dispositionOf({}, [warpbane])).toBeNull()
+    expect(dispositionOf({ disposition: 'Purge the Foe' }, [warpbane])).toBe('Purge the Foe')
+    expect(dispositionCandidates([warpbane, purge])).toEqual(['Take and Hold', 'Purge the Foe'])
   })
 
   // Self-healing: a list must never claim a disposition it no longer fields, and dropping the

@@ -9,7 +9,7 @@
 //     Auxiliary Cadre and Experimental Prototype Cadre) and the remaining Rules Updates
 //     (folded in below — see inline notes).
 //   MFM (src/data/mfm/tau-empire.js) → per-enhancement points, per-detachment dp /
-//     forceDisposition, and the AUXILIARY / BATTLESUIT `unique` tags.
+//     forceDispositions, and the AUXILIARY / BATTLESUIT `unique` tags.
 //
 // 7 detachments total, matching the MFM list. EN-first: `ru` reuses the same object for now.
 // Markup follows useRenderInline / RuleBlock / StratCard conventions: **bold**, [BRACKET]
@@ -48,7 +48,7 @@ If you have upgraded a model to have a drone, place a Drone token next to your m
       name: "Kauyon",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Reconnaissance",
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: "Patient Hunter",
         flavor: "The tactical philosophy known as the Kauyon allows for T’au commanders to draw the enemy into a deadly trap, springing it at the perfect moment to deliver a storm of fatal strikes against which none can escape.",
@@ -156,7 +156,7 @@ If you have upgraded a model to have a drone, place a Drone token next to your m
       name: "Kroot Hunting Pack",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold"],
       unique: "AUXILIARY",
       rule: {
         name: "Hunter’s Instincts & Skirmish Fighters",
@@ -264,7 +264,7 @@ If you have upgraded a model to have a drone, place a Drone token next to your m
       name: "Mont’ka",
       source: 'codex',
       dp: 3,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold", "Priority Assets"],
       rule: {
         name: "Killing Blow",
         flavor: "Mont’ka is the most aggressive style of T’au warfare. Its singular focus is the art of identifying a target of opportunity and attacking it swiftly with an overwhelming application of force.",
@@ -371,7 +371,7 @@ If you have upgraded a model to have a drone, place a Drone token next to your m
       name: "Retaliation Cadre",
       source: 'codex',
       dp: 3,
-      forceDisposition: "Purge the Foe",
+      forceDispositions: ["Purge the Foe", "Reconnaissance"],
       unique: "BATTLESUIT",
       rule: {
         // Faction-Pack Rules Update: the Armour Penetration threshold became 8" (was 9").
@@ -481,7 +481,7 @@ If you have upgraded a model to have a drone, place a Drone token next to your m
       name: "Advanced Acquisition Cadre",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Reconnaissance",
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: "Expert Fieldcraft",
         flavor: "Extensive additional training – including tuition by Trail Shapers – enables these warriors to fire and relocate seamlessly while remaining concealed.",
@@ -547,7 +547,7 @@ If you have upgraded a model to have a drone, place a Drone token next to your m
       name: "Auxiliary Cadre",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption"],
       unique: "AUXILIARY",
       rule: {
         name: "Integrated Command Structure",
@@ -612,7 +612,7 @@ If you have upgraded a model to have a drone, place a Drone token next to your m
       name: "Experimental Prototype Cadre",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets"],
       unique: "BATTLESUIT",
       rule: {
         name: "Superior Craftsmanship",

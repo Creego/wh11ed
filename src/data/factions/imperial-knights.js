@@ -10,7 +10,7 @@
 //     (Dominus Foebreakers, Throne-Bonded Outriders), a full rewrite of Questor Forgepact
 //     (replaces the older 6-stratagem version) and Rules Updates.
 //   MFM (src/data/mfm/imperial-knights.js) → per-enhancement points, per-detachment dp /
-//     forceDisposition, and the ARMIGERS `unique` tag.
+//     forceDispositions, and the ARMIGERS `unique` tag.
 //
 // 8 detachments total, matching the MFM list. EN-first: `ru` reuses the same object for
 // now. Markup follows useRenderInline / RuleBlock / StratCard conventions. Datasheets later.
@@ -60,7 +60,7 @@ If every model in your army has the IMPERIUM keyword, you can include either one
       name: "Freeblade Company",
       source: 'faction-pack', // printed in the pack (identical to the codex text)
       dp: 3,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets", "Purge the Foe"],
       rule: {
         name: "Knights of Legend",
         flavor: "Warriors such as these are truly indomitable. Driven on by deadly oaths, bolstered by ancient technology or shimmering with supernatural energies, they stride through the most punishing firestorms to emerge victorious on the other side.",
@@ -167,7 +167,7 @@ If every model in your army has the IMPERIUM keyword, you can include either one
       name: "Gate Warden Lance",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: "Dauntless Defenders",
         flavor: "With a rigid, strategic intuition born of the unyielding fortifications defended by their ancestors, the Nobles of a Gate Warden Lance hold their ground with an arrogant superiority. While even one defends the marches of their claimed realm, they will fight to the ends of their honour to hurl back the besiegers.",
@@ -274,7 +274,7 @@ If every model in your army has the IMPERIUM keyword, you can include either one
       name: "Questoris Companions",
       source: 'codex',
       dp: 3,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold", "Reconnaissance"],
       rule: {
         name: "Heroes of Legend & Valour’s Reward",
         flavor: "To those who quest for honour - in service to their liege, to avenge atrocities, to wipe clean the stain of disfavour - there can be no end. The Imperium’s foes are legion, an endless horde from which more arise. As one quest ends, another always begins.",
@@ -381,7 +381,7 @@ If every model in your army has the IMPERIUM keyword, you can include either one
       name: "Spearhead-At-Arms",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Reconnaissance",
+      forceDispositions: ["Reconnaissance"],
       unique: "ARMIGERS",
       rule: {
         name: "Knightly Teachings",
@@ -489,7 +489,7 @@ If every model in your army has the IMPERIUM keyword, you can include either one
       name: "Valourstrike Lance",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Purge the Foe",
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: "Bold Gallantry",
         flavor: "With their companions beside them - kin of their blood, allies in honour - Knightly Nobles are inspired to near-reckless heroism. Their fervour spreads through neural interfaces to reach the machine spirits of their towering Knight suits. The Knights’ power cores flare with motive energy. Target stabilisers sputter into life, glaring balefully at the foe. Servo-motors and fibre bundles thrum, powering the Nobles’ steeds to a thunderous speed, such that the ground trembles.",
@@ -597,7 +597,7 @@ If every model in your army has the IMPERIUM keyword, you can include either one
       name: "Dominus Foebreakers",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: "Rain of Devastation",
         flavor: "Packing together within the confines of cover might work against small arms, but in the face of Dominus-class Knights, it only serves to concentrate and magnify the fury of their firepower.",
@@ -661,7 +661,7 @@ If every model in your army has the IMPERIUM keyword, you can include either one
       name: "Questor Forgepact",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption"],
       rule: {
         name: "Cogbound Alliance",
         flavor: "The Nobles of Questor Mechanicus houses commonly fight alongside the armies of forge worlds. They are bound together by their shared devotion to the Machine Cult.",
@@ -724,7 +724,7 @@ If every model in your army has the IMPERIUM keyword, you can include either one
       name: "Throne-Bonded Outriders",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Reconnaissance",
+      forceDispositions: ["Reconnaissance"],
       unique: "ARMIGERS",
       rule: {
         name: "Driven from Their Lairs",

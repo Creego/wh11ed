@@ -1559,7 +1559,9 @@ export default {
       "name": "Bastions of Tyranny",
       "sid": "993e9b23-3ade-4fb1-bb27-f9270de48978",
       "dp": 1,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "enhancements": [
         {
           "name": "Pterrorshade Rookery",
@@ -1591,7 +1593,9 @@ export default {
       "name": "Helhunt Lance",
       "sid": "9bef33d0-15fa-49f8-ac91-42496470641d",
       "dp": 2,
-      "fd": "Disruption",
+      "fds": [
+        "Disruption"
+      ],
       "enhancements": [
         {
           "name": "Hunter’s Helm",
@@ -1650,7 +1654,9 @@ export default {
       "name": "Houndpack Lance",
       "sid": "a634e475-384b-40cd-957d-cd99201ab3e4",
       "dp": 2,
-      "fd": "Reconnaissance",
+      "fds": [
+        "Reconnaissance"
+      ],
       "enhancements": [
         {
           "name": "Preyslayer’s Mantle",
@@ -1706,7 +1712,9 @@ export default {
       "name": "Hunting Warpack",
       "sid": "e2637679-6163-4ea2-93cb-8c5a263ecc33",
       "dp": 1,
-      "fd": "Reconnaissance",
+      "fds": [
+        "Reconnaissance"
+      ],
       "enhancements": [
         {
           "name": "Soul-spoor Auspicator (Upgrade)",
@@ -1742,7 +1750,9 @@ export default {
       "name": "Iconoclast Fiefdom",
       "sid": "c7d24ce3-acdf-414d-af2a-81c602983045",
       "dp": 1,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "enhancements": [
         {
           "name": "Cruel Lashmaster (Aura)",
@@ -1774,7 +1784,10 @@ export default {
       "name": "Infernal Lance",
       "sid": "86620542-e27d-4e99-a70e-da69a673c9fb",
       "dp": 3,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets",
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Knight Diabolus",
@@ -1830,7 +1843,9 @@ export default {
       "name": "Lords of Dread",
       "sid": "355721a8-7f31-4a55-94e0-cbc895fb2397",
       "dp": 2,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "enhancements": [
         {
           "name": "Throne Mechanicum of Skulls",
@@ -1910,7 +1925,9 @@ export default {
       "name": "Traitoris Lance",
       "sid": "b40710c8-474d-402d-bb22-9903e280dcff",
       "dp": 2,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Nightmare’s Master",

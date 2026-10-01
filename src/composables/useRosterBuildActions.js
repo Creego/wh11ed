@@ -42,7 +42,7 @@ export function useRosterBuildActions({ roster, factionData, curDetachments, eff
   // ── Detachments ──
   // Options for the DP-budget-aware multi-select picker (DetachmentPickerModal).
   const detachmentOptions = computed(() =>
-    (factionData.value?.detachments || []).map((d) => ({ name: d.name, dp: d.dp || 0, forceDisposition: d.fd || '' })))
+    (factionData.value?.detachments || []).map((d) => ({ name: d.name, dp: d.dp || 0, forceDispositions: d.fds || [] })))
   const detachmentSummary = computed(() => (list()?.detachments || []).join(', '))
   const dispositionCands = computed(() => dispositionCandidates(curDetachments.value))
   const dpSpent = computed(() => curDetachments.value.reduce((s, d) => s + (d.dp || 0), 0))

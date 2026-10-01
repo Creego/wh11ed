@@ -2577,7 +2577,9 @@ export default {
       "name": "Berzerker Warband",
       "sid": "0a5d7ebb-ce39-4751-a90c-889883517b66",
       "dp": 2,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Berzerker Glaive",
@@ -2633,7 +2635,9 @@ export default {
       "name": "Brazen Engines",
       "sid": "b316e2f6-0b93-4805-9b5e-38f050875ad3",
       "dp": 1,
-      "fd": "Disruption",
+      "fds": [
+        "Disruption"
+      ],
       "unique": "ONSLAUGHT",
       "enhancements": [
         {
@@ -2676,7 +2680,9 @@ export default {
       "name": "Butchers of Khorne",
       "sid": "16d7618b-880a-4f47-97e2-385df44bc860",
       "dp": 1,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "enhancements": [
         {
           "name": "Sanctified in Slaughter (Upgrade)",
@@ -2712,7 +2718,9 @@ export default {
       "name": "Cult of Blood",
       "sid": "ae5e755c-230d-46a9-ad1a-d3afaf3633ca",
       "dp": 2,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "enhancements": [
         {
           "name": "Chosen of the Blood God",
@@ -2787,7 +2795,9 @@ export default {
       "name": "Goretrack Onslaught",
       "sid": "b21e5072-38d5-42b5-9143-9aabcbf499d8",
       "dp": 2,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "unique": "ONSLAUGHT",
       "enhancements": [
         {
@@ -2844,7 +2854,9 @@ export default {
       "name": "Khorne Daemonkin",
       "sid": "960c7ecf-3cc0-4d10-8d0c-5839273ea651",
       "dp": 2,
-      "fd": "Reconnaissance",
+      "fds": [
+        "Reconnaissance"
+      ],
       "enhancements": [
         {
           "name": "Icon of War",
@@ -2916,7 +2928,9 @@ export default {
       "name": "Possessed Slaughterband",
       "sid": "11575a4f-0e5c-46e2-9085-392f11226cab",
       "dp": 2,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Malicious Vigour",
@@ -2981,7 +2995,9 @@ export default {
       "name": "Vessels of Wrath",
       "sid": "e8136aea-8e9c-470a-aa7b-a33dfa33c9ea",
       "dp": 1,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "enhancements": [
         {
           "name": "Archslaughterer",

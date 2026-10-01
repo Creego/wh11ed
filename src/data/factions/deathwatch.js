@@ -6,7 +6,7 @@
 //   wh40k-appdata (Codex Supplement: Deathwatch) → army rules + 2 detachments, prose through
 //     scripts/lib/sync-common.mjs's markup converter.
 //   MFM v1.5 (src/data/mfm/deathwatch.js) → enhancement points, detachment dp /
-//     forceDisposition / unique tag.
+//     forceDispositions / unique tag.
 //
 // Oath of Moment is gone from every Space Marines army: the army rule is now Combat Doctrines
 // (tracked per battle round by armyTrackers/space-marines.js), with the rest of the army rules
@@ -30,7 +30,7 @@ const en = {
       "name": "Black Spear Task Force",
       "source": "codex",
       "dp": 3,
-      "forceDisposition": "Priority Assets",
+      "forceDispositions": ["Priority Assets", "Purge the Foe"],
       "rule": {
         "name": "Mission Tactics",
         "flavor": "Thousands of years of collated strategic data and hard-won combat experience have provided the Deathwatch with the ultimate battlefield tactics to combat almost any foe.\n\nFUROR TACTICS When the enemy horde grows close, the Deathwatch will be tasked with the decimation of their core. Aiming not for clinical kills but for maximum destruction over a wide area, they tear the heart from the enemy army.\n\nMALLEUS TACTICS When the giants of war lumber forth, the Deathwatch will adopt Malleus tactics. Even the largest behemoth has a weak point, and the archives of the Deathwatch number them all.\n\nPURGATUS TACTICS By adopting Purgatus tactics, the Deathwatch focus their deadly ire upon the commanders of the enemy host, assassinating them one after another with pitiless head shots and killing thrusts of the blade.",
@@ -136,7 +136,7 @@ const en = {
       "name": "Deathwatch Support",
       "source": "codex",
       "dp": 1,
-      "forceDisposition": "Disruption",
+      "forceDispositions": ["Disruption"],
       "rule": {
         "name": "Mission Tactics",
         "flavor": "Thousands of years of collated strategic data and hard-won combat experience have provided the Deathwatch with the ultimate battlefield tactics to combat almost any foe.\n\nFUROR TACTICS When the enemy horde grows close, the Deathwatch will be tasked with the decimation of their core. Aiming not for clinical kills but for maximum destruction over a wide area, they tear the heart from the enemy army.\n\nMALLEUS TACTICS When the giants of war lumber forth, the Deathwatch will adopt Malleus tactics. Even the largest behemoth has a weak point, and the archives of the Deathwatch number them all.\n\nPURGATUS TACTICS By adopting Purgatus tactics, the Deathwatch focus their deadly ire upon the commanders of the enemy host, assassinating them one after another with pitiless head shots and killing thrusts of the blade.",

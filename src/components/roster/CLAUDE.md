@@ -579,13 +579,18 @@ its base statline and no Tier-C chips of its own. Its printed card is unaffected
 ## The army's Force Disposition (added 2026-08-28)
 
 The card a player selects after mustering: the opponent's symbol on it names their Primary Mission
-(`eventCompanion.js` holds the 5×5 matrix). It is a property of the DETACHMENT — `fd` on every one
-of the 268 — and of the ARMY there is exactly one, so a list fielding several detachments that
-disagree has to **declare** which it plays. Until this landed the builder said nothing about it at
+(`eventCompanion.js` holds the 5×5 matrix). It is a property of the DETACHMENT — `fds` on every one
+of the 268, the dispositions it gives access to — and of the ARMY there is exactly one, so a list
+offered more than one has to **declare** which it plays. **One detachment can offer two** (core
+rules 25.04, "each one will give you access to different force dispositions"; 39 do in MFM v1.5).
+Until 2026-10-01 the MFM scrape kept only the first banner, so Warpbane Task Force had lost its
+Purge the Foe (a player's report) and every one of those 39 read as a lone disposition — and the
+"MFM ≠ appdata" dispositions in `sync` were not disagreements at all: appdata carries one of the
+two, the MFM both. Until this landed the builder said nothing about it at
 all: the picker showed each detachment's disposition while choosing and the answer vanished the
 moment the modal closed.
 
-- **`roster.disposition`** holds the declaration, spelled as `fd` spells it. Not the tracker's own
+- **`roster.disposition`** holds the declaration, spelled as `fds` spells it. Not the tracker's own
   id: that vocabulary lives in the Event Companion data, which these screens deliberately never
   load, and `rosterHandoff` — the one place both are in scope — translates. No `SCHEMA_VERSION`
   bump (an absent field is simply undeclared) and no backend change (`domain/roster.ts` passes

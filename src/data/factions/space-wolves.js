@@ -6,7 +6,7 @@
 //   wh40k-appdata (Codex Supplement: Space Wolves) → army rules + 3 detachments, prose through
 //     scripts/lib/sync-common.mjs's markup converter.
 //   MFM v1.5 (src/data/mfm/space-wolves.js) → enhancement points, detachment dp /
-//     forceDisposition / unique tag.
+//     forceDispositions / unique tag.
 //
 // Oath of Moment is gone from every Space Marines army: the army rule is now Combat Doctrines
 // (tracked per battle round by armyTrackers/space-marines.js), with the rest of the army rules
@@ -30,7 +30,7 @@ const en = {
       "name": "Saga of the Great Wolf",
       "source": "codex",
       "dp": 2,
-      "forceDisposition": "Take and Hold",
+      "forceDispositions": ["Take and Hold"],
       "rule": {
         "name": "Master of Wolves",
         "flavor": "When the Great Wolf Logan Grimnar leads his packs to war, it is certain that mighty deeds will be done and epic verses added to the sagas of many a Space Wolf. There is none amongst the sons of Russ who can command such instinctive authority throughout his Chapter, none who so deftly wields warrior and war engine like a single great pack. In the sight of their lord, every Space Wolf aspires to be a champion of Fenris and strives with ever-greater determination to prove themselves worthy of his regard. Grimnar masterfully directs the hunt from its very heart, orchestrating every element like an apex predator herding its prey to destruction. Where restraint is needed, he sees it exercised. Where focused fury must be unleashed, he is its master and embodiment both. So does the saga of Logan Grimnar grow ever greater for the telling.\n\nHOWLING ONSLAUGHT\n\nWhen the Great Wolf gives the command, his packs descend upon the foe in a coordinated and utterly devastating strike.",
@@ -136,7 +136,7 @@ const en = {
       "name": "Champions of Fenris",
       "source": "codex",
       "dp": 1,
-      "forceDisposition": "Priority Assets",
+      "forceDispositions": ["Priority Assets"],
       "unique": "TERMINATOR",
       "rule": {
         "name": "The Great Wolf Watches",
@@ -198,7 +198,7 @@ const en = {
       "name": "Saga of the Beastslayer",
       "source": "codex",
       "dp": 1,
-      "forceDisposition": "Purge the Foe",
+      "forceDispositions": ["Purge the Foe"],
       "rule": {
         "name": "Legendary Slayers",
         "flavor": "Some Space Wolves seek only to bring down the most monstrous and deadly foes. With hunting packs of Fenrisian wolves, Thunderwolf Cavalry and rampaging bands of Wulfen, they seek to hunt down and slay mighty champions, towering monstrosities and rumbling war machines, demoralising the foe and earning glorious victories.",

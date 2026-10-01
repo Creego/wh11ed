@@ -5896,7 +5896,9 @@ export default {
       "name": "Imperialis Fleet",
       "sid": "4a6a098b-92a6-44f1-8b4f-a7ba168ba049",
       "dp": 2,
-      "fd": "Reconnaissance",
+      "fds": [
+        "Reconnaissance"
+      ],
       "enhancements": [
         {
           "name": "Digital Weapons",
@@ -5952,7 +5954,9 @@ export default {
       "name": "Ordo Hereticus, Purgation Force",
       "sid": "6a6e3903-1b61-4706-8fc7-e48729a9880d",
       "dp": 2,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "enhancements": [
         {
           "name": "Liber Heresius",
@@ -6023,7 +6027,9 @@ export default {
       "name": "Ordo Malleus, Daemon Hunters",
       "sid": "e89bc216-2de7-4cf9-a640-2dcbfde06b56",
       "dp": 2,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "enhancements": [
         {
           "name": "Formidable Resolve",
@@ -6079,7 +6085,9 @@ export default {
       "name": "Ordo Xenos, Alien Hunters",
       "sid": "e072fa96-aa3e-4a5f-ba03-376879f16c7f",
       "dp": 2,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Universal Anathema",
@@ -6135,7 +6143,9 @@ export default {
       "name": "Veiled Blade Elimination Force",
       "sid": "be6ba720-81c6-4dbc-8a37-1d61b4564f60",
       "dp": 1,
-      "fd": "Disruption",
+      "fds": [
+        "Disruption"
+      ],
       "enhancements": [
         {
           "name": "Decoy Targets",

@@ -1970,7 +1970,9 @@ export default {
       "name": "Biosanctic Broodsurge",
       "sid": "37b534f4-135f-4d14-bfcb-3fa7ccf9469d",
       "dp": 2,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "unique": "PURESTRAIN",
       "enhancements": [
         {
@@ -2062,7 +2064,9 @@ export default {
       "name": "Brood Brothers Auxilia",
       "sid": "16c40129-6e3f-4714-871a-e1da94934ba7",
       "dp": 2,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "enhancements": [
         {
           "name": "Martial Espionage",
@@ -2130,7 +2134,9 @@ export default {
       "name": "Final Day",
       "sid": "68478a72-0983-4fef-8cdb-e4536134d56e",
       "dp": 2,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Synaptic Auger",
@@ -2186,7 +2192,9 @@ export default {
       "name": "Heroes of the Uprising",
       "sid": "e0e6a94f-b219-43ec-95d0-f694f701df09",
       "dp": 1,
-      "fd": "Disruption",
+      "fds": [
+        "Disruption"
+      ],
       "enhancements": [
         {
           "name": "Gene-tailored Toxins",
@@ -2228,7 +2236,10 @@ export default {
       "name": "Host of Ascension",
       "sid": "f8ab87bf-ffeb-4dae-8708-5e04ed4d45c6",
       "dp": 3,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold",
+        "Reconnaissance"
+      ],
       "unique": "HOSTS",
       "enhancements": [
         {
@@ -2285,7 +2296,9 @@ export default {
       "name": "Outlander Claw",
       "sid": "4448633e-99cf-4ada-8651-76dbf12b61c6",
       "dp": 2,
-      "fd": "Reconnaissance",
+      "fds": [
+        "Reconnaissance"
+      ],
       "enhancements": [
         {
           "name": "Serpentine Tactics",
@@ -2347,7 +2360,9 @@ export default {
       "name": "Purestrain Broodswarm",
       "sid": "23ea0315-37ef-410f-a0a2-a6cf622e609f",
       "dp": 1,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "unique": "PURESTRAIN",
       "enhancements": [
         {
@@ -2385,7 +2400,9 @@ export default {
       "name": "Xenocreed Congregation",
       "sid": "71b5d36d-cfd6-48ee-b883-fbc73eac91cc",
       "dp": 2,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "enhancements": [
         {
           "name": "Gene-sire’s Reliquant",
@@ -2481,7 +2498,9 @@ export default {
       "name": "Xenocult Masses",
       "sid": "ef54b4ca-adca-4e8f-9427-ea1cd0e42ed5",
       "dp": 1,
-      "fd": "Reconnaissance",
+      "fds": [
+        "Reconnaissance"
+      ],
       "unique": "HOSTS",
       "enhancements": [
         {

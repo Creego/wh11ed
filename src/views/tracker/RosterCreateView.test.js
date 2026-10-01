@@ -52,7 +52,7 @@ describe('RosterCreateView', () => {
   it('declares the Force Disposition when the chosen detachments disagree', async () => {
     const fac = (await import('../../data/roster/space-marines.js')).default
     // The cheapest of each, so two of them still fit the battle size's Detachment Points.
-    const byFd = (fd) => fac.detachments.filter((d) => d.fd === fd).sort((a, b) => a.dp - b.dp)[0].name
+    const byFd = (fd) => fac.detachments.filter((d) => d.fds?.length === 1 && d.fds[0] === fd).sort((a, b) => a.dp - b.dp)[0].name
     const w = mount(RosterCreateView, { global: { stubs } })
     await w.findAll('.ch-pick')[0].trigger('click')
     await waitFor(w, 'Space Marines')
@@ -98,6 +98,11 @@ describe('RosterCreateView', () => {
     const detBtn = w.findAll('.det').find((b) => b.text().includes('Gladius Task Force'))
     await detBtn.trigger('click')
     expect(w.text()).toContain('Gladius Task Force')
+    // Gladius gives access to two dispositions (MFM v1.5), so even alone it asks for a declaration.
+    await w.find('.mh-close').trigger('click')
+    const seg = w.find('.disp-opts')
+    expect(seg.findAll('button').map((b) => b.text())).toEqual(['Take and Hold', 'Priority Assets'])
+    await seg.findAll('button')[0].trigger('click')
 
     // Step 2: add a unit and finish. The catalogue only adds — removing is the list pane's own
     // business, beside the unit it is removing.
@@ -358,6 +363,7 @@ describe('RosterCreateView', () => {
       draftStep: 3, // a draft left on the old configure step resumes on the step that absorbed it
       faction: 'space-marines',
       detachments: ['Gladius Task Force'],
+      disposition: 'Take and Hold', // Gladius offers two; a list that breaks nothing has declared one
       battleSize: 'incursion',
       units: [{ uid: 'a', id: 'intercessor-squad', size: 0 }],
     })

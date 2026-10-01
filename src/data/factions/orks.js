@@ -6,7 +6,7 @@
 //   wh40k-appdata `factions/orks.json` (Codex: Orks) → army rules + 15 detachments,
 //     with rule/stratagem/enhancement prose converted by scripts/lib/sync-common.mjs.
 //   MFM v1.4 (src/data/mfm/orks.js) → per-enhancement points, per-detachment dp /
-//     forceDisposition. The WAGONS `unique` tag the old Rollin' Deff and Blitz Brigade
+//     forceDispositions. The WAGONS `unique` tag the old Rollin' Deff and Blitz Brigade
 //     carried is gone — MFM v1.4 prints no unique tag for any Orks detachment.
 //
 // The ’Ardmob detachment is Combat Patrol only and lives in src/data/combatPatrol.js,
@@ -86,7 +86,7 @@ Some Orks rules allow a unit to make a **pulse jet move**, as described below. (
       name: 'Blitz Brigade',
       source: 'codex',
       dp: 1,
-      forceDisposition: 'Take and Hold',
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: 'Unstoppable Momentum',
         flavor: 'Like mobile armoured fortresses, little can stop the crushing impetus of the Orks’ hulking wagons.',
@@ -150,7 +150,7 @@ Some Orks rules allow a unit to make a **pulse jet move**, as described below. (
       name: 'Brute Bosses',
       source: 'codex',
       dp: 1,
-      forceDisposition: 'Purge the Foe',
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: '’Ard as Nails',
         flavor: 'The largest Orks have risen to their position through strength, savagery and being harder than anyone else.',
@@ -213,7 +213,7 @@ Some Orks rules allow a unit to make a **pulse jet move**, as described below. (
       name: 'Bully Boyz',
       source: 'codex',
       dp: 1,
-      forceDisposition: 'Purge the Foe',
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: 'Displays of Savagery',
         flavor: 'Nobz have a position of dominance to maintain, and do so in vicious eruptions of violence.',
@@ -279,7 +279,7 @@ Some Orks rules allow a unit to make a **pulse jet move**, as described below. (
       name: 'Da Big Hunt',
       source: 'codex',
       dp: 1,
-      forceDisposition: 'Purge the Foe',
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: 'Da Hunt is On',
         flavor: 'Beast Snaggas fanatically hunt the biggest targets and are experts in finding their weak spots.',
@@ -340,7 +340,7 @@ Some Orks rules allow a unit to make a **pulse jet move**, as described below. (
       name: 'Dread Mob',
       source: 'codex',
       dp: 1,
-      forceDisposition: 'Purge the Foe',
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: 'Try Dat Button!',
         flavor: 'Inviting Mek-wired buttons offer varied and erratic lethality.',
@@ -412,7 +412,7 @@ If you rolled two D6, when this unit has attacked, this unit makes one **[gloss:
       name: 'Flyboyz',
       source: 'codex',
       dp: 1,
-      forceDisposition: 'Reconnaissance',
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: 'Skyborne Loons',
         flavor: 'When attacking en masse, crazed and excitable Flyboyz unleash torrential quantities of dakka.',
@@ -479,7 +479,7 @@ If you rolled two D6, when this unit has attacked, this unit makes one **[gloss:
       name: 'Green Tide',
       source: 'codex',
       dp: 1,
-      forceDisposition: 'Take and Hold',
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: 'Mob-handed Brutality',
         flavor: 'In the massive fights that Orks enjoy, the only way to ensure a slice of the action is to fight harder.',
@@ -543,7 +543,7 @@ If you rolled two D6, when this unit has attacked, this unit makes one **[gloss:
       name: 'Kult of Speed',
       source: 'codex',
       dp: 1,
-      forceDisposition: 'Reconnaissance',
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: 'Adrenaline Junkies',
         flavor: 'After smashing into the foe at full tilt, a Speed Freek will pull hairpin turns to do it all again.',
@@ -607,7 +607,7 @@ If you rolled two D6, when this unit has attacked, this unit makes one **[gloss:
       name: 'Madcap Meks',
       source: 'codex',
       dp: 1,
-      forceDisposition: 'Disruption',
+      forceDispositions: ["Disruption"],
       rule: {
         name: 'Unpredictable Genius',
         flavor: 'Meks haul all manner of weird bullets, unstable power cells and kustomised extras to battle.',
@@ -666,7 +666,7 @@ If you rolled two D6, when this unit has attacked, this unit makes one **[gloss:
       name: 'Runt Swarm',
       source: 'codex',
       dp: 1,
-      forceDisposition: 'Priority Assets',
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: 'Sneaky Little Gitz',
         flavor: 'Given no position of importance, Grots find their niche as sneaks, thieves and mischief-makers.',
@@ -730,7 +730,7 @@ If you rolled two D6, when this unit has attacked, this unit makes one **[gloss:
       name: 'Shoota Boyz',
       source: 'codex',
       dp: 1,
-      forceDisposition: 'Purge the Foe',
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: 'Dakka! Dakka! Dakka!',
         flavor: 'Always hunting for something to kill, when Orks spot a target they saturate it with dakka.',
@@ -796,7 +796,7 @@ If you rolled two D6, when this unit has attacked, this unit makes one **[gloss:
       name: 'Taktikal Brigade',
       source: 'codex',
       dp: 1,
-      forceDisposition: 'Take and Hold',
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: 'Suspiciously Well Organised',
         flavor: 'An un-Orky compulsion for discipline can wrongfoot enemies expecting anarchic disorder.',
@@ -865,7 +865,7 @@ In the Declare Battle Formations step, the bearer can be attached to a Kommandos
       name: 'War Horde',
       source: 'codex',
       dp: 3,
-      forceDisposition: 'Take and Hold',
+      forceDispositions: ["Take and Hold", "Purge the Foe"],
       rule: {
         name: 'Get Stuck In',
         flavor: 'Joyously anarchic and recklessly destructive, all Orks eagerly get stuck in to every fight.',
@@ -978,7 +978,7 @@ In the Declare Battle Formations step, the bearer can be attached to a Kommandos
       name: 'Wreckas',
       source: 'codex',
       dp: 1,
-      forceDisposition: 'Priority Assets',
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: 'Wreckin’ and Lootin’',
         flavor: 'Whether piratical or merely larcenous, Orks with an eye for loot react forcefully to rival claims.',
@@ -1045,7 +1045,7 @@ In the Declare Battle Formations step, the bearer can be attached to a Flash Git
       name: 'Wurrband',
       source: 'codex',
       dp: 1,
-      forceDisposition: 'Disruption',
+      forceDispositions: ["Disruption"],
       rule: {
         name: 'Powers of da Waaagh!',
         flavor: 'Surrounded by mobs of excitable Orks, Weirdboyz’ shamanic powers build to spectacular phenomena.',

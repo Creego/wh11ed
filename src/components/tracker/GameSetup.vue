@@ -1480,7 +1480,7 @@ function factionName(slug) {
 // Combat Patrol box content (rule name, fixed Force Disposition, box name/DP) — dynamically
 // imported (heavy, datasheet-bearing file) only once "Тип игры" is set to Combat Patrol, same
 // "heavy data file, dynamic import" rule as everywhere else in this codebase. `name`/`slug`/
-// `forceDisposition`/`boxName` are locale-agnostic structural fields, so the EN list is enough
+// `forceDisposition`/`boxName` (a Combat Patrol box has one) are locale-agnostic structural fields, so the EN list is enough
 // here regardless of the app's current locale.
 const combatPatrolData = ref(null)
 async function loadCombatPatrolData() {
@@ -1632,7 +1632,7 @@ function candidateDispositions(p) {
   // Doubles: one disposition per TEAM, "available to either of the armies in that team"
   // (companion, Muster step) — so the candidates are the union over the side's armies.
   const ids = armiesOf(p).flatMap(m => m.detachments
-    .map(name => detachmentInfo(m.factionSlug, name)?.forceDisposition)
+    .flatMap(name => detachmentInfo(m.factionSlug, name)?.forceDispositions || [])
     .filter(Boolean)
     .map(name => DISPOSITIONS.find(d => d.name === name)?.id)
     .filter(Boolean))

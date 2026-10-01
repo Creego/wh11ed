@@ -3689,7 +3689,9 @@ export default {
       "name": "Champions of Fenris",
       "sid": "853bae7f-116c-4b25-9bee-3e48782e19b6",
       "dp": 1,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "unique": "TERMINATOR",
       "enhancements": [
         {
@@ -3728,7 +3730,9 @@ export default {
       "name": "Saga of the Beastslayer",
       "sid": "074e6c80-307a-43b8-a644-c3fab8059e9a",
       "dp": 1,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Wolf-Touched",
@@ -3770,7 +3774,9 @@ export default {
       "name": "Saga of the Great Wolf",
       "sid": "ec410692-849f-4939-898b-2b88b8125892",
       "dp": 2,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "enhancements": [
         {
           "name": "Grimnar's Mark",

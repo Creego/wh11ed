@@ -10,7 +10,7 @@
 //     (Devotees of Destruction, Murdertalon Raiders), a full rewrite of Cabal of Chaos
 //     (replaces the older 6-stratagem version) and Rules Updates.
 //   MFM (src/data/mfm/chaos-space-marines.js) → per-enhancement points, per-detachment dp /
-//     forceDisposition, and the NIGHTMARE `unique` tag.
+//     forceDispositions, and the NIGHTMARE `unique` tag.
 //
 // 17 detachments total, matching the MFM list. EN-first: `ru` reuses the same object for
 // now. Markup follows useRenderInline / RuleBlock / StratCard conventions. Datasheets later.
@@ -44,7 +44,7 @@ The combined points value of such units you can include in your army depends on 
       name: "Chaos Cult",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: "Desperate Devotion",
         flavor: "Utterly dedicated to the worship of the Dark Gods, thronging mortal cultists and regiments of Traitor Guardsmen are more than willing to make bloody sacrifices and take desperate actions in the hope of attaining favour.",
@@ -151,7 +151,7 @@ The combined points value of such units you can include in your army depends on 
       name: "Creations of Bile",
       source: 'faction-pack', // printed in the pack (identical to the codex text)
       dp: 3,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold", "Purge the Foe"],
       rule: {
         name: "Experimental Augmentations",
         flavor: "Bile’s creations, the Terata, possess a variety of mutations, all of which increase their transhuman lethality – for now.",
@@ -258,7 +258,7 @@ The combined points value of such units you can include in your army depends on 
       name: "Cult of the Arkifane",
       source: 'faction-pack', // printed in the pack (identical to the codex text)
       dp: 2,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: "Soul Forge Boons",
         flavor: "The cybersorcerous power of Vashtorr’s boons is much in evidence amongst his worshippers. Nowhere is this more true than in the war engines that his cults take into battle, and which exhibit a nightmarish variety of biomechanoid mutations and daemon-spawned powers. Whether wreathed in balefire, shimmeringly insubstantial or constantly regrowing battle-damaged hull plating, these accursed war machines are incredibly hard to destroy.",
@@ -365,7 +365,7 @@ The combined points value of such units you can include in your army depends on 
       name: "Deceptors",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption"],
       rule: {
         name: "Masters of Misdirection",
         flavor: "There are those warbands that number amongst their ranks liars, schemers and infiltrators of far more prodigious skill than most heretics. Employing labyrinthine ploys, they unnerve their enemies and force them to chase ghosts and shadows. They embed themselves within combat zones long before showing their hand, seeding Chaos cults, identifying key targets and feeding misinformation to their foes.",
@@ -472,7 +472,7 @@ The combined points value of such units you can include in your army depends on 
       name: "Dread Talons",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption"],
       rule: {
         name: "Terror Descends (Aura)",
         flavor: "Bedecked in the flayed skins and leering skulls of former victims, their armour flecked with blood and gore, these reavers descend in a howling gale of enraged screams and soul-piercing shrieks. To look upon their ghastly visages is to feel a terrible and paralysing fear.",
@@ -579,7 +579,7 @@ The combined points value of such units you can include in your army depends on 
       name: "Fellhammer Siege-Host",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: "Iron Fortitude",
         flavor: "The most indefatigable of Heretic Astartes warbands possess a grim determination that matches the resilience of their superhuman physiques and formidable ceramite armour. They go to war amidst formations of daemonic war machines and growling vehicles. Some even embrace the worship of the Dark Gods, trading their souls for supernatural protection.",
@@ -686,7 +686,7 @@ The combined points value of such units you can include in your army depends on 
       name: "Huron’s Marauders",
       source: 'faction-pack', // printed in the pack (identical to the codex text)
       dp: 3,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption", "Purge the Foe"],
       rule: {
         name: "Tyrannical Motivation",
         flavor: "Murderers and renegades all, the Red Corsairs strive to meet their master’s standards, fighting hardest of all when his gaze is upon them.",
@@ -794,7 +794,7 @@ The combined points value of such units you can include in your army depends on 
       name: "Nightmare Hunt",
       source: 'faction-pack', // printed in the pack (identical to the codex text)
       dp: 2,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption"],
       unique: "NIGHTMARE",
       rule: {
         name: "Terror Made Manifest",
@@ -902,7 +902,7 @@ The combined points value of such units you can include in your army depends on 
       name: "Pactbound Zealots",
       source: 'codex',
       dp: 3,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption", "Priority Assets"],
       rule: {
         name: "Marks of Chaos",
         flavor: "",
@@ -1009,7 +1009,7 @@ The combined points value of such units you can include in your army depends on 
       name: "Renegade Raiders",
       source: 'codex',
       dp: 3,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets", "Reconnaissance"],
       rule: {
         name: "Raiders and Reavers",
         flavor: "Some Heretic Astartes warbands are piratical by nature, launching swift attacks focused upon destroying their foes in a storm of bloody violence, seizing territory and spoils of war before the enemy can bring reinforcements to bear.",
@@ -1116,7 +1116,7 @@ The combined points value of such units you can include in your army depends on 
       name: "Renegade Warband",
       source: 'faction-pack', // printed in the pack (identical to the codex text)
       dp: 2,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: "Slaves to None & Vendetta & Twisted Doctrine",
         flavor: "Many Renegades eschew the gifts of Dark Gods, relying only upon their own prowess.",
@@ -1223,7 +1223,7 @@ The combined points value of such units you can include in your army depends on 
       name: "Soulforged Warpack",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: "Debt to the Soul Forge",
         flavor: "Many are the daemons who have forged pacts with Vashtorr the Arkifane. Once bound into such a contract, a soul debt must be paid, one that the daemon strives endlessly, and with all its desperation, to fulfil.",
@@ -1330,7 +1330,7 @@ The combined points value of such units you can include in your army depends on 
       name: "Veterans of the Long War",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: "Focus of Hatred",
         flavor: "The eldest of the Chaos Space Marines harbour within their corrupted souls a burning desire for vengeance upon the Imperium and the galaxy as a whole.  They channel this ire against their chosen targets, relentlessly pursuing their victims until every last foe lies dead upon the battlefield.",
@@ -1437,7 +1437,7 @@ The combined points value of such units you can include in your army depends on 
       name: "Warpstrike Champions",
       source: 'faction-pack', // printed in the pack (identical to the codex text)
       dp: 2,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption"],
       rule: {
         name: "Warp Portals",
         flavor: "Conjured warp portals flicker across the battlefield, tearing through the fabric of reality according to arcane designs. They are a means, however perilous and unnatural, for the warband’s most elite warriors to traverse the battlefield in a matter of strides and strike again at new locations.",
@@ -1548,7 +1548,7 @@ The combined points value of such units you can include in your army depends on 
       name: "Cabal of Chaos",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption"],
       rule: {
         name: "Empyric Wellspring",
         flavor: "The sorcerous powers wielded by a cabal inevitably draw the attention of the Dark Gods, flooding the battlefield with immaterial energies that empower their dark magicks and their daemonically gifted comrades alike.",
@@ -1610,7 +1610,7 @@ The combined points value of such units you can include in your army depends on 
       name: "Devotees of Destruction",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: "Rain of Ruin",
         flavor: "It is not enough for these heretical reavers merely to defeat their foes. Instead, they must pound all before them to smouldering oblivion with overwhelming salvoes of fire.",
@@ -1672,7 +1672,7 @@ The combined points value of such units you can include in your army depends on 
       name: "Murdertalon Raiders",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Reconnaissance",
+      forceDispositions: ["Reconnaissance"],
       unique: "NIGHTMARE",
       rule: {
         name: "Prey on the Weak",

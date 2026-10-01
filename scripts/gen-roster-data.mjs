@@ -2245,7 +2245,8 @@ function buildDetachment(bdet, idMap, mfmDet, nameToDsId, facTag, slug) { // idM
   // appdata's detachmentPointsCost — those disagree (appdata is 0 for standard detachments).
   const mfm = mfmDet.get(norm(bdet.name))
   const det = { name: bdet.name, sid: bdet.id, dp: mfm?.dp ?? bdet.detachmentPointsCost ?? 0 }
-  if (mfm?.forceDisposition) det.fd = mfm.forceDisposition
+  // Every disposition it gives access to — two for 39 detachments (rosterEngine's dispositionCandidates).
+  if (mfm?.forceDispositions?.length) det.fds = mfm.forceDispositions
   // The tag two detachments cannot share. Taken from mfm, cross-checked against appdata: a
   // disagreement means the scrape lost one (silent, and the roster then allows an illegal pair) or
   // that appdata is behind, which is the standing state of the two ONSLAUGHT detachments.
@@ -2343,7 +2344,7 @@ async function genFaction(slug) {
   if (!bundle) { report.missingBundle.push(slug); return }
   const idMap = unitIdMap(slug)
 
-  // mfm detachment map (name → { dp, forceDisposition }) — the tracker's numbers.
+  // mfm detachment map (name → { dp, forceDispositions }) — the tracker's numbers.
   const mfmMod = await loadModule(path.join(ROOT, 'src/data/mfm', `${slug}.js`))
   const mfmFaction = mfmMod?.default
   const mfmDet = new Map((mfmFaction?.detachments || []).map((d) => [norm(d.name), d]))

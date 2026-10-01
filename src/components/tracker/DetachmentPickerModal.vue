@@ -36,7 +36,7 @@
         v-for="d in offered"
         :key="d.name"
         :name="d.name"
-        :force-disposition="d.forceDisposition"
+        :force-dispositions="d.forceDispositions || []"
         :unique="d.unique || ''"
         :dp="d.dp"
         :on="selected.includes(d.name)"

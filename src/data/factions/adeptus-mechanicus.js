@@ -9,7 +9,7 @@
 //     (Cohort Acquisitus, Lords of the Forge, Luminen Auto-choir, Eradication Cohort,
 //     Haloscreed Battle Clade) + Rules Updates.
 //   MFM (src/data/mfm/adeptus-mechanicus.js) → per-enhancement points, per-detachment
-//     dp / forceDisposition, and the DATA-PSALM `unique` tag.
+//     dp / forceDispositions, and the DATA-PSALM `unique` tag.
 //
 // 10 detachments total, matching the MFM list. Faction-Pack "Rules Updates" have been
 // folded into the codex army rule / detachment rules / enhancements (they are the
@@ -53,7 +53,7 @@ const en = {
       name: 'Rad-Zone Corps',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Take and Hold',
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: 'Rad-bombardment',
         flavor:
@@ -167,7 +167,7 @@ At the start of your Command phase during the second, third, fourth and fifth ba
       name: 'Skitarii Hunter Cohort',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Reconnaissance',
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: 'Stealth Optimisation',
         flavor:
@@ -277,7 +277,7 @@ At the start of your Command phase during the second, third, fourth and fifth ba
       name: 'Data-Psalm Conclave',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Disruption',
+      forceDispositions: ["Disruption"],
       unique: 'DATA-PSALM',
       rule: {
         name: 'Benedictions of the Omnissiah',
@@ -390,7 +390,7 @@ This detachment has the DATA-PSALM tag and cannot be taken with another DATA-PSA
       name: 'Explorator Maniple',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Priority Assets',
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: 'Acquisition at Any Cost',
         flavor:
@@ -498,7 +498,7 @@ This detachment has the DATA-PSALM tag and cannot be taken with another DATA-PSA
       name: 'Cohort Cybernetica',
       source: 'codex',
       dp: 1,
-      forceDisposition: 'Take and Hold',
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: 'Cyber-psalm Programming',
         flavor:
@@ -609,7 +609,7 @@ This detachment has the DATA-PSALM tag and cannot be taken with another DATA-PSA
       name: 'Cohort Acquisitus',
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: 'Reconnaissance',
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: 'Noospheric Recon',
         flavor:
@@ -675,7 +675,7 @@ This detachment has the DATA-PSALM tag and cannot be taken with another DATA-PSA
       name: 'Lords of the Forge',
       source: 'faction-pack',
       dp: 2,
-      forceDisposition: 'Priority Assets',
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: 'War-form Mantles',
         flavor:
@@ -746,7 +746,7 @@ Friendly TECH-PRIEST models have the following ability:
       name: 'Luminen Auto-choir',
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: 'Disruption',
+      forceDispositions: ["Disruption"],
       unique: 'DATA-PSALM',
       rule: {
         name: 'Cyber-static Canticles',
@@ -813,7 +813,7 @@ This **[gloss:detachments:detachment]** has the DATA-PSALM tag and cannot be tak
       name: 'Eradication Cohort',
       source: 'faction-pack',
       dp: 2,
-      forceDisposition: 'Purge the Foe',
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: 'Murderous Imperative',
         flavor:
@@ -923,7 +923,7 @@ This **[gloss:detachments:detachment]** has the DATA-PSALM tag and cannot be tak
       name: 'Haloscreed Battle Clade',
       source: 'faction-pack',
       dp: 3,
-      forceDisposition: 'Priority Assets',
+      forceDispositions: ["Priority Assets", "Purge the Foe"],
       rule: {
         name: 'Noospheric Transference',
         flavor:

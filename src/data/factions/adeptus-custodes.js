@@ -9,7 +9,7 @@
 //     detachments (Might of the Moritoi, Silent Hunters, Tharanatoi Hammerblow, Lions of
 //     the Emperor, Solar Spearhead) + Rules Updates.
 //   MFM (src/data/mfm/adeptus-custodes.js) → per-enhancement points, per-detachment dp /
-//     forceDisposition, and the LIONS / ARMOURY `unique` tags.
+//     forceDispositions, and the LIONS / ARMOURY `unique` tags.
 //
 // 9 detachments total, matching the MFM list. Faction-Pack "Rules Updates" have been folded
 // into the codex detachment rules / stratagems / enhancements (they are the authoritative
@@ -47,7 +47,7 @@ Melee weapons equipped by models in this unit have the [LETHAL HITS] ability.`,
       name: 'Talons of the Emperor',
       source: 'codex',
       dp: 3,
-      forceDisposition: 'Take and Hold',
+      forceDispositions: ["Take and Hold", "Priority Assets"],
       rule: {
         name: 'Revered Companions',
         flavor:
@@ -161,7 +161,7 @@ All other Adeptus Custodes units from your army gain the following ability:
       name: 'Shield Host',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Purge the Foe',
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: 'Martial Mastery',
         flavor:
@@ -275,7 +275,7 @@ All other Adeptus Custodes units from your army gain the following ability:
       name: 'Null Maiden Vigil',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Reconnaissance',
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: 'Creeping Dread',
         flavor:
@@ -383,7 +383,7 @@ All other Adeptus Custodes units from your army gain the following ability:
       name: 'Auric Champions',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Priority Assets',
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: 'Assemblage of Might',
         flavor:
@@ -497,7 +497,7 @@ All other Adeptus Custodes units from your army gain the following ability:
       name: 'Might of the Moritoi',
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: 'Take and Hold',
+      forceDispositions: ["Take and Hold"],
       unique: 'ARMOURY',
       rule: {
         name: 'March of the Honoured Dead',
@@ -569,7 +569,7 @@ This **[gloss:detachments:detachment]** has the ARMOURY tag and cannot be taken 
       name: 'Silent Hunters',
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: 'Reconnaissance',
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: 'Skin-Crawling Disorientation',
         flavor:
@@ -637,7 +637,7 @@ This **[gloss:detachments:detachment]** has the ARMOURY tag and cannot be taken 
       name: 'Tharanatoi Hammerblow',
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: 'Disruption',
+      forceDispositions: ["Disruption"],
       unique: 'LIONS',
       rule: {
         name: 'The Hammer Falls',
@@ -703,7 +703,7 @@ This **[gloss:detachments:detachment]** has the LIONS tag and cannot be taken wi
       name: 'Lions of the Emperor',
       source: 'faction-pack',
       dp: 3,
-      forceDisposition: 'Take and Hold',
+      forceDispositions: ["Take and Hold", "Disruption"],
       unique: 'LIONS',
       rule: {
         name: 'Against All Odds',
@@ -812,7 +812,7 @@ This **[gloss:detachments:detachment]** has the LIONS tag and cannot be taken wi
       name: 'Solar Spearhead',
       source: 'faction-pack',
       dp: 2,
-      forceDisposition: 'Take and Hold',
+      forceDispositions: ["Take and Hold"],
       unique: 'ARMOURY',
       rule: {
         name: 'Auric Armour',

@@ -400,7 +400,7 @@ onMounted(() => { import('../../data/mfmFactions.js').then((m) => { mfm.value = 
 function fdOf(r) {
   const known = mfm.value?.find((f) => f.slug === r.faction)?.detachments || []
   const dets = (r.detachments || []).map((n) => known.find((d) => d.name === n)).filter(Boolean)
-  return dispositionOf(r, dets.map((d) => ({ fd: d.forceDisposition })))
+  return dispositionOf(r, dets.map((d) => ({ fds: d.forceDispositions })))
 }
 function toneOf(r) {
   return toneVars(dispositionColor(fdOf(r)))

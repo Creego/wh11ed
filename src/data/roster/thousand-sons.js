@@ -2737,7 +2737,9 @@ export default {
       "name": "Changehost of Deceit",
       "sid": "6bc12e9e-73c2-46aa-8876-1bf10e95677a",
       "dp": 2,
-      "fd": "Reconnaissance",
+      "fds": [
+        "Reconnaissance"
+      ],
       "enhancements": [
         {
           "name": "Nethershriek Mind-Eater",
@@ -2809,7 +2811,10 @@ export default {
       "name": "Grand Coven",
       "sid": "d7f54185-ca1d-4300-981d-84a28641ce14",
       "dp": 3,
-      "fd": "Disruption",
+      "fds": [
+        "Disruption",
+        "Priority Assets"
+      ],
       "enhancements": [
         {
           "name": "Lord of Forbidden Lore",
@@ -2868,7 +2873,10 @@ export default {
       "name": "Hexwarp Thrallband",
       "sid": "c4040e42-40b2-4df2-ba73-83a17dfe3e72",
       "dp": 3,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold",
+        "Reconnaissance"
+      ],
       "enhancements": [
         {
           "name": "Arcane Might",
@@ -2924,7 +2932,9 @@ export default {
       "name": "Ritual of Regeneration",
       "sid": "8703803f-2be2-4862-8622-c729c12babca",
       "dp": 1,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "enhancements": [
         {
           "name": "Eruption of Vitality",
@@ -2982,7 +2992,10 @@ export default {
       "name": "Rubricae Phalanx",
       "sid": "da4b1448-5954-4083-a820-bc98d08b6672",
       "dp": 3,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold",
+        "Priority Assets"
+      ],
       "enhancements": [
         {
           "name": "Risen Rubricae",
@@ -3041,7 +3054,9 @@ export default {
       "name": "Sekhetar Cohort",
       "sid": "9b8af121-ddff-4e4e-9928-37050a67b0a8",
       "dp": 1,
-      "fd": "Disruption",
+      "fds": [
+        "Disruption"
+      ],
       "enhancements": [
         {
           "name": "Walking Rampart",
@@ -3083,7 +3098,9 @@ export default {
       "name": "Servants of Change",
       "sid": "6bfd15ec-5723-410f-853c-092d82919512",
       "dp": 1,
-      "fd": "Reconnaissance",
+      "fds": [
+        "Reconnaissance"
+      ],
       "unique": "MUTANT",
       "enhancements": [
         {
@@ -3118,7 +3135,9 @@ export default {
       "name": "Warpforged Cabal",
       "sid": "baf498d8-40c2-4536-869c-0432cf6ec054",
       "dp": 2,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "enhancements": [
         {
           "name": "Warp Syphon",
@@ -3177,7 +3196,9 @@ export default {
       "name": "Warpmeld Pact",
       "sid": "d8a383c5-a6a0-445a-b1ad-5a4858bc6265",
       "dp": 2,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "unique": "MUTANT",
       "enhancements": [
         {

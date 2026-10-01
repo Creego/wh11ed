@@ -1,4 +1,4 @@
-// GATE: fail when a faction rules page's detachment `dp` / `forceDisposition` disagrees with the
+// GATE: fail when a faction rules page's detachment `dp` / `forceDispositions` disagrees with the
 // MFM. Exits non-zero. `npm run detmeta`.
 //
 // WHY THIS EXISTS, WHEN sync-tracker's `detachments` CATEGORY ALREADY COMPARES THE SAME TWO FIELDS.
@@ -88,8 +88,10 @@ export async function run(argv = process.argv.slice(2)) {
       if (m.dp != null && d.dp !== m.dp) {
         findings.push({ slug, name: d.name, what: `dp: page=${d.dp} mfm=${m.dp}` })
       }
-      if (m.forceDisposition && norm(d.forceDisposition || '') !== norm(m.forceDisposition)) {
-        findings.push({ slug, name: d.name, what: `forceDisposition: page="${d.forceDisposition || ''}" mfm="${m.forceDisposition}"` })
+      // Every disposition the MFM lists, in its order — a detachment can give access to two (2026-10-01).
+      const fdKey = (list) => (list || []).map(norm).join(' | ')
+      if (m.forceDispositions?.length && fdKey(d.forceDispositions) !== fdKey(m.forceDispositions)) {
+        findings.push({ slug, name: d.name, what: `forceDispositions: page=${JSON.stringify(d.forceDispositions || [])} mfm=${JSON.stringify(m.forceDispositions)}` })
       }
     }
   }

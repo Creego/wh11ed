@@ -1950,7 +1950,10 @@ export default {
       "name": "Carnival of Excess",
       "sid": "31349652-6a08-46a0-a5ec-5d4533f0a8ae",
       "dp": 3,
-      "fd": "Disruption",
+      "fds": [
+        "Disruption",
+        "Priority Assets"
+      ],
       "enhancements": [
         {
           "name": "Empyric Suffusion",
@@ -2014,7 +2017,10 @@ export default {
       "name": "Coterie of the Conceited",
       "sid": "f4f83a5e-36a7-49fd-950b-0ceb188b5c94",
       "dp": 3,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets",
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Pledge of Eternal Servitude",
@@ -2070,7 +2076,9 @@ export default {
       "name": "Court of the Phoenician",
       "sid": "e3a3d467-28af-4e25-938b-42f48c64e8f5",
       "dp": 2,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Tears of the Phoenix",
@@ -2135,7 +2143,9 @@ export default {
       "name": "Elegant Brutes",
       "sid": "3b9f3326-5025-4194-9a40-dec121410c32",
       "dp": 1,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "enhancements": [
         {
           "name": "Cacophonic Accompaniment",
@@ -2172,7 +2182,9 @@ export default {
       "name": "Frenzied Host",
       "sid": "235629e4-405f-40db-b393-9f71e1c6e3ea",
       "dp": 1,
-      "fd": "Reconnaissance",
+      "fds": [
+        "Reconnaissance"
+      ],
       "enhancements": [
         {
           "name": "Euphoric Crown",
@@ -2204,7 +2216,9 @@ export default {
       "name": "Mercurial Host",
       "sid": "bea6576c-a423-4a9d-b9c9-6b3a10703a99",
       "dp": 2,
-      "fd": "Reconnaissance",
+      "fds": [
+        "Reconnaissance"
+      ],
       "enhancements": [
         {
           "name": "Steeped in Suffering",
@@ -2260,7 +2274,9 @@ export default {
       "name": "Peerless Bladesmen",
       "sid": "af3fd326-fe1e-4023-a354-ed0f546ae6ff",
       "dp": 2,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "enhancements": [
         {
           "name": "Faultless Opportunist",
@@ -2319,7 +2335,9 @@ export default {
       "name": "Rapid Evisceration",
       "sid": "b89874ea-c08b-40c4-891d-dcdd2277595d",
       "dp": 2,
-      "fd": "Disruption",
+      "fds": [
+        "Disruption"
+      ],
       "enhancements": [
         {
           "name": "Sublime Prescience",
@@ -2387,7 +2405,9 @@ export default {
       "name": "Slaanesh’s Chosen",
       "sid": "046a17d6-1408-4e06-b8b7-55a367a74c97",
       "dp": 1,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Eager to Prove",
@@ -2443,7 +2463,9 @@ export default {
       "name": "Spectacle of Slaughter",
       "sid": "29bc9dbe-2bac-48f6-a496-955ee9c377df",
       "dp": 1,
-      "fd": "Disruption",
+      "fds": [
+        "Disruption"
+      ],
       "enhancements": [
         {
           "name": "Eager Patrons (Upgrade)",

@@ -5,7 +5,7 @@ import DetachmentPickerModal from './DetachmentPickerModal.vue'
 // BaseModal renders through <Teleport to="body">, so the buttons land outside the component's own
 // tree — search the document, as the other modal tests do.
 const body = () => new DOMWrapper(document.body)
-const det = (name, extra = {}) => ({ name, dp: 1, forceDisposition: 'Take and Hold', ...extra })
+const det = (name, extra = {}) => ({ name, dp: 1, forceDispositions: ['Take and Hold'], ...extra })
 
 const mountPicker = (detachments, selected = []) => (wrapper = mount(DetachmentPickerModal, {
   props: { detachments, selected, maxDp: 3, dpSpent: selected.length },

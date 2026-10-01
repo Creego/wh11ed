@@ -8,7 +8,7 @@
 //   Faction Pack v1.0 (sources/Faction pack 11 ed/chaos/EC.pdf) → 3 pack detachments
 //     (Elegant Brutes, Frenzied Host, Spectacle of Slaughter) and Rules Updates.
 //   MFM (src/data/mfm/emperors-children.js) → per-enhancement points, per-detachment dp /
-//     forceDisposition.
+//     forceDispositions.
 //
 // 10 detachments total, matching the MFM list. EN-first: `ru` reuses the same object for
 // now. Markup follows useRenderInline / RuleBlock / StratCard conventions. Datasheets later.
@@ -36,7 +36,7 @@ When mustering your army, unless specifically stated otherwise, you cannot selec
       name: "Carnival of Excess",
       source: 'codex',
       dp: 3,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption", "Priority Assets"],
       rule: {
         name: "Daemonic Empowerment",
         flavor: "Where the Emperor’s Children indulge their obsession, the power ofSlaanesh empowers those in his thrall.",
@@ -143,7 +143,7 @@ When mustering your army, unless specifically stated otherwise, you cannot selec
       name: "Coterie of the Conceited",
       source: 'codex',
       dp: 3,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets", "Purge the Foe"],
       rule: {
         name: "Pledges to the Dark Prince",
         flavor: "Few appear as favoured by the Dark Prince as these warriors, their boons of power a reward for committing ever viler deeds in honour of their patron.",
@@ -250,7 +250,7 @@ When mustering your army, unless specifically stated otherwise, you cannot selec
       name: "Court of the Phoenician",
       source: 'faction-pack', // printed in the pack (identical to the codex text)
       dp: 2,
-      forceDisposition: "Purge the Foe",
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: "Sensational Performance & Master of the Pageant",
         flavor: "The craving for fresh experience and the obsession with enacting ever more excessive destruction drives these warriors to displays of sudden and obscene violence.",
@@ -358,7 +358,7 @@ When mustering your army, unless specifically stated otherwise, you cannot selec
       name: "Mercurial Host",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Reconnaissance",
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: "Quicksilver Grace",
         flavor: "The Emperor’s Children are consummate raiders, eager to satiate their lust for sensation amid battle and falling upon their foes with impossible swiftness and inhuman grace.",
@@ -465,7 +465,7 @@ When mustering your army, unless specifically stated otherwise, you cannot selec
       name: "Peerless Bladesmen",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: "Exquisite Swordsmanship",
         flavor: "These warriors are peerless swordsmen, each demonstrating exquisite fighting form. Those who lock swords with these obsessive warriors do so at their peril.",
@@ -572,7 +572,7 @@ When mustering your army, unless specifically stated otherwise, you cannot selec
       name: "Rapid Evisceration",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption"],
       rule: {
         name: "Mechanised Murder",
         flavor: "The Emperor’s Children are masters of the mechanised assault, leaping from their growling, daemonically tainted vehicles to fall upon the foe with blade and bolter.",
@@ -679,7 +679,7 @@ When mustering your army, unless specifically stated otherwise, you cannot selec
       name: "Slaanesh’s Chosen",
       source: 'codex',
       dp: 1,
-      forceDisposition: "Purge the Foe",
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: "Internal Rivalries",
         flavor: "The boldest and most debased champions of Slaanesh may gain the benefit of the Dark Princes boons. Yet none hold Slaanesh’s favour for long, for always another seeks to wrest his favour from their rivals.",
@@ -787,7 +787,7 @@ When mustering your army, unless specifically stated otherwise, you cannot selec
       name: "Elegant Brutes",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: "Eager to Kill",
         flavor: "Infused with a ferocious need to exert their superiority before any rival has the chance to outshine them, Chaos Terminators enter their chosen arena with a horrific dynamism.",
@@ -850,7 +850,7 @@ When mustering your army, unless specifically stated otherwise, you cannot selec
       name: "Frenzied Host",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Reconnaissance",
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: "Frantic Focus",
         flavor: "Seeming to be everywhere at once, bands of Infractors and Tormentors seek to embrace all the sensations the battlefield can offer, never relenting for a moment.",
@@ -912,7 +912,7 @@ When mustering your army, unless specifically stated otherwise, you cannot selec
       name: "Spectacle of Slaughter",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption"],
       rule: {
         name: "Entitled to Victory",
         flavor: "So certain are the Flawless Blades in their arrogant pre-eminence, so sure they have already won before the first blow is struck, that they are filled with swift assurance that no foe can match.",

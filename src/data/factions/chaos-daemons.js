@@ -10,7 +10,7 @@
 //   From the pack directly: army rule (The Shadow of Chaos + Daemonic Pact) and the 3 new
 //     detachments (Cavalcade of Chaos, Lords of the Warp, Warptide).
 //   MFM (src/data/mfm/chaos-daemons.js) → per-enhancement points, per-detachment dp /
-//     forceDisposition.
+//     forceDispositions.
 //
 // 9 detachments total, matching the MFM list. EN-first: `ru` reuses the same object for
 // now. Markup follows useRenderInline / RuleBlock / StratCard conventions. Datasheets later.
@@ -44,7 +44,7 @@ If every model from your army has the CHAOS KNIGHTS or HERETIC ASTARTES keyword,
       name: "Blood Legion",
       source: 'faction-pack', // index faction — printed in the pack
       dp: 2,
-      forceDisposition: "Purge the Foe",
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: "Murdercall & Blood Tainted",
         flavor: "The daemons of Khorne are physical manifestations of rage, hate and the desperate need to shed blood. For as long as their physical forms remain in realspace, they will never cease their murderous rampage.",
@@ -152,7 +152,7 @@ If every model from your army has the CHAOS KNIGHTS or HERETIC ASTARTES keyword,
       name: "Daemonic Incursion",
       source: 'faction-pack', // index faction — printed in the pack
       dp: 3,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold", "Disruption"],
       rule: {
         name: "Warp Rifts",
         flavor: "Daemonic legions tear through the fabric of realspace, malevolent entities flickering into being like phantasms from a nightmare. Worse still, as terror and panic take hold of their victims, so their mortal souls become ever easier prey for the entities pouring through from the warp.",
@@ -259,7 +259,7 @@ If every model from your army has the CHAOS KNIGHTS or HERETIC ASTARTES keyword,
       name: "Legion of Excess",
       source: 'faction-pack', // index faction — printed in the pack
       dp: 2,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: "Beguiling Aura & Seductive Gambit",
         flavor: "The daemons of the Dark Prince can bewitch the minds of their foes, appearing in one moment as their true and nightmarish selves and in the next as the object of their foes’ most forbidden desires or devoted affections. Enemies are left foundering and bewildered as the daemons weave their sinuous dances around them and trill their nerve-shredding siren songs.",
@@ -368,7 +368,7 @@ If every model from your army has the CHAOS KNIGHTS or HERETIC ASTARTES keyword,
       name: "Plague Legion",
       source: 'faction-pack', // index faction — printed in the pack
       dp: 2,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: "Melancholic Miasma",
         flavor: "To fight the daemons of Nurgle is to endure their entropic assaults upon both the physical and spiritual battlefields. The horror of inevitable decay claws at the souls of their victims even as the daemons’ splintered talons rake their flesh, heralding nightmarish putrefaction and impending doom.",
@@ -477,7 +477,7 @@ If every model from your army has the CHAOS KNIGHTS or HERETIC ASTARTES keyword,
       name: "Scintillating Legion",
       source: 'faction-pack', // index faction — printed in the pack
       dp: 2,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: "Fates in Flux",
         flavor: "With every chance for change seized, every new fraying of fate’s weave, the daemons and their foes alike fuel the power of Tzeentch, however inadvertently.",
@@ -585,7 +585,7 @@ If every model from your army has the CHAOS KNIGHTS or HERETIC ASTARTES keyword,
       name: "Shadow Legion",
       source: 'faction-pack', // index faction — printed in the pack
       dp: 2,
-      forceDisposition: "Purge the Foe",
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: "Thralls of the First Prince & First Prince of Chaos",
         flavor: "",
@@ -693,7 +693,7 @@ If every model from your army has the CHAOS KNIGHTS or HERETIC ASTARTES keyword,
       name: "Cavalcade of Chaos",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption"],
       rule: {
         name: "Unholy Avalanche",
         flavor: "Infused with the Warp\u2019s unholy power, temporary ebbs of slaughter can be twisted into thundering advances of daemonic power in a heartbeat.",
@@ -757,7 +757,7 @@ If every model from your army has the CHAOS KNIGHTS or HERETIC ASTARTES keyword,
       name: "Lords of the Warp",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: "Loci of Power",
         flavor: "Seething with the baleful energies of the Immaterium, the dark nobility of the daemon legions manifest as living icons of their gods\u2019 powers burned into the very flesh of realspace.",
@@ -825,7 +825,7 @@ If every model from your army has the CHAOS KNIGHTS or HERETIC ASTARTES keyword,
       name: "Warptide",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Reconnaissance",
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: "Shudderblink",
         flavor: "These daemons\u2019 physical manifestations flicker in and out of being like a pict-reel skipping and projecting too quickly. One moment, they are a distant threat; the next, they are upon their horrified victims.",

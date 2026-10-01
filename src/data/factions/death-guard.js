@@ -10,7 +10,7 @@
 //     (replaces the older 6-stratagem version) and Rules Updates (incl. the army-rule
 //     Contagion Range cap and the Skullsquirm Blight rewrite).
 //   MFM (src/data/mfm/death-guard.js) → per-enhancement points, per-detachment dp /
-//     forceDisposition. MFM v1.3 printed "UNIQUE TAG REMOVED" over Flyblown Host, Champions
+//     forceDispositions. MFM v1.3 printed "UNIQUE TAG REMOVED" over Flyblown Host, Champions
 //     of Contagion, Contagion Engines and Mortarion’s Hammer, so the ENGINES / FLYBLOWN
 //     `unique` tags are gone and the sentence that spelled them out went with them — the
 //     codex prose appdata still carries has not caught up, and the MFM is the tag’s home.
@@ -53,7 +53,7 @@ During the Declare Battle Formations step, select one of the Plagues below. Unti
       name: "Champions of Contagion",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: "Manifold Maladies",
         flavor: "A spirit of competition infects Nurgle’s champions when they fight alongside one another. With each vying to outdo the others in virulence, the foes are subjected to a riotous string of nightmarish outbreaks amongst their ranks.",
@@ -160,7 +160,7 @@ During the Declare Battle Formations step, select one of the Plagues below. Unti
       name: "Death Lord’s Chosen",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: "Deadly Vectors",
         flavor: "The plagues and parasites to which these elite warriors play host are amongst the most lethal in the galaxy. Moment by moment, even the most resilient foes sicken and wither in their presence until all that remains is rotted matter deliquescing sloppily from mouldering bones.",
@@ -267,7 +267,7 @@ During the Declare Battle Formations step, select one of the Plagues below. Unti
       name: "Mortarion’s Hammer",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Purge the Foe",
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: "Miasmic Bombardment",
         flavor: "In the wake of preparatory bombardment by artillery weapons both forbidden and foul, the surviving foe are left reeling amidst clouds of plague smog. With their flesh running like tallow and their weapons rusting in their hands, they will be hard-pressed to fight back.",
@@ -374,7 +374,7 @@ During the Declare Battle Formations step, select one of the Plagues below. Unti
       name: "Shamblerot Vectorium",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption"],
       rule: {
         name: "Numberless Horde",
         flavor: "No matter how many Poxwalkers the enemy gun down or tear limb-from-limb at close quarters, more groaning mutants keep coming from every side.",
@@ -481,7 +481,7 @@ During the Declare Battle Formations step, select one of the Plagues below. Unti
       name: "Tallyband Summoners",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption"],
       rule: {
         name: "Reverberant Rancidity",
         flavor: "Reality rings like a struck bell as it rebels against the sheer wrongness of Nurgle’s daemons. Borne upon these jarring waves of metaphysical disease, magnified and redoubled with every dolorous peal, the Plague God’s myriad infections spread and multiply all the faster.",
@@ -588,7 +588,7 @@ During the Declare Battle Formations step, select one of the Plagues below. Unti
       name: "Virulent Vectorium",
       source: 'codex',
       dp: 3,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold", "Purge the Foe"],
       rule: {
         name: "Worldblight",
         flavor: "As the foul tendrils of the Death Guard quest further across the battlefield, they infest even the most secure, holy and heavily warded sites with supernatural disease. To fight amidst such foulness is a virtual death sentence to the foe, win or lose.",
@@ -696,7 +696,7 @@ During the Declare Battle Formations step, select one of the Plagues below. Unti
       name: "Contagion Engines",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Reconnaissance",
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: "Warped and Rusted Animus",
         flavor: "For all their slow degeneration, many of the Death Guard\u2019s war machines are augmented with a fevered and inexorable urgency that brings their corrupted weapons to bear upon the foe all too quickly.",
@@ -762,7 +762,7 @@ During the Declare Battle Formations step, select one of the Plagues below. Unti
       name: "Flyblown Host",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Reconnaissance",
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: "Verminous Haze",
         flavor: "A cloud of winged insects descends over Mortarion\u2019s pathogenic sons, obscuring their malodorous ranks and shielding them from the eyes and augurs of the enemy. Beneath thrumming storms of fat-bodied flies, Plague Marines stride towards their wavering foes until they are close enough to unleash punishing volleys of killing fire.",
@@ -826,7 +826,7 @@ During the Declare Battle Formations step, select one of the Plagues below. Unti
       name: "Paragons of Putrescence",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: "Hypervirulent Strains",
         flavor: "The rancid champions of the Death Guard are blessed with the most virulent contagions of Nurgle, supernatural strains that radiate towards unwilling hosts in floods of foulness.",

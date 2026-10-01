@@ -3787,7 +3787,9 @@ export default {
       "name": "Blood Legion",
       "sid": "4489023b-fe35-46d6-9653-4b9f6718aa40",
       "dp": 2,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Slaughterthirst (Aura)",
@@ -3857,7 +3859,9 @@ export default {
       "name": "Cavalcade of Chaos",
       "sid": "b3ac1391-84a9-4f8b-8755-d75eccfa5b70",
       "dp": 1,
-      "fd": "Disruption",
+      "fds": [
+        "Disruption"
+      ],
       "enhancements": [
         {
           "name": "Apocalyptic Steeds (Upgrade)",
@@ -3899,7 +3903,10 @@ export default {
       "name": "Daemonic Incursion",
       "sid": "5357f63c-7c70-459e-aa3b-1ea9c4ef48bb",
       "dp": 3,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold",
+        "Disruption"
+      ],
       "enhancements": [
         {
           "name": "A’rgath, The King of Blades",
@@ -3967,7 +3974,9 @@ export default {
       "name": "Legion of Excess",
       "sid": "e64491c2-1e38-485c-959c-2b0bdf2cffaa",
       "dp": 2,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "enhancements": [
         {
           "name": "False Majesty (Aura)",
@@ -4037,7 +4046,9 @@ export default {
       "name": "Lords of the Warp",
       "sid": "fe916344-deef-4c81-99ed-2adae0a8c296",
       "dp": 1,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "enhancements": [
         {
           "name": "Swollen with Power (Upgrade)",
@@ -4065,7 +4076,9 @@ export default {
       "name": "Plague Legion",
       "sid": "778d3486-9f71-4253-90b9-c7ca150fc011",
       "dp": 2,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "enhancements": [
         {
           "name": "Cankerblight (Aura)",
@@ -4135,7 +4148,9 @@ export default {
       "name": "Scintillating Legion",
       "sid": "d7d52d0d-d7af-4bc4-9a77-6ca0250a1d2c",
       "dp": 2,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "enhancements": [
         {
           "name": "Inescapable Eye",
@@ -4205,7 +4220,9 @@ export default {
       "name": "Shadow Legion",
       "sid": "95dd7e2e-5318-4271-b9dc-38592794539f",
       "dp": 2,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "excludedUnits": [
         "kairos-fateweaver",
         "epidemius",
@@ -4277,7 +4294,9 @@ export default {
       "name": "Warptide",
       "sid": "bdbd5d64-bccf-4d77-bcac-2e19815d1516",
       "dp": 1,
-      "fd": "Reconnaissance",
+      "fds": [
+        "Reconnaissance"
+      ],
       "enhancements": [
         {
           "name": "Bane-forged Weapons (Upgrade)",

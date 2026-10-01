@@ -9,7 +9,7 @@
 //     Ambush / Resurgence points), 3 pack detachments (Heroes of the Uprising, Purestrain
 //     Broodswarm, Xenocult Masses; Final Day is also printed in the pack) and Rules Updates.
 //   MFM (src/data/mfm/genestealer-cults.js) → per-enhancement points, per-detachment dp /
-//     forceDisposition, and the PURESTRAIN / HOSTS `unique` tags.
+//     forceDispositions, and the PURESTRAIN / HOSTS `unique` tags.
 //
 // 9 detachments total, matching the MFM list. EN-first: `ru` reuses the same object for now.
 // Markup follows useRenderInline / RuleBlock / StratCard conventions. Datasheets later.
@@ -53,7 +53,7 @@ Use a circular 32mm diameter marker for Cult Ambush markers. If an enemy model (
       name: "Biosanctic Broodsurge",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold"],
       unique: "PURESTRAIN",
       rule: {
         name: "Hypermorphic Fury",
@@ -161,7 +161,7 @@ Use a circular 32mm diameter marker for Cult Ambush markers. If an enemy model (
       name: "Brood Brothers Auxilia",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: "Integrated Tactics & BROOD BROTHERS",
         flavor: "Coordinating with their militant allies via stolen vox equipment or signalling with cult icons, the insidious broodkin engulfs the hated foe in overlapping fields of fire.",
@@ -268,7 +268,7 @@ Use a circular 32mm diameter marker for Cult Ambush markers. If an enemy model (
       name: "Final Day",
       source: 'faction-pack', // printed in the pack (identical to the codex text except Divine Imperative)
       dp: 2,
-      forceDisposition: "Purge the Foe",
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: "Psionic Parasitism",
         flavor: "With each tug on the synaptic leash, the Hive Mind drains more of its hapless worshippers.",
@@ -375,7 +375,7 @@ Use a circular 32mm diameter marker for Cult Ambush markers. If an enemy model (
       name: "Host of Ascension",
       source: 'codex',
       dp: 3,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold", "Reconnaissance"],
       unique: "HOSTS",
       rule: {
         name: "A Perfect Ambush",
@@ -483,7 +483,7 @@ Use a circular 32mm diameter marker for Cult Ambush markers. If an enemy model (
       name: "Outlander Claw",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Reconnaissance",
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: "Rapid Takeover",
         flavor: "Whether forming loose clans of wandering nomads or militarised rapid-reaction corps, the cultists of Outlander Claws use their experience to launch assaults on prominent targets. Swiftly exploiting or rigging them with proximity charges, they can deny resources to the enemy without yoking themselves to a static defence.",
@@ -590,7 +590,7 @@ Use a circular 32mm diameter marker for Cult Ambush markers. If an enemy model (
       name: "Xenocreed Congregation",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: "Unquestioning Fanaticism",
         flavor: "Downtrodden by the oppressors for so long, a cult’s lowly broodkin are fanatically devoted to their leaders, for those hallowed individuals serve the Patriarchs will more directly. The masses draw upon energy reserves in their desire to heed their masters’ wishes, surging selflessly into the fray, ready to hurl themselves in harm’s way for the Patriarch’s chosen.",
@@ -698,7 +698,7 @@ Use a circular 32mm diameter marker for Cult Ambush markers. If an enemy model (
       name: "Heroes of the Uprising",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption"],
       rule: {
         name: "Killer Reputation",
         flavor: "What passes for folk heroism amongst the deviants of the Genestealer Cults is part broodmind compulsion and unwilling worship, and part these champions’ ability to commit deeds of great and terrible violence against any who stand in the way of the cult.",
@@ -760,7 +760,7 @@ Use a circular 32mm diameter marker for Cult Ambush markers. If an enemy model (
       name: "Purestrain Broodswarm",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets"],
       unique: "PURESTRAIN",
       rule: {
         name: "Enemy Within",
@@ -824,7 +824,7 @@ Use a circular 32mm diameter marker for Cult Ambush markers. If an enemy model (
       name: "Xenocult Masses",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Reconnaissance",
+      forceDispositions: ["Reconnaissance"],
       unique: "HOSTS",
       rule: {
         name: "Hordes of the Faithful",

@@ -5528,7 +5528,9 @@ export default {
       "name": "Advanced Acquisition Cadre",
       "sid": "a45bd323-7d95-41b8-82ff-eba352aba663",
       "dp": 1,
-      "fd": "Reconnaissance",
+      "fds": [
+        "Reconnaissance"
+      ],
       "enhancements": [
         {
           "name": "Negation Emitters (Upgrade)",
@@ -5572,7 +5574,9 @@ export default {
       "name": "Auxiliary Cadre",
       "sid": "5bdc7f35-d1cc-4c58-9888-81ee3f0ee8ab",
       "dp": 1,
-      "fd": "Disruption",
+      "fds": [
+        "Disruption"
+      ],
       "unique": "AUXILIARY",
       "enhancements": [
         {
@@ -5609,7 +5613,9 @@ export default {
       "name": "Experimental Prototype Cadre",
       "sid": "c20f90be-bf55-4d26-97af-7bb642836256",
       "dp": 1,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "unique": "BATTLESUIT",
       "enhancements": [
         {
@@ -5654,7 +5660,9 @@ export default {
       "name": "Kauyon",
       "sid": "e1b3fdde-652c-40a6-953d-e34e4af44fe5",
       "dp": 2,
-      "fd": "Reconnaissance",
+      "fds": [
+        "Reconnaissance"
+      ],
       "enhancements": [
         {
           "name": "Exemplar of the Kauyon",
@@ -5716,7 +5724,9 @@ export default {
       "name": "Kroot Hunting Pack",
       "sid": "5f9bd941-4904-4e4c-b880-35543f704f17",
       "dp": 2,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "unique": "AUXILIARY",
       "enhancements": [
         {
@@ -5773,7 +5783,10 @@ export default {
       "name": "Mont’ka",
       "sid": "24deeda2-032e-4f18-a7ce-d206044a1bd1",
       "dp": 3,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold",
+        "Priority Assets"
+      ],
       "enhancements": [
         {
           "name": "Exemplar of the Mont’ka",
@@ -5835,7 +5848,10 @@ export default {
       "name": "Retaliation Cadre",
       "sid": "0e473cae-5f5c-4f69-8134-b2bd70df0569",
       "dp": 3,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe",
+        "Reconnaissance"
+      ],
       "unique": "BATTLESUIT",
       "enhancements": [
         {

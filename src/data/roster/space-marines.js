@@ -10518,7 +10518,9 @@ export default {
       "name": "Assault Brethren",
       "sid": "6fead3ce-6ab9-4637-9c53-70af7ee47328",
       "dp": 1,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "unique": "DOCTRINES",
       "enhancements": [
         {
@@ -10556,7 +10558,10 @@ export default {
       "name": "Blade of Ultramar",
       "sid": "02b3f939-2e5a-4952-8f16-861e4de692f9",
       "dp": 3,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold",
+        "Priority Assets"
+      ],
       "enhancements": [
         {
           "name": "Armour of Antoninus",
@@ -10613,7 +10618,9 @@ export default {
       "name": "Ceramite Sentinels",
       "sid": "15bfed5b-2c63-4ae3-ac45-c109823c18b2",
       "dp": 2,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "enhancements": [
         {
           "name": "Castellum Omnivox",
@@ -10670,7 +10677,9 @@ export default {
       "name": "Devastator Brethren",
       "sid": "31cf4080-95f4-44a4-acfc-9ac9e2c93c62",
       "dp": 1,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "unique": "DOCTRINES",
       "enhancements": [
         {
@@ -10714,7 +10723,9 @@ export default {
       "name": "Forgefather's Seekers",
       "sid": "450c972e-7e20-4dcd-b3e5-09908b51319a",
       "dp": 2,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "enhancements": [
         {
           "name": "War Tempered Artifice",
@@ -10771,7 +10782,9 @@ export default {
       "name": "Gauntlet Task Force",
       "sid": "e27a3395-01d7-4d89-aa99-cc333d833217",
       "dp": 1,
-      "fd": "Reconnaissance",
+      "fds": [
+        "Reconnaissance"
+      ],
       "enhancements": [
         {
           "name": "Linebreaker Onslaught",
@@ -10806,7 +10819,10 @@ export default {
       "name": "Gladius Task Force",
       "sid": "114dee6f-802a-49f4-a0db-0296eb5434b3",
       "dp": 3,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold",
+        "Priority Assets"
+      ],
       "enhancements": [
         {
           "name": "Laurels of Triumph",
@@ -10862,7 +10878,9 @@ export default {
       "name": "Gravis Linebreaker Force",
       "sid": "c36cda66-a994-4354-aa2a-fb4fd2338efa",
       "dp": 1,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "unique": "GRAVIS",
       "enhancements": [
         {
@@ -10895,7 +10913,9 @@ export default {
       "name": "Gravis Siege Force",
       "sid": "2fc4c2ed-d11d-40a5-8b56-2339e226203c",
       "dp": 1,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "unique": "GRAVIS",
       "enhancements": [
         {
@@ -10923,7 +10943,9 @@ export default {
       "name": "Ironclad Champions",
       "sid": "1f9b6d20-1a56-4a45-8621-4ee2648e029a",
       "dp": 1,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "enhancements": [
         {
           "name": "Venerable Champion (Aura) (Upgrade)",
@@ -10959,7 +10981,9 @@ export default {
       "name": "Ironstorm Spearhead",
       "sid": "b9473893-6dae-43fd-a3f2-e27a93a56c95",
       "dp": 1,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "unique": "IRONSTORM",
       "enhancements": [
         {
@@ -11012,7 +11036,9 @@ export default {
       "name": "Medusa's Wrath",
       "sid": "930a1894-6943-499a-afdb-d738d8feecde",
       "dp": 2,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "unique": "IRONSTORM",
       "enhancements": [
         {
@@ -11070,7 +11096,9 @@ export default {
       "name": "Phobos Shadow Force",
       "sid": "ad2c163a-82ee-4279-8dde-b36217f3e5d3",
       "dp": 1,
-      "fd": "Disruption",
+      "fds": [
+        "Disruption"
+      ],
       "unique": "PHOBOS",
       "enhancements": [
         {
@@ -11103,7 +11131,9 @@ export default {
       "name": "Phobos Shock Force",
       "sid": "55db5c18-2a63-4cbb-8ed4-542525cf600a",
       "dp": 1,
-      "fd": "Disruption",
+      "fds": [
+        "Disruption"
+      ],
       "unique": "PHOBOS",
       "enhancements": [
         {
@@ -11136,7 +11166,9 @@ export default {
       "name": "Shadowmark Talon",
       "sid": "2abbe473-834a-4d05-85cd-283139a2782f",
       "dp": 2,
-      "fd": "Disruption",
+      "fds": [
+        "Disruption"
+      ],
       "unique": "PHOBOS",
       "enhancements": [
         {
@@ -11200,7 +11232,9 @@ export default {
       "name": "Spearpoint Task Force",
       "sid": "6e136474-1510-4fc8-8c68-1324deb430bd",
       "dp": 2,
-      "fd": "Reconnaissance",
+      "fds": [
+        "Reconnaissance"
+      ],
       "enhancements": [
         {
           "name": "Spearpoint Paragon",
@@ -11270,7 +11304,9 @@ export default {
       "name": "Stormlance Task Force",
       "sid": "0a2a5520-e6cc-4f3f-ac87-b00addae1023",
       "dp": 1,
-      "fd": "Reconnaissance",
+      "fds": [
+        "Reconnaissance"
+      ],
       "enhancements": [
         {
           "name": "Auspex Triangulation Shrines (Upgrade)",
@@ -11312,7 +11348,9 @@ export default {
       "name": "Tactical Brethren",
       "sid": "2df70179-96ad-4f64-b5fd-a0ee2b7a904d",
       "dp": 1,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "unique": "DOCTRINES",
       "enhancements": [
         {
@@ -11345,7 +11383,9 @@ export default {
       "name": "Tacticus Attack Force",
       "sid": "fe1cc3f3-76af-4036-9709-629374090134",
       "dp": 1,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "unique": "TACTICUS",
       "enhancements": [
         {
@@ -11378,7 +11418,9 @@ export default {
       "name": "Tacticus Firestorm Force",
       "sid": "40603815-0ddb-4180-bd06-143ab40f0985",
       "dp": 1,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "unique": "TACTICUS",
       "enhancements": [
         {
@@ -11411,7 +11453,9 @@ export default {
       "name": "Terminator Storm Force",
       "sid": "32355f5d-db41-4589-ad75-e2801b5d8afb",
       "dp": 1,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "unique": "TERMINATOR",
       "enhancements": [
         {

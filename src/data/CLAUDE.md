@@ -212,7 +212,7 @@ September even though `sync-core` printed it on every run — one finding among 
     of which 7 pointed at nothing). `aliasesRu` is deliberately out: it is search input, not rules.
 
 - **`npm run detmeta`** (`scripts/check-detachment-meta.mjs`) — a detachment's `dp` /
-  `forceDisposition` in the hand-authored `src/data/factions/<slug>.js` against `src/data/mfm/`.
+  `forceDispositions` (every one the MFM lists, in its order) in the hand-authored `src/data/factions/<slug>.js` against `src/data/mfm/`.
   `sync-tracker`'s `detachments` category compares MFM ↔ appdata and had been clean for months; the
   page the player actually reads was in neither side of it, and 63 values across 24 factions had
   drifted. The MFM wins — every faction file's own header says so. RU overlays carry neither field,

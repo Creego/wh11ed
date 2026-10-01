@@ -1914,7 +1914,10 @@ export default {
       "name": "Black Spear Task Force",
       "sid": "c1d55a39-555a-4af4-8401-ec09e1231edf",
       "dp": 3,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets",
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Osseus Key (Aura)",

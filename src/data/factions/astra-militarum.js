@@ -11,7 +11,7 @@
 //     detachments (Abhuman Auxiliaries, Designation Force), a full rewrite of Bridgehead
 //     Strike (replaces the older 6-stratagem version) and Rules Updates.
 //   MFM (src/data/mfm/astra-militarum.js) → per-enhancement points, per-detachment dp /
-//     forceDisposition, and the ABHUMAN / RECON `unique` tags.
+//     forceDispositions, and the ABHUMAN / RECON `unique` tags.
 //
 // 11 detachments total, matching the MFM list. EN-first: `ru` reuses the same object for
 // now. Markup follows useRenderInline / RuleBlock / StratCard conventions. Datasheets later.
@@ -46,7 +46,7 @@ Until the start of your next Command phase, the unit you selected is affected by
       name: "Armoured Infantry",
       source: 'faction-pack', // printed in the pack (identical to the codex text)
       dp: 2,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: "Squadron Command",
         flavor: "Officers in charge of motorised formations are as well versed in armoured combat as in infantry operations.",
@@ -154,7 +154,7 @@ Until the start of your next Command phase, the unit you selected is affected by
       name: "Combined Arms",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: "Born Soldiers",
         flavor: "Regiments of numerous origins and tactical roles inculcate their soldiers from an early age with the legendary doctrines of the Tactica Imperium. Infantry train in close-range fire patterns intended to decimate enemy soldiers, whilst tank crews spend countless hours practising to bring down enemy armour and rampaging monstrosities.",
@@ -261,7 +261,7 @@ Until the start of your next Command phase, the unit you selected is affected by
       name: "Grizzled Company",
       source: 'faction-pack', // printed in the pack (identical to the codex text)
       dp: 3,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets", "Purge the Foe"],
       unique: "ABHUMAN",
       rule: {
         name: "Ruthless Discipline",
@@ -369,7 +369,7 @@ Until the start of your next Command phase, the unit you selected is affected by
       name: "Hammer of the Emperor",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Purge the Foe",
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: "Iron Tread",
         flavor: "The armoured spearhead of an Astra Militarum army group grinds relentlessly forward, ploughing through enemy infantry with arrogant disregard.",
@@ -476,7 +476,7 @@ Until the start of your next Command phase, the unit you selected is affected by
       name: "Mechanised Assault",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Reconnaissance",
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: "Armoured Fist",
         flavor: "Astra Militarum mechanised forces combine heavy armour with elite infantry. Reliant on speed and short-ranged firepower, the armoured spearhead hurtles through the enemy line and deploys its cargo of shock troops to cut the enemy down with volleys of lasgun fire.",
@@ -583,7 +583,7 @@ Until the start of your next Command phase, the unit you selected is affected by
       name: "Recon Element",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Reconnaissance",
+      forceDispositions: ["Reconnaissance"],
       unique: "RECON",
       rule: {
         name: "Masters of Camouflage",
@@ -691,7 +691,7 @@ Until the start of your next Command phase, the unit you selected is affected by
       name: "Siege Regiment",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption"],
       rule: {
         name: "Artillery Support",
         flavor: "Artillery barrages lay the ground for the assault to come.",
@@ -798,7 +798,7 @@ Until the start of your next Command phase, the unit you selected is affected by
       name: "Steel Hammer",
       source: 'faction-pack', // printed in the pack (identical to the codex text)
       dp: 2,
-      forceDisposition: "Purge the Foe",
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: "Ceaseless Cannonade",
         flavor: "The heaviest Astra Militarum vehicles are adamantine behemoths whose armour is almost impenetrable. The crews of these colossal war engines need have no concern for the integrity of their vehicles, unleashing even the most violently destructive ordnance at point-blank range.",
@@ -906,7 +906,7 @@ Until the start of your next Command phase, the unit you selected is affected by
       name: "Abhuman Auxiliaries",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold"],
       unique: "ABHUMAN",
       rule: {
         name: "Absolutist Principles",
@@ -973,7 +973,7 @@ Until the start of your next Command phase, the unit you selected is affected by
       name: "Bridgehead Strike",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: "Fire Zone Purge",
         flavor: "Key to this force\u2019s mission is the swift purgation of local enemy forces through sudden deployment and focused firefights. As such, whether they hit the ground from a low-altitude drop or deploy from armoured transports, the soldiers of this formation are trained to find targets and start shooting the instant the foe is in sight.",
@@ -1035,7 +1035,7 @@ Until the start of your next Command phase, the unit you selected is affected by
       name: "Designation Force",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Reconnaissance",
+      forceDispositions: ["Reconnaissance"],
       unique: "RECON",
       rule: {
         name: "Designated Targets",

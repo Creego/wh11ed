@@ -6,7 +6,7 @@
 //   Faction Pack v1.0 (sources/Faction pack 11 ed/xenos/Tyranids (2).pdf) → 4 extra
 //     detachments (Ambush Predators, Talons of the Norn Queen, Warrior Bioform Onslaught,
 //     Subterranean Assault) + Rules Updates.
-//   MFM → per-enhancement points, per-detachment dp / forceDisposition.
+//   MFM → per-enhancement points, per-detachment dp / forceDispositions.
 //
 // 10 detachments total, matching the Munitorum Field Manual list. Faction-Pack "Rules
 // Updates" have been folded into the codex army rules / detachment text (they are the
@@ -51,7 +51,7 @@ If your Army Faction is Tyranids, once per battle, in either player's Command ph
       name: 'Invasion Fleet',
       source: 'codex',
       dp: 3,
-      forceDisposition: 'Take and Hold',
+      forceDispositions: ["Take and Hold", "Priority Assets"],
       rule: {
         name: 'Hyper-adaptations',
         flavor:
@@ -172,7 +172,7 @@ If your Army Faction is Tyranids, once per battle, in either player's Command ph
       name: 'Crusher Stampede',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Purge the Foe',
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: 'Enraged Behemoths',
         flavor:
@@ -294,7 +294,7 @@ In addition, while a Tyranids Monster unit from your army (excluding Battle-shoc
       name: 'Unending Swarm',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Take and Hold',
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: 'Insurmountable Odds',
         flavor:
@@ -411,7 +411,7 @@ In addition, while a Tyranids Monster unit from your army (excluding Battle-shoc
       name: 'Assimilation Swarm',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Priority Assets',
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: 'Feed the Swarm',
         flavor:
@@ -534,7 +534,7 @@ In addition, while a Tyranids Monster unit from your army (excluding Battle-shoc
       name: 'Vanguard Onslaught',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Reconnaissance',
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: 'Questing Tendrils',
         flavor:
@@ -654,7 +654,7 @@ Deathleaper loses the Hunter Organism rule and can be your Warlord.`,
       name: 'Synaptic Nexus',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Disruption',
+      forceDispositions: ["Disruption"],
       rule: {
         name: 'Synaptic Imperatives',
         flavor:
@@ -775,7 +775,7 @@ Deathleaper loses the Hunter Organism rule and can be your Warlord.`,
       name: 'Ambush Predators',
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: 'Disruption',
+      forceDispositions: ["Disruption"],
       rule: {
         name: 'Mindhunger',
         flavor:
@@ -844,7 +844,7 @@ Deathleaper loses the Hunter Organism rule and can be your Warlord.`,
       name: 'Talons of the Norn Queen',
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: 'Take and Hold',
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: 'Higher Imperatives',
         flavor:
@@ -915,7 +915,7 @@ Deathleaper loses the Hunter Organism rule and can be your Warlord.`,
       name: 'Warrior Bioform Onslaught',
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: 'Take and Hold',
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: 'Leader-beasts',
         flavor:
@@ -985,7 +985,7 @@ Deathleaper loses the Hunter Organism rule and can be your Warlord.`,
       name: 'Subterranean Assault',
       source: 'faction-pack',
       dp: 3,
-      forceDisposition: 'Disruption',
+      forceDispositions: ["Disruption", "Reconnaissance"],
       rule: {
         name: 'Surprise Assault',
         flavor:

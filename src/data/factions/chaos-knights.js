@@ -11,7 +11,7 @@
 //     Fiefdom (replaces the older 6-stratagem version) and Rules Updates (incl. the
 //     Darkness Dread ability rewrite).
 //   MFM (src/data/mfm/chaos-knights.js) → per-enhancement points, per-detachment dp /
-//     forceDisposition. MFM v1.3 printed "UNIQUE TAG REMOVED" over Houndpack Lance and
+//     forceDispositions. MFM v1.3 printed "UNIQUE TAG REMOVED" over Houndpack Lance and
 //     Hunting Warpack, so the WAR DOGS `unique` tag is gone and the sentence that spelled it
 //     out went with it — the codex prose appdata still carries has not caught up, and the
 //     MFM is the tag’s home.
@@ -57,7 +57,7 @@ Each time a model with this ability makes a Normal, Advance or Fall Back move, i
       name: "Helhunt Lance",
       source: 'faction-pack', // printed in the pack (identical to the codex text)
       dp: 2,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption"],
       rule: {
         name: "Masters of the Pack",
         flavor: "By bending their tyrannical will upon their War Dog underlings, the masters of the hunt goad them to provide a constant stream of sensor data. This influx of supplementary targeting, prey-seeking and omnisensory analysis enhances the scions’ ability to hunt alongside their snarling ironclad hounds.",
@@ -164,7 +164,7 @@ Each time a model with this ability makes a Normal, Advance or Fall Back move, i
       name: "Houndpack Lance",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Reconnaissance",
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: "Marked Prey",
         flavor: "Once War Dogs have singled out a victim, they target it relentlessly until it is dragged down and torn apart.",
@@ -272,7 +272,7 @@ Each time a model with this ability makes a Normal, Advance or Fall Back move, i
       name: "Infernal Lance",
       source: 'codex',
       dp: 3,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets", "Purge the Foe"],
       rule: {
         name: "Malefic Surge",
         flavor: "Calling upon heretical - often supernatural - powers, these Knights are infused with strange and terrible might.",
@@ -379,7 +379,7 @@ Each time a model with this ability makes a Normal, Advance or Fall Back move, i
       name: "Lords of Dread",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: "Tyrannical Court",
         flavor: "Every one of these egomaniacal warriors seeks to claim all the battlefield glory for themselves, at any cost.",
@@ -498,7 +498,7 @@ Each time a model with this ability makes a Normal, Advance or Fall Back move, i
       name: "Traitoris Lance",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Purge the Foe",
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: "Paragons of Terror",
         flavor: "Steeped in the dark powers of the warp, bred into bloodlines who make a tradition of cruelty and a virtue of malice, these merciless warriors delight in spreading fear and dismay.",
@@ -606,7 +606,7 @@ Each time a model with this ability makes a Normal, Advance or Fall Back move, i
       name: "Bastions of Tyranny",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: "Annihilate the Unworthy",
         flavor: "The withering arsenal of cursed weaponry available to a Knight Tyrant is turned with the cruellest focus upon those its scion despises for their weakness of spirit.",
@@ -668,7 +668,7 @@ Each time a model with this ability makes a Normal, Advance or Fall Back move, i
       name: "Hunting Warpack",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Reconnaissance",
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: "Scenting Fear",
         flavor: "The corrupted pilots of War Dog suits despise fear and cowardice in the foe almost as much as they revel in hunting such prey and betraying their hiding places.",
@@ -734,7 +734,7 @@ Each time a model with this ability makes a Normal, Advance or Fall Back move, i
       name: "Iconoclast Fiefdom",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: "Wretched Thralls",
         flavor: "Devoted mortal thralls flock to fight in the titanic shadow of their mechanical idols with chanted prayers and brayed challenges.",

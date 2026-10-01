@@ -10,7 +10,7 @@
 //     detachments (Chorus of Condemnation, Sacred Champions, Sanctified Orators) and
 //     Rules Updates.
 //   MFM (src/data/mfm/adepta-sororitas.js) → per-enhancement points, per-detachment dp /
-//     forceDisposition, and the REVEREND `unique` tag.
+//     forceDispositions, and the REVEREND `unique` tag.
 //
 // 8 detachments total, matching the MFM list. EN-first: `ru` reuses the same object for
 // now. Markup follows useRenderInline / RuleBlock / StratCard conventions. Datasheets later.
@@ -52,7 +52,7 @@ Before making a dice roll for a model or unit from your army with the Acts of Fa
       name: "Army of Faith",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: "Sacred Rites",
         flavor: "At times of war, the Adepta Sororitas make offerings to the Emperor in prayer, incense and blood. In such pious devotion, they may attract his blessings and enact miraculous deeds in his holy name.",
@@ -159,7 +159,7 @@ Before making a dice roll for a model or unit from your army with the Acts of Fa
       name: "Bringers of Flame",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: "Fervent Purgation",
         flavor: "These warriors carry the fiery wrath of the Emperor into the darkest corners of his realm. Through the weapons of the faithful is the Master of Mankind’s immortal anger made manifest. With the holy trinity of boltgun, flamer and melta weapons are his enemies purged from the lmperium’s worlds.",
@@ -266,7 +266,7 @@ Before making a dice roll for a model or unit from your army with the Acts of Fa
       name: "Champions of Faith",
       source: 'faction-pack', // printed in the pack (identical to the codex text)
       dp: 2,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption"],
       unique: "REVEREND",
       rule: {
         name: "Righteous Purpose",
@@ -374,7 +374,7 @@ Before making a dice roll for a model or unit from your army with the Acts of Fa
       name: "Hallowed Martyrs",
       source: 'codex',
       dp: 3,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold", "Priority Assets"],
       rule: {
         name: "The Blood of Martyrs",
         flavor: "The blood of martyrs is the life force of the Imperium. So do the tenets of this Order joyously proclaim, and in its warriors’ darkest hour does the sacrifice of their fallen Sisters shine brightest.",
@@ -481,7 +481,7 @@ Before making a dice roll for a model or unit from your army with the Acts of Fa
       name: "Penitent Host",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Purge the Foe",
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: "Desperate for Redemption",
         flavor: "The penitent masses vow to wash clean their dishonour with their foe’s blood.",
@@ -589,7 +589,7 @@ Before making a dice roll for a model or unit from your army with the Acts of Fa
       name: "Chorus of Condemnation",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Reconnaissance",
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: "Angelic Judgement",
         flavor: "Granted a greater perspective of the heretical foe\u2019s disposition, an Order\u2019s angelic veterans roar condemnatory psalms of revelation that unmask the enemy\u2019s evil for all to see.",
@@ -652,7 +652,7 @@ Before making a dice roll for a model or unit from your army with the Acts of Fa
       name: "Sacred Champions",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold"],
       unique: "REVEREND",
       rule: {
         name: "Holy Quest",
@@ -716,7 +716,7 @@ Before making a dice roll for a model or unit from your army with the Acts of Fa
       name: "Sanctified Orators",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption"],
       rule: {
         name: "Hymns of Battle",
         flavor: "On the battlefield, the faithful warriors of the Adepta Sororitas heed the stirring hymns recited by their commanders, whose inspirational words stoke their righteous fervour.",

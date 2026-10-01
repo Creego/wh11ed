@@ -1392,7 +1392,9 @@ export default {
       "name": "Fist of the God-Emperor",
       "sid": "c7cef828-bc60-4501-9309-dd7a1bb6d0b9",
       "dp": 1,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "enhancements": [
         {
           "name": "Oathbound Exemplar",
@@ -1429,7 +1431,9 @@ export default {
       "name": "Marshal's Household",
       "sid": "58c695ca-ad6f-45ea-b7d9-722053b6482c",
       "dp": 1,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "enhancements": [
         {
           "name": "Fervent Exemplars (Upgrade)",
@@ -1471,7 +1475,9 @@ export default {
       "name": "Vow-sworn Crusaders",
       "sid": "ced4cd04-74b5-4341-a7c8-5da07b5b5620",
       "dp": 2,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Incendiary Animus",

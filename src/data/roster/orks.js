@@ -4914,7 +4914,9 @@ export default {
       "name": "Blitz Brigade",
       "sid": "0e5059d2-a59b-4e2f-bb95-ac173b814600",
       "dp": 1,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "enhancements": [
         {
           "name": "Boss Boomer (Upgrade)",
@@ -4950,7 +4952,9 @@ export default {
       "name": "Brute Bosses",
       "sid": "0f071f29-4547-4912-b020-d667768633b4",
       "dp": 1,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Surly as a Squiggoth",
@@ -5031,7 +5035,9 @@ export default {
       "name": "Bully Boyz",
       "sid": "1d37b096-4033-427c-81eb-0c1f17f6e8ae",
       "dp": 1,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Wimp-kickaz (Upgrade)",
@@ -5058,7 +5064,9 @@ export default {
       "name": "Da Big Hunt",
       "sid": "a8c9d0d1-fb4d-456b-a7e0-5b438f11df28",
       "dp": 1,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Glory Hog",
@@ -5083,7 +5091,9 @@ export default {
       "name": "Dread Mob",
       "sid": "aa4d4b3d-e148-4807-9c97-cfd753a7b8ed",
       "dp": 1,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Cybork Boosta",
@@ -5115,7 +5125,9 @@ export default {
       "name": "Flyboyz",
       "sid": "2dd2c66d-0dea-44fd-81c6-26d869796c62",
       "dp": 1,
-      "fd": "Reconnaissance",
+      "fds": [
+        "Reconnaissance"
+      ],
       "enhancements": [
         {
           "name": "Flyboss (Upgrade)",
@@ -5157,7 +5169,9 @@ export default {
       "name": "Green Tide",
       "sid": "ba6295df-4f61-4f43-9efb-3010eb9c88c3",
       "dp": 1,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "enhancements": [
         {
           "name": "Ferocious Show-off",
@@ -5187,7 +5201,9 @@ export default {
       "name": "Kult of Speed",
       "sid": "1c84ef6c-4164-4a64-abdf-8577f64d629a",
       "dp": 1,
-      "fd": "Reconnaissance",
+      "fds": [
+        "Reconnaissance"
+      ],
       "enhancements": [
         {
           "name": "Smoky Gubbinz (Upgrade)",
@@ -5214,7 +5230,9 @@ export default {
       "name": "Madcap Meks",
       "sid": "beaf8d96-1012-484c-abaa-afe3b0911236",
       "dp": 1,
-      "fd": "Disruption",
+      "fds": [
+        "Disruption"
+      ],
       "enhancements": [
         {
           "name": "Mekwaaagh! Mastermind",
@@ -5248,7 +5266,9 @@ export default {
       "name": "Runt Swarm",
       "sid": "623dee62-7c5e-4239-83a6-cb74adeb3afe",
       "dp": 1,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "enhancements": [
         {
           "name": "Extra Sneaky (Upgrade)",
@@ -5270,7 +5290,9 @@ export default {
       "name": "Shoota Boyz",
       "sid": "7e37200a-f6d0-4a2b-9fc1-ad9f16cf709a",
       "dp": 1,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Supa-glowy Fing",
@@ -5313,7 +5335,9 @@ export default {
       "name": "Taktikal Brigade",
       "sid": "1ac21eaa-018a-4d1c-9ed3-b49532c30bed",
       "dp": 1,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "enhancements": [
         {
           "name": "Kill Kommanda",
@@ -5352,7 +5376,10 @@ export default {
       "name": "War Horde",
       "sid": "597e09eb-b32e-47de-bbf6-3765d43579ca",
       "dp": 3,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold",
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Headwoppa's Killchoppa",
@@ -5408,7 +5435,9 @@ export default {
       "name": "Wreckas",
       "sid": "57d116b1-ecfb-40f9-bf73-a99ff5b024e8",
       "dp": 1,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "enhancements": [
         {
           "name": "Kaptin's Hat",
@@ -5448,7 +5477,9 @@ export default {
       "name": "Wurrband",
       "sid": "89c022fe-0f5b-4ff4-9b10-a17665571fdb",
       "dp": 1,
-      "fd": "Disruption",
+      "fds": [
+        "Disruption"
+      ],
       "enhancements": [
         {
           "name": "Da Krunch",

@@ -2,8 +2,7 @@
   <button
     type="button"
     class="det"
-    :class="{ on, tone: !!tone }"
-    :style="tone"
+    :class="{ on }"
   >
     <span class="det-main">
       <span class="det-name">{{ name }}</span>
@@ -28,7 +27,7 @@
     <!-- The cost and, under it, the disposition — the two facts a detachment is chosen by, in one
          column on the right (owner, 2026-09-25); the names keep the left to themselves. -->
     <span
-      v-if="dp || forceDisposition"
+      v-if="dp || forceDispositions.length"
       class="det-side"
     >
       <span
@@ -36,9 +35,11 @@
         class="det-dp"
       >{{ dp }} DP</span>
       <span
-        v-if="forceDisposition"
-        class="tone-chip"
-      >{{ forceDisposition }}</span>
+        v-for="fd in forceDispositions"
+        :key="fd"
+        class="tone tone-chip"
+        :style="toneVars(dispositionColor(fd))"
+      >{{ fd }}</span>
     </span>
   </button>
 </template>
@@ -51,19 +52,19 @@
 //
 // Each row wears its disposition's colour on the chip under the price, because the disposition is
 // what a detachment is FOR, and five of them down a list are told apart faster by hue than by
-// reading (dispositionColors.js). The DP cost sits on the right, where a cost is looked for, with
+// reading (dispositionColors.js). A detachment that gives access to two (core rules 25.04 — 39 of
+// them in MFM v1.5) wears two chips, each in its own colour. The DP cost sits on the right, where a cost is looked for, with
 // the disposition under it. (A coloured stripe on the row's edge went, at the owner's word,
 // 2026-09-25: the chip already says it.) Every field but `name` is optional: the faction bar reuses its
 // picker for the Chapter list, which is plain names.
 // (Said here, not above the <button>: a comment before the root makes the component a Fragment.)
-import { computed } from 'vue'
 import { toneVars } from '../utils/tone.js'
 import { dispositionColor } from '../data/dispositionColors.js'
 
-const props = defineProps({
+defineProps({
   name: { type: String, required: true },
   nameRu: { type: String, default: '' },
-  forceDisposition: { type: String, default: '' },
+  forceDispositions: { type: Array, default: () => [] },
   // The detachment's UNIQUE tag, and a second quiet keyword (the Chapter a detachment is locked to).
   unique: { type: String, default: '' },
   tag: { type: String, default: '' },
@@ -71,7 +72,6 @@ const props = defineProps({
   on: { type: Boolean, default: false },
 })
 
-const tone = computed(() => toneVars(props.forceDisposition && dispositionColor(props.forceDisposition)))
 </script>
 
 <style scoped>

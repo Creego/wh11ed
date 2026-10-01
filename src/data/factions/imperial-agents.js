@@ -10,7 +10,7 @@
 //     (per-model paid upgrades).
 //   Faction Pack v1.0 (sources/Faction pack 11 ed/imperium/Agents.pdf) → Rules Updates.
 //   MFM (src/data/mfm/imperial-agents.js) → per-enhancement points, per-detachment dp /
-//     forceDisposition.
+//     forceDispositions.
 //
 // 5 detachments total, matching the MFM list. EN-first: `ru` reuses the same object for
 // now. Markup follows useRenderInline / RuleBlock / StratCard conventions. Datasheets later.
@@ -40,7 +40,7 @@ Note that you can include AGENTS OF THE IMPERIUM DEDICATED TRANSPORT units in su
       name: "Imperialis Fleet",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Reconnaissance",
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: "At all Costs",
         flavor: "While the nature of the missions undertaken by Imperial agents is as varied as they are, the vital importance of these tasks rarely changes. The enemies they face are the most unholy. The prizes they seek are as priceless as they are nightmarishly dangerous. Thus, when such warriors of the Imperium identify a priority target for elimination or acquisition, no effort is too great nor price too high to see their aims achieved.",
@@ -147,7 +147,7 @@ Note that you can include AGENTS OF THE IMPERIUM DEDICATED TRANSPORT units in su
       name: "Ordo Hereticus, Purgation Force",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: "Root out Heresy",
         flavor: "No matter how cunningly their heretical prey hides, they cannot escape the zealous retribution of the Ordo Hereticus.",
@@ -255,7 +255,7 @@ Note that you can include AGENTS OF THE IMPERIUM DEDICATED TRANSPORT units in su
       name: "Ordo Malleus, Daemon Hunters",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: "Destroy the Daemonic",
         flavor: "Knowing the vital nature of their mission, the servants of the Ordo Malleus fight all the harder to lay their enemies low.",
@@ -363,7 +363,7 @@ Note that you can include AGENTS OF THE IMPERIUM DEDICATED TRANSPORT units in su
       name: "Ordo Xenos, Alien Hunters",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Purge the Foe",
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: "Deathwatch Mission Tactics",
         flavor: "Thousands of years of collated strategic data and hard-won combat experience have provided the Deathwatch with the ultimate battlefield tactics to combat almost any foe.",
@@ -470,7 +470,7 @@ Note that you can include AGENTS OF THE IMPERIUM DEDICATED TRANSPORT units in su
       name: "Veiled Blade Elimination Force",
       source: 'faction-pack', // printed in the pack (identical to the codex text)
       dp: 1,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption"],
       rule: {
         name: "Extremis Sanction",
         flavor: "When pursuing an extremis-level target, the agents of the Officio Assassinorum are expected to push their altered minds and bodies beyond the limits of endurance. Additional equipment, augmentation and ammunition may be provided to complete the task.",

@@ -1982,7 +1982,9 @@ export default {
       "name": "Armoured Trailblazers",
       "sid": "a752a222-2540-4e3b-9d70-423595d238e7",
       "dp": 1,
-      "fd": "Disruption",
+      "fds": [
+        "Disruption"
+      ],
       "enhancements": [
         {
           "name": "Saturation Rounds (Upgrade)",
@@ -2024,7 +2026,9 @@ export default {
       "name": "Brandfast Oathband",
       "sid": "f36a7d83-dd08-461a-b4a1-58179deb7d96",
       "dp": 2,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "enhancements": [
         {
           "name": "Tactical Alchemy",
@@ -2080,7 +2084,9 @@ export default {
       "name": "Dêlve Assault Shift",
       "sid": "38b6d9b5-8bee-4832-ac4b-79eb7f43e4a7",
       "dp": 2,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Dêlvewerke Navigator",
@@ -2136,7 +2142,9 @@ export default {
       "name": "Farseekers",
       "sid": "513877e1-893c-41ab-b19b-7f84927ea8ed",
       "dp": 1,
-      "fd": "Reconnaissance",
+      "fds": [
+        "Reconnaissance"
+      ],
       "enhancements": [
         {
           "name": "Pan-spectral Lockons (Upgrade)",
@@ -2172,7 +2180,10 @@ export default {
       "name": "Hearthband",
       "sid": "8698abd9-3176-4792-85f4-abdd6ad5b311",
       "dp": 3,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets",
+        "Reconnaissance"
+      ],
       "unique": "HEARTHBAND",
       "enhancements": [
         {
@@ -2235,7 +2246,9 @@ export default {
       "name": "Hearthfyre Arsenal",
       "sid": "2ddd7e9d-950f-4e3e-a709-8eb4beb83bd7",
       "dp": 2,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "enhancements": [
         {
           "name": "Fârstrydr Node",
@@ -2301,7 +2314,9 @@ export default {
       "name": "Hearthguard Covenant",
       "sid": "9e7516ff-e16f-4ad9-8e43-861ca9a6d955",
       "dp": 1,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "unique": "HEARTHBAND",
       "enhancements": [
         {
@@ -2334,7 +2349,9 @@ export default {
       "name": "Mercenary Oathband",
       "sid": "bd5bc3a7-76dd-4a49-a1ec-a9a8f25dfdd9",
       "dp": 2,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "enhancements": [
         {
           "name": "Mercenary Prospector",
@@ -2390,7 +2407,9 @@ export default {
       "name": "Needgaârd Oathband",
       "sid": "36ff5ede-1c67-4cdd-9a51-f81eb47e4626",
       "dp": 2,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Oathbound Speculator",
@@ -2446,7 +2465,9 @@ export default {
       "name": "Persecution Prospect",
       "sid": "2fd1ea69-ba73-4a60-b09b-672cefd4d6f2",
       "dp": 2,
-      "fd": "Disruption",
+      "fds": [
+        "Disruption"
+      ],
       "enhancements": [
         {
           "name": "Eye for Weakness",

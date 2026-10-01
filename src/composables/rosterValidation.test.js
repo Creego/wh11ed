@@ -83,7 +83,7 @@ describe('validateRoster — completeness', () => {
   it('asks for a declaration when the detachments offer more than one disposition', () => {
     const twoDets = {
       ...faction,
-      detachments: [{ ...detachment, fd: 'Take and Hold' }, { ...detachment, name: 'Anvil', fd: 'Purge the Foe' }],
+      detachments: [{ ...detachment, fds: ['Take and Hold'] }, { ...detachment, name: 'Anvil', fds: ['Purge the Foe'] }],
     }
     const r = { ...roster(), detachments: ['Gladius', 'Anvil'] }
     const codesWith = (over) => validateRoster({ ...r, ...over }, { faction: twoDets, core }).issues
@@ -94,7 +94,7 @@ describe('validateRoster — completeness', () => {
   })
 
   it('says nothing when the chosen detachments agree about it', () => {
-    const oneFd = { ...faction, detachments: [{ ...detachment, fd: 'Take and Hold' }] }
+    const oneFd = { ...faction, detachments: [{ ...detachment, fds: ['Take and Hold'] }] }
     expect(validateRoster(roster(), { faction: oneFd, core }).issues.map((i) => i.code))
       .not.toContain('dispositionUndeclared')
   })

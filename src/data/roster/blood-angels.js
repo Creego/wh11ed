@@ -2088,7 +2088,10 @@ export default {
       "name": "Angelic Inheritors",
       "sid": "a8e82e32-5105-4997-b035-32b590145109",
       "dp": 3,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets",
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Prescient Flash",
@@ -2144,7 +2147,9 @@ export default {
       "name": "Encarmine Speartip",
       "sid": "a8367074-525c-4caa-9840-5aab3dc7f661",
       "dp": 1,
-      "fd": "Disruption",
+      "fds": [
+        "Disruption"
+      ],
       "enhancements": [
         {
           "name": "Angelic Executioner",
@@ -2182,7 +2187,9 @@ export default {
       "name": "Wrath of the Doomed",
       "sid": "a952ab50-aa3d-425c-808f-c12dade0a80f",
       "dp": 1,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "On the Archtraitor's Bridge",

@@ -6,7 +6,7 @@
 //   wh40k-appdata (Codex Supplement: Dark Angels) → army rules + 3 detachments, prose through
 //     scripts/lib/sync-common.mjs's markup converter.
 //   MFM v1.5 (src/data/mfm/dark-angels.js) → enhancement points, detachment dp /
-//     forceDisposition / unique tag.
+//     forceDispositions / unique tag.
 //
 // Oath of Moment is gone from every Space Marines army: the army rule is now Combat Doctrines
 // (tracked per battle round by armyTrackers/space-marines.js), with the rest of the army rules
@@ -30,7 +30,7 @@ const en = {
       "name": "Inner Circle Task Force",
       "source": "codex",
       "dp": 1,
-      "forceDisposition": "Priority Assets",
+      "forceDispositions": ["Priority Assets"],
       "rule": {
         "name": "Vowed Target",
         "flavor": "Whether its true significance is kept a secret or not, there is a singular prize here that the Inner Circle have come to either secure or destroy. They will pursue this strategic objective with cold ferocity.",
@@ -91,7 +91,7 @@ const en = {
       "name": "Darkflight Pursuit",
       "source": "codex",
       "dp": 1,
-      "forceDisposition": "Reconnaissance",
+      "forceDispositions": ["Reconnaissance"],
       "rule": {
         "name": "Black-winged Vigilance",
         "flavor": "The anti-grav skimmers and combat aircraft of the Ravenwing bristle not only with potent weapons but also with powerful augurs and trackers, whose sleepless machine spirits are as vigilant as the black-armoured battle-brothers.",
@@ -152,7 +152,7 @@ const en = {
       "name": "Wrath of the Rock",
       "source": "codex",
       "dp": 2,
-      "forceDisposition": "Take and Hold",
+      "forceDispositions": ["Take and Hold"],
       "unique": "TERMINATOR",
       "rule": {
         "name": "Dutiful Tenacity",

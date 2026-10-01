@@ -10,7 +10,7 @@
 //   Faction Pack v1.0 (sources/Faction pack 11 ed/xenos/LoV.pdf) → 3 pack detachments
 //     (Armoured Trailblazers, Farseekers, Hearthguard Covenant) and Rules Updates.
 //   MFM (src/data/mfm/leagues-of-votann.js) → per-enhancement points, per-detachment dp /
-//     forceDisposition, and the HEARTHBAND `unique` tag.
+//     forceDispositions, and the HEARTHBAND `unique` tag.
 //
 // 10 detachments total, matching the MFM list. EN-first: `ru` reuses the same object for
 // now. Markup follows useRenderInline / RuleBlock / StratCard conventions. Datasheets later.
@@ -54,7 +54,7 @@ In your turn, YP gained in this way are always gained before checking which abil
       name: "Brandfast Oathband",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: "Mobile Sensor Relays",
         flavor: "The massed armoured transports of a brandfast oathband connect to an encrypted data network shared by squads of Kin. Their robust sensor webs broadcast various targeting information and extrapolated judgements on enemy movements. Nearby warriors can tap into this wealth of data, enabling them to unleash salvoes of lethal efficiency.",
@@ -161,7 +161,7 @@ In your turn, YP gained in this way are always gained before checking which abil
       name: "Dêlve Assault Shift",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Purge the Foe",
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: "Fury From The Dêlve",
         flavor: "Efficiency and practicality are ingrained in all Kin. Thus, the most meagre of Cthonian dêlves are well-equipped networks of passages, accessways and teleport nodes that enable a guild's bionically altered elites to appear where the foe least expects them. They emerge saturated with cyberstimulants and full of fury, ready to smash asunder those who dare trespass amongst their guild’s operations.",
@@ -268,7 +268,7 @@ In your turn, YP gained in this way are always gained before checking which abil
       name: "Hearthband",
       source: 'faction-pack', // printed in the pack (identical to the codex text)
       dp: 3,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets", "Reconnaissance"],
       unique: "HEARTHBAND",
       rule: {
         name: "Methodical Annihilation",
@@ -376,7 +376,7 @@ In your turn, YP gained in this way are always gained before checking which abil
       name: "Hearthfyre Arsenal",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: "Optimal Application",
         flavor: "With advanced engineering knowledge and cogitational expertise, a hearthfyre arsenal’s specialists can apply the resources and information seized by the Kin to eradicate their foes efficiently. Such assets are used to coordinate the devastating fire patterns of the force’s support infantry, empowering already heavily armed Kin to the extent that little can escape their murderous fusillades.",
@@ -483,7 +483,7 @@ In your turn, YP gained in this way are always gained before checking which abil
       name: "Mercenary Oathband",
       source: 'faction-pack', // printed in the pack (identical to the codex text)
       dp: 2,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: "Ruthless Reinvestment",
         flavor: "Kin mercenaries are notoriously frugal and ungenerous in the spending of resources to fulfil their employers’ needs. They are nonetheless acquisitively motivated. Where it benefits them, they will not hesitate to spend ammunition, energy, information or any other resource secured in advance from their paymasters if doing so will reap prizes of greater value.",
@@ -590,7 +590,7 @@ In your turn, YP gained in this way are always gained before checking which abil
       name: "Needgaârd Oathband",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Purge the Foe",
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: "Martial Leverage",
         flavor: "The weighing of costs in Kin lives and materiel expended against prospective material benefits is an instinct amongst kinhost commanders. Those who lead needgaârd oathbands leverage the deaths of their foes into these equations at every opportunity. Crushing the enemy’s soldiery and war engines can shift the balance of martial power, enabling a canny commander to spend the advantage it provides elsewhere.",
@@ -697,7 +697,7 @@ In your turn, YP gained in this way are always gained before checking which abil
       name: "Persecution Prospect",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption"],
       rule: {
         name: "Assailed From Every Angle",
         flavor: "The Kin of persecution prospects are skilled in escalating their attacks with unrelenting volleys of fire. They pressure the kindred’s foes repeatedly from infiltration positions, unleash enfilading fire from the flanks and surge forward to blaze away at point-blank range before manoeuvring swiftly to other attack angles. Besides the death and destruction they cause, the prospect’s forces leave foes disarrayed, with little chance to rally any ravaged survivors before other Kin capitalise on their plight.",
@@ -805,7 +805,7 @@ In your turn, YP gained in this way are always gained before checking which abil
       name: "Armoured Trailblazers",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption"],
       rule: {
         name: "Sagitaur Spearhead",
         flavor: "Scouting out the foe\u2019s positions and performing reconnaissance in force, speeding Sagitaurs lead the armoured charge of the Kin.",
@@ -869,7 +869,7 @@ In your turn, YP gained in this way are always gained before checking which abil
       name: "Farseekers",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Reconnaissance",
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: "Eye of the Hunt",
         flavor: "Combining scanning and targeting functions for maximum efficiency, the Hernkyn guide fire unerringly down on their targets.",
@@ -933,7 +933,7 @@ In your turn, YP gained in this way are always gained before checking which abil
       name: "Hearthguard Covenant",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets"],
       unique: "HEARTHBAND",
       rule: {
         name: "Avatars of the Ancestors",

@@ -6,7 +6,7 @@
 //   wh40k-appdata (Codex Supplement: Blood Angels) → army rules + 3 detachments, prose through
 //     scripts/lib/sync-common.mjs's markup converter.
 //   MFM v1.5 (src/data/mfm/blood-angels.js) → enhancement points, detachment dp /
-//     forceDisposition / unique tag.
+//     forceDispositions / unique tag.
 //
 // Oath of Moment is gone from every Space Marines army: the army rule is now Combat Doctrines
 // (tracked per battle round by armyTrackers/space-marines.js), with the rest of the army rules
@@ -30,7 +30,7 @@ const en = {
       "name": "Wrath of the Doomed",
       "source": "codex",
       "dp": 1,
-      "forceDisposition": "Purge the Foe",
+      "forceDispositions": ["Purge the Foe"],
       "rule": {
         "name": "Sanguinius' Fury",
         "flavor": "Swept up in visions of the Primarch’s blood-drenched final hours, the Lost throw themselves upon the foe, channelling the Great Angel’s fury and striving their utmost to emulate his mastery of close-quarters combat.",
@@ -91,7 +91,7 @@ const en = {
       "name": "Encarmine Speartip",
       "source": "codex",
       "dp": 1,
-      "forceDisposition": "Disruption",
+      "forceDispositions": ["Disruption"],
       "rule": {
         "name": "Wrath of Angels",
         "flavor": "Few living warriors embody the ideal of the Emperor's wrathful angels more than the Sanguinary Guard, for they appear without warning to wreak death and destruction before surging on to the next foe with shocking speed.",
@@ -152,7 +152,7 @@ const en = {
       "name": "Angelic Inheritors",
       "source": "codex",
       "dp": 3,
-      "forceDisposition": "Priority Assets",
+      "forceDispositions": ["Priority Assets", "Purge the Foe"],
       "rule": {
         "name": "Legacy of the Angel",
         "flavor": "Never do the Blood Angels stand taller or strive harder than when faced with seemingly impossible odds. At such times, the Sons of Sanguinius delve deep into their souls for preternatural reserves of determination, fury and focus. Sometimes, they even touch upon the uncertain gift of prophecy that was said to be their gene‑sire’s boon and his curse.",

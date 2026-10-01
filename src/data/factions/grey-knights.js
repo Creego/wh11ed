@@ -10,7 +10,7 @@
 //   Faction Pack v1.0 (sources/Faction pack 11 ed/cm/GreyKnights.pdf) → 3 pack detachments
 //     (Argent Assault, Fires of Purgation, Immaterial Interdiction) and Rules Updates.
 //   MFM (src/data/mfm/grey-knights.js) → per-enhancement points, per-detachment dp /
-//     forceDisposition.
+//     forceDispositions.
 //
 // 9 detachments total, matching the MFM list. EN-first: `ru` reuses the same object for
 // now. Markup follows useRenderInline / RuleBlock / StratCard conventions. Datasheets later.
@@ -39,7 +39,7 @@ const en = {
       name: "Augurium Task Force",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Reconnaissance",
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: "Prescient Redeployment",
         flavor: "Combining the psychic disciplines of precognition and translocation, the Grey Knights rapidly relocate in response to strategic manoeuvres the foe has yet to make.",
@@ -146,7 +146,7 @@ const en = {
       name: "Banishers",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption"],
       rule: {
         name: "Channelled Force",
         flavor: "So potent is the interwoven mind-choir of this strike force that each individual can syphon off a portion of its gestalt might to empower their weapons of war without diminishing the whole. The result is Nemesis force weapons that blaze like caged psychic stars, leaving trails of witchfire blazing behind every swing and blasting victims into nothing with a single strike.",
@@ -253,7 +253,7 @@ const en = {
       name: "Brotherhood Strike",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Purge the Foe",
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: "Fury of Titan",
         flavor: "Erupting from whirling Warp gates with their Nemesis blades blazing, squads of Grey Knights cut a bloody path through their enemies before the foe even realise their peril.",
@@ -360,7 +360,7 @@ const en = {
       name: "Hallowed Conclave",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: "Duty Before All",
         flavor: "Every Grey Knights Terminator is a tower of strength, a massively armoured living war engine clad in warded truesilver. Seeking to bar the path of such warriors, to entrap them or deny their will, is as futile a course of action as trying to halt an avalanche with bare hands alone.",
@@ -467,7 +467,7 @@ const en = {
       name: "Sanctic Spearhead",
       source: 'codex',
       dp: 2,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: "Mailed Fist",
         flavor: "Such concentrations of the Grey Knights’ armoured power are only unleashed when time is of the essence, and the price of defeat would be utterly disastrous. Knowing all this, these hosts strike with tremendous force and unstoppable momentum, a mailed fist driven straight down the enemy’s throat.",
@@ -574,7 +574,7 @@ const en = {
       name: "Warpbane Task Force",
       source: 'faction-pack', // printed in the pack (identical to the codex text)
       dp: 3,
-      forceDisposition: "Take and Hold",
+      forceDispositions: ["Take and Hold", "Purge the Foe"],
       rule: {
         name: "Hallowed Ground",
         flavor: "Purging corrupted nodes of Warp energy, the Grey Knights establish an ever-expanding area of hallowed ground within which their psychic powers and indomitable resolve are greatly enhanced.",
@@ -682,7 +682,7 @@ const en = {
       name: "Argent Assault",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Priority Assets",
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: "Dauntless Champions",
         flavor: "To be a Paladin of the Grey Knights is to do battle with the greatest and most terrible enemies and yet emerge victorious, no matter the odds.",
@@ -744,7 +744,7 @@ const en = {
       name: "Fires of Purgation",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Disruption",
+      forceDispositions: ["Disruption"],
       rule: {
         name: "Searing Soulflame",
         flavor: "Through potent psychic focus and the channelling of their vehement wrath, Purgators imbue their salvoes with bursts of soul-burning psyfire.",
@@ -808,7 +808,7 @@ const en = {
       name: "Immaterial Interdiction",
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: "Reconnaissance",
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: "Echojump",
         flavor: "Pushing their esoteric wargear to its limits, Interceptors are able to make secondary, shorter personal teleportation jumps, effectively skimming the very surface of the Immaterium to respond all the more quickly to developing threats.",

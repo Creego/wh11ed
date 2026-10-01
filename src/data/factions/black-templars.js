@@ -6,7 +6,7 @@
 //   wh40k-appdata (Codex Supplement: Black Templars) → army rules + 3 detachments, prose through
 //     scripts/lib/sync-common.mjs's markup converter.
 //   MFM v1.5 (src/data/mfm/black-templars.js) → enhancement points, detachment dp /
-//     forceDisposition / unique tag.
+//     forceDispositions / unique tag.
 //
 // Oath of Moment is gone from every Space Marines army: the army rule is now Combat Doctrines
 // (tracked per battle round by armyTrackers/space-marines.js), with the rest of the army rules
@@ -30,7 +30,7 @@ const en = {
       "name": "Vow-sworn Crusaders",
       "source": "codex",
       "dp": 2,
-      "forceDisposition": "Purge the Foe",
+      "forceDispositions": ["Purge the Foe"],
       "rule": {
         "name": "Templar Vows",
         "flavor": "On the eve of battle, the Black Templars gather to be led in prayer and contemplation by their champions. United in their hatred of the foe, they swear a mighty vow to uphold in the battle ahead.",
@@ -136,7 +136,7 @@ const en = {
       "name": "Marshal's Household",
       "source": "codex",
       "dp": 1,
-      "forceDisposition": "Priority Assets",
+      "forceDispositions": ["Priority Assets"],
       "rule": {
         "name": "Faith-fuelled Resolve",
         "flavor": "Uncompromising in their faith, a crusade's Sword Brethren are blazing beacons of intolerant resolve capable of holding back hordes of blasphemous foes from sites sacred to the Black Templars.",
@@ -197,7 +197,7 @@ const en = {
       "name": "Fist of the God-Emperor",
       "source": "codex",
       "dp": 1,
-      "forceDisposition": "Take and Hold",
+      "forceDispositions": ["Take and Hold"],
       "rule": {
         "name": "Purge and Sanctify",
         "flavor": "As the battle‑brothers of a Vindication Task Force purge the Emperor’s domain in fire and blood, they see their holy quest as recovering Humanity’s rightful dominion. They scour the stain of the unclean, topple false idols, breach strongholds of unholy faith and plant the crusade’s standards in their place, branding such sites with the sacred icons of their brotherhood.",

@@ -10,7 +10,7 @@
 //     (Armoured Warhost, Fateful Performance, Path of the Outcast, Twilight Flickers,
 //     Serpent's Brood, Eldritch Raiders, Corsair Coterie) + Rules Updates.
 //   MFM (src/data/mfm/aeldari.js) → per-enhancement points, per-detachment dp /
-//     forceDisposition, and the ACROBATIC `unique` tag.
+//     forceDispositions, and the ACROBATIC `unique` tag.
 //
 // 15 detachments total, matching the MFM list. Faction-Pack "Rules Updates" have been folded
 // into the army rule / codex detachment rules / stratagems (they are the authoritative newer
@@ -76,7 +76,7 @@ Each time one of the triggers shown in the Agile Manoeuvres section below occurs
       name: 'Warhost',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Reconnaissance',
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: 'Martial Grace',
         flavor:
@@ -188,7 +188,7 @@ Each time one of the triggers shown in the Agile Manoeuvres section below occurs
       name: 'Windrider Host',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Disruption',
+      forceDispositions: ["Disruption"],
       rule: {
         name: 'Ride the Wind',
         flavor:
@@ -304,7 +304,7 @@ In addition, at the end of your opponent's turn, you can select a number of **As
       name: 'Spirit Conclave',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Take and Hold',
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: 'Shepherds of the Dead',
         flavor:
@@ -416,7 +416,7 @@ Asuryani Psyker models from your army have the following ability:
       name: 'Guardian Battlehost',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Take and Hold',
+      forceDispositions: ["Take and Hold"],
       rule: {
         name: 'Defend at All Costs',
         flavor:
@@ -525,7 +525,7 @@ Asuryani Psyker models from your army have the following ability:
       name: 'Ghosts of the Webway',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Disruption',
+      forceDispositions: ["Disruption"],
       unique: 'ACROBATIC',
       rule: {
         name: 'Acrobatic Onslaught',
@@ -641,7 +641,7 @@ This detachment has the **ACROBATIC** tag and cannot be taken with another **ACR
       name: 'Devoted of Ynnead',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Priority Assets',
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: 'Strength from Death',
         flavor:
@@ -764,7 +764,7 @@ At the start of the Fight phase, select one **Ynnari** unit from your army (excl
       name: 'Seer Council',
       source: 'codex',
       dp: 2,
-      forceDisposition: 'Priority Assets',
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: 'Strands of Fate',
         flavor:
@@ -887,7 +887,7 @@ Each time you use one of the Stratagems opposite, if your Fate dice pool contain
       name: 'Aspect Host',
       source: 'codex',
       dp: 3,
-      forceDisposition: 'Priority Assets',
+      forceDispositions: ["Priority Assets", "Reconnaissance"],
       rule: {
         name: 'Path of the Warrior',
         flavor:
@@ -999,7 +999,7 @@ Each time you use one of the Stratagems opposite, if your Fate dice pool contain
       name: 'Armoured Warhost',
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: 'Reconnaissance',
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: 'Skilled Crews',
         flavor:
@@ -1067,7 +1067,7 @@ Each time you use one of the Stratagems opposite, if your Fate dice pool contain
       name: 'Fateful Performance',
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: 'Disruption',
+      forceDispositions: ["Disruption"],
       unique: 'ACROBATIC',
       rule: {
         name: 'Acrobatic Onslaught',
@@ -1133,7 +1133,7 @@ This **[gloss:detachments:detachment]** has the **ACROBATIC** tag and cannot be 
       name: 'Path of the Outcast',
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: 'Reconnaissance',
+      forceDispositions: ["Reconnaissance"],
       rule: {
         name: 'Far-Reaching Doom',
         flavor:
@@ -1199,7 +1199,7 @@ This **[gloss:detachments:detachment]** has the **ACROBATIC** tag and cannot be 
       name: 'Twilight Flickers',
       source: 'faction-pack',
       dp: 1,
-      forceDisposition: 'Take and Hold',
+      forceDispositions: ["Take and Hold"],
       unique: 'ACROBATIC',
       rule: {
         name: 'Dance of Distortion',
@@ -1267,7 +1267,7 @@ This **[gloss:detachments:detachment]** has the **ACROBATIC** tag and cannot be 
       name: "Serpent's Brood",
       source: 'faction-pack',
       dp: 2,
-      forceDisposition: 'Purge the Foe',
+      forceDispositions: ["Purge the Foe"],
       unique: 'ACROBATIC',
       rule: {
         name: 'Boons of the Brood',
@@ -1384,7 +1384,7 @@ This detachment has the **ACROBATIC** tag and cannot be taken with another **ACR
       name: 'Eldritch Raiders',
       source: 'faction-pack',
       dp: 2,
-      forceDisposition: 'Purge the Foe',
+      forceDispositions: ["Purge the Foe"],
       rule: {
         name: "Yriel's Own",
         flavor:
@@ -1494,7 +1494,7 @@ This detachment has the **ACROBATIC** tag and cannot be taken with another **ACR
       name: 'Corsair Coterie',
       source: 'faction-pack',
       dp: 2,
-      forceDisposition: 'Priority Assets',
+      forceDispositions: ["Priority Assets"],
       rule: {
         name: 'Relentless Raiders',
         flavor:

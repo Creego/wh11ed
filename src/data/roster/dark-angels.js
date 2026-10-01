@@ -1699,7 +1699,9 @@ export default {
       "name": "Darkflight Pursuit",
       "sid": "8ba93ebb-f562-438a-b727-5b17ef81fd3d",
       "dp": 1,
-      "fd": "Reconnaissance",
+      "fds": [
+        "Reconnaissance"
+      ],
       "enhancements": [
         {
           "name": "Nightforged Battery (Upgarde)",
@@ -1734,7 +1736,9 @@ export default {
       "name": "Inner Circle Task Force",
       "sid": "0af88b8c-951a-442c-987b-85384f0020e7",
       "dp": 1,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "enhancements": [
         {
           "name": "Singular Will",
@@ -1766,7 +1770,9 @@ export default {
       "name": "Wrath of the Rock",
       "sid": "195b367e-d4a1-453b-9be4-6831a73cd66b",
       "dp": 2,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "unique": "TERMINATOR",
       "enhancements": [
         {

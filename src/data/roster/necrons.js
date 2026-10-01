@@ -3550,7 +3550,9 @@ export default {
       "name": "Annihilation Legion",
       "sid": "4694ac41-4340-4e85-8824-5c47555f8c12",
       "dp": 2,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Eternal Madness",
@@ -3606,7 +3608,10 @@ export default {
       "name": "Awakened Dynasty",
       "sid": "ef55259d-3884-4b3b-b215-08ab337d4a24",
       "dp": 3,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold",
+        "Priority Assets"
+      ],
       "unique": "DYNASTY",
       "enhancements": [
         {
@@ -3663,7 +3668,9 @@ export default {
       "name": "Canoptek Court",
       "sid": "e40617a8-ec95-44e2-bc46-956a6fac4538",
       "dp": 2,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "enhancements": [
         {
           "name": "Dimensional Sanctum",
@@ -3719,7 +3726,9 @@ export default {
       "name": "Cryptek Conclave",
       "sid": "115f16a7-2641-415c-967c-cb8a370eb229",
       "dp": 2,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "enhancements": [
         {
           "name": "Quantum Abacus",
@@ -3775,7 +3784,9 @@ export default {
       "name": "Cursed Legion",
       "sid": "412b33ad-7e6f-45a3-8638-ae880be94b9f",
       "dp": 2,
-      "fd": "Purge the Foe",
+      "fds": [
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Destroyer Ankh",
@@ -3854,7 +3865,9 @@ export default {
       "name": "Hand of the Dynasty",
       "sid": "8e281a27-1d5a-415b-8b92-34cd0ed53b63",
       "dp": 1,
-      "fd": "Take and Hold",
+      "fds": [
+        "Take and Hold"
+      ],
       "unique": "DYNASTY",
       "enhancements": [
         {
@@ -3897,7 +3910,9 @@ export default {
       "name": "Hypercrypt Legion",
       "sid": "489fc222-d9a1-4220-9ef2-9747c2fea283",
       "dp": 2,
-      "fd": "Reconnaissance",
+      "fds": [
+        "Reconnaissance"
+      ],
       "unique": "HYPERCRYPT",
       "enhancements": [
         {
@@ -3954,7 +3969,9 @@ export default {
       "name": "Obeisance Phalanx",
       "sid": "df0e5858-2c4a-486b-b693-8971f837388d",
       "dp": 2,
-      "fd": "Disruption",
+      "fds": [
+        "Disruption"
+      ],
       "enhancements": [
         {
           "name": "Honourable Combatant",
@@ -4010,7 +4027,9 @@ export default {
       "name": "Pantheon of Woe",
       "sid": "a7ec286c-a305-435b-b402-91140c67d809",
       "dp": 2,
-      "fd": "Disruption",
+      "fds": [
+        "Disruption"
+      ],
       "enhancements": [
         {
           "name": "Singularity Matrix",
@@ -4073,7 +4092,9 @@ export default {
       "name": "Skyshroud Spearhead",
       "sid": "cd5f7a63-6d73-4094-9977-e8b7530d1a8f",
       "dp": 1,
-      "fd": "Reconnaissance",
+      "fds": [
+        "Reconnaissance"
+      ],
       "enhancements": [
         {
           "name": "Recursive Reanimation (Upgrade)",
@@ -4113,7 +4134,10 @@ export default {
       "name": "Starshatter Arsenal",
       "sid": "225b9e9c-7ebe-413f-a079-087bc98f380a",
       "dp": 3,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets",
+        "Purge the Foe"
+      ],
       "enhancements": [
         {
           "name": "Dread Majesty (Aura)",
@@ -4174,7 +4198,9 @@ export default {
       "name": "The Phaeron's Armoury",
       "sid": "3818a5e4-5d1a-410b-a63f-9a850b923635",
       "dp": 1,
-      "fd": "Priority Assets",
+      "fds": [
+        "Priority Assets"
+      ],
       "unique": "HYPERCRYPT",
       "enhancements": [
         {
