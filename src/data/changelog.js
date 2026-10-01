@@ -39,6 +39,7 @@ export const changelog = [
       'The plasma pistol of the Space Marines Vanguard Veteran Squad with Jump Packs used to have only its supercharge profile: the official app lost the standard one in its last update. Now the datasheet has both, as the codex prints them.',
       'If one of two Mortifiers took an Anchorite Sarcophagus, the roster builder used to show M 7" and Sv 3+ for both. Now only the model with the sarcophagus has them.',
       'At 1000 points you may take one 3 DP detachment if it is your only one. The roster builder allowed it before, but showed “3 / 2 DP” with a question mark. Now it shows “3 / 3 DP”.',
+      'Some detachments give access to two Force Dispositions, for example Warpbane Task Force has Take and Hold and Purge the Foe. The roster builder used to know only the first one. Now it shows both, and you declare the one you play. There are 39 such detachments.',
     ],
     ru: [
       { h: 'Пояснения к терминам во всех фракциях' },
@@ -55,6 +56,7 @@ export const changelog = [
       'Раньше у плазменного пистолета Vanguard Veteran Squad with Jump Packs из Space Marines был только профиль supercharge: официальное приложение потеряло обычный профиль в последнем обновлении. Теперь в листе данных оба профиля, как в кодексе.',
       'Раньше, если один из двух Mortifiers брал Anchorite Sarcophagus, конструктор показывал M 7" и Sv 3+ у обоих. Теперь они только у модели с саркофагом.',
       'На 1000 очков можно взять один детачмент за 3 DP, если он единственный. Конструктор и раньше это разрешал, но показывал «3 / 2 DP» со знаком вопроса. Теперь там «3 / 3 DP».',
+      'Некоторые детачменты дают две Force Disposition, например у Warpbane Task Force это Take and Hold и Purge the Foe. Раньше конструктор знал только первую. Теперь видны обе, и вы заявляете ту, которой играете. Таких детачментов 39.',
     ],
   },
   {
