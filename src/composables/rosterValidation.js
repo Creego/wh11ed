@@ -44,6 +44,10 @@ export function duplicateCounts(units, defOf) {
   return m
 }
 
+// Named characters whose datasheet lacks EPIC HERO — see the duplicate check in validateRoster.
+// Listed by hand, one by one: a name alone cannot tell a character from a rank.
+const NAMED_NOT_EPIC = new Set(['kayvaan-shrike'])
+
 // `items` (the shared wargear-name dictionary, data/roster/items.js) is optional: only the stock
 // rule's message names an item, and a caller that merely counts errors need not carry it.
 export function validateRoster(roster, { faction, core, items } = {}) {
@@ -170,6 +174,12 @@ export function validateRoster(roster, { faction, core, items } = {}) {
       const limit = duplicateLimit(def, battle.dupLimit, grantedBattleline(def))
       if (list.length > limit) {
         add('overDuplicate', 'error', { uid: list[limit].uid, params: { count: list.length, limit } })
+      }
+      // A named character GW printed without EPIC HERO is legal more than once, and the cap above
+      // follows GW. The owner kept it so after a community poll (2026-10-01), but the second copy
+      // gets a warning: almost certainly an oversight, and an opponent may well object.
+      else if (list.length > 1 && NAMED_NOT_EPIC.has(def.id)) {
+        add('namedNotEpic', 'warn', { uid: list[1].uid })
       }
     }
   }

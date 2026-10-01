@@ -836,6 +836,19 @@ describe('validateRoster — every issue says which unit it is about', () => {
     expect(r.issues.some((i) => i.level === 'error' && i.code === 'legendsUnit')).toBe(false)
   })
 
+  // Shrike: GW printed him without EPIC HERO, so a second copy is legal — kept, but flagged.
+  it('warns, without an error, on a second copy of a named character GW left without EPIC HERO', () => {
+    const shrike = { id: 'kayvaan-shrike', name: 'Kayvaan Shrike', kws: ['Character', 'Infantry'], flags: { char: 1 }, sizes: [{ pts: 95, per: [1, 1], default: 1 }] }
+    const fac = { ...faction, units: [...faction.units, shrike] }
+    const one = validateRoster({ ...roster(), units: [...roster().units, U('kayvaan-shrike')] }, { faction: fac, core })
+    expect(one.issues.some((i) => i.code === 'namedNotEpic')).toBe(false)
+    const two = validateRoster({ ...roster(), units: [...roster().units, U('kayvaan-shrike'), U('kayvaan-shrike')] }, { faction: fac, core })
+    const issue = two.issues.find((i) => i.code === 'namedNotEpic')
+    expect(issue.level).toBe('warn')
+    expect(issue.params.unit).toBe('Kayvaan Shrike (2)')
+    expect(two.issues.some((i) => i.level === 'error')).toBe(one.issues.some((i) => i.level === 'error'))
+  })
+
   // Every placeholder a message asks for has to be one the validator actually sends, in both
   // locales — a template naming a param nobody fills renders as a blank.
   it('asks for nothing the validator does not send', async () => {
