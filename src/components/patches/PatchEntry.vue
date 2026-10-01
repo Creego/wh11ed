@@ -48,11 +48,11 @@
       <RouterLink
         v-if="unitPath"
         :to="unitPath"
-        class="pe-go"
+        class="btn-ghost pe-go"
         :title="labels.patchesOpenUnit"
         :aria-label="`${labels.patchesOpenUnit}: ${item.name}`"
       >
-        <i class="bi bi-box-arrow-up-right" />
+        {{ labels.patchesUnitButton }}<i class="bi bi-chevron-right" />
       </RouterLink>
     </div>
 
@@ -322,16 +322,18 @@ button.pe-head:hover { background: color-mix(in srgb, var(--accent) 7%, transpar
   transition: transform var(--motion-fast) ease;
 }
 .pe.open .pe-chev { transform: rotate(180deg); }
+/* A worded button, not a bare icon: the "leave" arrow read as an outside link (owner, 2026-10-01).
+   The shared btn-ghost, sized down to sit inside the header line. */
 .pe-go {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 2.5rem;
-  border-left: 1px solid var(--border-light);
-  color: var(--link-accent);
-  text-decoration: none;
+  flex: none;
+  align-self: center;
+  gap: 0.2rem;
+  margin: 0.3rem 0.45rem 0.3rem 0;
+  padding: 0.3rem 0.55rem;
+  font-size: 0.8rem;
+  white-space: nowrap;
 }
-.pe-go:hover { background: color-mix(in srgb, var(--accent) 7%, transparent); }
+.pe-go i { font-size: 0.7rem; }
 
 .pe-chips,
 .pe-line {

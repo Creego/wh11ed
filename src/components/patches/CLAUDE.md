@@ -29,7 +29,7 @@ Field Manual's points, the FAQ & errata. Nothing on the page is written by hand.
   when picked — not accordions, owner 2026-10-01; both picks push, see `pick()`), `PatchBody.vue` (the core rules and each faction a plate with a dark
   header, **all folded until tapped**), `PatchEntry.vue` (each change a plate: chips for numbers, +/−
   for lists; one with rule text opens on a tap of its whole header line — not a small link, owner
-  2026-10-01; a unit's page is the icon beside it), `PatchTextDiff.vue` — a rule text in the rules pages' own formatting (`renderRichText`): the
+  2026-10-01; a unit's page is a worded "Datasheet ›" button beside it, not a bare icon — owner 2026-10-01), `PatchTextDiff.vue` — a rule text in the rules pages' own formatting (`renderRichText`): the
   data keeps the markup (`readable()` in diff-bundles: `**bold**`, keywords, `▪` items, a line per
   paragraph, a bold opening label), the diff compares words without it (`diffWords` with a key), and
   struck/added words are fenced with U+E000–E003 before rendering, swapped for `<del>`/`<ins>` after.
