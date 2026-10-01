@@ -42,6 +42,8 @@ export const changelog = [
       'If one of two Mortifiers took an Anchorite Sarcophagus, the roster builder used to change the characteristics of both. Now it changes only the one that took it.',
       'At 1000 points you may take one 3 DP detachment if it is your only one. The roster builder used to show this as “3 / 2 DP”, as if it were too much. Now it shows “3 / 3 DP”.',
       'Some detachments have two Force Dispositions, for example Warpbane Task Force. The roster builder used to show only one. Now you see both and choose the one you play.',
+      'Blood Angels, Dark Angels, Space Wolves, Black Templars and Deathwatch can take Space Marines detachments, for example Gladius Task Force. In such a list the enhancements of that detachment used to have no description, and the unit cards lacked the detachment rule. Now everything is there.',
+      'In these lists the unit cards now also show what Space Marines rules and wargear change. For example, Terminators with a Storm Shield get a line of their own with W 4.',
     ],
     ru: [
       { h: 'Пояснения к терминам во всех фракциях' },
@@ -61,6 +63,8 @@ export const changelog = [
       'Раньше, если Anchorite Sarcophagus брал один из двух Mortifiers, конструктор менял характеристики обоим. Теперь только тому, кто его взял.',
       'На 1000 очков можно взять один детачмент за 3 DP, если он единственный. Раньше конструктор показывал это как превышение: «3 / 2 DP». Теперь там «3 / 3 DP».',
       'У некоторых детачментов две Force Disposition, например у Warpbane Task Force. Раньше конструктор показывал только одну. Теперь видны обе, и вы выбираете ту, которой играете.',
+      'Blood Angels, Dark Angels, Space Wolves, Black Templars и Deathwatch могут брать детачменты Space Marines, например Gladius Task Force. Раньше в таком списке у улучшений этого детачмента не было описания, а в карточках юнитов не было правила детачмента. Теперь всё на месте.',
+      'Заодно в этих списках карточки юнитов показывают, что меняют правила и снаряжение Space Marines. Например, Terminator со Storm Shield получают отдельную строку с W 4.',
     ],
   },
   {
