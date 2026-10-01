@@ -255,12 +255,13 @@ const titleOf = (p) => [
   margin-right: auto;
 }
 .pv-bar { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.5rem; }
+/* The label on a line of its own above the name, the chevron beside both (owner, 2026-10-01). */
 .pv-trigger {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.5rem;
-  padding: 0.4rem 0.7rem;
-  /* A long update name wraps under itself on a phone, from the left like the label beside it. */
+  display: inline-grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  column-gap: 0.6rem;
+  padding: 0.35rem 0.7rem;
   text-align: left;
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -276,7 +277,7 @@ const titleOf = (p) => [
   color: var(--text-muted);
 }
 .pv-trigger-name { font-weight: 600; font-size: 0.9rem; }
-.pv-trigger .bi { font-size: 0.75rem; color: var(--text-muted); }
+.pv-trigger .bi { grid-column: 2; grid-row: 1 / span 2; font-size: 0.75rem; color: var(--text-muted); }
 
 .pv-scopes {
   display: flex;
