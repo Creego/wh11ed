@@ -10,30 +10,26 @@
         v-if="nameRu"
         class="det-name-ru"
       >{{ nameRu }}</span>
-      <span
-        v-if="unique || tag"
-        class="det-tags"
-      >
-        <span
-          v-if="unique"
-          class="det-unique"
-        >{{ unique }}</span>
-        <span
-          v-if="tag"
-          class="det-unique"
-        >{{ tag }}</span>
-      </span>
     </span>
-    <!-- The cost and, under it, the disposition — the two facts a detachment is chosen by, in one
-         column on the right (owner, 2026-09-25); the names keep the left to themselves. -->
     <span
-      v-if="dp || forceDispositions.length"
-      class="det-side"
+      v-if="dp"
+      class="det-dp"
+    >{{ dp }} DP</span>
+    <!-- A line of its own under the name and the cost: the tag on the left, the dispositions on the
+         right (owner, 2026-10-01). Beside the name, two dispositions squeezed it onto two lines on a
+         phone. -->
+    <span
+      v-if="unique || tag || forceDispositions.length"
+      class="det-foot"
     >
       <span
-        v-if="dp"
-        class="det-dp"
-      >{{ dp }} DP</span>
+        v-if="unique"
+        class="det-unique"
+      >{{ unique }}</span>
+      <span
+        v-if="tag"
+        class="det-unique"
+      >{{ tag }}</span>
       <span
         v-if="forceDispositions.length"
         class="det-fds"
@@ -58,8 +54,9 @@
 // Each row wears its disposition's colour on the chip under the price, because the disposition is
 // what a detachment is FOR, and five of them down a list are told apart faster by hue than by
 // reading (dispositionColors.js). A detachment that gives access to two (core rules 25.04 — 39 of
-// them in MFM v1.5) wears two chips, each in its own colour. The DP cost sits on the right, where a cost is looked for, with
-// the disposition under it. (A coloured stripe on the row's edge went, at the owner's word,
+// them in MFM v1.5) wears two chips, each in its own colour. The DP cost sits on the right of the
+// name, where a cost is looked for; the tag and the dispositions take a line of their own under both
+// (owner, 2026-10-01). (A coloured stripe on the row's edge went, at the owner's word,
 // 2026-09-25: the chip already says it.) Every field but `name` is optional: the faction bar reuses its
 // picker for the Chapter list, which is plain names.
 // (Said here, not above the <button>: a comment before the root makes the component a Fragment.)
@@ -87,10 +84,11 @@ defineProps({
    min-height a row may shrink to it once the list is taller than the dialog — the faction picker's
    three-line rows (name, RU name, disposition) then drew over each other (owner, 2026-09-25). */
 .det {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   flex-shrink: 0;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.35rem 0.6rem;
   width: 100%;
   min-height: 44px;
   padding: 0.4rem 0.55rem;
@@ -135,12 +133,6 @@ defineProps({
   color: var(--text-muted);
 }
 
-.det-tags {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.4rem;
-}
 
 .det-unique {
   font-size: 0.66rem;
@@ -149,21 +141,21 @@ defineProps({
   text-transform: uppercase;
 }
 
-.det-side {
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.3rem;
-}
 
-/* Two dispositions sit side by side under the price, not stacked — stacked, they made the row a
-   third taller than its neighbours (owner, 2026-10-01). They wrap only where the row is too narrow. */
+/* The second line, across the whole row: tag left, dispositions right. */
+.det-foot {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem 0.4rem;
+}
 .det-fds {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 0.3rem;
+  margin-left: auto;
 }
 
 .det-dp {
@@ -182,11 +174,13 @@ defineProps({
   color: var(--accent);
 }
 
-/* The dropdown's row: one line, the cost a plain figure rather than a boxed plate. */
-.det.compact { min-height: 36px; padding: 0.3rem 0.5rem; gap: 0.5rem; }
+/* The dropdown's row: one line — name, then the tag and the dispositions, the cost a plain figure
+   rather than a boxed plate at the end. */
+.det.compact { display: flex; min-height: 36px; padding: 0.3rem 0.5rem; gap: 0.5rem; }
+.det.compact .det-main { flex: 1; }
 .det.compact .det-name { font-size: 1rem; }
-.det.compact .det-side { flex-direction: row; align-items: center; gap: 0.4rem; }
+.det.compact .det-foot { flex-wrap: nowrap; }
+.det.compact .det-fds { flex-wrap: nowrap; }
 .det.compact .det-dp { order: 1; padding: 0; border: 0; font-size: 0.8rem; color: var(--text-muted); }
 .det.compact.on .det-dp { color: var(--accent); }
-.det.compact .det-fds { flex-wrap: nowrap; }
 </style>
