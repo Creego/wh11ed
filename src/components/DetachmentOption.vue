@@ -193,9 +193,10 @@ const crowded = computed(() => props.forceDispositions.length + (props.unique ||
 .det.compact.stacked { display: grid; grid-template-columns: minmax(0, 1fr) auto; }
 .det.compact.stacked .det-dp { order: 0; align-self: start; }
 .det.compact.stacked .det-foot { margin-left: 0; }
-.det.compact .det-name { font-size: 1rem; }
+.det.compact .det-name { font-size: 1.15rem; }
+/* The RU caption in the name's own narrow face, so the pair reads as one heading (owner, 2026-10-01). */
+.det.compact .det-name-ru { font-family: var(--font-display); font-size: 1rem; font-weight: 500; }
 .det.compact .det-foot { flex-wrap: nowrap; }
 .det.compact .det-fds { flex-wrap: nowrap; }
-.det.compact .det-dp { order: 1; padding: 0; border: 0; font-size: 0.8rem; color: var(--text-muted); }
-.det.compact.on .det-dp { color: var(--accent); }
+.det.compact .det-dp { order: 1; padding: 0.15rem 0.45rem; font-size: 0.9rem; }
 </style>
