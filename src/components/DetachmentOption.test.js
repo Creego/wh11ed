@@ -28,6 +28,15 @@ describe('DetachmentOption', () => {
     expect(chips[1].attributes('style')).toContain(dispositionColor('Purge the Foe').light)
   })
 
+  // A compact row with a tag and two dispositions cannot hold them beside its name: it takes two
+  // lines, the cost up by the name (Awakened Dynasty, owner 2026-10-01). A lighter row stays one line.
+  it('stacks a crowded compact row, and leaves a light one on one line', () => {
+    const crowded = mount(DetachmentOption, { props: { name: 'Awakened Dynasty', unique: 'DYNASTY', forceDispositions: ['Take and Hold', 'Priority Assets'], dp: 3, compact: true } })
+    expect(crowded.classes()).toContain('stacked')
+    const light = mount(DetachmentOption, { props: { name: 'Warpbane Task Force', forceDispositions: ['Take and Hold', 'Purge the Foe'], dp: 3, compact: true } })
+    expect(light.classes()).not.toContain('stacked')
+  })
+
   // The faction bar reuses its picker for the Chapter list — plain names, no colour, no cost.
   it('stays a plain row for a plain option', () => {
     const w = mount(DetachmentOption, { props: { name: 'Ultramarines' } })
