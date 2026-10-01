@@ -114,7 +114,6 @@ defineProps({
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.2rem;
 }
 
 .det-name {
@@ -126,8 +125,10 @@ defineProps({
   color: var(--text-primary);
 }
 
-/* RU translation of the name — a small muted line under the English one. */
+/* RU translation of the name — a small muted line held close under the English one: a caption of
+   the name, not a line of its own (owner, 2026-10-01). */
 .det-name-ru {
+  line-height: 1.2;
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--text-muted);
