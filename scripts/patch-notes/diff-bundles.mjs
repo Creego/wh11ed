@@ -26,23 +26,22 @@ export function plain(s) {
     .replace(/\s+/g, ' ')
     .trim()
 }
-// The same text for the page to SHOW: its paragraphs and list items kept, one per line ("Eligible
-// If: …", "• You can only target…"). `plain` folds those breaks — right for telling two versions
-// apart (a re-wrapped paragraph is not a change), wrong for reading: a core rule came out as one
-// block (owner, 2026-10-01).
+// The same text for the page to SHOW, in the site's own rule markup (`**bold**`, ALL-CAPS keywords,
+// `▪ ` list items, a line per paragraph) — the page renders it as the rules pages do (renderRichText).
+// `plain` folds all that — right for telling two versions apart (a re-wrapped paragraph is not a
+// change), wrong for reading: a core rule came out as one grey block (owner, 2026-10-01).
 export function readable(s) {
   return appdataToParagraphs(s || '')
+    .replace(/&#x?[0-9a-f]+;/gi, ' ')
+    .replace(/\s*\(see (?:left|right|above|below)\)/gi, '')
     .split('\n')
-    .map((line) => line
-      .replace(/\*\*|__/g, '')
-      .replace(/^[▪▫■•]\s*/, '• ')
-      .replace(/[‘’‚‛`]/g, "'")
-      .replace(/[“”„]/g, '"')
-      .replace(/[‐‑‒–—―]/g, '-')
-      .replace(/\u00a0/g, ' ')
-      .replace(/\s*\(see (?:left|right|above|below)\)/gi, '')
-      .replace(/\s+/g, ' ')
-      .trim())
+    .map((line) => line.replace(/[ \t]+/g, ' ').trim())
+    // A line that opens on a short label — "Eligible If:", "Effect:", "While Shooting:" — prints it
+    // bold, as the core rules pages do.
+    // A line whose bold markers do not pair up is GW's own typo ("a 3DP** detachment**", 909):
+    // it reads as plain text rather than leave stray asterisks on the page.
+    .map((line) => ((line.match(/\*\*/g) || []).length % 2 ? line.replace(/\*\*/g, '') : line))
+    .map((line) => (line.includes('**') && /^\*\*/.test(line) ? line : line.replace(/^([A-Z][A-Za-z’' -]{1,28}):(?=\s|$)/, '**$1:**')))
     .filter(Boolean)
     .join('\n')
 }
