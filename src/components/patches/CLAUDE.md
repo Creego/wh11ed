@@ -29,14 +29,13 @@ Field Manual's points, the FAQ & errata. Nothing on the page is written by hand.
   when picked — not accordions, owner 2026-10-01; both picks push, see `pick()`), `PatchBody.vue` (the core rules and each faction a plate with a dark
   header, **all folded until tapped**), `PatchEntry.vue` (each change a plate: chips for numbers, +/−
   for lists; one with rule text opens on a tap of its whole header line — not a small link, owner
-  2026-10-01; a unit's page is a worded "Datasheet ›" button beside it, not a bare icon — owner 2026-10-01), `PatchTextDiff.vue` — a rule text in the rules pages' own formatting (`renderRichText`): the
+  2026-10-01; no link to the unit's page — dropped by the owner, 2026-10-01), `PatchTextDiff.vue` — a rule text in the rules pages' own formatting (`renderRichText`): the
   data keeps the markup (`readable()` in diff-bundles: `**bold**`, keywords, `▪` items, a line per
   paragraph, a bold opening label), the diff compares words without it (`diffWords` with a key), and
   struck/added words are fenced with U+E000–E003 before rendering, swapped for `<del>`/`<ins>` after.
   Struck words shed their own markers and old line breaks are dropped, so every marker on the page
   is the new text's and pairs up; `PatchTextDiff.test.js` renders every text of every patch and
-  fails on a stray `**`/`__`/fence. Units link to today's page (`unit` in the data, resolved by
-  name through `datasheetIndex.js` at generation).
+  fails on a stray `**`/`__`/fence.
 - **RU**: labels translate; rule texts are English as GW printed them (no old RU to compare
   against). From the next data bump on, the owner wants both sides translated — not built yet.
 - No subnav over the page (`AppSubnav`), a navbar link on the desktop, a direct entry in the

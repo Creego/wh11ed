@@ -5,56 +5,45 @@
     class="pe"
     :class="[`pe-${item.change}`, { open }]"
   >
-    <div class="pe-top">
-      <component
-        :is="texts.length ? 'button' : 'div'"
-        class="pe-head"
-        v-bind="texts.length ? { type: 'button', 'aria-expanded': open } : {}"
-        @click="texts.length && toggle()"
-      >
-        <span class="pe-title">
-          <span
-            v-if="kindLabel"
-            class="pe-kind"
-          >{{ kindLabel }}</span>
-          <span class="pe-name">{{ item.name }}</span>
-          <span
-            v-if="item.was"
-            class="pe-note"
-          >({{ labels.patchesWas }}: {{ item.was }})</span>
-          <span
-            v-if="item.change === 'added'"
-            class="pe-badge pe-badge-new"
-          >{{ labels.patchesNew }}</span>
-          <span
-            v-else-if="item.change === 'removed'"
-            class="pe-badge pe-badge-gone"
-          >{{ labels.patchesRemoved }}</span>
-          <span
-            v-if="item.kind === 'publication' && item.date"
-            class="pe-note"
-          >{{ item.change === 'changed' ? `${labels.patchesErrata} ` : '' }}{{ item.date }}</span>
-        </span>
-        <!-- What opening it shows: the abilities, the stratagem's parts, or just "text". -->
+    <component
+      :is="texts.length ? 'button' : 'div'"
+      class="pe-head"
+      v-bind="texts.length ? { type: 'button', 'aria-expanded': open } : {}"
+      @click="texts.length && toggle()"
+    >
+      <span class="pe-title">
         <span
-          v-if="texts.length"
-          class="pe-summary"
-        >{{ texts.map((t) => t.label).join(' · ') }}</span>
-        <i
-          v-if="texts.length"
-          class="bi bi-chevron-down pe-chev"
-        />
-      </component>
-      <RouterLink
-        v-if="unitPath"
-        :to="unitPath"
-        class="btn-ghost pe-go"
-        :title="labels.patchesOpenUnit"
-        :aria-label="`${labels.patchesOpenUnit}: ${item.name}`"
-      >
-        {{ labels.patchesUnitButton }}<i class="bi bi-chevron-right" />
-      </RouterLink>
-    </div>
+          v-if="kindLabel"
+          class="pe-kind"
+        >{{ kindLabel }}</span>
+        <span class="pe-name">{{ item.name }}</span>
+        <span
+          v-if="item.was"
+          class="pe-note"
+        >({{ labels.patchesWas }}: {{ item.was }})</span>
+        <span
+          v-if="item.change === 'added'"
+          class="pe-badge pe-badge-new"
+        >{{ labels.patchesNew }}</span>
+        <span
+          v-else-if="item.change === 'removed'"
+          class="pe-badge pe-badge-gone"
+        >{{ labels.patchesRemoved }}</span>
+        <span
+          v-if="item.kind === 'publication' && item.date"
+          class="pe-note"
+        >{{ item.change === 'changed' ? `${labels.patchesErrata} ` : '' }}{{ item.date }}</span>
+      </span>
+      <!-- What opening it shows: the abilities, the stratagem's parts, or just "text". -->
+      <span
+        v-if="texts.length"
+        class="pe-summary"
+      >{{ texts.map((t) => t.label).join(' · ') }}</span>
+      <i
+        v-if="texts.length"
+        class="bi bi-chevron-down pe-chev"
+      />
+    </component>
 
     <!-- The numbers: one chip each, "T 4 → 5". -->
     <div
@@ -191,12 +180,6 @@ const kindLabel = computed(() => {
 })
 
 // Today's page of a unit named here (null for one that is gone).
-const unitPath = computed(() => {
-  const u = props.item.unit
-  if (!u) return null
-  return Array.isArray(u) ? `/factions/${u[0]}/datasheets/${u[1]}` : `/factions/${props.item.faction}/datasheets/${u}`
-})
-
 const arrow = (from, to) => `${from || '–'} → ${to || '–'}`
 const chips = computed(() => {
   const l = labels.value
@@ -266,10 +249,8 @@ const texts = computed(() => {
   border: 1px solid var(--border-light);
 }
 .pe:last-child { margin-bottom: 0; }
-.pe-top { display: flex; align-items: stretch; }
 .pe-head {
-  flex: 1;
-  min-width: 0;
+  width: 100%;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -322,18 +303,6 @@ button.pe-head:hover { background: color-mix(in srgb, var(--accent) 7%, transpar
   transition: transform var(--motion-fast) ease;
 }
 .pe.open .pe-chev { transform: rotate(180deg); }
-/* A worded button, not a bare icon: the "leave" arrow read as an outside link (owner, 2026-10-01).
-   The shared btn-ghost, sized down to sit inside the header line. */
-.pe-go {
-  flex: none;
-  align-self: center;
-  gap: 0.2rem;
-  margin: 0.3rem 0.45rem 0.3rem 0;
-  padding: 0.3rem 0.55rem;
-  font-size: 0.8rem;
-  white-space: nowrap;
-}
-.pe-go i { font-size: 0.7rem; }
 
 .pe-chips,
 .pe-line {

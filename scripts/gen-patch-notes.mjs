@@ -19,7 +19,6 @@ import { PATCHES } from './patch-notes/patches.mjs'
 import { diffBundles, diffCore } from './patch-notes/diff-bundles.mjs'
 import { diffMfm } from './patch-notes/diff-mfm.mjs'
 import { diffFaq } from './patch-notes/diff-faq.mjs'
-import { datasheetIndex } from '../src/data/datasheetIndex.js'
 
 const OUT = path.join(ROOT, 'src', 'data', 'patches')
 const toWh11ed = Object.fromEntries(Object.entries(SLUG_MAP).map(([wh, app]) => [app, wh]))
@@ -41,18 +40,6 @@ async function mfmAt(ref, slug) {
   const file = path.join(tmp, `${ref.replace(/\W/g, '_')}-${slug}.mjs`)
   fs.writeFileSync(file, src)
   return (await import(pathToFileURL(file).href)).default
-}
-
-// A unit named in a patch links to its page when it still has one: today's unit id, found by
-// faction and name (a Chapter's list reads the Space Marines sheets too).
-const unitIds = new Map()
-const unitKey = (slug, name) => `${slug}|${(name || '').toLowerCase().replace(/[‘’`]/g, "'").replace(/[‐‑–—]/g, '-').replace(/\s+/g, ' ').trim()}`
-for (const [slug, , units] of datasheetIndex) for (const [id, name] of units) unitIds.set(unitKey(slug, name), [slug, id])
-const CHAPTER_OF_SM = new Set(['black-templars', 'blood-angels', 'dark-angels', 'deathwatch', 'space-wolves'])
-function withUnit(x) {
-  if (x.kind !== 'datasheet' && x.kind !== 'points') return x
-  const hit = unitIds.get(unitKey(x.faction, x.name)) || (CHAPTER_OF_SM.has(x.faction) ? unitIds.get(unitKey('space-marines', x.name)) : null)
-  return hit && x.change !== 'removed' ? { ...x, unit: hit[0] === x.faction ? hit[1] : hit } : x
 }
 
 // Combat Patrol army rules at one appdata version: army_rule rows whose publication is a CP box.
@@ -81,7 +68,7 @@ async function build(p) {
     for (const slug of slugs) items.push(...diffMfm(await mfmAt(from, slug), await mfmAt(to, slug), slug))
   }
   if (p.faq) items.push(...diffFaq(json(ROOT, p.faq[0], 'src/data/factionFaq.json'), json(ROOT, p.faq[1], 'src/data/factionFaq.json')))
-  return items.map(withUnit)
+  return items
 }
 
 const only = process.argv.slice(2)
