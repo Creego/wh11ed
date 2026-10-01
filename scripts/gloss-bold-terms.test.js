@@ -23,6 +23,13 @@ describe('gloss-bold-terms', () => {
     for (const s of ['**This model is equipped with:** 1 Bolt Rifle.', '**vowed objective**', '**[gloss:engaged:engaged]**', 'PHOBOS**/**SCOUT SQUAD']) expect(g(s)).toBe(s)
   })
 
+  // Astra Militarum writes its own `[gloss:am-order:**Orders**]`; the bold inside it is part of the
+  // token, and the token is the section's popover for the term.
+  it('passes over a hand-written token with bold in its label, and counts it as the popover', () => {
+    expect(g('issue [gloss:am-order:**Orders**]. Each **Order** lasts'))
+      .toBe('issue [gloss:am-order:**Orders**]. Each **Order** lasts')
+  })
+
   it('links a term once per section, and again after each ### subheading', () => {
     expect(g('**боевую доктрину** и **боевая доктрина**\n### Tactical Doctrine | Тактическая доктрина\n**боевой доктрине**', 'ru'))
       .toBe('**[gloss:sm-combat-doctrine:боевую доктрину]** и **боевая доктрина**\n### Tactical Doctrine | Тактическая доктрина\n**[gloss:sm-combat-doctrine:боевой доктрине]**')

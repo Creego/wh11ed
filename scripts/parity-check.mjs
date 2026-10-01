@@ -116,7 +116,12 @@ const measures = (s) =>
 // `starsBalance` exists for one field family: a datasheet's `options`/`composition` lines use a
 // trailing `**` as a FOOTNOTE MARKER ("…can be equipped with 1 master vox.**"), not as bold — so
 // an odd count there is the convention, not a defect. Everywhere else an unbalanced `**` is one.
+// PARITY_PAIRS_OUT=<file> also writes every pair this run checked — the EN text and its RU twin —
+// for a data pass that has to edit both in step (scripts/restore-gloss-bold.mjs).
+const pairsOut = process.env.PARITY_PAIRS_OUT ? [] : null
+if (pairsOut) process.on('exit', () => fs.writeFileSync(process.env.PARITY_PAIRS_OUT, JSON.stringify(pairsOut)))
 function checkPair(label, en, rutext, errors, notes, { checkMeasures = false, starsBalance = true } = {}) {
+  if (pairsOut && typeof en === 'string' && typeof rutext === 'string') pairsOut.push([label, en, rutext])
   const e = S(en)
   const r = S(rutext)
   if (e.trim() && !r.trim()) return errors.push(`${label}: RU missing (EN has text)`)
@@ -171,6 +176,9 @@ for (const slug of slugs) {
     const join = (o) => [o.when, o.target, o.effect, o.restrictions].filter(Boolean).join(' ')
     ;(det.stratagems || []).forEach((st, j) => {
       pair(`${det.name} · strat "${st.name}"`, join(st), join((rd.stratagems || [])[j] || {}))
+      // The checks read the fields joined; a pass editing one field needs them one by one.
+      const rs = (rd.stratagems || [])[j] || {}
+      if (pairsOut) for (const k of ['when', 'target', 'effect', 'restrictions']) if (typeof st[k] === 'string' && typeof rs[k] === 'string') pairsOut.push([`${det.name} · strat "${st.name}" · ${k}`, st[k], rs[k]])
     })
     ;(det.enhancements || []).forEach((en, j) => {
       pair(`${det.name} · enh "${en.name}"`, en.body, ((rd.enhancements || [])[j] || {}).body)

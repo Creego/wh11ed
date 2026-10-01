@@ -30,17 +30,22 @@ The data is the bulk of the repo and the EN/RU arrays are edited in lockstep. Wh
   "detection range", "Hit rolls" — about 2100 places, plus ~1460 keywords outside the renderer's
   auto-bold list. Marking those buys far less than it costs, and `npm run emphasis` prints both
   counts on every run so the decision stays visible instead of rotting into undocumented debt.
-  **Changed for Space Marines and the Chapters (owner, 2026-09-30):** there every bold term the
-  glossary knows is a popover — `**[gloss:<id>:<text>]**` — and a bold core unit ability is
+  **Changed for every faction (owner, 2026-09-30; Space Marines in v2.7.8, the rest in v2.7.9):**
+  every bold term the glossary knows is a popover — `**[gloss:<id>:<text>]**` — and a bold core unit ability is
   `[core:…]`. Not by hand: `npm run gloss` (`scripts/gloss-bold-terms.mjs`) links EN through the
   glossary terms and every English label already in a gloss token, RU through its own table of
   inflected forms, and skips what is not a rules term (loadout headers, item names, one-rule states
   like a unit's "quarry"). The generators re-run it after rewriting one of those files, and
-  `npm run sync` reminds (⚠, never ✗) when a glossed faction has plain bold the glossary could
-  link. The text-drift checks strip gloss tokens before comparing, so none of this is a finding.
+  `npm run sync` reminds (⚠, never ✗) when a faction has plain bold the glossary could link. The text-drift checks strip gloss tokens before comparing, so none of this is a finding.
   **One popover per term per section**: the first mention in a string, and again after each `### `
   subheading; a repeat stays plain bold ("боевая доктрина" four times in one list was too much).
-  Another faction joins by adding its slug to `GLOSS_SLUGS` and its Russian forms to `RU_FORMS`.
+  A new faction is covered by having a rules file (`GLOSS_SLUGS` reads the directory); a Russian
+  wording the pass does not know goes into `RU_FORMS`. **The bold itself comes from the canon**:
+  hand-typed factions carried almost none, so `scripts/restore-gloss-bold.mjs` put back the bold
+  appdata gives a glossary term (the emphasis gate's class C, narrowed to what the glossary knows),
+  EN and RU together or not at all — the RU twin is the pair `parity` checks, a term is marked only
+  where it occurs as often in RU as in EN, and everything else is reported and left alone. Run it
+  (`--show` first) after hand-transcribing new rules, then `npm run gloss`.
 - **EN↔RU structural parity:** the per-section counts of block markers (`▪ ◈ → ### ◆ [img:]`) must match between `en` and `ru`. After bulk edits, verify: `**` is balanced (even, no `****`), parity holds, and `npm run build` passes. **`npm run parity` now enforces this on the rulebook files too** (it used to cover faction data only): block markers, `[BRACKET]` abilities, measurements (`3"`, `D6`, `4+`, `+1`) and ALL-CAPS keywords must match EN↔RU, and every EN field must have RU text. Rule cross-references (`09.07`) deliberately are not compared — each locale points where its own layout needs. Notes (`**` counts) are summarised; `--notes` lists them.
 - **RU transliteration:** follow the source's apostrophes, using the typographic `’` (U+2019) — `Kauyon` → «кауйон» (none), `Mont’ka` → «монт’ка», `T'au` → «т’ау». Latin forms inside RU text keep their own (`T'au Empire`, the `T'AU EMPIRE` keyword). These match the Russian community's translation guide; that guide covers Black Library prose, so it applies to **flavour text and transliteration only** and never overrides the rule above that unit/detachment/stratagem names and ALL-CAPS keywords stay English. Settled cases are recorded here as they're decided — that's the source of truth for this repo.
   - `Scion` → «**сцион**», never «скион» (decided 2026-09-10). Every inflection follows the same
