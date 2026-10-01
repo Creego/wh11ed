@@ -3,13 +3,20 @@
 // and enhancements by detachment and name. Only points — the detachments' DP and dispositions are
 // the app's to report (diff-bundles.mjs), and the MFM scrape changed their shape on its own.
 const key = (s) => (s || '').toLowerCase().replace(/[‘’`]/g, "'").replace(/\s+/g, ' ').trim()
-const optLabel = (o) => ({ models: o.models, ...(o.note ? { note: o.note } : {}) })
+// A new unit's option, its note split like a changed one's: { models, label?, tier? }.
+function optLabel(o) {
+  if (!o.note) return { models: o.models }
+  const m = o.note.match(RANGE_ANY)
+  const label = m ? o.note.slice(0, m.index).replace(/[\s(]+$/, '').trim() : o.note
+  return { models: o.models, ...(label ? { label } : {}), ...(m ? { tier: m[0].replace(/[()]/g, '') } : {}) }
+}
 
 // A price note names which copies of the unit pay it — "1st", "2nd+", "1st-2nd", "3rd+", "1st-3rd",
 // "4th+" — sometimes after the unit's make-up ("3 Wolf Guard Headtakers (1st-2nd)"). → the make-up
 // and the range of copies [lo, hi].
 const ORD = '(\\d+)(?:st|nd|rd|th)'
 const RANGE = new RegExp(`\\(?${ORD}(?:-${ORD}|(\\+))?\\)?$`)
+const RANGE_ANY = new RegExp(`\\(?\\d+(?:st|nd|rd|th)(?:-\\d+(?:st|nd|rd|th)|\\+)?\\)?$`)
 function parseNote(note) {
   const m = (note || '').match(RANGE)
   if (!m) return { variant: key(note), lo: 1, hi: Infinity }
@@ -40,9 +47,10 @@ function diffPrices(was, now) {
     let run = null
     const flush = () => {
       if (!run) return
-      const range = !tiered ? '' : run.hi === COPIES && run.open ? `${ord(run.lo)}+` : run.lo === run.hi ? ord(run.lo) : `${ord(run.lo)}-${ord(run.hi)}`
-      const note = [g.variant, range].filter(Boolean).join(' ')
-      fields.push({ models: g.models, ...(note ? { note } : {}), from: run.from, to: run.to })
+      const tier = !tiered ? '' : run.hi === COPIES && run.open ? `${ord(run.lo)}+` : run.lo === run.hi ? ord(run.lo) : `${ord(run.lo)}-${ord(run.hi)}`
+      // `label`: the unit's make-up when the MFM names it ("3 Wolf Guard Headtakers"); `tier`: the
+      // copies the price is for. The page words both (utils/copyTier.js).
+      fields.push({ models: g.models, ...(g.variant ? { label: g.variant } : {}), ...(tier ? { tier } : {}), from: run.from, to: run.to })
       run = null
     }
     for (let c = 1; c <= COPIES; c++) {

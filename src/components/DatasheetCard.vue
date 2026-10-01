@@ -1048,6 +1048,7 @@
 
 <script setup>
 import ChevronIcon from './ChevronIcon.vue'
+import { copyTierLabel } from '../utils/copyTier.js'
 import { computed } from 'vue'
 import { ui } from '../i18n/ui.js'
 import { useLocale } from '../composables/useLocale.js'
@@ -1214,12 +1215,7 @@ const pointsTable = computed(() => {
 // '1st-2nd' / '3rd+' → "1st–2nd copy" / «1–2-я копия»: which copy of this datasheet
 // in the army the price applies to (explained by the note under the table).
 function tierLabel(tier) {
-  if (!tier) return labels.value.dsPoints
-  if (locale.value === 'ru') {
-    const nums = (tier.match(/\d+/g) || []).join('–')
-    return `${nums}-я${tier.includes('+') ? '+' : ''} копия`
-  }
-  return `${tier.replace('-', '–')} copy`
+  return tier ? copyTierLabel(tier, locale.value) : labels.value.dsPoints
 }
 
 const markFactionKw = computed(() => factionKwMarker(props.sheet))

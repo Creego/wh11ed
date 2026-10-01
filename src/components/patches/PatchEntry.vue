@@ -160,6 +160,7 @@ import CollapseTransition from '../CollapseTransition.vue'
 import PatchTextDiff from './PatchTextDiff.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
+import { copyTierLabel, modelsLabel } from '../../utils/copyTier.js'
 
 const props = defineProps({
   item: { type: Object, required: true },
@@ -202,7 +203,8 @@ const chips = computed(() => {
   const x = props.item
   const out = []
   if (x.kind === 'points') {
-    const size = (o) => `${o.models} ${l.patchesModels}${o.note ? ` (${o.note})` : ''}`
+    // "6 моделей · 3-я+ копия" — the MFM's make-up label stands for the size when it names one.
+    const size = (o) => [o.label || modelsLabel(o.models, locale.value), o.tier ? copyTierLabel(o.tier, locale.value) : ''].filter(Boolean).join(' · ')
     for (const o of x.fields || []) out.push(`${size(o)}: ${arrow(o.from, o.to)}`)
     for (const o of x.options || []) out.push(`${size(o)}: ${o.to} ${l.patchesPts}`)
     return out
