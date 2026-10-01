@@ -109,6 +109,7 @@ npm run dsrules      # GATE: a named rule appdata files on a datasheet must be o
 npm run imgrules     # GATE: a figure appdata draws as a picture inside an army/detachment rule must be in our text (see Data gates)
 npm run coregrants   # GATE: a rule that hands a unit a core ability must say so in the modifier layer (see Data gates)
 npm run dsids        # GATE: a datasheet id that left the build must be recorded as renamed or retired — a player's marks hang off it (see src/data/CLAUDE.md)
+npm run exceptions   # GATE: each recorded departure from appdata (scripts/lib/appdata-exceptions.mjs) still needed and still applied (see src/data/CLAUDE.md)
 npm run emphasis     # GATE: emphasis the canon carries that our prose dropped (see Data gates)
 npm run layouts      # GATE: the 45 layout diagrams against the app's own artwork (see Data gates)
 npm run companions   # GATE: the four Event Companion PDFs — version + the FAQ appdata does not carry

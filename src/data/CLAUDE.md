@@ -282,6 +282,20 @@ September even though `sync-core` printed it on every run — one finding among 
   Dominatus is tracked here as deliberately unimplemented — it only adapts the separate Dominatus
   deck, whose contents GW ships nowhere (appdata's `mission_pack_location*` tables are empty).
 
+- **`npm run exceptions`** (`scripts/check-appdata-exceptions.mjs`) — every place we knowingly
+  print something appdata does not, listed once in `scripts/lib/appdata-exceptions.mjs` with a
+  `why` and a `source` a person can open (a page of the printed codex, not "looks odd"). The
+  registry is a PATCH to appdata's own data: `loadAppdataBundle()` applies it for `gen-datasheets`,
+  `sync-appdata` and `sync-faction-text`, so a regeneration cannot transcribe the correction away and
+  the audits do not report it as drift. The gate reads appdata RAW and fails both ways: the error we
+  patch is gone or different (GW fixed or reworked it — re-read, drop or update the entry), or our
+  data no longer carries the correction (also `scripts/lib/appdata-exceptions.test.js`, which needs
+  no appdata clone, inside `npm test`). Born 2026-10-01: the 963 app lost the standard profile of
+  the Vanguard Veteran Squad with Jump Packs' plasma pistol, and the two wargear typos we had
+  corrected lived only as sync-baseline entries — quiet, but neither regeneration-proof nor able to
+  tell GW's fix from GW's change. Deciding to depart from appdata is the owner's call; the registry
+  is where the decision is written down.
+
 - **`npm run roster:data:check`** (`scripts/gen-roster-data.mjs`) — besides reporting that the
   generated faction files are stale, it fails on a wargear instruction whose SHAPE the replacement
   parser does not know: the group then declares no `rep`, which means the model keeps the weapon it

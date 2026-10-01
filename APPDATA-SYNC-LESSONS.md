@@ -1107,3 +1107,13 @@ and appdata state fresh; a data model can change between now and when this is ne
     journal says anyone chose the MFM. A re-record now lists what it accepts for the first time and
     keeps the reason written against each older entry; read that list, and write a reason for
     anything kept on purpose (`"appdata typo: …"`), so the next reader does not decide it again.
+
+75. **A departure from appdata needs a home that survives a regeneration.** The 963 app lost the
+    standard profile of one plasma pistol (Vanguard Veteran Squad with Jump Packs; the codex prints
+    both). Fixing it by hand would have lasted until the next `gen-datasheets --write`, after which
+    we match appdata again and nothing reports anything; the two wargear typos we had corrected were
+    in that state already, held only by sync-baseline entries. Every departure now lives in
+    `scripts/lib/appdata-exceptions.mjs` as a patch to appdata's input — applied by the generator and
+    the audits, checked by `npm run exceptions` against RAW appdata in both directions. Note also
+    that `gen-datasheets --only` rebuilds a sheet without its MFM copy tiers and glossary popovers:
+    follow it with `npm run sync:mfm -- <slug> --write` and `npm run gloss`, then read the diff.

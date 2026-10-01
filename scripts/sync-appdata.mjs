@@ -49,7 +49,8 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
-import { ROOT, APPDATA, SLUG_MAP, norm, looseName, isWeaponType, appdataToMarkup, bodyText, loadJson, loadModule, byNormName, diffByName, diffSet, matchWeapon, combatPatrolNames, loadWh11edDatasheets } from './lib/sync-common.mjs'
+import { ROOT, SLUG_MAP, norm, looseName, isWeaponType, appdataToMarkup, bodyText, loadJson, loadModule, byNormName, diffByName, diffSet, matchWeapon, combatPatrolNames, loadWh11edDatasheets } from './lib/sync-common.mjs'
+import { loadAppdataBundle } from './lib/appdata-exceptions.mjs'
 
 // Scalar field maps for statline/weapon-profile comparisons: [wh11ed key, appdata key].
 const STAT_FIELDS = [['m', 'M'], ['t', 'T'], ['sv', 'Sv'], ['w', 'W'], ['ld', 'Ld'], ['oc', 'OC']]
@@ -60,7 +61,7 @@ const WEAPON_FIELDS = {
 
 async function syncFaction(slug) {
   const appSlug = SLUG_MAP[slug] || slug
-  const bundle = await loadJson(path.join(APPDATA, 'factions', `${appSlug}.json`))
+  const bundle = loadAppdataBundle(appSlug) // our recorded departures applied — scripts/lib/appdata-exceptions.mjs
   console.log(`\n=== ${slug} (appdata: ${appSlug}) ===`)
   if (!bundle) { console.log('  no appdata bundle found — check SLUG_MAP or spelling'); return }
 

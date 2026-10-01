@@ -17,8 +17,9 @@
 // MFM's copy-tax tiers on top. Nothing here is translated: the RU overlay is a separate pass.
 import fs from 'node:fs'
 import path from 'node:path'
-import { ROOT, APPDATA, SLUG_MAP, norm, currentWargearRules, appdataToMarkup, appdataToParagraphs, loadJson, loadModule, table, nameOfEn, combatPatrolNames } from './lib/sync-common.mjs'
+import { ROOT, APPDATA, norm, currentWargearRules, appdataToMarkup, appdataToParagraphs, loadJson, loadModule, table, nameOfEn, combatPatrolNames } from './lib/sync-common.mjs'
 import { slugify } from '../src/data/slugify.js'
+import { loadAppdataBundle } from './lib/appdata-exceptions.mjs'
 
 const slug = process.argv[2]
 const WRITE = process.argv.includes('--write')
@@ -27,7 +28,9 @@ if (!slug || slug.startsWith('--')) {
   process.exit(1)
 }
 
-const bundle = loadJson(path.join(APPDATA, 'factions', `${SLUG_MAP[slug] || slug}.json`))
+// With scripts/lib/appdata-exceptions.mjs applied: a departure from appdata we decided on survives
+// the regeneration instead of being transcribed away.
+const bundle = loadAppdataBundle(slug)
 if (!bundle) { console.error(`no appdata bundle for ${slug}`); process.exit(1) }
 const file = path.join(ROOT, 'src/data/datasheets', `${slug}.js`)
 const oldMod = (await loadModule(file)) || {}

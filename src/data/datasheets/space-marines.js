@@ -13774,7 +13774,19 @@ export default [
         "d": "1"
       },
       {
-        "name": "Plasma pistol",
+        "name": "Plasma pistol – standard",
+        "tags": [
+          "CLOSE-QUARTERS"
+        ],
+        "range": "12\"",
+        "a": "1",
+        "bs": "3+",
+        "s": "7",
+        "ap": "-2",
+        "d": "1"
+      },
+      {
+        "name": "Plasma pistol – supercharge",
         "tags": [
           "CLOSE-QUARTERS",
           "HAZARDOUS"

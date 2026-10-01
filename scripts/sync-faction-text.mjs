@@ -31,7 +31,8 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
-import { ROOT, APPDATA, SLUG_MAP, norm, appdataToMarkup, bodyText, currentWargearRules, loadJson, loadModule, byNormName, combatPatrolNames, loadWh11edDatasheets } from './lib/sync-common.mjs'
+import { ROOT, SLUG_MAP, norm, appdataToMarkup, bodyText, currentWargearRules, loadModule, byNormName, combatPatrolNames, loadWh11edDatasheets } from './lib/sync-common.mjs'
+import { loadAppdataBundle } from './lib/appdata-exceptions.mjs'
 
 // Strip wh11ed's enrichment layer (and appdata's residual markup) down to bare comparable words.
 // Applied to BOTH sides — appdata text is run through appdataToMarkup first, so both arrive in
@@ -124,7 +125,7 @@ const nameRelated = (a, b) => {
 // sentence of ours even corresponds to. Returns a reason string when there is nothing to pair.
 export async function eachFactionTextPair(slug, visit, report = () => {}) {
   const appSlug = SLUG_MAP[slug] || slug
-  const bundle = await loadJson(path.join(APPDATA, 'factions', `${appSlug}.json`))
+  const bundle = loadAppdataBundle(appSlug) // our recorded departures applied — scripts/lib/appdata-exceptions.mjs
   const factionMod = await loadModule(path.join(ROOT, 'src/data/factions', `${slug}.js`))
   const en = Object.values(factionMod || {})[0]?.en
   if (!bundle) return 'no appdata bundle found — check SLUG_MAP or spelling'
