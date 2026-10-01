@@ -7,6 +7,7 @@
     <div
       v-if="selected.length || hidden"
       class="det-tools"
+      :class="{ compact }"
     >
       <button
         type="button"
@@ -29,6 +30,7 @@
       :unique="d.unique || ''"
       :dp="d.dp"
       :on="selected.includes(d.name)"
+      :compact="compact"
       @click="$emit('toggle', d)"
     />
   </div>
@@ -48,6 +50,8 @@ const props = defineProps({
   selected:    { type: Array, required: true },
   maxDp:       { type: Number, required: true },
   dpSpent:     { type: Number, required: true },
+  // The desk's dropdown: one-line rows and a quiet tools line (DetachmentOption's `compact`).
+  compact:     { type: Boolean, default: false },
 })
 defineEmits(['toggle', 'clear'])
 
@@ -80,4 +84,6 @@ const hidden = computed(() => props.detachments.length - offered.value.length)
 .det-tools { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; }
 .det-clear { padding: 0.3rem 0.6rem; font-size: 0.8rem; }
 .det-hidden { font-size: 0.75rem; font-style: normal; color: var(--text-dim); text-align: right; }
+.det-tools.compact .det-clear { padding: 0.15rem 0.45rem; font-size: 0.75rem; white-space: nowrap; }
+.det-tools.compact .det-hidden { font-size: 0.7rem; line-height: 1.25; }
 </style>

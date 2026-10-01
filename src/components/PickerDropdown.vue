@@ -57,7 +57,7 @@ onUnmounted(() => window.removeEventListener('keydown', onEscape))
   max-height: min(70dvh, 34rem);
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: 0.6rem;
+  padding: 0.45rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);

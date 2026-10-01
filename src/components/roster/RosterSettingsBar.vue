@@ -65,6 +65,7 @@
            Escape closes it. -->
       <PickerDropdown
         v-model:open="detachmentPickerOpen"
+        class="rw-det"
         :label="labels.trackerDpBudget"
       >
         <template #trigger="{ toggle, open }">
@@ -79,6 +80,7 @@
           </button>
         </template>
         <DetachmentPickerList
+          compact
           :detachments="detachmentOptions"
           :selected="detachments"
           :max-dp="maxDp"
@@ -358,6 +360,7 @@ const moreOpen = ref(false)
 .rw-choose .bi { flex-shrink: 0; color: var(--text-muted); }
 /* The declared Force Disposition: the chip in its colour, on the field and in the list — the colour
    is how a disposition is told apart everywhere else (dispositionColors.js). */
+.rw-det { --pd-width: 30rem; }
 .rw-fd { --pd-width: 15rem; }
 /* The last field on the line: its panel opens leftwards, or at 1200px it would leave the screen. */
 .rw-fd :deep(.pd-panel) { left: auto; right: 0; }

@@ -2,7 +2,7 @@
   <button
     type="button"
     class="det"
-    :class="{ on }"
+    :class="{ on, compact }"
   >
     <span class="det-main">
       <span class="det-name">{{ name }}</span>
@@ -75,6 +75,9 @@ defineProps({
   tag: { type: String, default: '' },
   dp: { type: Number, default: 0 },
   on: { type: Boolean, default: false },
+  // One line instead of a card: the desk's dropdown, where a list of cards was a screen tall
+  // (owner, 2026-10-01). Name on the left, cost and dispositions in a row on the right.
+  compact: { type: Boolean, default: false },
 })
 
 </script>
@@ -178,4 +181,12 @@ defineProps({
   border-color: var(--accent);
   color: var(--accent);
 }
+
+/* The dropdown's row: one line, the cost a plain figure rather than a boxed plate. */
+.det.compact { min-height: 36px; padding: 0.3rem 0.5rem; gap: 0.5rem; }
+.det.compact .det-name { font-size: 1rem; }
+.det.compact .det-side { flex-direction: row; align-items: center; gap: 0.4rem; }
+.det.compact .det-dp { order: 1; padding: 0; border: 0; font-size: 0.8rem; color: var(--text-muted); }
+.det.compact.on .det-dp { color: var(--accent); }
+.det.compact .det-fds { flex-wrap: nowrap; }
 </style>
