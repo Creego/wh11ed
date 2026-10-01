@@ -25,6 +25,8 @@ export const changelog = [
     version: '2.7.9',
     date: '2026-10-01',
     en: [
+      { h: 'Game terms explained in every faction' },
+      'Bold game terms in the rules and datasheets of every faction now open a short explanation when you tap them, as they did for Space Marines in 2.7.8. For example engaged, strategic reserves or surge move. Only the terms the official app marks in bold have it.',
       { h: 'Datasheets: errata to “pick one” abilities' },
       'Some abilities on the sheets of Angron, Mortarion and Commissar Yarrick still had their text from before the errata. Now they match the official app. Angron’s Driven by Ultimate Rage lets melee attacks re-roll hit rolls of 1 and wound rolls of 1. Mortarion’s Diseased Influence works within 8", and Inflamed Reprisal shoots with −1 BS. Yarrick’s Counterstrategist works within 8", and its third option is now a charge.',
       { h: 'Roster builder: wargear that changes its bearer' },
@@ -39,6 +41,8 @@ export const changelog = [
       'At 1000 points you may take one 3 DP detachment if it is your only one. The roster builder allowed it before, but showed “3 / 2 DP” with a question mark. Now it shows “3 / 3 DP”.',
     ],
     ru: [
+      { h: 'Пояснения к терминам во всех фракциях' },
+      'Жирные игровые термины в правилах и листах данных всех фракций теперь открывают короткое пояснение по нажатию, как у Space Marines в 2.7.8. Например, «в дистанции ввязывания», «стратегические резервы» или «рывок». Пояснение есть только у терминов, которые выделяет официальное приложение.',
       { h: 'Листы данных: эррата к способностям «на выбор»' },
       'У Angron, Mortarion и Commissar Yarrick часть способностей оставалась с текстом до эрраты. Теперь они совпадают с официальным приложением. Driven by Ultimate Rage у Angron даёт атакам ближнего боя переброс единиц на попадание и на ранение. Diseased Influence у Mortarion действует в пределах 8", а Inflamed Reprisal стреляет с −1 к BS. Counterstrategist у Yarrick действует в пределах 8", а третий вариант теперь нападение.',
       { h: 'Конструктор: снаряжение, которое меняет носителя' },
