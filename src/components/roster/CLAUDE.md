@@ -2297,8 +2297,7 @@ accident** — each was a decision:
 **Signing in is not on this page, and not on the tracker's either.** Until 2026-09-01 the only
 sign-in button in the app sat on the tracker home, and this screen's hint told a signed-out
 reader to go there — an instruction, not a control, for an account both sections share. The way
-in and out is `AccountMenu.vue` in the navbar (desktop) and the same entries inside the gear menu
-(mobile), on every page; `useAccountActions.js` is the pair they share, and it sends the current
+in and out is the navbar's gear menu, on every page and every width; `useAccountActions.js` is the pair they share, and it sends the current
 path along so the OAuth round trip comes back here. `RosterCloudBar` reports sync and nothing
 else.
 

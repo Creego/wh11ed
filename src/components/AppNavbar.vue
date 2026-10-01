@@ -151,17 +151,6 @@
           >RU</span>
         </button>
         <button
-          class="lore-btn"
-          data-press
-          :class="{ active: hideLore }"
-          :title="hideLore ? labels.loreShow : labels.loreHide"
-          :aria-label="hideLore ? labels.loreShow : labels.loreHide"
-          :aria-pressed="hideLore"
-          @click="toggleLore"
-        >
-          <i :class="hideLore ? 'bi bi-book' : 'bi bi-book-fill'" />
-        </button>
-        <button
           class="theme-btn"
           data-press
           :title="theme === 'dark' ? labels.themeToLight : labels.themeToDark"
@@ -170,7 +159,8 @@
         >
           <i :class="theme === 'dark' ? 'bi bi-sun-fill' : 'bi bi-moon-fill'" />
         </button>
-        <AccountMenu />
+        <!-- The gear on every width since 2026-10-01 (owner): the account, the lore toggle, bug
+             reports and support live in it on the desktop too, rather than as a row of buttons. -->
         <div class="settings-wrap">
           <button
             class="settings-btn"
@@ -194,8 +184,9 @@
               v-if="settingsOpen"
               class="settings-menu"
             >
+              <!-- The desktop keeps its own theme button beside the gear. -->
               <button
-                class="settings-item"
+                class="settings-item settings-phone"
                 @click="toggleTheme"
               >
                 <i :class="theme === 'dark' ? 'bi bi-sun-fill' : 'bi bi-moon-fill'" />
@@ -238,8 +229,16 @@
                 <i class="bi bi-bug" />
                 <span>{{ labels.feedbackMenu }}</span>
               </button>
-              <!-- The account, on the phone. The desktop has a button of its own (AccountMenu);
-                   here it joins the theme and lore toggles rather than crowding the navbar. -->
+              <RouterLink
+                to="/support"
+                class="settings-item"
+                @click="settingsOpen = false"
+              >
+                <i class="bi bi-heart" />
+                <span>{{ labels.supportProject }}</span>
+              </RouterLink>
+              <!-- The account: it joins the lore toggle and the rest rather than crowding the
+                   navbar with a button of its own. -->
               <template v-if="accountStatus === 'authed'">
                 <p class="settings-who">
                   <i class="bi bi-cloud-check-fill" />
@@ -302,7 +301,6 @@ import { useOfflineWarmup, startOfflineWarmup, loadOfflineSize } from '../compos
 import { useRouteSection } from '../composables/useRouteSection.js'
 import { useAccountActions } from '../composables/useAccountActions.js'
 import { useFeedbackModal } from '../composables/useFeedbackModal.js'
-import AccountMenu from './AccountMenu.vue'
 import { ui } from '../i18n/ui.js'
 import { factionGroups, factionGroupLabelKey } from '../data/factionsIndex.js'
 import { rulesLanding } from '../data/rulesLanding.js'
@@ -689,37 +687,13 @@ a.nd-link:hover {
   color: #fff;
 }
 
-.lore-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 2.15rem;
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.14);
-  color: rgba(255,255,255,0.65);
-  padding: 0 0.65rem;
-  cursor: pointer;
-  font-size: 1.05rem;
-  line-height: 1;
-  transition: background 0.15s, color 0.15s;
-}
-
-.lore-btn:hover {
-  background: rgba(255,255,255,0.13);
-  color: #fff;
-}
-
-.lore-btn.active {
-  background: color-mix(in srgb, var(--accent) 30%, transparent);
-  border-color: var(--accent);
-  color: #fff;
-}
-
 /* ── Settings dropdown (mobile only) ── */
 .settings-wrap {
   position: relative;
-  display: none;
+  display: block;
 }
+/* Theme has its own button on the desktop; the menu's copy is for the phone. */
+.settings-item.settings-phone { display: none; }
 
 .settings-btn {
   display: inline-flex;
@@ -774,6 +748,12 @@ a.nd-link:hover {
 
 .settings-item {
   display: flex;
+  /* The support entry is a link: without these it inherits the page's underline and line height
+     and stands 6px taller than the buttons around it. */
+  text-decoration: none;
+  line-height: normal;
+  /* …and the buttons the app's own face: they were in the browser's default (Arial) beside it. */
+  font-family: inherit;
   align-items: center;
   gap: 0.6rem;
   width: 100%;
@@ -907,14 +887,13 @@ a.nd-link:hover {
     display: none;
   }
 
-  /* Collapse lore + theme into the settings (gear) menu on mobile */
-  .lore-btn,
+  /* Collapse theme into the settings (gear) menu on mobile */
   .theme-btn {
     display: none;
   }
 
-  .settings-wrap {
-    display: block;
+  .settings-item.settings-phone {
+    display: flex;
   }
 
   /* Increase tap targets for action buttons */

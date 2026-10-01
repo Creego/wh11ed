@@ -151,12 +151,13 @@ never raises it.
 **Navigation model:** Two levels.
 
 - **Top navbar** (`App.vue`) — sections "Core Rules", "Event Companion", "Tracker", "Factions". (The `/links` page of source PDFs is deliberately NOT in the navbar or the drawer — only its card on the landing page links to it.) `isEventRoute` (path starts with `/event-companion`) and `isTrackerRoute` (starts with `/tracker`) switch which subnav renders. **Factions** is a `.nav-dropdown`: the link still navigates to `/factions`, but on **hover / focus-within** (desktop only — `.navbar-links` is `display:none` ≤900px) it opens a pure-CSS grouped mega-menu of all factions (2-column grid from `data/factionsIndex.js` via `groupLabelKey`, links to `/factions/:slug`, "coming soon" for non-ready). No JS state — reveal is CSS `:hover`/`:focus-within` with a transparent `padding-top` bridge.
-- **The account lives in the navbar, not in a section** (`AccountMenu.vue`, `useAccountActions.js`).
+- **The account lives in the navbar, not in a section** (the ⚙ menu, `useAccountActions.js`).
   Both the tracker's history and the roster builder's lists sync through one account, but until
   2026-09-01 the only sign-in button was on the tracker home and the roster list simply told the
-  reader to go there. Desktop gets its own button in `.navbar-actions` (a `fade-pop` dropdown, the
-  gear menu's recipe); ≤900px it hides and the same two entries sit inside the **⚙ menu**, next to
-  the theme and lore toggles — the mobile navbar keeps its four buttons. `login(provider, returnTo)`
+  reader to go there. The entries sit inside the **⚙ menu** at every width (since 2026-10-01 the
+  desktop too: the account, the lore toggle, bug reports and "Support the project" all live there,
+  and only the theme keeps a button of its own beside the gear on a wide screen; `AccountMenu.vue`,
+  the desktop's separate account button, is gone). `login(provider, returnTo)`
   stashes the current path in `sessionStorage` and `AuthCallbackView` spends it, because the backend
   always redirects to one fixed path (`APP_AFTER_LOGIN_URL`) whichever page you started from —
   changing that path means deploying `wh11ed-api`, returning to it costs nothing. `App.vue` calls
