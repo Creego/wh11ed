@@ -18,8 +18,9 @@ Field Manual's points, the FAQ & errata. Nothing on the page is written by hand.
   Points come from the MFM only; a Chapter's FAQ copies of Codex: Space Marines entries are dropped.
 - **Removed** entries carry no text (`from` is dropped) — the name is the news, and the 963 file
   was 650 KB with it.
-- **Page** — `PatchesView.vue` (filter `?f=` = slug / `mine` = pinned factions / `all`; the core rules
-  stay in every filter), `PatchBody.vue` (faction blocks, folded when an update touches many —
+- **Page** — `PatchesView.vue`: two pickers, the faction (`?f=` = slug / `mine` = pinned / `all`; the
+  core rules stay in every filter) and the update (`?p=`, one on the page at a time, its file fetched
+  when picked — not accordions, owner 2026-10-01; both picks push, see `pick()`), `PatchBody.vue` (faction blocks, folded when an update touches many —
   open from the start when filtered), `PatchEntry.vue` (chips for numbers, +/− for lists, a rule
   text on request), `PatchTextDiff.vue` (`utils/wordDiff.js`, word LCS; a text that only arrived
   renders through `renderRichText`). Units link to today's page (`unit` in the data, resolved by

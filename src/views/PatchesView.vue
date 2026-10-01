@@ -57,6 +57,42 @@
           </div>
         </template>
       </AdaptivePicker>
+
+      <!-- Which update: the newest with something for the chosen factions, or any other. -->
+      <AdaptivePicker
+        v-if="current"
+        v-model:open="patchPickerOpen"
+        panel-width="22rem"
+        :title="labels.patchesUpdate"
+      >
+        <template #trigger="{ toggle: togglePatches, open }">
+          <button
+            type="button"
+            class="pv-trigger"
+            :aria-expanded="open"
+            @click="togglePatches"
+          >
+            <span class="pv-trigger-label">{{ labels.patchesUpdate }}</span>
+            <span class="pv-trigger-name">{{ titleOf(current) }}</span>
+            <i class="bi bi-chevron-down" />
+          </button>
+        </template>
+        <template #default="{ bodyClass }">
+          <div :class="bodyClass">
+            <button
+              v-for="p in shown"
+              :key="p.id"
+              type="button"
+              class="pv-opt"
+              :class="{ on: p.id === current.id }"
+              @click="pickPatch(p.id)"
+            >
+              <span class="pv-opt-title">{{ titleOf(p) }}</span>
+              <span class="pv-opt-meta">{{ formatDate(p.date) }} · {{ labels.patchesChanges }}: {{ p.count }}</span>
+            </button>
+          </div>
+        </template>
+      </AdaptivePicker>
     </div>
 
     <p
@@ -66,54 +102,31 @@
       {{ labels.patchesNothing }}
     </p>
 
-    <section
-      v-for="p in shown"
-      :id="`patch-${p.id}`"
-      :key="p.id"
+    <!-- One update on the page at a time, its file fetched when it is picked. -->
+    <div
+      v-if="current"
       class="pv-patch"
     >
-      <button
-        type="button"
-        class="pv-head"
-        :aria-expanded="openId === p.id"
-        @click="toggle(p.id)"
+      <p
+        v-if="failed[current.id]"
+        class="pv-empty"
+        role="status"
       >
-        <span class="pv-head-main">
-          <span class="pv-title">
-            <template v-if="p.labels.app">{{ labels.patchesAppData }} {{ p.labels.app }}</template>
-            <template v-if="p.labels.app && p.labels.mfm"> · </template>
-            <template v-if="p.labels.mfm">MFM v{{ p.labels.mfm }}</template>
-          </span>
-          <span class="pv-meta">
-            <time :datetime="p.date">{{ formatDate(p.date) }}</time>
-            · {{ labels.patchesChanges }}: {{ p.count }}
-          </span>
-        </span>
-        <i
-          class="bi bi-chevron-down pv-chev"
-          :class="{ open: openId === p.id }"
-        />
-      </button>
-      <CollapseTransition :show="openId === p.id">
-        <div
-          v-if="loaded[p.id] || failed[p.id]"
-          class="pv-body"
-        >
-          <p
-            v-if="failed[p.id]"
-            class="pv-empty"
-            role="status"
-          >
-            {{ labels.patchesLoadError }}
-          </p>
-          <PatchBody
-            v-else
-            :items="itemsOf(p.id)"
-            :expanded="filter !== 'all'"
-          />
-        </div>
-      </CollapseTransition>
-    </section>
+        {{ labels.patchesLoadError }}
+      </p>
+      <p
+        v-else-if="!loaded[current.id]"
+        class="pv-empty"
+        role="status"
+      >
+        {{ labels.patchesLoading }}
+      </p>
+      <PatchBody
+        v-else
+        :items="itemsOf(current.id)"
+        :expanded="filter !== 'all'"
+      />
+    </div>
   </div>
 </template>
 
@@ -121,12 +134,11 @@
 // GW's updates in one place (/patches, owner 2026-10-01): the app's rules data, the Munitorum Field
 // Manual's points and the FAQ, update by update, "was → now". Generated from the data history by
 // scripts/gen-patch-notes.mjs — nothing here is written by hand. The list (index.js) is light; an
-// update's changes load when it is opened, the newest one at once. Narrowing to a faction (or to
+// update's changes load when it is picked (one on the page at a time, the newest by default). Narrowing to a faction (or to
 // the pinned ones) is in the address, so a link to "what changed for Orks" can be shared.
 import { computed, reactive, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import AdaptivePicker from '../components/AdaptivePicker.vue'
-import CollapseTransition from '../components/CollapseTransition.vue'
 import FactionPickerList from '../components/tracker/FactionPickerList.vue'
 import PatchBody from '../components/patches/PatchBody.vue'
 import { patches } from '../data/patches/index.js'
@@ -196,15 +208,21 @@ function itemsOf(id) {
   return s ? items.filter((x) => !x.faction || s.includes(x.faction)) : items
 }
 
-const openId = ref(null)
-function toggle(id) {
-  openId.value = openId.value === id ? null : id
-  if (openId.value) load(id)
+// `?p=` — the update on the page; with none, or one the filter has nothing in, the newest that has.
+const current = computed(() => shown.value.find((p) => p.id === route.query.p) || shown.value[0] || null)
+watch(current, (p) => { if (p) load(p.id) }, { immediate: true })
+
+const patchPickerOpen = ref(false)
+// A push, like the faction pick (see pick()).
+function pickPatch(id) {
+  patchPickerOpen.value = false
+  if (id !== current.value?.id) router.push({ query: { ...route.query, p: id } })
+  else if (failed[id]) load(id) // picking the one that failed to load tries again
 }
-// The newest update is open from the start — and again when a narrower filter drops the open one.
-watch(shown, (list) => {
-  if (!list.some((p) => p.id === openId.value) && list[0]) toggle(list[0].id)
-}, { immediate: true })
+const titleOf = (p) => [
+  p.labels.app ? `${labels.value.patchesAppData} ${p.labels.app}` : '',
+  p.labels.mfm ? `MFM v${p.labels.mfm}` : '',
+].filter(Boolean).join(' · ')
 </script>
 
 <style scoped>
@@ -237,12 +255,14 @@ watch(shown, (list) => {
   margin-left: auto;
   margin-right: auto;
 }
-.pv-bar { display: flex; margin-bottom: 0.5rem; }
+.pv-bar { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.5rem; }
 .pv-trigger {
   display: inline-flex;
   align-items: baseline;
   gap: 0.5rem;
   padding: 0.4rem 0.7rem;
+  /* A long update name wraps under itself on a phone, from the left like the label beside it. */
+  text-align: left;
   background: var(--bg-card);
   border: 1px solid var(--border);
   font: inherit;
@@ -289,29 +309,29 @@ watch(shown, (list) => {
 }
 
 .pv-patch {
+  padding: 0 0.75rem 0.3rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  margin-bottom: 0.4rem;
 }
-/* Every fold on the page reads the same way: what it is on the left, the chevron on the right
-   edge, the whole line the button. */
-.pv-head {
+.pv-patch > .pv-empty { margin: 0.6rem 0; }
+
+/* The update picker's rows: the name, and under it when and how much. */
+.pv-opt {
   display: flex;
-  align-items: center;
-  gap: 0.6rem;
+  flex-direction: column;
   width: 100%;
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 0.6rem;
   background: none;
   border: none;
+  border-bottom: 1px solid var(--border-light);
   font: inherit;
   text-align: left;
   color: var(--text-primary);
   cursor: pointer;
 }
-.pv-head-main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
-.pv-title { font-weight: 700; font-size: 0.95rem; line-height: 1.3; }
-.pv-meta { font-size: 0.75rem; color: var(--text-muted); }
-.pv-chev { font-size: 0.8rem; color: var(--text-muted); transition: transform var(--motion-fast) ease; }
-.pv-chev.open { transform: rotate(180deg); }
-.pv-body { padding: 0 0.75rem 0.3rem; border-top: 1px solid var(--border-light); }
+.pv-opt:last-child { border-bottom: none; }
+.pv-opt:hover { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.pv-opt.on .pv-opt-title { color: var(--accent); }
+.pv-opt-title { font-weight: 600; font-size: 0.9rem; }
+.pv-opt-meta { font-size: 0.75rem; color: var(--text-muted); }
 </style>
