@@ -177,8 +177,11 @@ defineProps({
 
 /* The dropdown's row: one line — name, then the tag and the dispositions, the cost a plain figure
    rather than a boxed plate at the end. */
-.det.compact { display: flex; min-height: 36px; padding: 0.3rem 0.5rem; gap: 0.5rem; }
-.det.compact .det-main { flex: 1; }
+.det.compact { display: flex; flex-wrap: wrap; align-items: center; min-height: 36px; padding: 0.3rem 0.5rem; gap: 0.3rem 0.5rem; }
+/* The name never breaks: where the tag and two dispositions do not fit beside it, they drop to a
+   second line on the right instead (Awakened Dynasty broke into four lines, owner 2026-10-01). */
+.det.compact .det-main { flex: 1 0 auto; white-space: nowrap; }
+.det.compact .det-foot { margin-left: auto; }
 .det.compact .det-name { font-size: 1rem; }
 .det.compact .det-foot { flex-wrap: nowrap; }
 .det.compact .det-fds { flex-wrap: nowrap; }
