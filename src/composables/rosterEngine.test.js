@@ -172,7 +172,7 @@ describe('wargearGroupLive + defaultLoadoutLines with cond/rep', () => {
   })
 
   it('drops a fully-replaced default from the loadout summary', () => {
-    expect(defaultLoadoutLines(overlord, items, { wg: [] })).toEqual([{ mini: '', items: 'Tachyon arrow, Overlord’s blade' }])
+    expect(defaultLoadoutLines(overlord, items, { wg: [] })).toEqual([{ mini: '', items: 'Tachyon arrow, Overlord’s blade', names: ['Tachyon arrow', 'Overlord’s blade'] }])
     expect(defaultLoadoutLines(overlord, items, { wg: [[1, 0, 1]] })).toEqual([]) // both defaults swapped away
   })
 
@@ -187,7 +187,7 @@ describe('wargearGroupLive + defaultLoadoutLines with cond/rep', () => {
     }
     const wItems = { 10: 'Close combat weapon', 11: 'Gauss flayer', 12: 'Gauss reaper' }
     expect(defaultLoadoutLines(warriors, wItems, { size: 0, wg: [[0, 0, 3]] }))
-      .toEqual([{ mini: '', items: 'Close combat weapon, Gauss flayer ×7' }])
+      .toEqual([{ mini: '', items: 'Close combat weapon, Gauss flayer ×7', names: ['Close combat weapon', 'Gauss flayer'] }])
   })
 
   it('an inert (condition unmet) deviation counts for nothing', () => {
@@ -196,7 +196,7 @@ describe('wargearGroupLive + defaultLoadoutLines with cond/rep', () => {
     // its condition is unmet.
     const entry = { wg: [[0, 0, 1]] } // orb "on" with no live weapon swap → cond unmet
     expect(unitWargearPoints(overlord, entry)).toBe(0)
-    expect(defaultLoadoutLines(overlord, items, entry)).toEqual([{ mini: '', items: 'Tachyon arrow, Overlord’s blade' }])
+    expect(defaultLoadoutLines(overlord, items, entry)).toEqual([{ mini: '', items: 'Tachyon arrow, Overlord’s blade', names: ['Tachyon arrow', 'Overlord’s blade'] }])
   })
 
   it('counts the same deviation once its condition is met', () => {
@@ -1085,7 +1085,7 @@ describe('the stock rule — a model cannot give the same item up twice', () => 
       expect(swapRoom(raptors, { wg: [[0, 0, 2], [1, 0, 2]] }, 1)).toBe(2)
       const items = { 756: 'Astartes chainsword', 1: 'Bolt pistol' }
       const lines = defaultLoadoutLines(raptors, items, { wg: [[0, 0, 2]] })
-      expect(lines[1]).toEqual({ mini: 'Raptor', items: 'Astartes chainsword, Bolt pistol ×2' }) // all four keep it
+      expect(lines[1]).toEqual({ mini: 'Raptor', items: 'Astartes chainsword, Bolt pistol ×2', names: ['Astartes chainsword', 'Bolt pistol'] }) // all four keep it
     })
 
     it('closes a lock whose item another group already took', () => {
@@ -1257,14 +1257,14 @@ describe('defaultLoadoutLines on a multi-profile squad', () => {
 
   it('spends a swap against the profile that owns the group', () => {
     const lines = defaultLoadoutLines(sisters, items, { size: 0, count: 10, wg: [[0, 0, 1]] })
-    expect(lines[0]).toEqual({ mini: 'Sister Superior', items: 'Bolt pistol' })
-    expect(lines[1]).toEqual({ mini: 'Battle Sister', items: 'Boltgun, Bolt pistol' })
+    expect(lines[0]).toEqual({ mini: 'Sister Superior', items: 'Bolt pistol', names: ['Bolt pistol'] })
+    expect(lines[1]).toEqual({ mini: 'Battle Sister', items: 'Boltgun, Bolt pistol', names: ['Boltgun', 'Bolt pistol'] })
   })
 
   it('counts a stepper against that profile, not the whole squad', () => {
     // 3 of the 9 Battle Sisters swap; the Superior's own boltgun is untouched.
     const lines = defaultLoadoutLines(sisters, items, { size: 0, count: 10, wg: [[1, 0, 3]] })
-    expect(lines[1]).toEqual({ mini: 'Battle Sister', items: 'Boltgun ×6, Bolt pistol' })
+    expect(lines[1]).toEqual({ mini: 'Battle Sister', items: 'Boltgun ×6, Bolt pistol', names: ['Boltgun', 'Bolt pistol'] })
   })
 
   // A unit-wide group (appdata's bullet, recorded once per profile and folded by the generator)
@@ -1274,8 +1274,8 @@ describe('defaultLoadoutLines on a multi-profile squad', () => {
   // profile fields.
   it('spends a unit-wide swap against the biggest profile', () => {
     const lines = defaultLoadoutLines(sisters, items, { size: 0, count: 10, wg: [[2, 0, 4]] })
-    expect(lines[0]).toEqual({ mini: 'Sister Superior', items: 'Boltgun, Bolt pistol' })
-    expect(lines[1]).toEqual({ mini: 'Battle Sister', items: 'Boltgun, Bolt pistol ×5' })
+    expect(lines[0]).toEqual({ mini: 'Sister Superior', items: 'Boltgun, Bolt pistol', names: ['Boltgun', 'Bolt pistol'] })
+    expect(lines[1]).toEqual({ mini: 'Battle Sister', items: 'Boltgun, Bolt pistol ×5', names: ['Boltgun', 'Bolt pistol'] })
   })
 
   it('spills into the next profile once the biggest is spent, and stops there', () => {

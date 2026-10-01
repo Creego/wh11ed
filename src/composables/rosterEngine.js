@@ -1408,20 +1408,23 @@ export function defaultLoadoutLines(def, items, entry) {
   return (def?.defaults || []).flatMap(([m, list]) => {
     const models = perMini?.get(m)
     const parts = []
+    // The bare names too — what the editor's info button opens the profiles of.
+    const names = []
+    const put = (id, text) => { parts.push(text); names.push(items[id]) }
     for (const [id, c, total] of list) {
       // `total` marks a quantity that belongs to the PROFILE rather than to each of its models —
       // one of the two Gun Servitors in a Servitor Battleclade carries the heavy bolter (see the
       // generator's default-loadout merge) — so it is printed as it stands, never multiplied.
-      if (total) { parts.push(`${items[id]}${c > 1 ? ` ×${c}` : ''}`); continue }
+      if (total) { put(id, `${items[id]}${c > 1 ? ` ×${c}` : ''}`); continue }
       const take = removed.get(`${m}:${id}`) || 0
-      if (!take || models == null) { parts.push(`${items[id]}${c > 1 ? ` ×${c}` : ''}`); continue }
+      if (!take || models == null) { put(id, `${items[id]}${c > 1 ? ` ×${c}` : ''}`); continue }
       // take is a MODEL count (how many models of THIS profile swapped the item away); c is the
       // item's per-model quantity, so the surviving total scales by both.
       const remaining = copiesLeft(c, models, take)
-      if (remaining > 0) parts.push(`${items[id]} ×${remaining}`)
+      if (remaining > 0) put(id, `${items[id]} ×${remaining}`)
     }
     if (!parts.length) return []
-    return [{ mini: def.minis?.length > 1 ? (def.minis[m]?.n || '') : '', items: parts.join(', ') }]
+    return [{ mini: def.minis?.length > 1 ? (def.minis[m]?.n || '') : '', items: parts.join(', '), names }]
   })
 }
 
