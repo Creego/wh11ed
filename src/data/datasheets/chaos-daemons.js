@@ -119,7 +119,7 @@ export default [
     "rules": [
       {
         "name": "SUPREME COMMANDER",
-        "text": "If this model is in your army, it must be your Warlord."
+        "text": "If this model is in your army, it must be your WARLORD."
       }
     ],
     "abilitySets": [
@@ -1480,7 +1480,7 @@ export default [
     "rules": [
       {
         "name": "MANIFESTATION OF DESTRUCTION",
-        "text": "This model cannot be your Warlord and cannot be given Enhancements."
+        "text": "This model cannot be your WARLORD and cannot be given Enhancements."
       }
     ]
   },
@@ -1635,7 +1635,7 @@ export default [
       },
       {
         "name": "Fortification",
-        "text": "While an enemy unit is only within Engagement Range of one or more Fortifications from your army:\n▪ That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol, subtract 1 from the Hit roll.\n▪ Models in that unit do not need to take Desperate Escape tests due to Falling Back while Battle-shocked, except for those that will move over enemy models when doing so."
+        "text": "While an enemy unit is only within Engagement Range of one or more FORTIFICATIONS from your army:\n▪ That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol, subtract 1 from the Hit roll.\n▪ Models in that unit do not need to take Desperate Escape tests due to Falling Back while Battle-shocked, except for those that will move over enemy models when doing so."
       }
     ],
     "composition": [
@@ -4026,7 +4026,7 @@ export default [
       },
       {
         "name": "Fortification",
-        "text": "While an enemy unit is only within Engagement Range of one or more Fortifications from your army:\n▪ That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol, subtract 1 from the Hit roll.\n▪ Models in that unit do not need to take Desperate Escape tests due to Falling Back while Battle-shocked, except for those that will move over enemy models when doing so."
+        "text": "While an enemy unit is only within Engagement Range of one or more FORTIFICATIONS from your army:\n▪ That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol, subtract 1 from the Hit roll.\n▪ Models in that unit do not need to take Desperate Escape tests due to Falling Back while Battle-shocked, except for those that will move over enemy models when doing so."
       }
     ],
     "composition": [

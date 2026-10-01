@@ -928,7 +928,7 @@ This detachment has the DATA-PSALM tag and cannot be taken with another DATA-PSA
         name: 'Noospheric Transference',
         flavor:
           'Tech-Priests can override the will of their thralls and project martial data inloads into the minds of their warriors, blessing the soldiery with endless streams of precisely tailored binharic code.',
-        body: `In your Command phase, select one or more Adeptus Mechanicus units from your army (including units that are embarked within Transports). The maximum number of units you can select depends on the battle size, as follows:
+        body: `In your Command phase, select one or more ADEPTUS MECHANICUS units from your army (including units that are embarked within TRANSPORTS). The maximum number of units you can select depends on the battle size, as follows:
 ▪ **Incursion:** 1 unit
 ▪ **Strike Force:** 2 units
 ▪ **Onslaught:** 3 units

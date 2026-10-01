@@ -938,7 +938,7 @@ Each time a DRUKHARI or HARLEQUINS model from your army makes an attack, if that
           name: 'Archraider',
           points: 15,
           flavor: 'A veteran of countless realspace raids or vehicular saedaths, this warrior champion utilises the speed of their sleek anti-grav craft to surprise their enemies.',
-          body: `HARLEQUINS or DRUKHARI model only. In the Declare Battle Formations step, if the bearer starts the battle embarked within a Dedicated Transport, that Dedicated Transport has the Scouts 9" ability.`,
+          body: `HARLEQUINS or DRUKHARI model only. In the Declare Battle Formations step, if the bearer starts the battle embarked within a DEDICATED TRANSPORT, that DEDICATED TRANSPORT has the Scouts 9" ability.`,
         },
         {
           name: 'Conductor of Torment',

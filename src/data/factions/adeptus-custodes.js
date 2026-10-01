@@ -709,7 +709,7 @@ This detachment has the LIONS tag and cannot be taken with another LIONS detachm
         name: 'Against All Odds',
         flavor:
           'The Adeptus Custodes are outnumbered on every battlefield upon which they fight, yet no matter the foe, and no matter their number, the Lions of the Emperor will prevail.',
-        body: `Each time a model in an Adeptus Custodes unit from your army (excluding Vehicles) makes an attack, if there are no other friendly units within 6" of that unit, add 1 to the Hit roll and add 1 to the Wound roll.`,
+        body: `Each time a model in an ADEPTUS CUSTODES unit from your army (excluding VEHICLES) makes an attack, if there are no other friendly units within 6" of that unit, add 1 to the Hit roll and add 1 to the Wound roll.`,
       },
       stratagems: [
         {

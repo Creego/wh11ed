@@ -138,7 +138,7 @@ Until the start of your next Command phase, the unit you selected is affected by
           points: 35,
           aura: true,
           flavor: "Tech-Priests of the Adeptus Mechanicus bear to battle an array of sanctified oils and tinctures of protection with which to bless the Machine God’s divine works.",
-          body: "Astra Militarum Tech-Priest Enginseer model only. While a friendly Armoured Skirmisher unit is within 3\" of the bearer, that unit has the Feel No Pain 5+ ability.",
+          body: "ASTRA MILITARUM TECH-PRIEST ENGINSEER model only. While a friendly Armoured Skirmisher unit is within 3\" of the bearer, that unit has the Feel No Pain 5+ ability.",
         },
         {
           name: "Grand Strategist",
@@ -889,7 +889,7 @@ Until the start of your next Command phase, the unit you selected is affected by
           name: "Engine Speaker",
           points: 15,
           flavor: "Intimately attuned to the machine spirits of Astra Militarum vehicles, this Tech-Priest administers rites  and rituals, seeking to draw additional performance from engines.",
-          body: "Astra Militarum Tech-Priest Enginseer model only. Each time the bearer uses its Omnissiah’s Blessing ability, until the start of your next Command phase, add 3\" to the Move characteristic of the selected VEHICLE model.",
+          body: "ASTRA MILITARUM TECH-PRIEST ENGINSEER model only. Each time the bearer uses its Omnissiah’s Blessing ability, until the start of your next Command phase, add 3\" to the Move characteristic of the selected VEHICLE model.",
         },
         {
           name: "Assault Hatches",
@@ -1040,7 +1040,7 @@ Until the start of your next Command phase, the unit you selected is affected by
       rule: {
         name: "Designated Targets",
         flavor: "A regiment\u2019s resilient and often unconventional scouts are deployed to provide forward intelligence on enemy dispositions. With a combination of regimental issue scopes and guerrilla instincts hard-won through survival at the forefronts of war zones, they can draw massed firepower down on lurking threats.",
-        body: "Friendly SCOUT SENTINEL/**ASTRA MILITARUM** INFANTRY SMOKE units have the following ability:\n▪ **Signal Flares:** In your Shooting phase, this unit can select one visible enemy unit within 12\". That enemy unit is designated: while a unit is designated, that unit has +3\" detection range.\n\nThis detachment has the **RECON** tag and cannot be taken with another **RECON** detachment.",
+        body: "Friendly SCOUT SENTINEL/ASTRA MILITARUM INFANTRY SMOKE units have the following ability:\n▪ **Signal Flares:** In your Shooting phase, this unit can select one visible enemy unit within 12\". That enemy unit is designated: while a unit is designated, that unit has +3\" detection range.\n\nThis detachment has the **RECON** tag and cannot be taken with another **RECON** detachment.",
       },
       stratagems: [
         {
@@ -1050,7 +1050,7 @@ Until the start of your next Command phase, the unit you selected is affected by
           turn: "your",
           flavor: "With a daring reconnaissance dangerously close to the hiding enemy, soldiers can provide more accurate reports of their location.",
           when: "Start of your Shooting phase.",
-          target: "One friendly SCOUT SENTINEL/**ASTRA MILITARUM** INFANTRY unit.",
+          target: "One friendly SCOUT SENTINEL/ASTRA MILITARUM INFANTRY unit.",
           effect: "While a visible enemy unit is within 6\" of your unit, that unit has +3\" detection range.",
           restrictions: "",
         },

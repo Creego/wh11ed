@@ -6955,7 +6955,7 @@ export default [
     "rules": [
       {
         "name": "NAVY BODYGUARD",
-        "text": "If your Army Faction is not AGENTS OF THE IMPERIUM, then for each Voidfarers Character unit you include in your army, you can include one VOIDSMEN-AT-ARMS unit in your army that does not count towards the number of RETINUE units your army can include (see Assigned Agents)"
+        "text": "If your Army Faction is not AGENTS OF THE IMPERIUM, then for each VOIDFARERS CHARACTER unit you include in your army, you can include one VOIDSMEN-AT-ARMS unit in your army that does not count towards the number of RETINUE units your army can include (see Assigned Agents)"
       }
     ]
   },

@@ -63,7 +63,7 @@ const SHARED_RULE_NAMES = {
 // named Supreme Commander) is left untouched and must carry its own per-sheet overlay.
 const SHARED_RULE_TEXTS = {
   'SUPREME COMMANDER': {
-    en: 'If this model is in your army, it must be your Warlord.',
+    en: 'If this model is in your army, it must be your WARLORD.',
     ru: 'Если эта модель в вашей армии, она должна быть вашим WARLORD.',
   },
   'COMPANY HEROES': {
@@ -133,7 +133,7 @@ const RULE_TEXTS_BY_ID = {
   'lord-marshal-dreir': { 'ORDERS': 'Этот OFFICER может издать до 3 Orders юнитам Regiment.' },
   'lord-solar-leontus': {
     'SUPREME COMMANDER': 'Если эта модель в вашей армии, она должна быть вашим WARLORD.',
-    'ORDERS': 'Этот OFFICER может издать до 3 Orders:\n▪ юнитам Regiment\n▪ юнитам Squadron\n▪ юнитам Titanic',
+    'ORDERS': 'Этот OFFICER может издать до 3 Orders:\n▪ юнитам REGIMENT\n▪ юнитам SQUADRON\n▪ юнитам TITANIC',
   },
   'militarum-tempestus-command-squad': { 'ORDERS': 'OFFICER этого юнита может издать 1 Order юниту Regiment.' },
   'rogal-dorn-commander': { 'ORDERS': 'Этот OFFICER может издать до 2 Orders юнитам Squadron.' },
@@ -153,7 +153,7 @@ const RULE_TEXTS_BY_ID = {
   'exalted-flamer': { 'MANIFESTATION OF DESTRUCTION': 'Эта модель не может быть вашим WARLORD, и ей нельзя давать улучшения.' },
   'pink-horrors': { 'HORRORS ARE PINK. HORRORS ARE BLUE. WHEREONCE THERE WAS ONE, NOW THERE ARE TWO.': 'Если в какой-либо момент этот юнит не содержит моделей PINK HORROR, используйте для этого юнита датащит BLUE HORRORS.\n\n**Примечание разработчика:** Пока этот юнит содержит одну или более моделей PINK HORROR, способности Sullen Malevolence и Exploding Horrors из датащита BLUE HORRORS не применяются к этому юниту.' },
   // Chaos Space Marines
-  'nemesis-claw': { 'ATTACHED UNIT': 'Если юнит Character из вашей армии со способностью Leader (кроме Epic Hero) может быть присоединён к юниту Legionaries, он может быть присоединён к этому юниту вместо этого.' },
+  'nemesis-claw': { 'ATTACHED UNIT': 'Если юнит CHARACTER из вашей армии со способностью Leader (кроме Epic Hero) может быть присоединён к юниту Legionaries, он может быть присоединён к этому юниту вместо этого.' },
   // Dark Angels
   'deathwing-knights': { 'ATTACHED UNIT': 'Если юнит Character из вашей армии со способностью Leader может быть присоединён к юниту Terminator Squad, он может быть присоединён к этому юниту вместо этого.' },
   'deathwing-terminator-squad': { 'ATTACHED UNIT': 'Если юнит Character из вашей армии со способностью Leader может быть присоединён к юниту Terminator Squad, он может быть присоединён к этому юниту вместо этого.' },
@@ -176,7 +176,7 @@ const RULE_TEXTS_BY_ID = {
   'vindicare-assassin': { 'SHADOW ASSIGNMENT': 'Эту модель нельзя выбрать вашим WARLORD.\n\nЕсли фракция вашей армии — AGENTS OF THE IMPERIUM, то во время шага Declare Battle Formations вы можете заменить эту модель другой моделью OFFICIO ASSASSINORUM при условии, что суммарная стоимость в очках новой модели не превышает стоимости в очках заменяемой модели. Ваша армия не может содержать дубликаты одной и той же модели (т.е. после замены модели по этому правилу в вашей армии не может быть более 1 VINDICARE ASSASSIN, более 1 CULEXUS ASSASSIN, более 1 EVERSOR ASSASSIN и более 1 CALLIDUS ASSASSIN).' },
   'grey-knights-terminator-squad': { 'Rites of Teleportation': 'Если во время шага Declare Battle Formations к этому юниту присоединены один или более юнитов INQUISITOR, модели в этих юнитах имеют способность Deep Strike.' },
   'inquisitorial-agents': { 'INQUISITORIAL HENCHMEN': 'Если фракция вашей армии — не AGENTS OF THE IMPERIUM, то за каждый юнит Inquisitor, включённый в вашу армию, вы можете включить в неё один юнит INQUISITORIAL AGENTS, который не учитывается в числе юнитов RETINUE, которые может включать ваша армия (см. Assigned Agents).' },
-  'voidsmen-at-arms': { 'NAVY BODYGUARD': 'Если фракция вашей армии — не AGENTS OF THE IMPERIUM, то за каждый юнит Voidfarers Character, включённый в вашу армию, вы можете включить в неё один юнит VOIDSMEN-AT-ARMS, который не учитывается в числе юнитов RETINUE, которые может включать ваша армия (см. Assigned Agents).' },
+  'voidsmen-at-arms': { 'NAVY BODYGUARD': 'Если фракция вашей армии — не AGENTS OF THE IMPERIUM, то за каждый юнит VOIDFARERS CHARACTER, включённый в вашу армию, вы можете включить в неё один юнит VOIDSMEN-AT-ARMS, который не учитывается в числе юнитов RETINUE, которые может включать ваша армия (см. Assigned Agents).' },
   // Orks
   'boyz': { 'BODYGUARD': 'Если начальная численность этого юнита — 20, вы можете присоединить к нему до двух юнитов Leader вместо одного (но только если один из них — юнит WARBOSS). Если вы это делаете и этот юнит уничтожен, присоединённые к нему юниты Leader становятся отдельными юнитами со своей исходной начальной численностью.' },
   'breaka-boyz': { 'ATTACHED UNIT': 'Если юнит Character из вашей армии со способностью Leader может быть присоединён к юниту Boyz, он может быть присоединён к этому юниту вместо этого.' },

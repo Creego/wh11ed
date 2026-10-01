@@ -2584,7 +2584,7 @@ export default [
       },
       {
         "name": "Vox-relay Beacon",
-        "text": "At the start of the battle, you can set up one Vox-relay Beacon token for this unit anywhere on the battlefield that is not in your opponent’s deployment zone. While a friendly Astra Militarum Regiment unit is within 6\" of that token, Officer units from your army can issue orders to that REGIMENT unit as if the OFFICER unit was within 6\" of it. At the end of every phase, If an enemy unit is within 1\" of a Vox-relay Beacon token you set up, that token is removed from the battlefield."
+        "text": "At the start of the battle, you can set up one Vox-relay Beacon token for this unit anywhere on the battlefield that is not in your opponent’s deployment zone. While a friendly ASTRA MILITARUM REGIMENT unit is within 6\" of that token, OFFICER units from your army can issue orders to that REGIMENT unit as if the OFFICER unit was within 6\" of it. At the end of every phase, If an enemy unit is within 1\" of a Vox-relay Beacon token you set up, that token is removed from the battlefield."
       }
     ],
     "composition": [
@@ -10761,7 +10761,7 @@ export default [
       },
       {
         "name": "ORDERS",
-        "text": "This OFFICER can issue up to 3 Orders to:\n▪ Regiment units\n▪ Squadron units\n▪ Titanic units"
+        "text": "This OFFICER can issue up to 3 Orders to:\n▪ REGIMENT units\n▪ SQUADRON units\n▪ TITANIC units"
       }
     ]
   },
@@ -14207,7 +14207,7 @@ export default [
       },
       {
         "name": "Demolition Gear",
-        "text": "The bearer’s unit has the Grenades keyword."
+        "text": "The bearer’s unit has the GRENADES keyword."
       }
     ],
     "composition": [

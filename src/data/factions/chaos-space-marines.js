@@ -772,7 +772,7 @@ The combined points value of such units you can include in your army depends on 
           name: "Raid Leader",
           points: 20,
           flavor: "Rapid mechanised assaults are a preferred tactic of the Red Corsairs, and this champion excels at them.",
-          body: "HERETIC ASTARTES model only (excluding Damned models). Each time the bearer’s unit is set up after disembarking from a Transport that has made a Normal move this turn, the bearer’s unit is still eligible to declare a charge.",
+          body: "HERETIC ASTARTES model only (excluding Damned models). Each time the bearer’s unit is set up after disembarking from a TRANSPORT that has made a Normal move this turn, the bearer’s unit is still eligible to declare a charge.",
         },
         {
           name: "Dread Reputation",

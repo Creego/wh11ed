@@ -11337,7 +11337,7 @@ export default [
     "wargearAbilities": [
       {
         "name": "Phantasm Grenade Launcher",
-        "text": "The bearer’s unit has the Grenades keyword."
+        "text": "The bearer’s unit has the GRENADES keyword."
       }
     ],
     "composition": [

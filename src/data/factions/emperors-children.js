@@ -147,7 +147,7 @@ When mustering your army, unless specifically stated otherwise, you cannot selec
       rule: {
         name: "Pledges to the Dark Prince",
         flavor: "Few appear as favoured by the Dark Prince as these warriors, their boons of power a reward for committing ever viler deeds in honour of their patron.",
-        body: "At the start of the battle round, if your WARLORD is on the battlefield, you must pledge a number to Slaanesh representing how many enemy units will be destroyed this battle round. At the end of the battle round, if the number of enemy units destroyed this battle round is greater than or equal to your pledge, you gain a number of Pact points equal to your pledge. Otherwise, you do not gain any Pact points this battle round and your WARLORD model suffers D3 mortal wounds.\n\nEmperor’s Children units from your army gain a bonus depending on how many Pact points you have gained during the battle, as shown below (these are all cumulative).\n▪ **1+:** Each time a model in this unit makes an attack, re-roll a Hit roll of 1.\n▪ **3+:** Each time a model in this unit makes an attack, re-roll a Wound roll of 1.\n▪ **5+:** Melee weapons equipped by models in this unit have the [LETHAL HITS] and [SUSTAINED HITS 1] abilities.\n▪ **7+:** Each time a model in this unit makes an attack, a Critical Hit is scored on an unmodified Hit roll of 5+.",
+        body: "At the start of the battle round, if your WARLORD is on the battlefield, you must pledge a number to Slaanesh representing how many enemy units will be destroyed this battle round. At the end of the battle round, if the number of enemy units destroyed this battle round is greater than or equal to your pledge, you gain a number of Pact points equal to your pledge. Otherwise, you do not gain any Pact points this battle round and your WARLORD model suffers D3 mortal wounds.\n\nEMPEROR’S CHILDREN units from your army gain a bonus depending on how many Pact points you have gained during the battle, as shown below (these are all cumulative).\n▪ **1+:** Each time a model in this unit makes an attack, re-roll a Hit roll of 1.\n▪ **3+:** Each time a model in this unit makes an attack, re-roll a Wound roll of 1.\n▪ **5+:** Melee weapons equipped by models in this unit have the [LETHAL HITS] and [SUSTAINED HITS 1] abilities.\n▪ **7+:** Each time a model in this unit makes an attack, a Critical Hit is scored on an unmodified Hit roll of 5+.",
       },
       stratagems: [
         {
@@ -254,7 +254,7 @@ When mustering your army, unless specifically stated otherwise, you cannot selec
       rule: {
         name: "Sensational Performance & Master of the Pageant",
         flavor: "The craving for fresh experience and the obsession with enacting ever more excessive destruction drives these warriors to displays of sudden and obscene violence.",
-        body: "### Sensational Performance\nEmperor’s Children units from your army have the following ability:\n\n**Sensational Performance:** Each time this unit is selected to fight, if this unit made a Charge move this turn, it can use this ability. If it does, until the end of the phase:\n▪ This unit cannot target a unit it was within Engagement Range of at the start of the turn.\n▪ This unit cannot target a unit that was the target of another unit’s attack this phase.\n▪ Improve the Strength and Armour Penetration characteristics of this unit’s melee weapons by 1.\n\n### Master of the Pageant\nOnce per battle round, when you target a Fulgrim unit from your army with the Sinuous Breach or Prideful Superiority Stratagem, you can reduce the CP cost of that use of that Stratagem by 1CP.",
+        body: "### Sensational Performance\nEMPEROR’S CHILDREN units from your army have the following ability:\n\n**Sensational Performance:** Each time this unit is selected to fight, if this unit made a Charge move this turn, it can use this ability. If it does, until the end of the phase:\n▪ This unit cannot target a unit it was within Engagement Range of at the start of the turn.\n▪ This unit cannot target a unit that was the target of another unit’s attack this phase.\n▪ Improve the Strength and Armour Penetration characteristics of this unit’s melee weapons by 1.\n\n### Master of the Pageant\nOnce per battle round, when you target a Fulgrim unit from your army with the Sinuous Breach or Prideful Superiority Stratagem, you can reduce the CP cost of that use of that Stratagem by 1CP.",
       },
       stratagems: [
         {
@@ -576,7 +576,7 @@ When mustering your army, unless specifically stated otherwise, you cannot selec
       rule: {
         name: "Mechanised Murder",
         flavor: "The Emperor’s Children are masters of the mechanised assault, leaping from their growling, daemonically tainted vehicles to fall upon the foe with blade and bolter.",
-        body: "Each time an Emperor’s Children model from your army makes an attack, if it is a Transport model or disembarked from a TRANSPORT this turn, re-roll a Hit roll of 1 and re-roll a Wound roll of 1.",
+        body: "Each time an EMPEROR’S CHILDREN model from your army makes an attack, if it is a TRANSPORT model or disembarked from a TRANSPORT this turn, re-roll a Hit roll of 1 and re-roll a Wound roll of 1.",
       },
       stratagems: [
         {
@@ -619,7 +619,7 @@ When mustering your army, unless specifically stated otherwise, you cannot selec
           turn: "either",
           flavor: "The fleeting obsessions of the Emperor's Children cause them always to seek fresh targets.",
           when: "End of the Fight phase.",
-          target: "One Emperor’s Children unit from your army that destroyed an enemy unit this phase, and one friendly Transport it is able to embark within.",
+          target: "One EMPEROR’S CHILDREN unit from your army that destroyed an enemy unit this phase, and one friendly TRANSPORT it is able to embark within.",
           effect: "If your EMPEROR’S CHILDREN unit is wholly within 6\" of that TRANSPORT, it can embark within it. Your unit can embark within that TRANSPORT in a turn it disembarked from a TRANSPORT.",
           restrictions: "",
         },

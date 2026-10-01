@@ -3010,7 +3010,7 @@ export default [
     "rules": [
       {
         "name": "SUPREME COMMANDER",
-        "text": "If this model is in your army, it must be your Warlord."
+        "text": "If this model is in your army, it must be your WARLORD."
       }
     ]
   },

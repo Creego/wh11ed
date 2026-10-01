@@ -101,7 +101,7 @@ export default [
     "rules": [
       {
         "name": "SUPREME COMMANDER",
-        "text": "If this model is in your army, it must be your Warlord."
+        "text": "If this model is in your army, it must be your WARLORD."
       }
     ],
     "abilitySets": [
@@ -8154,7 +8154,7 @@ export default [
     "rules": [
       {
         "name": "ATTACHED UNIT",
-        "text": "If a Character unit from your army with the Leader ability (excluding Epic Heroes) can be attached to a Legionaries unit, it can be attached to this unit instead."
+        "text": "If a CHARACTER unit from your army with the Leader ability (excluding Epic Heroes) can be attached to a Legionaries unit, it can be attached to this unit instead."
       }
     ]
   },

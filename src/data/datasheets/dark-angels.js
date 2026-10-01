@@ -1697,7 +1697,7 @@ export default [
     "rules": [
       {
         "name": "Supreme Commander",
-        "text": "If this model is in your army, it must be your Warlord."
+        "text": "If this model is in your army, it must be your WARLORD."
       }
     ],
     "abilitySets": [

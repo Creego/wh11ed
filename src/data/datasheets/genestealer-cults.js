@@ -2104,7 +2104,7 @@ export default [
     "rules": [
       {
         "name": "SUPREME COMMANDER",
-        "text": "▪ You cannot include more than one PATRIARCH model in your army.\n▪ If this model is in your army, it must be your Warlord."
+        "text": "▪ You cannot include more than one PATRIARCH model in your army.\n▪ If this model is in your army, it must be your WARLORD."
       }
     ]
   },
