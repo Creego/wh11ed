@@ -14,7 +14,7 @@
 // an attributed note instead — the same "mark it, don't fake it" treatment DatasheetCard already
 // gives rule-granted keywords via its `grantedKeywords` prop.
 
-import { copiesLeft, wargearGroupCap, wargearGroupLive, findEnhancement, mandatoryEnhancementFor, optionItems, modelsPerMini, swapsByMini, allegFor, allegKeyword, allegItems, grantedKeywordsFor } from './rosterEngine.js'
+import { copiesLeft, wargearGroupCap, wargearGroupLive, findEnhancement, mandatoryEnhancementFor, optionItems, modelsPerMini, swapsByMini, allegFor, allegKeyword, allegItems, grantedKeywordsFor, detKey } from './rosterEngine.js'
 import { conditions } from '../data/rosterModifiers/conditions.js'
 // Rule-granted keywords moved to rosterEngine.js, which needs them to answer whether a unit can
 // carry an enhancement; re-exported here because this is where every caller already imports them.
@@ -388,6 +388,26 @@ export function enhKey(s) {
     .replace(/[‐‑‒–—―]/g, '-')
     .replace(/\s+/g, ' ')
     .trim()
+}
+
+// An enhancement's prose, by name, from a faction's detachments — the list's OWN detachments first.
+// A name is not unique within a faction: Astra Militarum has a Grand Strategist in both Armoured
+// Infantry and Combined Arms, and a search of every detachment in file order showed the Combined
+// Arms list the other one's text (a player's report, 2026-10-01). The rest of the faction is the
+// fallback for a list whose detachment the prose file does not carry by that name.
+// `own`: the roster's detachments, as names or as objects with a `name`.
+export function findEnhancementProse(detachments, name, own) {
+  const target = enhKey(name)
+  const mine = new Set((own || []).map((d) => detKey(typeof d === 'string' ? d : d?.name)))
+  const find = (ds) => {
+    for (const d of ds) {
+      const e = d?.enhancements?.find((x) => enhKey(x.name) === target)
+      if (e) return e
+    }
+    return null
+  }
+  const all = [...(detachments || [])]
+  return find(all.filter((d) => mine.has(detKey(d?.name)))) || find(all)
 }
 
 

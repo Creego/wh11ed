@@ -71,11 +71,14 @@ import { useFactionAccent } from '../../composables/useFactionAccent.js'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
 import { useRenderInline } from '../../composables/useRenderInline.js'
-import { enhKey } from '../../composables/rosterModifiers.js'
+import { findEnhancementProse } from '../../composables/rosterModifiers.js'
 
 const props = defineProps({
   name: { type: String, required: true },
   factionSlug: { type: String, required: true },
+  // The list's own detachments (names or objects): an enhancement name can repeat across a
+  // faction's detachments, and these are searched first (findEnhancementProse).
+  detachments: { type: Array, default: () => [] },
 })
 const { accentStyle } = useFactionAccent(toRef(props, 'factionSlug'))
 defineEmits(['close'])
@@ -102,13 +105,7 @@ watch(
     const { loadRosterFactionRules } = await import('../../composables/rosterFactionRules.js')
     const { lookup } = await loadRosterFactionRules(slug, loc)
     if (props.factionSlug !== slug || locale.value !== loc) return
-    const target = enhKey(name)
-    let found = null
-    for (const d of lookup.values()) {
-      found = d.enhancements?.find((e) => enhKey(e.name) === target)
-      if (found) break
-    }
-    enh.value = found || null
+    enh.value = findEnhancementProse(lookup.values(), name, props.detachments)
     loaded.value = true
   },
   { immediate: true },

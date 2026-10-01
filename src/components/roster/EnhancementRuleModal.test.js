@@ -6,8 +6,8 @@ let w = null
 afterEach(() => { w?.unmount(); document.body.innerHTML = '' })
 
 // The faction bundles are dynamic imports; wait for the lookup to finish, then read what it found.
-async function open(factionSlug, name) {
-  w = mount(EnhancementRuleModal, { props: { factionSlug, name }, attachTo: document.body })
+async function open(factionSlug, name, detachments) {
+  w = mount(EnhancementRuleModal, { props: { factionSlug, name, detachments }, attachTo: document.body })
   await vi.waitFor(() => expect(w.vm.$.setupState.loaded).toBe(true), { timeout: 15000 })
   return w.vm.$.setupState.enh
 }
@@ -22,5 +22,16 @@ describe('EnhancementRuleModal', () => {
   // Blood Angels for one").
   it('reads a Codex detachment’s enhancement for a Chapter', async () => {
     expect((await open('blood-angels', 'Artificer Armour'))?.name).toBe('Artificer Armour')
+  })
+
+  // Two Astra Militarum detachments each have a Grand Strategist; a Combined Arms list was shown
+  // Armoured Infantry's (a player's report, 2026-10-01). The list's own detachment wins.
+  it('reads the enhancement of the list’s own detachment when the name repeats', async () => {
+    const { astraMilitarum: { en: am } } = await import('../../data/factions/astra-militarum.js')
+    const own = (det) => am.detachments.find((d) => d.name === det).enhancements.find((e) => e.name === 'Grand Strategist')
+    expect(own('Combined Arms').body).not.toBe(own('Armoured Infantry').body)
+    expect((await open('astra-militarum', 'Grand Strategist', ['Combined Arms', 'Abhuman Auxiliaries']))?.body).toBe(own('Combined Arms').body)
+    w.unmount()
+    expect((await open('astra-militarum', 'Grand Strategist', [{ name: 'Armoured Infantry' }]))?.body).toBe(own('Armoured Infantry').body)
   })
 })

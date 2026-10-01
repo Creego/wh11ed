@@ -60,6 +60,7 @@
       <EnhancementRuleModal
         :name="enhInfoName"
         :faction-slug="factionSlug"
+        :detachments="detachments"
         @close="enhInfoName = null"
       />
     </Teleport>

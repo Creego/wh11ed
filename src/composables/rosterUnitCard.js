@@ -22,7 +22,7 @@
 import { computed, ref, watch } from 'vue'
 import { ui } from '../i18n/ui.js'
 import { useLocale } from './useLocale.js'
-import { overlaySheet, enhKey, detKey, loadoutItemNames, wargearConditions } from './rosterModifiers.js'
+import { overlaySheet, enhKey, detKey, findEnhancementProse, loadoutItemNames, wargearConditions } from './rosterModifiers.js'
 import { ruleAppliesTo } from './ruleTargets.js'
 import { applyStatMods, splitBearers, resolveModifierEntries, grantedKeywordsFrom, datasheetEntriesFor, gateStratagems, attachedUnitKeywords } from './rosterStatMods.js'
 import { abilityStatusesOf } from './abilityStatus.js'
@@ -200,9 +200,7 @@ export function useRosterUnitCard(props) {
       return det?.rule?.body ? { name: det.rule.name, body: det.rule.body } : null
     }
     if (n.kind === 'enhancement') {
-      const found = (det ? [det] : fac.detachments || [])
-        .flatMap((d) => d.enhancements || [])
-        .find((e) => enhKey(e.name) === enhKey(n.source))
+      const found = findEnhancementProse(det ? [det] : fac.detachments, n.source, props.ctx?.detachments)
       return found?.body ? { name: found.name, body: found.body } : null
     }
     return null
@@ -379,12 +377,7 @@ export function useRosterUnitCard(props) {
     for (const src of view.value.ruleSources) {
       if (src.kind === 'enhancement') {
         if (!fac) continue
-        const target = enhKey(src.name)
-        let found = null
-        for (const d of fac.detachments || []) {
-          found = d.enhancements?.find((e) => enhKey(e.name) === target)
-          if (found) break
-        }
+        const found = findEnhancementProse(fac.detachments, src.name, props.ctx?.detachments)
         if (found?.body) out.push({ key: `enh:${src.name}`, src: labels.value.rosterEnhancement, name: found.name, body: found.body, switches: switchesOfRule('enhancement', found.name, null) })
       } else if (src.kind === 'detachment') {
         if (!fac) continue
