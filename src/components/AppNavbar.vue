@@ -695,16 +695,18 @@ a.nd-link:hover {
 /* Theme has its own button on the desktop; the menu's copy is for the phone. */
 .settings-item.settings-phone { display: none; }
 
+/* The theme button's size: the two sit side by side on the desktop (2026-10-01). */
 .settings-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  height: 2.15rem;
   background: rgba(255,255,255,0.07);
   border: 1px solid rgba(255,255,255,0.14);
   color: rgba(255,255,255,0.65);
-  padding: 0.3rem 0.55rem;
+  padding: 0 0.65rem;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   line-height: 1;
   transition: background 0.15s, color 0.15s;
 }
