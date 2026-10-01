@@ -122,4 +122,24 @@ describe('patch notes: what is a change', () => {
     const cpIds = [new Set(['p']), new Set(['p'])]
     expect(diffBundles({ armyRules: [cp, codex] }, { armyRules: [{ ...codex, id: 'c2' }, cp] }, 'necrons', { cpArmyRules: cpIds })).toEqual([])
   })
+
+  // Exorcist, MFM v1.5: "1st 180 / 2nd+ 220" → "1st-2nd 180 / 3rd+ 220" — the second copy got
+  // cheaper, and that is all that changed.
+  it('compares prices copy by copy across a change of tiers', () => {
+    const a = { units: [{ name: 'Exorcist', options: [{ models: 1, points: 180, note: '1st' }, { models: 1, points: 220, note: '2nd+' }] }] }
+    const b = { units: [{ name: 'Exorcist', options: [{ models: 1, points: 180, note: '1st-2nd' }, { models: 1, points: 220, note: '3rd+' }] }] }
+    expect(diffMfm(a, b, 'adepta-sororitas')[0].fields).toEqual([{ models: 1, note: '2nd', from: 220, to: 180 }])
+    const c = { units: [{ name: 'Exorcist', options: [{ models: 1, points: 185, note: '1st-2nd' }, { models: 1, points: 225, note: '3rd+' }] }] }
+    expect(diffMfm(b, c, 'adepta-sororitas')[0].fields).toEqual([
+      { models: 1, note: '1st-2nd', from: 180, to: 185 },
+      { models: 1, note: '3rd+', from: 220, to: 225 },
+    ])
+  })
+
+  it('keeps a unit’s make-up apart from its copy tiers', () => {
+    const o = (n, p) => ({ models: 3, points: p, note: `3 Wolf Guard Headtakers (${n})` })
+    const a = { units: [{ name: 'Headtakers', options: [o('1st-2nd', 85), o('3rd+', 105)] }] }
+    const b = { units: [{ name: 'Headtakers', options: [o('1st-2nd', 90), o('3rd+', 105)] }] }
+    expect(diffMfm(a, b, 'space-wolves')[0].fields).toEqual([{ models: 3, note: '3 Wolf Guard Headtakers 1st-2nd', from: 85, to: 90 }])
+  })
 })

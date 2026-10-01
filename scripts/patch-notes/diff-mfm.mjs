@@ -3,8 +3,60 @@
 // and enhancements by detachment and name. Only points — the detachments' DP and dispositions are
 // the app's to report (diff-bundles.mjs), and the MFM scrape changed their shape on its own.
 const key = (s) => (s || '').toLowerCase().replace(/[‘’`]/g, "'").replace(/\s+/g, ' ').trim()
-const optKey = (o) => `${o.models}|${key(o.note)}`
 const optLabel = (o) => ({ models: o.models, ...(o.note ? { note: o.note } : {}) })
+
+// A price note names which copies of the unit pay it — "1st", "2nd+", "1st-2nd", "3rd+", "1st-3rd",
+// "4th+" — sometimes after the unit's make-up ("3 Wolf Guard Headtakers (1st-2nd)"). → the make-up
+// and the range of copies [lo, hi].
+const ORD = '(\\d+)(?:st|nd|rd|th)'
+const RANGE = new RegExp(`\\(?${ORD}(?:-${ORD}|(\\+))?\\)?$`)
+function parseNote(note) {
+  const m = (note || '').match(RANGE)
+  if (!m) return { variant: key(note), lo: 1, hi: Infinity }
+  return { variant: key(note.slice(0, m.index)), lo: +m[1], hi: m[2] ? +m[2] : m[3] ? Infinity : +m[1] }
+}
+const ord = (n) => `${n}${n === 1 ? 'st' : n === 2 ? 'nd' : n === 3 ? 'rd' : 'th'}`
+// Copies past the fourth are priced as the fourth in every scheme the MFM uses.
+const COPIES = 4
+
+// The price of each copy, compared copy by copy: GW moved Exorcist from "1st 180 / 2nd+ 220" to
+// "1st-2nd 180 / 3rd+ 220" in v1.5 — the second copy got 40 cheaper, which neither a note-by-note
+// match (four options gone and new) nor a rename-tolerant one (nothing changed) tells. Copies whose
+// price moved the same way are joined into one range: "2nd: 220 → 180".
+function diffPrices(was, now) {
+  const groups = new Map()
+  const add = (side, x) => {
+    const n = parseNote(x.note)
+    const k = `${x.models}|${n.variant}`
+    if (!groups.has(k)) groups.set(k, { models: x.models, variant: x.note ? x.note.replace(RANGE, '').replace(/[\s(]+$/, '').trim() : '', was: [], now: [] })
+    groups.get(k)[side].push({ ...n, points: x.points })
+  }
+  for (const x of was) add('was', x)
+  for (const x of now) add('now', x)
+  const fields = []
+  const at = (list, c) => list.find((o) => o.lo <= c && c <= o.hi)?.points ?? null
+  for (const g of groups.values()) {
+    const tiered = g.was.length + g.now.length > 2 || [...g.was, ...g.now].some((o) => o.lo > 1 || o.hi !== Infinity)
+    let run = null
+    const flush = () => {
+      if (!run) return
+      const range = !tiered ? '' : run.hi === COPIES && run.open ? `${ord(run.lo)}+` : run.lo === run.hi ? ord(run.lo) : `${ord(run.lo)}-${ord(run.hi)}`
+      const note = [g.variant, range].filter(Boolean).join(' ')
+      fields.push({ models: g.models, ...(note ? { note } : {}), from: run.from, to: run.to })
+      run = null
+    }
+    for (let c = 1; c <= COPIES; c++) {
+      const from = at(g.was, c)
+      const to = at(g.now, c)
+      if (from === to) { flush(); continue }
+      if (run && run.from === from && run.to === to) run.hi = c
+      else { flush(); run = { lo: c, hi: c, from, to } }
+      run.open = c === COPIES && [...g.was, ...g.now].some((o) => o.hi === Infinity)
+    }
+    flush()
+  }
+  return fields
+}
 
 export function diffMfm(a, b, faction) {
   const out = []
@@ -14,15 +66,7 @@ export function diffMfm(a, b, faction) {
   for (const [k, u] of B) {
     const o = A.get(k)
     if (!o) { out.push({ faction, kind: 'points', name: u.name, change: 'added', options: (u.options || []).map((x) => ({ ...optLabel(x), to: x.points })) }); continue }
-    const was = new Map((o.options || []).map((x) => [optKey(x), x]))
-    const now = new Map((u.options || []).map((x) => [optKey(x), x]))
-    const fields = []
-    for (const [ok, x] of now) {
-      const y = was.get(ok)
-      if (!y) fields.push({ ...optLabel(x), from: null, to: x.points })
-      else if (y.points !== x.points) fields.push({ ...optLabel(x), from: y.points, to: x.points })
-    }
-    for (const [ok, y] of was) if (!now.has(ok)) fields.push({ ...optLabel(y), from: y.points, to: null })
+    const fields = diffPrices(o.options || [], u.options || [])
     if (fields.length) out.push({ faction, kind: 'points', name: u.name, change: 'changed', fields })
   }
   for (const [k, u] of A) if (!B.has(k)) out.push({ faction, kind: 'points', name: u.name, change: 'removed' })

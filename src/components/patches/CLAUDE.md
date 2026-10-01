@@ -19,7 +19,9 @@ Field Manual's points, the FAQ & errata. Nothing on the page is written by hand.
   and faction abilities by name only (their text is the core/army rule's, reported once); `Damaged N`
   is the damage bracket again; a weapon profile is named with its weapon ("Tank Kannon – Blasta" —
   two "Blasta" profiles were paired across weapons); a renamed weapon is one rename, not gone + new.
-  Points come from the MFM only; a Chapter's FAQ copies of Codex: Space Marines entries are dropped.
+  Points come from the MFM only, compared **copy by copy** (1st–4th; the note's "1st-2nd"/"3rd+"
+  tiers parsed, a unit's make-up in the note kept apart) — GW re-tiered Exorcist in v1.5 and only
+  the second copy's price moved; a Chapter's FAQ copies of Codex: Space Marines entries are dropped.
 - **Removed** entries carry no text (`from` is dropped) — the name is the news, and the 963 file
   was 650 KB with it.
 - **Page** — `PatchesView.vue`: two pickers, the faction (`?f=` = slug / `mine` = pinned / `all`; the

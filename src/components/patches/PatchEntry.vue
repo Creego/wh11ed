@@ -342,13 +342,16 @@ button.pe-head:hover { background: color-mix(in srgb, var(--accent) 7%, transpar
   font-size: 0.82rem;
 }
 .pe-chip {
+  max-width: 100%;
   font-family: var(--font-mono);
   font-weight: 700;
   font-size: 0.78rem;
   padding: 0.05rem 0.35rem;
   background: var(--bg-card);
   border: 1px solid var(--border-light);
-  white-space: nowrap;
+  /* "Force Disposition Priority Assets → Take and Hold" is wider than a phone: it wraps inside
+     its chip instead of running off the screen. */
+  overflow-wrap: anywhere;
 }
 .pe-label { color: var(--text-muted); }
 .pe-plus { color: var(--accent); }
