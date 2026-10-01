@@ -2159,14 +2159,26 @@ export default {
           "stat": "m",
           "op": "set",
           "value": "7\"",
-          "when": null
+          "when": {
+            "en": "the bearer only",
+            "ru": "только носитель"
+          },
+          "cond": [
+            "wargear-bearer"
+          ]
         },
         {
           "on": "profile",
           "stat": "sv",
           "op": "set",
           "value": "3+",
-          "when": null
+          "when": {
+            "en": "the bearer only",
+            "ru": "только носитель"
+          },
+          "cond": [
+            "wargear-bearer"
+          ]
         }
       ]
     }

@@ -326,6 +326,11 @@ export const conditions = {
   'wargear-two-melee-besides-ccw': { scope: 'roster', duration: 'battle', gear: { melee: 2, besides: ['Close combat weapon'] }, label: { en: 'Two melee weapons besides the close combat weapon', ru: 'Два оружия ближнего боя кроме close combat weapon' } },
   'wargear-two-melee': { scope: 'roster', duration: 'battle', gear: { melee: 2 }, label: { en: 'Two melee weapons', ru: 'Два оружия ближнего боя' } },
   'wargear-spear-and-chainsword': { scope: 'roster', duration: 'battle', gear: { all: ['Thundershock spear', 'Bellatus reaper chainsword'] }, label: { en: 'Thundershock spear and bellatus reaper chainsword', ru: 'Thundershock spear и bellatus reaper chainsword' } },
+  // "The bearer has +1 Wounds", "the bearer's melee weapons have [LANCE]" (2026-10-01). Never put
+  // in the active set: it is answered by PLACING the effect — rosterStatMods' splitBearers gives the
+  // models that carry the item a row of their own and applies the effect to that row alone. Until
+  // it is `blocked-subset`'s note, and where the list cannot say who carries what it stays one.
+  'wargear-bearer': { scope: 'roster', duration: 'battle', label: { en: 'The bearer only', ru: 'Только носитель' } },
 
   // ── Not tracked yet (see the header) ────────────────────────────────────────────────────
   // Answered by the tracker's clock (rosterGameContext's clockHolds), never by a switch. A phase

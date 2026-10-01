@@ -50,7 +50,10 @@
             <span
               v-if="sheet.profiles.length > 1"
               class="ds-prof-name"
-            >{{ p.name }} <span
+            >{{ p.name }}<wbr v-if="p.qty > 1"><span
+              v-if="p.qty > 1"
+              class="wqty"
+            >&times;{{ p.qty }}</span> <span
               v-if="p.baseSize"
               class="ds-base"
             >({{ fmtBase(p.baseSize) }})</span></span>
@@ -1534,7 +1537,9 @@ function abilityStateLabel(st) {
 .wtags { margin-left: 0.35rem; }
 .wtag { font-size: 0.72rem; }
 /* How many of this weapon the ROSTER ENTRY fields — a count the printed datasheet keeps in its
-   loadout sentence, which the roster card hides as a settled choice (rosterModifiers.js). Only
+   loadout sentence, which the roster card hides as a settled choice (rosterModifiers.js) — and,
+   on a model profile, how many models a "the bearer only" row stands for (rosterStatMods'
+   splitBearers: "Terminator · Storm Shield ×2"). Only
    ever present on a sheet the overlay has been through, and only when the number is known and
    greater than one, so the plain datasheet page is untouched. Muted and trailing: the name still
    has to read as a name. */

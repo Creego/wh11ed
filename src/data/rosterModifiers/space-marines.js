@@ -2916,7 +2916,7 @@ export default {
           "op": "add",
           "value": 1,
           "cond": [
-            "blocked-subset"
+            "wargear-bearer"
           ],
           "when": {
             "en": "the bearer only",

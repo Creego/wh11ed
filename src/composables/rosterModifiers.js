@@ -32,6 +32,7 @@ export { grantedKeywordsFor, detKey } from './rosterEngine.js'
 // Mirrored by `normItemName` in scripts/gen-roster-modifiers.mjs — a wargear record's `ref.item`
 // is compared against `loadoutItemNames` with this key, so the two must agree.
 const norm = (s) => (s || '').toLowerCase().replace(/[’‘]/g, "'").replace(/\p{Pd}/gu, '-').replace(/\s+/g, ' ').trim()
+export { norm as itemKey }
 
 // A weapon row belongs to a wargear item when it IS that item, or when it's one of that item's
 // firing modes — appdata models a multi-mode weapon as one wargear item with several profiles,

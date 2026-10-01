@@ -2718,6 +2718,24 @@ itemNames — the add-unit preview, which cannot know the loadout — shows noth
 everything: unlike a weapon row there is no printed line being hidden. Five items read "while the
 bearer is leading a unit" and carry `target: 'led'`, answered from `ctx.leaderItemNames`.
 
+**"The bearer only" gets a row of its own (2026-10-01).** An item that changes the model carrying
+it — a Storm Shield's +1 W, a Mistshield's 4+ invulnerable, Shieldvanes' Save and Move, a
+Grav-talon on the bearer's melee weapons — carries `cond: ['wargear-bearer']`, and
+`splitBearers` (rosterStatMods.js) answers it before `applyStatMods` runs: the models that carry
+the item get their own profile row (`Terminator · Storm Shield ×2`, `qty` printed like a weapon
+count), the rest keep the printed one, and the effect is applied to that row alone through the
+effect's `rows`. Every model carrying it is no split at all, just the rewritten number. A pick
+from a unit-wide group belongs to no profile, so its copies go to the profiles in the sheet's
+order — the first to the Sergeant/Exarch/Champion (owner's call); the profiles such a group spans
+have identical statlines in every unit it covers, so the order only names the row. A WEAPON row
+is split only when every model holds one copy of it: which of a Ridgerunner squad's heavy mortars
+the Spotter's bearer fires is not in the list, so that part stays the note it was while the
+stubber every model carries is split. Anything that cannot be placed — an unknown count, a
+profile no mini names, a second item on models already given one — stays a note, never a guess.
+The card, the print card and the tracker's list plates all place the same way. Before this, 24
+such effects were `blocked-subset` notes, and the Mortifiers' Anchorite Sarcophagus carried no
+condition at all — one of two Mortifiers taking it printed M 7" and Sv 3+ for both.
+
 **A lesson from the same day:** the candidate heuristic had no pattern for `has a Move
 characteristic of 7"` — a SET rather than a delta, and the wording nearly every wargear rule uses.
 68 records were invisible for that reason alone, including the one that started the hunt (a

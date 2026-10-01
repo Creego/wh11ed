@@ -1804,7 +1804,7 @@ export default {
             "ru": "только носитель"
           },
           "cond": [
-            "blocked-subset"
+            "wargear-bearer"
           ]
         }
       ]

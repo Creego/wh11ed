@@ -24,7 +24,7 @@ import { ui } from '../i18n/ui.js'
 import { useLocale } from './useLocale.js'
 import { overlaySheet, enhKey, detKey, loadoutItemNames, wargearConditions } from './rosterModifiers.js'
 import { ruleAppliesTo } from './ruleTargets.js'
-import { applyStatMods, resolveModifierEntries, grantedKeywordsFrom, datasheetEntriesFor, gateStratagems, attachedUnitKeywords } from './rosterStatMods.js'
+import { applyStatMods, splitBearers, resolveModifierEntries, grantedKeywordsFrom, datasheetEntriesFor, gateStratagems, attachedUnitKeywords } from './rosterStatMods.js'
 import { abilityStatusesOf } from './abilityStatus.js'
 import { rosterConditions } from './rosterGameContext.js'
 import { coreModifiers } from '../data/rosterModifiers/coreRules.js'
@@ -328,9 +328,11 @@ export function useRosterUnitCard(props) {
 
   const statMods = computed(() => {
     if (!gatedModifiers.value.length) return { sheet: view.value.sheet, notes: [], marks: [] }
+    // "The bearer only": the models that carry the item get a row of their own first.
+    const placed = splitBearers(view.value.sheet, gatedModifiers.value, props.ctx?.def, props.ctx?.entry, props.ctx?.items)
     return applyStatMods(
-      view.value.sheet,
-      gatedModifiers.value,
+      placed.sheet,
+      placed.entries,
       unitKeywords.value,
       factionKeywordSets.value,
       activeConds.value,

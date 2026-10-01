@@ -610,7 +610,7 @@ import { buildRosterText } from '../../composables/rosterExport.js'
 import { APP_DATA_VERSION } from '../../data/appDataVersion.js'
 import { loadDatasheets } from '../../data/datasheets/index.js'
 import { allySourceOf, blockNumbers, groupLabel, entrySummary, hostBlockTotal, leaderTargetsFor, mandatoryEnhancementFor, usesAllies } from '../../composables/rosterEngine.js'
-import { applyStatMods, grantedKeywordsFrom, resolveModifierEntries, datasheetEntriesFor, aurasReaching, gateStratagems, attachedUnitKeywords } from '../../composables/rosterStatMods.js'
+import { applyStatMods, splitBearers, grantedKeywordsFrom, resolveModifierEntries, datasheetEntriesFor, aurasReaching, gateStratagems, attachedUnitKeywords } from '../../composables/rosterStatMods.js'
 import { loadoutItemNames } from '../../composables/rosterModifiers.js'
 import { groupModNotes, modDelta, possibleModNotes } from '../../composables/rosterModNotes.js'
 import { coreModifiers } from '../../data/rosterModifiers/coreRules.js'
@@ -1116,7 +1116,9 @@ function statModsFor(entry, sheet) {
   if (!modsOn.value) return { sheet, marks: [] }
   const ctx = ctxOf(entry)
   if (!ctx) return { sheet, marks: [] }
-  return applyStatMods(sheet, ctx.resolved, ctx.kws, factionKeywordSets.value, ctx.active, ctx.chosen)
+  // The same placement the card makes, so a Sergeant with a Storm Shield reads W 4* on both.
+  const placed = splitBearers(sheet, ctx.resolved, defOf(entry.id), entry, rosterItems.items)
+  return applyStatMods(placed.sheet, placed.entries, ctx.kws, factionKeywordSets.value, ctx.active, ctx.chosen)
 }
 
 // ── What WOULD apply (out of game only) ─────────────────────────────────────────────────────
