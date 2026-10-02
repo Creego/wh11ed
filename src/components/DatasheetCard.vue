@@ -104,73 +104,91 @@
             </tr>
           </thead>
           <tbody>
-            <tr
+            <template
               v-for="(w, i) in rangedRows"
               :key="i"
-              :class="'wg-' + w.gpos"
             >
-              <td class="wname">
-                <span class="wname-text"><span
-                  v-if="w.gpos !== 'single'"
-                  class="wprofile-arrow"
-                  aria-hidden="true"
-                />{{ w.name }}<wbr v-if="w.qty > 1"><span
-                  v-if="w.qty > 1"
-                  class="wqty"
-                >&times;{{ w.qty }}</span></span><span
-                  v-if="w.tags?.length"
-                  class="wtags"
-                ><span
-                  v-for="t in w.tags"
-                  :key="t"
-                  class="wtag"
-                  v-html="renderInline('[' + t + ']')"
-                /></span>
-              </td>
-              <td data-label="Range">
-                {{ w.range }}
-              </td><td
-                data-label="A"
-                :class="{ 'ds-stat-mod': isMarked('ranged', 'a', i) }"
+              <!-- A weapon with several profiles: its name once, on a row of its own, and each
+                   profile under it by what tells them apart — "Plasma incinerator – supercharge ×5"
+                   in a half-row column broke over two lines on most phones (see weaponGroups.js). -->
+              <tr
+                v-if="w.gpos === 'start'"
+                class="wg-head"
               >
-                {{ w.a }}<sup
-                  v-if="isMarked('ranged', 'a', i)"
-                  class="ds-mod-star"
-                >*</sup>
-              </td><td
-                data-label="BS"
-                :class="{ 'ds-stat-mod': isMarked('ranged', 'bs', i) }"
-              >
-                {{ w.bs }}<sup
-                  v-if="isMarked('ranged', 'bs', i)"
-                  class="ds-mod-star"
-                >*</sup>
-              </td><td
-                data-label="S"
-                :class="{ 'ds-stat-mod': isMarked('ranged', 's', i) }"
-              >
-                {{ w.s }}<sup
-                  v-if="isMarked('ranged', 's', i)"
-                  class="ds-mod-star"
-                >*</sup>
-              </td><td
-                data-label="AP"
-                :class="{ 'ds-stat-mod': isMarked('ranged', 'ap', i) }"
-              >
-                {{ w.ap }}<sup
-                  v-if="isMarked('ranged', 'ap', i)"
-                  class="ds-mod-star"
-                >*</sup>
-              </td><td
-                data-label="D"
-                :class="{ 'ds-stat-mod': isMarked('ranged', 'd', i) }"
-              >
-                {{ w.d }}<sup
-                  v-if="isMarked('ranged', 'd', i)"
-                  class="ds-mod-star"
-                >*</sup>
-              </td>
-            </tr>
+                <td
+                  class="wname"
+                  colspan="7"
+                >
+                  <span class="wname-text">{{ w.base }}<wbr v-if="w.qty > 1"><span
+                    v-if="w.qty > 1"
+                    class="wqty"
+                  >&times;{{ w.qty }}</span></span>
+                </td>
+              </tr>
+              <tr :class="'wg-' + w.gpos">
+                <td class="wname">
+                  <span class="wname-text"><span
+                    v-if="w.gpos !== 'single'"
+                    class="wprofile-arrow"
+                    aria-hidden="true"
+                  />{{ w.profile || w.name }}<wbr v-if="w.qty > 1 && w.gpos === 'single'"><span
+                    v-if="w.qty > 1 && w.gpos === 'single'"
+                    class="wqty"
+                  >&times;{{ w.qty }}</span></span><span
+                    v-if="w.tags?.length"
+                    class="wtags"
+                  ><span
+                    v-for="t in w.tags"
+                    :key="t"
+                    class="wtag"
+                    v-html="renderInline('[' + t + ']')"
+                  /></span>
+                </td>
+                <td data-label="Range">
+                  {{ w.range }}
+                </td><td
+                  data-label="A"
+                  :class="{ 'ds-stat-mod': isMarked('ranged', 'a', i) }"
+                >
+                  {{ w.a }}<sup
+                    v-if="isMarked('ranged', 'a', i)"
+                    class="ds-mod-star"
+                  >*</sup>
+                </td><td
+                  data-label="BS"
+                  :class="{ 'ds-stat-mod': isMarked('ranged', 'bs', i) }"
+                >
+                  {{ w.bs }}<sup
+                    v-if="isMarked('ranged', 'bs', i)"
+                    class="ds-mod-star"
+                  >*</sup>
+                </td><td
+                  data-label="S"
+                  :class="{ 'ds-stat-mod': isMarked('ranged', 's', i) }"
+                >
+                  {{ w.s }}<sup
+                    v-if="isMarked('ranged', 's', i)"
+                    class="ds-mod-star"
+                  >*</sup>
+                </td><td
+                  data-label="AP"
+                  :class="{ 'ds-stat-mod': isMarked('ranged', 'ap', i) }"
+                >
+                  {{ w.ap }}<sup
+                    v-if="isMarked('ranged', 'ap', i)"
+                    class="ds-mod-star"
+                  >*</sup>
+                </td><td
+                  data-label="D"
+                  :class="{ 'ds-stat-mod': isMarked('ranged', 'd', i) }"
+                >
+                  {{ w.d }}<sup
+                    v-if="isMarked('ranged', 'd', i)"
+                    class="ds-mod-star"
+                  >*</sup>
+                </td>
+              </tr>
+            </template>
           </tbody>
         </table>
       </div>
@@ -187,73 +205,91 @@
             </tr>
           </thead>
           <tbody>
-            <tr
+            <template
               v-for="(w, i) in meleeRows"
               :key="i"
-              :class="'wg-' + w.gpos"
             >
-              <td class="wname">
-                <span class="wname-text"><span
-                  v-if="w.gpos !== 'single'"
-                  class="wprofile-arrow"
-                  aria-hidden="true"
-                />{{ w.name }}<wbr v-if="w.qty > 1"><span
-                  v-if="w.qty > 1"
-                  class="wqty"
-                >&times;{{ w.qty }}</span></span><span
-                  v-if="w.tags?.length"
-                  class="wtags"
-                ><span
-                  v-for="t in w.tags"
-                  :key="t"
-                  class="wtag"
-                  v-html="renderInline('[' + t + ']')"
-                /></span>
-              </td>
-              <td data-label="Range">
-                Melee
-              </td><td
-                data-label="A"
-                :class="{ 'ds-stat-mod': isMarked('melee', 'a', i) }"
+              <!-- A weapon with several profiles: its name once, on a row of its own, and each
+                   profile under it by what tells them apart — "Plasma incinerator – supercharge ×5"
+                   in a half-row column broke over two lines on most phones (see weaponGroups.js). -->
+              <tr
+                v-if="w.gpos === 'start'"
+                class="wg-head"
               >
-                {{ w.a }}<sup
-                  v-if="isMarked('melee', 'a', i)"
-                  class="ds-mod-star"
-                >*</sup>
-              </td><td
-                data-label="WS"
-                :class="{ 'ds-stat-mod': isMarked('melee', 'ws', i) }"
-              >
-                {{ w.ws }}<sup
-                  v-if="isMarked('melee', 'ws', i)"
-                  class="ds-mod-star"
-                >*</sup>
-              </td><td
-                data-label="S"
-                :class="{ 'ds-stat-mod': isMarked('melee', 's', i) }"
-              >
-                {{ w.s }}<sup
-                  v-if="isMarked('melee', 's', i)"
-                  class="ds-mod-star"
-                >*</sup>
-              </td><td
-                data-label="AP"
-                :class="{ 'ds-stat-mod': isMarked('melee', 'ap', i) }"
-              >
-                {{ w.ap }}<sup
-                  v-if="isMarked('melee', 'ap', i)"
-                  class="ds-mod-star"
-                >*</sup>
-              </td><td
-                data-label="D"
-                :class="{ 'ds-stat-mod': isMarked('melee', 'd', i) }"
-              >
-                {{ w.d }}<sup
-                  v-if="isMarked('melee', 'd', i)"
-                  class="ds-mod-star"
-                >*</sup>
-              </td>
-            </tr>
+                <td
+                  class="wname"
+                  colspan="7"
+                >
+                  <span class="wname-text">{{ w.base }}<wbr v-if="w.qty > 1"><span
+                    v-if="w.qty > 1"
+                    class="wqty"
+                  >&times;{{ w.qty }}</span></span>
+                </td>
+              </tr>
+              <tr :class="'wg-' + w.gpos">
+                <td class="wname">
+                  <span class="wname-text"><span
+                    v-if="w.gpos !== 'single'"
+                    class="wprofile-arrow"
+                    aria-hidden="true"
+                  />{{ w.profile || w.name }}<wbr v-if="w.qty > 1 && w.gpos === 'single'"><span
+                    v-if="w.qty > 1 && w.gpos === 'single'"
+                    class="wqty"
+                  >&times;{{ w.qty }}</span></span><span
+                    v-if="w.tags?.length"
+                    class="wtags"
+                  ><span
+                    v-for="t in w.tags"
+                    :key="t"
+                    class="wtag"
+                    v-html="renderInline('[' + t + ']')"
+                  /></span>
+                </td>
+                <td data-label="Range">
+                  Melee
+                </td><td
+                  data-label="A"
+                  :class="{ 'ds-stat-mod': isMarked('melee', 'a', i) }"
+                >
+                  {{ w.a }}<sup
+                    v-if="isMarked('melee', 'a', i)"
+                    class="ds-mod-star"
+                  >*</sup>
+                </td><td
+                  data-label="WS"
+                  :class="{ 'ds-stat-mod': isMarked('melee', 'ws', i) }"
+                >
+                  {{ w.ws }}<sup
+                    v-if="isMarked('melee', 'ws', i)"
+                    class="ds-mod-star"
+                  >*</sup>
+                </td><td
+                  data-label="S"
+                  :class="{ 'ds-stat-mod': isMarked('melee', 's', i) }"
+                >
+                  {{ w.s }}<sup
+                    v-if="isMarked('melee', 's', i)"
+                    class="ds-mod-star"
+                  >*</sup>
+                </td><td
+                  data-label="AP"
+                  :class="{ 'ds-stat-mod': isMarked('melee', 'ap', i) }"
+                >
+                  {{ w.ap }}<sup
+                    v-if="isMarked('melee', 'ap', i)"
+                    class="ds-mod-star"
+                  >*</sup>
+                </td><td
+                  data-label="D"
+                  :class="{ 'ds-stat-mod': isMarked('melee', 'd', i) }"
+                >
+                  {{ w.d }}<sup
+                    v-if="isMarked('melee', 'd', i)"
+                    class="ds-mod-star"
+                  >*</sup>
+                </td>
+              </tr>
+            </template>
           </tbody>
         </table>
       </div>
@@ -1571,11 +1607,16 @@ function abilityStateLabel(st) {
 /* Multi-profile weapons (Wahapedia-style): each profile row carries an accent arrow-pennant
    before the name, and all rows of one weapon share a faint faction-accent background so the
    profiles read as one weapon. Single-profile weapons are untouched. */
+.ds-weapons tr.wg-head td,
 .ds-weapons tr.wg-start td,
 .ds-weapons tr.wg-mid td,
 .ds-weapons tr.wg-end td {
   background: color-mix(in srgb, var(--accent) 8%, transparent);
 }
+/* The weapon's own name over its profiles (2026-10-02): one line, closed up to the profiles it
+   heads, with no seam between them. */
+.ds-weapons tr.wg-head td { padding-bottom: 0; border-bottom: none; }
+.ds-weapons tr.wg-start td { border-top: none; }
 .wprofile-arrow {
   display: inline-block;
   width: 13px;
@@ -1682,7 +1723,11 @@ function abilityStateLabel(st) {
      row to wrap in, and a weapon carrying three of them takes a second line. That is why the
      keyword pills below are allowed to break. */
   .ds-weapons .wname {
-    width: 50%;
+    /* 55, not 50 (2026-10-02): measured over all 2432 weapon names on a 390px phone with "×5",
+       50% broke 281 of them over two lines; the profile heading row cut that to 81 and this to
+       27. The stat columns cannot be squeezed by it — where their values are wide ("D6+3") the
+       table simply does not give the name its share. */
+    width: 55%;
     min-width: 0;
     padding-left: 0.35rem;
   }
@@ -1799,19 +1844,25 @@ function abilityStateLabel(st) {
 
   /* A multi-profile weapon stays ONE card: the profiles keep the group tint, lose the gap
      between them, and the seams between them are drawn as internal dividers. */
+  .ds-weapons tbody tr.wg-head,
   .ds-weapons tbody tr.wg-start,
   .ds-weapons tbody tr.wg-mid,
   .ds-weapons tbody tr.wg-end {
     background: color-mix(in srgb, var(--accent) 8%, transparent);
   }
+  .ds-weapons tr.wg-head td,
   .ds-weapons tr.wg-start td,
   .ds-weapons tr.wg-mid td,
   .ds-weapons tr.wg-end td { background: none; }
+  .ds-weapons tbody tr.wg-head,
   .ds-weapons tbody tr.wg-start,
   .ds-weapons tbody tr.wg-mid {
     margin-bottom: 0;
     border-bottom: none;
   }
+  /* The heading opens the card; the first profile carries on inside it. */
+  .ds-weapons tbody tr.wg-head { padding-bottom: 0; }
+  .ds-weapons tbody tr.wg-start { border-top: none; }
   .ds-weapons tbody tr.wg-mid,
   .ds-weapons tbody tr.wg-end { border-top: 1px dashed var(--border); }
 }
