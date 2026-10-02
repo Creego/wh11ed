@@ -3077,6 +3077,11 @@ Three things are specific to the ABILITY source:
   five whose "this unit" only says where something else is — "Celestine has…", "each WARLOCK
   model's Destructor", "CHARACTER models in this unit", "if this unit is not an Attached unit" —
   are named in `LEADER_SELF_EXEMPT` with the reason.
+- **A second Character in the same Attached unit** (a Leader and a Support on one squad) is a model
+  of that unit too, so 19.04 reaches it: `datasheetEntriesFor`'s `coLeaderUnitIds` hands it the other
+  Character's `unit` effects and the `led` half of a `self` + `led` record (`from: 'co'`). A `led`
+  with no `self` twin is the "Bodyguard models" wording and stays off it. Until 2026-10-02 a
+  Chaplain beside an Ancient had OC 1 while the squad he stood in had the Ancient's +1.
 - **No keyword gate.** An ability is printed on the card it addresses, so `SCOPELESS` includes it
   alongside enhancements, allegiance abilities and wargear — there is no prose naming who it bears on.
 - **`sid` is not a bare uuid here.** 56 abilities are published once and printed on several
