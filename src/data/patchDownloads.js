@@ -6,8 +6,8 @@
 export const patchDownloads = {
   972: {
     points: {
-      ru: { url: 'https://disk.yandex.ru/i/i7E_l2Zl1mP-yw', size: '1,4 МБ' },
-      en: { url: 'https://disk.yandex.ru/i/WDD-FMMe8OPpcg', size: '1.4 MB' },
+      ru: { url: 'https://disk.yandex.ru/i/i7E_l2Zl1mP-yw', size: '1,3 МБ' },
+      en: { url: 'https://disk.yandex.ru/i/WDD-FMMe8OPpcg', size: '1.3 MB' },
     },
   },
   963: {
