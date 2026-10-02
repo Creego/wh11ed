@@ -131,10 +131,13 @@
                     v-if="w.gpos !== 'single'"
                     class="wprofile-arrow"
                     aria-hidden="true"
-                  />{{ w.profile || w.name }}<wbr v-if="w.qty > 1 && w.gpos === 'single'"><span
-                    v-if="w.qty > 1 && w.gpos === 'single'"
+                  /><span
+                    v-if="w.gpos !== 'single'"
+                    class="wn-prof"
+                  >{{ w.profile }}</span><span :class="{ 'wn-full': w.gpos !== 'single' }">{{ w.name }}<wbr v-if="w.qty > 1"><span
+                    v-if="w.qty > 1"
                     class="wqty"
-                  >&times;{{ w.qty }}</span></span><span
+                  >&times;{{ w.qty }}</span></span></span><span
                     v-if="w.tags?.length"
                     class="wtags"
                   ><span
@@ -232,10 +235,13 @@
                     v-if="w.gpos !== 'single'"
                     class="wprofile-arrow"
                     aria-hidden="true"
-                  />{{ w.profile || w.name }}<wbr v-if="w.qty > 1 && w.gpos === 'single'"><span
-                    v-if="w.qty > 1 && w.gpos === 'single'"
+                  /><span
+                    v-if="w.gpos !== 'single'"
+                    class="wn-prof"
+                  >{{ w.profile }}</span><span :class="{ 'wn-full': w.gpos !== 'single' }">{{ w.name }}<wbr v-if="w.qty > 1"><span
+                    v-if="w.qty > 1"
                     class="wqty"
-                  >&times;{{ w.qty }}</span></span><span
+                  >&times;{{ w.qty }}</span></span></span><span
                     v-if="w.tags?.length"
                     class="wtags"
                   ><span
@@ -1571,6 +1577,12 @@ function abilityStateLabel(st) {
    regular face: 600 and then 500 at 1.25rem still read heavy beside the plates' 700 (owner,
    2026-09-30, and twice 2026-10-02). */
 .ds-weapons td:not(.wname), .ds-weapons .wname-text { font-family: var(--font-display); font-weight: 400; }
+/* ONE scale for the weapon rows at every width (owner, 2026-10-02: "the sizes are inconsistent").
+   Until then the name and the numbers were 20px in a narrow card and 13px in a wide one — a tablet
+   or the desk read its weapons smaller than a phone did, beside a count (16px) and tags (12px)
+   that had not shrunk with them. The name and numbers are 1.25rem everywhere; the count, the tags
+   and the column labels hang off the same scale (below). */
+.ds-weapons td:not(.wname), .ds-weapons .wname-text { font-size: 1.25rem; line-height: 1.2; }
 .wtags { margin-left: 0.35rem; }
 .wtag { font-size: 0.72rem; }
 /* How many of this weapon the ROSTER ENTRY fields — a count the printed datasheet keeps in its
@@ -1588,10 +1600,10 @@ function abilityStateLabel(st) {
    its own when nothing else will do; the nowrap below keeps ×2 itself whole either way. */
 .wqty {
   margin-left: 0.35rem;
-  /* Read beside a name in the display face a size up — at 0.78rem the count was a footnote
-     (owner, 2026-10-02). */
-  font-size: 1rem;
-  font-weight: 600;
+  /* The name's face and weight, a step smaller and muted: a count beside the name, not a footnote
+     (at 0.78rem it was) and not louder than the name (at 600 it was) — owner, 2026-10-02. */
+  font-size: 0.88em;
+  font-weight: 400;
   color: var(--text-muted);
   white-space: nowrap;
 }
@@ -1600,7 +1612,7 @@ function abilityStateLabel(st) {
    (~9px) and the letters ran together. Pin it to a fixed, readable size instead of letting it
    compound with the ancestor font-size. */
 .wtag :deep(.keyword) {
-  font-size: 0.74rem;
+  font-size: 0.68rem;
   letter-spacing: 0.2px;
 }
 
@@ -1613,10 +1625,11 @@ function abilityStateLabel(st) {
 .ds-weapons tr.wg-end td {
   background: color-mix(in srgb, var(--accent) 8%, transparent);
 }
-/* The weapon's own name over its profiles (2026-10-02): one line, closed up to the profiles it
-   heads, with no seam between them. */
-.ds-weapons tr.wg-head td { padding-bottom: 0; border-bottom: none; }
-.ds-weapons tr.wg-start td { border-top: none; }
+/* The weapon's own name over its profiles — in a NARROW card only (the ≤560px block below). A wide
+   card has the room for "Plasma Incinerator – supercharge ×5" on one line, so there each profile
+   row keeps its full name and the heading row is not drawn (owner, 2026-10-02). */
+.ds-weapons tr.wg-head { display: none; }
+.wn-prof { display: none; }
 .wprofile-arrow {
   display: inline-block;
   width: 13px;
@@ -1709,7 +1722,6 @@ function abilityStateLabel(st) {
      weapon's name reads at the same size (owner, the same day), wrapping in its half if it must.
      A size up again on a tighter line (owner, the same day: "the rows are tall, a larger font fits
      without making them taller") — 1.25rem × 1.2 is the line 1.02rem × 1.5 used to take. */
-  .ds-weapons td:not(.wname), .ds-weapons .wname-text { font-size: 1.25rem; line-height: 1.2; }
   /* The name takes a SHARE of the row, not everything that is left. `width: 99%` (what this
      was until 2026-08-27) squeezes the six stat columns to their content minimum and parks them
      against the right edge, so a row reading "Bolt pistol ×9" spent about 40% of its width on
@@ -1732,6 +1744,15 @@ function abilityStateLabel(st) {
     padding-left: 0.35rem;
   }
   .ds-weapons .wname-text { display: block; }
+  /* Half a row is not enough for "Plasma Incinerator – supercharge ×5": measured over all 2432
+     weapon names, 208 of the 281 that broke on a 390px phone were a profile. The weapon's name and
+     count go on a heading row, closed up to the profiles under it, and each profile shows only
+     what tells it apart. */
+  .ds-weapons tr.wg-head { display: table-row; }
+  .ds-weapons tr.wg-head td { padding-bottom: 0; border-bottom: none; }
+  .ds-weapons tr.wg-start td { border-top: none; }
+  .wn-prof { display: inline; }
+  .wn-full { display: none; }
   /* Tags under the name rather than beside it: on the same line they are what pushes the six
      stat columns off the screen. */
   /* The tags run under the whole row, not just the name's half: the stat cells are one line tall,
@@ -1741,8 +1762,8 @@ function abilityStateLabel(st) {
      share and the table its width. */
   .wtags { display: block; contain: inline-size; width: calc(200% - 0.35rem); margin: 0.15rem 0 0; }
   .wtag { font-size: 0.6rem; }
-  .wtag :deep(.keyword) { font-size: 0.62rem; letter-spacing: 0; padding: 0 3px; }
-  .wqty { font-size: 1.1rem; margin-left: 0.2rem; }
+  .wtag :deep(.keyword) { letter-spacing: 0; padding: 0 3px; }
+  .wqty { margin-left: 0.2rem; }
   .wprofile-arrow { width: 10px; height: 7px; margin-right: 0.25rem; }
 }
 
@@ -1766,7 +1787,7 @@ function abilityStateLabel(st) {
   /* Undo the squeeze above — a card has room to be read, and only the table needed it. */
   .ds-weapons table { font-size: 0.82rem; }
   .wtag { font-size: 0.72rem; }
-  .wtag :deep(.keyword) { font-size: 0.74rem; letter-spacing: 0.2px; padding: 0 5px; }
+  .wtag :deep(.keyword) { letter-spacing: 0.2px; padding: 0 5px; }
 
   .ds-weapons { overflow-x: visible; }
   /* Cancel the ≤480px edge bleed: these are bordered cards now, and running them off the
@@ -1809,7 +1830,6 @@ function abilityStateLabel(st) {
     padding: 0;
     border: none;
     text-align: center;
-    font-weight: 600;
   }
   /* The name cell dissolves so its two children lay out as grid items themselves: the name on
      the first row, the tags after the stats (hence `order`, which the stat cells leave at 0). */
@@ -1817,7 +1837,6 @@ function abilityStateLabel(st) {
   .ds-weapons .wname-text {
     grid-column: 1 / -1;
     text-align: left;
-    font-weight: 600;
     margin-bottom: 0.1rem;
   }
   .ds-weapons .wtags {
@@ -1861,7 +1880,7 @@ function abilityStateLabel(st) {
     border-bottom: none;
   }
   /* The heading opens the card; the first profile carries on inside it. */
-  .ds-weapons tbody tr.wg-head { padding-bottom: 0; }
+  .ds-weapons tbody tr.wg-head { display: grid; padding-bottom: 0; }
   .ds-weapons tbody tr.wg-start { border-top: none; }
   .ds-weapons tbody tr.wg-mid,
   .ds-weapons tbody tr.wg-end { border-top: 1px dashed var(--border); }
