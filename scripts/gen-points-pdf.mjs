@@ -5,7 +5,7 @@
 // it is unofficial. The owner uploads the files and links them from the patch notes page
 // (src/data/patchDownloads.js).
 //
-//   npm run points:pdf                 → points-pdf/wh-rules-points-mfm-<v>-{ru,en}.pdf (gitignored)
+//   npm run points:pdf                 → points-pdf/wh-rules-points-mfm-<v>-<update>-{ru,en}.pdf (gitignored)
 //   node scripts/gen-points-pdf.mjs <outDir> <ru|en> [patchId]
 //
 // Data: the current MFM (src/data/mfm/*) and the update's own diff (src/data/patches/<id>.json), the
@@ -351,7 +351,7 @@ function orphansOf(file) {
 
 fs.mkdirSync(OUT, { recursive: true })
 const browser = await chromium.launch({ channel: 'chrome' })
-const final = path.join(OUT, `wh-rules-points-mfm-${MFM}-${LANG}.pdf`)
+const final = path.join(OUT, `wh-rules-points-mfm-${MFM}-${PATCH_ID}-${LANG}.pdf`) // the MFM version alone did not move on 2 October
 // Render until the page numbers the cover prints are the pages the factions land on.
 let check = {}
 for (let pass = 1; pass <= 8; pass++) {
