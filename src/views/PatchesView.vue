@@ -93,6 +93,45 @@
           </div>
         </template>
       </AdaptivePicker>
+
+      <!-- The update's prices as one file (src/data/patchDownloads.js), in the reader's language
+           only — a plate in the same shape as the two pickers beside it (owner, 2026-10-02). -->
+      <AdaptivePicker
+        v-if="pointsPdf"
+        v-model:open="pdfOpen"
+        panel-width="20rem"
+        :title="mfmLabel"
+      >
+        <template #trigger="{ toggle: togglePdf, open }">
+          <button
+            type="button"
+            class="pv-trigger"
+            :aria-expanded="open"
+            @click="togglePdf"
+          >
+            <span class="pv-trigger-label">{{ mfmLabel }}</span>
+            <span class="pv-trigger-name">PDF · {{ pointsPdf.size }}</span>
+            <i class="bi bi-chevron-down" />
+          </button>
+        </template>
+        <template #default="{ bodyClass }">
+          <div :class="[bodyClass, 'pv-dl-body']">
+            <p class="pv-dl-text">
+              {{ labels.patchesPointsPdfText }}
+            </p>
+            <a
+              :href="pointsPdf.url"
+              class="btn-primary pv-dl-btn"
+              target="_blank"
+              rel="noopener"
+              @click="pdfOpen = false"
+            >
+              <i class="bi bi-download" />
+              {{ labels.patchesPointsPdf }}
+            </a>
+          </div>
+        </template>
+      </AdaptivePicker>
     </div>
 
     <p
@@ -107,23 +146,6 @@
       v-if="current"
       class="pv-patch"
     >
-      <!-- The update's prices as one file (src/data/patchDownloads.js), in the reader's language
-           only (owner, 2026-10-02). Above the changes, whatever the faction filter. -->
-      <div
-        v-if="pointsPdf"
-        class="pv-download"
-      >
-        <a
-          :href="pointsPdf.url"
-          class="btn-ghost pv-dl"
-          target="_blank"
-          rel="noopener"
-        >
-          <i class="bi bi-file-earmark-pdf" />
-          {{ labels.patchesPointsPdf }}
-          <span class="pv-dl-size">PDF · {{ pointsPdf.size }}</span>
-        </a>
-      </div>
       <p
         v-if="failed[current.id]"
         class="pv-empty"
@@ -236,6 +258,10 @@ function pickPatch(id) {
   if (id !== current.value?.id) router.push({ query: { ...route.query, p: id } })
   else if (failed[id]) load(id) // picking the one that failed to load tries again
 }
+// The points PDF of the update on the page, if it has one, in this reader's language — a third
+// plate beside the pickers that opens the same way, with the file's note and its button inside.
+const pdfOpen = ref(false)
+const mfmLabel = computed(() => labels.value.patchesPointsPdfLabel.replace('{v}', current.value?.labels.mfm || ''))
 // The points PDF of the update on the page, if it has one, in this reader's language.
 const pointsPdf = computed(() => patchDownloads[current.value?.id]?.points?.[locale.value === 'ru' ? 'ru' : 'en'] || null)
 
@@ -276,10 +302,17 @@ const titleOf = (p) => [
   margin-right: auto;
 }
 .pv-bar { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.5rem; }
-.pv-download { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.9rem; margin-bottom: 0.6rem; }
-.pv-dl { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 40px; padding: 0.35rem 0.8rem; color: var(--text-primary); }
-.pv-dl .bi { color: var(--accent); font-size: 1.05rem; }
-.pv-dl-size { font-size: 0.75rem; color: var(--text-muted); }
+.pv-dl-body { display: flex; flex-direction: column; gap: 0.7rem; }
+.pv-dl-text { margin: 0; font-size: 0.86rem; line-height: 1.45; color: var(--text-muted); }
+.pv-dl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 42px;
+  text-decoration: none;
+}
+.pv-dl-btn:hover { text-decoration: none; }
 /* The label on a line of its own above the name, the chevron beside both (owner, 2026-10-01). */
 .pv-trigger {
   display: inline-grid;
