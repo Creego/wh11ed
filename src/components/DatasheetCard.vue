@@ -1584,7 +1584,10 @@ function abilityStateLabel(st) {
    and the column labels hang off the same scale (below). */
 .ds-weapons td:not(.wname), .ds-weapons .wname-text { font-size: 1.25rem; line-height: 1.2; }
 .wtags { margin-left: 0.35rem; }
-.wtag { font-size: 0.72rem; }
+/* A small gap between tags, across and between wrapped lines — butted together their frames read
+   as one long box (owner, 2026-10-02). inline-block so the vertical margin takes. The stacked
+   layout lays them out with a flex `gap` instead and zeroes this. */
+.wtag { display: inline-block; font-size: 0.72rem; margin: 0 0.25rem 0.2rem 0; }
 /* How many of this weapon the ROSTER ENTRY fields — a count the printed datasheet keeps in its
    loadout sentence, which the roster card hides as a settled choice (rosterModifiers.js) — and,
    on a model profile, how many models a "the bearer only" row stands for (rosterStatMods'
@@ -1856,6 +1859,7 @@ function abilityStateLabel(st) {
     gap: 0.25rem;
     margin: 0.2rem 0 0;
   }
+  .ds-weapons .wtag { margin: 0; }
   .ds-weapons td[data-label]::before {
     content: attr(data-label);
     display: block;
