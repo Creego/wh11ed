@@ -6,6 +6,43 @@
     >
       {{ labels.patchesNothing }}
     </p>
+    <!-- The update's prices as one file (PatchesView passes it): the first plate, folded like
+         the rest, the link inside (owner, 2026-10-02). -->
+    <section
+      v-if="download"
+      class="pb-fac"
+    >
+      <button
+        type="button"
+        class="pb-fac-head"
+        :aria-expanded="isOpen('pdf')"
+        @click="toggle('pdf')"
+      >
+        <i class="bi bi-file-earmark-pdf pb-pdf-icon" />
+        <span class="pb-fac-name">{{ download.title }}</span>
+        <span class="pb-count">PDF</span>
+        <i
+          class="bi bi-chevron-down pb-chev"
+          :class="{ open: isOpen('pdf') }"
+        />
+      </button>
+      <CollapseTransition :show="isOpen('pdf')">
+        <div class="pb-fac-body pb-pdf-body">
+          <p class="pb-pdf-text">
+            {{ download.text }}
+          </p>
+          <a
+            :href="download.url"
+            class="btn-primary pb-pdf-btn"
+            target="_blank"
+            rel="noopener"
+          >
+            <i class="bi bi-download" />
+            {{ download.button }}
+          </a>
+        </div>
+      </CollapseTransition>
+    </section>
     <section
       v-for="b in blocks"
       :key="b.key"
@@ -92,6 +129,8 @@ import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
 
 const props = defineProps({
+  // { title, text, button, url } — the update's points PDF, or null.
+  download: { type: Object, default: null },
   items: { type: Array, required: true },
 })
 const { locale } = useLocale()
@@ -205,6 +244,11 @@ watch(() => props.items, () => { open.clear(); wasOpened.clear() })
 .pb-chev { font-size: 0.85rem; transition: transform var(--motion-fast) ease; }
 .pb-chev.open { transform: rotate(180deg); }
 .pb-fac-body { padding: 0.15rem 0.6rem 0.6rem; }
+.pb-pdf-icon { font-size: 1.05rem; color: var(--accent-on-dark); }
+.pb-pdf-body { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1rem; padding-top: 0.6rem; }
+.pb-pdf-text { flex: 1 1 18rem; margin: 0; font-size: 0.86rem; line-height: 1.45; color: var(--text-muted); }
+.pb-pdf-btn { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 40px; text-decoration: none; }
+.pb-pdf-btn:hover { text-decoration: none; }
 .pb-group { margin-top: 0.35rem; }
 .pb-group-title {
   margin: 0.3rem 0 0.35rem;
