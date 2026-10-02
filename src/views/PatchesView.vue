@@ -107,28 +107,22 @@
       v-if="current"
       class="pv-patch"
     >
-      <!-- The update's prices as one file (src/data/patchDownloads.js): the reader's language
-           first, the other one beside it. Above the changes, whatever the faction filter. -->
+      <!-- The update's prices as one file (src/data/patchDownloads.js), in the reader's language
+           only (owner, 2026-10-02). Above the changes, whatever the faction filter. -->
       <div
         v-if="pointsPdf"
         class="pv-download"
       >
         <a
-          :href="pointsPdf.mine.url"
+          :href="pointsPdf.url"
           class="btn-ghost pv-dl"
           target="_blank"
           rel="noopener"
         >
           <i class="bi bi-file-earmark-pdf" />
           {{ labels.patchesPointsPdf }}
-          <span class="pv-dl-size">PDF · {{ pointsPdf.mine.size }}</span>
+          <span class="pv-dl-size">PDF · {{ pointsPdf.size }}</span>
         </a>
-        <a
-          :href="pointsPdf.other.url"
-          class="pv-dl-other"
-          target="_blank"
-          rel="noopener"
-        >{{ labels.patchesPointsPdfOther }}</a>
       </div>
       <p
         v-if="failed[current.id]"
@@ -242,13 +236,8 @@ function pickPatch(id) {
   if (id !== current.value?.id) router.push({ query: { ...route.query, p: id } })
   else if (failed[id]) load(id) // picking the one that failed to load tries again
 }
-// The points PDF of the update on the page, if it has one: this reader's language and the other.
-const pointsPdf = computed(() => {
-  const files = patchDownloads[current.value?.id]?.points
-  if (!files) return null
-  const lang = locale.value === 'ru' ? 'ru' : 'en'
-  return { mine: files[lang], other: files[lang === 'ru' ? 'en' : 'ru'] }
-})
+// The points PDF of the update on the page, if it has one, in this reader's language.
+const pointsPdf = computed(() => patchDownloads[current.value?.id]?.points?.[locale.value === 'ru' ? 'ru' : 'en'] || null)
 
 const titleOf = (p) => [
   p.labels.app ? `${labels.value.patchesAppData} ${p.labels.app}` : '',
@@ -291,7 +280,6 @@ const titleOf = (p) => [
 .pv-dl { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 40px; padding: 0.35rem 0.8rem; color: var(--text-primary); }
 .pv-dl .bi { color: var(--accent); font-size: 1.05rem; }
 .pv-dl-size { font-size: 0.75rem; color: var(--text-muted); }
-.pv-dl-other { font-size: 0.82rem; }
 /* The label on a line of its own above the name, the chevron beside both (owner, 2026-10-01). */
 .pv-trigger {
   display: inline-grid;
