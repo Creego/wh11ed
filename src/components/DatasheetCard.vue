@@ -1531,9 +1531,10 @@ function abilityStateLabel(st) {
    columns, this one sits in the name's column and costs the row nothing. */
 .ds-weapons th.wname { font-size: 0.68rem; letter-spacing: 1px; }
 /* A weapon's name and numbers in the stat plates' face (owner, 2026-09-30): the condensed display
-   font — the name in the body font read a size larger than numbers of the same size. 600, a step
-   lighter than the plates' 700: a row of them at 1.25rem read heavy (owner, the same day). */
-.ds-weapons td:not(.wname), .ds-weapons .wname-text { font-family: var(--font-display); font-weight: 600; }
+   font — the name in the body font read a size larger than numbers of the same size. 500, two
+   steps lighter than the plates' 700: 600 at 1.25rem still read heavy (owner, 2026-09-30, and
+   again 2026-10-02). */
+.ds-weapons td:not(.wname), .ds-weapons .wname-text { font-family: var(--font-display); font-weight: 500; }
 .wtags { margin-left: 0.35rem; }
 .wtag { font-size: 0.72rem; }
 /* How many of this weapon the ROSTER ENTRY fields — a count the printed datasheet keeps in its
