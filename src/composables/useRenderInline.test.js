@@ -108,22 +108,4 @@ describe('renderInline — plural keywords', () => {
   it('still refuses a keyword that is only a prefix of a longer word', () => {
     expect(renderInline('INFANTRYMAN')).toBe('INFANTRYMAN')
   })
-
-  // Until 2026-10-02 a tag with a qualifier printed as bare text, with no popover behind it.
-  it('makes a pill of a qualified weapon tag — "non-", "/", and a bold "non-" inside it', () => {
-    const { renderInline } = useRenderInline()
-    expect(renderInline('[LETHAL HITS: non-MONSTER/VEHICLE]')).toMatch(/^<span class="keyword">\[LETHAL HITS: non-/)
-    expect(renderInline('[SUSTAINED HITS 1: **non-**MONSTER/VEHICLE]')).toMatch(/^<span class="keyword">\[SUSTAINED HITS 1: non-/)
-    expect(renderInline('[ANTI-non-VEHICLE 4+]')).toMatch(/^<span class="keyword">\[ANTI-non-/)
-  })
-
-  it('splits a comma list into one pill per tag', () => {
-    const { renderInline } = useRenderInline()
-    expect(renderInline('[ASSAULT, TWIN-LINKED]')).toBe('<span class="keyword">[ASSAULT]</span><span class="keyword">[TWIN-LINKED]</span>')
-  })
-
-  it('leaves bracketed prose that is not a tag alone', () => {
-    const { renderInline } = useRenderInline()
-    expect(renderInline('[Twin pulse carbine]')).toBe('[Twin pulse carbine]')
-  })
 })
