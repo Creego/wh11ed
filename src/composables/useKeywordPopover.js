@@ -1,5 +1,6 @@
 import { ref } from 'vue'
 import { useLocale } from './useLocale.js'
+import { qualifierNote } from '../utils/weaponTagQualifier.js'
 
 const visible = ref(false)
 const activeKeyword = ref(null)
@@ -33,9 +34,14 @@ function lookup(rawText, { coreAbilities, eventCompanion }) {
   let idx = base.findIndex(a => bare(a.name) === text)
   if (idx === -1) idx = base.findIndex(a => text.startsWith(bare(a.name)))
   if (idx !== -1) {
-    return locale.value === 'ru'
+    const entry = locale.value === 'ru'
       ? { ...base[idx], ...coreAbilities.ru[idx] }
       : base[idx]
+    // A tag with keywords after it ("LETHAL HITS: non-MONSTER/VEHICLE") matched its ability by
+    // prefix, and that rule alone says nothing about whom it works against: the header names the
+    // tag as printed and the body leads with what the keywords change (weaponTagQualifier.js).
+    const note = qualifierNote(rawText, locale.value)
+    return note ? { ...entry, name: `[${rawText.trim()}]`, fullText: `${note}\n\n${entry.fullText}` } : entry
   }
 
   // Event Companion glossary (name stays EN; RU overrides fullText, like coreAbilities).
