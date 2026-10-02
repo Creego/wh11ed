@@ -161,19 +161,23 @@ const { pinnedFactionsFrom } = useFavorites()
 const pinned = computed(() => pinnedFactionsFrom(factionGroups).map((f) => f.slug))
 
 // `?f=` — a faction slug, `mine` (the pinned ones) or nothing (all). With no choice made, a reader
-// who pinned factions sees theirs.
+// who pinned factions sees theirs — decided when the faction list is first opened and kept after:
+// the list has the pin stars, and a pin there swapped "All" for "Mine" (and the update with it)
+// under the reader's finger (owner, 2026-10-02).
+const pickerOpen = ref(false)
+const startScope = ref(null)
+watch(pickerOpen, (open) => { if (open && !startScope.value) startScope.value = pinned.value.length ? 'mine' : 'all' })
 const filter = computed(() => {
   const f = route.query.f
   if (f === 'all' || (f && factionIndexBySlug(f))) return f
-  if (f === 'mine' || !f) return pinned.value.length ? 'mine' : 'all'
-  return 'all'
+  const scope = f === 'mine' ? 'mine' : f ? 'all' : startScope.value || (pinned.value.length ? 'mine' : 'all')
+  return scope === 'mine' && pinned.value.length ? 'mine' : 'all'
 })
 const filterSlugs = computed(() => (filter.value === 'all' ? null : filter.value === 'mine' ? pinned.value : [filter.value]))
 const filterName = computed(() => (filter.value === 'all' ? labels.value.patchesAll
   : filter.value === 'mine' ? labels.value.patchesMine
     : factionIndexBySlug(filter.value)?.name || filter.value))
 
-const pickerOpen = ref(false)
 // A push, not a replace: on a phone the picker is a sheet whose closing steps Back over its own
 // history entry (useBackToClose) — a replace swapped that very entry and the step undid the pick.
 // As a push it is also what Back should undo: the previous filter.
