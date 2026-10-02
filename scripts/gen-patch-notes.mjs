@@ -59,13 +59,17 @@ async function build(p) {
       const app = path.basename(f, '.json')
       const supplement = SM_SUPPLEMENT_BUNDLES.includes(app)
       const slug = supplement ? 'space-marines' : (toWh11ed[app] || app)
-      items.push(...diffBundles(json(APPDATA, from, f), json(APPDATA, to, f), slug, { announce: !supplement, cpArmyRules }))
+      // The MFM as it stood when the update landed: which dispositions each detachment offers.
+      const mfm = p.mfm ? await mfmAt(p.mfm[1], slug).catch(() => null) : null
+      const norm = (s) => String(s).replace(/[’']/g, "'").toLowerCase()
+      const offered = mfm ? (name) => mfm.detachments?.find((d) => norm(d.name) === norm(name))?.forceDispositions || null : null
+      items.push(...diffBundles(json(APPDATA, from, f), json(APPDATA, to, f), slug, { announce: !supplement, cpArmyRules, offered }))
     }
   }
   if (p.mfm) {
     const [from, to] = p.mfm
     const slugs = new Set([...lsTree(ROOT, from, 'src/data/mfm'), ...lsTree(ROOT, to, 'src/data/mfm')].map((f) => path.basename(f, '.js')))
-    for (const slug of slugs) items.push(...diffMfm(await mfmAt(from, slug), await mfmAt(to, slug), slug))
+    for (const slug of slugs) items.push(...diffMfm(await mfmAt(from, slug), await mfmAt(to, slug), slug, { tags: !p.noTags }))
   }
   if (p.faq) items.push(...diffFaq(json(ROOT, p.faq[0], 'src/data/factionFaq.json'), json(ROOT, p.faq[1], 'src/data/factionFaq.json')))
   return items

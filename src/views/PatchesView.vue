@@ -72,7 +72,9 @@
             :aria-expanded="open"
             @click="togglePatches"
           >
-            <span class="pv-trigger-label">{{ labels.patchesUpdate }}</span>
+            <!-- When it came out, on the label line: the name alone left "is this the new one?" open
+                 (owner, 2026-10-02). -->
+            <span class="pv-trigger-label">{{ labels.patchesUpdate }} · {{ formatDate(current.date) }}</span>
             <span class="pv-trigger-name">{{ titleOf(current) }}</span>
             <i class="bi bi-chevron-down" />
           </button>

@@ -214,7 +214,7 @@ const chips = computed(() => {
 
 const sets = computed(() => {
   const l = labels.value
-  const named = { keywords: l.patchesKeywords, factionKeywords: l.patchesKeywords, leaderOf: l.patchesLeads, coreAbilities: l.patchesAbilities }
+  const named = { keywords: l.patchesKeywords, factionKeywords: l.patchesKeywords, leaderOf: l.patchesLeads, coreAbilities: l.patchesAbilities, tag: l.patchesTag }
   const out = fields.value.filter((f) => named[f.field]).map((f) => ({ label: named[f.field], added: f.added || [], removed: f.removed || [] }))
   // An ability that went has no text left to show — it is a line of names, like a keyword.
   const gone = fields.value.filter((f) => f.field === 'ability' && f.change === 'removed').map((f) => f.name)

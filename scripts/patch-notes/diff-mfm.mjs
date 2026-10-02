@@ -66,7 +66,7 @@ function diffPrices(was, now) {
   return fields
 }
 
-export function diffMfm(a, b, faction) {
+export function diffMfm(a, b, faction, { tags = true } = {}) {
   const out = []
   if (!a || !b) return out
   const A = new Map((a.units || []).map((u) => [key(u.name), u]))
@@ -90,6 +90,15 @@ export function diffMfm(a, b, faction) {
     const o = ea.get(k)
     // A new enhancement arrives with its detachment, which the app's diff already reports.
     if (o && o.e.points !== e.points) out.push({ faction, kind: 'enhancementPoints', parent: det, name: e.name, change: 'changed', from: o.e.points, to: e.points })
+  }
+  // A detachment's UNIQUE tag — the MFM's own construct, which the app's tables do not carry (972:
+  // "UNIQUE TAG REMOVED" over Aeldari's ACROBATIC, Drukhari's KABAL / WYCH CULT / COVENS and the
+  // Genestealer Cults' PURESTRAIN). Shown like keywords: the tag that went, the tag that came.
+  const da = new Map(tags ? (a.detachments || []).map((d) => [key(d.name), d]) : [])
+  for (const d of tags ? b.detachments || [] : []) {
+    const o = da.get(key(d.name))
+    if (!o || (o.unique || '') === (d.unique || '')) continue
+    out.push({ faction, kind: 'detachment', name: d.name, change: 'changed', fields: [{ field: 'tag', added: d.unique ? [d.unique] : [], removed: o.unique ? [o.unique] : [] }] })
   }
   return out
 }

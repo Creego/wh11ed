@@ -126,7 +126,9 @@ function diffDatasheet(a, b) {
       if (statVal(st, o[st]) !== statVal(st, s[st])) f.push({ field: 'stat', model: s.name, stat: st, from: val(o[st]), to: val(s[st]) })
     }
   }
-  const inv = (d) => (d.invulnerableSaves || []).map((x) => plain(typeof x === 'string' ? x : x.value || x.save || JSON.stringify(x))).join(', ')
+  // Sorted: the app lists a sheet's invulnerable saves in no fixed order (972 turned Wardens of
+  // Ultramar's "4+, 5+" round) and the order says nothing.
+  const inv = (d) => (d.invulnerableSaves || []).map((x) => plain(typeof x === 'string' ? x : x.value || x.save || JSON.stringify(x))).sort().join(', ')
   if (inv(a) !== inv(b)) f.push({ field: 'invul', from: inv(a), to: inv(b) })
 
   // A unit's own name sits among its keywords in some versions and not in others.
@@ -206,12 +208,17 @@ function diffStratagem(a, b) {
   return f
 }
 
-function diffDetachment(a, b, out, faction) {
+function diffDetachment(a, b, out, faction, offered) {
   const det = b.name
   pushIf(out, changed(a, b, { faction, kind: 'detachment' }, []))
   if (val(a.dp) !== val(b.dp)) out.push({ faction, kind: 'detachment', name: det, change: 'changed', fields: [{ field: 'dp', from: val(a.dp), to: val(b.dp) }] })
   const fd = (d) => [].concat(d.forceDisposition || []).map(plain).sort().join(', ')
-  if (fd(a) !== fd(b)) out.push({ faction, kind: 'detachment', name: det, change: 'changed', fields: [{ field: 'forceDisposition', from: fd(a), to: fd(b) }] })
+  // The app keeps ONE Force Disposition per detachment where the MFM prints every one it offers (39
+  // offer two). In 972 the app switched which of the two it shows for fourteen of them — nothing a
+  // player can do changed, so a move between two the MFM lists for that detachment is not news.
+  const both = offered?.(det)
+  const swapped = both && [fd(a), fd(b)].every((x) => x && !x.includes(',') && both.map(plain).includes(x))
+  if (fd(a) !== fd(b) && !swapped) out.push({ faction, kind: 'detachment', name: det, change: 'changed', fields: [{ field: 'forceDisposition', from: fd(a), to: fd(b) }] })
 
   const rules = pair(a.rules, b.rules)
   for (const x of rules.added) out.push({ faction, kind: 'detachmentRule', parent: det, name: x.name, change: 'added', to: bodyReadable(x.body) })
@@ -252,7 +259,9 @@ const notCP = (x) => !x?.isCombatPatrol
 // The bundle does not flag them (it does flag CP detachments and datasheets); their wording is often
 // the pre-errata one, so a CP copy paired with the codex rule reported a long-standing errata as new
 // (Necrons' Reanimation Protocols in 963 — the app swapped the two copies' order).
-export function diffBundles(a, b, faction, { announce = true, cpArmyRules = [new Set(), new Set()] } = {}) {
+// `offered(detachmentName)` — the Force Dispositions the MFM lists for that detachment at the end
+// of the update (null when unknown), so a switch between two it offers is not reported.
+export function diffBundles(a, b, faction, { announce = true, cpArmyRules = [new Set(), new Set()], offered = null } = {}) {
   const out = []
   if ((!a || !b) && announce) out.push({ faction, kind: 'faction', name: (b || a).faction?.name || faction, change: a ? 'removed' : 'added' })
   a ||= {}
@@ -273,7 +282,7 @@ export function diffBundles(a, b, faction, { announce = true, cpArmyRules = [new
   const dt = pair((a.detachments || []).filter(notCP), (b.detachments || []).filter(notCP))
   for (const x of dt.added) out.push({ faction, kind: 'detachment', name: x.name, change: 'added' })
   for (const x of dt.removed) out.push({ faction, kind: 'detachment', name: x.name, change: 'removed' })
-  for (const [o, n] of dt.both) diffDetachment(o, n, out, faction)
+  for (const [o, n] of dt.both) diffDetachment(o, n, out, faction, offered)
 
   const ds = pair((a.datasheets || []).filter(notCP), (b.datasheets || []).filter(notCP))
   for (const x of ds.added) out.push({ faction, kind: 'datasheet', name: x.name, change: 'added' })

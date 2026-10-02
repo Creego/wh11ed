@@ -3,28 +3,50 @@
 // loaded when it is opened.
 export const patches = [
   {
+    "id": "972",
+    "date": "2026-10-02",
+    "labels": {
+      "app": 972,
+      "mfm": "1.5"
+    },
+    "total": 75,
+    "byFaction": {
+      "space-marines": 43,
+      "adeptus-custodes": 1,
+      "imperial-agents": 2,
+      "blood-angels": 1,
+      "emperors-children": 1,
+      "grey-knights": 11,
+      "orks": 1,
+      "space-wolves": 3,
+      "aeldari": 4,
+      "drukhari": 6,
+      "genestealer-cults": 2
+    }
+  },
+  {
     "id": "963",
     "date": "2026-09-30",
     "labels": {
       "app": 963,
       "mfm": "1.5"
     },
-    "total": 1207,
+    "total": 1218,
     "byFaction": {
       "core": 3,
       "adepta-sororitas": 8,
-      "space-marines": 413,
+      "space-marines": 415,
       "adeptus-custodes": 22,
       "adeptus-mechanicus": 16,
       "imperial-agents": 14,
       "astra-militarum": 14,
       "aeldari": 12,
-      "black-templars": 59,
-      "blood-angels": 72,
+      "black-templars": 60,
+      "blood-angels": 75,
       "chaos-knights": 6,
-      "dark-angels": 105,
+      "dark-angels": 107,
       "death-guard": 28,
-      "deathwatch": 44,
+      "deathwatch": 45,
       "emperors-children": 29,
       "grey-knights": 41,
       "chaos-space-marines": 79,
@@ -32,7 +54,7 @@ export const patches = [
       "chaos-daemons": 7,
       "necrons": 12,
       "orks": 37,
-      "space-wolves": 101,
+      "space-wolves": 103,
       "thousand-sons": 28,
       "tyranids": 13,
       "world-eaters": 25,
@@ -49,11 +71,11 @@ export const patches = [
       "app": 946,
       "mfm": "1.4"
     },
-    "total": 339,
+    "total": 340,
     "byFaction": {
       "core": 1,
       "space-marines": 2,
-      "orks": 336
+      "orks": 337
     }
   },
   {
@@ -63,7 +85,7 @@ export const patches = [
       "app": 931,
       "mfm": "1.3"
     },
-    "total": 207,
+    "total": 213,
     "byFaction": {
       "core": 6,
       "adepta-sororitas": 11,
@@ -72,9 +94,9 @@ export const patches = [
       "adeptus-mechanicus": 9,
       "astra-militarum": 17,
       "aeldari": 19,
-      "chaos-knights": 10,
+      "chaos-knights": 12,
       "dark-angels": 5,
-      "death-guard": 12,
+      "death-guard": 16,
       "drukhari": 4,
       "emperors-children": 10,
       "chaos-space-marines": 7,

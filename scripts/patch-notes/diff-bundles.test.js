@@ -66,9 +66,34 @@ describe('patch notes: what is not a change', () => {
     const b = sheet({ abilities: [...sheet().abilities, { name: 'Damaged 6', type: 'core', rules: '…' }] })
     expect(diff(sheet(), b)).toEqual([])
   })
+
+  // 972: the app turned Wardens of Ultramar's invulnerable saves round, "4+, 5+" → "5+, 4+".
+  it('reads invulnerable saves in any order as the same', () => {
+    expect(diff(sheet({ invulnerableSaves: ['4+', '5+'] }), sheet({ invulnerableSaves: ['5+', '4+'] }))).toEqual([])
+  })
+
+  // 972: the app keeps one Force Disposition per detachment and switched which of TWO it shows for
+  // fourteen of them (Gladius Task Force: Priority Assets → Take and Hold, both of which the MFM
+  // lists). A move to a disposition the MFM does not list for it is still a change.
+  it('reads a switch between two dispositions the MFM offers as the same', () => {
+    const det = (fd) => ({ detachments: [{ id: 'g', name: 'Gladius Task Force', dp: 2, forceDisposition: fd }] })
+    const offered = (name) => (name === 'Gladius Task Force' ? ['Take and Hold', 'Priority Assets'] : null)
+    expect(diffBundles(det('Priority Assets'), det('Take and Hold'), 'space-marines', { offered })).toEqual([])
+    expect(diffBundles(det('Priority Assets'), det('Disruption'), 'space-marines', { offered }))
+      .toMatchObject([{ kind: 'detachment', fields: [{ field: 'forceDisposition', from: 'Priority Assets', to: 'Disruption' }] }])
+    expect(diffBundles(det('Priority Assets'), det('Take and Hold'), 'space-marines')).toHaveLength(1)
+  })
 })
 
 describe('patch notes: what is a change', () => {
+  // MFM 1.5, 2 October: "UNIQUE TAG REMOVED" — a tag is an MFM field the app's tables never carry.
+  it('reports a detachment tag the MFM took away', () => {
+    const m = (unique) => ({ detachments: [{ name: 'Twilight Flickers', dp: 1, ...(unique && { unique }), enhancements: [] }], units: [] })
+    expect(diffMfm(m('ACROBATIC'), m(null), 'aeldari'))
+      .toEqual([{ faction: 'aeldari', kind: 'detachment', name: 'Twilight Flickers', change: 'changed', fields: [{ field: 'tag', added: [], removed: ['ACROBATIC'] }] }])
+    expect(diffMfm(m('ACROBATIC'), m('ACROBATIC'), 'aeldari')).toEqual([])
+  })
+
   it('reports a characteristic, a weapon number and a tag', () => {
     const b = sheet({
       statlines: [{ ...sheet().statlines[0], T: '12' }],
