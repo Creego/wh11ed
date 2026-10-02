@@ -68,6 +68,14 @@ export default {
           "op": "add",
           "value": 1,
           "when": null
+        },
+        {
+          "on": "profile",
+          "stat": "oc",
+          "op": "add",
+          "value": 1,
+          "when": null,
+          "target": "led"
         }
       ]
     },
@@ -90,6 +98,14 @@ export default {
           "op": "grant",
           "value": "LETHAL HITS: non-VEHICLE",
           "when": null
+        },
+        {
+          "on": "weapon",
+          "stat": "ability",
+          "op": "grant",
+          "value": "LETHAL HITS: non-VEHICLE",
+          "when": null,
+          "target": "led"
         }
       ]
     },
@@ -209,6 +225,20 @@ export default {
           "cond": [
             "never"
           ]
+        },
+        {
+          "on": "melee",
+          "stat": "a",
+          "op": "add",
+          "value": 1,
+          "when": {
+            "en": "while this unit is within range of an objective",
+            "ru": "пока отряд в зоне объекта"
+          },
+          "cond": [
+            "never"
+          ],
+          "target": "led"
         }
       ]
     },
@@ -265,6 +295,20 @@ export default {
             "en": "if this unit made a charge move this turn",
             "ru": "если отряд совершил charge в этом ходу"
           }
+        },
+        {
+          "on": "melee",
+          "stat": "ability",
+          "op": "grant",
+          "value": "CLEAVE 1",
+          "cond": [
+            "unit-charged"
+          ],
+          "when": {
+            "en": "if this unit made a charge move this turn",
+            "ru": "если отряд совершил charge в этом ходу"
+          },
+          "target": "led"
         }
       ]
     },
@@ -415,6 +459,14 @@ export default {
           "op": "grant",
           "value": "LANCE",
           "when": null
+        },
+        {
+          "on": "melee",
+          "stat": "ability",
+          "op": "grant",
+          "value": "LANCE",
+          "when": null,
+          "target": "led"
         }
       ]
     },
@@ -437,6 +489,14 @@ export default {
           "op": "grant",
           "value": "Feel No Pain 4+ (vs mortal wounds)",
           "when": null
+        },
+        {
+          "on": "unit",
+          "stat": "core",
+          "op": "grant",
+          "value": "Feel No Pain 4+ (vs mortal wounds)",
+          "when": null,
+          "target": "led"
         }
       ]
     },
@@ -465,6 +525,20 @@ export default {
           "cond": [
             "never"
           ]
+        },
+        {
+          "on": "ranged",
+          "stat": "ability",
+          "op": "grant",
+          "value": "DEVASTATING WOUNDS",
+          "when": {
+            "en": "in your Shooting phase, against the one visible enemy unit selected",
+            "ru": "в вашей фазе стрельбы, по одному выбранному видимому вражескому отряду"
+          },
+          "cond": [
+            "never"
+          ],
+          "target": "led"
         }
       ]
     },
@@ -487,6 +561,14 @@ export default {
           "op": "grant",
           "value": "LANCE",
           "when": null
+        },
+        {
+          "on": "melee",
+          "stat": "ability",
+          "op": "grant",
+          "value": "LANCE",
+          "when": null,
+          "target": "led"
         }
       ]
     },
@@ -509,6 +591,14 @@ export default {
           "op": "grant",
           "value": "LANCE",
           "when": null
+        },
+        {
+          "on": "melee",
+          "stat": "ability",
+          "op": "grant",
+          "value": "LANCE",
+          "when": null,
+          "target": "led"
         }
       ]
     },
@@ -531,6 +621,14 @@ export default {
           "op": "grant",
           "value": "LANCE",
           "when": null
+        },
+        {
+          "on": "melee",
+          "stat": "ability",
+          "op": "grant",
+          "value": "LANCE",
+          "when": null,
+          "target": "led"
         }
       ]
     },
@@ -553,6 +651,14 @@ export default {
           "op": "grant",
           "value": "Feel No Pain 4+ (vs Psychic Attacks and mortal wounds)",
           "when": null
+        },
+        {
+          "on": "unit",
+          "stat": "core",
+          "op": "grant",
+          "value": "Feel No Pain 4+ (vs Psychic Attacks and mortal wounds)",
+          "when": null,
+          "target": "led"
         }
       ]
     },
@@ -580,6 +686,17 @@ export default {
             "en": "until the start of your next turn, while this ability is the one selected",
             "ru": "до начала вашего следующего хода, пока выбрана эта способность"
           }
+        },
+        {
+          "on": "profile",
+          "stat": "sv",
+          "op": "improve",
+          "value": 1,
+          "when": {
+            "en": "until the start of your next turn, while this ability is the one selected",
+            "ru": "до начала вашего следующего хода, пока выбрана эта способность"
+          },
+          "target": "led"
         }
       ]
     },
@@ -828,6 +945,14 @@ export default {
           "op": "grant",
           "value": "Fights First",
           "when": null
+        },
+        {
+          "on": "unit",
+          "stat": "core",
+          "op": "grant",
+          "value": "Fights First",
+          "when": null,
+          "target": "led"
         }
       ]
     },
@@ -871,6 +996,22 @@ export default {
           "op": "grant",
           "value": "LANCE",
           "when": null
+        },
+        {
+          "on": "ranged",
+          "stat": "ability",
+          "op": "grant",
+          "value": "ASSAULT",
+          "when": null,
+          "target": "led"
+        },
+        {
+          "on": "melee",
+          "stat": "ability",
+          "op": "grant",
+          "value": "LANCE",
+          "when": null,
+          "target": "led"
         }
       ]
     },
@@ -963,6 +1104,14 @@ export default {
           "op": "grant",
           "value": "Feel No Pain 4+ (vs Psychic Attacks)",
           "when": null
+        },
+        {
+          "on": "unit",
+          "stat": "core",
+          "op": "grant",
+          "value": "Feel No Pain 4+ (vs Psychic Attacks)",
+          "when": null,
+          "target": "led"
         }
       ]
     },
@@ -1025,6 +1174,20 @@ export default {
           "cond": [
             "phase-fight"
           ]
+        },
+        {
+          "on": "melee",
+          "stat": "s",
+          "op": "add",
+          "value": 2,
+          "when": {
+            "en": "in the Fight phase, while this ability is the one selected",
+            "ru": "в фазе боя, пока выбрана эта способность"
+          },
+          "cond": [
+            "phase-fight"
+          ],
+          "target": "led"
         }
       ]
     },
@@ -1047,6 +1210,14 @@ export default {
           "op": "grant",
           "value": "Feel No Pain 4+ (vs Psychic Attacks)",
           "when": null
+        },
+        {
+          "on": "unit",
+          "stat": "core",
+          "op": "grant",
+          "value": "Feel No Pain 4+ (vs Psychic Attacks)",
+          "when": null,
+          "target": "led"
         }
       ]
     },
@@ -1077,6 +1248,20 @@ export default {
           "cond": [
             "phase-shooting"
           ]
+        },
+        {
+          "on": "ranged",
+          "stat": "range",
+          "op": "add",
+          "value": 6,
+          "when": {
+            "en": "in your Shooting phase, while this ability is the one selected",
+            "ru": "в вашей фазе стрельбы, пока выбрана эта способность"
+          },
+          "cond": [
+            "phase-shooting"
+          ],
+          "target": "led"
         }
       ]
     },
@@ -1104,6 +1289,17 @@ export default {
             "en": "until the start of your next turn, while this ability is the one selected",
             "ru": "до начала вашего следующего хода, пока выбрана эта способность"
           }
+        },
+        {
+          "on": "profile",
+          "stat": "inv",
+          "op": "set",
+          "value": "4+",
+          "when": {
+            "en": "until the start of your next turn, while this ability is the one selected",
+            "ru": "до начала вашего следующего хода, пока выбрана эта способность"
+          },
+          "target": "led"
         }
       ]
     },
@@ -1126,6 +1322,14 @@ export default {
           "op": "grant",
           "value": "Feel No Pain 4+ (vs Psychic Attacks)",
           "when": null
+        },
+        {
+          "on": "unit",
+          "stat": "core",
+          "op": "grant",
+          "value": "Feel No Pain 4+ (vs Psychic Attacks)",
+          "when": null,
+          "target": "led"
         }
       ]
     },
@@ -1164,6 +1368,14 @@ export default {
           "op": "grant",
           "value": "LETHAL HITS: non-MONSTER/VEHICLE",
           "when": null
+        },
+        {
+          "on": "weapon",
+          "stat": "ability",
+          "op": "grant",
+          "value": "LETHAL HITS: non-MONSTER/VEHICLE",
+          "when": null,
+          "target": "led"
         }
       ]
     },
@@ -1186,6 +1398,14 @@ export default {
           "op": "grant",
           "value": "LETHAL HITS: non-MONSTER/VEHICLE",
           "when": null
+        },
+        {
+          "on": "weapon",
+          "stat": "ability",
+          "op": "grant",
+          "value": "LETHAL HITS: non-MONSTER/VEHICLE",
+          "when": null,
+          "target": "led"
         }
       ]
     },
@@ -1469,6 +1689,14 @@ export default {
           "op": "grant",
           "value": "ASSAULT",
           "when": null
+        },
+        {
+          "on": "ranged",
+          "stat": "ability",
+          "op": "grant",
+          "value": "ASSAULT",
+          "when": null,
+          "target": "led"
         }
       ]
     },

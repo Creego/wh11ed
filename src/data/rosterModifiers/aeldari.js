@@ -125,6 +125,14 @@ export default {
           "op": "grant",
           "value": "SUSTAINED HITS 1",
           "when": null
+        },
+        {
+          "on": "melee",
+          "stat": "ability",
+          "op": "grant",
+          "value": "SUSTAINED HITS 1",
+          "when": null,
+          "target": "led"
         }
       ]
     },
@@ -1142,6 +1150,14 @@ export default {
           "op": "grant",
           "value": "IGNORES COVER",
           "when": null
+        },
+        {
+          "on": "weapon",
+          "stat": "ability",
+          "op": "grant",
+          "value": "IGNORES COVER",
+          "when": null,
+          "target": "led"
         }
       ]
     },

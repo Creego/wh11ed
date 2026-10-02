@@ -3069,6 +3069,14 @@ Three things are specific to the ABILITY source:
   A rule that says "this model's unit" with no leading clause is a third shape: it applies with
   nobody attached, so it stays two effects — an unconditional `self` and a `led` (Astorath's Mass of
   Doom, Lelith's Brides of Death — 12 records).
+  So does a plain **"This unit…"** printed on a Leader or Support card (a Chaplain's Litany of Hate,
+  an Ancient's +1 OC, a Librarian's Psychic Hood and his psychic powers): by 19.04, once attached,
+  "this unit" IS the Attached unit. 40 such records sat on the leader's own card alone until a
+  player asked for the squad's [LANCE] and OC (2026-10-02). `npm run modifiers:check` now refuses a
+  Leader's "this unit" rule whose effects are all `self` (`leaderUnitGaps` in the generator); the
+  five whose "this unit" only says where something else is — "Celestine has…", "each WARLOCK
+  model's Destructor", "CHARACTER models in this unit", "if this unit is not an Attached unit" —
+  are named in `LEADER_SELF_EXEMPT` with the reason.
 - **No keyword gate.** An ability is printed on the card it addresses, so `SCOPELESS` includes it
   alongside enhancements, allegiance abilities and wargear — there is no prose naming who it bears on.
 - **`sid` is not a bare uuid here.** 56 abilities are published once and printed on several

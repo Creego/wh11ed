@@ -488,6 +488,14 @@ export default {
           "op": "grant",
           "value": "IGNORES COVER",
           "when": null
+        },
+        {
+          "on": "ranged",
+          "stat": "ability",
+          "op": "grant",
+          "value": "IGNORES COVER",
+          "when": null,
+          "target": "led"
         }
       ]
     },
@@ -545,6 +553,22 @@ export default {
           "op": "grant",
           "value": "IGNORES COVER",
           "when": null
+        },
+        {
+          "on": "unit",
+          "stat": "core",
+          "op": "grant",
+          "value": "Deep Strike",
+          "when": null,
+          "target": "led"
+        },
+        {
+          "on": "ranged",
+          "stat": "ability",
+          "op": "grant",
+          "value": "IGNORES COVER",
+          "when": null,
+          "target": "led"
         }
       ]
     },
@@ -896,6 +920,20 @@ export default {
           "cond": [
             "never"
           ]
+        },
+        {
+          "on": "unit",
+          "stat": "core",
+          "op": "grant",
+          "value": "Deep Strike",
+          "when": {
+            "en": "while that psychic roll placed this unit in strategic reserves",
+            "ru": "пока psychic roll отправил отряд в strategic reserves"
+          },
+          "cond": [
+            "never"
+          ],
+          "target": "led"
         }
       ]
     },
@@ -926,6 +964,20 @@ export default {
           "cond": [
             "never"
           ]
+        },
+        {
+          "on": "melee",
+          "stat": "ability",
+          "op": "grant",
+          "value": "PSYCHIC",
+          "when": {
+            "en": "while that psychic roll was made in the Fight phase",
+            "ru": "пока сделан psychic roll в фазе боя"
+          },
+          "cond": [
+            "never"
+          ],
+          "target": "led"
         }
       ]
     },
@@ -971,6 +1023,39 @@ export default {
             "name": "Scavenged Shivs"
           },
           "when": null
+        },
+        {
+          "on": "melee",
+          "stat": "a",
+          "op": "add",
+          "value": 1,
+          "only": {
+            "name": "Scavenged Shivs"
+          },
+          "when": null,
+          "target": "led"
+        },
+        {
+          "on": "melee",
+          "stat": "ws",
+          "op": "improve",
+          "value": 1,
+          "only": {
+            "name": "Scavenged Shivs"
+          },
+          "when": null,
+          "target": "led"
+        },
+        {
+          "on": "melee",
+          "stat": "s",
+          "op": "add",
+          "value": 1,
+          "only": {
+            "name": "Scavenged Shivs"
+          },
+          "when": null,
+          "target": "led"
         }
       ]
     },

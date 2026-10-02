@@ -97,6 +97,20 @@ export default {
           "cond": [
             "never"
           ]
+        },
+        {
+          "on": "ranged",
+          "stat": "ability",
+          "op": "grant",
+          "value": "ASSAULT",
+          "when": {
+            "en": "while this unit contains an OFFICER",
+            "ru": "пока в отряде есть OFFICER"
+          },
+          "cond": [
+            "never"
+          ],
+          "target": "led"
         }
       ]
     },
@@ -523,6 +537,20 @@ export default {
           "cond": [
             "never"
           ]
+        },
+        {
+          "on": "ranged",
+          "stat": "ability",
+          "op": "grant",
+          "value": "SUSTAINED HITS 1",
+          "when": {
+            "en": "while this unit contains a Tempestor Prime",
+            "ru": "пока в отряде есть Tempestor Prime"
+          },
+          "cond": [
+            "never"
+          ],
+          "target": "led"
         }
       ]
     },

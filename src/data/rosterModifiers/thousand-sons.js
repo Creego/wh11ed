@@ -541,6 +541,20 @@ export default {
           "cond": [
             "never"
           ]
+        },
+        {
+          "on": "weapon",
+          "stat": "hit",
+          "op": "add",
+          "value": 1,
+          "when": {
+            "en": "in your Shooting phase, against the enemy unit selected at its start",
+            "ru": "в вашей Shooting phase, по вражескому отряду, выбранному в её начале"
+          },
+          "cond": [
+            "never"
+          ],
+          "target": "led"
         }
       ]
     },
