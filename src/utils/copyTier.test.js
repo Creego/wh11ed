@@ -3,9 +3,11 @@ import { copyTierLabel, modelsLabel } from './copyTier.js'
 
 describe('copyTier', () => {
   it('names a copy tier in either language', () => {
-    expect(copyTierLabel('1st-2nd', 'ru')).toBe('1–2-я копия')
-    expect(copyTierLabel('3rd+', 'ru')).toBe('3-я+ копия')
-    expect(copyTierLabel('3rd+', 'en')).toBe('3rd+ copy')
+    // Every tier the MFM prints: 1st, 1st-2nd, 1st-3rd, 2nd+, 3rd+, 4th+.
+    expect(['1st', '1st-2nd', '1st-3rd', '2nd+', '3rd+', '4th+'].map((t) => copyTierLabel(t, 'ru')))
+      .toEqual(['1-й юнит', '1-й и 2-й юнит', '1–3-й юнит', 'со 2-го юнита', 'с 3-го юнита', 'с 4-го юнита'])
+    expect(['1st', '1st-2nd', '1st-3rd', '2nd+', '3rd+', '4th+'].map((t) => copyTierLabel(t, 'en')))
+      .toEqual(['1st unit', '1st and 2nd unit', '1st–3rd unit', 'from the 2nd unit', 'from the 3rd unit', 'from the 4th unit'])
   })
 
   it('counts models with the Russian plural', () => {

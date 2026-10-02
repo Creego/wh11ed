@@ -612,6 +612,14 @@ moment the modal closed.
   writes (so "play this list" arrives with the declaration already made instead of the tracker
   silently taking whichever candidate its data lists first). `rosterShare`'s `PICK` carries it, so
   a shared link and a game snapshot keep it.
+- **The saved list's Missions tab** (`RosterMissionsTab`, 2026-10-02, owner — preparing for an
+  opponent): the five matchups the list's disposition can be dealt, each row naming the list's own
+  Primary AND the opponent's; each opens in a dialog of its own, headed by whose mission it is and
+  the matchup ("Take and Hold vs Priority Assets" — the first name is the side that scores it). The declared disposition is marked; the other
+  candidates are a PREVIEW switch that never writes. Only "Change" writes, through
+  `RosterDispositionModal` with its own Save (each candidate names the detachment offering it), and
+  that Save is also a cloud upload, like the editor's. Off the table only — in a game the matchup is
+  decided. Laid out by container query: on the rosters desk it is the ~430px middle column.
 - **The importer reads it back**, from the GW `Force Dispositions:` line, listhammer's labelled
   `Disposition:` field and the WTC detachment line's parenthetical — but only when the text names
   ONE. A list of candidates is not a declaration, and a name none of the matched detachments offers

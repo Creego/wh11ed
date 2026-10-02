@@ -1212,7 +1212,7 @@ const pointsTable = computed(() => {
   return { rows, tiers, hasLabels: rows.some((r) => r.label) }
 })
 
-// '1st-2nd' / '3rd+' → "1st–2nd copy" / «1–2-я копия»: which copy of this datasheet
+// '1st-2nd' / '3rd+' → "1st and 2nd unit" / «1-й и 2-й юнит»: which unit of this datasheet
 // in the army the price applies to (explained by the note under the table).
 function tierLabel(tier) {
   return tier ? copyTierLabel(tier, locale.value) : labels.value.dsPoints

@@ -107,6 +107,29 @@
       v-if="current"
       class="pv-patch"
     >
+      <!-- The update's prices as one file (src/data/patchDownloads.js): the reader's language
+           first, the other one beside it. Above the changes, whatever the faction filter. -->
+      <div
+        v-if="pointsPdf"
+        class="pv-download"
+      >
+        <a
+          :href="pointsPdf.mine.url"
+          class="btn-ghost pv-dl"
+          target="_blank"
+          rel="noopener"
+        >
+          <i class="bi bi-file-earmark-pdf" />
+          {{ labels.patchesPointsPdf }}
+          <span class="pv-dl-size">PDF · {{ pointsPdf.mine.size }}</span>
+        </a>
+        <a
+          :href="pointsPdf.other.url"
+          class="pv-dl-other"
+          target="_blank"
+          rel="noopener"
+        >{{ labels.patchesPointsPdfOther }}</a>
+      </div>
       <p
         v-if="failed[current.id]"
         class="pv-empty"
@@ -141,6 +164,7 @@ import AdaptivePicker from '../components/AdaptivePicker.vue'
 import FactionPickerList from '../components/tracker/FactionPickerList.vue'
 import PatchBody from '../components/patches/PatchBody.vue'
 import { patches } from '../data/patches/index.js'
+import { patchDownloads } from '../data/patchDownloads.js'
 import { factionGroups, factionIndexBySlug } from '../data/factionsIndex.js'
 import { useFavorites } from '../composables/useFavorites.js'
 import { useFormatDate } from '../composables/useFormatDate.js'
@@ -218,6 +242,14 @@ function pickPatch(id) {
   if (id !== current.value?.id) router.push({ query: { ...route.query, p: id } })
   else if (failed[id]) load(id) // picking the one that failed to load tries again
 }
+// The points PDF of the update on the page, if it has one: this reader's language and the other.
+const pointsPdf = computed(() => {
+  const files = patchDownloads[current.value?.id]?.points
+  if (!files) return null
+  const lang = locale.value === 'ru' ? 'ru' : 'en'
+  return { mine: files[lang], other: files[lang === 'ru' ? 'en' : 'ru'] }
+})
+
 const titleOf = (p) => [
   p.labels.app ? `${labels.value.patchesAppData} ${p.labels.app}` : '',
   p.labels.mfm ? `MFM v${p.labels.mfm}` : '',
@@ -255,6 +287,11 @@ const titleOf = (p) => [
   margin-right: auto;
 }
 .pv-bar { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.5rem; }
+.pv-download { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.9rem; margin-bottom: 0.6rem; }
+.pv-dl { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 40px; padding: 0.35rem 0.8rem; color: var(--text-primary); }
+.pv-dl .bi { color: var(--accent); font-size: 1.05rem; }
+.pv-dl-size { font-size: 0.75rem; color: var(--text-muted); }
+.pv-dl-other { font-size: 0.82rem; }
 /* The label on a line of its own above the name, the chevron beside both (owner, 2026-10-01). */
 .pv-trigger {
   display: inline-grid;

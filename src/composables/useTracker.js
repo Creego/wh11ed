@@ -1,5 +1,5 @@
 import { ref, watch } from 'vue'
-import { missions } from '../data/missions.js'
+import { missions, primaryFor } from '../data/missions.js'
 import { missionsRu } from '../data/missionsRu.js'
 import { eventCompanion } from '../data/eventCompanion.js'
 import {
@@ -181,11 +181,9 @@ export function fixedPool(role) {
   return secondaryPool(role).filter(m => m.blocks.some(b => b.kind === 'fixed'))
 }
 
-// Primary mission a player scores = the card for (their disposition vs opponent's).
-export function primaryFor(myDisposition, opponentDisposition) {
-  const oppName = dispositionName(opponentDisposition)
-  return missions.en.primary.find(m => m.deck === myDisposition && m.opponent === oppName) || null
-}
+// Primary mission a player scores = the card for (their disposition vs opponent's) — the matrix
+// itself lives with the missions (src/data/missions.js); re-exported for the tracker's callers.
+export { primaryFor }
 
 // The five "mirror" primary missions both players can share under the Mirrored World
 // twist (each is a self-vs-self disposition matchup, tagged `mirror: true`).

@@ -5,6 +5,8 @@
 // The Layouts page is data-driven: 5 Force Dispositions form a 5×5 matrix; each
 // unordered pairing is a `matchup` giving each side's Primary Mission + 3 layouts.
 
+import { DISPOSITIONS } from './dispositions.js'
+
 // Layout diagrams — extracted directly from the official app's APK
 // (scripts/extract-layout-images.mjs), keyed by `${a}|${b}` then layout id. The
 // `a|b` key uses the same ordering as the `matchups` array literal below (fixed order).
@@ -404,14 +406,8 @@ const en = {
     ],
   },
 
-  // 5 Force Dispositions — the axes of the matrix.
-  dispositions: [
-    { id: 'take-and-hold', name: 'Take and Hold', icon: '/images/event/dispo-take-and-hold.webp' },
-    { id: 'purge-the-foe', name: 'Purge the Foe', icon: '/images/event/dispo-purge-the-foe.webp' },
-    { id: 'disruption', name: 'Disruption', icon: '/images/event/dispo-disruption.webp' },
-    { id: 'reconnaissance', name: 'Reconnaissance', icon: '/images/event/dispo-reconnaissance.webp' },
-    { id: 'priority-assets', name: 'Priority Assets', icon: '/images/event/dispo-priority-assets.webp' },
-  ],
+  // 5 Force Dispositions — the axes of the matrix (src/data/dispositions.js).
+  dispositions: DISPOSITIONS,
 
   // 15 unordered matchups. missionA/missionB = each side's Primary Mission.
   matchups: [

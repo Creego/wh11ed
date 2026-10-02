@@ -10,6 +10,7 @@
     <ChapterToc
       :groups="tocGroups"
       :active-id="activeId"
+      :store-key="actionKey"
       @select="goToAnchor"
     />
 
