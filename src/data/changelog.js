@@ -22,6 +22,26 @@
 
 export const changelog = [
   {
+    version: '2.7.12',
+    date: '2026-10-02',
+    en: [
+      { h: 'Fixes' },
+      'A Leader’s “this unit” rules now reach the unit he leads. For example, a Chaplain’s Litany of Hate gives [LANCE] to his squad’s melee weapons, and an Ancient gives his squad +1 OC. A second character attached to the same squad gets them too. Before, the roster showed them on the Leader’s own card only. I checked every such rule in the game: 40 of them, from the Librarian’s Psychic Hood to Stealth from a Fluxmaster.',
+      'Weapon abilities limited to certain targets, such as [LETHAL HITS: non-MONSTER/VEHICLE] or [ANTI-MONSTER/VEHICLE 4+], used to show as plain text. Now they are tags like the others. Tap one to see the rule and, above it, which targets it works against.',
+      'On a datasheet, weapon names and numbers are larger and in the same font as the characteristics. On a phone the tags run under the whole weapon row, so a long tag no longer breaks inside its frame.',
+      'On a phone, a weapon with several profiles shows its name once, on a line of its own, and each profile under it by its own name: “standard”, “supercharge”. Weapon names there now almost never take two lines.',
+      'On the patch notes page, pinning a faction in the faction list no longer switches the list from “All factions” to “My factions”.',
+    ],
+    ru: [
+      { h: 'Исправления' },
+      'Правила лидера про «this unit» теперь действуют на отряд, к которому он прикреплён. Например, Litany of Hate у капеллана даёт [LANCE] оружию ближнего боя всего отряда, а Ancient даёт отряду +1 OC. Второй персонаж, прикреплённый к тому же отряду, тоже их получает. Раньше конструктор показывал их только на карточке самого лидера. Я проверил все такие правила в игре — их 40, от Psychic Hood у библиариев до Stealth от Fluxmaster.',
+      'Способности оружия с ограничением по целям, например [LETHAL HITS: non-MONSTER/VEHICLE] или [ANTI-MONSTER/VEHICLE 4+], показывались простым текстом. Теперь это такие же теги, как остальные. Нажмите на тег — откроется правило, а над ним сказано, против каких целей он действует.',
+      'В листе данных названия оружия и цифры профиля крупнее и тем же шрифтом, что характеристики. На телефоне теги идут под всей строкой оружия, и длинный тег больше не ломается внутри рамки.',
+      'На телефоне у оружия с несколькими профилями название теперь написано один раз, отдельной строкой, а под ним профили своими именами: «standard», «supercharge». Названия оружия там почти перестали переноситься на две строки.',
+      'На странице изменений правил закрепление фракции в списке фракций больше не переключает его со «Всех фракций» на «Мои фракции».',
+    ],
+  },
+  {
     version: '2.7.11',
     date: '2026-10-02',
     en: [
