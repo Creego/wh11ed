@@ -27,6 +27,11 @@ warhammer-community.com. Что видели в прошлый раз — `state
 `python3 scripts/watch-gw.py --state <файл> --dry-run` (первый запуск только запоминает
 исходное состояние).
 
+Письмо «Google Play x.y.z» → APK без ожидания APKPure: `node scripts/apk-emu.mjs` в
+`../wh40k-appdata` (эмулятор с Google Play, кнопку Update в Play нажимает человек; в аккаунт GW
+не входим — приложение работает через Skip). Скрипт сам вытащит APK, сверит Data Version на
+экране приложения с версией в APK и запустит `ingest.mjs`.
+
 `ingest.mjs` печатает `old data_version → new`. Если совпало — обновлять нечего. Поскольку
 `tables/` и `factions/` закоммичены, **прошлая версия остаётся в git HEAD**, и регенерация —
 это обозримый git-diff, а не «чёрный ящик». (Ручной путь на 4 команды всё ещё описан в
