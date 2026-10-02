@@ -288,20 +288,28 @@ h3.newpage { break-before: page; margin-top: 0; }
 .arr { font-size: 7pt; margin-left: 2mm; }
 .arr.up { color: #ff8a80; } .arr.down { color: #8be09a; } .arr.mixed { color: #ffd166; }
 .new { font-family: Inter, sans-serif; font-size: 6.5pt; text-transform: uppercase; background: var(--accent); color: #fff; padding: 0 1.2mm; margin-left: 2mm; }
-.row { display: flex; align-items: baseline; gap: 1.2mm; padding: 0.35mm 1.8mm 0; line-height: 1.35; }
-.what { white-space: nowrap; }
+.row { display: flex; align-items: baseline; gap: 1.2mm; padding: 0.35mm 1.8mm 0.2mm; line-height: 1.3; }
+/* A long composition ("Wolf Guard Headtakers, 6 Hunting Wolves") wraps inside its own column; with
+   nowrap it ran under the next column's text (a player's screenshot, 2 October). The points never wrap. */
+.what { min-width: 0; overflow-wrap: anywhere; }
 .tier { color: var(--muted); font-size: 7pt; margin-left: 1.2mm; }
-.dots { flex: 1; border-bottom: 1px dotted var(--rule); transform: translateY(-0.8mm); min-width: 3mm; }
-.pts { white-space: nowrap; font-weight: 600; }
+.dots { flex: 1 0 3mm; border-bottom: 1px dotted var(--rule); transform: translateY(-0.8mm); min-width: 3mm; }
+.pts { flex: none; white-space: nowrap; font-weight: 600; }
 .row.up .pts, .row.up .what { color: var(--up); }
 .row.down .pts, .row.down .what { color: var(--down); }
+/* The whole changed row is tinted, as in GW's own MFM — colour on the type alone was too faint
+   (players, 2 October). Light fills: a black-and-white print still reads the ▲▼ and the delta. */
+.row.up { background: #fbe1de; }
+.row.down { background: #dcf0e0; }
+.row.mixed { background: #fbefd2; }
+.row.added { background: #f6dadc; }
 .row.up .tier, .row.down .tier { color: inherit; opacity: 0.8; }
 .d { font-weight: 500; font-size: 7.4pt; }
 .removed { color: var(--muted); text-decoration: line-through; }
 .row.added .pts, .row.added .what { color: var(--accent); }
 .tag { font-size: 6.2pt; text-transform: uppercase; border: 1px solid currentColor; padding: 0 0.8mm; margin-left: 1.2mm; }
 .row.mixed .pts, .row.mixed .what { color: #9a6a00; }
-.was { font-size: 6.6pt; margin-left: 1.2mm; opacity: 0.85; }
+.was { display: block; font-size: 6.4pt; opacity: 0.85; }
 .row.gone .what, .row.gone .pts { color: var(--muted); text-decoration: line-through; font-weight: 400; }
 `
 
