@@ -1554,7 +1554,7 @@ function abilityStateLabel(st) {
   margin-left: 0.35rem;
   /* Read beside a name in the display face a size up — at 0.78rem the count was a footnote
      (owner, 2026-10-02). */
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--text-muted);
   white-space: nowrap;
@@ -1697,7 +1697,7 @@ function abilityStateLabel(st) {
   .wtags { display: block; contain: inline-size; width: calc(200% - 0.35rem); margin: 0.15rem 0 0; }
   .wtag { font-size: 0.6rem; }
   .wtag :deep(.keyword) { font-size: 0.62rem; letter-spacing: 0; padding: 0 3px; }
-  .wqty { font-size: 0.95rem; margin-left: 0.2rem; }
+  .wqty { font-size: 1.1rem; margin-left: 0.2rem; }
   .wprofile-arrow { width: 10px; height: 7px; margin-right: 0.25rem; }
 }
 
