@@ -90,6 +90,10 @@
         v-else-if="w.change === 'removed'"
         class="pe-minus"
       >− {{ w.name }}</span>
+      <template v-else-if="w.change === 'retyped'">
+        <span class="pe-label">{{ w.name }}:</span>
+        <span class="pe-chip">{{ weaponType(w.fromType) }} → {{ weaponType(w.toType) }}</span>
+      </template>
       <template v-else>
         <span class="pe-label">{{ w.name }}<template v-if="w.from"> ({{ labels.patchesWas }}: {{ w.from }})</template>:</span>
         <span
@@ -223,6 +227,8 @@ const sets = computed(() => {
 })
 
 const weapons = computed(() => fields.value.filter((f) => f.field === 'weapon'))
+// Which table a weapon sits in — the change a "retyped" weapon reports.
+const weaponType = (t) => (t === 'melee' ? labels.value.patchesMelee : labels.value.patchesRanged)
 
 const texts = computed(() => {
   const l = labels.value

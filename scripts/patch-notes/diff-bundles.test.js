@@ -86,6 +86,14 @@ describe('patch notes: what is not a change', () => {
 })
 
 describe('patch notes: what is a change', () => {
+  // 972: Logan Grimnar's Storm Bolter moved from the melee table to the ranged one.
+  it('reports a weapon that changed tables once, not as gone and new', () => {
+    const melee = { name: 'Storm Bolter', profiles: [{ name: 'Storm Bolter', type: 'melee', range: 'Melee', A: '2', WS: '3+', S: '5', AP: '-1', D: '1', tags: [] }] }
+    const ranged = { name: 'Storm Bolter', profiles: [{ name: 'Storm Bolter', type: 'ranged', range: '24"', A: '2', BS: '2+', S: '5', AP: '-1', D: '1', tags: [] }] }
+    const out = diff(sheet({ wargear: [...sheet().wargear, melee] }), sheet({ wargear: [...sheet().wargear, ranged] }))
+    expect(out[0].fields).toEqual([{ field: 'weapon', change: 'retyped', name: 'Storm Bolter', fromType: 'melee', toType: 'ranged' }])
+  })
+
   // MFM 1.5, 2 October: "UNIQUE TAG REMOVED" — a tag is an MFM field the app's tables never carry.
   it('reports a detachment tag the MFM took away', () => {
     const m = (unique) => ({ detachments: [{ name: 'Twilight Flickers', dp: 1, ...(unique && { unique }), enhancements: [] }], units: [] })

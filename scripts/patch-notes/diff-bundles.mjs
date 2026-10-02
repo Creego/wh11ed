@@ -194,6 +194,15 @@ function diffDatasheet(a, b) {
     const renamed = key(profileName(o.w, o.p)) !== key(profileName(n.w, n.p))
     compare(o, n, renamed ? { from: profileName(o.w, o.p) } : {})
   }
+  // The same weapon moving between the tables (972: Logan Grimnar's Storm Bolter was a melee row,
+  // now a ranged one) read as one gone and one new of the same name — a riddle. It is one change.
+  for (const o of [...removed]) {
+    const i = added.findIndex((n) => n.p.type !== o.p.type && loose(n) === loose(o))
+    if (i < 0) continue
+    const [n] = added.splice(i, 1)
+    removed.splice(removed.indexOf(o), 1)
+    f.push({ field: 'weapon', change: 'retyped', name: profileName(n.w, n.p), fromType: o.p.type, toType: n.p.type })
+  }
   for (const n of added) f.push({ field: 'weapon', change: 'added', name: profileName(n.w, n.p), type: n.p.type })
   for (const o of removed) f.push({ field: 'weapon', change: 'removed', name: profileName(o.w, o.p), type: o.p.type })
   return f
