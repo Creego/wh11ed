@@ -4,6 +4,12 @@
 // and a link is not something the data history knows. A new update gets a line here once its
 // files are up; an older one keeps its own, so each update links to the prices it introduced.
 export const patchDownloads = {
+  972: {
+    points: {
+      ru: { url: 'https://disk.yandex.ru/i/i7E_l2Zl1mP-yw', size: '1,4 МБ' },
+      en: { url: 'https://disk.yandex.ru/i/WDD-FMMe8OPpcg', size: '1.4 MB' },
+    },
+  },
   963: {
     points: {
       ru: { url: 'https://disk.yandex.ru/i/MQsr6J-j3VyLOA', size: '1,4 МБ' },
