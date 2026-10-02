@@ -2567,9 +2567,10 @@ Terminator Squad (320 points)
 ${tail}`
     const { payload, report } = matchRoster(parseList(text), ctx)
     expect(report.units[0].gear.missing).toEqual([])
-    // The export's 320 is last codex's; since app data 963 it is the 10-model bracket (390, MFM
-    // v1.5) plus the two cyclone missile launchers at 10 each, which the new datasheet charges.
-    expect(report.units[0].points.computed).toBe(390 + 2 * 10)
+    // The export's 320 is last codex's; since app data 963 it is the 10-model bracket (380, MFM
+    // v1.5 as GW re-priced it on 2 October) plus the two cyclone missile launchers at 10 each,
+    // which the new datasheet charges.
+    expect(report.units[0].points.computed).toBe(380 + 2 * 10)
     // and the swap it describes is taken, twice — once per Terminator with a heavy weapon
     const def = ctx.faction.units.find((u) => u.id === 'terminator-squad')
     const gi = def.gear.findIndex((g) => (g.o || []).some((o) => optionItems(o).length > 1))

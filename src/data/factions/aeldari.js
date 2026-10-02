@@ -10,13 +10,13 @@
 //     (Armoured Warhost, Fateful Performance, Path of the Outcast, Twilight Flickers,
 //     Serpent's Brood, Eldritch Raiders, Corsair Coterie) + Rules Updates.
 //   MFM (src/data/mfm/aeldari.js) → per-enhancement points, per-detachment dp /
-//     forceDispositions, and the ACROBATIC `unique` tag.
+//     forceDispositions (the ACROBATIC `unique` tag is gone: MFM 1.5 of 2 October prints
+//     «UNIQUE TAG REMOVED» on all four — field and rule sentence dropped, app data 972).
 //
 // 15 detachments total, matching the MFM list. Faction-Pack "Rules Updates" have been folded
 // into the army rule / codex detachment rules / stratagems (they are the authoritative newer
-// wording) — see inline notes. Four detachments carry the ACROBATIC tag (mutually exclusive;
-// `unique` field): Fateful Performance, Ghosts of the Webway, Twilight Flickers and Serpent's
-// Brood.
+// wording) — see inline notes. Fateful Performance, Ghosts of the Webway, Twilight Flickers and Serpent's Brood
+// carried the ACROBATIC tag until MFM 1.5 of 2 October removed it.
 //
 // EN-first: `ru` reuses the same object for now (same pattern as the other factions); swap in
 // a translated object later. Markup follows useRenderInline / RuleBlock / StratCard
@@ -526,7 +526,6 @@ Asuryani Psyker models from your army have the following ability:
       source: 'codex',
       dp: 2,
       forceDispositions: ["Disruption"],
-      unique: 'ACROBATIC',
       rule: {
         name: 'Acrobatic Onslaught',
         flavor:
@@ -535,9 +534,7 @@ Asuryani Psyker models from your army have the following ability:
 
 **Travelling Players:**
 ▪ Troupe units from your army gain the **Battleline** keyword and Troupe models in those units have an Objective Control characteristic of 2.
-▪ You can include up to three of each of the following models in your army: Death Jester, Shadowseer, Troupe Master.
-
-This detachment has the **ACROBATIC** tag and cannot be taken with another **ACROBATIC** detachment.`,
+▪ You can include up to three of each of the following models in your army: Death Jester, Shadowseer, Troupe Master.`,
       },
       stratagems: [
         {
@@ -1068,14 +1065,11 @@ Each time you use one of the Stratagems opposite, if your Fate dice pool contain
       source: 'faction-pack',
       dp: 1,
       forceDispositions: ["Disruption"],
-      unique: 'ACROBATIC',
       rule: {
         name: 'Acrobatic Onslaught',
         flavor:
           'Trying to fight the Harlequins of the Laughing God is like battling bladed smoke. They flip and bound through the enemy ranks with contemptuous ease, springing across the heads and shoulders of dumbfounded combatants, sprinting across the hulls of war engines, all the while bearing down with murderous intent upon their true intended victims.',
-        body: `While a friendly **HARLEQUINS** unit is making a **[gloss:charge-move:Charge move]**, that unit can move through enemy models.
-
-This **[gloss:detachments:detachment]** has the **ACROBATIC** tag and cannot be taken with another **ACROBATIC** **detachment**.`,
+        body: `While a friendly **HARLEQUINS** unit is making a **[gloss:charge-move:Charge move]**, that unit can move through enemy models.`,
       },
       stratagems: [
         {
@@ -1200,14 +1194,11 @@ This **[gloss:detachments:detachment]** has the **ACROBATIC** tag and cannot be 
       source: 'faction-pack',
       dp: 1,
       forceDispositions: ["Take and Hold"],
-      unique: 'ACROBATIC',
       rule: {
         name: 'Dance of Distortion',
         flavor:
           'With their holofields attuned to a mistwreathed shadow performance, the Harlequins are insubstantial blurs as they dash through cover to reach their chosen stage.',
-        body: `Friendly **HARLEQUINS** units have [core:Stealth].
-
-This **[gloss:detachments:detachment]** has the **ACROBATIC** tag and cannot be taken with another **ACROBATIC** **detachment**.`,
+        body: `Friendly **HARLEQUINS** units have [core:Stealth].`,
       },
       stratagems: [
         {
@@ -1268,7 +1259,6 @@ This **[gloss:detachments:detachment]** has the **ACROBATIC** tag and cannot be 
       source: 'faction-pack',
       dp: 2,
       forceDispositions: ["Purge the Foe"],
-      unique: 'ACROBATIC',
       rule: {
         name: 'Boons of the Brood',
         flavor:
@@ -1279,9 +1269,7 @@ Each time a **Harlequins** unit from your army disembarks from a TRANSPORT, unti
 
 **Travelling Players:**
 ▪ Troupe units from your army gain the **Battleline** keyword, and Troupe models in those units have an Objective Control characteristic of 2.
-▪ You can include up to three of each of the following models in your army: Death Jester, Shadowseer, Troupe Master.
-
-This detachment has the **ACROBATIC** tag and cannot be taken with another **ACROBATIC** detachment.`,
+▪ You can include up to three of each of the following models in your army: Death Jester, Shadowseer, Troupe Master.`,
       },
       stratagems: [
         {

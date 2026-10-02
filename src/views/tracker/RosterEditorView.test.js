@@ -139,7 +139,7 @@ describe('RosterEditorView', () => {
     await waitFor(w, 'Intercessor Squad')
 
     expect(w.text()).toContain('Intercessor Squad')
-    expect(w.text()).toContain('95')   // default 5-model bracket points (MFM v1.5; 80 before app data 963)
+    expect(w.text()).toContain('85')   // default 5-model bracket points (MFM v1.5 of 2 October; 95 before it, 80 before app data 963)
     expect(w.text()).toContain('2000') // Strike Force limit
   })
 
@@ -212,7 +212,7 @@ describe('RosterEditorView', () => {
 
     const w = mount(RosterEditorView, { global: { stubs } })
     await waitFor(w, 'Intercessor Squad')
-    expect(w.text()).toContain('95')  // unit points (MFM v1.5; 80 before app data 963)
+    expect(w.text()).toContain('85')  // unit points (MFM v1.5 of 2 October; 95 before it, 80 before app data 963)
     expect(w.text()).toContain('500') // custom limit
   })
 
@@ -240,7 +240,7 @@ describe('RosterEditorView', () => {
 
     const w = mount(RosterEditorView, { global: { stubs } })
     await waitFor(w, 'Intercessor Squad')
-    expect(w.find('.rc-points').text()).toContain('95') // MFM v1.5; 80 before app data 963
+    expect(w.find('.rc-points').text()).toContain('85') // MFM v1.5 of 2 October; 95 before it, 80 before app data 963
     await w.find('.rc-sticky .btn-primary').trigger('click')
     expect(push).toHaveBeenCalledWith(`/roster/${r.id}/view`)
   })

@@ -3,8 +3,8 @@ import { computed, ref } from 'vue'
 import { useRosterDerived } from './useRosterDerived.js'
 import { loadRosterFaction } from '../data/roster/index.js'
 
-// Real Space Marines data, so the numbers below are the game's: an Intercessor Squad is 95 points
-// at its default bracket, a Captain 90, and the Captain may lead that squad (MFM v1.5; they were
+// Real Space Marines data, so the numbers below are the game's: an Intercessor Squad is 85 points
+// at its default bracket (95 until GW re-priced MFM v1.5 on 2 October), a Captain 90, and the Captain may lead that squad (MFM v1.5; they were
 // 80 and 80 before Codex: Space Marines, whose Anvil Siege Force is gone — Gladius Task Force
 // stands in).
 let sm
@@ -31,8 +31,8 @@ describe('over a stored roster', () => {
     expect(d.defOf('intercessor-squad')?.name).toBe('Intercessor Squad')
     expect(d.curDetachments.value.map((x) => x.name)).toEqual(['Gladius Task Force'])
     expect(d.limit.value).toBe(2000)
-    expect(d.points.value).toBe(95)
-    expect(d.entryMeta.value.get('intercessor-squad')).toMatchObject({ points: 95, copyIndex: 1 })
+    expect(d.points.value).toBe(85)
+    expect(d.entryMeta.value.get('intercessor-squad')).toMatchObject({ points: 85, copyIndex: 1 })
     // A real verdict, not the empty fallback: this list has nobody to be its Warlord.
     expect(d.validation.value.issues.map((i) => i.code)).toContain('noWarlord')
   })
@@ -42,10 +42,10 @@ describe('over a stored roster', () => {
   it('follows the roster it was handed', () => {
     const roster = ref(stored())
     const d = useRosterDerived(roster, ref(sm))
-    expect(d.points.value).toBe(95)
+    expect(d.points.value).toBe(85)
 
     roster.value.units.push(entry('captain'))
-    expect(d.points.value).toBe(185)
+    expect(d.points.value).toBe(175)
 
     roster.value.detachments = []
     expect(d.curDetachments.value).toEqual([])
@@ -76,7 +76,7 @@ describe('over the wizard\'s assembled shape', () => {
     const d = useRosterDerived(draft, ref(sm))
 
     expect(d.limit.value).toBe(1000)
-    expect(d.points.value).toBe(185)
+    expect(d.points.value).toBe(175)
     expect(d.groupedUnits.value.flatMap((s) => s.entries.map((e) => e.id)))
       .toEqual(expect.arrayContaining(['intercessor-squad', 'captain']))
   })

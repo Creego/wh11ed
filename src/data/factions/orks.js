@@ -63,11 +63,11 @@ In a battle round, a friendly ORKS PSYKER unit can use a number of **psychic abi
 **Example:** In a battle round, a **psyker level 3** PSYKER unit could use three **psychic level 1** abilities, or one **psychic level 1** ability and one **psychic level 2** ability, or one **psychic level 3** ability.
 
 ### Special Move Types
-Some Orks rules allow a unit to make a **pulse jet move**, as described below. (The **[gloss:assault-disembark-move:assault disembark move]** the codex also lists is a core move type — see Core Rules, 18.06.)
+The following are special **[gloss:move-type:move types]** that certain or all of your units are eligible to make: some Orks rules allow a unit to make a **pulse jet move**, as described below. (The **[gloss:assault-disembark-move:assault disembark move]** the codex also lists is a core move type — see Core Rules, 18.06.)
 
 **Pulse Jet Move**
 ◈ MAXIMUM DISTANCE | **Pulse roll** + 18"
-◈ ELIGIBLE IF | As stated in the rule allowing this **[gloss:move-type:move type]**.
+◈ ELIGIBLE IF | As stated in the rule allowing this **move type**.
 ◈ EFFECT | Your unit moves as described in Moving (Core Rules, 03).
 ◈ BEFORE MOVING | Make a **pulse roll** by rolling one D6.
 ◈ WHILE MOVING

@@ -2497,7 +2497,7 @@ export default [
       {
         "name": "Tormentors",
         "m": "7\"",
-        "t": "4",
+        "t": "5",
         "sv": "3+",
         "w": "2",
         "ld": "6+",

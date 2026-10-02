@@ -2,7 +2,8 @@ import { describe, it, expect } from 'vitest'
 import { refreshSummaries, summarize, summaryOf, summaryStale } from './rosterSummary.js'
 import { APP_VERSION } from '../buildInfo.js'
 
-// Real Space Marines data — Intercessor Squad is 95 points at its default bracket (MFM v1.5).
+// Real Space Marines data — Intercessor Squad is 85 points at its default bracket (MFM v1.5 as
+// GW re-priced it on 2 October).
 function roster(extra = {}) {
   return {
     id: 'r1',
@@ -50,7 +51,7 @@ describe('refreshSummaries', () => {
     await refreshSummaries([r])
     // The issue count is the editor's own validator, not a separate opinion — one error here,
     // for the warlord this list hasn't named.
-    expect(r.summary).toEqual({ points: 95, unitCount: 1, issues: 1, v: APP_VERSION })
+    expect(r.summary).toEqual({ points: 85, unitCount: 1, issues: 1, v: APP_VERSION })
   })
 
   it('leaves a believable summary untouched', async () => {
@@ -69,12 +70,12 @@ describe('refreshSummaries', () => {
 describe('summarize', () => {
   it('counts every copy and reports the roster\'s own validation errors', async () => {
     const { default: data } = await import('../data/roster/space-marines.js')
-    // Four Intercessor Squads at 95: one over the Strike Force duplicate cap, so the summary
+    // Four Intercessor Squads at 85 (MFM 1.5 of 2 October): one over the Strike Force duplicate cap, so the summary
     // carries a validation error alongside the points rather than points alone.
     const r = roster({ units: Array.from({ length: 4 }, (_, i) => ({ uid: `u${i}`, id: 'intercessor-squad', size: 0 })) })
     const s = summarize(r, data)
     expect(s.unitCount).toBe(4)
-    expect(s.points).toBe(380)
+    expect(s.points).toBe(340)
     expect(s.issues).toBeGreaterThan(0)
   })
 })

@@ -255,7 +255,7 @@ describe('RosterViewView', () => {
     await waitFor(w, 'Intercessor Squad')
 
     expect(w.text()).toContain('Intercessor Squad')
-    expect(w.text()).toContain('95')   // default 5-model bracket points (MFM v1.5; 80 before app data 963)
+    expect(w.text()).toContain('85')   // default 5-model bracket points (MFM v1.5 of 2 October; 95 before it, 80 before app data 963)
     expect(w.text()).toContain('2000') // Strike Force limit
     expect(w.find('.hdr-icon').attributes('href')).toBe(`/roster/${r.id}`)
   })

@@ -36,17 +36,17 @@ export default {
         {
           "to": "chosen",
           "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "chosen",
+          "type": "leader",
           "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "chaos-terminator-squad",
           "type": "leader",
           "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "chosen",
-          "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "chaos-terminator-squad",
@@ -59,11 +59,11 @@ export default {
           0,
           [
             [
-              988,
+              989,
               1
             ],
             [
-              989,
+              990,
               1
             ]
           ]
@@ -180,7 +180,7 @@ export default {
           0,
           [
             [
-              990,
+              991,
               1
             ]
           ]
@@ -189,7 +189,7 @@ export default {
           1,
           [
             [
-              991,
+              992,
               1
             ]
           ]
@@ -227,11 +227,11 @@ export default {
           0,
           [
             [
-              3289,
+              3290,
               1
             ],
             [
-              3290,
+              3291,
               1
             ]
           ]
@@ -244,12 +244,12 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              3291
+              3292
             ]
           ],
           "rep": [
-            3289,
-            3290
+            3290,
+            3291
           ]
         }
       ]
@@ -340,15 +340,15 @@ export default {
           0,
           [
             [
-              992,
-              1
-            ],
-            [
               993,
               1
             ],
             [
               994,
+              1
+            ],
+            [
+              995,
               1
             ]
           ]
@@ -357,15 +357,15 @@ export default {
           1,
           [
             [
-              992,
-              1
-            ],
-            [
               993,
               1
             ],
             [
               994,
+              1
+            ],
+            [
+              995,
               1
             ]
           ]
@@ -381,17 +381,17 @@ export default {
               11
             ],
             [
-              995
-            ],
-            [
               996
             ],
             [
               997
+            ],
+            [
+              998
             ]
           ],
           "rep": [
-            992
+            994
           ]
         },
         {
@@ -400,7 +400,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              998
+              999
             ]
           ],
           "lim": [
@@ -416,11 +416,11 @@ export default {
           "in": "stepper",
           "o": [
             [
-              996
+              997
             ]
           ],
           "rep": [
-            992
+            994
           ]
         },
         {
@@ -448,7 +448,7 @@ export default {
             ]
           ],
           "rep": [
-            993
+            995
           ]
         }
       ]
@@ -482,11 +482,11 @@ export default {
           0,
           [
             [
-              3292,
+              3293,
               1
             ],
             [
-              623,
+              2520,
               1
             ]
           ]
@@ -499,17 +499,17 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              987
-            ],
-            [
-              3293
+              988
             ],
             [
               3294
+            ],
+            [
+              3295
             ]
           ],
           "rep": [
-            3292
+            3293
           ]
         },
         {
@@ -528,7 +528,7 @@ export default {
             [
               [
                 [
-                  2957,
+                  2958,
                   2
                 ]
               ]
@@ -536,7 +536,7 @@ export default {
             [
               [
                 [
-                  547,
+                  2568,
                   2
                 ]
               ]
@@ -549,7 +549,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              3108
+              1220
             ]
           ]
         },
@@ -644,11 +644,11 @@ export default {
           0,
           [
             [
-              999,
+              1000,
               2
             ],
             [
-              938,
+              939,
               1
             ],
             [
@@ -665,10 +665,10 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              993
+              995
             ],
             [
-              1000
+              1001
             ]
           ]
         },
@@ -678,7 +678,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1001
+              1002
             ]
           ]
         }
@@ -734,14 +734,34 @@ export default {
       },
       "leads": [
         {
+          "to": "chosen",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "red-corsairs-raiders",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
           "to": "red-corsairs-raiders",
           "type": "leader",
           "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
+          "to": "nemesis-claw",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
           "to": "chosen",
           "type": "leader",
           "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "legionaries",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "legionaries",
@@ -752,26 +772,6 @@ export default {
           "to": "nemesis-claw",
           "type": "leader",
           "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "red-corsairs-raiders",
-          "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "chosen",
-          "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "legionaries",
-          "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "nemesis-claw",
-          "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         }
       ],
       "defaults": [
@@ -779,11 +779,11 @@ export default {
           0,
           [
             [
-              1002,
+              1003,
               1
             ],
             [
-              1003,
+              1004,
               1
             ]
           ]
@@ -796,14 +796,14 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1004
+              1005
             ],
             [
-              1005
+              1006
             ]
           ],
           "rep": [
-            1002
+            1003
           ]
         },
         {
@@ -812,11 +812,11 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1006
+              1007
             ]
           ],
           "rep": [
-            1003
+            1004
           ]
         }
       ]
@@ -874,12 +874,12 @@ export default {
         {
           "to": "chaos-terminator-squad",
           "type": "leader",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "chaos-terminator-squad",
           "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         }
       ],
       "defaults": [
@@ -887,11 +887,11 @@ export default {
           0,
           [
             [
-              1007,
+              1008,
               1
             ],
             [
-              1008,
+              1009,
               1
             ]
           ]
@@ -904,11 +904,11 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1009
+              1010
             ]
           ],
           "rep": [
-            1007
+            1008
           ]
         },
         {
@@ -917,14 +917,14 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1010
+              1011
             ],
             [
-              1011
+              1012
             ]
           ],
           "rep": [
-            1008
+            1009
           ]
         },
         {
@@ -933,12 +933,12 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1012
+              1013
             ]
           ],
           "rep": [
-            1007,
-            1008
+            1008,
+            1009
           ]
         }
       ]
@@ -973,15 +973,15 @@ export default {
           0,
           [
             [
-              1,
+              2468,
               1
             ],
             [
-              3108,
+              1220,
               1
             ],
             [
-              1005,
+              1006,
               1
             ],
             [
@@ -998,20 +998,20 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              538
+              2180
             ],
             [
-              1009
+              2260
             ],
             [
-              1004
+              1005
             ],
             [
-              1011
+              1012
             ]
           ],
           "rep": [
-            1
+            2468
           ]
         },
         {
@@ -1020,20 +1020,20 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1
+              2468
             ],
             [
-              538
+              2180
             ],
             [
-              1004
+              1005
             ],
             [
-              1011
+              1012
             ]
           ],
           "rep": [
-            1005
+            1006
           ]
         },
         {
@@ -1042,12 +1042,12 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1108
+              1109
             ]
           ],
           "rep": [
-            1,
-            1005
+            2468,
+            1006
           ]
         }
       ],
@@ -1114,11 +1114,11 @@ export default {
           0,
           [
             [
-              1,
+              2468,
               1
             ],
             [
-              1005,
+              1006,
               1
             ],
             [
@@ -1135,23 +1135,23 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              538
+              2180
             ],
             [
-              3108
+              1220
             ],
             [
-              1009
+              2260
             ],
             [
-              1004
+              1005
             ],
             [
-              1011
+              1012
             ]
           ],
           "rep": [
-            1
+            2468
           ]
         },
         {
@@ -1160,20 +1160,20 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1
+              2468
             ],
             [
-              538
+              2180
             ],
             [
-              1004
+              1005
             ],
             [
-              1011
+              1012
             ]
           ],
           "rep": [
-            1005
+            1006
           ]
         },
         {
@@ -1182,12 +1182,12 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1108
+              1109
             ]
           ],
           "rep": [
-            1,
-            1005
+            2468,
+            1006
           ]
         }
       ],
@@ -1234,15 +1234,15 @@ export default {
           0,
           [
             [
-              1,
+              2468,
               1
             ],
             [
-              1005,
+              1006,
               1
             ],
             [
-              3162,
+              3163,
               1
             ],
             [
@@ -1259,23 +1259,23 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              538
+              2180
             ],
             [
-              3108
+              1220
             ],
             [
-              1009
+              2260
             ],
             [
-              1004
+              1005
             ],
             [
-              1011
+              1012
             ]
           ],
           "rep": [
-            1
+            2468
           ]
         },
         {
@@ -1284,20 +1284,20 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1
+              2468
             ],
             [
-              538
+              2180
             ],
             [
-              1004
+              1005
             ],
             [
-              1011
+              1012
             ]
           ],
           "rep": [
-            1005
+            1006
           ]
         },
         {
@@ -1306,12 +1306,12 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1108
+              1109
             ]
           ],
           "rep": [
-            1,
-            1005
+            2468,
+            1006
           ]
         }
       ],
@@ -1354,11 +1354,11 @@ export default {
           0,
           [
             [
-              1,
+              2468,
               1
             ],
             [
-              1005,
+              1006,
               1
             ],
             [
@@ -1366,7 +1366,7 @@ export default {
               1
             ],
             [
-              3295,
+              3296,
               1
             ]
           ]
@@ -1379,23 +1379,23 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              538
+              2180
             ],
             [
-              3108
+              1220
             ],
             [
-              1009
+              2260
             ],
             [
-              1004
+              1005
             ],
             [
-              1011
+              1012
             ]
           ],
           "rep": [
-            1
+            2468
           ]
         },
         {
@@ -1404,20 +1404,20 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1
+              2468
             ],
             [
-              538
+              2180
             ],
             [
-              1004
+              1005
             ],
             [
-              1011
+              1012
             ]
           ],
           "rep": [
-            1005
+            1006
           ]
         },
         {
@@ -1426,12 +1426,12 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1108
+              1109
             ]
           ],
           "rep": [
-            1,
-            1005
+            2468,
+            1006
           ]
         }
       ],
@@ -1478,11 +1478,11 @@ export default {
           0,
           [
             [
-              1,
+              2468,
               1
             ],
             [
-              1005,
+              1006,
               1
             ],
             [
@@ -1490,7 +1490,7 @@ export default {
               1
             ],
             [
-              892,
+              893,
               1
             ]
           ]
@@ -1503,23 +1503,23 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              538
+              2180
             ],
             [
-              3108
+              1220
             ],
             [
-              1009
+              2260
             ],
             [
-              1004
+              1005
             ],
             [
-              1011
+              1012
             ]
           ],
           "rep": [
-            1
+            2468
           ]
         },
         {
@@ -1528,20 +1528,20 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1
+              2468
             ],
             [
-              538
+              2180
             ],
             [
-              1004
+              1005
             ],
             [
-              1011
+              1012
             ]
           ],
           "rep": [
-            1005
+            1006
           ]
         },
         {
@@ -1550,12 +1550,12 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1108
+              1109
             ]
           ],
           "rep": [
-            1,
-            1005
+            2468,
+            1006
           ]
         }
       ],
@@ -1620,12 +1620,12 @@ export default {
         {
           "to": "raptors",
           "type": "leader",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "raptors",
           "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         }
       ],
       "defaults": [
@@ -1633,11 +1633,11 @@ export default {
           0,
           [
             [
-              1013,
+              1005,
               1
             ],
             [
-              1004,
+              1014,
               1
             ]
           ]
@@ -1654,7 +1654,7 @@ export default {
             ]
           ],
           "rep": [
-            1013
+            1014
           ]
         },
         {
@@ -1663,11 +1663,11 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1011
+              1012
             ]
           ],
           "rep": [
-            1004
+            1005
           ]
         },
         {
@@ -1676,12 +1676,12 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1014
+              1015
             ]
           ],
           "rep": [
-            1013,
-            1004
+            1014,
+            1005
           ]
         }
       ]
@@ -1741,7 +1741,7 @@ export default {
           0,
           [
             [
-              1015,
+              1016,
               1
             ],
             [
@@ -1768,7 +1768,7 @@ export default {
             [
               [
                 [
-                  932,
+                  933,
                   2
                 ]
               ]
@@ -1781,10 +1781,10 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              993
+              995
             ],
             [
-              1000
+              1001
             ]
           ]
         },
@@ -1794,7 +1794,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1001
+              1002
             ]
           ]
         }
@@ -1859,7 +1859,7 @@ export default {
               1
             ],
             [
-              1016,
+              1017,
               1
             ]
           ]
@@ -1882,7 +1882,7 @@ export default {
             [
               [
                 [
-                  932,
+                  933,
                   2
                 ]
               ]
@@ -1895,10 +1895,10 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              993
+              995
             ],
             [
-              1000
+              1001
             ]
           ]
         },
@@ -1908,7 +1908,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1001
+              1002
             ]
           ]
         }
@@ -1971,11 +1971,11 @@ export default {
           0,
           [
             [
-              993,
+              34,
               1
             ],
             [
-              34,
+              995,
               1
             ]
           ]
@@ -1988,10 +1988,10 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              993
+              995
             ],
             [
-              1000
+              1001
             ]
           ]
         },
@@ -2001,7 +2001,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1001
+              1002
             ]
           ]
         }
@@ -2056,7 +2056,7 @@ export default {
           0,
           [
             [
-              991,
+              992,
               1
             ]
           ]
@@ -2153,7 +2153,7 @@ export default {
           1,
           [
             [
-              993,
+              996,
               1
             ],
             [
@@ -2166,7 +2166,7 @@ export default {
           0,
           [
             [
-              993,
+              996,
               1
             ],
             [
@@ -2186,42 +2186,6 @@ export default {
               497
             ],
             [
-              1017
-            ]
-          ],
-          "lim": [
-            [
-              0,
-              1
-            ],
-            [
-              10,
-              2
-            ]
-          ],
-          "rep": [
-            993
-          ]
-        },
-        {
-          "all": 1,
-          "t": 384,
-          "in": "stepper",
-          "o": [
-            [
-              1000
-            ]
-          ],
-          "rep": [
-            993
-          ]
-        },
-        {
-          "all": 1,
-          "t": 385,
-          "in": "stepper",
-          "o": [
-            [
               1018
             ]
           ],
@@ -2236,27 +2200,16 @@ export default {
             ]
           ],
           "rep": [
-            993,
             995
           ]
         },
         {
           "all": 1,
-          "t": 386,
+          "t": 384,
           "in": "stepper",
           "o": [
             [
-              997
-            ]
-          ],
-          "lim": [
-            [
-              0,
-              3
-            ],
-            [
-              10,
-              6
+              1001
             ]
           ],
           "rep": [
@@ -2265,7 +2218,7 @@ export default {
         },
         {
           "all": 1,
-          "t": 387,
+          "t": 385,
           "in": "stepper",
           "o": [
             [
@@ -2283,7 +2236,54 @@ export default {
             ]
           ],
           "rep": [
-            995
+            995,
+            996
+          ]
+        },
+        {
+          "all": 1,
+          "t": 386,
+          "in": "stepper",
+          "o": [
+            [
+              998
+            ]
+          ],
+          "lim": [
+            [
+              0,
+              3
+            ],
+            [
+              10,
+              6
+            ]
+          ],
+          "rep": [
+            996
+          ]
+        },
+        {
+          "all": 1,
+          "t": 387,
+          "in": "stepper",
+          "o": [
+            [
+              1020
+            ]
+          ],
+          "lim": [
+            [
+              0,
+              1
+            ],
+            [
+              10,
+              2
+            ]
+          ],
+          "rep": [
+            996
           ]
         }
       ]
@@ -2319,15 +2319,15 @@ export default {
           0,
           [
             [
-              547,
+              2568,
               2
             ],
             [
-              1562,
+              2708,
               1
             ],
             [
-              60,
+              742,
               4
             ],
             [
@@ -2335,7 +2335,7 @@ export default {
               1
             ],
             [
-              1563,
+              1564,
               1
             ]
           ]
@@ -2348,11 +2348,11 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1564
+              1565
             ]
           ],
           "rep": [
-            1562
+            2708
           ]
         },
         {
@@ -2361,11 +2361,11 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1565
+              2709
             ]
           ],
           "rep": [
-            1563
+            1564
           ]
         }
       ],
@@ -2448,7 +2448,7 @@ export default {
           0,
           [
             [
-              1020,
+              1021,
               1
             ],
             [
@@ -2465,10 +2465,10 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              993
+              995
             ],
             [
-              1000
+              1001
             ]
           ]
         },
@@ -2478,7 +2478,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1001
+              1002
             ]
           ]
         }
@@ -2574,15 +2574,15 @@ export default {
           1,
           [
             [
-              1021,
+              1022,
               1
             ],
             [
-              992,
+              996,
               1
             ],
             [
-              995,
+              994,
               1
             ]
           ]
@@ -2591,15 +2591,15 @@ export default {
           0,
           [
             [
-              1021,
+              996,
               1
             ],
             [
-              992,
+              1022,
               1
             ],
             [
-              995,
+              994,
               1
             ]
           ]
@@ -2612,7 +2612,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              998
+              999
             ]
           ],
           "lim": [
@@ -2642,7 +2642,7 @@ export default {
             ]
           ],
           "rep": [
-            992
+            994
           ]
         },
         {
@@ -2651,7 +2651,7 @@ export default {
           "in": "stepper",
           "o": [
             [
-              1000
+              1001
             ]
           ],
           "lim": [
@@ -2665,7 +2665,7 @@ export default {
             ]
           ],
           "rep": [
-            1021
+            1022
           ]
         },
         {
@@ -2674,7 +2674,7 @@ export default {
           "in": "stepper",
           "o": [
             [
-              1018
+              1019
             ]
           ],
           "lim": [
@@ -2688,8 +2688,8 @@ export default {
             ]
           ],
           "rep": [
-            1021,
-            995
+            1022,
+            996
           ]
         },
         {
@@ -2698,7 +2698,7 @@ export default {
           "in": "stepper",
           "o": [
             [
-              1022
+              1023
             ]
           ],
           "lim": [
@@ -2712,10 +2712,10 @@ export default {
             ]
           ],
           "rep": [
-            995
+            996
           ],
           "keep": [
-            1021
+            1022
           ],
           "cond": [
             2,
@@ -2781,17 +2781,17 @@ export default {
         {
           "to": "cultist-mob",
           "type": "leader",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "cultist-mob",
-          "type": "leader",
           "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "accursed-cultists",
           "type": "leader",
           "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "cultist-mob",
+          "type": "leader",
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "accursed-cultists",
@@ -2804,11 +2804,11 @@ export default {
           0,
           [
             [
-              1023,
+              1024,
               1
             ],
             [
-              1024,
+              1025,
               1
             ]
           ]
@@ -2903,7 +2903,7 @@ export default {
           0,
           [
             [
-              1025,
+              1026,
               1
             ],
             [
@@ -2916,7 +2916,7 @@ export default {
           1,
           [
             [
-              1025,
+              1026,
               1
             ],
             [
@@ -3012,7 +3012,7 @@ export default {
               1
             ],
             [
-              1025,
+              1026,
               1
             ]
           ]
@@ -3025,7 +3025,7 @@ export default {
               1
             ],
             [
-              1025,
+              1026,
               1
             ]
           ]
@@ -3038,7 +3038,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1
+              2468
             ]
           ],
           "rep": [
@@ -3057,7 +3057,7 @@ export default {
                   1
                 ],
                 [
-                  1025,
+                  1026,
                   1
                 ]
               ]
@@ -3090,7 +3090,7 @@ export default {
           "in": "stepper",
           "o": [
             [
-              1488
+              1489
             ]
           ],
           "lim": [
@@ -3110,7 +3110,7 @@ export default {
           "in": "stepper",
           "o": [
             [
-              608
+              1200
             ]
           ],
           "lim": [
@@ -3181,11 +3181,11 @@ export default {
           0,
           [
             [
-              1026,
+              1027,
               1
             ],
             [
-              1027,
+              1028,
               1
             ]
           ]
@@ -3252,6 +3252,26 @@ export default {
       },
       "leads": [
         {
+          "to": "red-corsairs-raiders",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "nemesis-claw",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "cultist-mob",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "chosen",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
           "to": "cultist-mob",
           "type": "leader",
           "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
@@ -3267,49 +3287,29 @@ export default {
           "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
-          "to": "red-corsairs-raiders",
-          "type": "leader",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "legionaries",
-          "type": "leader",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "chosen",
-          "type": "leader",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "cultist-mob",
-          "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "nemesis-claw",
-          "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
           "to": "accursed-cultists",
           "type": "leader",
           "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
-          "to": "red-corsairs-raiders",
-          "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
           "to": "legionaries",
           "type": "leader",
           "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
+          "to": "red-corsairs-raiders",
+          "type": "leader",
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "legionaries",
+          "type": "leader",
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
           "to": "chosen",
           "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         }
       ],
       "minis": [
@@ -3334,11 +3334,11 @@ export default {
           0,
           [
             [
-              992,
+              1029,
               1
             ],
             [
-              1028,
+              994,
               1
             ]
           ]
@@ -3419,22 +3419,22 @@ export default {
         {
           "to": "accursed-cultists",
           "type": "leader",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "cultist-mob",
           "type": "leader",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "accursed-cultists",
           "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "cultist-mob",
           "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         }
       ],
       "minis": [
@@ -3456,7 +3456,7 @@ export default {
           0,
           [
             [
-              1029,
+              1030,
               1
             ],
             [
@@ -3469,7 +3469,7 @@ export default {
           3,
           [
             [
-              1030,
+              1031,
               1
             ]
           ]
@@ -3482,7 +3482,7 @@ export default {
               1
             ],
             [
-              1031,
+              1032,
               1
             ]
           ]
@@ -3491,7 +3491,7 @@ export default {
           2,
           [
             [
-              998,
+              999,
               1
             ],
             [
@@ -3535,11 +3535,11 @@ export default {
           0,
           [
             [
-              3296,
+              3297,
               2
             ],
             [
-              160,
+              2352,
               1
             ]
           ]
@@ -3552,29 +3552,29 @@ export default {
           "in": "stepper",
           "o": [
             [
-              3297
-            ],
-            [
               3298
             ],
             [
               3299
             ],
             [
+              3300
+            ],
+            [
               [
                 [
-                  3300,
+                  3301,
                   1
                 ],
                 [
-                  3301,
+                  3302,
                   1
                 ]
               ]
             ]
           ],
           "rep": [
-            3296
+            3297
           ],
           "cp": 2
         },
@@ -3586,18 +3586,18 @@ export default {
             [
               [
                 [
-                  3302,
+                  3303,
                   1
                 ],
                 [
-                  3300,
+                  3301,
                   2
                 ]
               ]
             ]
           ],
           "rep": [
-            3296
+            3297
           ]
         }
       ],
@@ -3680,12 +3680,8 @@ export default {
           0,
           [
             [
-              1032,
-              2
-            ],
-            [
               1033,
-              1
+              2
             ],
             [
               1034,
@@ -3698,6 +3694,10 @@ export default {
             [
               1036,
               1
+            ],
+            [
+              1037,
+              1
             ]
           ]
         ]
@@ -3709,11 +3709,11 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1037
+              1038
             ]
           ],
           "rep": [
-            1035
+            1036
           ]
         },
         {
@@ -3724,31 +3724,10 @@ export default {
             [
               [
                 [
-                  1038,
+                  1039,
                   2
                 ]
               ]
-            ]
-          ],
-          "rep": [
-            1032
-          ]
-        },
-        {
-          "m": 0,
-          "t": 395,
-          "in": "checkbox",
-          "o": [
-            [
-              1039,
-              15
-            ],
-            [
-              1040,
-              15
-            ],
-            [
-              1041
             ]
           ],
           "rep": [
@@ -3757,23 +3736,44 @@ export default {
         },
         {
           "m": 0,
-          "t": 396,
+          "t": 395,
           "in": "checkbox",
           "o": [
-            [
-              1039,
-              15
-            ],
             [
               1040,
               15
             ],
             [
-              1041
+              1041,
+              15
+            ],
+            [
+              1042
             ]
           ],
           "rep": [
             1034
+          ]
+        },
+        {
+          "m": 0,
+          "t": 396,
+          "in": "checkbox",
+          "o": [
+            [
+              1040,
+              15
+            ],
+            [
+              1041,
+              15
+            ],
+            [
+              1042
+            ]
+          ],
+          "rep": [
+            1035
           ]
         }
       ]
@@ -3808,7 +3808,7 @@ export default {
           0,
           [
             [
-              3303,
+              3304,
               1
             ]
           ]
@@ -3869,15 +3869,15 @@ export default {
           0,
           [
             [
-              1,
+              2468,
+              1
+            ],
+            [
+              2260,
               1
             ],
             [
               1009,
-              1
-            ],
-            [
-              1008,
               1
             ]
           ]
@@ -3956,9 +3956,34 @@ export default {
       "linked": 1,
       "leads": [
         {
+          "to": "accursed-cultists",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "chosen",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "cultist-mob",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "red-corsairs-raiders",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
           "to": "red-corsairs-raiders",
           "type": "leader",
           "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "legionaries",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "cultist-mob",
@@ -3979,31 +4004,6 @@ export default {
           "to": "legionaries",
           "type": "leader",
           "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "red-corsairs-raiders",
-          "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "cultist-mob",
-          "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "accursed-cultists",
-          "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "chosen",
-          "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "legionaries",
-          "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         }
       ],
       "minis": [
@@ -4019,15 +4019,15 @@ export default {
           0,
           [
             [
-              1042,
-              1
-            ],
-            [
               1043,
               1
             ],
             [
               1044,
+              1
+            ],
+            [
+              1045,
               1
             ]
           ]
@@ -4036,7 +4036,7 @@ export default {
           1,
           [
             [
-              1045,
+              1046,
               1
             ]
           ]
@@ -4112,7 +4112,7 @@ export default {
           1,
           [
             [
-              1046,
+              1047,
               1
             ],
             [
@@ -4129,7 +4129,7 @@ export default {
               1
             ],
             [
-              1047,
+              1048,
               1
             ]
           ]
@@ -4155,25 +4155,6 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1048
-            ]
-          ],
-          "lim": [
-            [
-              0,
-              1
-            ]
-          ],
-          "rep": [
-            1046
-          ]
-        },
-        {
-          "m": 1,
-          "t": 399,
-          "in": "checkbox",
-          "o": [
-            [
               1049
             ]
           ],
@@ -4184,7 +4165,26 @@ export default {
             ]
           ],
           "rep": [
-            1046
+            1047
+          ]
+        },
+        {
+          "m": 1,
+          "t": 399,
+          "in": "checkbox",
+          "o": [
+            [
+              1050
+            ]
+          ],
+          "lim": [
+            [
+              0,
+              1
+            ]
+          ],
+          "rep": [
+            1047
           ]
         }
       ]
@@ -4244,11 +4244,11 @@ export default {
           0,
           [
             [
-              1050,
+              1051,
               2
             ],
             [
-              1051,
+              1052,
               1
             ]
           ]
@@ -4263,7 +4263,7 @@ export default {
             [
               [
                 [
-                  1052,
+                  1053,
                   2
                 ]
               ],
@@ -4271,7 +4271,7 @@ export default {
             ]
           ],
           "rep": [
-            1050
+            1051
           ]
         },
         {
@@ -4282,11 +4282,11 @@ export default {
             [
               [
                 [
-                  1052,
+                  1053,
                   1
                 ],
                 [
-                  1053,
+                  1054,
                   1
                 ]
               ],
@@ -4294,7 +4294,7 @@ export default {
             ]
           ],
           "rep": [
-            1051
+            1052
           ]
         }
       ]
@@ -4346,16 +4346,16 @@ export default {
           0,
           [
             [
-              3114,
+              3115,
               1
             ],
             [
-              3304,
+              3305,
               1,
               1
             ],
             [
-              3114,
+              3115,
               1,
               1
             ]
@@ -4365,7 +4365,7 @@ export default {
           1,
           [
             [
-              3305,
+              3306,
               1
             ]
           ]
@@ -4402,15 +4402,15 @@ export default {
           0,
           [
             [
-              3306,
-              1
-            ],
-            [
               3307,
               1
             ],
             [
               3308,
+              1
+            ],
+            [
+              3309,
               1
             ]
           ]
@@ -4449,11 +4449,7 @@ export default {
           0,
           [
             [
-              1020,
-              1
-            ],
-            [
-              3309,
+              2689,
               1
             ],
             [
@@ -4462,6 +4458,10 @@ export default {
             ],
             [
               3311,
+              1
+            ],
+            [
+              3312,
               1
             ]
           ]
@@ -4501,12 +4501,12 @@ export default {
         {
           "to": "raptors",
           "type": "leader",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "raptors",
           "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         }
       ],
       "defaults": [
@@ -4514,11 +4514,11 @@ export default {
           0,
           [
             [
-              1054,
+              1055,
               1
             ],
             [
-              1055,
+              1056,
               1
             ]
           ]
@@ -4596,15 +4596,15 @@ export default {
           1,
           [
             [
-              1056,
+              1057,
               1
             ],
             [
-              994,
+              993,
               1
             ],
             [
-              1058,
+              1059,
               2,
               1
             ]
@@ -4618,7 +4618,7 @@ export default {
               1
             ],
             [
-              1057,
+              1058,
               1
             ]
           ]
@@ -4631,14 +4631,14 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              995
+              996
             ],
             [
-              997
+              998
             ]
           ],
           "rep": [
-            1057
+            1058
           ]
         },
         {
@@ -4647,7 +4647,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1021
+              1022
             ],
             [
               15
@@ -4659,10 +4659,10 @@ export default {
               11
             ],
             [
-              995
+              996
             ],
             [
-              997
+              998
             ]
           ],
           "rep": [
@@ -4675,19 +4675,19 @@ export default {
           "in": "stepper",
           "o": [
             [
-              1056
-            ],
-            [
-              1059
-            ],
-            [
-              1058
+              1057
             ],
             [
               1060
             ],
             [
+              1059
+            ],
+            [
               1061
+            ],
+            [
+              1062
             ]
           ]
         }
@@ -4747,11 +4747,11 @@ export default {
               1
             ],
             [
-              1062,
+              1063,
               1
             ],
             [
-              1063,
+              1064,
               1
             ]
           ]
@@ -4764,19 +4764,19 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1064
+              1065
             ],
             [
               668
             ],
             [
-              938
-            ],
-            [
-              1065
+              939
             ],
             [
               1066
+            ],
+            [
+              1067
             ]
           ],
           "rep": [
@@ -4789,17 +4789,17 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1066
-            ],
-            [
               1067
             ],
             [
               1068
+            ],
+            [
+              1069
             ]
           ],
           "rep": [
-            1062
+            1063
           ]
         },
         {
@@ -4808,7 +4808,7 @@ export default {
           "in": "stepper",
           "o": [
             [
-              993
+              995
             ],
             [
               497
@@ -4868,11 +4868,11 @@ export default {
           0,
           [
             [
-              1050,
+              1051,
               1
             ],
             [
-              1069,
+              1070,
               1
             ]
           ]
@@ -4885,11 +4885,11 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1070
+              1071
             ]
           ],
           "rep": [
-            1050
+            1051
           ]
         }
       ]
@@ -4923,7 +4923,7 @@ export default {
           0,
           [
             [
-              2956,
+              2957,
               2
             ],
             [
@@ -4942,14 +4942,14 @@ export default {
             [
               [
                 [
-                  1065,
+                  2436,
                   2
                 ]
               ]
             ]
           ],
           "rep": [
-            2956
+            2957
           ]
         }
       ],
@@ -5010,7 +5010,7 @@ export default {
               1
             ],
             [
-              1065,
+              2436,
               1
             ],
             [
@@ -5027,7 +5027,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1001
+              1002
             ]
           ],
           "rep": [
@@ -5108,11 +5108,11 @@ export default {
           0,
           [
             [
-              845,
+              846,
               1
             ],
             [
-              844,
+              845,
               1
             ]
           ]
@@ -5169,11 +5169,11 @@ export default {
           0,
           [
             [
-              844,
+              845,
               1
             ],
             [
-              845,
+              846,
               1
             ]
           ]
@@ -5219,19 +5219,19 @@ export default {
           "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
-          "to": "legionaries",
-          "type": "leader",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
           "to": "red-corsairs-raiders",
           "type": "leader",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "chosen",
           "type": "leader",
           "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "legionaries",
+          "type": "leader",
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "chaos-terminator-squad",
@@ -5246,7 +5246,7 @@ export default {
         {
           "to": "red-corsairs-raiders",
           "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "masters-of-the-maelstrom",
@@ -5258,11 +5258,11 @@ export default {
           0,
           [
             [
-              1071,
+              1072,
               1
             ],
             [
-              1072,
+              1073,
               1
             ]
           ]
@@ -5300,15 +5300,15 @@ export default {
           0,
           [
             [
-              3312,
+              3313,
               5
             ],
             [
-              3303,
+              3304,
               1
             ],
             [
-              3313,
+              3314,
               1
             ]
           ]
@@ -5373,15 +5373,15 @@ export default {
           0,
           [
             [
-              1073,
-              1
-            ],
-            [
               1074,
               1
             ],
             [
               1075,
+              1
+            ],
+            [
+              1076,
               1
             ]
           ]
@@ -5394,14 +5394,14 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1076
+              1077
             ],
             [
-              1077
+              1078
             ]
           ],
           "rep": [
-            1073
+            1074
           ]
         },
         {
@@ -5410,11 +5410,11 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1078
+              1079
             ]
           ],
           "rep": [
-            1074
+            1075
           ]
         }
       ]
@@ -5454,21 +5454,21 @@ export default {
           "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
-          "to": "obliterators",
-          "type": "leader",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "chaos-terminator-squad",
-          "type": "leader",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
           "to": "mutilators",
           "type": "leader",
           "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
+          "to": "chaos-terminator-squad",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "obliterators",
+          "type": "leader",
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
           "to": "obliterators",
           "type": "leader",
           "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
@@ -5476,7 +5476,7 @@ export default {
         {
           "to": "chaos-terminator-squad",
           "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         }
       ],
       "defaults": [
@@ -5484,19 +5484,19 @@ export default {
           0,
           [
             [
-              1070,
-              1
-            ],
-            [
-              1007,
-              1
-            ],
-            [
-              1079,
+              1008,
               1
             ],
             [
               1080,
+              1
+            ],
+            [
+              1071,
+              1
+            ],
+            [
+              1081,
               1
             ]
           ]
@@ -5534,11 +5534,11 @@ export default {
           0,
           [
             [
-              3314,
+              3315,
               1
             ],
             [
-              3315,
+              3316,
               1
             ]
           ]
@@ -5632,11 +5632,11 @@ export default {
           0,
           [
             [
-              992,
+              1022,
               1
             ],
             [
-              1021,
+              993,
               1
             ],
             [
@@ -5649,15 +5649,15 @@ export default {
           1,
           [
             [
-              992,
-              1
-            ],
-            [
-              1021,
+              1022,
               1
             ],
             [
               994,
+              1
+            ],
+            [
+              993,
               1
             ]
           ]
@@ -5673,17 +5673,17 @@ export default {
               11
             ],
             [
-              995
-            ],
-            [
               996
             ],
             [
-              1081
+              997
+            ],
+            [
+              1082
             ]
           ],
           "rep": [
-            1021
+            1022
           ]
         },
         {
@@ -5695,17 +5695,17 @@ export default {
               11
             ],
             [
-              995
-            ],
-            [
               996
             ],
             [
-              1081
+              997
+            ],
+            [
+              1082
             ]
           ],
           "rep": [
-            992
+            994
           ]
         },
         {
@@ -5714,7 +5714,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              998
+              999
             ]
           ],
           "lim": [
@@ -5730,35 +5730,16 @@ export default {
           "in": "stepper",
           "o": [
             [
-              996
+              997
             ]
           ],
           "rep": [
-            1021
+            1022
           ]
         },
         {
           "m": 1,
           "t": 414,
-          "in": "checkbox",
-          "o": [
-            [
-              1081
-            ]
-          ],
-          "lim": [
-            [
-              0,
-              1
-            ]
-          ],
-          "rep": [
-            1021
-          ]
-        },
-        {
-          "m": 1,
-          "t": 415,
           "in": "checkbox",
           "o": [
             [
@@ -5772,7 +5753,26 @@ export default {
             ]
           ],
           "rep": [
-            1021
+            1022
+          ]
+        },
+        {
+          "m": 1,
+          "t": 415,
+          "in": "checkbox",
+          "o": [
+            [
+              1083
+            ]
+          ],
+          "lim": [
+            [
+              0,
+              1
+            ]
+          ],
+          "rep": [
+            1022
           ]
         },
         {
@@ -5787,7 +5787,7 @@ export default {
                   1
                 ],
                 [
-                  996,
+                  997,
                   1
                 ]
               ]
@@ -5803,7 +5803,7 @@ export default {
             [
               [
                 [
-                  1083,
+                  1084,
                   1
                 ]
               ]
@@ -5819,7 +5819,7 @@ export default {
             [
               [
                 [
-                  1084,
+                  1085,
                   1
                 ]
               ]
@@ -5851,7 +5851,7 @@ export default {
             [
               [
                 [
-                  1085,
+                  1086,
                   1
                 ]
               ]
@@ -5870,7 +5870,7 @@ export default {
             ]
           ],
           "rep": [
-            1021
+            1022
           ]
         }
       ]
@@ -5928,14 +5928,6 @@ export default {
           0,
           [
             [
-              1013,
-              1
-            ],
-            [
-              1086,
-              1
-            ],
-            [
               1087,
               1
             ],
@@ -5945,6 +5937,14 @@ export default {
             ],
             [
               1089,
+              1
+            ],
+            [
+              1014,
+              1
+            ],
+            [
+              1090,
               1
             ]
           ]
@@ -5957,11 +5957,11 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1070
+              1071
             ]
           ],
           "rep": [
-            1086
+            1088
           ]
         },
         {
@@ -5970,7 +5970,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1090
+              1091
             ]
           ],
           "rep": [
@@ -6031,42 +6031,42 @@ export default {
         {
           "to": "chosen",
           "type": "support",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "red-corsairs-raiders",
-          "type": "support",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "legionaries",
           "type": "support",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "nemesis-claw",
           "type": "support",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "red-corsairs-raiders",
+          "type": "support",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "chosen",
           "type": "support",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "red-corsairs-raiders",
           "type": "support",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "legionaries",
           "type": "support",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "nemesis-claw",
           "type": "support",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         }
       ],
       "defaults": [
@@ -6074,11 +6074,11 @@ export default {
           0,
           [
             [
-              992,
+              994,
               1
             ],
             [
-              1091,
+              1092,
               1
             ]
           ]
@@ -6132,9 +6132,34 @@ export default {
       },
       "leads": [
         {
+          "to": "possessed",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "chosen",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "red-corsairs-raiders",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
           "to": "nemesis-claw",
           "type": "leader",
           "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "legionaries",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "nemesis-claw",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "legionaries",
@@ -6155,31 +6180,6 @@ export default {
           "to": "possessed",
           "type": "leader",
           "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "nemesis-claw",
-          "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "legionaries",
-          "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "red-corsairs-raiders",
-          "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "chosen",
-          "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "possessed",
-          "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         }
       ],
       "defaults": [
@@ -6187,15 +6187,15 @@ export default {
           0,
           [
             [
-              992,
-              1
-            ],
-            [
-              1092,
+              994,
               1
             ],
             [
               1093,
+              1
+            ],
+            [
+              1094,
               1
             ]
           ]
@@ -6253,17 +6253,12 @@ export default {
       "linked": 1,
       "leads": [
         {
-          "to": "red-corsairs-raiders",
-          "type": "support",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "chosen",
-          "type": "support",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
           "to": "legionaries",
+          "type": "support",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "red-corsairs-raiders",
           "type": "support",
           "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
@@ -6278,9 +6273,14 @@ export default {
           "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
+          "to": "chosen",
+          "type": "support",
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
           "to": "legionaries",
           "type": "support",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         }
       ],
       "minis": [
@@ -6305,11 +6305,11 @@ export default {
           4,
           [
             [
-              1094,
+              1095,
               1
             ],
             [
-              1095,
+              1096,
               1
             ]
           ]
@@ -6318,20 +6318,7 @@ export default {
           0,
           [
             [
-              1096,
-              1
-            ],
-            [
               1097,
-              1
-            ]
-          ]
-        ],
-        [
-          2,
-          [
-            [
-              992,
               1
             ],
             [
@@ -6341,14 +6328,27 @@ export default {
           ]
         ],
         [
-          1,
+          2,
           [
             [
-              1099,
+              994,
               1
             ],
             [
+              1099,
+              1
+            ]
+          ]
+        ],
+        [
+          1,
+          [
+            [
               1100,
+              1
+            ],
+            [
+              1101,
               1
             ]
           ]
@@ -6357,7 +6357,7 @@ export default {
           3,
           [
             [
-              1101,
+              1102,
               1
             ],
             [
@@ -6419,11 +6419,11 @@ export default {
           0,
           [
             [
-              1102,
+              1103,
               1
             ],
             [
-              1103,
+              1104,
               1
             ]
           ]
@@ -6438,14 +6438,14 @@ export default {
             [
               [
                 [
-                  1104,
+                  1105,
                   2
                 ]
               ]
             ]
           ],
           "rep": [
-            1103
+            1104
           ]
         }
       ]
@@ -6504,7 +6504,7 @@ export default {
           0,
           [
             [
-              1105,
+              1106,
               1
             ]
           ]
@@ -6540,7 +6540,7 @@ export default {
           0,
           [
             [
-              3316,
+              3317,
               1
             ]
           ]
@@ -6575,7 +6575,7 @@ export default {
           0,
           [
             [
-              3317,
+              3318,
               1
             ]
           ]
@@ -6689,15 +6689,15 @@ export default {
           1,
           [
             [
-              992,
-              1
-            ],
-            [
-              1021,
+              1022,
               1
             ],
             [
               695,
+              1
+            ],
+            [
+              994,
               1
             ]
           ]
@@ -6706,11 +6706,11 @@ export default {
           0,
           [
             [
-              992,
+              1107,
               1
             ],
             [
-              1106,
+              994,
               1
             ]
           ]
@@ -6727,7 +6727,7 @@ export default {
             ]
           ],
           "rep": [
-            992
+            994
           ]
         },
         {
@@ -6736,14 +6736,14 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              995
+              996
             ],
             [
-              997
+              998
             ]
           ],
           "rep": [
-            1106
+            1107
           ]
         },
         {
@@ -6752,11 +6752,11 @@ export default {
           "in": "stepper",
           "o": [
             [
-              996
+              997
             ]
           ],
           "rep": [
-            1021
+            1022
           ]
         },
         {
@@ -6778,7 +6778,7 @@ export default {
             ]
           ],
           "rep": [
-            1021
+            1022
           ]
         },
         {
@@ -6803,7 +6803,7 @@ export default {
             ]
           ],
           "rep": [
-            1021
+            1022
           ]
         },
         {
@@ -6814,15 +6814,7 @@ export default {
             [
               [
                 [
-                  995,
-                  1
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  1107,
+                  996,
                   1
                 ]
               ]
@@ -6840,9 +6832,17 @@ export default {
                 [
                   1109,
                   1
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  1110,
+                  1
                 ],
                 [
-                  996,
+                  997,
                   1
                 ]
               ]
@@ -6856,7 +6856,7 @@ export default {
             ]
           ],
           "rep": [
-            1021
+            1022
           ]
         }
       ]
@@ -6911,7 +6911,7 @@ export default {
           0,
           [
             [
-              1110,
+              1111,
               1
             ]
           ]
@@ -6972,11 +6972,11 @@ export default {
           0,
           [
             [
-              1111,
+              1112,
               1
             ],
             [
-              1112,
+              1113,
               1
             ]
           ]
@@ -7073,7 +7073,7 @@ export default {
           1,
           [
             [
-              1113,
+              1114,
               1
             ]
           ]
@@ -7082,7 +7082,7 @@ export default {
           0,
           [
             [
-              1113,
+              1114,
               1
             ]
           ]
@@ -7095,7 +7095,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              998
+              999
             ]
           ],
           "lim": [
@@ -7199,11 +7199,11 @@ export default {
           0,
           [
             [
-              992,
+              994,
               1
             ],
             [
-              996,
+              997,
               1
             ]
           ]
@@ -7212,11 +7212,11 @@ export default {
           1,
           [
             [
-              992,
+              997,
               1
             ],
             [
-              996,
+              994,
               1
             ]
           ]
@@ -7233,7 +7233,7 @@ export default {
             ]
           ],
           "rep": [
-            992
+            994
           ]
         },
         {
@@ -7242,14 +7242,14 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              995
+              996
             ],
             [
-              1081
+              1082
             ]
           ],
           "rep": [
-            996
+            997
           ]
         },
         {
@@ -7272,10 +7272,10 @@ export default {
             ]
           ],
           "rep": [
-            992
+            994
           ],
           "keep": [
-            996
+            997
           ]
         },
         {
@@ -7284,7 +7284,7 @@ export default {
           "in": "stepper",
           "o": [
             [
-              1081
+              1082
             ]
           ],
           "lim": [
@@ -7298,7 +7298,7 @@ export default {
             ]
           ],
           "rep": [
-            996
+            997
           ]
         },
         {
@@ -7307,7 +7307,7 @@ export default {
           "in": "stepper",
           "o": [
             [
-              1114
+              1115
             ]
           ],
           "lim": [
@@ -7321,7 +7321,7 @@ export default {
             ]
           ],
           "rep": [
-            996
+            997
           ]
         },
         {
@@ -7336,7 +7336,7 @@ export default {
                   1
                 ],
                 [
-                  994,
+                  993,
                   1
                 ]
               ]
@@ -7348,7 +7348,7 @@ export default {
                   1
                 ],
                 [
-                  994,
+                  993,
                   1
                 ]
               ]
@@ -7360,7 +7360,7 @@ export default {
                   1
                 ],
                 [
-                  994,
+                  993,
                   1
                 ]
               ]
@@ -7374,7 +7374,7 @@ export default {
             ]
           ],
           "rep": [
-            996
+            997
           ]
         },
         {
@@ -7389,7 +7389,7 @@ export default {
                   1
                 ],
                 [
-                  994,
+                  993,
                   1
                 ]
               ]
@@ -7401,7 +7401,7 @@ export default {
                   1
                 ],
                 [
-                  994,
+                  993,
                   1
                 ]
               ]
@@ -7413,7 +7413,7 @@ export default {
                   1
                 ],
                 [
-                  994,
+                  993,
                   1
                 ]
               ]
@@ -7427,7 +7427,7 @@ export default {
             ]
           ],
           "rep": [
-            996
+            997
           ]
         }
       ]
@@ -7522,15 +7522,15 @@ export default {
           1,
           [
             [
-              1021,
+              1022,
               1
             ],
             [
-              992,
+              994,
               1
             ],
             [
-              1115,
+              1116,
               1
             ]
           ]
@@ -7539,15 +7539,15 @@ export default {
           0,
           [
             [
-              1021,
+              1116,
               1
             ],
             [
-              992,
+              1022,
               1
             ],
             [
-              1115,
+              994,
               1
             ]
           ]
@@ -7564,7 +7564,7 @@ export default {
             ]
           ],
           "rep": [
-            992
+            994
           ]
         },
         {
@@ -7576,11 +7576,11 @@ export default {
               15
             ],
             [
-              997
+              998
             ]
           ],
           "rep": [
-            1021
+            1022
           ]
         }
       ]
@@ -7636,42 +7636,42 @@ export default {
         {
           "to": "legionaries",
           "type": "leader",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "chosen",
-          "type": "leader",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "nemesis-claw",
-          "type": "leader",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "red-corsairs-raiders",
           "type": "leader",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "chosen",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "nemesis-claw",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "legionaries",
           "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "chosen",
           "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "nemesis-claw",
           "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "red-corsairs-raiders",
           "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         }
       ],
       "defaults": [
@@ -7679,11 +7679,11 @@ export default {
           0,
           [
             [
-              1013,
+              1117,
               1
             ],
             [
-              1116,
+              1014,
               1
             ]
           ]
@@ -7696,11 +7696,11 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1117
+              1118
             ]
           ],
           "rep": [
-            1116
+            1117
           ]
         },
         {
@@ -7746,11 +7746,11 @@ export default {
           0,
           [
             [
-              3318,
+              3319,
               1
             ],
             [
-              3319,
+              3320,
               1
             ]
           ]
@@ -7769,11 +7769,11 @@ export default {
               505
             ],
             [
-              2612
+              2264
             ]
           ],
           "rep": [
-            3318
+            3319
           ]
         },
         {
@@ -7782,14 +7782,14 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1011
+              1012
             ],
             [
               13
             ]
           ],
           "rep": [
-            3319
+            3320
           ]
         }
       ],
@@ -7856,15 +7856,15 @@ export default {
           0,
           [
             [
-              3320,
+              3321,
               1
             ],
             [
-              1488,
+              1489,
               1
             ],
             [
-              2843,
+              2844,
               1
             ]
           ]
@@ -7883,17 +7883,17 @@ export default {
               65
             ],
             [
-              547
+              2568
             ],
             [
-              1062
+              1063
             ],
             [
               549
             ]
           ],
           "rep": [
-            1488
+            1489
           ]
         }
       ],
@@ -7967,7 +7967,7 @@ export default {
           0,
           [
             [
-              3321,
+              3322,
               1
             ]
           ]
@@ -7976,7 +7976,7 @@ export default {
           1,
           [
             [
-              3322,
+              3323,
               1
             ]
           ]
@@ -8034,7 +8034,7 @@ export default {
           0,
           [
             [
-              3323,
+              3324,
               1
             ]
           ]
@@ -8047,11 +8047,11 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              3324
+              3325
             ]
           ],
           "rep": [
-            3323
+            3324
           ]
         }
       ],
@@ -8108,7 +8108,7 @@ export default {
           0,
           [
             [
-              3325,
+              3326,
               1
             ]
           ]
@@ -8150,11 +8150,11 @@ export default {
               1
             ],
             [
-              3326,
+              3327,
               1
             ],
             [
-              3327,
+              3328,
               1
             ]
           ]
@@ -8246,9 +8246,19 @@ export default {
       },
       "leads": [
         {
+          "to": "red-corsairs-raiders",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
           "to": "legionaries",
           "type": "leader",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "chosen",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "nemesis-claw",
@@ -8256,7 +8266,7 @@ export default {
           "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
-          "to": "chosen",
+          "to": "legionaries",
           "type": "leader",
           "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
@@ -8271,19 +8281,9 @@ export default {
           "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
-          "to": "legionaries",
-          "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "red-corsairs-raiders",
-          "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
           "to": "chosen",
           "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         }
       ],
       "defaults": [
@@ -8291,15 +8291,15 @@ export default {
           0,
           [
             [
-              992,
-              1
-            ],
-            [
-              1118,
+              994,
               1
             ],
             [
               1119,
+              1
+            ],
+            [
+              1120,
               1
             ]
           ]
@@ -8356,12 +8356,12 @@ export default {
         {
           "to": "chaos-terminator-squad",
           "type": "leader",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "chaos-terminator-squad",
           "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         }
       ],
       "defaults": [
@@ -8369,11 +8369,11 @@ export default {
           0,
           [
             [
-              993,
+              1120,
               1
             ],
             [
-              1118,
+              995,
               1
             ],
             [
@@ -8390,11 +8390,11 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1000
+              1001
             ]
           ],
           "rep": [
-            993
+            995
           ]
         },
         {
@@ -8403,7 +8403,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              1120
+              1121
             ]
           ]
         }
@@ -8440,15 +8440,15 @@ export default {
           0,
           [
             [
-              1,
+              2468,
               1
             ],
             [
-              3108,
+              1220,
               1
             ],
             [
-              1118,
+              1119,
               1
             ],
             [
@@ -8465,26 +8465,26 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              538
+              2180
             ],
             [
-              3108
+              1220
             ],
             [
-              1009
-            ],
-            [
-              1004
+              2260
             ],
             [
               1005
             ],
             [
-              1011
+              1006
+            ],
+            [
+              1012
             ]
           ],
           "rep": [
-            1
+            2468
           ]
         }
       ],
@@ -8552,11 +8552,11 @@ export default {
           0,
           [
             [
-              1,
+              2468,
               1
             ],
             [
-              1118,
+              1119,
               1
             ],
             [
@@ -8573,26 +8573,26 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              538
+              2180
             ],
             [
-              3108
+              1220
             ],
             [
-              1009
-            ],
-            [
-              1004
+              2260
             ],
             [
               1005
             ],
             [
-              1011
+              1006
+            ],
+            [
+              1012
             ]
           ],
           "rep": [
-            1
+            2468
           ]
         }
       ],
@@ -8640,11 +8640,11 @@ export default {
           0,
           [
             [
-              1,
+              2468,
               1
             ],
             [
-              1118,
+              1119,
               1
             ],
             [
@@ -8652,7 +8652,7 @@ export default {
               1
             ],
             [
-              3295,
+              3296,
               1
             ]
           ]
@@ -8665,26 +8665,26 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              538
+              2180
             ],
             [
-              3108
+              1220
             ],
             [
-              1009
-            ],
-            [
-              1004
+              2260
             ],
             [
               1005
             ],
             [
-              1011
+              1006
+            ],
+            [
+              1012
             ]
           ],
           "rep": [
-            1
+            2468
           ]
         }
       ],
@@ -8731,11 +8731,11 @@ export default {
           0,
           [
             [
-              1,
+              2468,
               1
             ],
             [
-              1118,
+              1119,
               1
             ],
             [
@@ -8743,7 +8743,7 @@ export default {
               1
             ],
             [
-              892,
+              893,
               1
             ]
           ]
@@ -8756,26 +8756,26 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              538
+              2180
             ],
             [
-              3108
+              1220
             ],
             [
-              1009
-            ],
-            [
-              1004
+              2260
             ],
             [
               1005
             ],
             [
-              1011
+              1006
+            ],
+            [
+              1012
             ]
           ],
           "rep": [
-            1
+            2468
           ]
         }
       ],
@@ -8849,12 +8849,12 @@ export default {
         {
           "to": "traitor-guardsmen-squad",
           "type": "leader",
-          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "traitor-guardsmen-squad",
           "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+          "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         }
       ],
       "minis": [
@@ -8870,7 +8870,7 @@ export default {
           1,
           [
             [
-              1121,
+              1122,
               1
             ]
           ]
@@ -8964,7 +8964,7 @@ export default {
               1
             ],
             [
-              1122,
+              1123,
               1
             ]
           ]
@@ -9010,7 +9010,7 @@ export default {
             ]
           ],
           "rep": [
-            1122
+            1123
           ]
         },
         {
@@ -9019,7 +9019,7 @@ export default {
           "in": "stepper",
           "o": [
             [
-              1123
+              1124
             ],
             [
               541
@@ -9031,7 +9031,7 @@ export default {
               100
             ],
             [
-              1124
+              1125
             ]
           ],
           "lim": [
@@ -9080,11 +9080,11 @@ export default {
           0,
           [
             [
-              1125,
+              1126,
               1
             ],
             [
-              1126,
+              1127,
               1
             ]
           ]
@@ -9146,11 +9146,11 @@ export default {
           0,
           [
             [
-              1127,
+              1128,
               1
             ],
             [
-              1032,
+              1033,
               2
             ]
           ]
@@ -9250,7 +9250,7 @@ export default {
           0,
           [
             [
-              1131,
+              1132,
               1
             ]
           ]
@@ -9259,7 +9259,7 @@ export default {
           1,
           [
             [
-              1131,
+              1132,
               1
             ]
           ]
@@ -9316,6 +9316,26 @@ export default {
       },
       "leads": [
         {
+          "to": "chosen",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "legionaries",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "red-corsairs-raiders",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "nemesis-claw",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
           "to": "havocs",
           "type": "leader",
           "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
@@ -9324,6 +9344,11 @@ export default {
           "to": "chosen",
           "type": "leader",
           "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
+        },
+        {
+          "to": "havocs",
+          "type": "leader",
+          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         },
         {
           "to": "red-corsairs-raiders",
@@ -9339,31 +9364,6 @@ export default {
           "to": "nemesis-claw",
           "type": "leader",
           "exclDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "havocs",
-          "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "chosen",
-          "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "red-corsairs-raiders",
-          "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "legionaries",
-          "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
-        },
-        {
-          "to": "nemesis-claw",
-          "type": "leader",
-          "reqDet": "b7c5bcb7-eecb-4ae5-a18b-b96143c34fa8"
         }
       ],
       "defaults": [
@@ -9371,11 +9371,7 @@ export default {
           0,
           [
             [
-              1003,
-              1
-            ],
-            [
-              1128,
+              1004,
               1
             ],
             [
@@ -9384,6 +9380,10 @@ export default {
             ],
             [
               1130,
+              1
+            ],
+            [
+              1131,
               1
             ]
           ]

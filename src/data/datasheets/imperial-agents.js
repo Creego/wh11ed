@@ -2036,7 +2036,7 @@ export default [
           "RAPID FIRE 2"
         ],
         "range": "24\"",
-        "a": "3",
+        "a": "2",
         "bs": "3+",
         "s": "5",
         "ap": "-1",
@@ -2373,7 +2373,7 @@ export default [
           "RAPID FIRE 2"
         ],
         "range": "24\"",
-        "a": "3",
+        "a": "2",
         "bs": "3+",
         "s": "5",
         "ap": "-1",

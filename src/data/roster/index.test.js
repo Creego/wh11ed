@@ -431,7 +431,8 @@ describe('default loadouts', () => {
   it('reads a Default Wargear group when the loadout table has no row', () => {
     // Codex: Space Marines (app data 963) names its items in Title Case, with a plain hyphen.
     const u = factions.find((f) => f.slug === 'blood-angels').data.units.find((x) => x.id === 'blood-angels-captain')
-    expect((u.defaults || []).flatMap(([, list]) => list.map(([id]) => rosterItems.items[id])))
+    // Sorted: the order is appdata's (972 swapped the two), not the rule this pins.
+    expect((u.defaults || []).flatMap(([, list]) => list.map(([id]) => rosterItems.items[id])).sort())
       .toEqual(['Heavy Bolt Pistol', 'Master-crafted Chainsword'])
   })
 
@@ -820,8 +821,10 @@ describe('detachment tags', () => {
   // anything lower than 51 is a tag going missing by accident, which is what this floor is for.
   it('carries the tag on every detachment that has one', () => {
     const tagged = factions.flatMap(({ data }) => (data.detachments || []).filter((d) => d.unique))
-    // 49 since Codex: Orks retired the WAGONS tag that Rollin' Deff and Blitz Brigade shared.
-    expect(tagged.length).toBeGreaterThanOrEqual(49)
+    // 49 since Codex: Orks retired the WAGONS tag that Rollin' Deff and Blitz Brigade shared; 37
+    // since MFM v1.5 of 2 October printed "UNIQUE TAG REMOVED" over twelve more — Aeldari's four
+    // ACROBATIC, Drukhari's KABAL/WYCH CULT/COVENS pairs, Genestealer Cults' PURESTRAIN pair.
+    expect(tagged.length).toBeGreaterThanOrEqual(37)
     for (const d of tagged) expect(d.unique).toBe(d.unique.toUpperCase())
   })
 
@@ -998,7 +1001,8 @@ describe('keyword-defined attachments', () => {
   it('keeps the keywords beside the ids the generator could resolve', async () => {
     const agents = await loadRosterFaction('imperial-agents')
     const draxus = agents.units.find((u) => u.id === 'inquisitor-draxus')
-    expect(draxus.leadKw).toEqual([{ kw: ['Imperium', 'Battleline', 'Infantry'], type: 'leader' }])
+    // Sorted: which order appdata lists the keywords in is not the point (972 changed it).
+    expect(draxus.leadKw.map((g) => ({ ...g, kw: [...g.kw].sort() }))).toEqual([{ kw: ['Battleline', 'Imperium', 'Infantry'], type: 'leader' }])
     expect(draxus.leads.length).toBeGreaterThan(0)
   })
 })
@@ -1081,11 +1085,11 @@ describe('a default loadout that costs points', () => {
     const sm = await loadRosterFaction('space-marines')
     const unit = sm.units.find((u) => u.id === 'repulsor-executioner')
     expect(unit.dw).toEqual([[0, 10]])              // heavy laser destroyer, +10
-    expect(unit.sizes[0].pts).toBe(275)             // the bracket stays the Munitorum's
-    expect(unitPoints(unit, { size: 0, count: 1 })).toBe(285)
+    expect(unit.sizes[0].pts).toBe(260)             // the bracket stays the Munitorum's (275 until 2 October)
+    expect(unitPoints(unit, { size: 0, count: 1 })).toBe(270)
     // …and the group that trades the cannon away knows what it hands back.
     expect(unit.gear.find((g) => g.dr)?.dr).toBe(10)
-    expect(unitPoints(unit, { size: 0, count: 1, wg: [[unit.gear.findIndex((g) => g.dr), 0, 1]] })).toBe(275)
+    expect(unitPoints(unit, { size: 0, count: 1, wg: [[unit.gear.findIndex((g) => g.dr), 0, 1]] })).toBe(260)
   })
 
   it('is confined to the datasheets appdata prices that way', async () => {

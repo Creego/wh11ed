@@ -31,11 +31,7 @@ export default {
       "linked": 1,
       "leads": [
         {
-          "to": "crusader-squad",
-          "type": "support"
-        },
-        {
-          "to": "sword-brethren-squad",
+          "to": "intercessor-squad",
           "type": "support"
         },
         {
@@ -43,7 +39,7 @@ export default {
           "type": "support"
         },
         {
-          "to": "bladeguard-veteran-squad",
+          "to": "sword-brethren-squad",
           "type": "support"
         },
         {
@@ -51,11 +47,15 @@ export default {
           "type": "support"
         },
         {
+          "to": "bladeguard-veteran-squad",
+          "type": "support"
+        },
+        {
           "to": "infernus-squad",
           "type": "support"
         },
         {
-          "to": "intercessor-squad",
+          "to": "crusader-squad",
           "type": "support"
         },
         {
@@ -89,7 +89,7 @@ export default {
             ]
           ],
           "rep": [
-            682
+            683
           ]
         },
         {
@@ -102,7 +102,7 @@ export default {
             ]
           ],
           "rep": [
-            683
+            682
           ]
         }
       ]
@@ -145,15 +145,7 @@ export default {
       "linked": 1,
       "leads": [
         {
-          "to": "assault-intercessor-squad",
-          "type": "leader"
-        },
-        {
           "to": "sword-brethren-squad",
-          "type": "leader"
-        },
-        {
-          "to": "crusader-squad",
           "type": "leader"
         },
         {
@@ -161,7 +153,15 @@ export default {
           "type": "leader"
         },
         {
+          "to": "crusader-squad",
+          "type": "leader"
+        },
+        {
           "to": "intercessor-squad",
+          "type": "leader"
+        },
+        {
+          "to": "assault-intercessor-squad",
           "type": "leader"
         }
       ],
@@ -225,11 +225,11 @@ export default {
       "linked": 1,
       "leads": [
         {
-          "to": "crusader-squad",
+          "to": "sword-brethren-squad",
           "type": "support"
         },
         {
-          "to": "sword-brethren-squad",
+          "to": "crusader-squad",
           "type": "support"
         }
       ],
@@ -320,7 +320,7 @@ export default {
       ],
       "defaults": [
         [
-          1,
+          2,
           [
             [
               690,
@@ -329,24 +329,6 @@ export default {
             [
               691,
               1
-            ],
-            [
-              695,
-              5,
-              1
-            ]
-          ]
-        ],
-        [
-          2,
-          [
-            [
-              690,
-              1
-            ],
-            [
-              692,
-              1
             ]
           ]
         ],
@@ -354,11 +336,29 @@ export default {
           0,
           [
             [
-              693,
+              692,
               1
             ],
             [
+              693,
+              1
+            ]
+          ]
+        ],
+        [
+          1,
+          [
+            [
               694,
+              1
+            ],
+            [
+              690,
+              1
+            ],
+            [
+              695,
+              5,
               1
             ]
           ]
@@ -384,7 +384,7 @@ export default {
             ]
           ],
           "rep": [
-            691
+            694
           ]
         },
         {
@@ -424,7 +424,7 @@ export default {
             ]
           ],
           "rep": [
-            691
+            694
           ]
         },
         {
@@ -460,7 +460,7 @@ export default {
           ],
           "rep": [
             690,
-            692
+            691
           ]
         }
       ]
@@ -492,11 +492,11 @@ export default {
       "linked": 1,
       "leads": [
         {
-          "to": "sternguard-veteran-squad",
+          "to": "sword-brethren-squad",
           "type": "leader"
         },
         {
-          "to": "sword-brethren-squad",
+          "to": "sternguard-veteran-squad",
           "type": "leader"
         },
         {
@@ -504,11 +504,11 @@ export default {
           "type": "leader"
         },
         {
-          "to": "assault-intercessor-squad",
+          "to": "intercessor-squad",
           "type": "leader"
         },
         {
-          "to": "intercessor-squad",
+          "to": "assault-intercessor-squad",
           "type": "leader"
         }
       ],
@@ -590,7 +590,7 @@ export default {
             ]
           ],
           "rep": [
-            704
+            705
           ]
         },
         {
@@ -603,7 +603,7 @@ export default {
             ]
           ],
           "keep": [
-            704
+            705
           ],
           "cond": [
             0,
@@ -766,11 +766,11 @@ export default {
             ],
             [
               717,
-              1
+              2
             ],
             [
               718,
-              2
+              1
             ],
             [
               719,
@@ -786,7 +786,7 @@ export default {
           "in": "stepper",
           "o": [
             [
-              718,
+              717,
               10
             ]
           ]
@@ -827,7 +827,7 @@ export default {
           "type": "leader"
         },
         {
-          "to": "crusader-squad",
+          "to": "company-heroes",
           "type": "leader"
         },
         {
@@ -835,15 +835,15 @@ export default {
           "type": "leader"
         },
         {
-          "to": "intercessor-squad",
-          "type": "leader"
-        },
-        {
-          "to": "company-heroes",
-          "type": "leader"
-        },
-        {
           "to": "bladeguard-veteran-squad",
+          "type": "leader"
+        },
+        {
+          "to": "crusader-squad",
+          "type": "leader"
+        },
+        {
+          "to": "intercessor-squad",
           "type": "leader"
         }
       ],
@@ -980,11 +980,15 @@ export default {
       "linked": 1,
       "leads": [
         {
+          "to": "bladeguard-veteran-squad",
+          "type": "leader"
+        },
+        {
           "to": "assault-intercessor-squad",
           "type": "leader"
         },
         {
-          "to": "sternguard-veteran-squad",
+          "to": "infernus-squad",
           "type": "leader"
         },
         {
@@ -996,15 +1000,11 @@ export default {
           "type": "leader"
         },
         {
-          "to": "infernus-squad",
-          "type": "leader"
-        },
-        {
           "to": "intercessor-squad",
           "type": "leader"
         },
         {
-          "to": "bladeguard-veteran-squad",
+          "to": "sternguard-veteran-squad",
           "type": "leader"
         }
       ],
@@ -1034,7 +1034,7 @@ export default {
             ]
           ],
           "rep": [
-            730
+            731
           ]
         }
       ]
@@ -1128,7 +1128,7 @@ export default {
             ]
           ],
           "rep": [
-            735
+            736
           ]
         }
       ]
@@ -1198,7 +1198,7 @@ export default {
             ]
           ],
           "rep": [
-            743
+            744
           ],
           "repall": 1
         },
@@ -1298,7 +1298,7 @@ export default {
             ]
           ],
           "rep": [
-            748
+            749
           ]
         },
         {
@@ -1311,7 +1311,7 @@ export default {
             ]
           ],
           "rep": [
-            749
+            748
           ]
         },
         {
@@ -1334,7 +1334,7 @@ export default {
             ]
           ],
           "rep": [
-            749
+            748
           ]
         },
         {
@@ -1357,7 +1357,7 @@ export default {
             ]
           ],
           "rep": [
-            748
+            749
           ]
         },
         {
@@ -1380,8 +1380,8 @@ export default {
             ]
           ],
           "rep": [
-            748,
-            749
+            749,
+            748
           ]
         }
       ]
@@ -1397,6 +1397,20 @@ export default {
       ],
       "enhancements": [
         {
+          "name": "Righteous Fervour (Upgrade)",
+          "pts": 15,
+          "type": "upgrade",
+          "nonCharOk": 1,
+          "limit": 3,
+          "req": [
+            {
+              "kw": [
+                "Crusader Squad"
+              ]
+            }
+          ]
+        },
+        {
           "name": "Oathbound Exemplar",
           "pts": 10,
           "type": "miniature",
@@ -1407,20 +1421,6 @@ export default {
               ],
               "kw": [
                 "Infantry"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Righteous Fervour (Upgrade)",
-          "pts": 15,
-          "type": "upgrade",
-          "nonCharOk": 1,
-          "limit": 3,
-          "req": [
-            {
-              "kw": [
-                "Crusader Squad"
               ]
             }
           ]
@@ -1480,13 +1480,13 @@ export default {
       ],
       "enhancements": [
         {
-          "name": "Incendiary Animus",
-          "pts": 25,
+          "name": "Augury Servo-host",
+          "pts": 20,
           "type": "miniature",
           "req": [
             {
-              "kw": [
-                "Chaplain"
+              "fac": [
+                "Adeptus Astartes"
               ]
             }
           ]
@@ -1504,20 +1504,20 @@ export default {
           ]
         },
         {
-          "name": "Zealous Vanguard",
+          "name": "Incendiary Animus",
           "pts": 25,
           "type": "miniature",
           "req": [
             {
-              "fac": [
-                "Adeptus Astartes"
+              "kw": [
+                "Chaplain"
               ]
             }
           ]
         },
         {
-          "name": "Augury Servo-host",
-          "pts": 20,
+          "name": "Zealous Vanguard",
+          "pts": 25,
           "type": "miniature",
           "req": [
             {
@@ -1678,8 +1678,8 @@ export default {
       ],
       "pts": {
         "incursion": 500,
-        "onslaught": 500,
-        "strike-force": 500
+        "strike-force": 500,
+        "onslaught": 500
       },
       "enh": 1
     },

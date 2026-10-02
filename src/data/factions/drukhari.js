@@ -8,13 +8,12 @@
 //     (Exhibition of Slaughter, Kabalite Agonysts, Tools of Torment, Reaper's Wager), the
 //     "Corsairs and Travelling Players" army-rule addition, and Rules Updates.
 //   MFM (src/data/mfm/drukhari.js) → per-enhancement points, per-detachment dp /
-//     forceDispositions, and the KABAL / WYCH CULT / COVENS `unique` tags.
+//     forceDispositions (the KABAL / WYCH CULT / COVENS `unique` tags are gone: MFM 1.5 of
+//     2 October prints «UNIQUE TAG REMOVED» on all six — field and rule sentence dropped, 972).
 //
 // 9 detachments total, matching the MFM list. Faction-Pack "Rules Updates" have been folded
 // into the army rule / codex detachment stratagems (they are the authoritative newer wording)
-// — see inline notes. `unique` tags (mutually exclusive): KABAL (Kabalite Cartel, Kabalite
-// Agonysts), WYCH CULT (Spectacle of Spite, Exhibition of Slaughter), COVENS (Covenite
-// Coterie, Tools of Torment).
+// — see inline notes.
 //
 // EN-first: `ru` reuses the same object for now (same pattern as the other factions); swap in
 // a translated object later. Markup follows useRenderInline / RuleBlock / StratCard
@@ -289,7 +288,6 @@ If your Army Faction is Drukhari, you can include **Harlequins** and **Anhrathe*
       source: 'codex',
       dp: 2,
       forceDispositions: ["Purge the Foe"],
-      unique: 'WYCH CULT',
       rule: {
         name: 'Combat Drugs',
         flavor:
@@ -417,7 +415,6 @@ Improve the Leadership characteristic of **Wych Cult** models from your army by 
       source: 'codex',
       dp: 2,
       forceDispositions: ["Take and Hold"],
-      unique: 'COVENS',
       rule: {
         name: 'Stitchflesh Abominations',
         flavor:
@@ -529,7 +526,6 @@ Improve the Leadership characteristic of **Wych Cult** models from your army by 
       source: 'codex',
       dp: 2,
       forceDispositions: ["Disruption"],
-      unique: 'KABAL',
       rule: {
         name: 'Murderous Agenda',
         flavor:
@@ -651,14 +647,11 @@ Improve the Leadership characteristic of **Wych Cult** models from your army by 
       source: 'faction-pack',
       dp: 1,
       forceDispositions: ["Reconnaissance"],
-      unique: 'WYCH CULT',
       rule: {
         name: 'Exacting Cruelty',
         flavor:
           "With long lives spent honing their murderous skills against the most powerful opponents, the renowned fighters of Commorragh's arenas have an instinct for just where to strike to bring their prey low in the most painful and elegant manner possible.",
-        body: `Friendly WYCH CULT units' melee attacks have [LETHAL HITS: non-MONSTER/VEHICLE].
-
-This **[gloss:detachments:detachment]** has the **WYCH CULT** tag and cannot be taken with another **WYCH CULT** **detachment**.`,
+        body: `Friendly WYCH CULT units' melee attacks have [LETHAL HITS: non-MONSTER/VEHICLE].`,
       },
       stratagems: [
         {
@@ -717,14 +710,11 @@ This **[gloss:detachments:detachment]** has the **WYCH CULT** tag and cannot be 
       source: 'faction-pack',
       dp: 1,
       forceDispositions: ["Disruption"],
-      unique: 'KABAL',
       rule: {
         name: 'Contracted Harvest',
         flavor:
           "Directed to inflict as much suffering as possible amongst the enemy's soldiers – on pain of their own torment – a kabal's vicious warriors spare no opportunity to unleash deluges of painful firepower.",
-        body: `Friendly BLADES FOR HIRE/KABAL units' ranged attacks have [SUSTAINED HITS 1: non-MONSTER/VEHICLE].
-
-This **[gloss:detachments:detachment]** has the **KABAL** tag and cannot be taken with another **KABAL** **detachment**.`,
+        body: `Friendly BLADES FOR HIRE/KABAL units' ranged attacks have [SUSTAINED HITS 1: non-MONSTER/VEHICLE].`,
       },
       stratagems: [
         {
@@ -785,14 +775,11 @@ This **[gloss:detachments:detachment]** has the **KABAL** tag and cannot be take
       source: 'faction-pack',
       dp: 1,
       forceDispositions: ["Take and Hold"],
-      unique: 'COVENS',
       rule: {
         name: 'Darkest Artifice',
         flavor:
           "A Haemonculus' most resilient Engines of Pain are each a dark triumph valued as a work of malevolent genius. Their finely wrought armoured carapaces shield toughened mechorganic strata and slabs of mutated cartilage.",
-        body: `Attacks that target friendly CRONOS/TALOS units with a S greater than that unit's T have -1 to Wound rolls.
-
-This **[gloss:detachments:detachment]** has the **COVENS** tag and cannot be taken with another **COVENS** **detachment**.`,
+        body: `Attacks that target friendly CRONOS/TALOS units with a S greater than that unit's T have -1 to Wound rolls.`,
       },
       stratagems: [
         {

@@ -1264,6 +1264,20 @@ export default [
         "inv": "4+"
       }
     ],
+    "ranged": [
+      {
+        "name": "Storm Bolter",
+        "tags": [
+          "RAPID FIRE 2"
+        ],
+        "range": "24\"",
+        "a": "2",
+        "bs": "2+",
+        "s": "5",
+        "ap": "-1",
+        "d": "1"
+      }
+    ],
     "melee": [
       {
         "name": "Tyrnak and Fenrir",
@@ -1272,17 +1286,6 @@ export default [
         ],
         "a": "6",
         "ws": "2+",
-        "s": "5",
-        "ap": "-1",
-        "d": "1"
-      },
-      {
-        "name": "Storm Bolter",
-        "tags": [
-          "RAPID FIRE 2"
-        ],
-        "a": "2",
-        "ws": "3+",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -3788,32 +3791,32 @@ export default [
     "name": "Wolf Guard Headtakers",
     "points": [
       {
-        "points": 115,
+        "points": 85,
         "note": "3 Wolf Guard Headtakers (1st-2nd)"
+      },
+      {
+        "points": 115,
+        "note": "3 Wolf Guard Headtakers, 3 Hunting Wolves (1st-2nd)"
       },
       {
         "points": 170,
         "note": "6 Wolf Guard Headtakers (1st-2nd)"
       },
       {
-        "points": 170,
-        "note": "3 Wolf Guard Headtakers, 3 Hunting Wolves (1st-2nd)"
-      },
-      {
         "points": 230,
         "note": "6 Wolf Guard Headtakers, 6 Hunting Wolves (1st-2nd)"
       },
       {
-        "points": 125,
+        "points": 95,
         "note": "3 Wolf Guard Headtakers (3rd+)"
+      },
+      {
+        "points": 125,
+        "note": "3 Wolf Guard Headtakers, 3 Hunting Wolves (3rd+)"
       },
       {
         "points": 180,
         "note": "6 Wolf Guard Headtakers (3rd+)"
-      },
-      {
-        "points": 180,
-        "note": "3 Wolf Guard Headtakers, 3 Hunting Wolves (3rd+)"
       },
       {
         "points": 240,
@@ -3914,7 +3917,10 @@ export default [
       "Any number of Wolf Guard Headtaker models can each have their Paired Master-crafted Power Weapons replaced with 1 Master-crafted Power Weapon and 1 Storm Shield."
     ],
     "keywords": [
-      "Imperium"
+      "Beast",
+      "Imperium",
+      "Infantry",
+      "Tacticus"
     ],
     "factionKeywords": [
       "Adeptus Astartes",

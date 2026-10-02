@@ -315,7 +315,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 45
+        "points": 40
       }
     ],
     "flavor": "Ancients bear the Chapter’s precious standards. These glorious relics have been present in some of the Chapter’s most notable battles, their finely worked designs commemorating countless campaigns and heroic deeds. They are symbols of selfless commitment and the unbreakable loyalty of brothers.",
@@ -710,11 +710,11 @@ export default [
     "points": [
       {
         "models": 5,
-        "points": 90
+        "points": 85
       },
       {
         "models": 10,
-        "points": 175
+        "points": 170
       }
     ],
     "flavor": "Assault Intercessors are amongst the most widespread close support units in a Chapter’s arsenal. Firing their heavy bolt pistols as they close upon the foe, they charge into the fray, where they make short work of their enemies with brutal swings of their chainswords.",
@@ -864,7 +864,7 @@ export default [
     "points": [
       {
         "models": 5,
-        "points": 100,
+        "points": 95,
         "note": "1st-2nd"
       },
       {
@@ -874,7 +874,7 @@ export default [
       },
       {
         "models": 5,
-        "points": 110,
+        "points": 105,
         "note": "3rd+"
       },
       {
@@ -1196,7 +1196,7 @@ export default [
       },
       {
         "models": 1,
-        "points": 160,
+        "points": 170,
         "note": "3rd+"
       }
     ],
@@ -1298,7 +1298,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 60
+        "points": 70
       }
     ],
     "flavor": "Bladeguard Ancients bear the honour of carrying their Chapter’s precious standards into battle. The most revered of these incorporate the remains of fallen heroes of the Chapter; in their presence, battle-brothers are inspired to emulate the legendary deeds of these paragons of old.",
@@ -1380,22 +1380,22 @@ export default [
     "points": [
       {
         "models": 3,
-        "points": 85,
+        "points": 90,
         "note": "1st-2nd"
-      },
-      {
-        "models": 6,
-        "points": 170,
-        "note": "1st-2nd"
-      },
-      {
-        "models": 3,
-        "points": 95,
-        "note": "3rd+"
       },
       {
         "models": 6,
         "points": 180,
+        "note": "1st-2nd"
+      },
+      {
+        "models": 3,
+        "points": 110,
+        "note": "3rd+"
+      },
+      {
+        "models": 6,
+        "points": 200,
         "note": "3rd+"
       }
     ],
@@ -1522,7 +1522,7 @@ export default [
       },
       {
         "models": 1,
-        "points": 170,
+        "points": 180,
         "note": "3rd+"
       }
     ],
@@ -2153,7 +2153,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 100
+        "points": 90
       }
     ],
     "flavor": "Space Marine Captains are expected to fight from the front, and few kinds of armour enable them to do so as effectively as Terminator plate. Formidably resilient, such a suit protects the Captain against all but the most devastating enemy fire and enables him to deploy by teleport strike right into the heart of the foe.",
@@ -3203,7 +3203,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 70
+        "points": 60
       }
     ],
     "flavor": "Cloak billowing in the heat of battle and absolvor pistol flaring, Chaplains stride purposefully into battle, the boom of their oration audible even over the furious din of conflict. Without rest they exhort their brothers to victory, steeling their hearts, minds and souls no matter the savagery of the enemy.",
@@ -3299,7 +3299,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 85
+        "points": 75
       }
     ],
     "flavor": "Every Space Marine is roused to war by the litanies of their Chaplains, and never is this spiritual fortification more vital than amidst the blood and horror of boarding actions and beachhead strikes. Thus, Chaplains are trained to wear formidable Terminator armour so they can fight alongside Veteran battle-brothers.",
@@ -3396,7 +3396,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 80
+        "points": 75
       }
     ],
     "flavor": "When a Chaplain takes to the field on a Raider-pattern bike, he is able to keep pace with even the swiftest armoured advance or spearhead breakthrough. Fighting in such an action, he will urge his brothers to victory as he bellows his catechisms and charges headlong into the foe, crozius arcanum swinging.",
@@ -3493,7 +3493,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 80
+        "points": 75
       }
     ],
     "flavor": "Ever are the roared litanies of the Chaplains needed all over the battlefield, to stir the hearts of battle-brothers and drive fear into the enemy. With a jump pack a Chaplain can thunder to wherever he is most needed, or spearhead furious assaults into the enemy’s positions himself.",
@@ -3701,12 +3701,12 @@ export default [
     "points": [
       {
         "models": 4,
-        "points": 135,
+        "points": 125,
         "note": "1st-2nd"
       },
       {
         "models": 4,
-        "points": 150,
+        "points": 145,
         "note": "3rd+"
       }
     ],
@@ -3921,12 +3921,12 @@ export default [
     "points": [
       {
         "models": 5,
-        "points": 135,
+        "points": 140,
         "note": "1st-2nd"
       },
       {
         "models": 5,
-        "points": 145,
+        "points": 150,
         "note": "3rd+"
       }
     ],
@@ -4426,22 +4426,22 @@ export default [
     "points": [
       {
         "models": 3,
-        "points": 95,
+        "points": 100,
         "note": "1st-2nd"
-      },
-      {
-        "models": 6,
-        "points": 200,
-        "note": "1st-2nd"
-      },
-      {
-        "models": 3,
-        "points": 110,
-        "note": "3rd+"
       },
       {
         "models": 6,
         "points": 215,
+        "note": "1st-2nd"
+      },
+      {
+        "models": 3,
+        "points": 130,
+        "note": "3rd+"
+      },
+      {
+        "models": 6,
+        "points": 245,
         "note": "3rd+"
       }
     ],
@@ -4534,22 +4534,22 @@ export default [
     "points": [
       {
         "models": 3,
-        "points": 90,
+        "points": 100,
         "note": "1st-2nd"
       },
       {
         "models": 6,
-        "points": 190,
+        "points": 200,
         "note": "1st-2nd"
       },
       {
         "models": 3,
-        "points": 105,
+        "points": 120,
         "note": "3rd+"
       },
       {
         "models": 6,
-        "points": 205,
+        "points": 220,
         "note": "3rd+"
       }
     ],
@@ -4942,12 +4942,12 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 165,
+        "points": 160,
         "note": "1st-2nd"
       },
       {
         "models": 1,
-        "points": 175,
+        "points": 180,
         "note": "3rd+"
       }
     ],
@@ -5034,7 +5034,7 @@ export default [
       },
       {
         "models": 1,
-        "points": 175,
+        "points": 185,
         "note": "3rd+"
       }
     ],
@@ -5123,7 +5123,7 @@ export default [
       },
       {
         "models": 1,
-        "points": 175,
+        "points": 185,
         "note": "3rd+"
       }
     ],
@@ -5325,11 +5325,11 @@ export default [
     "points": [
       {
         "models": 5,
-        "points": 110
+        "points": 115
       },
       {
         "models": 10,
-        "points": 220
+        "points": 230
       }
     ],
     "flavor": "Clad in thick Gravis armour, Heavy Intercessors secure ground and are immovable in the defence. Always ready for any sign of enemy counter-attack, they stand firm, laying down volleys of heavy fire that keep all but the most determined or foolhardy enemies at bay.",
@@ -5438,22 +5438,22 @@ export default [
     "points": [
       {
         "models": 5,
-        "points": 110,
+        "points": 115,
         "note": "1st-2nd"
       },
       {
         "models": 10,
-        "points": 220,
+        "points": 230,
         "note": "1st-2nd"
       },
       {
         "models": 5,
-        "points": 125,
+        "points": 130,
         "note": "3rd+"
       },
       {
         "models": 10,
-        "points": 235,
+        "points": 245,
         "note": "3rd+"
       }
     ],
@@ -5744,22 +5744,22 @@ export default [
     "points": [
       {
         "models": 3,
-        "points": 125,
+        "points": 130,
         "note": "1st-2nd"
       },
       {
         "models": 6,
-        "points": 250,
+        "points": 260,
         "note": "1st-2nd"
       },
       {
         "models": 3,
-        "points": 140,
+        "points": 150,
         "note": "3rd+"
       },
       {
         "models": 6,
-        "points": 265,
+        "points": 280,
         "note": "3rd+"
       }
     ],
@@ -5879,22 +5879,22 @@ export default [
     "points": [
       {
         "models": 5,
-        "points": 95,
+        "points": 90,
         "note": "1st-2nd"
-      },
-      {
-        "models": 10,
-        "points": 160,
-        "note": "1st-2nd"
-      },
-      {
-        "models": 5,
-        "points": 105,
-        "note": "3rd+"
       },
       {
         "models": 10,
         "points": 170,
+        "note": "1st-2nd"
+      },
+      {
+        "models": 5,
+        "points": 100,
+        "note": "3rd+"
+      },
+      {
+        "models": 10,
+        "points": 180,
         "note": "3rd+"
       }
     ],
@@ -5994,22 +5994,22 @@ export default [
     "points": [
       {
         "models": 5,
-        "points": 100,
+        "points": 95,
         "note": "1st-2nd"
       },
       {
         "models": 10,
-        "points": 200,
+        "points": 190,
         "note": "1st-2nd"
       },
       {
         "models": 5,
-        "points": 110,
+        "points": 105,
         "note": "3rd+"
       },
       {
         "models": 10,
-        "points": 210,
+        "points": 200,
         "note": "3rd+"
       }
     ],
@@ -6101,7 +6101,7 @@ export default [
     "points": [
       {
         "models": 5,
-        "points": 80
+        "points": 85
       },
       {
         "models": 10,
@@ -6207,11 +6207,11 @@ export default [
     "points": [
       {
         "models": 5,
-        "points": 95
+        "points": 85
       },
       {
         "models": 10,
-        "points": 175
+        "points": 170
       }
     ],
     "flavor": "Intercessor Squads are capable of laying down punishing fire while advancing or holding ground against the enemy. They have access to a range of bolt weaponry suited to varied battlefield assignments, from engaging enemies at long range to cleansing bunker complexes.",
@@ -6549,7 +6549,13 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 140
+        "points": 135,
+        "note": "1st-2nd"
+      },
+      {
+        "models": 1,
+        "points": 150,
+        "note": "3rd+"
       }
     ],
     "flavor": "Outfitted with silent reactors and servos, the Invictor Tactical Warsuit is a combat walker ideally suited to supporting Vanguard operations and functioning independently from a main Space Marine strike force. In battle they are piloted by hand-picked warriors dedicated to defending their battle-brothers.",
@@ -7439,12 +7445,12 @@ export default [
       {
         "models": 1,
         "points": 245,
-        "note": "1st-2nd"
+        "note": "1st"
       },
       {
         "models": 1,
         "points": 265,
-        "note": "3rd+"
+        "note": "2nd+"
       }
     ],
     "flavor": "Land Raiders are mobile fortresses that bear squads of Space Marines through the most furious firestorms without so much as a scratch. Their machine spirits are so potent that if the crew are slain they will take over, making the tank a truly formidable asset.",
@@ -7572,13 +7578,13 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 245,
-        "note": "1st-2nd"
+        "points": 230,
+        "note": "1st"
       },
       {
         "models": 1,
-        "points": 265,
-        "note": "3rd+"
+        "points": 250,
+        "note": "2nd+"
       }
     ],
     "flavor": "The Land Raider Crusader is a superlative assault tank. Its bulk enables it to crush enemy defences, and its prodigious firepower cuts their defenders to ribbons. With an enhanced transport capacity, once it has stormed enemy defences, Space Marines pour from its hatches to slaughter those foes who remain.",
@@ -7869,12 +7875,12 @@ export default [
       {
         "models": 1,
         "points": 245,
-        "note": "1st-2nd"
+        "note": "1st"
       },
       {
         "models": 1,
         "points": 265,
-        "note": "3rd+"
+        "note": "2nd+"
       }
     ],
     "flavor": "In brutal urban combat, it can be impossible to root out entrenched foes. Not so for the Land Raider Redeemer. When it engages its flamestorm cannons, any caught in the raging inferno of burning promethium that follows are doomed, and bunkers, pill boxes, ruined factorums and shattered hab-blocks are cleansed of the enemy.",
@@ -8005,7 +8011,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 110
+        "points": 105
       }
     ],
     "flavor": "Streaking over the battlefield on humming anti-grav engines, the Land Speeder performs blistering attack runs to rake the enemy with shots then darts away before the foe can respond. It is a valuable rapid reconnaissance asset for Space Marine forces in the field and excels in providing highly mobile fire support.",
@@ -8377,7 +8383,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 85
+        "points": 80
       }
     ],
     "flavor": "The powers of a Chapter’s Librarians lend a lethal psychic edge to its elite infantry spearheads. Whether it be gruelling boarding actions, ferocious urban combat or on the front line against overwhelming enemy numbers, Librarians in Terminator armour blast at the foe with their powerful psychic energies.",
@@ -8794,7 +8800,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 80
+        "points": 85
       }
     ],
     "flavor": "Some Lieutenants in Phobos armour are tasked with operating behind enemy lines, acting as skilled assassins and intelligence gatherers. By the time the main Space Marine task force has arrived they have cast the enemy into disarray and collected incredible tactical data that will all but guarantee the assault’s success.",
@@ -9137,7 +9143,7 @@ export default [
     "points": [
       {
         "models": 3,
-        "points": 85
+        "points": 80
       },
       {
         "models": 6,
@@ -9792,12 +9798,12 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 180,
+        "points": 170,
         "note": "1st-2nd"
       },
       {
         "models": 1,
-        "points": 195,
+        "points": 190,
         "note": "3rd+"
       }
     ],
@@ -10355,12 +10361,12 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 275,
+        "points": 260,
         "note": "1st-2nd"
       },
       {
         "models": 1,
-        "points": 295,
+        "points": 280,
         "note": "3rd+"
       }
     ],
@@ -11461,12 +11467,12 @@ export default [
       },
       {
         "models": 5,
-        "points": 115,
+        "points": 120,
         "note": "3rd+"
       },
       {
         "models": 10,
-        "points": 220,
+        "points": 225,
         "note": "3rd+"
       }
     ],
@@ -11841,12 +11847,12 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 155,
+        "points": 140,
         "note": "1st-2nd"
       },
       {
         "models": 1,
-        "points": 165,
+        "points": 150,
         "note": "3rd+"
       }
     ],
@@ -12690,7 +12696,7 @@ export default [
     "points": [
       {
         "models": 1,
-        "points": 65
+        "points": 55
       }
     ],
     "flavor": "Techmarines stride selflessly through oncoming fire to soothe the machine spirits of wounded war engines, deftly peeling back damaged armour plates to repair burnt-out cabling and bending warped panels back into shape with their servoarms and mechadendrites.",
@@ -12789,22 +12795,22 @@ export default [
     "points": [
       {
         "models": 5,
-        "points": 175,
+        "points": 170,
         "note": "1st-2nd"
       },
       {
         "models": 10,
-        "points": 350,
+        "points": 340,
         "note": "1st-2nd"
       },
       {
         "models": 5,
-        "points": 215,
+        "points": 210,
         "note": "3rd+"
       },
       {
         "models": 10,
-        "points": 390,
+        "points": 380,
         "note": "3rd+"
       }
     ],
@@ -12897,22 +12903,22 @@ export default [
     "points": [
       {
         "models": 5,
-        "points": 195,
+        "points": 190,
         "note": "1st-2nd"
       },
       {
         "models": 10,
-        "points": 390,
+        "points": 380,
         "note": "1st-2nd"
       },
       {
         "models": 5,
-        "points": 235,
+        "points": 230,
         "note": "3rd+"
       },
       {
         "models": 10,
-        "points": 430,
+        "points": 420,
         "note": "3rd+"
       }
     ],
@@ -13720,12 +13726,12 @@ export default [
     "points": [
       {
         "models": 5,
-        "points": 120,
+        "points": 110,
         "note": "1st-2nd"
       },
       {
         "models": 10,
-        "points": 240,
+        "points": 220,
         "note": "1st-2nd"
       },
       {
@@ -13735,7 +13741,7 @@ export default [
       },
       {
         "models": 10,
-        "points": 250,
+        "points": 240,
         "note": "3rd+"
       }
     ],

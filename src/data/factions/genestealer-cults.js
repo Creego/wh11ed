@@ -9,7 +9,8 @@
 //     Ambush / Resurgence points), 3 pack detachments (Heroes of the Uprising, Purestrain
 //     Broodswarm, Xenocult Masses; Final Day is also printed in the pack) and Rules Updates.
 //   MFM (src/data/mfm/genestealer-cults.js) → per-enhancement points, per-detachment dp /
-//     forceDispositions, and the PURESTRAIN / HOSTS `unique` tags.
+//     forceDispositions, and the HOSTS `unique` tag (PURESTRAIN was removed by MFM 1.5 of
+//     2 October — «UNIQUE TAG REMOVED» — field and rule sentence dropped, app data 972).
 //
 // 9 detachments total, matching the MFM list. EN-first: `ru` reuses the same object for now.
 // Markup follows useRenderInline / RuleBlock / StratCard conventions. Datasheets later.
@@ -54,7 +55,6 @@ Use a circular 32mm diameter marker for Cult Ambush markers. If an enemy model (
       source: 'codex',
       dp: 2,
       forceDispositions: ["Take and Hold"],
-      unique: "PURESTRAIN",
       rule: {
         name: "Hypermorphic Fury",
         flavor: "Little can assuage a Genestealer Cults least Human instincts, behaviours made even more ferocious under provocation. Stimulated by psionic pulses of the Broodmind or fuelled by alchemical concoctions delivered from alien grafts, impulses drive the blessed to acts of increased savagery.",
@@ -761,11 +761,10 @@ Use a circular 32mm diameter marker for Cult Ambush markers. If an enemy model (
       source: 'faction-pack',
       dp: 1,
       forceDispositions: ["Priority Assets"],
-      unique: "PURESTRAIN",
       rule: {
         name: "Enemy Within",
         flavor: "Genestealers on the hunt combine malevolent cunning and inhuman agility to strike and fade again and again, until their prey are reduced to panicked disarray.",
-        body: "At the end of your opponent’s Fight phase, friendly **[gloss:unengaged:unengaged]** PURESTRAIN GENESTEALER units can be placed in **[gloss:strategic-reserves:Strategic Reserves]**.\n\nThis **[gloss:detachments:detachment]** has the **PURESTRAIN** tag and cannot be taken with another **PURESTRAIN** **detachment**.",
+        body: "At the end of your opponent’s Fight phase, friendly **[gloss:unengaged:unengaged]** PURESTRAIN GENESTEALER units can be placed in **[gloss:strategic-reserves:Strategic Reserves]**.",
       },
       stratagems: [
         {

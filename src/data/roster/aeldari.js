@@ -35,11 +35,11 @@ export default {
           0,
           [
             [
-              3176,
+              3177,
               1
             ],
             [
-              3177,
+              3178,
               1
             ]
           ]
@@ -497,7 +497,7 @@ export default {
           0,
           [
             [
-              3178,
+              3179,
               1
             ]
           ]
@@ -598,7 +598,7 @@ export default {
           0,
           [
             [
-              3179,
+              3180,
               1
             ],
             [
@@ -619,7 +619,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              3180
+              3181
             ],
             [
               461
@@ -715,7 +715,7 @@ export default {
           0,
           [
             [
-              3181,
+              3182,
               1
             ],
             [
@@ -732,7 +732,7 @@ export default {
           1,
           [
             [
-              3181,
+              3182,
               1
             ],
             [
@@ -756,7 +756,7 @@ export default {
               479
             ],
             [
-              3182
+              3183
             ],
             [
               430
@@ -778,10 +778,10 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              3183
+              3184
             ],
             [
-              3184
+              3185
             ]
           ]
         }
@@ -865,11 +865,11 @@ export default {
           0,
           [
             [
-              3181,
+              3182,
               1
             ],
             [
-              3185,
+              3186,
               1
             ],
             [
@@ -882,11 +882,11 @@ export default {
           1,
           [
             [
-              3181,
+              3182,
               1
             ],
             [
-              3185,
+              3186,
               1
             ],
             [
@@ -903,11 +903,11 @@ export default {
           "in": "stepper",
           "o": [
             [
-              3186
+              3187
             ]
           ],
           "rep": [
-            3185
+            3186
           ]
         },
         {
@@ -916,7 +916,7 @@ export default {
           "in": "stepper",
           "o": [
             [
-              3180
+              3181
             ],
             [
               301
@@ -951,7 +951,7 @@ export default {
             ]
           ],
           "rep": [
-            3185
+            3186
           ]
         },
         {
@@ -960,10 +960,10 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              3183
+              3184
             ],
             [
-              3184
+              3185
             ]
           ]
         }
@@ -2950,7 +2950,7 @@ export default {
           0,
           [
             [
-              3187,
+              3188,
               1
             ],
             [
@@ -3195,7 +3195,7 @@ export default {
           0,
           [
             [
-              3188,
+              3189,
               2
             ],
             [
@@ -3212,7 +3212,7 @@ export default {
           "in": "stepper",
           "o": [
             [
-              3180
+              3181
             ],
             [
               461
@@ -3228,7 +3228,7 @@ export default {
             ]
           ],
           "rep": [
-            3188
+            3189
           ],
           "cp": 2
         }
@@ -3404,7 +3404,7 @@ export default {
           0,
           [
             [
-              3189,
+              3190,
               1
             ],
             [
@@ -3412,7 +3412,7 @@ export default {
               1
             ],
             [
-              3190,
+              3191,
               1
             ]
           ]
@@ -3459,7 +3459,7 @@ export default {
           0,
           [
             [
-              3191,
+              3192,
               1
             ]
           ]
@@ -3554,15 +3554,15 @@ export default {
           0,
           [
             [
-              3192,
-              1
-            ],
-            [
               3193,
               1
             ],
             [
               3194,
+              1
+            ],
+            [
+              3195,
               1
             ]
           ]
@@ -3762,7 +3762,7 @@ export default {
           0,
           [
             [
-              3195,
+              3196,
               1
             ],
             [
@@ -3783,7 +3783,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              3180
+              3181
             ],
             [
               461
@@ -4166,11 +4166,11 @@ export default {
           0,
           [
             [
-              3196,
+              3197,
               1
             ],
             [
-              3197,
+              3198,
               1
             ],
             [
@@ -4401,7 +4401,7 @@ export default {
               1
             ],
             [
-              3198,
+              3199,
               1
             ],
             [
@@ -4418,7 +4418,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              3180
+              3181
             ],
             [
               461
@@ -4490,7 +4490,7 @@ export default {
           0,
           [
             [
-              3199,
+              3200,
               1
             ],
             [
@@ -4503,7 +4503,7 @@ export default {
           1,
           [
             [
-              3199,
+              3200,
               1
             ],
             [
@@ -4838,7 +4838,7 @@ export default {
           0,
           [
             [
-              3200,
+              3201,
               1
             ],
             [
@@ -4859,11 +4859,11 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              3201
+              3202
             ]
           ],
           "rep": [
-            3200
+            3201
           ]
         },
         {
@@ -4872,10 +4872,10 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              3200
+              3201
             ],
             [
-              3201
+              3202
             ]
           ],
           "rep": [
@@ -6068,11 +6068,11 @@ export default {
               1
             ],
             [
-              3202,
+              3203,
               2
             ],
             [
-              3203,
+              3204,
               1
             ],
             [
@@ -6117,7 +6117,7 @@ export default {
               1
             ],
             [
-              3202,
+              3203,
               2
             ],
             [
@@ -6628,7 +6628,7 @@ export default {
           0,
           [
             [
-              3204,
+              3205,
               1
             ],
             [
@@ -6852,7 +6852,7 @@ export default {
               1
             ],
             [
-              3205,
+              3206,
               1
             ]
           ]
@@ -6865,7 +6865,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              3180
+              3181
             ],
             [
               461
@@ -6887,7 +6887,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              3180
+              3181
             ],
             [
               461
@@ -7508,7 +7508,7 @@ export default {
               1
             ],
             [
-              3206,
+              3207,
               1
             ]
           ]
@@ -7521,7 +7521,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              3180
+              3181
             ],
             [
               461
@@ -7536,7 +7536,7 @@ export default {
               431
             ],
             [
-              3207
+              3208
             ]
           ]
         }
@@ -8715,7 +8715,6 @@ export default {
       "fds": [
         "Disruption"
       ],
-      "unique": "ACROBATIC",
       "enhancements": [
         {
           "name": "A Foot in the Future",
@@ -8750,7 +8749,6 @@ export default {
       "fds": [
         "Disruption"
       ],
-      "unique": "ACROBATIC",
       "grantedWarlord": [
         "death-jester",
         "troupe-master",
@@ -9024,7 +9022,6 @@ export default {
       "fds": [
         "Purge the Foe"
       ],
-      "unique": "ACROBATIC",
       "grantedWarlord": [
         "death-jester",
         "troupe-master",
@@ -9149,7 +9146,6 @@ export default {
       "fds": [
         "Take and Hold"
       ],
-      "unique": "ACROBATIC",
       "enhancements": [
         {
           "name": "Shadowfall Masks (Upgrade)",

@@ -178,11 +178,7 @@ export default {
       "linked": 1,
       "leads": [
         {
-          "to": "company-heroes",
-          "type": "leader"
-        },
-        {
-          "to": "infernus-squad",
+          "to": "sternguard-veteran-squad",
           "type": "leader"
         },
         {
@@ -194,7 +190,11 @@ export default {
           "type": "leader"
         },
         {
-          "to": "sternguard-veteran-squad",
+          "to": "company-heroes",
+          "type": "leader"
+        },
+        {
+          "to": "infernus-squad",
           "type": "leader"
         }
       ],
@@ -227,7 +227,7 @@ export default {
             ]
           ],
           "rep": [
-            764
+            763
           ]
         },
         {
@@ -240,7 +240,7 @@ export default {
             ]
           ],
           "rep": [
-            763
+            764
           ]
         }
       ]
@@ -278,11 +278,11 @@ export default {
           0,
           [
             [
-              1,
+              2468,
               1
             ],
             [
-              3267,
+              3268,
               1
             ]
           ]
@@ -352,15 +352,15 @@ export default {
           0,
           [
             [
-              3268,
-              1
-            ],
-            [
-              1,
-              1
-            ],
-            [
               3269,
+              1
+            ],
+            [
+              2468,
+              1
+            ],
+            [
+              3270,
               1
             ]
           ]
@@ -831,15 +831,15 @@ export default {
           0,
           [
             [
-              1470,
+              1471,
               1
             ],
             [
-              38,
+              2789,
               1
             ],
             [
-              3270,
+              3271,
               1
             ]
           ]
@@ -852,11 +852,11 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              2957
+              2958
             ]
           ],
           "rep": [
-            38
+            2789
           ]
         },
         {
@@ -865,11 +865,11 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              2957
+              2958
             ]
           ],
           "rep": [
-            1470
+            1471
           ]
         },
         {
@@ -888,7 +888,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              3271
+              3272
             ]
           ]
         }
@@ -963,7 +963,7 @@ export default {
             ]
           ],
           "rep": [
-            793
+            792
           ]
         },
         {
@@ -986,7 +986,7 @@ export default {
             ]
           ],
           "rep": [
-            793
+            792
           ]
         },
         {
@@ -1011,7 +1011,7 @@ export default {
             ]
           ],
           "rep": [
-            792
+            793
           ]
         },
         {
@@ -1044,13 +1044,13 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              775
-            ],
-            [
               801
             ],
             [
               802
+            ],
+            [
+              803
             ]
           ],
           "lim": [
@@ -1060,7 +1060,7 @@ export default {
             ]
           ],
           "rep": [
-            793
+            792
           ]
         }
       ]
@@ -1101,7 +1101,7 @@ export default {
           0,
           [
             [
-              1467,
+              1022,
               1
             ],
             [
@@ -1120,21 +1120,21 @@ export default {
             [
               [
                 [
-                  1005,
+                  1006,
                   1
                 ],
                 [
-                  1,
+                  2468,
                   1
                 ]
               ]
             ],
             [
-              2392
+              752
             ]
           ],
           "rep": [
-            1467,
+            1022,
             359
           ]
         },
@@ -1144,13 +1144,13 @@ export default {
           "in": "stepper",
           "o": [
             [
-              617
+              2315
             ],
             [
-              9
+              2271
             ],
             [
-              538
+              2180
             ]
           ]
         },
@@ -1160,7 +1160,7 @@ export default {
           "in": "stepper",
           "o": [
             [
-              1011
+              1012
             ],
             [
               13
@@ -1207,7 +1207,7 @@ export default {
           0,
           [
             [
-              1467,
+              1022,
               1
             ],
             [
@@ -1226,21 +1226,21 @@ export default {
             [
               [
                 [
-                  1005,
+                  1006,
                   1
                 ],
                 [
-                  1,
+                  2468,
                   1
                 ]
               ]
             ],
             [
-              2392
+              752
             ]
           ],
           "rep": [
-            1467,
+            1022,
             359
           ]
         },
@@ -1250,13 +1250,13 @@ export default {
           "in": "stepper",
           "o": [
             [
-              617
+              2315
             ],
             [
-              9
+              2271
             ],
             [
-              538
+              2180
             ]
           ]
         },
@@ -1266,7 +1266,7 @@ export default {
           "in": "stepper",
           "o": [
             [
-              1011
+              1012
             ],
             [
               13
@@ -1316,11 +1316,11 @@ export default {
           0,
           [
             [
-              803,
+              804,
               1
             ],
             [
-              804,
+              805,
               1
             ]
           ]
@@ -1330,29 +1330,6 @@ export default {
         {
           "m": 0,
           "t": 324,
-          "in": "stepper",
-          "o": [
-            [
-              805
-            ]
-          ],
-          "lim": [
-            [
-              5,
-              1
-            ],
-            [
-              10,
-              2
-            ]
-          ],
-          "rep": [
-            804
-          ]
-        },
-        {
-          "m": 0,
-          "t": 328,
           "in": "stepper",
           "o": [
             [
@@ -1375,7 +1352,7 @@ export default {
         },
         {
           "m": 0,
-          "t": 329,
+          "t": 328,
           "in": "stepper",
           "o": [
             [
@@ -1393,7 +1370,30 @@ export default {
             ]
           ],
           "rep": [
-            803
+            804
+          ]
+        },
+        {
+          "m": 0,
+          "t": 329,
+          "in": "stepper",
+          "o": [
+            [
+              808
+            ]
+          ],
+          "lim": [
+            [
+              5,
+              1
+            ],
+            [
+              10,
+              2
+            ]
+          ],
+          "rep": [
+            805
           ]
         },
         {
@@ -1402,7 +1402,7 @@ export default {
           "in": "stepper",
           "o": [
             [
-              808
+              809
             ]
           ],
           "lim": [
@@ -1425,7 +1425,7 @@ export default {
           "in": "stepper",
           "o": [
             [
-              809
+              810
             ]
           ],
           "lim": [
@@ -1439,7 +1439,7 @@ export default {
             ]
           ],
           "rep": [
-            803
+            805
           ]
         },
         {
@@ -1448,7 +1448,7 @@ export default {
           "in": "stepper",
           "o": [
             [
-              810
+              811
             ]
           ],
           "lim": [
@@ -1462,7 +1462,7 @@ export default {
             ]
           ],
           "rep": [
-            803
+            805
           ]
         }
       ]
@@ -1496,15 +1496,15 @@ export default {
           0,
           [
             [
-              3272,
-              1
-            ],
-            [
               3273,
               1
             ],
             [
-              38,
+              3274,
+              1
+            ],
+            [
+              2789,
               1
             ]
           ]
@@ -1523,7 +1523,7 @@ export default {
                   1
                 ],
                 [
-                  1470,
+                  1471,
                   1
                 ]
               ]
@@ -1531,19 +1531,19 @@ export default {
             [
               [
                 [
-                  3270,
+                  3271,
                   1
                 ],
                 [
-                  1470,
+                  1471,
                   1
                 ]
               ]
             ]
           ],
           "rep": [
-            3272,
-            3273
+            3273,
+            3274
           ]
         },
         {
@@ -1552,11 +1552,11 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              2957
+              2958
             ]
           ],
           "rep": [
-            38
+            2789
           ]
         },
         {
@@ -1565,7 +1565,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              2957
+              2958
             ]
           ]
         },
@@ -1575,7 +1575,7 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              3274
+              3275
             ]
           ]
         }
@@ -1614,11 +1614,11 @@ export default {
           0,
           [
             [
-              1,
+              2468,
               1
             ],
             [
-              3275,
+              3276,
               1
             ]
           ]
@@ -1701,11 +1701,11 @@ export default {
           0,
           [
             [
-              811,
+              812,
               1
             ],
             [
-              812,
+              813,
               1
             ]
           ]
@@ -1743,19 +1743,19 @@ export default {
           0,
           [
             [
-              3276,
-              1
-            ],
-            [
-              38,
-              1
-            ],
-            [
-              3273,
-              1
-            ],
-            [
               3277,
+              1
+            ],
+            [
+              2789,
+              1
+            ],
+            [
+              3274,
+              1
+            ],
+            [
+              3278,
               1
             ]
           ]
@@ -1768,14 +1768,14 @@ export default {
           "in": "checkbox",
           "o": [
             [
-              2957
+              2958
             ],
             [
-              1470
+              1471
             ]
           ],
           "rep": [
-            38
+            2789
           ]
         }
       ]
@@ -1820,11 +1820,11 @@ export default {
           0,
           [
             [
-              813,
+              814,
               1
             ],
             [
-              814,
+              815,
               1
             ]
           ]
@@ -1837,7 +1837,7 @@ export default {
           "in": "stepper",
           "o": [
             [
-              815
+              816
             ]
           ],
           "lim": [
@@ -1851,7 +1851,7 @@ export default {
             ]
           ],
           "rep": [
-            813
+            814
           ]
         }
       ]
@@ -1883,7 +1883,23 @@ export default {
       "linked": 1,
       "leads": [
         {
+          "to": "bladeguard-veteran-squad",
+          "type": "support"
+        },
+        {
           "to": "assault-intercessor-squad",
+          "type": "support"
+        },
+        {
+          "to": "sternguard-veteran-squad",
+          "type": "support"
+        },
+        {
+          "to": "hellblaster-squad",
+          "type": "support"
+        },
+        {
+          "to": "intercessor-squad",
           "type": "support"
         },
         {
@@ -1895,23 +1911,7 @@ export default {
           "type": "support"
         },
         {
-          "to": "intercessor-squad",
-          "type": "support"
-        },
-        {
-          "to": "sternguard-veteran-squad",
-          "type": "support"
-        },
-        {
-          "to": "bladeguard-veteran-squad",
-          "type": "support"
-        },
-        {
           "to": "desolation-squad",
-          "type": "support"
-        },
-        {
-          "to": "hellblaster-squad",
           "type": "support"
         }
       ],
@@ -1920,11 +1920,11 @@ export default {
           0,
           [
             [
-              816,
+              817,
               1
             ],
             [
-              817,
+              818,
               1
             ]
           ]
@@ -1963,11 +1963,11 @@ export default {
           0,
           [
             [
-              1,
+              2468,
               1
             ],
             [
-              1005,
+              1006,
               1
             ]
           ]
@@ -2017,7 +2017,7 @@ export default {
           0,
           [
             [
-              818,
+              819,
               1
             ]
           ]
@@ -2057,15 +2057,15 @@ export default {
           0,
           [
             [
-              3268,
-              1
-            ],
-            [
-              1,
-              1
-            ],
-            [
               3269,
+              1
+            ],
+            [
+              2468,
+              1
+            ],
+            [
+              3270,
               1
             ]
           ]
@@ -2152,8 +2152,8 @@ export default {
       ],
       "enhancements": [
         {
-          "name": "Angelic Executioner",
-          "pts": 20,
+          "name": "Shadow of Abomination",
+          "pts": 15,
           "type": "miniature",
           "req": [
             {
@@ -2167,8 +2167,8 @@ export default {
           ]
         },
         {
-          "name": "Shadow of Abomination",
-          "pts": 15,
+          "name": "Angelic Executioner",
+          "pts": 20,
           "type": "miniature",
           "req": [
             {
@@ -2192,8 +2192,8 @@ export default {
       ],
       "enhancements": [
         {
-          "name": "On the Archtraitor's Bridge",
-          "pts": 20,
+          "name": "Instinctive Interception",
+          "pts": 10,
           "type": "miniature",
           "req": [
             {
@@ -2204,8 +2204,8 @@ export default {
           ]
         },
         {
-          "name": "Instinctive Interception",
-          "pts": 10,
+          "name": "On the Archtraitor's Bridge",
+          "pts": 20,
           "type": "miniature",
           "req": [
             {
@@ -2366,8 +2366,8 @@ export default {
       ],
       "pts": {
         "incursion": 500,
-        "onslaught": 500,
-        "strike-force": 500
+        "strike-force": 500,
+        "onslaught": 500
       },
       "enh": 1
     },
