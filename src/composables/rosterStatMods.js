@@ -216,7 +216,7 @@ function noteOf(entry, effect, applied, via = null, live = true) {
 // card `from: 'led'` is here only because a Leader carrying it is attached to this unit, so asking
 // the roster again — against the bodyguard entry, which leads nobody — would answer no and gate off
 // a rule that plainly applies. Everything else is answered by `active` alone.
-const proven = (id, active, entry) => !!active?.has(id) || (id === 'unit-leading' && entry?.from === 'led')
+const proven = (id, active, entry) => !!active?.has(id) || (id === 'unit-leading' && (entry?.from === 'led' || entry?.from === 'co'))
 
 // Does the game say every condition on this effect holds? An effect with no `cond` at all is
 // unreviewed markup, and is treated as unproven — never as unconditional.
@@ -549,8 +549,9 @@ export function attachedUnitKeywords(entry, units, keywordsOf) {
 // model that could have taken one.
 //
 // `ctx.leaderUnitIds` are the datasheet ids attached TO this entry, `ctx.ledUnitId` the datasheet
-// id of the unit this entry leads. Both come from the roster, which records the attachment — there
-// is nothing to infer and nothing to ask the player.
+// id of the unit this entry leads, `ctx.coLeaderUnitIds` the OTHER Characters attached to that same
+// unit (a Leader and a Support share one Attached unit). All three come from the roster, which
+// records the attachment — there is nothing to infer and nothing to ask the player.
 // Our army-rule name against the record's, apostrophes and case aside. Containment either way:
 // a merged name covers the record it was merged from, and a record named for the whole rule still
 // matches when our name is the longer one.
@@ -562,7 +563,7 @@ function armyRuleMatches(recName, ourName) {
   return a === b || a.includes(b) || b.includes(a)
 }
 
-export function datasheetEntriesFor(records, { unitId, leaderUnitIds = [], ledUnitId = null, itemNames = null, leaderItemNames = null, leaderEnhNames = null, auraOn = null, detIds = null } = {}) {
+export function datasheetEntriesFor(records, { unitId, leaderUnitIds = [], ledUnitId = null, coLeaderUnitIds = [], itemNames = null, leaderItemNames = null, leaderEnhNames = null, auraOn = null, detIds = null } = {}) {
   const out = []
   for (const rec of records || []) {
     // A DETACHMENT RULE's aura radiates from a keyword, not from an entry ("friendly IMPERIAL
@@ -667,6 +668,17 @@ export function datasheetEntriesFor(records, { unitId, leaderUnitIds = [], ledUn
       push(of('unit'), 'led')
       // The aura's model is INSIDE this unit, at 0" — same certainty, from the list alone.
       pushAura('led')
+    }
+    // A second Character in the same Attached unit — a Chaplain beside the Ancient whose +1 OC the
+    // squad has. 19.04 hands a rule that affects the unit to EVERY model in it, Characters
+    // included: `unit` ("models in that unit") says so outright, and a record that applies to its
+    // own model AND to the unit it leads (`self` + `led`: "this unit…", "this model's unit…") is a
+    // whole-unit rule by its shape. A `led` with no `self` twin is the narrow "Bodyguard models"
+    // wording, which a Character is not (a player's report, 2026-10-02).
+    if (coLeaderUnitIds.includes(rec.ref.unit) && rec.ref.unit !== unitId) {
+      push(of('unit'), 'co')
+      if (of('self').length) push(of('led'), 'co')
+      pushAura('co')
     }
     if (ledUnitId && rec.ref.unit === ledUnitId) {
       push(of('leader'), 'leader')

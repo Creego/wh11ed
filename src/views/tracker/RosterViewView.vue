@@ -1057,6 +1057,7 @@ function attachmentCtxOf(entry) {
     unitId: entry.id,
     leaderUnitIds: units.filter((u) => u.leaderOf === entry.uid).map((u) => u.id),
     ledUnitId: entry.leaderOf ? units.find((u) => u.uid === entry.leaderOf)?.id || null : null,
+    coLeaderUnitIds: entry.leaderOf ? units.filter((u) => u.leaderOf === entry.leaderOf && u.uid !== entry.uid).map((u) => u.id) : [],
     itemNames: loadoutItemNames(defOf(entry.id), entry, rosterItems.items),
     // The auras the player has marked as reaching this unit. The bearer's own unit and the unit it
     // is attached to are not in here — 22.01 answers those from the list itself.

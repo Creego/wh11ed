@@ -249,6 +249,7 @@ export function useRosterUnitCard(props) {
       itemNames: loadoutItemNames(props.ctx?.def, entry, props.ctx?.items),
       leaderUnitIds: units.filter((u) => u.leaderOf === entry.uid).map((u) => u.id),
       ledUnitId: entry.leaderOf ? units.find((u) => u.uid === entry.leaderOf)?.id || null : null,
+      coLeaderUnitIds: entry.leaderOf ? units.filter((u) => u.leaderOf === entry.leaderOf && u.uid !== entry.uid).map((u) => u.id) : [],
       // An enhancement aura worn by an attached Leader covers this unit with no distance to judge
       // (22.01 — the model is standing in it), so it arrives here rather than as a chip.
       leaderEnhNames: units.filter((u) => u.leaderOf === entry.uid).reduce((set, u) => {
