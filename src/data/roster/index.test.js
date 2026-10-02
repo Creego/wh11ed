@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url'
 import rosterCore from './core.js'
 import rosterItems from './items.js'
 import { loadRosterFaction } from './index.js'
-import { optionItems, optionLabel, unitWargearPoints, unitPoints, modelsPerMini, defaultLoadoutLines, wargearGroupCap, wargearGroupLive, bucketOf, grantedKeywordsFor, swapRoom } from '../../composables/rosterEngine.js'
+import { allySourceOf, leadTypeFor, optionItems, optionLabel, unitWargearPoints, unitPoints, modelsPerMini, defaultLoadoutLines, wargearGroupCap, wargearGroupLive, bucketOf, grantedKeywordsFor, swapRoom } from '../../composables/rosterEngine.js'
 import { duplicateLimit } from '../../composables/rosterValidation.js'
 import conditionalKeywords from '../conditionalKeywords.json'
 import { loadoutItemCounts } from '../../composables/rosterModifiers.js'
@@ -44,6 +44,28 @@ describe('SM-Chapter shared-pool fold', () => {
       }
     })
   }
+})
+
+describe('allied units', () => {
+  // An ally's id is namespaced on load; its `leads` must be too, or every allied Leader is
+  // offered no bodyguard (a player's report, 2026-10-01 — Artemis in a Grey Knights list).
+  it('point their Leader attachments at the namespaced ids they are listed under', async () => {
+    const gk = await loadRosterFaction('grey-knights', { allies: true })
+    const defOf = (id) => gk.units.find((u) => u.id === id)
+    const artemis = defOf('imperial-agents:watch-captain-artemis')
+    expect(leadTypeFor(artemis, { uid: 'a' }, defOf('imperial-agents:aquila-kill-team'))).toBe('leader')
+  })
+
+  it('never name a bare target from another bundle, in any army', async () => {
+    for (const { slug } of factions) {
+      const data = await loadRosterFaction(slug, { allies: true })
+      for (const u of data?.units || []) {
+        const src = allySourceOf(u.id)?.[0]
+        if (!src) continue
+        for (const l of u.leads || []) expect(l.to.startsWith(`${src}:`), `${slug}: ${u.id} → ${l.to}`).toBe(true)
+      }
+    }
+  })
 })
 
 describe('roster core', () => {
