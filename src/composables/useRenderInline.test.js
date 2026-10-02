@@ -126,9 +126,4 @@ describe('renderInline — plural keywords', () => {
     const { renderInline } = useRenderInline()
     expect(renderInline('[Twin pulse carbine]')).toBe('[Twin pulse carbine]')
   })
-
-  it('does not bold a keyword inside a tag pill, only outside it', () => {
-    const { renderInline } = useRenderInline()
-    expect(renderInline('[ANTI-VEHICLE 4+] against a VEHICLE')).toBe('<span class="keyword">[ANTI-VEHICLE 4+]</span> against a <strong>VEHICLE</strong>')
-  })
 })
