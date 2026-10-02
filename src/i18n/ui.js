@@ -2146,7 +2146,7 @@ export const ui = {
     missionsTypeSecondary: 'Вторичные',
     missionsTypeTwists: 'Твисты',
     eventLayoutsHeading: 'Террейн и раскладки',
-    eventLayoutsDesc: 'Рекомендуемые расстановки тиррейна, размеры участков и интерактивная матрица миссий.',
+    eventLayoutsDesc: 'Рекомендуемые расстановки террейна, размеры участков и интерактивная матрица миссий.',
     eventLayoutsKey: 'Условные обозначения',
     legendMissions: 'FORCE DISPOSITIONS',
     legendHide: 'Скрыть обозначения',
