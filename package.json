@@ -22,6 +22,7 @@
     "condkeywords": "node scripts/gen-conditional-keywords.mjs",
     "faq": "node scripts/gen-faction-faq.mjs",
     "patches": "node scripts/gen-patch-notes.mjs",
+    "points:pdf": "node scripts/gen-points-pdf.mjs points-pdf ru && node scripts/gen-points-pdf.mjs points-pdf en",
     "faq:index": "node scripts/gen-faction-faq-search-index.mjs",
     "legends": "node scripts/gen-faction-legends.mjs",
     "sync": "node scripts/sync.mjs",
