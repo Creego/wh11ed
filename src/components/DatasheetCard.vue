@@ -1708,6 +1708,7 @@ function abilityStateLabel(st) {
    readable name — and every phone in circulation keeps the table. Below it the stacked layout
    still takes over. */
 @container dscard (max-width: 560px) {
+  .ds-weapons { --wname-share: 0.55; }
   .ds-weapons table { font-size: 0.74rem; }
   .ds-weapons th {
     padding: 0.25rem 0.15rem;
@@ -1739,7 +1740,7 @@ function abilityStateLabel(st) {
        50% broke 281 of them over two lines; the profile heading row cut that to 81 and this to
        27. The stat columns cannot be squeezed by it — where their values are wide ("D6+3") the
        table simply does not give the name its share. */
-    width: 55%;
+    width: calc(var(--wname-share) * 100%);
     min-width: 0;
     padding-left: 0.35rem;
   }
@@ -1760,7 +1761,11 @@ function abilityStateLabel(st) {
      "[LETHAL HITS: NON-" over "MONSTER/VEHICLE]" in one tall frame (2026-09-30). Inline-size
      containment keeps the tags out of the column's own minimum, so the stat columns keep their
      share and the table its width. */
-  .wtags { display: block; contain: inline-size; width: calc(200% - 0.35rem); margin: 0.15rem 0 0; }
+  /* The row's width is the name column's divided by its share — `--wname-share`, the one number
+     both rules read. `200%` was right only while the share was 50%: at 55% it ran the tags 10% past
+     the card's edge (2026-10-02). A percentage, not `cqw`: a length in px counts toward the cell's
+     minimum width and pushed the whole table wider than the card. */
+  .wtags { display: block; contain: inline-size; width: calc(100% / var(--wname-share) - 0.35rem); margin: 0.15rem 0 0; }
   .wtag { font-size: 0.6rem; }
   .wtag :deep(.keyword) { letter-spacing: 0; padding: 0 3px; }
   .wqty { margin-left: 0.2rem; }
