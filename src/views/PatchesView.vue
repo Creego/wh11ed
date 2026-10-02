@@ -228,7 +228,10 @@ const pdfDownload = computed(() => {
   const f = patchDownloads[current.value?.id]?.points?.[locale.value === 'ru' ? 'ru' : 'en']
   if (!f) return null
   const l = labels.value
-  return { title: l.patchesPointsPdfLabel.replace('{v}', current.value.labels.mfm), text: l.patchesPointsPdfText, button: `${l.patchesPointsPdf} · ${f.size}`, url: f.url }
+  // The data build is named too: MFM 1.5 was re-priced in place on 2 October, so the version alone
+  // no longer says which prices the file holds.
+  const build = current.value.labels.app ? ` · ${l.patchesPointsPdfBuild.replace('{n}', current.value.labels.app)}` : ''
+  return { title: l.patchesPointsPdfLabel.replace('{v}', current.value.labels.mfm) + build, text: l.patchesPointsPdfText, button: `${l.patchesPointsPdf} · ${f.size}`, url: f.url }
 })
 
 const titleOf = (p) => [
