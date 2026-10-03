@@ -37,9 +37,11 @@
       >
         <span class="rp-name">{{ r.name || labels.rosterUntitled }}</span>
         <span class="rp-meta">
-          <template v-if="factionName(r.faction)">{{ factionName(r.faction) }} · </template>
-          {{ r.summary?.points || 0 }} {{ labels.rosterPointsLabel }} ·
-          <i class="bi bi-people-fill" /> {{ r.units?.length || 0 }}
+          <span>
+            <template v-if="factionName(r.faction)">{{ factionName(r.faction) }} · </template>
+            {{ r.summary?.points || 0 }} {{ labels.rosterPointsLabel }} ·
+            <i class="bi bi-people-fill" /> {{ r.units?.length || 0 }}
+          </span>
           <RosterOwnLimitsMark
             inert
             :roster="r"
@@ -184,7 +186,12 @@ async function useLink() {
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
   overflow: hidden; overflow-wrap: anywhere;
 }
-.rp-meta { color: var(--text-muted); font-size: 0.78rem; }
+.rp-meta {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 0.5rem;
+  color: var(--text-muted); font-size: 0.78rem;
+}
+/* The custom-limits mark sits at the row's right edge, and drops under the summary when narrow. */
+.rp-meta > :deep(.olm) { margin-left: auto; }
 .rp-link { margin-top: 0.5rem; border-top: 1px solid var(--border); padding-top: 0.75rem; }
 .rp-link-label { display: block; color: var(--text-muted); font-size: 0.78rem; margin-bottom: 0.35rem; }
 .rp-link-row { display: flex; gap: 0.4rem; }
