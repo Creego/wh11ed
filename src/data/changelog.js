@@ -34,6 +34,7 @@ export const changelog = [
       'If you lower the limit and your detachments no longer fit, the Next button does not work. The reason is shown next to it.',
       { h: 'Fixes' },
       'Upgrades such as Furious Assault now work for the whole unit, including attached characters. If a squad has the upgrade, it also shows on its Leaders’ cards. If a character has it, it also shows on the squad’s card. This covers 30 upgrades in 17 factions.',
+      'When you swap a Havoc’s heavy weapon, the old one now leaves the unit. Before, the new weapon was added next to it. The default loadout is fixed too: two Havocs have an autocannon and two have a lascannon. Before, every Havoc had an autocannon. Swaps on Imperial Navy Breachers, Purifier Squad and Sanctifiers also kept the old weapon, and Voidsmen-at-Arms had one lasgun too many.',
       'The detachment list now shows tags such as DYNASTY or DOCTRINES. You cannot take two detachments with the same tag. When you pick one, the others with that tag leave the list. Before, you could pick both.',
     ],
     ru: [
@@ -46,6 +47,7 @@ export const changelog = [
       'Если вы уменьшили лимит и детачменты в него не помещаются, кнопка «Далее» не работает. Рядом с ней написана причина.',
       { h: 'Исправления' },
       'Апгрейды вроде Furious Assault теперь действуют на весь отряд вместе с прикреплёнными персонажами. Если апгрейд у отряда, он виден и на карточках его лидеров. Если апгрейд у персонажа, он виден и на карточке отряда. Это касается 30 апгрейдов в 17 фракциях.',
+      'Если заменить тяжёлое оружие у Havocs, старое теперь уходит из отряда. Раньше новое оружие добавлялось рядом со старым. Состав по умолчанию тоже исправлен: у двух Havocs autocannon, у двух — lascannon. Раньше autocannon был у каждого. Замены у Imperial Navy Breachers, Purifier Squad и Sanctifiers тоже оставляли старое оружие, а у Voidsmen-at-Arms был лишний lasgun.',
       'В списке детачментов теперь видны теги, например DYNASTY или DOCTRINES. Два детачмента с одним тегом взять нельзя. Когда вы выбираете один, остальные с тем же тегом исчезают из списка. Раньше можно было выбрать оба.',
     ],
   },

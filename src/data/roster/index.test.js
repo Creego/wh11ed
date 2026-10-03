@@ -248,12 +248,19 @@ describe('replaced-item links', () => {
     expect(repNames(g)).toEqual(['Autoch-pattern bolter'])
   })
 
-  it('leaves "X or Y" alone when the profile holds both', () => {
-    // A Havoc starts with both the autocannon and the lascannon, so which one the swap consumes
-    // is the player's to decide. Guessing would delete a weapon the model still has.
+  it('records both as alternatives when the profile holds both of "X or Y"', () => {
+    // Two Havocs carry the autocannon and two the lascannon, so the profile holds both and the
+    // sentence cannot be pinned to one. Left without a `rep` until 2026-10-03, the swap gave up
+    // nothing and four heavy bolters sat beside four heavy weapons (a player's report); `alt` has
+    // the engine spend each pick on one of the two.
     const u = groupsOf('chaos-space-marines', 'havocs')
     const g = u.gear.find((x) => /Havoc autocannon or Havoc lascannon/i.test(textOf(x)))
-    expect(g.rep).toBeUndefined()
+    expect(repNames(g)).toEqual(['Havoc autocannon', 'Havoc lascannon'])
+    expect(g.alt).toBe(1)
+    // …and the profile's loadout is two of each, not an autocannon on every model.
+    const havoc = u.defaults.find(([m]) => m === 1)[1].map(([i, c, total]) => [rosterItems.items[i], c, total])
+    expect(havoc).toContainEqual(['Havoc autocannon', 2, 1])
+    expect(havoc).toContainEqual(['Havoc lascannon', 2, 1])
   })
 
   it('resolves a weapon category to the one weapon of that type', () => {

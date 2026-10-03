@@ -696,6 +696,23 @@ function linkWargearConditions(datasheetId, drafts) {
 
   const resolveChunk = (chunk, miniId) => resolveItem(chunk, miniId) || resolveAlternatives(chunk, miniId)
 
+  // …and the case it leaves: a profile that holds BOTH, because its models are not alike. "2 Havocs
+  // are equipped with a Havoc autocannon, 2 with a Havoc lascannon", then "any number of Havocs can
+  // each have their Havoc autocannon or Havoc lascannon replaced" — each pick gives up whichever of
+  // the two that model carries. Static data cannot say which model takes the pick, so the group
+  // records both with `alt`: the engine spends a pick on one of them, never on both. Left unread
+  // until 2026-10-03, the group gave up nothing and four heavy bolters sat beside the four heavy
+  // weapons they replaced (a player's report). The whole phrase must be the alternatives — nothing
+  // joined to them by "and" or a comma — and every one of them printed on the profile.
+  const resolveHeldAlternatives = (phrase, miniId) => {
+    if (/,|\sand\s/i.test(phrase)) return null
+    const alts = phrase.split(/\s+or\s+/i).map((s) => s.trim()).filter(Boolean)
+    if (alts.length < 2) return null
+    const uuids = [...new Set(alts.map((a) => resolveItem(a, miniId)))]
+    if (uuids.length !== alts.length || !uuids.every((u) => u && defaultsByMini.get(miniId)?.has(u))) return null
+    return uuids
+  }
+
   // A phrase into the set of items it names. Commas always separate; "and" may or may not, since
   // an item can BE called "Cult claws and knife" — so every way of splitting on "and" is tried,
   // fewest pieces first, and the first reading where every piece is a real item wins. Fewest-first
@@ -760,6 +777,10 @@ function linkWargearConditions(datasheetId, drafts) {
       last = m
       const uuids = resolvePhrase(m[1], d.miniId)
       if (uuids) { d.rep = uuids; repStats.resolved++ }
+    }
+    if (!d.rep && last) {
+      const uuids = resolveHeldAlternatives(last[1], d.miniId)
+      if (uuids) { d.rep = uuids; d.alt = true; repStats.resolved++ }
     }
     if (d.rep) continue
     if (last) repStats.unresolved.push(`${enOf(dsById.get(datasheetId)).name}: ${last[1].trim()}`)
@@ -1812,7 +1833,21 @@ function buildUnit(bd, idMap, fx, kwIndex, prices) {
       const have = new Set(at[1].map(([id]) => id))
       for (const [uuid, c] of items) {
         const id = fx.item(fixItem(uuid))
-        if (have.has(id)) continue
+        // …and the row can OVERSTATE: it describes one model, and a profile whose models are not
+        // all alike gets that one model's loadout for every model. "2 Havocs are equipped with: Havoc
+        // autocannon … 2 Havocs are equipped with: Havoc lascannon" has a row of autocannon ×1 for
+        // the Havoc profile — four autocannons beside the group's two lascannons, a squad of six
+        // heavy weapons (a player's report, 2026-10-03). Where the group counts FEWER copies than
+        // the row times the models, the group's count is the profile's: per model if it divides,
+        // a total if not. Two profiles game-wide, Havocs and the Voidsmen's three lasguns.
+        if (have.has(id)) {
+          const row = at[1].find(([i]) => i === id)
+          const models = profileModels(m)
+          if (row[2] || models < 2 || c >= row[1] * models) continue
+          row.splice(1, 2, ...(c % models === 0 ? [c / models] : [c, 1]))
+          report.defaultsMerged.push(`${bd.name} / ${enOf((minisByDs.get(bd.id) || []).find((x) => (miniIdx.get(x.id) ?? 0) === m)).name || m}: ${wgItemName.get(uuid)} (${c} for the profile, not one per model)`)
+          continue
+        }
         const models = compOf(m)
         at[1].push(models > 1 ? [id, c, 1] : [id, c])
         report.defaultsMerged.push(`${bd.name} / ${enOf((minisByDs.get(bd.id) || []).find((x) => (miniIdx.get(x.id) ?? 0) === m)).name || m}: ${wgItemName.get(uuid)}${models > 1 ? ` (${c} for the profile)` : ''}`)
@@ -2090,6 +2125,7 @@ function buildUnit(bd, idMap, fx, kwIndex, prices) {
     if (d.lim) grp.lim = d.lim
     if (d.cp) grp.cp = d.cp
     if (d.rep?.length) grp.rep = d.rep.map((uuid) => fx.item(uuid))
+    if (d.alt) grp.alt = 1
     if (d.keep?.length) grp.keep = d.keep.map((uuid) => fx.item(uuid))
     // A model that trades a paid default away stops paying for it: `dr` is what one pick in this
     // group gives back — per COPY where the group is per-copy, since that is how `n` is counted.

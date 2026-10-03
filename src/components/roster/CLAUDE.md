@@ -295,10 +295,26 @@ differ in what they return.
 
 Fail-open, as every other reader here: a per-copy group (`cp`), a unit whose models cannot be split
 between profiles (`modelsPerMini` null), an item the profile's printed loadout does not carry (a
-chained swap, an unresolved "X or Y") and a `total` line are not stock and never close anything.
+chained swap, an unreadable phrase) are not stock and never close anything.
 Known residue: the importer breaks a tie between two same-named options (the two shield bundles)
 by order, so one corpus list in 658 arrives with a Sergeant who swapped his power weapon twice and
 is told so — the fix is one tap in the editor; a stock-aware tie-break is the importer's to grow.
+
+**A profile whose models are not alike — `total` lines and `alt` groups (added 2026-10-03).** "2
+Havocs are equipped with an autocannon, 2 with a lascannon" is one Havoc profile holding two of each:
+`total` lines (`[id, 2, 1]`), not one autocannon per model. The generator read the loadout ROW,
+which describes one model, and gave all four an autocannon; it now takes the "Default Wargear"
+group's count where that is FEWER than row × models (Havocs, the Voidsmen's three lasguns). A
+`total` line is stock — one copy per model that holds it, `swapCarriers` capacity `min(c, models)` —
+and a swap takes a copy off it (`copiesHeld`, read by the loadout line, the export and the modifier
+overlay alike). It used to be no stock at all, so the Breachers' armsmen, a Purifier squad and the
+Sanctifiers' missionary swapped and kept the weapon. "Any number of Havocs can each have their
+autocannon **or** lascannon replaced" names both because the profile holds both: `rep: [ac, lc],
+alt: 1`, and `swapLedger` spends each pick on ONE of them — the item the option does not hand back
+first, each up to the models carrying it, the rest past the stock on the last, where the overdraft
+reports it. `swapRoom` pools the alternatives; `stockBlocker` closes the group only when no model
+carries either. Without it the group replaced nothing and four heavy bolters sat beside four heavy
+weapons (a player's report, 2026-10-03).
 
 **Kept items — `keep` (added 2026-09-24).** "(that model's boltgun cannot be replaced)" is read by
 the generator (`KEEP_RE`, 38 groups, `--check` fails on one whose item does not resolve) into

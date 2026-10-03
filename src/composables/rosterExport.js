@@ -25,7 +25,7 @@
 // shows on screen); where it does not, we fall back to listing only what the player CHANGED.
 import {
   allegFor, bucketOf, dispositionCandidates, dispositionOf, enhancementPoints, leadTypeFor, mandatoryEnhancementFor, modelsPerMini,
-  copiesLeft, optionItems, optionLabel, pickMiniFor, rosterPoints, swapsByMini, unitPoints, wargearGroupLive, effectiveBattle, grantedKeywordsFor, orderedByName,
+  copiesHeld, copiesLeft, optionItems, optionLabel, pickMiniFor, rosterPoints, swapsByMini, unitPoints, wargearGroupLive, effectiveBattle, grantedKeywordsFor, orderedByName,
 } from './rosterEngine.js'
 import { factionGroups } from '../data/factionsIndex.js'
 
@@ -82,9 +82,10 @@ function loadoutGroups(def, entry, items) {
       const models = perMini?.get(m)
       for (const [id, c, total] of list) {
         // A `total` quantity is the profile's, not each model's (one of the two Gun Servitors has
-        // the heavy bolter), so it is printed as recorded rather than multiplied out.
-        if (total) { add(m, items[id], c); continue }
+        // the heavy bolter), so it is printed as recorded rather than multiplied out, less the
+        // copies a swap took (copiesHeld).
         const take = removed.get(`${m}:${id}`) || 0
+        if (total) { add(m, items[id], copiesHeld(c, total, models, take)); continue }
         add(m, items[id], models == null ? c : copiesLeft(c, models, take))
       }
     }
