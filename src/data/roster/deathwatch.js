@@ -1987,7 +1987,10 @@ export default {
     {
       "name": "Deathwatch Support",
       "sid": "4fde4216-b0dd-4665-8556-2d394d293ed6",
-      "dp": 0,
+      "dp": 1,
+      "fds": [
+        "Disruption"
+      ],
       "enhancements": [
         {
           "name": "Beacon Angelis",

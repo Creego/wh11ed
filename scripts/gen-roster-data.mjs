@@ -527,6 +527,8 @@ const LOADOUT_ITEM_FIXES = {
 
 const CHAPTERS = new Set(['black-templars', 'blood-angels', 'dark-angels', 'deathwatch', 'space-wolves'])
 const isChapter = (slug) => CHAPTERS.has(slug)
+// The Deathwatch's own detachments, by name — a shared one found here is folded from deathwatch.js.
+const DW_DETACHMENTS = new Set((loadJson(path.join(APPDATA, 'factions', 'deathwatch.json'))?.detachments || []).map((d) => norm(d.name)))
 
 function keyword(kws, name) {
   const n = name.toLowerCase()
@@ -2437,6 +2439,13 @@ async function genFaction(slug) {
   const mfmMod = await loadModule(path.join(ROOT, 'src/data/mfm', `${slug}.js`))
   const mfmFaction = mfmMod?.default
   const mfmDet = new Map((mfmFaction?.detachments || []).map((d) => [norm(d.name), d]))
+  // The MFM prints a Chapter's own detachment on the Space Marines page as often as on its own
+  // (Deathwatch Support, dp 1 — it came out 0 here until 2026-10-03): a Chapter looks there second,
+  // as gen-faction-rules does.
+  if (isChapter(slug)) {
+    const smMfm = (await loadModule(path.join(ROOT, 'src/data/mfm', 'space-marines.js')))?.default
+    for (const d of smMfm?.detachments || []) if (!mfmDet.has(norm(d.name))) mfmDet.set(norm(d.name), d)
+  }
 
   // Detachment tags as the reference pages already show them (FactionRuleView's "Unique: …").
   const facMod = await loadModule(path.join(ROOT, 'src/data/factions', `${slug}.js`))
@@ -2528,10 +2537,19 @@ async function genFaction(slug) {
     const smMfm = (await loadModule(path.join(ROOT, 'src/data/mfm', 'space-marines.js')))?.default
     const over = chapterUnitPoints(mfmFaction, smMfm, shared, unitIdMap('space-marines'), nameToDsId)
     if (over) { data.unitPoints = over; report.price.chapterOverrides += Object.keys(over).length }
+  }
+  // The detachments of the Space Marines family this army may field from another bundle: a
+  // Chapter's Codex detachments (space-marines.js), and Deathwatch Support, which the app files
+  // with the Deathwatch and opens to every Adeptus Astartes army — the Space Marines included.
+  // Until 2026-10-03 only the Chapters were asked, and only space-marines.js was looked in, so
+  // nobody but the Deathwatch could take Deathwatch Support.
+  if (isChapter(slug) || slug === 'space-marines') {
     const sharedDets = sharedDetachmentsFor(data.name, detachments)
     if (sharedDets) {
       data.sharedDetachments = sharedDets.names
       if (sharedDets.dp) data.detachmentDp = sharedDets.dp
+      const from = Object.fromEntries(sharedDets.names.filter((n) => DW_DETACHMENTS.has(norm(n))).map((n) => [n, 'deathwatch']))
+      if (Object.keys(from).length) data.sharedDetachmentFrom = from
       report.sharedDets += sharedDets.names.length
     }
   }
@@ -2677,8 +2695,11 @@ export async function loadRosterFaction(slug, { allies = false } = {}) {
   const data = await load(slug)
   if (!data) return null
   const extra = allies && data.allies?.length ? await allyUnits(data) : []
-  const needSm = !!(data.sharedUnitIds?.length || data.sharedDetachments?.length)
-  if (!needSm && !extra.length) return data
+  // A shared detachment comes from space-marines.js unless \`sharedDetachmentFrom\` names its
+  // bundle (Deathwatch Support → deathwatch.js).
+  const fromOf = (name) => data.sharedDetachmentFrom?.[name] || 'space-marines'
+  const needSm = !!(data.sharedUnitIds?.length || data.sharedDetachments?.some((n) => fromOf(n) === 'space-marines'))
+  if (!needSm && !data.sharedDetachments?.length && !extra.length) return data
   const sm = needSm ? await load('space-marines') : null
   const idSet = new Set(data.sharedUnitIds || [])
   const shared = (sm?.units || [])
@@ -2689,10 +2710,20 @@ export async function loadRosterFaction(slug, { allies = false } = {}) {
   // same reason its shared units do. A different Detachment Points cost for this Chapter comes
   // with them (\`detachmentDp\`), so the budget the editor spends is the Chapter's own.
   if (!data.sharedDetachments?.length) return { ...data, units }
-  const want = new Set(data.sharedDetachments)
-  const dets = (sm?.detachments || [])
-    .filter((d) => want.has(d.name))
-    .map((d) => (data.detachmentDp?.[d.name] != null ? { ...d, dp: data.detachmentDp[d.name], shared: 1 } : { ...d, shared: 1 }))
+  const bySource = new Map()
+  for (const n of data.sharedDetachments) {
+    const src = fromOf(n)
+    if (!bySource.has(src)) bySource.set(src, new Set())
+    bySource.get(src).add(n)
+  }
+  const dets = []
+  for (const [src, want] of bySource) {
+    const bundle = src === 'space-marines' ? sm : await load(src)
+    for (const d of bundle?.detachments || []) {
+      if (!want.has(d.name)) continue
+      dets.push(data.detachmentDp?.[d.name] != null ? { ...d, dp: data.detachmentDp[d.name], shared: 1 } : { ...d, shared: 1 })
+    }
+  }
   const detachments = [...data.detachments, ...dets].sort((a, b) => a.name.localeCompare(b.name))
   return { ...data, units, detachments }
 }

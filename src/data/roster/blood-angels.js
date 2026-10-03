@@ -2551,5 +2551,8 @@ export default {
     "Tacticus Attack Force",
     "Tacticus Firestorm Force",
     "Terminator Storm Force"
-  ]
+  ],
+  "sharedDetachmentFrom": {
+    "Deathwatch Support": "deathwatch"
+  }
 }

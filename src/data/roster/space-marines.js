@@ -11711,5 +11711,11 @@ export default {
       },
       "mutex": 1
     }
-  ]
+  ],
+  "sharedDetachments": [
+    "Deathwatch Support"
+  ],
+  "sharedDetachmentFrom": {
+    "Deathwatch Support": "deathwatch"
+  }
 }

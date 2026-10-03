@@ -1469,3 +1469,13 @@ describe('conditional Battleline is the army\'s answer', () => {
     expect(flagged).toBeGreaterThan(20) // the whole corpus really was walked
   })
 })
+
+// Deathwatch Support is filed with the Deathwatch and open to every Adeptus Astartes army; until
+// 2026-10-03 only the Deathwatch could take it, and at 0 DP where the MFM prints 1.
+describe('Deathwatch Support across the Space Marines family', () => {
+  it.each(['space-marines', 'blood-angels', 'black-templars', 'dark-angels', 'space-wolves', 'deathwatch'])('%s can field it at 1 DP', async (slug) => {
+    const f = await loadRosterFaction(slug)
+    const d = f.detachments.find((x) => x.name === 'Deathwatch Support')
+    expect(d?.dp).toBe(1)
+  })
+})
