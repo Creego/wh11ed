@@ -28,6 +28,7 @@
     "sync": "node scripts/sync.mjs",
     "sync:text": "node scripts/sync-faction-text.mjs",
     "sync:mfm": "node scripts/sync-mfm-points.mjs",
+    "sync:baseline": "node scripts/sync-baseline-report.mjs",
     "parity": "node scripts/parity-check.mjs",
     "omissions": "node scripts/check-rule-omissions.mjs",
     "detmeta": "node scripts/check-detachment-meta.mjs",

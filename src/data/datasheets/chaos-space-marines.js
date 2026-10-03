@@ -390,7 +390,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -2717,7 +2717,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -3276,7 +3276,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6+3",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -3828,7 +3828,7 @@ export default [
     "flavor": "A pooling of evil at the head of a Chaos Cult, Dark Communes are led by Cult Demagogues who preach mantras of hate laced with promises of power. They command Mindwitches, whose psychic powers are bought at terrible cost, and Iconarchs, who carry foul sigils that spread the Dark Gods’ malefic influence.",
     "profiles": [
       {
-        "name": "CULT DEMAGOGUE",
+        "name": "Cult Demagogue",
         "m": "6\"",
         "t": "3",
         "sv": "6+",
@@ -3838,14 +3838,34 @@ export default [
         "baseSize": "32mm"
       },
       {
-        "name": "OTHER MODELS",
+        "name": "Mindwitch",
         "m": "6\"",
         "t": "3",
         "sv": "6+",
         "w": "1",
         "ld": "7+",
         "oc": "1",
-        "baseSize": "28.5mm / 32mm"
+        "baseSize": "32mm"
+      },
+      {
+        "name": "Iconarch",
+        "m": "6\"",
+        "t": "3",
+        "sv": "6+",
+        "w": "1",
+        "ld": "7+",
+        "oc": "1",
+        "baseSize": "32mm"
+      },
+      {
+        "name": "Blessed Blade",
+        "m": "6\"",
+        "t": "3",
+        "sv": "6+",
+        "w": "1",
+        "ld": "7+",
+        "oc": "1",
+        "baseSize": "28.5mm"
       }
     ],
     "ranged": [
@@ -4199,7 +4219,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6+3",
-        "bs": "N/A",
+        "bs": "-",
         "s": "7",
         "ap": "-2",
         "d": "2"
@@ -5326,7 +5346,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -5565,7 +5585,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -5756,7 +5776,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6+3",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-1",
         "d": "2"
@@ -6250,7 +6270,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6+2",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-1",
         "d": "1"
@@ -6586,7 +6606,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6+3",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-1",
         "d": "2"
@@ -6833,7 +6853,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -7082,7 +7102,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6+3",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-1",
         "d": "2"
@@ -7406,7 +7426,7 @@ export default [
     "flavor": "These lieutenants of Huron Blackheart stand within the circle of their master’s trust, a position both privileged and dangerous. When they gather to fight in their lord’s shadow, they epitomise the cruelty, cunning and piratical tactics that have made the Red Corsairs such a mighty power in the Maelstrom and beyond.",
     "profiles": [
       {
-        "name": "GARLON SOULEATER, GARREON THE CORPSEMASTER, KATAR GARRIX",
+        "name": "Garreon the Corpsemaster",
         "m": "6\"",
         "t": "5",
         "sv": "3+",
@@ -7416,14 +7436,44 @@ export default [
         "baseSize": "40mm"
       },
       {
-        "name": "CAPTAIN SARGOTTA, THE ENFORCER",
+        "name": "Garlon Souleater",
+        "m": "6\"",
+        "t": "5",
+        "sv": "3+",
+        "w": "4",
+        "ld": "6+",
+        "oc": "1",
+        "baseSize": "40mm"
+      },
+      {
+        "name": "Katar Garrix",
+        "m": "6\"",
+        "t": "5",
+        "sv": "3+",
+        "w": "4",
+        "ld": "6+",
+        "oc": "1",
+        "baseSize": "40mm"
+      },
+      {
+        "name": "Captain Sargotta",
         "m": "6\"",
         "t": "3",
         "sv": "4+",
         "w": "3",
         "ld": "6+",
         "oc": "1",
-        "baseSize": "40mm / 32mm"
+        "baseSize": "40mm"
+      },
+      {
+        "name": "The Enforcer",
+        "m": "6\"",
+        "t": "3",
+        "sv": "4+",
+        "w": "3",
+        "ld": "6+",
+        "oc": "1",
+        "baseSize": "32mm"
       }
     ],
     "ranged": [
@@ -7944,7 +7994,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -8469,7 +8519,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -8692,7 +8742,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "3",
         "ap": "0",
         "d": "1"
@@ -10776,7 +10826,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -10920,7 +10970,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-2",
         "d": "1"
@@ -11177,7 +11227,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "3",
         "ap": "0",
         "d": "1"

@@ -20,13 +20,13 @@
         class="ds-cardhead"
       >
         <div
-          v-for="(p, i) in sheet.profiles"
+          v-for="({ p, index: i }, row) in profileRows"
           :key="i"
           class="ds-statline"
         >
           <div
             class="ds-stats"
-            :class="{ 'has-name': sheet.profiles.length > 1 }"
+            :class="{ 'has-name': profileRows.length > 1 }"
           >
             <!-- Stat labels only once, above the first profile's row -->
             <div
@@ -35,7 +35,7 @@
               class="ds-stat"
             >
               <span
-                v-if="i === 0"
+                v-if="row === 0"
                 class="ds-stat-label"
               >{{ s.label }}</span>
               <span
@@ -48,7 +48,7 @@
               >*</sup></span>
             </div>
             <span
-              v-if="sheet.profiles.length > 1"
+              v-if="profileRows.length > 1"
               class="ds-prof-name"
             >{{ p.name }}<wbr v-if="p.qty > 1"><span
               v-if="p.qty > 1"
@@ -1194,7 +1194,7 @@ const fmtBase = (raw) => formatBaseSize(raw, labels.value)
 // with RosterPrintCard: paper and screen must never disagree about what a sheet says.
 const {
   coreParts, extraCore, keywordGroups, extraKeywords, keywordNotes: extraKeywordNotes,
-  rangedRows, meleeRows, isMarked, noteSections,
+  rangedRows, meleeRows, isMarked, noteSections, profileRows,
 } = useDatasheetParts(props, labels, { showPossible: () => !props.hidePossible })
 
 // Only the faction-line part the caller can actually open should look clickable.

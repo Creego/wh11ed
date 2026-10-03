@@ -1042,7 +1042,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-1",
         "d": "1"
@@ -1274,7 +1274,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -1704,7 +1704,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -2186,7 +2186,7 @@ export default [
         ],
         "range": "9\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "3",
         "ap": "-1",
         "d": "1"
@@ -2271,7 +2271,7 @@ export default [
         "baseSize": "32mm"
       },
       {
-        "name": "Combat Servitors and Gun Servitors",
+        "name": "Gun Servitor",
         "m": "6\"",
         "t": "4",
         "sv": "4+",
@@ -2279,7 +2279,18 @@ export default [
         "ld": "8+",
         "oc": "1",
         "inv": "6+",
-        "baseSize": "32mm / 25mm"
+        "baseSize": "32mm"
+      },
+      {
+        "name": "Combat Servitor",
+        "m": "6\"",
+        "t": "4",
+        "sv": "4+",
+        "w": "1",
+        "ld": "8+",
+        "oc": "1",
+        "inv": "6+",
+        "baseSize": "25mm"
       }
     ],
     "ranged": [
@@ -2317,7 +2328,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "3",
         "ap": "0",
         "d": "1"
@@ -3841,7 +3852,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "2"
@@ -4198,10 +4209,6 @@ export default [
       {
         "name": "Mechanicus Bodyguard",
         "text": "While this model is within 3\" of one or more other friendly ADEPTUS MECHANICUS units, this model has the Lone Operative ability."
-      },
-      {
-        "name": "Cybernetic Augmentation",
-        "text": "This model can move through terrain features, but cannot end a move within a wall, a floor, etc. This model can be set up or end a move on any floor level of RUINS, but if that level is not the ground floor, it can only do so if its base does not overhang the floor at that level."
       },
       {
         "name": "Secutor of Olympus",

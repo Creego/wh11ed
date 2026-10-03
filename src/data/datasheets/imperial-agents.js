@@ -379,7 +379,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-2",
         "d": "1"
@@ -1635,7 +1635,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "2",
         "ap": "0",
         "d": "1"
@@ -1999,7 +1999,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-1",
         "d": "1"
@@ -2737,7 +2737,7 @@ export default [
         ],
         "range": "18\"",
         "a": "2D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "3",
         "ap": "-2",
         "d": "1"
@@ -4014,7 +4014,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -4629,7 +4629,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "0",
         "d": "1"
@@ -5254,7 +5254,7 @@ export default [
     "flavor": "Rogue Traders are daring explorers, ruthless conquerors and cunning merchants, exploring and exploiting the uncharted regions of the galaxy in the name of the Imperium. Their families bear a Warrant of Trade, which helps to identify them as Imperial elites. Some command whole armadas, while others have only a small retinue of followers.",
     "profiles": [
       {
-        "name": "ROGUE TRADER",
+        "name": "Rogue Trader",
         "m": "6\"",
         "t": "3",
         "sv": "4+",
@@ -5265,7 +5265,29 @@ export default [
         "baseSize": "25mm"
       },
       {
-        "name": "OTHER MODELS",
+        "name": "Death Cult Assassin",
+        "m": "6\"",
+        "t": "3",
+        "sv": "4+",
+        "w": "2",
+        "ld": "7+",
+        "oc": "1",
+        "inv": "4+",
+        "baseSize": "25mm"
+      },
+      {
+        "name": "Lectro‐Maester",
+        "m": "6\"",
+        "t": "3",
+        "sv": "4+",
+        "w": "2",
+        "ld": "7+",
+        "oc": "1",
+        "inv": "4+",
+        "baseSize": "25mm"
+      },
+      {
+        "name": "Rejuvenat Adept",
         "m": "6\"",
         "t": "3",
         "sv": "4+",
@@ -5436,7 +5458,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-1",
         "d": "2"
@@ -5461,7 +5483,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "0",
         "d": "1"
@@ -5475,7 +5497,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -5673,7 +5695,7 @@ export default [
         ],
         "range": "18\"",
         "a": "2D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-1",
         "d": "1"
@@ -5887,7 +5909,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "0",
         "d": "1"
@@ -5901,7 +5923,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -5914,7 +5936,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-1",
         "d": "1"
@@ -6665,7 +6687,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "2",
         "ap": "0",
         "d": "1"

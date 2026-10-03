@@ -61,7 +61,7 @@ const WEAPON_FIELDS = {
 
 async function syncFaction(slug) {
   const appSlug = SLUG_MAP[slug] || slug
-  const bundle = loadAppdataBundle(appSlug) // our recorded departures applied — scripts/lib/appdata-exceptions.mjs
+  const bundle = loadAppdataBundle(appSlug, { family: true }) // our recorded departures applied — scripts/lib/appdata-exceptions.mjs
   console.log(`\n=== ${slug} (appdata: ${appSlug}) ===`)
   if (!bundle) { console.log('  no appdata bundle found — check SLUG_MAP or spelling'); return }
 
@@ -89,7 +89,8 @@ async function syncFaction(slug) {
   }
 
   // Detachments, and within each, stratagems/enhancements.
-  lines.push(...diffByName('detachment', en.detachments, appDetachments, (d) => d.name, (d) => d.name, [],
+  const carriedDets = new Set((en.detachments || []).map((d) => norm(d.name)))
+  lines.push(...diffByName('detachment', en.detachments, appDetachments.filter((d) => !d.familyOnly || carriedDets.has(norm(d.name))), (d) => d.name, (d) => d.name, [],
     (d) => (d.rules || []).map((r) => `${r.name}: ${bodyText(r.body)}`).join(' | ')))
   const appDetByName = byNormName(appDetachments, (d) => d.name)
   for (const d of en.detachments || []) {
@@ -116,24 +117,17 @@ async function syncFaction(slug) {
   for (const d of packSheets) {
     if (appDsByName.has(norm(d.name))) lines.push(`  ⟲ datasheet "${d.name}" [${d.id}] is now in appdata — retire the faction-pack copy (re-author from appdata, drop \`source\`)`)
   }
-  lines.push(...diffByName('datasheet', wh11edSheets.filter((d) => d.source !== 'faction-pack'), appDatasheets, (d) => d.name, (d) => d.name, [],
+  const carried = new Set(wh11edSheets.map((d) => norm(d.name)))
+  lines.push(...diffByName('datasheet', wh11edSheets.filter((d) => d.source !== 'faction-pack'), appDatasheets.filter((d) => !d.familyOnly || carried.has(norm(d.name))), (d) => d.name, (d) => d.name, [],
     (d) => `${(d.points || []).map((p) => `${p.models}=${p.points}pts`).join(', ')} — ${(d.keywords || []).join(', ')}`))
   for (const d of wh11edSheets) {
     const appDs = appDsByName.get(norm(d.name))
     if (!appDs) continue
-    // wh11ed's `points[].note` sometimes marks MFM "copy tax" tiers ("1st-2nd" vs "3rd+"
-    // costing more for spamming the same unit) — appdata's composition join only exposes
-    // the base price, so drop any tier past the first before comparing.
-    // appdata's own unit_composition join sometimes yields duplicate rows for the same
-    // price (multiple miniature slots in one composition) — de-dupe before comparing.
-    // The ordinal can be the whole note ("3rd+") or trail a longer composition
-    // description in parens ("3 Wolf Guard Headtakers (3rd+)") — match either.
-    const isSurchargeTier = (note) => note && /(^|\()(2nd|3rd|4th|5th)/i.test(note)
-    const whPts = [...new Set((d.points || []).filter((p) => !isSurchargeTier(p.note)).map((p) => p.points))].sort((x, y) => x - y)
-    const appPts = [...new Set((appDs.points || []).map((p) => p.points))].sort((x, y) => x - y)
-    if (whPts.length && appPts.length && JSON.stringify(whPts) !== JSON.stringify(appPts)) {
-      lines.push(`  ~ datasheet "${d.name}" points differ: wh11ed=${JSON.stringify(whPts)} appdata=${JSON.stringify(appPts)}`)
-    }
+    // Points are not compared here. They come from the Munitorum Field Manual (owner's rule: the
+    // app for rules, the MFM for points) and `npm run sync:mfm` holds them to it. Against appdata
+    // the comparison only ever printed how the two write a price — a detachment's surcharge as a
+    // second price (Veiled Blade's Extremis on an Assassin), a second Tidewall as "2 = 105" where
+    // the MFM says "+20" — nine lines that never changed and nobody read (until 2026-10-03).
     // Only appdata's `type: 'datasheet'` abilities are genuinely unit-specific and map to
     // wh11ed's `abilities` array — `core`/`faction` are Core Rulebook/army-rule references
     // wh11ed keeps as its own `core`/`faction` summary strings, and `wargear` maps to
@@ -145,17 +139,17 @@ async function syncFaction(slug) {
     }
     for (const n of whAbilities) if (!appAbilityByName.has(n)) lines.push(`  - datasheet "${d.name}" extra ability (not in appdata): "${n}"`)
 
-    // Compare core+faction as ONE merged set, not two separate fields: wh11ed's `faction`
-    // is itself sometimes a comma-joined list (e.g. Aeldari's "Battle Focus, Disparate
-    // Paths"), and appdata inconsistently buckets the same ability name as 'core' on some
-    // datasheets and 'faction' on others (e.g. "Super-heavy Walker") — diffing per-field
-    // would flag that inconsistency as a false difference even when the name set matches.
-    const appCoreFaction = (appDs.abilities || []).filter((a) => a.type === 'core' || a.type === 'faction').map((a) => norm(a.name))
-    const whCoreFaction = [...(d.core || '').split(','), ...(d.faction || '').split(',')].map((s) => norm(s.trim())).filter(Boolean)
-    const missingCF = appCoreFaction.filter((n) => !whCoreFaction.includes(n))
-    const extraCF = whCoreFaction.filter((n) => !appCoreFaction.includes(n))
-    if (missingCF.length || extraCF.length) {
-      lines.push(`  ~ datasheet "${d.name}" core/faction differ: wh11ed=${JSON.stringify([d.core, d.faction].filter(Boolean))} appdata=${JSON.stringify(appCoreFaction)}`)
+    // Core and faction abilities, each against its own bucket in appdata. Until 2026-10-03 they
+    // were compared as one merged set, because appdata files the same name as 'core' on one sheet
+    // and 'faction' on another ("Super-heavy Walker") — and that hid Seraptek Heavy Construct
+    // carrying Super-heavy Walker among its faction abilities while the app (and its errata) has it
+    // as a core one. The standard now is the app's own bucketing, sheet by sheet.
+    for (const [field, type] of [['core', 'core'], ['faction', 'faction']]) {
+      const app = (appDs.abilities || []).filter((a) => a.type === type).map((a) => norm(a.name)).sort()
+      const ours = (d[field] || '').split(',').map((s) => norm(s.trim())).filter(Boolean).sort()
+      if (JSON.stringify(app) !== JSON.stringify(ours)) {
+        lines.push(`  ~ datasheet "${d.name}" ${field} abilities differ: wh11ed=${JSON.stringify(ours)} appdata=${JSON.stringify(app)}`)
+      }
     }
 
     // Stats: match wh11ed's profiles[] to appdata's statlines[] by name; if unmatched AND wh11ed
@@ -195,7 +189,9 @@ async function syncFaction(slug) {
     const whInv = [...new Set((d.profiles || []).map((p) => p.inv).filter(Boolean))]
     const appInvList = appDs.invulnerableSaves || []
     if (whInv.length <= 1 && appInvList.length === 1 && !appInvList[0].miniatureId) {
-      const appInv = appInvList[0].save || appInvList[0].rangedSave
+      // A save against one kind of attack only is filed under that kind (Judiciar: meleeSave 4+,
+      // "Against melee attacks only") — the condition itself is compared just below.
+      const appInv = appInvList[0].save || appInvList[0].rangedSave || appInvList[0].meleeSave
       if ((whInv[0] || null) !== (appInv || null) && (whInv[0] || appInv)) {
         lines.push(`  ~ datasheet "${d.name}" invulnerable save differs: wh11ed=${JSON.stringify(whInv[0] || null)} appdata=${JSON.stringify(appInv || null)}`)
       }
@@ -243,8 +239,12 @@ async function syncFaction(slug) {
         // profile AND left the real one looking unclaimed.
         const pick = (fold) => profiles.filter((p) => fold(w.name).endsWith(fold(p.name)))
           .sort((a, b) => b.name.length - a.name.length)[0]
+        // A hunter profile can carry the weapon's own name (Deathwing Chainfist, whose broken
+        // `hunterProfileKeyword` is "**null**") — the generator names its row "<weapon> – hunter",
+        // and the name alone would pick the ordinary profile.
+        const hunter = /[–-]\s*hunter\b/i.test(w.name) && profiles.find((p) => 'hunterProfileKeyword' in p)
         const profile = profiles.length <= 1 ? profiles[0]
-          : pick(norm) || pick(looseName) || profiles[0]
+          : hunter || pick(norm) || pick(looseName) || profiles[0]
         if (!profile) continue
         claimedProfiles.add(`${item.id}|${profile.type}|${profile.name}`)
         for (const [wf, af] of WEAPON_FIELDS[kind]) {

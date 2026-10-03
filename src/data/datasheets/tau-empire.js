@@ -1139,7 +1139,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -1537,7 +1537,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -2117,7 +2117,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -2866,7 +2866,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -3500,17 +3500,27 @@ export default [
     "flavor": "Farstalker Kinbands are opportunistic mercenaries often operating for years far from the Kroot home world. They are experienced raiders, scouts and infiltrators, setting masterful ambushes from which to unleash the deadly weapons they have amassed over long careers as ruthless bounty hunters.",
     "profiles": [
       {
-        "name": "FARSTALKERS & KILL-BROKER",
+        "name": "Kroot Kill-broker",
         "m": "7\"",
         "t": "3",
         "sv": "6+",
         "w": "1",
         "ld": "7+",
         "oc": "1",
-        "baseSize": "28.5mm / 32mm"
+        "baseSize": "32mm"
       },
       {
-        "name": "KROOT HOUNDS",
+        "name": "Kroot Farstalker",
+        "m": "7\"",
+        "t": "3",
+        "sv": "6+",
+        "w": "1",
+        "ld": "7+",
+        "oc": "1",
+        "baseSize": "28.5mm"
+      },
+      {
+        "name": "Kroot Hound",
         "m": "12\"",
         "t": "3",
         "sv": "6+",
@@ -3529,7 +3539,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "-1",
         "d": "1"
@@ -6016,7 +6026,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -7399,7 +7409,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"

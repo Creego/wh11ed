@@ -1736,7 +1736,7 @@ export default [
         ],
         "range": "18\"",
         "a": "D6+2",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -2148,7 +2148,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -4075,8 +4075,7 @@ export default [
         "tags": [
           "BLAST",
           "DEVASTATING WOUNDS",
-          "INDIRECT FIRE",
-          "C'TAN POWER"
+          "INDIRECT FIRE"
         ],
         "range": "24\"",
         "a": "D6+3",
@@ -4090,12 +4089,11 @@ export default [
         "tags": [
           "IGNORES COVER",
           "DEVASTATING WOUNDS",
-          "TORRENT",
-          "C'TAN POWER"
+          "TORRENT"
         ],
         "range": "18\"",
         "a": "3D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-2",
         "d": "1"
@@ -4105,8 +4103,7 @@ export default [
         "tags": [
           "ANTI-CHARACTER 4+",
           "DEVASTATING WOUNDS",
-          "PRECISION",
-          "C'TAN POWER"
+          "PRECISION"
         ],
         "range": "24\"",
         "a": "1",
@@ -4754,7 +4751,7 @@ export default [
         ],
         "range": "12\"",
         "a": "2D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"

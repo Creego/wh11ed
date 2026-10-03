@@ -361,7 +361,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "0",
         "d": "1"
@@ -375,7 +375,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -388,7 +388,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-1",
         "d": "1"
@@ -546,7 +546,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-1",
         "d": "2"
@@ -724,7 +724,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -996,7 +996,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -1243,7 +1243,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -1866,7 +1866,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "0",
         "d": "1"
@@ -1880,7 +1880,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -2358,7 +2358,7 @@ export default [
         ],
         "range": "18\"",
         "a": "2D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-1",
         "d": "1"
@@ -2487,7 +2487,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-1",
         "d": "1"
@@ -2582,7 +2582,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-1",
         "d": "1"
@@ -2683,7 +2683,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "0",
         "d": "1"
@@ -2806,7 +2806,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "0",
         "d": "1"
@@ -3194,7 +3194,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-1",
         "d": "1"
@@ -3323,7 +3323,7 @@ export default [
         ],
         "range": "12\"",
         "a": "2D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "0",
         "d": "1"
@@ -3420,7 +3420,7 @@ export default [
     "flavor": "Sisters Repentia charge across the battlefield howling prayers, filled with the need for atonement for past misdeeds. Overseen by a stern taskmaster in the form of a Repentia Superior who is ever vigilant for sinfulness, Repentia now exist only to slaughter the enemies of the Emperor, and so rush forward without heed for their own safety. Each seeks to redeem herself with acts of selfless bravery and violent devotion.",
     "profiles": [
       {
-        "name": "REPENTIA SUPERIOR",
+        "name": "Repentia Superior",
         "m": "7\"",
         "t": "3",
         "sv": "3+",
@@ -3431,7 +3431,7 @@ export default [
         "baseSize": "32mm"
       },
       {
-        "name": "SISTERS REPENTIA",
+        "name": "Sister Repentia",
         "m": "7\"",
         "t": "3",
         "sv": "7+",
@@ -3742,7 +3742,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -3755,7 +3755,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-1",
         "d": "1"
@@ -3915,7 +3915,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-2",
         "d": "1"
@@ -4016,7 +4016,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-1",
         "d": "2"
@@ -4041,7 +4041,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "0",
         "d": "1"
@@ -4055,7 +4055,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -4254,7 +4254,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -4435,7 +4435,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "0",
         "d": "1"

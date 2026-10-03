@@ -125,7 +125,7 @@ const nameRelated = (a, b) => {
 // sentence of ours even corresponds to. Returns a reason string when there is nothing to pair.
 export async function eachFactionTextPair(slug, visit, report = () => {}) {
   const appSlug = SLUG_MAP[slug] || slug
-  const bundle = loadAppdataBundle(appSlug) // our recorded departures applied — scripts/lib/appdata-exceptions.mjs
+  const bundle = loadAppdataBundle(appSlug, { family: true }) // our recorded departures applied — scripts/lib/appdata-exceptions.mjs
   const factionMod = await loadModule(path.join(ROOT, 'src/data/factions', `${slug}.js`))
   const en = Object.values(factionMod || {})[0]?.en
   if (!bundle) return 'no appdata bundle found — check SLUG_MAP or spelling'

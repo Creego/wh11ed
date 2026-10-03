@@ -491,7 +491,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -910,7 +910,7 @@ export default [
         ],
         "range": "18\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "0",
         "d": "1"
@@ -1404,7 +1404,7 @@ export default [
         ],
         "range": "18\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "0",
         "d": "1"
@@ -1568,7 +1568,6 @@ export default [
       }
     ],
     "core": "Feel No Pain 5+, Leader",
-    "faction": "Power from Pain",
     "abilities": [
       {
         "name": "Archon of the Poisoned Tongue (Pain)",
@@ -2593,7 +2592,7 @@ export default [
         ],
         "range": "18\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "0",
         "d": "1"
@@ -2759,7 +2758,7 @@ export default [
         ],
         "range": "18\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "0",
         "d": "1"
@@ -2997,7 +2996,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "-1",
         "d": "1"
@@ -3542,7 +3541,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "-1",
         "d": "1"

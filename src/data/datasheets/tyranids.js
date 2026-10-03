@@ -1138,7 +1138,7 @@ export default [
         ],
         "range": "12\"",
         "a": "3D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "7",
         "ap": "-2",
         "d": "1"
@@ -1245,7 +1245,7 @@ export default [
         ],
         "range": "12\"",
         "a": "2D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-1",
         "d": "1"
@@ -1644,7 +1644,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6+3",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-1",
         "d": "1"
@@ -2223,7 +2223,7 @@ export default [
         ],
         "range": "18\"",
         "a": "2D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "2"
@@ -2688,7 +2688,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-1",
         "d": "1"
@@ -2793,7 +2793,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6+1",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-1",
         "d": "1"
@@ -3402,7 +3402,7 @@ export default [
         ],
         "range": "18\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "2",
         "ap": "0",
         "d": "1"
@@ -3626,10 +3626,6 @@ export default [
       {
         "name": "Subterranean Hunter",
         "text": "At the end of the Fight phase, if this unit is not within Engagement Range of one or more enemy units, you can remove it from the battlefield and place it into Strategic Reserves."
-      },
-      {
-        "name": "Serpentine Fiend",
-        "text": "This model can move through terrain features, but cannot end a move within a wall, a floor, etc. This model can be set up or end a move on any floor level of RUINS, but if that level is not the ground floor, it can only do so if its base does not overhang the floor at that level."
       }
     ],
     "composition": [
@@ -3685,7 +3681,7 @@ export default [
         ],
         "range": "18\"",
         "a": "D6+3",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "2"
@@ -4283,7 +4279,7 @@ export default [
         ],
         "range": "18\"",
         "a": "D6+6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-2",
         "d": "2"

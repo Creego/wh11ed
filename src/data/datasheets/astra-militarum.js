@@ -526,7 +526,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -1311,7 +1311,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -1432,7 +1432,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -1556,7 +1556,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -1666,7 +1666,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -2059,7 +2059,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -2610,7 +2610,7 @@ export default [
     "factionKeywords": [
       "Astra Militarum"
     ],
-    "baseSize": "28.5mm"
+    "baseSize": "28mm"
   },
   {
     "id": "cadian-shock-troops",
@@ -2658,7 +2658,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -3079,7 +3079,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -3114,7 +3114,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -3508,7 +3508,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -3804,7 +3804,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -5099,7 +5099,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -5559,7 +5559,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -5864,7 +5864,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -6405,7 +6405,7 @@ export default [
     "flavor": "Colonel-Commissar Ibram Gaunt combines the positions of feared political officer and the regimental commander of the Tanith First and Only. Joined by the regiment’s stealthy and deadly officers and soldiers – those known as Gaunt’s Ghosts – Gaunt’s infamous raids, secretive missions and unlikely victories have cemented his legend.",
     "profiles": [
       {
-        "name": "IBRAM GAUNT",
+        "name": "Ibram Gaunt",
         "m": "6\"",
         "t": "3",
         "sv": "4+",
@@ -6417,7 +6417,47 @@ export default [
         "baseSize": "28.5mm"
       },
       {
-        "name": "TANITH GHOST",
+        "name": "Colm Corbec",
+        "m": "6\"",
+        "t": "3",
+        "sv": "5+",
+        "w": "2",
+        "ld": "7+",
+        "oc": "1",
+        "baseSize": "28.5mm"
+      },
+      {
+        "name": "Elim Rawne",
+        "m": "6\"",
+        "t": "3",
+        "sv": "5+",
+        "w": "2",
+        "ld": "7+",
+        "oc": "1",
+        "baseSize": "28.5mm"
+      },
+      {
+        "name": "Hlaine Larkin",
+        "m": "6\"",
+        "t": "3",
+        "sv": "5+",
+        "w": "2",
+        "ld": "7+",
+        "oc": "1",
+        "baseSize": "28.5mm"
+      },
+      {
+        "name": "’Try Again’ Bragg",
+        "m": "6\"",
+        "t": "3",
+        "sv": "5+",
+        "w": "2",
+        "ld": "7+",
+        "oc": "1",
+        "baseSize": "28.5mm"
+      },
+      {
+        "name": "Oan Mkoll",
         "m": "6\"",
         "t": "3",
         "sv": "5+",
@@ -7161,7 +7201,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -7246,7 +7286,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6+1",
-        "bs": "N/A",
+        "bs": "-",
         "s": "2",
         "ap": "-2",
         "d": "2"
@@ -7271,7 +7311,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -7296,7 +7336,7 @@ export default [
         ],
         "range": "18\"",
         "a": "2D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-2",
         "d": "1"
@@ -7742,7 +7782,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -8061,7 +8101,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -8354,7 +8394,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -8368,7 +8408,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "3",
         "ap": "0",
         "d": "1"
@@ -8540,7 +8580,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -8808,7 +8848,7 @@ export default [
         ],
         "range": "18\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "2"
@@ -8942,7 +8982,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -9209,7 +9249,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -9441,7 +9481,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -9636,7 +9676,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -9843,7 +9883,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -10038,7 +10078,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -10220,7 +10260,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -10412,7 +10452,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -12080,7 +12120,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -12578,7 +12618,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -12831,7 +12871,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "0",
         "d": "1"
@@ -15231,7 +15271,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -15578,7 +15618,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -16106,7 +16146,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
@@ -16242,7 +16282,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "6",
         "ap": "-1",
         "d": "1"
@@ -17140,7 +17180,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6+3",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -17344,7 +17384,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "4",
         "ap": "0",
         "d": "1"
@@ -18484,7 +18524,7 @@ export default [
         ],
         "range": "12\"",
         "a": "D6",
-        "bs": "N/A",
+        "bs": "-",
         "s": "5",
         "ap": "-1",
         "d": "1"
