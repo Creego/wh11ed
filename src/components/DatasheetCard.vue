@@ -1674,10 +1674,16 @@ function abilityStateLabel(st) {
     --ds-kw-pad: var(--ds-tight-kw-pad);
     --ds-mods-bottom: var(--ds-tight-mods-bottom);
     --ds-mods-pad: var(--ds-tight-mods-pad);
-    /* …and the one thing that is about the SCREEN rather than the room: a card this narrow reads
-       as a full-bleed section rather than a card in a gutter. */
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
+  }
+  /* …and the one thing that is about the SCREEN rather than the room: on a phone a card this
+     narrow reads as a full-bleed section rather than a card in a gutter. Asked of the screen
+     itself — a narrow column on a wide one (the rosters desk's unit pane) is a gutter, and the
+     escape there made the card the window's width and slid it out of its pane (2026-10-03). */
+  @media (max-width: 480px) {
+    .ds-card {
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+    }
   }
   .ds-points { margin: var(--ds-space) calc(-1 * var(--ds-pad-x)) calc(-1 * var(--ds-pad-bottom)); padding: 0.45rem var(--ds-pad-x) 0.6rem; }
 

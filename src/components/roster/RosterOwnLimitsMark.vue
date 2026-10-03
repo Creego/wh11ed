@@ -5,6 +5,7 @@
        printed size. -->
   <!-- `inert` inside another button (the tracker's roster picker row): the same mark as plain text,
        with its limits in the tooltip, since a button may not hold a button. -->
+  <!-- `labelled`: the same button saying it in words (a roster's own page, under its name). -->
   <!-- It opens by sliding the points beside it aside (ExpandTransition), and closes the same way. -->
   <ExpandTransition>
     <span
@@ -16,12 +17,16 @@
       v-else-if="lines.length"
       type="button"
       class="olm"
+      :class="{ labelled }"
       data-kw-open
       :title="lines.join(' · ')"
       :aria-label="`${labels.rosterLimitOwnTitle}: ${lines.join(', ')}`"
       @click.stop="show"
     >
       <i class="bi bi-sliders" />
+      <template v-if="labelled">
+        {{ labels.rosterLimitOwnApplied }}
+      </template>
     </button>
   </ExpandTransition>
 </template>
@@ -40,6 +45,7 @@ const props = defineProps({
   // Anything carrying the limit's keys — a roster, or rosterLimit.js's limitOf.
   roster: { type: Object, default: null },
   inert: { type: Boolean, default: false },
+  labelled: { type: Boolean, default: false },
 })
 const { locale } = useLocale()
 const labels = computed(() => ui[locale.value])
@@ -67,5 +73,6 @@ function show(e) {
   vertical-align: middle;
 }
 @media (hover: hover) { .olm:not(.inert):hover { border-color: var(--accent); } }
+.olm.labelled { gap: 0.35rem; padding: 0.2rem 0.5rem; font-size: 0.8rem; }
 .olm.inert { gap: 0.25rem; padding: 0 0.3rem; cursor: inherit; font-size: 0.72rem; }
 </style>

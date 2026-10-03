@@ -26,10 +26,6 @@
          Not inside a game: there this page is a read of a snapshot, with nothing to save. -->
       <RosterCloudToast v-if="!inGame" />
 
-      <!-- One line when the name and the numbers both fit on it, two when they don't — a wrapping
-         flex row rather than a column that stacks unconditionally. It stacked before, which put
-         "2000/2000" on its own line under a name eight characters long; the name asks for 12rem
-         and yields the rest, so only a name that really needs the width pushes the meta down. -->
       <header class="rv-head">
         <h1
           class="rv-name"
@@ -38,22 +34,6 @@
           {{ roster.name || labels.rosterUntitled }}
         </h1>
         <div class="rv-meta">
-          <div
-            v-if="roster.faction"
-            class="rv-points"
-            :class="{ over: !roster.archived && points > limit }"
-          >
-            <span class="rp-used">{{ points }}</span>
-            <!-- A list with no limit shows its total alone. -->
-            <template v-if="Number.isFinite(limit)">
-              <span class="rp-sep">/</span>
-              <span class="rp-cap">{{ limit }}</span>
-            </template>
-          </div>
-          <RosterOwnLimitsMark
-            v-if="roster.faction"
-            :roster="roster"
-          />
           <RouterLink
             v-if="!inGame"
             :to="`/roster/${roster.id}`"
@@ -118,6 +98,29 @@
               {{ roster.archived ? labels.rosterUnarchive : labels.rosterArchive }}
             </button>
           </ActionMenu>
+        </div>
+        <!-- The numbers on a line of their own under the name (owner, 2026-10-03): beside it they
+             left a long name a third of a narrow column. The own-limits mark is said in words here,
+             not as an icon — it changes what the numbers mean. -->
+        <div
+          v-if="showPoints"
+          class="rv-sub"
+        >
+          <div
+            class="rv-points"
+            :class="{ over: overLimit }"
+          >
+            <span class="rp-used">{{ points }}</span>
+            <!-- A list with no limit shows its total alone. -->
+            <template v-if="Number.isFinite(limit)">
+              <span class="rp-sep">/</span>
+              <span class="rp-cap">{{ limit }}</span>
+            </template>
+          </div>
+          <RosterOwnLimitsMark
+            :roster="roster"
+            labelled
+          />
         </div>
       </header>
 
@@ -650,7 +653,8 @@ import { rosterItems } from '../../data/roster/index.js'
 import { buildRosterText } from '../../composables/rosterExport.js'
 import { APP_DATA_VERSION } from '../../data/appDataVersion.js'
 import { loadDatasheets } from '../../data/datasheets/index.js'
-import { allySourceOf, blockNumbers, dispositionCandidates, dispositionOf, groupLabel, entrySummary, hostBlockTotal, leaderTargetsFor, mandatoryEnhancementFor, usesAllies } from '../../composables/rosterEngine.js'
+import { ownLimitsLines } from '../../composables/battleLimitFacts.js'
+import { allySourceOf, effectiveBattle, blockNumbers, dispositionCandidates, dispositionOf, groupLabel, entrySummary, hostBlockTotal, leaderTargetsFor, mandatoryEnhancementFor, usesAllies } from '../../composables/rosterEngine.js'
 import { applyStatMods, splitBearers, grantedKeywordsFrom, resolveModifierEntries, datasheetEntriesFor, aurasReaching, gateStratagems, attachedUnitKeywords, attachedEnhKeys } from '../../composables/rosterStatMods.js'
 import { loadoutItemNames } from '../../composables/rosterModifiers.js'
 import { groupModNotes, modDelta, possibleModNotes } from '../../composables/rosterModNotes.js'
@@ -823,6 +827,12 @@ const { factionData } = useRosterFactionData(() => roster.value?.faction, { alli
 const {
   defOf, curDetachments, limit, points, entryMeta, groupedUnits, attachRole, validation,
 } = useRosterDerived(roster, factionData)
+// The points under the name. On the desk the list's card beside this page already carries them,
+// so the line stays only when it says more than the card: the player's own limits, or a list over
+// its limit (owner, 2026-10-03). A phone has no card beside it and always shows it.
+const overLimit = computed(() => !roster.value?.archived && points.value > limit.value)
+const ownLimits = computed(() => ownLimitsLines(effectiveBattle(roster.value || {}, rosterCore), labels.value).length > 0)
+const showPoints = computed(() => !!roster.value?.faction && (!props.inDesk || ownLimits.value || overLimit.value))
 // A faction keyword tapped in a rule on this screen lists this list's own units first.
 useKeywordContext(() => ({ faction: roster.value?.faction, unitIds: roster.value?.units?.map((u) => u.id) }))
 
@@ -1614,23 +1624,31 @@ function stratKey(strat) {
 
 .roster-view { padding-top: 0.75rem; padding-bottom: 2rem; }
 
-/* One row, always: the numbers and the buttons keep the top-right corner and the name takes
-   whatever is left, wrapping ITS OWN text as many lines as it needs. It stacked before, and then
-   wrapped at a 12rem threshold — which on a phone still dropped "2000/2000" under a two-word name,
-   because the meta alone is over half that width.
-
-   Baseline, not centre: aligned to the name's FIRST line, so a quote-as-a-name doesn't leave the
-   points floating against the middle of a five-line paragraph. */
+/* The name and its two buttons on the first row, the name taking whatever the buttons leave and
+   wrapping its own text; the points and the own-limits line under it, across the whole width.
+   The points shared the first row until 2026-10-03 and left a long name a third of the desk's
+   middle column. Baseline: the buttons align to the name's FIRST line. */
 .rv-head {
-  display: flex;
-  flex-wrap: nowrap;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: baseline;
-  gap: 0.75rem;
+  column-gap: 0.75rem;
   margin: 0.75rem 0 1rem;
   padding-bottom: 0.6rem;
   border-bottom: 2px solid var(--accent);
 }
-.rv-head .rv-name { flex: 1 1 auto; }
+/* The buttons span both rows, so the points sit right under the name instead of under the
+   buttons' height (2026-10-03). */
+.rv-head .rv-meta { grid-column: 2; grid-row: 1 / span 2; align-self: start; }
+.rv-sub {
+  grid-column: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem 0.75rem;
+  margin-top: 0.2rem;
+}
 .rv-name {
   min-width: 0;
   font-family: var(--font-display);
@@ -1652,7 +1670,7 @@ function stratKey(strat) {
 .rp-sep, .rp-cap { color: var(--text-dim); }
 /* A phone spends the width on the name: the meta is what stands between it and the corner. */
 @media (max-width: 480px) {
-  .rv-head { gap: 0.5rem; }
+  .rv-head { column-gap: 0.5rem; }
   .rv-meta { gap: 0.35rem; }
   .rv-points { font-size: 1rem; }
   .hdr-icon { width: 2.1rem; height: 2.1rem; font-size: 0.9rem; }
@@ -1931,6 +1949,8 @@ function stratKey(strat) {
    lists stands beside it. From 1200px a second column holds the card of the unit last opened. */
 .rv-in-desk { height: 100%; padding: 0; }
 .rv-in-desk .rv-top { display: none; }
+/* The column's own top padding is the gap under the desk's heading; the name adds none. */
+.rv-in-desk .rv-head { margin-top: 0; }
 .rv-in-desk .rv-main {
   height: 100%;
   min-height: 0;

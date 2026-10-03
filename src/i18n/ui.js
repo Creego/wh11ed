@@ -424,6 +424,7 @@ export const ui = {
     rosterLimitOwnLine: 'Copies of Battleline',
     rosterLimitOwnTitle: 'Own points limit',
     rosterLimitOwnShort: 'own limits',
+    rosterLimitOwnApplied: 'Custom limits apply',
     rosterLimitDone: 'Done',
     // The floating "back to the half-built list" chip (MobileUtilityBar), shown while a draft
     // is left open behind whatever the reader went off to look up.
@@ -1537,6 +1538,7 @@ export const ui = {
     rosterLimitOwnLine: 'Копии Battleline',
     rosterLimitOwnTitle: 'Свой лимит очков',
     rosterLimitOwnShort: 'свои ограничения',
+    rosterLimitOwnApplied: 'Действуют кастомные лимиты',
     rosterLimitDone: 'Готово',
     rosterResumeDraftBar: 'Вернуться к сборке ростера',
     rosterResumeDraftShort: 'К ростеру',

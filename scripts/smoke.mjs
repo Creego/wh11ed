@@ -18,7 +18,7 @@
 // checklist's.
 //
 // Usage: npm run smoke [-- --widths=390,1280] [--en] [--shots=<dir>] [--only=<substring>]
-/* global document, Node -- the page.evaluate callbacks run in the browser */
+/* global document, Node, getComputedStyle -- the page.evaluate callbacks run in the browser */
 import { mkdirSync } from 'node:fs'
 import { join } from 'node:path'
 import { chromium } from 'playwright-core'
@@ -47,6 +47,9 @@ for (const spec of TEST_ROSTERS) {
   rosters.push(buildTestRoster(spec, { faction, items: rosterItems.items }, { now: Date.now() - rosters.length * 1000 }))
 }
 const byKey = Object.fromEntries(TEST_ROSTERS.map((s, i) => [s.key, rosters[i]]))
+
+// Strips that scroll sideways on purpose: a wide rules table on a phone, the section subnav.
+const SIDEWAYS_BY_DESIGN = '.table-wrap, .subnav-inner'
 
 // ── pages and what each must show ────────────────────────────────────────────────────────────
 // `check(page)` returns a list of failures (strings); empty is a pass.
@@ -195,6 +198,17 @@ for (const width of widths) {
       const raw = await page.evaluate(() => (document.body.innerText.match(/\[(?:gloss|core|def):[^\]]*\]|\*\*[^*\n]{1,60}\*\*/) || [])[0])
       if (raw) failures.push(`${where}: unrendered markup on the page — ${raw}`)
       for (const f of (await p.check?.(page)) || []) failures.push(`${where}: ${f}`)
+      // A column that scrolls on its own hides the same fault from the check above: the desk's unit
+      // card at 1200px was wider than its pane and slid half out of sight (2026-10-03). Run after the
+      // page's check, which may open that card. Strips made to scroll sideways are not columns.
+      for (const c of await page.evaluate((sideways) => [...document.querySelectorAll('#app *')]
+        .filter((el) => /auto|scroll/.test(getComputedStyle(el).overflowX) && el.scrollWidth - el.clientWidth > 1 && !el.matches(sideways))
+        .map((el) => {
+          const box = el.getBoundingClientRect()
+          const wide = [...el.querySelectorAll('*')].filter((k) => k.getBoundingClientRect().right > box.right + 1)
+          const culprit = wide.find((k) => !wide.includes(k.parentElement)) || wide[0]
+          return `.${[...el.classList].join('.')} by ${el.scrollWidth - el.clientWidth}px (${culprit ? `${culprit.tagName.toLowerCase()}.${[...culprit.classList].join('.')}` : '?'})`
+        }), SIDEWAYS_BY_DESIGN)) failures.push(`${where}: a column scrolls sideways — ${c}`)
       // Network noise a static preview cannot avoid (no API behind it) is not the page's error.
       for (const e of errors.filter((x) => !/Failed to load resource|ERR_CONNECTION_REFUSED|net::|blocked by CORS policy/.test(x))) failures.push(`${where}: JS error — ${e}`)
       if (shots) await page.screenshot({ path: join(shots, `${width}${p.path.replace(/[/:]+/g, '_') || '_home'}.png`), fullPage: !mobile })
