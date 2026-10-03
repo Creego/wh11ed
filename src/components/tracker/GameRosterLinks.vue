@@ -12,10 +12,12 @@
       <i class="bi bi-card-list" />
       <span class="grl-who">{{ l.who }}</span>
       <span class="grl-name">{{ l.name }}</span>
-      <!-- inert: a button may not sit inside a link; the limits are in its tooltip. -->
+      <!-- inert: a button may not sit inside a link; the limits are in its tooltip. Icon only —
+           the pill already holds a name and a list title. -->
       <RosterOwnLimitsMark
         :roster="l.roster"
         inert
+        icon-only
       />
     </RouterLink>
   </div>

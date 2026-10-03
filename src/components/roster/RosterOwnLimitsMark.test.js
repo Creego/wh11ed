@@ -19,4 +19,9 @@ describe('RosterOwnLimitsMark', () => {
     expect(w.find('button').exists()).toBe(false)
     expect(w.find('span.olm').text()).toBe('custom limits')
   })
+  it('can be just the icon, with what it means in the tooltip', () => {
+    const w = mount(RosterOwnLimitsMark, { props: { inert: true, iconOnly: true, roster: { battleSize: 'custom', customLimits: { dup: 1 } } } })
+    expect(w.find('span.olm').text()).toBe('')
+    expect(w.find('span.olm').attributes('title')).toMatch(/: .*Copies of a unit: 1/)
+  })
 })

@@ -5,14 +5,16 @@
        printed size. -->
   <!-- `inert` inside another button (the tracker's roster picker row): the same mark as plain text,
        with its limits in the tooltip, since a button may not hold a button. -->
+  <!-- `inert icon-only`: just the icon, where the row is already busy (a finished game's roster pill). -->
   <!-- `labelled`: the same button saying it in words (a roster's own page, under its name). -->
   <!-- It opens by sliding the points beside it aside (ExpandTransition), and closes the same way. -->
   <ExpandTransition>
     <span
       v-if="lines.length && inert"
       class="olm inert"
-      :title="lines.join(' · ')"
-    ><i class="bi bi-sliders" /> {{ labels.rosterLimitOwnShort }}</span>
+      :class="{ 'icon-only': iconOnly }"
+      :title="iconOnly ? `${labels.rosterLimitOwnTitle}: ${lines.join(' · ')}` : lines.join(' · ')"
+    ><i class="bi bi-sliders" /><template v-if="!iconOnly"> {{ labels.rosterLimitOwnShort }}</template></span>
     <button
       v-else-if="lines.length"
       type="button"
@@ -46,6 +48,7 @@ const props = defineProps({
   roster: { type: Object, default: null },
   inert: { type: Boolean, default: false },
   labelled: { type: Boolean, default: false },
+  iconOnly: { type: Boolean, default: false },
 })
 const { locale } = useLocale()
 const labels = computed(() => ui[locale.value])
@@ -75,4 +78,5 @@ function show(e) {
 @media (hover: hover) { .olm:not(.inert):hover { border-color: var(--accent); } }
 .olm.labelled { gap: 0.35rem; padding: 0.2rem 0.5rem; font-size: 0.8rem; }
 .olm.inert { gap: 0.25rem; padding: 0 0.3rem; cursor: inherit; font-size: 0.72rem; }
+.olm.inert.icon-only { padding: 0; font-size: 0.85rem; }
 </style>
