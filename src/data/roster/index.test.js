@@ -794,6 +794,20 @@ describe('wargear names are unambiguous within a unit', () => {
     }
     expect(rows).toBeGreaterThan(9000) // the whole corpus really was walked
   })
+
+  // A drone is a wargear item whose one profile is the gun on the sheet ("Gun Drone" → "Twin pulse
+  // carbine"). Unclaimed, the row stayed on every Crisis team, drones taken or not (player report
+  // e6093db4, 2026-10-03); items.js `stands` names the weapon an item stands for.
+  it('hides a drone\'s weapon when the drone is not taken', async () => {
+    const { weaponRowClaimer, overlaySheet } = await import('../../composables/rosterModifiers.js')
+    const { loadDatasheets } = await import('../datasheets/index.js')
+    const [fac, sheets] = await Promise.all([loadRosterFaction('tau-empire'), loadDatasheets('tau-empire')])
+    const def = fac.units.find((u) => u.id === 'crisis-sunforge-battlesuits')
+    const sheet = sheets.find((d) => d.id === def.id)
+    expect(weaponRowClaimer(def, rosterItems.items)('Twin pulse carbine')).toBeTruthy()
+    const shown = overlaySheet(sheet, { def, entry: { uid: 'x', id: def.id, size: 0 }, items: rosterItems.items }).sheet
+    expect(shown.ranged.map((w) => w.name)).not.toContain('Twin pulse carbine')
+  })
 })
 
 describe('a second copy of a melee weapon is a second row', () => {

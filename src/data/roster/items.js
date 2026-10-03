@@ -4640,5 +4640,55 @@ export default {
     "1201": "Any number of models can each be equipped with one of the following:\n▪ 1 battlesuit support system\n▪ 1 shield generator\n▪ 1 weapon support system",
     "1202": "Any number of models can each be equipped with up to two of the following, and can take duplicates:\n▪ 1 gun drone\n▪ 1 marker drone\n▪ 1 shield drone",
     "1203": "Any number of models can each be equipped with 1 spinemaws."
+  },
+  "stands": {
+    "twin penitent flails": [
+      "Twin penitent flail"
+    ],
+    "fire axe": [
+      "The Fire Axe"
+    ],
+    "kha-vir": [
+      "Kha-vir, the Sword of Sorrows"
+    ],
+    "combi-weapon": [
+      "Damnatus"
+    ],
+    "macro-scalpel": [
+      "Maco-scalpel"
+    ],
+    "leader's bio-weapons": [
+      "Leader’s cult weapons"
+    ],
+    "omnissian power axe": [
+      "Omnissiah power axe"
+    ],
+    "questoris multi-laser": [
+      "Chainbreaker multi-laser"
+    ],
+    "blade tail and whip coils": [
+      "Blade tail"
+    ],
+    "tesla sphere": [
+      "Tesla spheres"
+    ],
+    "weapons of the final triarch": [
+      "Scythe of Dust"
+    ],
+    "gun drone": [
+      "Twin pulse carbine"
+    ],
+    "missile drone": [
+      "Missile pod"
+    ],
+    "recon drone": [
+      "Drone burst cannon"
+    ],
+    "mv15 gun drone": [
+      "Twin pulse blaster"
+    ],
+    "screamer-killer talons": [
+      "Scream-Killer talons"
+    ]
   }
 }

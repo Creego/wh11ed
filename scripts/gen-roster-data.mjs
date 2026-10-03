@@ -303,6 +303,17 @@ for (const p of table('wargear_item_profile')) {
   if (!wgItemTypes.has(p.wargearItemId)) wgItemTypes.set(p.wargearItemId, new Set())
   wgItemTypes.get(p.wargearItemId).add(p.type)
 }
+// The weapon an item STANDS FOR, when its one profile bears another name: a Gun Drone is the twin
+// pulse carbine on the datasheet. Without it the card could not tell that row is the drone's and
+// kept it on a Crisis team that took no drones (player report e6093db4, 2026-10-03). Single-profile
+// items only — a multi-profile item's profiles are modes ("Standard", "Supercharge"), not weapons.
+const MODE_WORDS = /^(melee|ranged|strike|sweep|standard|supercharge|overcharge|focused|dispersed|frag|krak|beam|blast|hunter)$/i
+const wgItemProfiles = new Map()
+for (const p of table('wargear_item_profile')) {
+  if (!['ranged', 'melee'].includes(p.type)) continue
+  if (!wgItemProfiles.has(p.wargearItemId)) wgItemProfiles.set(p.wargearItemId, [])
+  wgItemProfiles.get(p.wargearItemId).push(enOf(p).name || '')
+}
 const woById = new Map(table('wargear_option').map((o) => [o.id, o]))
 const woByGroup = new Map()
 for (const o of table('wargear_option')) {
@@ -2609,7 +2620,18 @@ function genItems() {
   for (const [uuid, id] of itemIds) items[id] = wgItemName.get(uuid) || packItemNames.get(uuid) || ''
   const texts = {}
   for (const [s, id] of textIds) texts[id] = s
-  const data = { items, texts }
+  // Keyed by the item's name (folded), not its id: what reads it matches a sheet's rows by name.
+  const stands = {}
+  for (const [uuid] of itemIds) {
+    const name = wgItemName.get(uuid)
+    const profiles = wgItemProfiles.get(uuid) || []
+    if (!name || profiles.length !== 1 || !profiles[0] || norm(profiles[0]) === norm(name)) continue
+    if (MODE_WORDS.test(profiles[0].trim())) continue // a lone mode left by a lost twin profile, not a weapon
+    const k = norm(name)
+    if (!stands[k]) stands[k] = []
+    if (!stands[k].includes(profiles[0])) stands[k].push(profiles[0])
+  }
+  const data = { items, texts, stands }
   writeOut('items.js', `${HEAD}// Shared wargear item names + group instruction texts, interned across all factions.\nexport default ${stableJson(data)}\n`)
 }
 
