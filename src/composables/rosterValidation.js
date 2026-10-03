@@ -493,7 +493,16 @@ export function validateRoster(roster, { faction, core, items } = {}) {
       for (const [kw, bySize] of Object.entries(g.lim || {})) {
         const cap = bySize[size]
         if (cap == null) continue
-        const n = list.filter((u) => hasKeyword(defOf(u.id), kw)).length
+        // A unit a slotless rule frees does not count against the cap (`free`, generator): each
+        // unit in the ARMY carrying every donor keyword — an Inquisitor — frees one ally carrying
+        // the receiver keywords — an Inquisitorial Agents unit. Until 2026-10-03 it counted, and a
+        // legal Inquisitor + Agents + two Retinue read as one Retinue over.
+        const all = (ks) => (u) => ks.every((k) => hasKeyword(defOf(u.id), k))
+        let freed = 0
+        for (const f of (g.free || []).filter((x) => x.kw === kw)) {
+          freed += Math.min(units.filter(all(f.donor)).length, list.filter(all(f.recv)).filter((u) => hasKeyword(defOf(u.id), kw)).length)
+        }
+        const n = list.filter((u) => hasKeyword(defOf(u.id), kw)).length - freed
         if (n) used.push(kw)
         if (n > cap) add('allyOverLimit', 'error', { params: { group: g.name, kw, count: n, limit: cap } })
       }

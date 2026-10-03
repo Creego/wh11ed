@@ -2303,6 +2303,27 @@ export default {
           "strike-force": 1
         }
       },
+      "free": [
+        {
+          "kw": "Retinue",
+          "donor": [
+            "Inquisitor"
+          ],
+          "recv": [
+            "Inquisitorial Agents"
+          ]
+        },
+        {
+          "kw": "Retinue",
+          "donor": [
+            "Character",
+            "Voidfarers"
+          ],
+          "recv": [
+            "Voidsmen-At-Arms"
+          ]
+        }
+      ],
       "up": {
         "imperial-agents:inquisitor-draxus": {
           "1": 110
@@ -2336,6 +2357,7 @@ export default {
         },
         "imperial-agents:inquisitorial-agents": {
           "6": 60,
+          "11": 120,
           "12": 120
         },
         "imperial-agents:inquisitor-coteaz": {

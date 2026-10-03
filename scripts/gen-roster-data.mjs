@@ -329,7 +329,7 @@ const bmlByDs = new Map() // datasheetId -> [{miniatureId, opts:[{wargearOptionI
 
 // ---- Per-faction generation ------------------------------------------------------------
 
-const report = { factions: 0, units: 0, linked: 0, unlinked: [], missingBundle: [], noPoints: [], stale: [], loadoutFixed: [], price: { repriced: 0, collapsed: 0, chapterOverrides: 0, noUnit: [], noBracket: [], stepDrift: [] }, bundle: { rewritten: 0, quantified: 0, unclaimed: [], unbacked: [] }, limit: { limited: 0, counted: 0, bundled: 0, ambiguous: 0, unmatched: 0, fromProse: 0, fromProseScaled: 0, fromProseConditional: [], perModelEach: [], perModelBudget: [], scaledDrift: [], perCopy: 0, conflict: [], merged: 0 }, rep: { resolved: 0, noMatch: [], unresolved: [] }, keep: { resolved: 0, unresolved: [] }, staticDefaults: 0, paidDefault: { units: 0, odd: [] }, sharedDets: 0, leadKw: { resolved: 0, unresolved: [] }, proseAttach: [], proseAttachAdded: 0, packAttach: [], packAttachAdded: 0, mirror: { rules: 0, added: [], unread: [] }, hosts: { read: [], unread: [] }, comp: { units: 0, brackets: 0, rejected: [] }, detTag: { tagged: 0, drift: [] }, alleg: { units: 0, kinds: new Set() }, defaultsMerged: [], allies: { groups: 0, units: 0, empty: [], missing: [], narrowed: [] }, pack: { ...emptyPackReport(), dropped: [] } }
+const report = { factions: 0, units: 0, linked: 0, unlinked: [], missingBundle: [], noPoints: [], stale: [], loadoutFixed: [], price: { repriced: 0, collapsed: 0, chapterOverrides: 0, noUnit: [], noBracket: [], stepDrift: [] }, bundle: { rewritten: 0, quantified: 0, unclaimed: [], unbacked: [] }, limit: { limited: 0, counted: 0, bundled: 0, ambiguous: 0, unmatched: 0, fromProse: 0, fromProseScaled: 0, fromProseConditional: [], perModelEach: [], perModelBudget: [], scaledDrift: [], perCopy: 0, conflict: [], merged: 0 }, rep: { resolved: 0, noMatch: [], unresolved: [] }, keep: { resolved: 0, unresolved: [] }, staticDefaults: 0, paidDefault: { units: 0, odd: [] }, sharedDets: 0, leadKw: { resolved: 0, unresolved: [] }, proseAttach: [], proseAttachAdded: 0, packAttach: [], packAttachAdded: 0, mirror: { rules: 0, added: [], unread: [] }, hosts: { read: [], unread: [] }, comp: { units: 0, brackets: 0, rejected: [] }, detTag: { tagged: 0, drift: [] }, alleg: { units: 0, kinds: new Set() }, defaultsMerged: [], dnu: [], allies: { groups: 0, units: 0, empty: [], missing: [], narrowed: [] }, pack: { ...emptyPackReport(), dropped: [] } }
 
 // …and two datasheets whose attachment appdata states in PROSE and in no table at all. The Ogryn
 // Bodyguard and Nork Deddog "must join one COMMAND SQUAD unit from your army" (their Loyal
@@ -1444,6 +1444,14 @@ const alliedTakers = groupBy(table('faction_keyword_allied_faction'), 'alliedFac
 const alliedParents = groupBy(table('allied_faction_parent_faction_keyword'), 'alliedFactionId')
 const alliedSheets = groupBy(table('allied_faction_datasheet'), 'alliedFactionId')
 const alliedKeywords = groupBy(table('allied_faction_keyword'), 'alliedFactionId')
+// "For each INQUISITOR unit you include in your army, you can include one INQUISITORIAL AGENTS unit
+// that does not count towards the number of RETINUE units" — appdata records it as a slotless
+// group on one keyword cap: every unit carrying ALL the donor keywords frees one unit carrying the
+// receiver keywords from that cap. Unread until 2026-10-03, when auditing Agents of the Imperium:
+// a legal Inquisitor + Inquisitorial Agents + two Retinue units read as over the Retinue limit.
+const slotlessByCap = groupBy(table('allied_faction_keyword_slotless_keyword_group'), 'alliedFactionKeywordId')
+const slotlessDonors = groupBy(table('allied_faction_keyword_slotless_keyword_group_donor_keyword'), 'alliedFactionKeywordSlotlessKeywordGroupId')
+const slotlessReceivers = groupBy(table('allied_faction_keyword_slotless_keyword_group_receiver_keyword'), 'alliedFactionKeywordSlotlessKeywordGroupId')
 const alliedPoints = groupBy(table('allied_faction_points_limit'), 'alliedFactionId')
 const alliedDets = groupBy(table('allied_faction_required_detachment'), 'alliedFactionId')
 
@@ -1485,11 +1493,34 @@ async function alliedPricesOf(slug) {
     for (const [name, prices] of allied) {
       const diff = {}
       for (const [models, p] of prices) if (own.get(name)?.get(models)?.base !== p.base) diff[models] = p.base
-      if (Object.keys(diff).length) out.set(name, diff)
+      out.set(name, { diff, priced: prices })
     }
   }
   alliedPriceCache.set(slug, out)
   return out
+}
+
+// The allied price of a size the MFM's allied list does not print. appdata keeps a datasheet's
+// allied prices as a parallel list of compositions marked with a grouping keyword (IMPERIUM, for
+// Agents of the Imperium in another Imperium army), and the MFM prints only some of its sizes:
+// Inquisitorial Agents are 6 and 12 models there, while appdata also prices 7-11 — 100 in the
+// Agents' own army, 120 as allies. Without this the allied 7-11 kept the native 100 (found on
+// 2026-10-03, auditing Agents of the Imperium). Same rule as pickPrices: the MFM wins wherever it
+// speaks, and appdata answers only where it is silent — keyed by the size's largest model count,
+// which is what the client's repriced() reads first.
+function alliedCompositionPrices(datasheetId, priced, native) {
+  const extra = {}
+  for (const c of compByDs.get(datasheetId) || []) {
+    if (!c.referenceGroupingKeywordId || !(c.points > 0)) continue
+    const rows = compMinis.get(c.id) || []
+    if (!rows.length) continue
+    const min = rows.reduce((a, r) => a + r.min, 0)
+    const max = rows.reduce((a, r) => a + r.max, 0)
+    if (priced?.has(min) || priced?.has(max)) continue
+    const own = native?.sizes?.find((z) => z.per[0] === min && z.per[1] === max)
+    if (own && own.pts !== c.points) extra[max] = c.points
+  }
+  return extra
 }
 
 async function alliesFor(factionKeywordId, ownUnitIds, slug) {
@@ -1523,8 +1554,10 @@ async function alliesFor(factionKeywordId, ownUnitIds, slug) {
       const id = `${srcSlug}:${unitId}`
       ids.push(id)
       const prices = await alliedPricesOf(srcSlug)
-      const diff = prices?.get(normApost(enOf(dsById.get(row.datasheetId)).name || ''))
-      if (diff) up[id] = diff
+      const hit = prices?.get(normApost(enOf(dsById.get(row.datasheetId)).name || ''))
+      const native = (await loadModule(path.join(ROOT, 'src/data/roster', `${srcSlug}.js`)))?.default?.units?.find((u) => u.id === unitId)
+      const diff = { ...(hit?.diff || {}), ...(hit ? alliedCompositionPrices(row.datasheetId, hit.priced, native) : {}) }
+      if (Object.keys(diff).length) up[id] = diff
     }
     if (!ids.length) { report.allies.empty.push(`${slug}: ${group.name}`); continue }
     group.ids = ids.sort()
@@ -1540,6 +1573,18 @@ async function alliesFor(factionKeywordId, ownUnitIds, slug) {
       lim[kw][size] = r.limitCount
     }
     if (Object.keys(lim).length) group.lim = lim
+    // `free`: [{ kw, donor: [keywords], recv: [keywords] }] — see slotlessByCap. One per rule, not per
+    // battle size: appdata repeats each group on every size's row of the same cap.
+    const free = new Map()
+    for (const r of alliedKeywords.get(af.id) || []) {
+      for (const g of slotlessByCap.get(r.id) || []) {
+        const donor = (slotlessDonors.get(g.id) || []).map((d) => kwName.get(d.keywordId)).filter(Boolean).sort()
+        const recv = (slotlessReceivers.get(g.id) || []).map((d) => kwName.get(d.keywordId)).filter(Boolean).sort()
+        const kw = kwName.get(r.keywordId)
+        if (kw && donor.length && recv.length) free.set(`${kw}|${donor}|${recv}`, { kw, donor, recv })
+      }
+    }
+    if (free.size) group.free = [...free.values()]
     if (af.isMutuallyExclusiveKeywordLimit) group.mutex = 1
     const pts = {}
     for (const r of alliedPoints.get(af.id) || []) if (bsSlug.get(r.battleSizeId)) pts[bsSlug.get(r.battleSizeId)] = r.pointsLimit
@@ -2178,6 +2223,11 @@ const ENH_REQ_FIXES = {
   'Reletavistic Tether': ['Transcendent C’tan'],
   'Decoy Targets': ['Callidus Assassin'],
   'Esoteric Explosives': ['Culexus Assassin'],
+  // The other two of the four Extremis abilities, missing until 2026-10-03: an Eversor and a
+  // Vindicare in a Veiled Blade army were 15 and 20 points too cheap and lacked the ability (found
+  // auditing Agents of the Imperium). `--check` now fails on any enhancement still pointing at DNU.
+  'Intraneural Biotech': ['Eversor Assassin'],
+  'Micromelta Rounds': ['Vindicare Assassin'],
 }
 
 // Distinct from both of the above: a chunk of "(Upgrade)"-type enhancements (an optional pick,
@@ -2267,6 +2317,9 @@ function buildEnhancement(e, nameToDsId, idMap) {
     enh.req = [{ kw: ENH_REQ_FIXES[name] }]
     enh.mandatory = 1
   }
+  // appdata's "do not use" placeholder left in place: no datasheet carries it, so nobody can take
+  // the enhancement. A new one is a gate (`--check`), not a note — two sat unnoticed until 2026-10-03.
+  if ((enh.req || []).some((r) => (r.kw || []).includes('DNU'))) report.dnu.push(name)
   // Attach targets this enhancement grants its bearer, resolved to this faction's own unit ids
   // (a target on another faction's datasheet has nothing to attach to in this roster and drops).
   const attach = (enhAttachByEnh.get(e.id) || [])
@@ -2810,6 +2863,13 @@ if (report.unlinked.length) {
   console.log(`  unlinked units (no datasheet page — slugified id, no deep link):`)
   for (const u of report.unlinked.slice(0, 40)) console.log(`    - ${u}`)
   if (report.unlinked.length > 40) console.log(`    … +${report.unlinked.length - 40} more`)
+}
+
+// An enhancement nobody can take fails BOTH runs, ahead of everything else: a stale-file verdict
+// would otherwise name the wrong cause, and a plain run would write the broken data.
+if (report.dnu.length) {
+  console.log(`\n  ✗ ${report.dnu.length} enhancement(s) nobody can take — appdata requires its "DNU" placeholder keyword; name the unit in ENH_REQ_FIXES: ${[...new Set(report.dnu)].join(', ')}`)
+  return 1
 }
 
 // --check contract, matching the other sync checks: report what would change, write nothing, and

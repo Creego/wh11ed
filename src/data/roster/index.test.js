@@ -9,7 +9,7 @@ import rosterCore from './core.js'
 import rosterItems from './items.js'
 import { loadRosterFaction } from './index.js'
 import { allySourceOf, leadTypeFor, optionItems, optionLabel, unitWargearPoints, unitPoints, modelsPerMini, defaultLoadoutLines, wargearGroupCap, wargearGroupLive, bucketOf, grantedKeywordsFor, swapRoom } from '../../composables/rosterEngine.js'
-import { duplicateLimit } from '../../composables/rosterValidation.js'
+import { duplicateLimit, validateRoster } from '../../composables/rosterValidation.js'
 import conditionalKeywords from '../conditionalKeywords.json'
 import { loadoutItemCounts } from '../../composables/rosterModifiers.js'
 
@@ -56,6 +56,32 @@ describe('allied units', () => {
     expect(leadTypeFor(artemis, { uid: 'a' }, defOf('imperial-agents:aquila-kill-team'))).toBe('leader')
   })
 
+  // The MFM's allied list prints Inquisitorial Agents at 6 and 12 models; appdata also prices
+  // 7-11, 120 as allies. Until 2026-10-03 that size kept the Agents' own 100.
+  it('take the allied price of a size the MFM does not print from appdata', async () => {
+    const am = await loadRosterFaction('astra-militarum', { allies: true })
+    const ally = am.units.find((u) => u.id === 'imperial-agents:inquisitorial-agents')
+    expect(ally.sizes.map((s) => [s.per.join('-'), s.pts])).toEqual([['6-6', 60], ['7-11', 120], ['12-12', 120]])
+    const own = (await loadRosterFaction('imperial-agents')).units.find((u) => u.id === 'inquisitorial-agents')
+    expect(own.sizes.map((s) => s.pts)).toEqual([50, 100, 100])
+  })
+
+  // "For each INQUISITOR unit you include, one INQUISITORIAL AGENTS unit does not count towards the
+  // RETINUE units your army can include" (and Voidfarers characters for Voidsmen-at-Arms) — the
+  // slotless rows of allied_faction_keyword. Read since 2026-10-03.
+  it('let an Inquisitor free one Inquisitorial Agents unit from the Retinue cap', async () => {
+    const am = await loadRosterFaction('astra-militarum', { allies: true })
+    const u = (k, id) => ({ uid: k, id: `imperial-agents:${id}`, size: 0 })
+    const retinue = (extra) => validateRoster({
+      faction: 'astra-militarum', detachments: [am.detachments[0].name], battleSize: 'strike-force',
+      units: [{ uid: 'c', id: 'cadian-command-squad', size: 0, warlord: true }, ...extra],
+    }, { faction: am, core: rosterCore, items: rosterItems.items }).issues.filter((i) => i.code === 'allyOverLimit')
+    const squads = [u('b', 'inquisitorial-agents'), u('d', 'exaction-squad'), u('e', 'vigilant-squad')]
+    expect(retinue(squads)).toHaveLength(1)
+    expect(retinue([u('a', 'inquisitor'), ...squads])).toEqual([])
+    expect(retinue([u('a', 'navigator'), u('v', 'voidsmen-at-arms'), u('d', 'exaction-squad'), u('e', 'vigilant-squad')])).toEqual([])
+  })
+
   it('never name a bare target from another bundle, in any army', async () => {
     for (const { slug } of factions) {
       const data = await loadRosterFaction(slug, { allies: true })
@@ -65,6 +91,25 @@ describe('allied units', () => {
         for (const l of u.leads || []) expect(l.to.startsWith(`${src}:`), `${slug}: ${u.id} → ${l.to}`).toBe(true)
       }
     }
+  })
+})
+
+// appdata requires a "DNU" (do not use) placeholder keyword on the four Extremis enhancements of
+// Veiled Blade Elimination Force; the generator names the one Assassin each belongs to. Eversor and
+// Vindicare were missing until 2026-10-03 — nobody could take them, and those two Assassins played
+// 15 and 20 points too cheap there.
+describe('Veiled Blade Elimination Force', () => {
+  it('gives each Extremis enhancement to its one Assassin, mandatory', async () => {
+    const ia = await loadRosterFaction('imperial-agents')
+    const det = ia.detachments.find((d) => d.name === 'Veiled Blade Elimination Force')
+    const holder = Object.fromEntries(det.enhancements.map((e) => [e.name, e.req?.[0]?.kw?.[0]]))
+    expect(holder).toEqual({
+      'Decoy Targets': 'Callidus Assassin',
+      'Esoteric Explosives': 'Culexus Assassin',
+      'Intraneural Biotech': 'Eversor Assassin',
+      'Micromelta Rounds': 'Vindicare Assassin',
+    })
+    expect(det.enhancements.every((e) => e.mandatory)).toBe(true)
   })
 })
 

@@ -6183,14 +6183,12 @@ export default {
           "uncounted": 1,
           "req": [
             {
-              "fac": [
-                "Agents of the Imperium"
-              ],
               "kw": [
-                "DNU"
+                "Eversor Assassin"
               ]
             }
-          ]
+          ],
+          "mandatory": 1
         },
         {
           "name": "Micromelta Rounds",
@@ -6199,14 +6197,12 @@ export default {
           "uncounted": 1,
           "req": [
             {
-              "fac": [
-                "Agents of the Imperium"
-              ],
               "kw": [
-                "DNU"
+                "Vindicare Assassin"
               ]
             }
-          ]
+          ],
+          "mandatory": 1
         }
       ]
     }

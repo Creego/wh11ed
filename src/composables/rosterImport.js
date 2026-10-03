@@ -243,6 +243,7 @@ function parseGw(text) {
   let entries = []
   let group = null       // the `Attached Unit N` this unit belongs to, if any
   let groups = 0         // …numbered here when the block is headed by its members' names instead
+  let host = null        // the last unit not marked "->" — what an arrowed unit below it joins
   let inAttached = false // inside the ATTACHED UNITS section
   let seenHeader = false
   let labelled = false   // a labelled header field has been read, so the next '+' row closes it
@@ -365,7 +366,19 @@ function parseGw(text) {
         continue
       }
       flush()
-      unit = { name, pts, group, role: null, warlord: false, enh: null, alleg: null, attachedAs: null }
+      // "-> Inquisitor (65 points)" under a unit's block: a character joined to the unit above it,
+      // written that way in place of an Attached Unit block (a Custodes list in the import corpus,
+      // 2026-10-03 — read as a datasheet called "-> Inquisitor", all five of its characters were
+      // lost). Both go into one unlabelled group, so the datasheets decide who leads whom, exactly
+      // as for a block with no "Attached as:" lines; several arrows under one unit share its group.
+      const arrow = name.match(/^(?:->|→)\s*(.+)$/)
+      if (arrow && host) {
+        if (!host.group) host.group = `a${++groups}`
+        unit = { name: arrow[1].trim(), pts, group: host.group, role: null, warlord: false, enh: null, alleg: null, attachedAs: null }
+        continue
+      }
+      unit = { name: arrow ? arrow[1].trim() : name, pts, group, role: null, warlord: false, enh: null, alleg: null, attachedAs: null }
+      host = unit
       continue
     }
 

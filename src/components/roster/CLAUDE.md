@@ -540,7 +540,10 @@ bundles already existed.
 
 **Prices are the allied ones** where the MFM prints a second list: the `up` map on a group is the
 same mechanism as a Chapter's `unitPoints` (model count → points, only where it differs). Draxus is
-75 points in her own army and 110 in somebody else's.
+75 points in her own army and 110 in somebody else's. A size the MFM's allied list does not print
+takes appdata's allied row — compositions carrying a `referenceGroupingKeywordId` (IMPERIUM for the
+Agents) are that parallel list — keyed by the size's largest model count: Inquisitorial Agents 7-11
+are 120 as allies (until 2026-10-03 they kept the native 100). The MFM still wins wherever it speaks.
 
 **What the runtime adds to the data.** `validateRoster` applies the Detachment gate (`allyLocked`),
 the per-keyword caps (`allyOverLimit`), the either/or of the Knight and Titan rules — "either one

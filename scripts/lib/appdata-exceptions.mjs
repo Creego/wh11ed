@@ -27,6 +27,10 @@
 //                    has them now.
 //   wargear-rule   — a typo in a wargear option: `from` must occur in appdata's text, `to` replaces
 //                    it; `ours` is the corrected option as our sheet prints it.
+//   enhancement-text — an enhancement GW's errata rewrote and appdata still prints the old way:
+//                    `detachment` + `enhancement` name it, `from` must occur in appdata's rules
+//                    text, `to` is the whole new text (appdata's own markup), `ours` must occur in
+//                    the enhancement's body in src/data/factions/<slug>.js.
 import fs from 'node:fs'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
@@ -67,16 +71,36 @@ export const APPDATA_EXCEPTIONS = [
     why: 'appdata typo: "up 2 Raptors" (missing "to").',
     source: 'every other "For every 5 models in this unit, up to 2 …" option in appdata',
   },
+  {
+    id: 'ia-intraneural-biotech-errata',
+    kind: 'enhancement-text',
+    slug: 'imperial-agents',
+    detachment: 'Veiled Blade Elimination Force',
+    enhancement: 'Intraneural Biotech',
+    from: 'Heroic Intervention or Counter‑offensive Stratagem for 0CP',
+    to: '**EVERSOR ASSASSIN** model only. You can target this unit with the Heroic Intervention Stratagem, regardless of any other uses of that Stratagem this phase. If you do:\n■ That use is -1 CP.\n■ That use does not prevent any uses of that Stratagem on other units this phase.',
+    ours: 'That use is -1 CP',
+    why: 'The Codex: Imperial Agents errata of 30 September 2026 rewrote the enhancement; appdata 972 keeps the old card (0 CP, Heroic Intervention or Counter-offensive) while its own detachment rule already prints the new wording.',
+    source: 'Warhammer 40,000: The App 2.7.1 → Codex: Imperial Agents → Updates & Errata, "Veiled Blade Elimination Force Detachment, Intraneural Biotech enhancement" (checked 2026-10-03)',
+  },
 ]
 
 const appSlugOf = (slug) => SLUG_MAP[slug] || slug
 const bundlePath = (appSlug) => path.join(APPDATA, 'factions', `${appSlug}.json`)
 const sheetOf = (bundle, name) => (bundle?.datasheets || []).find((d) => norm(d.name) === norm(name))
 const itemOf = (ds, name) => (ds?.wargear || []).find((w) => norm(w.name) === norm(name))
+const enhOf = (bundle, e) => (bundle?.detachments || []).find((d) => norm(d.name) === norm(e.detachment))
+  ?.enhancements?.find((x) => norm(x.name) === norm(e.enhancement))
+// What an entry patches: a datasheet for most kinds, an enhancement for `enhancement-text`.
+const targetOf = (bundle, e) => (e.kind === 'enhancement-text' ? enhOf(bundle, e) : sheetOf(bundle, e.datasheet))
 
 // What appdata says now, for the one place an entry patches — compared with what the entry
 // expects to find. Returns null when appdata still has the error, or the reason it does not.
 function appdataDrift(e, ds) {
+  if (e.kind === 'enhancement-text') {
+    if (!ds) return `enhancement "${e.enhancement}" is gone from ${e.detachment}`
+    return (ds.rules || '').includes(e.from) ? null : `its text no longer has "${e.from}"`
+  }
   if (!ds) return `datasheet "${e.datasheet}" is gone from appdata`
   if (e.kind === 'weapon-profile') {
     const item = itemOf(ds, e.item)
@@ -96,6 +120,7 @@ function appdataDrift(e, ds) {
 function patchSheet(e, ds) {
   if (e.kind === 'weapon-profile') itemOf(ds, e.item).profiles.unshift({ ...e.add, tags: [...e.add.tags] })
   else if (e.kind === 'wargear-rule') for (const r of ds.wargearRules) r.rules = r.rules.replace(e.from, e.to)
+  else if (e.kind === 'enhancement-text') ds.rules = e.to
 }
 
 // A faction bundle with every exception applied. A fresh copy each call: loadJson caches the raw
@@ -110,7 +135,7 @@ export function loadAppdataBundle(slugOrAppSlug) {
   if (!entries.length) return raw
   const bundle = structuredClone(raw)
   for (const e of entries) {
-    const ds = sheetOf(bundle, e.datasheet)
+    const ds = targetOf(bundle, e)
     if (!appdataDrift(e, ds)) patchSheet(e, ds)
   }
   return bundle
@@ -119,6 +144,14 @@ export function loadAppdataBundle(slugOrAppSlug) {
 // Our side: does the sheet we ship still carry the correction? Needs no appdata, so it also runs
 // as a test (appdata-exceptions.test.js) — a regeneration that lost an entry fails `npm test`.
 export async function oursCarries(e) {
+  if (e.kind === 'enhancement-text') {
+    const ffile = path.join(ROOT, 'src/data/factions', `${e.slug}.js`)
+    const mod = await import(pathToFileURL(ffile).href)
+    const data = Object.values(mod).find((v) => v?.en)?.en
+    const enh = (data?.detachments || []).find((d) => norm(d.name) === norm(e.detachment))?.enhancements?.find((x) => norm(x.name) === norm(e.enhancement))
+    if (!enh) return `our enhancement "${e.enhancement}" is missing`
+    return (enh.body || '').includes(e.ours) ? null : `our "${e.enhancement}" does not read "${e.ours}"`
+  }
   const file = path.join(ROOT, 'src/data/datasheets', `${e.slug}.js`)
   if (!fs.existsSync(file)) return `src/data/datasheets/${e.slug}.js is missing`
   const sheets = (await import(pathToFileURL(file).href)).default
@@ -138,7 +171,7 @@ export async function checkAppdataExceptions() {
     if (ids.has(e.id)) problems.push(`${e.id}: duplicate id`)
     ids.add(e.id)
     if (!e.why || !e.source) problems.push(`${e.id}: an exception needs a "why" and a "source"`)
-    const drift = appdataDrift(e, sheetOf(loadJson(bundlePath(appSlugOf(e.slug))), e.datasheet))
+    const drift = appdataDrift(e, targetOf(loadJson(bundlePath(appSlugOf(e.slug))), e))
     if (drift) problems.push(`${e.id}: appdata changed — ${drift}. GW fixed or reworked it: re-read, then drop or update the entry.`)
     const missing = await oursCarries(e)
     if (missing) problems.push(`${e.id}: our data lost the correction — ${missing}. Regenerated without the registry? gen-datasheets applies it.`)
