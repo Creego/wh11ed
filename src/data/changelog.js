@@ -22,6 +22,34 @@
 
 export const changelog = [
   {
+    version: '2.7.13',
+    date: '2026-10-03',
+    en: [
+      { h: 'Rosters: archive' },
+      'You can move a roster to the archive from the “⋯” menu on its card or page. The archive is a new tab after Drafts. Rosters in the archive are not checked for errors and do not appear when you pick a roster for a game. You can bring a roster back from the same menu.',
+      { h: 'Rosters: points limit' },
+      'When you create a roster, you now pick the points limit first, before the faction. You can pick 1000, 2000, 3000, Custom or No limit. Each option lists its limits: Detachment Points, enhancements, unit copies and Battleline copies.',
+      'No limit removes all limits. The roster shows only its total points.',
+      'With Custom you can set your own limits. To do this, press the button next to the limit field. Such a roster has a mark next to its points. Tap it to see the limits.',
+      'If you lower the limit and your detachments no longer fit, the Next button does not work. The reason is shown next to it.',
+      { h: 'Fixes' },
+      'Upgrades such as Furious Assault now work for the whole unit, including attached characters. If a squad has the upgrade, it also shows on its Leaders’ cards. If a character has it, it also shows on the squad’s card. This covers 30 upgrades in 17 factions.',
+      'The detachment list now shows tags such as DYNASTY or DOCTRINES. You cannot take two detachments with the same tag. When you pick one, the others with that tag leave the list. Before, you could pick both.',
+    ],
+    ru: [
+      { h: 'Ростеры: архив' },
+      'Ростер можно убрать в архив через меню «⋯» на его карточке или странице. Архив — это новая вкладка после «Черновиков». Ростеры в архиве не проверяются на ошибки и не появляются при выборе ростера на партию. Вернуть ростер из архива можно через то же меню.',
+      { h: 'Ростеры: лимит очков' },
+      'При создании ростера лимит очков теперь выбирается первым, до фракции. Можно выбрать 1000, 2000, 3000, «Свой» или «Без лимита». У каждого варианта указаны его ограничения: Detachment Points, улучшения, копии юнита и копии Battleline.',
+      '«Без лимита» снимает все ограничения. Ростер показывает только сумму очков.',
+      'При лимите «Свой» можно задать свои ограничения. Для этого нажмите кнопку рядом с полем лимита. У такого ростера рядом с очками есть значок. Нажмите на него, чтобы увидеть ограничения.',
+      'Если вы уменьшили лимит и детачменты в него не помещаются, кнопка «Далее» не работает. Рядом с ней написана причина.',
+      { h: 'Исправления' },
+      'Апгрейды вроде Furious Assault теперь действуют на весь отряд вместе с прикреплёнными персонажами. Если апгрейд у отряда, он виден и на карточках его лидеров. Если апгрейд у персонажа, он виден и на карточке отряда. Это касается 30 апгрейдов в 17 фракциях.',
+      'В списке детачментов теперь видны теги, например DYNASTY или DOCTRINES. Два детачмента с одним тегом взять нельзя. Когда вы выбираете один, остальные с тем же тегом исчезают из списка. Раньше можно было выбрать оба.',
+    ],
+  },
+  {
     version: '2.7.12',
     date: '2026-10-02',
     en: [

@@ -651,7 +651,7 @@ import { buildRosterText } from '../../composables/rosterExport.js'
 import { APP_DATA_VERSION } from '../../data/appDataVersion.js'
 import { loadDatasheets } from '../../data/datasheets/index.js'
 import { allySourceOf, blockNumbers, dispositionCandidates, dispositionOf, groupLabel, entrySummary, hostBlockTotal, leaderTargetsFor, mandatoryEnhancementFor, usesAllies } from '../../composables/rosterEngine.js'
-import { applyStatMods, splitBearers, grantedKeywordsFrom, resolveModifierEntries, datasheetEntriesFor, aurasReaching, gateStratagems, attachedUnitKeywords } from '../../composables/rosterStatMods.js'
+import { applyStatMods, splitBearers, grantedKeywordsFrom, resolveModifierEntries, datasheetEntriesFor, aurasReaching, gateStratagems, attachedUnitKeywords, attachedEnhKeys } from '../../composables/rosterStatMods.js'
 import { loadoutItemNames } from '../../composables/rosterModifiers.js'
 import { groupModNotes, modDelta, possibleModNotes } from '../../composables/rosterModNotes.js'
 import { coreModifiers } from '../../data/rosterModifiers/coreRules.js'
@@ -1095,6 +1095,8 @@ function attachmentCtxOf(entry) {
       if (n) set.add(n)
       return set
     }, new Set()),
+    // …and what every other member of this Attached unit carries, for an Upgrade's "This unit…".
+    attachedEnhKeys: attachedEnhKeys(entry, units, (u) => u.enh || mandatoryEnhancementFor(defOf(u.id), curDetachments.value)?.name || null),
   }
 }
 

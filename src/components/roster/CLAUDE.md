@@ -3803,6 +3803,15 @@ radiating entry through `ref.unit` — the datasheet the rule is printed on. An 
 - `aurasReaching` finds the source by `enhKey(u.enh) === enhKey(rec.name)` over the roster list, so
   `rosterUnits` now carries `enh` (chosen or mandatory, as everywhere else in this feature).
 
+**An Upgrade addresses the whole Attached unit** (2026-10-03, a player's report on Furious Assault).
+"X unit only. This unit's melee attacks have…" is bought for a unit, and 19.04 makes it every model
+of the Attached unit that unit is part of — so its effects carry `target: 'unit'`, and
+`datasheetEntriesFor` sends them to every OTHER card of that Attached unit (`attachedEnhKeys`:
+the bodyguard and each Character on it), whichever end the Upgrade was bought for. 30 Upgrades over
+17 factions read that way; the four reading "… model only. This model…" (Hagiomnifex, Exemplar
+of Duty, Swollen with Power, Temperamental Shokka) stay with their bearer. `npm run modifiers:check`
+fails on an Upgrade whose "this unit" effects lack the target (`upgradeUnitGaps`).
+
 **An enhancement can also address the bearer's UNIT** (2026-08-25), which is not the same as an aura
 and far more common — 89 relics of the 961. "Models in the bearer's unit have the Deep Strike
 ability", "while the bearer is leading a unit, ranged weapons equipped by models in that unit have

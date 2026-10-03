@@ -24,7 +24,7 @@ import { ui } from '../i18n/ui.js'
 import { useLocale } from './useLocale.js'
 import { overlaySheet, enhKey, detKey, findEnhancementProse, loadoutItemNames, wargearConditions } from './rosterModifiers.js'
 import { ruleAppliesTo } from './ruleTargets.js'
-import { applyStatMods, splitBearers, resolveModifierEntries, grantedKeywordsFrom, datasheetEntriesFor, gateStratagems, attachedUnitKeywords } from './rosterStatMods.js'
+import { applyStatMods, splitBearers, resolveModifierEntries, grantedKeywordsFrom, datasheetEntriesFor, gateStratagems, attachedUnitKeywords, attachedEnhKeys } from './rosterStatMods.js'
 import { abilityStatusesOf } from './abilityStatus.js'
 import { rosterConditions } from './rosterGameContext.js'
 import { coreModifiers } from '../data/rosterModifiers/coreRules.js'
@@ -256,6 +256,8 @@ export function useRosterUnitCard(props) {
         if (u.enh) set.add(u.enh)
         return set
       }, new Set()),
+      // …and what every other member of this Attached unit carries, for an Upgrade's "This unit…".
+      attachedEnhKeys: attachedEnhKeys(entry, units, (u) => u.enh || null),
       // Auras the player marked on this unit, from the same store the list's chips write to — the
       // ones 22.01 makes certain (the bearer's own unit, the unit it is attached to) are not in it.
       auraOn: activeAuraIds.value,
