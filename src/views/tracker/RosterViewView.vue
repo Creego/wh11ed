@@ -26,13 +26,43 @@
          Not inside a game: there this page is a read of a snapshot, with nothing to save. -->
       <RosterCloudToast v-if="!inGame" />
 
-      <header class="rv-head">
-        <h1
-          class="rv-name"
-          :class="nameFit"
-        >
-          {{ roster.name || labels.rosterUntitled }}
-        </h1>
+      <header
+        class="rv-head"
+        :class="{ own: showPoints && ownLimits }"
+      >
+        <!-- The name and its points share a wrapping row (owner, 2026-10-03): the points stand at
+             its right end while both fit, drop under the name first when they don't, and only
+             then does the name itself wrap. A list on its own limits has them on a line of their
+             own across the header, smaller, with the limits said in words beside them. -->
+        <div class="rv-title">
+          <h1
+            class="rv-name"
+            :class="nameFit"
+          >
+            {{ roster.name || labels.rosterUntitled }}
+          </h1>
+          <div
+            v-if="showPoints"
+            class="rv-pts"
+            :class="{ own: ownLimits }"
+          >
+            <div
+              class="rv-points"
+              :class="{ over: overLimit }"
+            >
+              <span class="rp-used">{{ points }}</span>
+              <!-- A list with no limit shows its total alone. -->
+              <template v-if="Number.isFinite(limit)">
+                <span class="rp-sep">/</span>
+                <span class="rp-cap">{{ limit }}</span>
+              </template>
+            </div>
+            <RosterOwnLimitsMark
+              :roster="roster"
+              labelled
+            />
+          </div>
+        </div>
         <div class="rv-meta">
           <RouterLink
             v-if="!inGame"
@@ -98,29 +128,6 @@
               {{ roster.archived ? labels.rosterUnarchive : labels.rosterArchive }}
             </button>
           </ActionMenu>
-        </div>
-        <!-- The numbers on a line of their own under the name (owner, 2026-10-03): beside it they
-             left a long name a third of a narrow column. The own-limits mark is said in words here,
-             not as an icon — it changes what the numbers mean. -->
-        <div
-          v-if="showPoints"
-          class="rv-sub"
-        >
-          <div
-            class="rv-points"
-            :class="{ over: overLimit }"
-          >
-            <span class="rp-used">{{ points }}</span>
-            <!-- A list with no limit shows its total alone. -->
-            <template v-if="Number.isFinite(limit)">
-              <span class="rp-sep">/</span>
-              <span class="rp-cap">{{ limit }}</span>
-            </template>
-          </div>
-          <RosterOwnLimitsMark
-            :roster="roster"
-            labelled
-          />
         </div>
       </header>
 
@@ -827,8 +834,8 @@ const { factionData } = useRosterFactionData(() => roster.value?.faction, { alli
 const {
   defOf, curDetachments, limit, points, entryMeta, groupedUnits, attachRole, validation,
 } = useRosterDerived(roster, factionData)
-// The points under the name. On the desk the list's card beside this page already carries them,
-// so the line stays only when it says more than the card: the player's own limits, or a list over
+// The points beside the name. On the desk the list's card beside this page already carries them,
+// so they stay only when they say more than the card: the player's own limits, or a list over
 // its limit (owner, 2026-10-03). A phone has no card beside it and always shows it.
 const overLimit = computed(() => !roster.value?.archived && points.value > limit.value)
 const ownLimits = computed(() => ownLimitsLines(effectiveBattle(roster.value || {}, rosterCore), labels.value).length > 0)
@@ -1624,31 +1631,42 @@ function stratKey(strat) {
 
 .roster-view { padding-top: 0.75rem; padding-bottom: 2rem; }
 
-/* The name and its two buttons on the first row, the name taking whatever the buttons leave and
-   wrapping its own text; the points and the own-limits line under it, across the whole width.
-   The points shared the first row until 2026-10-03 and left a long name a third of the desk's
-   middle column. Baseline: the buttons align to the name's FIRST line. */
+/* The name block takes what the two buttons leave; the buttons keep the top-right corner. Inside
+   the block the name and the points wrap as one row: the points' line breaks before the name's
+   text does (each item asks for its whole width first), and space-between parks them at the
+   right end while they share the line and at the left, right under the name, once they don't. */
 .rv-head {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: baseline;
-  column-gap: 0.75rem;
-  margin: 0.75rem 0 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin: 0 0 1rem;
   padding-bottom: 0.6rem;
   border-bottom: 2px solid var(--accent);
 }
-/* The buttons span both rows, so the points sit right under the name instead of under the
-   buttons' height (2026-10-03). */
-.rv-head .rv-meta { grid-column: 2; grid-row: 1 / span 2; align-self: start; }
-.rv-sub {
-  grid-column: 1;
+.rv-title {
+  flex: 1 1 auto;
+  min-width: 0;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
-  gap: 0.35rem 0.75rem;
-  margin-top: 0.2rem;
+  gap: 0.15rem 0.75rem;
+  /* the buttons are taller than a line of the name: centre the first line against them */
+  padding-top: 0.2rem;
 }
+.rv-pts { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.75rem; }
+/* Own limits: the name block dissolves into a grid, so the points and the limits' line run
+   under the buttons too, across the whole header (owner, 2026-10-03). */
+.rv-head.own {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  row-gap: 0.3rem;
+}
+.rv-head.own .rv-title { display: contents; }
+.rv-head.own .rv-name { grid-column: 1; grid-row: 1; padding-top: 0.2rem; }
+.rv-head.own .rv-meta { grid-column: 2; grid-row: 1; }
+.rv-head.own .rv-pts { grid-column: 1 / -1; grid-row: 2; }
+.rv-pts.own .rv-points { font-size: 0.9rem; }
 .rv-name {
   min-width: 0;
   font-family: var(--font-display);
@@ -1664,13 +1682,14 @@ function stratKey(strat) {
 .rv-name.long { font-size: clamp(1.35rem, 5.2vw, 1.7rem); line-height: 1.2; }
 .rv-name.xlong { font-size: clamp(1.15rem, 4.4vw, 1.7rem); line-height: 1.25; }
 .rv-meta { display: flex; align-items: center; justify-content: flex-end; gap: 0.5rem; flex: 0 0 auto; }
+.rv-meta:empty { display: none; }
 .rv-points { font-family: var(--font-mono); font-weight: 700; font-size: 1.1rem; white-space: nowrap; }
 .rp-used { color: var(--text-primary); }
 .rv-points.over .rp-used { color: var(--danger); }
 .rp-sep, .rp-cap { color: var(--text-dim); }
 /* A phone spends the width on the name: the meta is what stands between it and the corner. */
 @media (max-width: 480px) {
-  .rv-head { column-gap: 0.5rem; }
+  .rv-head { gap: 0.5rem; }
   .rv-meta { gap: 0.35rem; }
   .rv-points { font-size: 1rem; }
   .hdr-icon { width: 2.1rem; height: 2.1rem; font-size: 0.9rem; }
@@ -1724,12 +1743,15 @@ function stratKey(strat) {
    screens where it wraps to a line of its own. */
 .rv-top {
   display: flex;
+  margin-bottom: 0.6rem;
   align-items: center;
   gap: 0.75rem;
   flex-wrap: wrap;
 }
 @media (max-width: 900px) {
   .rv-back-list { display: none; }
+  /* Its only content dropped, the row must not keep its gap above the name. */
+  .rv-top:has(> .rv-back-list:only-child) { display: none; }
 }
 
 .rv-issues {
@@ -1949,8 +1971,6 @@ function stratKey(strat) {
    lists stands beside it. From 1200px a second column holds the card of the unit last opened. */
 .rv-in-desk { height: 100%; padding: 0; }
 .rv-in-desk .rv-top { display: none; }
-/* The column's own top padding is the gap under the desk's heading; the name adds none. */
-.rv-in-desk .rv-head { margin-top: 0; }
 .rv-in-desk .rv-main {
   height: 100%;
   min-height: 0;

@@ -103,7 +103,7 @@ describe('RosterViewView', () => {
   // The points and the pencil live in their own row of the header, whatever the name is: at
   // phone width even a 21-character all-caps name takes two lines, so deciding this from the
   // text would only make the header rearrange itself per list.
-  it('keeps an ordinary name at full size, with the points on the line under it', async () => {
+  it('keeps an ordinary name at full size, with the points in its row', async () => {
     const store = useRosters()
     const r = store.createRoster('PORTRAIT OF A MACHINE')
     r.faction = 'adeptus-mechanicus'
@@ -112,7 +112,7 @@ describe('RosterViewView', () => {
     await flushPromises()
 
     expect(w.find('.rv-name').classes()).toEqual(['rv-name'])
-    expect(w.find('.rv-sub .rv-points').exists()).toBe(true)
+    expect(w.find('.rv-title .rv-pts:not(.own) .rv-points').exists()).toBe(true)
     expect(w.find('.rv-meta .rv-points').exists()).toBe(false)
   })
 
