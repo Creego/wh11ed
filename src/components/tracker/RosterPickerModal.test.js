@@ -27,6 +27,24 @@ async function waitUntil(fn, tries = 40) {
 }
 
 describe('RosterPickerModal', () => {
+  // A list over the game's battle size is not offered at all (owner, 2026-10-03), and the modal
+  // says how many it left out — an empty picker must not read as "my lists are gone".
+  it('hides a list over the battle size and says so', async () => {
+    const store = useRosters()
+    const r = store.createRoster('One Captain')
+    store.updateRoster(r.id, { faction: 'space-marines', units: [{ uid: 'a', id: 'captain', size: 0 }] })
+
+    mount(RosterPickerModal, { props: { maxPoints: 2000 } })
+    await waitUntil(() => body().findAll('.rp-row').length > 0)
+    expect(body().findAll('.rp-row')).toHaveLength(1)
+    document.body.innerHTML = ''
+
+    mount(RosterPickerModal, { props: { maxPoints: 10 } })
+    await waitUntil(() => body().findAll('.rp-row').length === 0)
+    expect(body().findAll('.rp-row')).toHaveLength(0)
+    expect(body().text()).toContain('10')
+  })
+
   it('lists the saved rosters and emits the one picked', async () => {
     const store = useRosters()
     const r = store.createRoster('Gladius 2k')

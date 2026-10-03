@@ -325,9 +325,20 @@
                       </ExpandTransition>
                     </div>
                   </ExpandTransition>
+                  <!-- The battle size changed under an attached list: say so, don't detach it — the
+                       player may be about to change the size back (owner, 2026-10-03). -->
+                  <ExpandTransition>
+                    <p
+                      v-if="rosterOverSize(m)"
+                      class="rl-over"
+                    >
+                      <i class="bi bi-exclamation-triangle-fill" /> {{ rosterOverSize(m) }}
+                    </p>
+                  </ExpandTransition>
                   <RosterPickerModal
                     v-if="rosterPickerKey === ak(i, mi)"
                     :selected="m.roster ? (m.rosterId || '') : null"
+                    :max-points="isDoubles ? null : battlePoints"
                     @pick="r => pickRoster(m, r)"
                     @clear="clearRoster(m)"
                     @close="rosterPickerKey = ''"
@@ -1153,6 +1164,7 @@ import { useTracker, DISPOSITIONS, BATTLE_SIZES, MIRROR_MISSIONS, derivePrimary,
 import { FACTIONS, detachmentsFor, detachmentInfo } from '../../composables/trackerFactions.js'
 import { rosterSnapshot } from '../../composables/rosterGameLink.js'
 import RosterPickerModal from './RosterPickerModal.vue'
+import { useRosters } from '../../composables/useRosters.js'
 import TrackOptions from './TrackOptions.vue'
 import { defaultTrackSettings, normalizeTrackSettings } from '../../data/trackerOptions.js'
 
@@ -1473,6 +1485,17 @@ watch(
 )
 
 const battleSizes = BATTLE_SIZES
+const battlePoints = computed(() => BATTLE_SIZES.find(b => b.id === settings.battleSize)?.points ?? null)
+// A list attached before the battle size shrank under it: its points from the stored list (a
+// list taken from a link carries none, and says nothing). Singles only, as the picker.
+const { rosterById } = useRosters()
+function rosterOverSize(m) {
+  if (!attached(m) || isDoubles.value || battlePoints.value == null) return ''
+  const pts = m.rosterId ? rosterById(m.rosterId)?.summary?.points : null
+  if (pts == null || pts <= battlePoints.value) return ''
+  const size = BATTLE_SIZES.find(b => b.id === settings.battleSize)?.name || ''
+  return labels.value.trackerRosterOverSize.replace('{points}', pts).replace('{size}', size).replace('{limit}', battlePoints.value)
+}
 const maxDp = computed(() => BATTLE_SIZES.find(b => b.id === settings.battleSize)?.maxDp ?? 3)
 // The budget ONE army must fit in: the battle size's in singles; per player in doubles (the
 // battle size's by default, or the organiser's own via settings.dpPerPlayer — null = follow).
@@ -2266,6 +2289,7 @@ function cancel() {
 /* Stands where the faction picker would be, so it keeps `.ro`'s shape and only adds the ✕. */
 .roster-line { display: flex; align-items: center; gap: 0.5rem; }
 .rl-text { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rl-over { margin: 0.3rem 0 0; color: var(--warning); font-size: 0.8rem; }
 .rl-clear {
   flex-shrink: 0; background: none; border: none; color: var(--text-muted);
   font-size: 0.9rem; line-height: 1; cursor: pointer; padding: 0.25rem 0.3rem;

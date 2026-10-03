@@ -16,12 +16,18 @@
       >
         {{ labels.trackerRosterNone }}
       </p>
+      <p
+        v-if="hiddenBySize"
+        class="rp-note"
+      >
+        {{ labels.trackerRosterHiddenBySize.replace('{limit}', maxPoints).replace('{n}', hiddenBySize) }}
+      </p>
 
       <!-- A list of the wrong faction is shown DISABLED rather than filtered out: hiding it makes
            a collection look empty and reads as "my list is gone", which is a worse answer than
            seeing it greyed out next to the faction it belongs to. -->
       <button
-        v-for="r in activeRosters"
+        v-for="r in fitting"
         :key="r.id"
         type="button"
         class="rp-row"
@@ -104,6 +110,10 @@ const props = defineProps({
   // it) and so is no longer the list's to decide. Unset in the setup wizard, where the list still
   // decides it.
   faction: { type: String, default: null },
+  // The battle size's points: a list over it is not offered at all (owner, 2026-10-03) — a game
+  // of 1000 points has no use for a 2000-point list. Null offers every list (Doubles, where the
+  // per-player size is the organiser's).
+  maxPoints: { type: Number, default: null },
 })
 const emit = defineEmits(['pick', 'clear', 'close'])
 
@@ -117,6 +127,11 @@ const linkId = useId()
 // Same cached summary the roster list shows, same one-off repair for a roster nothing ever
 // priced — see rosterSummary.js.
 onMounted(() => { refreshSummaries(rosters.value) })
+
+// A list whose points are not known yet (never priced) stays: hiding it would be a guess.
+const tooBig = (r) => props.maxPoints != null && r.summary?.points != null && r.summary.points > props.maxPoints
+const fitting = computed(() => activeRosters.value.filter((r) => !tooBig(r)))
+const hiddenBySize = computed(() => activeRosters.value.length - fitting.value.length)
 
 const allFactions = factionGroups.flatMap((g) => g.factions)
 function factionName(slug) {
