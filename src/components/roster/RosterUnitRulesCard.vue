@@ -267,6 +267,50 @@
             </DsAccordion>
           </div>
         </section>
+        <!-- A sheet that is part of this unit without being a unit of its own (Sir Hekhtur in
+             Canis Rex): his whole card, folded, where the reader looks when the Knight falls. -->
+        <section
+          v-if="companions.length"
+          class="rum-rules"
+        >
+          <h4 class="rum-rules-h">
+            {{ labels.rosterAlsoInUnit }}
+          </h4>
+          <div
+            v-for="c in companions"
+            :key="c.id"
+            class="rum-rule"
+          >
+            <DsAccordion
+              collapsible
+              :start-open="false"
+            >
+              <template #header="{ open, toggle }">
+                <button
+                  type="button"
+                  class="rum-rule-btn"
+                  :aria-expanded="open"
+                  @click="toggle"
+                >
+                  <span class="rum-rule-text">
+                    <span class="rum-rule-name">{{ c.name }}</span>
+                  </span>
+                  <ChevronIcon
+                    class="rum-chev"
+                    :turned="open"
+                    from="right"
+                    to="down"
+                  />
+                </button>
+              </template>
+              <DatasheetCard
+                :sheet="c"
+                :faction-slug="factionSlug"
+                collapsible
+              />
+            </DsAccordion>
+          </div>
+        </section>
       </template>
     </DatasheetCard>
     <p
@@ -338,7 +382,7 @@ const { openRule } = useKeywordPopover()
 const labels = computed(() => ui[locale.value])
 
 const {
-  loaded, view,
+  loaded, view, companions,
   rulesFaction, stratNamesRu,
   statMods, statNotes, allGrantedKeywords, linkedFactionRules, abilityStates,
   abilityModifiers,

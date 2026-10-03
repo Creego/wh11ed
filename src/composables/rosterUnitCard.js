@@ -75,6 +75,19 @@ export function useRosterUnitCard(props) {
   // The printed sheet, in the current locale.
   const sheet = computed(() => localize(datasheets.value.find((d) => d.id === props.unitId) || null))
 
+  // The sheets that are part of THIS unit without being a unit of their own: a free datasheet of
+  // the faction that shares a rule with this one — Sir Hekhtur, who climbs out of Canis Rex when the
+  // Knight falls ("Using Sir Hekhtur" on both). No list can buy him, so without this his card was
+  // nowhere in a roster or a game (player report e6093db4, 2026-10-03).
+  const companions = computed(() => {
+    const own = datasheets.value.find((d) => d.id === props.unitId)
+    const names = new Set((own?.rules || []).map((r) => (r.name || '').toLowerCase()))
+    if (!names.size) return []
+    return datasheets.value
+      .filter((d) => d.id !== own.id && !d.points?.length && (d.rules || []).some((r) => names.has((r.name || '').toLowerCase())))
+      .map(localize)
+  })
+
   // …and what it looks like for THIS roster entry. Overlaying after localisation (not before) keeps
   // the two concerns apart: the overlay matches on structural ids and English wargear names, so it
   // behaves identically in both locales.
@@ -410,7 +423,7 @@ export function useRosterUnitCard(props) {
 
   return {
     // The sheet, printed and overlaid
-    datasheets, loaded, sheet, view, localize,
+    datasheets, loaded, sheet, view, localize, companions,
     // The faction's own prose (the modal reads it for popovers, the print sheet prints it)
     rulesFaction, rulesFactionEn, stratNamesRu,
     // What the roster does to the numbers

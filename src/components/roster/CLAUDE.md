@@ -1051,6 +1051,9 @@ directory; still part of this feature:
     printed profile lines in both parsers) nor wargear it could take, so reporting them would put a
     problem in front of a reader who can do nothing about it — and the entry costs Canis Rex's own
     415 either way.
+    His card still belongs on Canis Rex's: the unit card (`rosterUnitCard.js` `companions`) folds
+    in every free sheet of the faction that shares a rule with the unit ("Using Sir Hekhtur"),
+    under "Also in this unit" — in the roster view, the desk and a game alike (2026-10-03).
   - **The detachment line cannot be split as text.** The app writes every selected detachment on
     one line joined with commas and a final "and" — and detachment names contain "and" themselves:
     "Legends of Saga and Song and Saga of the Great Wolf" is TWO of them, and splitting on " and "
