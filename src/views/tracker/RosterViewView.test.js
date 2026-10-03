@@ -105,7 +105,7 @@ describe('RosterViewView', () => {
   // text would only make the header rearrange itself per list.
   it('keeps an ordinary name at full size, with the points in its row', async () => {
     const store = useRosters()
-    const r = store.createRoster('PORTRAIT OF A MACHINE')
+    const r = store.createRoster('Warpbane Task Force')
     r.faction = 'adeptus-mechanicus'
     ROSTER_ID = r.id
     const w = mount(RosterViewView, { global: { stubs } })

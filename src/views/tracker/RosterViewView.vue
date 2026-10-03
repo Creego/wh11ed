@@ -1676,11 +1676,12 @@ function stratKey(strat) {
   margin: 0;
   overflow-wrap: anywhere;
 }
-/* Full size on a desktop, smaller as the viewport narrows — a phone is where a quote-as-a-name
-   turns into a wall, a wide screen fits it in a line or two. A name that merely reaches a second
-   line gets no step at all: two lines of a header are fine. */
-.rv-name.long { font-size: clamp(1.35rem, 5.2vw, 1.7rem); line-height: 1.2; }
-.rv-name.xlong { font-size: clamp(1.15rem, 4.4vw, 1.7rem); line-height: 1.25; }
+/* Full size on a desktop, smaller as the viewport narrows — a phone is where a long name turns
+   into a wall, a wide screen fits it in a line or two. Lines set close: a wrapped name reads as
+   one heading, not as a paragraph (owner, 2026-10-03). */
+.rv-name { line-height: 1.1; }
+.rv-name.long { font-size: clamp(1.35rem, 5.2vw, 1.7rem); }
+.rv-name.xlong { font-size: clamp(1.15rem, 4.4vw, 1.7rem); line-height: 1.15; }
 .rv-meta { display: flex; align-items: center; justify-content: flex-end; gap: 0.5rem; flex: 0 0 auto; }
 .rv-meta:empty { display: none; }
 .rv-points { font-family: var(--font-mono); font-weight: 700; font-size: 1.1rem; white-space: nowrap; }

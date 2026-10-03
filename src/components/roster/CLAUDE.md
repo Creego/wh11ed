@@ -2541,11 +2541,12 @@ MACHINE" is 21 characters and two lines while a longer lowercase name is one.
 **Alignment is `baseline`, not `center`**: the points sit beside the name's FIRST line, so a
 quote-as-a-name doesn't leave them floating against the middle of a five-line paragraph — which is
 the original complaint that started this whole header.
-**Size is** decided from the name, by `utils/rosterNameFit.js` → `'' | 'long' | 'xlong'` at 60 and
-100, counting a capital as 1.4 lowercase letters wide (an ALL-CAPS name is not a short one). The
+**Size is** decided from the name, by `utils/rosterNameFit.js` → `'' | 'long' | 'xlong'` at 28 and
+60, counting a capital as 1.4 lowercase letters wide (an ALL-CAPS name is not a short one). The
 bucket is a class on both the view header's `h1` and the editor's name input, and steps down with
-`clamp(…, vw, …)` so a desktop keeps the full size. Two lines keep the full size — the step is for
-a wall of text, not for a name that merely wraps.
+`clamp(…, vw, …)` so a desktop keeps the full size. A name that would wrap on a phone at full size
+steps down at once, and a wrapped name is set at line-height 1.1 (owner, 2026-10-03: two full-size
+lines were a third of the screen).
 
 Nothing is truncated on those two screens — the name IS the header. Places where the name is only
 a label truncate instead: the list card and the picker row clamp to two lines, and the tracker's setup cards/history pills were fixed separately
