@@ -2807,7 +2807,8 @@ export default [
         "Sanctifiers",
         "Sisters of Battle Squad",
         "Subductor Squad",
-        "Vigilant Squad"
+        "Vigilant Squad",
+        "Imperium Battleline Infantry"
       ]
     },
     "keywords": [
@@ -2925,7 +2926,8 @@ export default [
         "Imperial Navy Breachers",
         "Inquisitorial Agents",
         "Subductor Squad",
-        "Vigilant Squad"
+        "Vigilant Squad",
+        "Imperium Battleline Infantry"
       ]
     },
     "keywords": [
@@ -3038,7 +3040,8 @@ export default [
         "Imperial Navy Breachers",
         "Inquisitorial Agents",
         "Subductor Squad",
-        "Vigilant Squad"
+        "Vigilant Squad",
+        "Imperium Battleline Infantry"
       ]
     },
     "keywords": [
@@ -3268,7 +3271,8 @@ export default [
         "Sanctifiers",
         "Sisters of Battle Squad",
         "Subductor Squad",
-        "Vigilant Squad"
+        "Vigilant Squad",
+        "Imperium Battleline Infantry"
       ]
     },
     "keywords": [
@@ -7032,7 +7036,8 @@ export default [
         "Deathwatch Terminator Squad",
         "Fortis Kill Team",
         "Indomitor Kill Team",
-        "Spectrus Kill Team"
+        "Spectrus Kill Team",
+        "Proteus Kill Team"
       ]
     },
     "keywords": [
@@ -7123,7 +7128,8 @@ export default [
         "Deathwatch Terminator Squad",
         "Fortis Kill Team",
         "Indomitor Kill Team",
-        "Spectrus Kill Team"
+        "Spectrus Kill Team",
+        "Proteus Kill Team"
       ]
     },
     "keywords": [

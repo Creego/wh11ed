@@ -3313,7 +3313,9 @@ export default [
       "text": "This model can be attached to the following units:",
       "units": [
         "Cultist Mob",
-        "Accursed Cultists"
+        "Accursed Cultists",
+        "Cultist Mob with Firearms",
+        "Negavolt Cultists"
       ]
     },
     "keywords": [
@@ -3792,7 +3794,9 @@ export default [
         "Cultist Mob",
         "Nemesis Claw",
         "Legionaries",
-        "Chosen"
+        "Chosen",
+        "Cultist Mob with Firearms",
+        "Negavolt Cultists"
       ]
     },
     "keywords": [
@@ -3944,7 +3948,9 @@ export default [
       "text": "This model can be attached to the following units:",
       "units": [
         "Cultist Mob",
-        "Accursed Cultists"
+        "Accursed Cultists",
+        "Cultist Mob with Firearms",
+        "Negavolt Cultists"
       ]
     },
     "keywords": [
@@ -4584,7 +4590,9 @@ export default [
         "Chosen",
         "Accursed Cultists",
         "Legionaries",
-        "Cultist Mob"
+        "Cultist Mob",
+        "Cultist Mob with Firearms",
+        "Negavolt Cultists"
       ]
     },
     "keywords": [

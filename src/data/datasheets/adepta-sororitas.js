@@ -95,7 +95,8 @@ export default [
         "Sisters Novitiate Squad",
         "Battle Sisters Squad",
         "Dominion Squad",
-        "Retributor Squad"
+        "Retributor Squad",
+        "Crusaders"
       ]
     },
     "keywords": [
@@ -675,7 +676,8 @@ export default [
         "Battle Sisters Squad",
         "Celestian Insidiants",
         "Dominion Squad",
-        "Retributor Squad"
+        "Retributor Squad",
+        "Crusaders"
       ]
     },
     "keywords": [
@@ -2621,7 +2623,8 @@ export default [
         "Sisters Novitiate Squad",
         "Battle Sisters Squad",
         "Dominion Squad",
-        "Retributor Squad"
+        "Retributor Squad",
+        "Crusaders"
       ]
     },
     "keywords": [
@@ -2733,7 +2736,8 @@ export default [
         "Celestian Insidiants",
         "Dominion Squad",
         "Sanctifiers",
-        "Sisters Novitiate Squad"
+        "Sisters Novitiate Squad",
+        "Crusaders"
       ]
     },
     "keywords": [
@@ -3113,7 +3117,8 @@ export default [
         "Sisters Novitiate Squad",
         "Battle Sisters Squad",
         "Dominion Squad",
-        "Retributor Squad"
+        "Retributor Squad",
+        "Crusaders"
       ]
     },
     "keywords": [
@@ -4695,7 +4700,8 @@ export default [
     "leader": {
       "text": "This model can be attached to the following units:",
       "units": [
-        "Battle Sisters Squad"
+        "Battle Sisters Squad",
+        "Crusaders"
       ]
     },
     "keywords": [

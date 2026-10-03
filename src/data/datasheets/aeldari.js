@@ -4854,7 +4854,8 @@ export default [
       "text": "This model can be attached to the following units:",
       "units": [
         "Corsair Voidscarred",
-        "Corsair Voidreavers"
+        "Corsair Voidreavers",
+        "Corsair Reaver Band"
       ]
     },
     "keywords": [
@@ -5816,7 +5817,8 @@ export default [
       "text": "This model can be attached to the following units:",
       "units": [
         "Corsair Voidscarred",
-        "Corsair Voidreavers"
+        "Corsair Voidreavers",
+        "Corsair Reaver Band"
       ]
     },
     "keywords": [
@@ -11965,7 +11967,8 @@ export default [
         "Storm Guardians",
         "Corsair Voidscarred",
         "Corsair Voidreavers",
-        "Guardian Defenders"
+        "Guardian Defenders",
+        "Corsair Reaver Band"
       ]
     },
     "keywords": [

@@ -3675,7 +3675,9 @@ export default [
         "Servitor Battleclade",
         "Hastarii Exterminators",
         "Fulgurite Electro-Priests",
-        "Corpuscarii Electro-Priests"
+        "Corpuscarii Electro-Priests",
+        "Secutarii Hoplites",
+        "Secutarii Peltasts"
       ]
     },
     "keywords": [
@@ -3778,7 +3780,9 @@ export default [
         "Kataphron Breachers",
         "Kataphron Destroyers",
         "Skitarii Rangers",
-        "Skitarii Vanguard"
+        "Skitarii Vanguard",
+        "Secutarii Hoplites",
+        "Secutarii Peltasts"
       ]
     },
     "keywords": [
@@ -3884,7 +3888,9 @@ export default [
         "Servitor Battleclade",
         "Hastarii Exterminators",
         "Fulgurite Electro-Priests",
-        "Corpuscarii Electro-Priests"
+        "Corpuscarii Electro-Priests",
+        "Secutarii Hoplites",
+        "Secutarii Peltasts"
       ]
     },
     "keywords": [

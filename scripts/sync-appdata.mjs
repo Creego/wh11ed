@@ -301,7 +301,17 @@ async function syncFaction(slug) {
     // (requiredDetachmentId/excludedDetachmentId only exist in the raw tables/
     // datasheet_bodyguard_group.json, not in this bundle) — a clean match here doesn't confirm any
     // detachment restriction is right, only that the unconditional unit list agrees.
+    // …plus what the Leader rule's own bullets name and no table does — a keyword ("IMPERIUM
+    // BATTLELINE INFANTRY") or a unit appdata does not carry (a Faction Pack Legends squad). The
+    // page prints those since 2026-10-03 (gen-datasheets' leaderUnits), so they are not "extra".
+    const leaderRule = [...(appDs.abilities || []), ...(appDs.rules || [])].find((a) => a.name === 'Leader' && /attached to the following/.test(a.rules || ''))
+    const proseUnits = [...(leaderRule?.rules || '').matchAll(/^■\s*\*\*\**(.+?)\*\*/gm)].map((m) => m[1].trim())
     const appLeaderUnits = (appDs.leaderOf || []).flatMap((l) => l.units || [])
+    const known = new Set(appLeaderUnits.map((u) => u.toLowerCase().replace(/[^a-z0-9]/g, '')))
+    for (const p of proseUnits) {
+      const k = p.toLowerCase().replace(/[^a-z0-9]/g, '')
+      if (!known.has(k) && (d.leader?.units || []).some((u) => u.toLowerCase().replace(/[^a-z0-9]/g, '') === k)) appLeaderUnits.push((d.leader.units).find((u) => u.toLowerCase().replace(/[^a-z0-9]/g, '') === k))
+    }
     if (d.leader?.units?.length || appLeaderUnits.length) {
       lines.push(...diffSet(`datasheet "${d.name}" · bodyguard unit`, d.leader?.units || [], appLeaderUnits))
     }

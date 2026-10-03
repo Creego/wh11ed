@@ -4252,7 +4252,8 @@ export default [
         "Tempestus Scions",
         "Catachan Jungle Fighters",
         "Cadian Shock Troops",
-        "Death Korps of Krieg"
+        "Death Korps of Krieg",
+        "Death Korps Grenadier Squad"
       ]
     },
     "keywords": [
@@ -4478,7 +4479,8 @@ export default [
         "Kasrkin",
         "Krieg Combat Engineers",
         "Catachan Jungle Fighters",
-        "Tempestus Scions"
+        "Tempestus Scions",
+        "Death Korps Grenadier Squad"
       ]
     },
     "keywords": [
@@ -4607,7 +4609,8 @@ export default [
         "Death Korps of Krieg",
         "Catachan Jungle Fighters",
         "Cadian Shock Troops",
-        "Tempestus Scions"
+        "Tempestus Scions",
+        "Death Korps Grenadier Squad"
       ]
     },
     "keywords": [
@@ -8740,7 +8743,8 @@ export default [
       "text": "This model can be attached to the following units:",
       "units": [
         "Krieg Combat Engineers",
-        "Death Korps of Krieg"
+        "Death Korps of Krieg",
+        "Death Korps Grenadier Squad"
       ]
     },
     "keywords": [
@@ -10739,7 +10743,8 @@ export default [
         "Kasrkin",
         "Krieg Combat Engineers",
         "Death Riders",
-        "Attilan Rough Riders"
+        "Attilan Rough Riders",
+        "Death Korps Grenadier Squad"
       ]
     },
     "keywords": [
@@ -12878,7 +12883,8 @@ export default [
         "Tempestus Scions",
         "Catachan Jungle Fighters",
         "Cadian Shock Troops",
-        "Death Korps of Krieg"
+        "Death Korps of Krieg",
+        "Death Korps Grenadier Squad"
       ]
     },
     "keywords": [
@@ -13829,7 +13835,8 @@ export default [
         "Tempestus Scions",
         "Catachan Jungle Fighters",
         "Cadian Shock Troops",
-        "Death Korps of Krieg"
+        "Death Korps of Krieg",
+        "Death Korps Grenadier Squad"
       ]
     },
     "keywords": [
@@ -17039,7 +17046,8 @@ export default [
         "Catachan Jungle Fighters",
         "Kasrkin",
         "Death Korps of Krieg",
-        "Cadian Shock Troops"
+        "Cadian Shock Troops",
+        "Death Korps Grenadier Squad"
       ]
     },
     "keywords": [

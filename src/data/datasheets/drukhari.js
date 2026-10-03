@@ -125,7 +125,8 @@ export default [
       "units": [
         "Hand of the Archon",
         "Incubi",
-        "Kabalite Warriors"
+        "Kabalite Warriors",
+        "Court of the Archon"
       ]
     },
     "keywords": [

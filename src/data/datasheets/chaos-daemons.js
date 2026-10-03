@@ -2333,7 +2333,9 @@ export default [
     "leader": {
       "text": "This model can be attached to the following units:",
       "units": [
-        "Beasts of Nurgle"
+        "Beasts of Nurgle",
+        "Plague Toads",
+        "Pox Riders"
       ]
     },
     "keywords": [
