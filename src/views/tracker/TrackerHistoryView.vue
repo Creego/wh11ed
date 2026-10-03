@@ -30,6 +30,11 @@
         <i class="bi bi-card-list" />
         <span class="hv-roster-who">{{ l.who }}</span>
         <span class="hv-roster-name">{{ l.name }}</span>
+        <!-- inert: a button may not sit inside a link; the limits are in its tooltip. -->
+        <RosterOwnLimitsMark
+          :roster="l.roster"
+          inert
+        />
       </RouterLink>
     </div>
 
@@ -51,6 +56,7 @@
 </template>
 
 <script setup>
+import RosterOwnLimitsMark from '../../components/roster/RosterOwnLimitsMark.vue'
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import ScoreBoard from '../../components/tracker/ScoreBoard.vue'
@@ -83,6 +89,7 @@ const rosterLinks = computed(() => (game.value?.players || [])
       name: m.roster?.name || '',
       who: m === p ? sideWho : (m.name || sideWho),
       has: !!m.roster?.units,
+      roster: m.roster || null,
     }))
   })
   .filter((l) => l.has))

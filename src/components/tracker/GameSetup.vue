@@ -325,6 +325,17 @@
                       </ExpandTransition>
                     </div>
                   </ExpandTransition>
+                  <!-- A list held to its own limits says so here as on its own page — the opponent
+                       reads the same line in the lobby and on the game's player card (2026-10-03). -->
+                  <div
+                    v-if="attached(m) && ownLimitsOf(m.roster, labels).length"
+                    class="rl-limits"
+                  >
+                    <RosterOwnLimitsMark
+                      :roster="m.roster"
+                      labelled
+                    />
+                  </div>
                   <!-- The battle size changed under an attached list: say so, don't detach it — the
                        player may be about to change the size back (owner, 2026-10-03). -->
                   <ExpandTransition>
@@ -1165,6 +1176,8 @@ import { FACTIONS, detachmentsFor, detachmentInfo } from '../../composables/trac
 import { rosterSnapshot } from '../../composables/rosterGameLink.js'
 import RosterPickerModal from './RosterPickerModal.vue'
 import { useRosters } from '../../composables/useRosters.js'
+import { ownLimitsOf, ownLimitsSummary } from '../../composables/ownLimits.js'
+import RosterOwnLimitsMark from '../roster/RosterOwnLimitsMark.vue'
 import TrackOptions from './TrackOptions.vue'
 import { defaultTrackSettings, normalizeTrackSettings } from '../../data/trackerOptions.js'
 
@@ -1394,6 +1407,8 @@ function sideSummary(i) {
     if (army) out.push(army)
     if (m.detachments?.length) out.push(m.detachments.join(', '))
     if (m.roster) out.push(`${labels.value.trackerRoster}: ${m.roster.name || labels.value.rosterUntitled}`)
+    const own = m.roster ? ownLimitsSummary(m.roster, labels.value) : ''
+    if (own) out.push(own)
   }
   // Only when it resolves to a name: a disposition id this build does not know (an older game,
   // a newer sender) would otherwise print a label with nothing after the colon.
@@ -2289,6 +2304,7 @@ function cancel() {
 /* Stands where the faction picker would be, so it keeps `.ro`'s shape and only adds the ✕. */
 .roster-line { display: flex; align-items: center; gap: 0.5rem; }
 .rl-text { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rl-limits { margin-top: 0.3rem; }
 .rl-over { margin: 0.3rem 0 0; color: var(--warning); font-size: 0.8rem; }
 .rl-clear {
   flex-shrink: 0; background: none; border: none; color: var(--text-muted);

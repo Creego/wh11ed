@@ -424,7 +424,7 @@ export const ui = {
     rosterLimitOwnDup: 'Copies of a unit',
     rosterLimitOwnLine: 'Copies of Battleline',
     rosterLimitOwnTitle: 'Own points limit',
-    rosterLimitOwnShort: 'own limits',
+    rosterLimitOwnShort: 'custom limits',
     rosterLimitOwnApplied: 'Custom limits apply',
     rosterLimitDone: 'Done',
     // The floating "back to the half-built list" chip (MobileUtilityBar), shown while a draft
@@ -1542,7 +1542,7 @@ export const ui = {
     rosterLimitOwnDup: 'Копии юнита',
     rosterLimitOwnLine: 'Копии Battleline',
     rosterLimitOwnTitle: 'Свой лимит очков',
-    rosterLimitOwnShort: 'свои ограничения',
+    rosterLimitOwnShort: 'кастомные лимиты',
     rosterLimitOwnApplied: 'Действуют кастомные лимиты',
     rosterLimitDone: 'Готово',
     rosterResumeDraftBar: 'Вернуться к сборке ростера',

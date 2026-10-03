@@ -17,6 +17,6 @@ describe('RosterOwnLimitsMark', () => {
   it('is plain text inside another button', () => {
     const w = mount(RosterOwnLimitsMark, { props: { inert: true, roster: { battleSize: 'custom', customLimits: { dup: 1 } } } })
     expect(w.find('button').exists()).toBe(false)
-    expect(w.find('span.olm').text()).toBe('own limits')
+    expect(w.find('span.olm').text()).toBe('custom limits')
   })
 })

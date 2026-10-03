@@ -209,16 +209,25 @@
               @update:model-value="v => setCp(i, v)"
             />
           </template>
-          <RouterLink
+          <template
             v-for="l in armyLinks(pl, i)"
             :key="l.to"
-            class="proster"
-            :to="l.to"
-            :title="l.label"
           >
-            <i :class="`bi ${l.icon}`" />
-            <span class="proster-label">{{ l.label }}</span>
-          </RouterLink>
+            <RouterLink
+              class="proster"
+              :to="l.to"
+              :title="l.label"
+            >
+              <i :class="`bi ${l.icon}`" />
+              <span class="proster-label">{{ l.label }}</span>
+            </RouterLink>
+            <!-- A list held to its own limits says so on both phones (the snapshot carries the
+                 limits); a tap lists them (2026-10-03). -->
+            <RosterOwnLimitsMark
+              v-if="l.roster"
+              :roster="l.roster"
+            />
+          </template>
         </div>
 
         <!-- Army-rule tracker (Pain tokens, etc.) — at the bottom of the card, under the
@@ -332,6 +341,7 @@
 </template>
 
 <script setup>
+import RosterOwnLimitsMark from '../roster/RosterOwnLimitsMark.vue'
 import ExpandTransition from '../ExpandTransition.vue'
 import { ref, computed } from 'vue'
 import NumberStepper from './NumberStepper.vue'
@@ -440,6 +450,7 @@ function armyLinks(pl, i) {
         to: isDoubles.value ? `/tracker/game/roster/${i}/${mi}` : `/tracker/game/roster/${i}`,
         icon: 'bi-card-list',
         label: isDoubles.value ? memberName(m, mi) : labels.value.trackerRosterOpen,
+        roster: m.roster,
       })
     } else if (m.factionSlug) {
       out.push({
