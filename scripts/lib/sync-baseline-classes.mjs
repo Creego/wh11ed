@@ -8,6 +8,7 @@ const CLASSES = [
   ['points', /points differ/],
   ['datasheet-extra', /extra in wh11ed \(not in appdata\): datasheet/],
   ['detachment-extra', /extra in wh11ed \(not in appdata\): detachment|detachment "[^"]*" not found in appdata/],
+  ['faction-keyword', /· faction keyword "/],
   ['ability-extra', /extra ability \(not in appdata\)/],
   ['core-faction', /core\/faction differ| (core|faction) abilities differ:/],
   ['wargear-option', /wargear option: text differs/],

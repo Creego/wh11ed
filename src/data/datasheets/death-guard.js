@@ -62,7 +62,6 @@ export default [
       "Nurgle"
     ],
     "factionKeywords": [
-      "",
       "Plague Legions"
     ],
     "baseSize": "60mm"
@@ -163,7 +162,6 @@ export default [
       "Biologus Putrifier"
     ],
     "factionKeywords": [
-      "",
       "Death Guard"
     ],
     "baseSize": "40mm"
@@ -347,8 +345,7 @@ export default [
       "Nurgle"
     ],
     "factionKeywords": [
-      "Death Guard",
-      ""
+      "Death Guard"
     ],
     "baseSize": "40mm"
   },
@@ -486,7 +483,6 @@ export default [
       "Frame"
     ],
     "factionKeywords": [
-      "",
       "Death Guard"
     ],
     "baseSize": "Hull"
@@ -635,7 +631,6 @@ export default [
       "Frame"
     ],
     "factionKeywords": [
-      "",
       "Death Guard"
     ],
     "baseSize": "Hull"
@@ -785,7 +780,6 @@ export default [
       "Frame"
     ],
     "factionKeywords": [
-      "",
       "Death Guard"
     ],
     "baseSize": "Hull"
@@ -897,7 +891,6 @@ export default [
       "Frame"
     ],
     "factionKeywords": [
-      "",
       "Death Guard"
     ],
     "baseSize": "Hull"
@@ -953,7 +946,6 @@ export default [
       "Spawn"
     ],
     "factionKeywords": [
-      "",
       "Death Guard"
     ],
     "baseSize": "50mm"
@@ -1047,7 +1039,6 @@ export default [
       "Monster"
     ],
     "factionKeywords": [
-      "",
       "Death Guard"
     ],
     "baseSize": "60mm"
@@ -1138,8 +1129,7 @@ export default [
       "Fly"
     ],
     "factionKeywords": [
-      "Death Guard",
-      ""
+      "Death Guard"
     ],
     "baseSize": "60mm"
   },
@@ -1942,8 +1932,7 @@ export default [
       "Infantry"
     ],
     "factionKeywords": [
-      "Death Guard",
-      ""
+      "Death Guard"
     ],
     "baseSize": "40mm"
   },
@@ -2163,7 +2152,6 @@ export default [
       "Defiler"
     ],
     "factionKeywords": [
-      "",
       "Death Guard"
     ],
     "baseSize": "160mm"
@@ -2260,8 +2248,7 @@ export default [
       "Foetid Bloat-Drone"
     ],
     "factionKeywords": [
-      "Death Guard",
-      ""
+      "Death Guard"
     ],
     "baseSize": "60mm"
   },
@@ -2342,8 +2329,7 @@ export default [
       "Daemon"
     ],
     "factionKeywords": [
-      "Death Guard",
-      ""
+      "Death Guard"
     ],
     "baseSize": "60mm"
   },
@@ -2427,8 +2413,7 @@ export default [
       "Foul Blightspawn"
     ],
     "factionKeywords": [
-      "Death Guard",
-      ""
+      "Death Guard"
     ],
     "baseSize": "40mm"
   },
@@ -2574,8 +2559,7 @@ export default [
       "Great Unclean One"
     ],
     "factionKeywords": [
-      "Plague Legions",
-      ""
+      "Plague Legions"
     ],
     "baseSize": "130mm"
   },
@@ -2785,7 +2769,6 @@ export default [
       "Chaos"
     ],
     "factionKeywords": [
-      "",
       "Death Guard"
     ],
     "baseSize": "60mm"
@@ -2870,8 +2853,7 @@ export default [
       "Icon Bearer"
     ],
     "factionKeywords": [
-      "Death Guard",
-      ""
+      "Death Guard"
     ],
     "baseSize": "32mm"
   },
@@ -2954,8 +2936,7 @@ export default [
       "Character"
     ],
     "factionKeywords": [
-      "Death Guard",
-      ""
+      "Death Guard"
     ],
     "baseSize": "40mm"
   },
@@ -3053,8 +3034,7 @@ export default [
       "Chaos"
     ],
     "factionKeywords": [
-      "Death Guard",
-      ""
+      "Death Guard"
     ],
     "baseSize": "40mm"
   },
@@ -3142,8 +3122,7 @@ export default [
       "Infantry"
     ],
     "factionKeywords": [
-      "Death Guard",
-      ""
+      "Death Guard"
     ],
     "baseSize": "50mm"
   },
@@ -3256,8 +3235,7 @@ export default [
       "Infantry"
     ],
     "factionKeywords": [
-      "Death Guard",
-      ""
+      "Death Guard"
     ],
     "baseSize": "32mm"
   },
@@ -3331,8 +3309,7 @@ export default [
       "Frame"
     ],
     "factionKeywords": [
-      "Death Guard",
-      ""
+      "Death Guard"
     ],
     "baseSize": "Hull"
   },
@@ -3454,7 +3431,6 @@ export default [
       "Daemon"
     ],
     "factionKeywords": [
-      "",
       "Death Guard"
     ],
     "baseSize": "100mm",
@@ -3587,8 +3563,7 @@ export default [
       "Myphitic Blight-Hauler"
     ],
     "factionKeywords": [
-      "Death Guard",
-      ""
+      "Death Guard"
     ],
     "baseSize": "80mm"
   },
@@ -3686,7 +3661,6 @@ export default [
       "Chaos"
     ],
     "factionKeywords": [
-      "",
       "Death Guard"
     ],
     "baseSize": "40mm"
@@ -3751,7 +3725,6 @@ export default [
       "Nurglings"
     ],
     "factionKeywords": [
-      "",
       "Plague Legions"
     ],
     "baseSize": "40mm"
@@ -3859,8 +3832,7 @@ export default [
       "Daemon"
     ],
     "factionKeywords": [
-      "Plague Legions",
-      ""
+      "Plague Legions"
     ],
     "baseSize": "Large Flying Base"
   },
@@ -4106,8 +4078,7 @@ export default [
       "Chaos"
     ],
     "factionKeywords": [
-      "Death Guard",
-      ""
+      "Death Guard"
     ],
     "baseSize": "32mm"
   },
@@ -4191,7 +4162,6 @@ export default [
       "Nurgle"
     ],
     "factionKeywords": [
-      "",
       "Death Guard"
     ],
     "baseSize": "40mm"
@@ -4268,8 +4238,7 @@ export default [
       "Summoned"
     ],
     "factionKeywords": [
-      "Plague Legions",
-      ""
+      "Plague Legions"
     ],
     "baseSize": "32mm"
   },
@@ -4408,8 +4377,7 @@ export default [
       "Frame"
     ],
     "factionKeywords": [
-      "Death Guard",
-      ""
+      "Death Guard"
     ],
     "baseSize": "Hull"
   },
@@ -4470,8 +4438,7 @@ export default [
       "Nurgle"
     ],
     "factionKeywords": [
-      "Death Guard",
-      ""
+      "Death Guard"
     ],
     "baseSize": "25mm"
   },
@@ -4571,8 +4538,7 @@ export default [
       "Rotigus"
     ],
     "factionKeywords": [
-      "Plague Legions",
-      ""
+      "Plague Legions"
     ],
     "baseSize": "130mm"
   },
@@ -4666,7 +4632,6 @@ export default [
       "Infantry"
     ],
     "factionKeywords": [
-      "",
       "Death Guard"
     ],
     "baseSize": "40mm"
@@ -4752,8 +4717,7 @@ export default [
       "Typhus"
     ],
     "factionKeywords": [
-      "Death Guard",
-      ""
+      "Death Guard"
     ],
     "baseSize": "50mm"
   }

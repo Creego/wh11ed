@@ -49,7 +49,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
-import { ROOT, SLUG_MAP, norm, looseName, isWeaponType, appdataToMarkup, bodyText, loadJson, loadModule, byNormName, diffByName, diffSet, matchWeapon, combatPatrolNames, loadWh11edDatasheets } from './lib/sync-common.mjs'
+import { APPDATA, ROOT, SLUG_MAP, norm, looseName, isWeaponType, appdataToMarkup, bodyText, loadJson, loadModule, byNormName, diffByName, diffSet, matchWeapon, combatPatrolNames, loadWh11edDatasheets } from './lib/sync-common.mjs'
 import { loadAppdataBundle } from './lib/appdata-exceptions.mjs'
 
 // Scalar field maps for statline/weapon-profile comparisons: [wh11ed key, appdata key].
@@ -57,6 +57,19 @@ const STAT_FIELDS = [['m', 'M'], ['t', 'T'], ['sv', 'Sv'], ['w', 'W'], ['ld', 'L
 const WEAPON_FIELDS = {
   ranged: [['a', 'A'], ['bs', 'BS'], ['s', 'S'], ['ap', 'AP'], ['d', 'D']],
   melee: [['a', 'A'], ['ws', 'WS'], ['s', 'S'], ['ap', 'AP'], ['d', 'D']],
+}
+
+let fkBySheet
+function factionKeywordsBySheet() {
+  if (fkBySheet) return fkBySheet
+  const tables = path.join(APPDATA, 'tables')
+  const name = new Map((loadJson(path.join(tables, 'faction_keyword.json')) || []).map((k) => [k.id, k.localisations?.en?.name]))
+  fkBySheet = new Map()
+  for (const r of loadJson(path.join(tables, 'datasheet_faction_keyword.json')) || []) {
+    if (!fkBySheet.has(r.datasheetId)) fkBySheet.set(r.datasheetId, [])
+    fkBySheet.get(r.datasheetId).push(name.get(r.factionKeywordId))
+  }
+  return fkBySheet
 }
 
 async function syncFaction(slug) {
@@ -272,11 +285,17 @@ async function syncFaction(slug) {
     }
 
     // Keywords: full set diff for every matched datasheet (previously only shown as a text
-    // pointer when the whole datasheet was missing). appdata's per-datasheet `factionKeywords` is
-    // always empty in this bundle shape (the faction keyword is implied by which faction bundle
-    // you're reading, not repeated per-sheet) — comparing it would be 100% noise, so only
-    // `keywords[]` is diffed; wh11ed's own `factionKeywords` isn't checked here.
+    // pointer when the whole datasheet was missing).
     lines.push(...diffSet(`datasheet "${d.name}" · keyword`, d.keywords || [], appDs.keywords || []))
+    // Faction keywords. The bundle's per-sheet `factionKeywords` is always empty; the relation lives
+    // in tables/datasheet_faction_keyword, reached through the sheet's source id. Not compared until
+    // 2026-10-03, and 13 sheets had none at all (the Exodite units, the Titans) while Death Guard's
+    // carried an empty one — and the roster matches "ASURYANI model only" against these.
+    const sourceId = smap[`ds:${d.id}`]
+    if (sourceId) {
+      lines.push(...diffSet(`datasheet "${d.name}" · faction keyword`, (d.factionKeywords || []).filter(Boolean), factionKeywordsBySheet().get(sourceId) || []))
+      if ((d.factionKeywords || []).some((k) => !k)) lines.push(`  ~ datasheet "${d.name}" has an empty faction keyword`)
+    }
 
     // baseSize: exact scalar (both sides are short strings like "32mm") — appdata always spaces
     // out "170 x 109mm", wh11ed always writes "170x109mm" — and for a mixed-base unit (a wargear

@@ -1006,7 +1006,9 @@ export default [
       "Mobile",
       "Mounted"
     ],
-    "factionKeywords": []
+    "factionKeywords": [
+      "Asuryani"
+    ]
   },
   {
     "id": "cobra",
@@ -2871,7 +2873,9 @@ export default [
       "Mobile",
       "Mounted"
     ],
-    "factionKeywords": []
+    "factionKeywords": [
+      "Asuryani"
+    ]
   },
   {
     "id": "eldrad-ulthran",
@@ -4954,7 +4958,9 @@ export default [
       "Mobile",
       "Mounted"
     ],
-    "factionKeywords": []
+    "factionKeywords": [
+      "Asuryani"
+    ]
   },
   {
     "id": "lhykhis",
@@ -7458,7 +7464,9 @@ export default [
       "Mounted",
       "Psyker"
     ],
-    "factionKeywords": []
+    "factionKeywords": [
+      "Asuryani"
+    ]
   },
   {
     "id": "storm-guardians",

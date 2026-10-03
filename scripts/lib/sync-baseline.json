@@ -24,6 +24,7 @@
   "+ missing in wh11ed: appdata container \"WHEN DRAWN\" ⟨fa025178b4⟩": "",
   "+ missing in wh11ed: appdata container \"WIN PATH\" ⟨4012e58190⟩": "",
   "+ missing in wh11ed: appdata container \"‘CUMULATIVE’ AND ‘OR’ CONDITIONS\" ⟨ef4978c3b7⟩": "",
+  "+ missing in wh11ed: datasheet \"Sir Hekhtur\" · faction keyword \"Imperial Knights\"": "Deliberate: Sir Hekhtur carries no faction keyword (and no points) so the roster cannot include him — see sync-roster-restrictions.mjs, \"structurally not includable\".",
   "+ missing in wh11ed: stratagem \"Unbridled Feroicity\" ⟨9a47ee4fc2⟩": "appdata typo: the app names the Space Wolves stratagem \"Unbridled Feroicity\"; we print \"Ferocity\". Drop when GW fixes the name.",
   "- EX \"Attack Sequence Example — ALLOCATION GROUPS\" [basicRules] not in appdata (wh11ed-only subsection)": "",
   "- extra in wh11ed (not in appdata): datasheet \"Huron Blackheart\" · bodyguard unit \"Masters of the Maelstrom\"": "Owner's decision 2026-09-21: Huron leads Masters of the Maelstrom per CSM Faction Pack v1.2 (PACK_ATTACH in gen-roster-data, roster/CLAUDE.md); appdata 972 does not have it yet.",

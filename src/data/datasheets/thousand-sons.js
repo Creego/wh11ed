@@ -100,7 +100,6 @@ export default [
       "Epic Hero"
     ],
     "factionKeywords": [
-      "",
       "Thousand Sons"
     ],
     "baseSize": "40mm"
@@ -207,8 +206,7 @@ export default [
       "Chaos"
     ],
     "factionKeywords": [
-      "Scintillating Legions",
-      ""
+      "Scintillating Legions"
     ],
     "baseSize": "25mm"
   },
@@ -343,8 +341,7 @@ export default [
       "Frame"
     ],
     "factionKeywords": [
-      "Thousand Sons",
-      ""
+      "Thousand Sons"
     ],
     "baseSize": "Hull"
   },
@@ -489,7 +486,6 @@ export default [
       "Frame"
     ],
     "factionKeywords": [
-      "",
       "Thousand Sons"
     ],
     "baseSize": "Hull"
@@ -635,8 +631,7 @@ export default [
       "Frame"
     ],
     "factionKeywords": [
-      "Thousand Sons",
-      ""
+      "Thousand Sons"
     ],
     "baseSize": "Hull"
   },
@@ -745,7 +740,6 @@ export default [
       "Frame"
     ],
     "factionKeywords": [
-      "",
       "Thousand Sons"
     ],
     "baseSize": "Hull"
@@ -802,8 +796,7 @@ export default [
       "Chaos"
     ],
     "factionKeywords": [
-      "Thousand Sons",
-      ""
+      "Thousand Sons"
     ],
     "baseSize": "50mm"
   },
@@ -925,8 +918,7 @@ export default [
       "Frame"
     ],
     "factionKeywords": [
-      "Thousand Sons",
-      ""
+      "Thousand Sons"
     ],
     "baseSize": "Hull"
   },
@@ -1034,8 +1026,7 @@ export default [
       "Daemon Prince"
     ],
     "factionKeywords": [
-      "Thousand Sons",
-      ""
+      "Thousand Sons"
     ],
     "baseSize": "60mm"
   },
@@ -1146,7 +1137,6 @@ export default [
       "Character"
     ],
     "factionKeywords": [
-      "",
       "Thousand Sons"
     ],
     "baseSize": "60mm"
@@ -1351,7 +1341,6 @@ export default [
       "Vehicle"
     ],
     "factionKeywords": [
-      "",
       "Thousand Sons"
     ],
     "baseSize": "160mm"
@@ -1463,8 +1452,7 @@ export default [
       "Exalted Sorcerer"
     ],
     "factionKeywords": [
-      "Thousand Sons",
-      ""
+      "Thousand Sons"
     ],
     "baseSize": "32mm"
   },
@@ -1579,7 +1567,6 @@ export default [
       "Psyker"
     ],
     "factionKeywords": [
-      "",
       "Thousand Sons"
     ],
     "baseSize": "40mm"
@@ -1660,7 +1647,6 @@ export default [
       "Fly"
     ],
     "factionKeywords": [
-      "",
       "Scintillating Legions"
     ],
     "baseSize": "32mm"
@@ -1765,7 +1751,6 @@ export default [
       "Forgefiend"
     ],
     "factionKeywords": [
-      "",
       "Thousand Sons"
     ],
     "baseSize": "120x92mm Oval Base"
@@ -1969,7 +1954,6 @@ export default [
       "Helbrute"
     ],
     "factionKeywords": [
-      "",
       "Thousand Sons"
     ],
     "baseSize": "60mm"
@@ -2062,7 +2046,6 @@ export default [
       "Fly"
     ],
     "factionKeywords": [
-      "",
       "Thousand Sons"
     ],
     "baseSize": "120x92mm Oval Base"
@@ -2175,7 +2158,6 @@ export default [
       "Grenades"
     ],
     "factionKeywords": [
-      "",
       "Thousand Sons"
     ],
     "baseSize": "40mm"
@@ -2279,7 +2261,6 @@ export default [
       "Fly"
     ],
     "factionKeywords": [
-      "",
       "Scintillating Legions"
     ],
     "baseSize": "100mm"
@@ -2410,7 +2391,6 @@ export default [
       "Lord of Change"
     ],
     "factionKeywords": [
-      "",
       "Scintillating Legions"
     ],
     "baseSize": "100mm"
@@ -2530,8 +2510,7 @@ export default [
       "Magnus the Red"
     ],
     "factionKeywords": [
-      "Thousand Sons",
-      ""
+      "Thousand Sons"
     ],
     "baseSize": "100mm",
     "abilitySets": [
@@ -2645,8 +2624,7 @@ export default [
       "Vehicle"
     ],
     "factionKeywords": [
-      "Thousand Sons",
-      ""
+      "Thousand Sons"
     ],
     "baseSize": "120x92mm Oval Base"
   },
@@ -2764,8 +2742,7 @@ export default [
       "Mutant"
     ],
     "factionKeywords": [
-      "Thousand Sons",
-      ""
+      "Thousand Sons"
     ],
     "baseSize": "120x92mm Oval Base"
   },
@@ -2923,8 +2900,7 @@ export default [
       "Battleline"
     ],
     "factionKeywords": [
-      "Scintillating Legions",
-      ""
+      "Scintillating Legions"
     ],
     "rules": [
       {
@@ -3116,7 +3092,6 @@ export default [
       "Rubricae"
     ],
     "factionKeywords": [
-      "",
       "Thousand Sons"
     ]
   },
@@ -3283,8 +3258,7 @@ export default [
       "Tzeentch"
     ],
     "factionKeywords": [
-      "Thousand Sons",
-      ""
+      "Thousand Sons"
     ]
   },
   {
@@ -3349,8 +3323,7 @@ export default [
       "Daemon"
     ],
     "factionKeywords": [
-      "Scintillating Legions",
-      ""
+      "Scintillating Legions"
     ],
     "baseSize": "Small Flying Base"
   },
@@ -3484,7 +3457,6 @@ export default [
       "Sekhetar Robots"
     ],
     "factionKeywords": [
-      "",
       "Thousand Sons"
     ],
     "baseSize": "40mm"
@@ -3601,8 +3573,7 @@ export default [
       "Grenades"
     ],
     "factionKeywords": [
-      "Thousand Sons",
-      ""
+      "Thousand Sons"
     ],
     "baseSize": "32mm"
   },
@@ -3725,7 +3696,6 @@ export default [
       "Terminator"
     ],
     "factionKeywords": [
-      "",
       "Thousand Sons"
     ],
     "baseSize": "40mm"
@@ -3818,7 +3788,6 @@ export default [
       "Mounted"
     ],
     "factionKeywords": [
-      "",
       "Thousand Sons"
     ],
     "baseSize": "40mm"
@@ -3897,7 +3866,6 @@ export default [
       "Mounted"
     ],
     "factionKeywords": [
-      "",
       "Thousand Sons"
     ],
     "baseSize": "40mm"
@@ -3989,7 +3957,6 @@ export default [
       "Infantry"
     ],
     "factionKeywords": [
-      "",
       "Thousand Sons"
     ],
     "baseSize": "40mm"
@@ -4089,8 +4056,7 @@ export default [
       "Tzeentch"
     ],
     "factionKeywords": [
-      "Thousand Sons",
-      ""
+      "Thousand Sons"
     ],
     "baseSize": "32mm"
   }
