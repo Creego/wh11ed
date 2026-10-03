@@ -669,6 +669,8 @@ function onEndBattle(reason) {
    it evenly when the row can't fit — a row is spent only when the width is genuinely gone. */
 .cp-row .sr-label ~ .proster:first-of-type { margin-left: auto; }
 .cp-row .proster { flex: 1 1 auto; min-width: 0; }
+/* The custom-limits mark beside an army button is a square of the button's own height. */
+.cp-row :deep(.olm) { flex: none; width: 40px; height: 40px; font-size: 1.05rem; }
 .sr-label {
   min-width: 4.5rem;
   font-size: 0.75rem;
