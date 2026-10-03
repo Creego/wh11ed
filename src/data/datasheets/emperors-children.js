@@ -1925,7 +1925,7 @@ export default [
         "note": "3rd+"
       }
     ],
-    "flavor": "Maulerfiends stalk the battlefield like immense hunting beasts. Once the enemy are in sight, these huge Daemon Engines thunder forward, even scaling defensive walls in their eagerness to get at the prey. Once amongst the foe, they slaughter anything in reach with their huge talons, crushing jaws and stabbing tendrils.",
+    "flavor": "The Maulerfiends of the Emperor’s Children possess a ravenous appetite for carnage and are empowered by the agonies inflicted upon them. They charge recklessly into the thick of the fighting, howling with pleasure as they tear infantry apart and reduce fortifications and vehicles to molten rubble with their fists or glowing magma cutters.",
     "profiles": [
       {
         "name": "Maulerfiend",
@@ -2021,7 +2021,7 @@ export default [
         "note": "3rd+"
       }
     ],
-    "flavor": "Orchestrating riotous destruction on vast scales, Noise Marines saturate the war zone with explosive bolts, clashing aural waves and extreme psychosonic attacks. These hedonistic worshippers of Slaanesh are inured to most stimuli, and seek to unleash the most cacophonous destruction to stir their jaded senses.",
+    "flavor": "Orchestrating riotous destruction on large scales, Noise Marines saturate the war zone with piercing bursts of shattering noise, thrumming waves of aural destruction and other extreme psychosonic attacks. These hedonistic worshippers of Slaanesh are inured to most stimuli and seek to unleash the most cacophonous destruction to stir their jaded senses.",
     "profiles": [
       {
         "name": "Noise Marines",

@@ -1710,7 +1710,7 @@ export default [
         "note": "3rd+"
       }
     ],
-    "flavor": "Creatures of midnight horror, crawling through the shadows to slither into the most secure locations, Mandrakes radiate an aura of frigid evil. They can conjure and hurl balefires at will to sear their victims’souls from the inside out, while any who face these ghoulish killers up close are soon hacked down by the blows of grossly outsized razors and vicious torture blades.",
+    "flavor": "Creatures of midnight horror, crawling through the shadows to slither into the most secure locations, Mandrakes radiate an aura of frigid evil. They can conjure and hurl balefires at will to sear their victims’ souls from the inside out, while any who face these ghoulish killers up close are soon hacked down by the blows of grossly outsized razors and vicious torture blades.",
     "profiles": [
       {
         "name": "Mandrakes",
@@ -3462,7 +3462,7 @@ export default [
       },
       {
         "name": "Void Mine",
-        "text": "At the end of your opponent’s Fight phase, select one visible enemy model (excluding Lone Operative units) within 24\" of this unit, and roll one D6 for each enemy unit within D6\" of that model: For each 4+, that enemy unit suffers D6 mortal wounds."
+        "text": "At the end of your opponent’s Fight phase, select one visible enemy model (excluding Lone Operative units) within 24\" of this unit, and roll one D6 for each enemy unit within D6\" of that model: For each 4+, that unit suffers D6 mortal wounds."
       }
     ],
     "damaged": {

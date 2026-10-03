@@ -151,7 +151,7 @@ export default [
       "units": [
         "Plague Marines"
       ],
-      "footer": "* This model can be attached to a Plague Marines unit even if one other Leader unit has already been attached to it (it cannot attach more than one of the same Leader to the same unit). If it does, and that Bodyguard unit is destroyed, the Leader units attached to it become separate units, with their original Starting Strengths."
+      "footer": "* You can attach this model to a PLAGUE MARINES unit, even if one other Leader unit has already been attached to it (you cannot attach more than one of the same Leader to the same unit)."
     },
     "keywords": [
       "Chaos",
@@ -2402,7 +2402,7 @@ export default [
       "units": [
         "Plague Marines"
       ],
-      "footer": "* This model can be attached to a Plague Marines unit even if one other Leader unit has already been attached to it (it cannot attach more than one of the same Leader to the same unit). If it does, and that Bodyguard unit is destroyed, the Leader units attached to it become separate units, with their original Starting Strengths."
+      "footer": "* You can attach this model to a PLAGUE MARINES unit, even if one other Leader unit has already been attached to it (you cannot attach more than one of the same Leader to the same unit)."
     },
     "keywords": [
       "Chaos",
@@ -2842,7 +2842,7 @@ export default [
       "units": [
         "Plague Marines"
       ],
-      "footer": "* This model can be attached to a Plague Marines unit even if one other Leader unit has already been attached to it (it cannot attach more than one of the same Leader to the same unit). If it does, and that Bodyguard unit is destroyed, the Leader units attached to it become separate units, with their original Starting Strengths."
+      "footer": "* You can attach this model to a PLAGUE MARINES unit, even if one other Leader unit has already been attached to it (you cannot attach more than one of the same Leader to the same unit)."
     },
     "keywords": [
       "Chaos",
@@ -3135,7 +3135,7 @@ export default [
         "points": 60
       }
     ],
-    "flavor": "Every foetid fibre of a Malignant Plaguecaster’s body is rotted and decayed. They are living conduits for Nurgle’s miasmas and maladies. Foul blights reside within their roiling, bloated frames, and when they are unleashed in an eruption of vomit and gases, they liquefy metal, stone andflesh.",
+    "flavor": "Every foetid fibre of a Malignant Plaguecaster’s body is rotted and decayed. They are living conduits for Nurgle’s miasmas and maladies. Foul blights reside within their roiling, bloated frames, and when they are unleashed in an eruption of vomit and gases, they liquefy metal, stone and flesh.",
     "profiles": [
       {
         "name": "Malignant Plaguecaster",
@@ -3322,7 +3322,7 @@ export default [
         "points": 375
       }
     ],
-    "flavor": "To stand in Mortarion’s presence is lethal, such is the pestilential aura that surrounds him. Wielding his gigantic scythe, Silence, he cuts apart entire enemy squads in seconds. With furious blasts of Lantern, his devastating sidearm of unknown provenance, he disintegrates heavy infantry and armour alike.",
+    "flavor": "To stand in Mortarion’s presence is lethal, such is the infectious aura surrounding him. Wielding his gigantic scythe, Silence, he cuts apart entire enemy squads in seconds. With furious blasts of Lantern, his devastating sidearm, he disintegrates heavy infantry and armour alike, leaving their glowing ashes swirling in his wake.",
     "profiles": [
       {
         "name": "Mortarion",
@@ -3651,7 +3651,7 @@ export default [
         "Poxwalkers",
         "Plague Marines"
       ],
-      "footer": "* This model can be attached to a Plague Marines or Poxwalkers unit even if one other Leader unit has already been attached to it (it cannot attach more than one of the same Leader to the same unit). If it does, and that Bodyguard unit is destroyed, the Leader units attached to it become separate units, with their original Starting Strengths."
+      "footer": "* You can attach this model to a PLAGUE MARINES or POXWALKERS unit, even if one other Leader unit has already been attached to it (you cannot attach more than one of the same Leader to the same unit)."
     },
     "keywords": [
       "Character",
@@ -3742,7 +3742,7 @@ export default [
         "points": 220
       }
     ],
-    "flavor": "Plague Drones ride monstrous rot flies to war. These vile steeds scrabble and rip at their prey, impaling them on dripping proboscis orbiting off the heads of their victims. The finest stolen craniums are recovered and fashioned into filth-swollen projectiles - death’s heads - for the daemonic riders to hurl at their foes.",
+    "flavor": "Plague Drones ride monstrous rot flies to war. These vile steeds scrabble and rip at their prey, impaling them on dripping proboscis or biting off the heads of their victims. The finest stolen craniums are recovered and fashioned into filth‑swollen projectiles – death’s heads – for the daemonic riders to hurl at their foes.",
     "profiles": [
       {
         "name": "Plague Drones",
@@ -4152,7 +4152,7 @@ export default [
       "units": [
         "Plague Marines"
       ],
-      "footer": "* This model can be attached to a Plague Marines unit even if one other Leader unit has already been attached to it (it cannot attach more than one of the same Leader to the same unit). If it does, and that Bodyguard unit is destroyed, the Leader units attached to it become separate units, with their original Starting Strengths."
+      "footer": "* You can attach this model to a PLAGUE MARINES unit, even if one other Leader unit has already been attached to it (you cannot attach more than one of the same Leader to the same unit)."
     },
     "keywords": [
       "Plague Surgeon",
@@ -4622,7 +4622,7 @@ export default [
       "units": [
         "Plague Marines"
       ],
-      "footer": "* This model can be attached to a Plague Marines unit even if one other Leader unit has already been attached to it (it cannot attach more than one of the same Leader to the same unit). If it does, and that Bodyguard unit is destroyed, the Leader units attached to it become separate units, with their original Starting Strengths."
+      "footer": "* You can attach this model to a PLAGUE MARINES unit, even if one other Leader unit has already been attached to it (you cannot attach more than one of the same Leader to the same unit)."
     },
     "keywords": [
       "Tallyman",
@@ -4645,7 +4645,7 @@ export default [
         "points": 90
       }
     ],
-    "flavor": "Host of the Destroyer Hive, for millennia Typhus has travelled the galaxy, spreading Nurgle’s Rot and killing billions. When he takes to the field, he slices apart countless foes with his filth-encrusted power scythe and unleashes the swarming horror of his Destroyer Hive to engulf them in murderous plague flies.",
+    "flavor": "Host of the Destroyer Hive, Typhus has travelled the galaxy, spreading Nurgle’s Rot and killing billions. When he takes to the field, he slices apart countless foes with his filth-encrusted power scythe, Lakrimae, and unleashes the swarming horror of his Destroyer Hive to engulf them in murderous plague-flies.",
     "profiles": [
       {
         "name": "Typhus",

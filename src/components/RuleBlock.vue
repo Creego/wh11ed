@@ -63,14 +63,14 @@
         <!-- A rule whose text comes from GW's errata rather than the rule as the app prints it:
              said under the rule, with the way to the errata entry (owner, 2026-10-03). -->
         <p
-          v-if="errata"
+          v-if="errataRef"
           class="rule-errata"
         >
           <i class="bi bi-pencil-square" />
           {{ errataNote }}
           <a
-            :href="`#${errata.anchor}`"
-            @click.prevent="scrollToAnchor(errata.anchor)"
+            :href="`#${errataRef.anchor}`"
+            @click.prevent="scrollToAnchor(errataRef.anchor)"
           >{{ labels.ruleErrataLink }}</a>
         </p>
 
@@ -123,7 +123,7 @@ const props = defineProps({
   sideImage: Object,
   children: Array,
   // { anchor, date } — the errata entry (Reference chapter) this rule's text follows.
-  errata: { type: Object, default: null },
+  errataRef: { type: Object, default: null },
 })
 
 const { renderInline } = useRenderInline()
@@ -131,8 +131,8 @@ const { renderInline } = useRenderInline()
 const { locale } = useLocale()
 const labels = computed(() => ui[locale.value])
 const errataNote = computed(() => {
-  if (!props.errata) return ''
-  const date = new Date(`${props.errata.date}T00:00:00Z`)
+  if (!props.errataRef) return ''
+  const date = new Date(`${props.errataRef.date}T00:00:00Z`)
     .toLocaleDateString(locale.value === 'ru' ? 'ru-RU' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
     .replace(/\s*г\.$/, '')
   return labels.value.ruleErrataNote.replace('{date}', date)

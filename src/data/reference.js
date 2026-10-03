@@ -1,3 +1,14 @@
+// Section 24's own intro — the line the app prints under the "Core Abilities" heading (24.00).
+// Rendered as the chapter description by ChapterReference's SectionHeader.
+export const abilitySection = {
+  en: {
+    description: 'This section presents the most common abilities used in Warhammer 40,000. When these appear in other places, they are usually only referenced by name.',
+  },
+  ru: {
+    description: 'В этом разделе представлены самые распространённые способности, используемые в Warhammer 40,000. Когда они встречаются в других местах, на них обычно ссылаются только по названию.',
+  },
+}
+
 export const abilityIntro = {
   en: [
     {
@@ -100,7 +111,7 @@ If this ability takes the form **[BLAST X]**, each time you gather **attack dice
       type: 'weapon',
       flavor: 'With sufficient might or skill, warriors may sweep blades or talons through their foes in long lethal arcs.',
       fullText: `This ability always takes the form **[CLEAVE X]**. Each time you gather **[gloss:attack-dice:attack dice]** for a **[CLEAVE]** weapon, if you only selected one target for all of that weapon's attacks, add **X** additional **attack dice** for every five models that were in the target unit in the Select Targets step (rounding down).`,
-      example: 'If a **[CLEAVE 1]** weapon with an **A** characteristic of 3 targets a unit containing 16 models, you would gather three additional **attack dice** for that weapon (for a total of six for that weapon).',
+      example: 'If a **[CLEAVE 1]** weapon with an **A** characteristic of 3 targets one unit containing 16 models, you would gather three additional **attack dice** for that weapon (for a total of six for that weapon).',
     },
     {
       num: '24.07',

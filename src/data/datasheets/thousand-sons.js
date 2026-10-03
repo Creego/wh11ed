@@ -11,7 +11,7 @@ export default [
         "points": 105
       }
     ],
-    "flavor": "Ahriman fights with singularfocus and frightening determination. At range, he unleashes storms of psychic fury that transmogrify, mutate and erase from existence all who stand before him. Swooping low upon his Disc of Tzeentch, the Arch-Sorcerer strikes down anyone who survives with his terrifying Black Staff.",
+    "flavor": "Ahriman fights with singular focus and frightening determination. At range he unleashes storms of psychic fury that transmogrify, mutate and erase from existence all who stand before him. Swooping low upon his Disc of Tzeentch, the Arch-Sorcerer strikes down any who survive with his terrifying Black Staff.",
     "profiles": [
       {
         "name": "Ahriman",
@@ -650,7 +650,7 @@ export default [
         "note": "4th+"
       }
     ],
-    "flavor": "Many of the Rhinos employed by the Thousand Sons are ancient vehicles, their once-noble machine spirits safuratedby the malice of the Warp, their hulls mutated and discoloured by the energies of unfettered change. Still, they bear the foot soldiers of Tzeentch swiftly into battle, guns hammering as they go.",
+    "flavor": "Many of the Rhinos employed by the Thousand Sons are ancient vehicles, their once-noble machine spirits saturated by the malice of the Warp, their hulls mutated and discoloured by the energies of unfettered change. Still, they bear the foot soldiers of Tzeentch swiftly into battle, guns hammering as they go.",
     "profiles": [
       {
         "name": "Chaos Rhino",
@@ -753,7 +753,7 @@ export default [
         "points": 65
       }
     ],
-    "flavor": "Chaos Spawn are roiling masses of mutating flesh and bone that lurch towards the foe with mindless ferocity. They wail and slobberfrom fanged maws as they lash wildly about themselves with barbed pseudopods, snapping claws and clubbing limbs, tearing and crushing all who do not flee in horror.",
+    "flavor": "Chaos Spawn are roiling masses of mutating flesh and bone that lurch towards the foe with mindless ferocity. They wail and slobber from fanged maws as they lash wildly about themselves with barbed pseudopods, snapping claws and clubbing limbs, tearing and crushing all who do not flee in horror.",
     "profiles": [
       {
         "name": "Chaos Spawn",
@@ -931,7 +931,7 @@ export default [
         "points": 170
       }
     ],
-    "flavor": "The Daemon Princes of the Thousand Sons are potent sorcerers and monstrous warriors, terrifying in their martial might. Moreover, their mere presence bends the weave of fate into forms more advantageous for their designs, ensuring that the warriors they lead to battle strike their enemies down with unnatural precision.",
+    "flavor": "The Daemon Princes of the Thousand Sons are potent sorcerers and monstrous warriors both, terrifying in their martial might. Moreover, their mere presence bends the weave of fate into forms more fortuitous for their designs, ensuring that the warriors they lead to battle strike their enemies down with unnatural precision.",
     "profiles": [
       {
         "name": "Daemon Prince of Tzeentch",
@@ -1354,7 +1354,7 @@ export default [
         "points": 100
       }
     ],
-    "flavor": "Greatest amongst Magnus’ lieutenants, each Exalted Sorcerer embodies forbidden power and monstrous ambition. From the soul-burning detonations of their pistols’ cursed shells to the unfettered might of their sorcery and the shimmering shields cast by their corrupt sigils of Tzeentch, they are terrifyingly powerful warriors.",
+    "flavor": "Greatest amongst Magnus’ lieutenants, each Exalted Sorcerer is an embodiment of forbidden power and monstrous ambition. From the soul-burning gouts of their warpflame pistols to the unfettered might of their sorcery and the shimmering shields cast by their corrupt sigils of Tzeentch, they are terrifyingly potent warriors.",
     "profiles": [
       {
         "name": "Exalted Sorcerer",
@@ -1465,7 +1465,7 @@ export default [
         "points": 95
       }
     ],
-    "flavor": "Only the greatest wielders of esoteric power are said to be granted one of Tzeentch's daemonic steeds. Exalted Sorcerers ride these daemonic Discs on plumes of arcane flame while they manipulate coruscating energy in twisting firestorms.",
+    "flavor": "Only the greatest wielders of esoteric power are said to be granted one of Tzeentch’s daemonic steeds. Exalted Sorcerers ride these soaring Discs on plumes of arcane flame while they manipulate coruscating energy in twisting firestorms.",
     "profiles": [
       {
         "name": "Exalted Sorcerer on Disc of Tzeentch",
@@ -1666,7 +1666,7 @@ export default [
         "note": "3rd+"
       }
     ],
-    "flavor": "The ectoplasma cannons and Hades heavy autocannons of the Forgefiends draw their furious energies directly from the blazing daemonforges at the heart of each murderous artillery engine. They unleash salvoes of blazing weaponised hatred that eradicate the Thousand Sons’ enemies in droves.",
+    "flavor": "The ectoplasma cannons and Hades autocannons of the Forgefiends draw their furious energies direct from the blazing daemon forges at the heart of each murderous artillery engine. So do they unleash salvoes of blazing weaponised hatred that eradicate the Thousand Sons’ enemies in droves.",
     "profiles": [
       {
         "name": "Forgefiend",
@@ -1967,7 +1967,7 @@ export default [
         "points": 175
       }
     ],
-    "flavor": "Swooping low over the battlefield upon flame-wreathed wings, Heldrakes send their enemies diving for cover. Weaving and jinking like living beasts, they unleash torrents of fire from their blazing jaw guns, tear enemy aircraft from the skies with their vicious talons and honour Tzeentch with every sacrificial kill.",
+    "flavor": "Swooping low over the battlefield upon flame-wreathed wings, Heldrakes send their enemies diving for cover. Weaving and jinking like living beasts, they unleash torrents of fire from their blazing jaw-guns, tear enemy aircraft from the skies with their vicious talons, and honour Tzeentch with every sacrificial kill.",
     "profiles": [
       {
         "name": "Heldrake",
@@ -2059,7 +2059,7 @@ export default [
         "points": 105
       }
     ],
-    "flavor": "Infernal Masters forge pacts with daemonic entities, euphemistically called tutelaries. Upon the battlefield, they can unleash the powers of these malign familiars to engulf their foes in swarms of momentarily corporeal terrors, to divine whispers of the future or to master the currents of the Empyrean itself.",
+    "flavor": "Infernal Masters forge pacts with daemonic entities, euphemistically called tutelaries. Upon the battlefield they can unleash the powers of these malign familiars to engulf their foes in swarms of momentarily corporeal terrors, to divine whispers of the future or to master the currents of the empyrean itself.",
     "profiles": [
       {
         "name": "Infernal Master",
@@ -2280,7 +2280,7 @@ export default [
         "note": "3rd+"
       }
     ],
-    "flavor": "Greater Daemons of Tzeentch are infinitely cunning sorcerers and manipulators. Their malevolent gaze lays bare the souls of their victims and blasts the sanity of even the staunchest mortal, while their ensorcelled weapons and unholy magicks violently reshape reality itself into ever-mutating forms.",
+    "flavor": "Greater Daemons of Tzeentch are infinitely cunning sorcerers and manipulators. Their malevolent gaze lays bare the souls of their victims and blasts the sanity of even the staunchest mortal, while their ensorcelled weapons and unholy magicks violently reshape reality itself into ever mutating forms.",
     "profiles": [
       {
         "name": "Lord of Change",
@@ -2548,7 +2548,7 @@ export default [
         "note": "3rd+"
       }
     ],
-    "flavor": "Maulerfiends are ferocious Daemon Engines capable of scaling even sheer fortress walls with wicked metal talons. Those employed by the Thousand Sons are inescapable, for the daemons within them hunt as much by tracking their prey’s future choices as by the lights of their soulspoor.",
+    "flavor": "Maulerfiends are ferocious Daemon Engines capable of scaling even sheer fortress walls with their wicked metal talons. Those employed by the Thousand Sons are inescapable, for the daemons within them hunt as much by tracking their prey’s future choices as by the lights of their soulspoor.",
     "profiles": [
       {
         "name": "Maulerfiend",
@@ -2934,7 +2934,7 @@ export default [
         "note": "4th+"
       }
     ],
-    "flavor": "Advancing at the command of their sorcerous master, Rubric Marines lay down withering hails of fire. Arcane shells from their inferno weapons and soulreaper cannons blast the enemy apart while gouts of mutagenic fire from their warpflamers bum and twist flesh and soul. Against such an onslaught, none can stand for long.",
+    "flavor": "Advancing at the command of their sorcerous master, Rubric Marines lay down withering hails of fire. Arcane shells from their inferno weapons and soulreaper cannons blast the enemy apart while gouts of mutagenic fire from their warpflamers burn and twist flesh and soul. Against such an onslaught, none can stand for long.",
     "profiles": [
       {
         "name": "Rubric Marine",
@@ -3592,7 +3592,7 @@ export default [
         "note": "3rd+"
       }
     ],
-    "flavor": "Clad in hulking Terminator plate, a Sorcerer of the Thousand Sons can shrug off even the punishing fire of anti-tank weaponry. So protected, they can unleash their mutative magicks with impunity, leading offensives into even the most heavily defended enemy strongpoints and laying low any who bar their path.",
+    "flavor": "Clad in hulking Terminator plate, a Sorcerer of the Thousand Sons can shrug off even the punishing fire of anti-tank weaponry. So protected, they are free to unleash their mutative magicks with impunity, leading offensives into even the most heavily defended enemy strongpoints and laying low any who bar their path.",
     "profiles": [
       {
         "name": "Sorcerer in Terminator Armour",
@@ -3805,7 +3805,7 @@ export default [
         "points": 110
       }
     ],
-    "flavor": "When armed with fatecaster greatbows, Tzaangor Enlightened use their position atop their fanged and bladed daemonic mounts to view the flow of causality. With their bows’ ectoplasmic cords pulled taut, these arcane predators seek out those foes whose pivotal actions can change destinies before loosing their ensorcelled arrows to cut short such a fate.",
+    "flavor": "When armed with fatecaster greatbows, Tzaangor Enlightened use their position atop their fanged and bladed daemonic mounts to view the fl ow of causality. With their bows’ ectoplasmic cords pulled taut, these arcane predators seek out those foes whose pivotal actions can change destinies before loosing their ensorcelled arrows to cut short such a fate.",
     "profiles": [
       {
         "name": "Tzaangor Enlightened with Fatecaster Greatbows",
@@ -3879,7 +3879,7 @@ export default [
         "points": 65
       }
     ],
-    "flavor": "Tzaangor Shamans possess prodigious sorcerous abilities stemming from their faith in Tzeentch and can unleash ferocious psgchic bombardments against the foe as they soar high upon their daemonic Discs. The mere presence of these bestial champions inspires the herds they lead to ever greater heights of violence.",
+    "flavor": "Tzaangor Shamans possess prodigious sorcerous abilities that stem from their faith in Tzeentch, and can unleash ferocious psychic bombardments against the foe as they soar high upon their daemonic Discs. The mere presence of these bestial champions inspires the herds they lead to ever greater heights of violence.",
     "profiles": [
       {
         "name": "Tzaangor Shaman",
@@ -3974,7 +3974,7 @@ export default [
         "points": 145
       }
     ],
-    "flavor": "Brayhorn blasts and avian shrieks herald the onset of the Tzaangors. These mutated shock troops surge into battle, wielding baroque blades or roaring chainswords with vicious skill. Whirling skeins of dark sorcery deflect return shots and blows, for these creatures belong to Tzeentch body and soul.",
+    "flavor": "Brayhorn blasts and avian shrieks herald the onset of the Tzaangors. These mutated shock troops surge into battle wielding baroque blades or roaring chainswords with vicious skill. Return shots and blows are deflected by whirling skeins of dark sorcery, for these creatures belong to Tzeentch body and soul.",
     "profiles": [
       {
         "name": "Tzaangors",

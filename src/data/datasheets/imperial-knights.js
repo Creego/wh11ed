@@ -1297,7 +1297,7 @@ export default [
         "note": "2nd+"
       }
     ],
-    "flavor": "Built upon a Dommus-class chassis, the Knight Castellan’s dual plasma core fuels an array of weapon systems that make it among the foremost artillery Knights of the houses. The combined fire of several of these engines can equal that of an Imperial Navy warship battery, and tear the heart out of an enemy army.",
+    "flavor": "Built upon a Dominus‑class chassis, the Knight Castellan’s dual plasma core fuels an array of weapon systems that make it among the foremost artillery Knights of the houses. The combined fire of several of these engines can equal that of an Imperial Navy warship battery, and tear the heart out of an enemy army.",
     "profiles": [
       {
         "name": "Knight Castellan",
@@ -2314,7 +2314,7 @@ export default [
         "note": "3rd+"
       }
     ],
-    "flavor": "These highly versatile Knights provide strategic backbone to many lances. While not specialised, they are favoured by most houses for their combination rapid-fire battle cannon, a direct firing artillery gun and a powerful close combat weapon. Seasoned Nobles prize these suits.",
+    "flavor": "These highly versatile Knights provide the strategic backbone to many lances. While not specialised, they are favoured by most houses for their combination of rapid‑fire battle cannon, a direct‑firing artillery gun and a powerful close‑combat weapon. Seasoned Nobles prize these suits.",
     "profiles": [
       {
         "name": "Knight Paladin",
