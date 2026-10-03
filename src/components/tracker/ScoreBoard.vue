@@ -8,10 +8,12 @@
     >
       <div class="col-head">
         <span class="pname">{{ sideName(pl, i, labels) }}</span>
-        <span
-          v-if="leaderIdx === i && !finished"
-          class="lead-tag"
-        >{{ labels.trackerLeader }}</span>
+        <ExpandTransition>
+          <span
+            v-if="leaderIdx === i && !finished"
+            class="lead-tag"
+          >{{ labels.trackerLeader }}</span>
+        </ExpandTransition>
       </div>
       <div
         :ref="el => (grandEls[i] = el)"
@@ -49,6 +51,7 @@
 </template>
 
 <script setup>
+import ExpandTransition from '../ExpandTransition.vue'
 import { computed } from 'vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'

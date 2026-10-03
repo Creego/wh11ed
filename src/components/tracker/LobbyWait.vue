@@ -26,13 +26,15 @@
         </li>
       </ul>
 
-      <p
-        v-if="notice"
-        class="lw-notice"
-        :class="{ deny: myRequestDenied || hostQuiet }"
-      >
-        {{ notice }}
-      </p>
+      <ExpandTransition>
+        <p
+          v-if="notice"
+          class="lw-notice"
+          :class="{ deny: myRequestDenied || hostQuiet }"
+        >
+          {{ notice }}
+        </p>
+      </ExpandTransition>
 
       <div class="lw-sync">
         <SyncIndicator />
@@ -87,6 +89,7 @@
 </template>
 
 <script setup>
+import ExpandTransition from '../ExpandTransition.vue'
 import { computed, ref, onMounted, onUnmounted } from 'vue'
 import ConfirmModal from '../ConfirmModal.vue'
 import SyncIndicator from './SyncIndicator.vue'

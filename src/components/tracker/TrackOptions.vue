@@ -27,10 +27,12 @@
           {{ labels[o.label] }}
           <!-- Why a row cannot be flipped, or a caveat about what flipping it will get you. The
                first replaces the second: a row nobody can touch has nothing to caveat. -->
-          <em
-            v-if="reasonOf(o)"
-            class="check-note"
-          >{{ labels[reasonOf(o)] }}</em>
+          <ExpandTransition>
+            <em
+              v-if="reasonOf(o)"
+              class="check-note"
+            >{{ labels[reasonOf(o)] }}</em>
+          </ExpandTransition>
         </span>
       </label>
       <!-- Live even for a disabled row: what a greyed-out option WOULD do is exactly what you
@@ -77,6 +79,7 @@
 // `settings` is the caller's own reactive draft and is written in place (v-model straight onto
 // its fields) — the wizard commits it on Start, the dialog on Save, and neither wants an
 // intermediate copy that could fall out of step.
+import ExpandTransition from '../ExpandTransition.vue'
 import { computed, ref } from 'vue'
 import OptionHelpModal from './OptionHelpModal.vue'
 import { optionsIn, optionEnabled } from '../../data/trackerOptions.js'

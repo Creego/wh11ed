@@ -5,26 +5,30 @@
        printed size. -->
   <!-- `inert` inside another button (the tracker's roster picker row): the same mark as plain text,
        with its limits in the tooltip, since a button may not hold a button. -->
-  <span
-    v-if="lines.length && inert"
-    class="olm inert"
-    :title="lines.join(' · ')"
-  ><i class="bi bi-sliders" /> {{ labels.rosterLimitOwnShort }}</span>
-  <button
-    v-else-if="lines.length"
-    type="button"
-    class="olm"
-    data-kw-open
-    :title="lines.join(' · ')"
-    :aria-label="`${labels.rosterLimitOwnTitle}: ${lines.join(', ')}`"
-    @click.stop="show"
-  >
-    <i class="bi bi-sliders" />
-  </button>
+  <!-- It opens by sliding the points beside it aside (ExpandTransition), and closes the same way. -->
+  <ExpandTransition>
+    <span
+      v-if="lines.length && inert"
+      class="olm inert"
+      :title="lines.join(' · ')"
+    ><i class="bi bi-sliders" /> {{ labels.rosterLimitOwnShort }}</span>
+    <button
+      v-else-if="lines.length"
+      type="button"
+      class="olm"
+      data-kw-open
+      :title="lines.join(' · ')"
+      :aria-label="`${labels.rosterLimitOwnTitle}: ${lines.join(', ')}`"
+      @click.stop="show"
+    >
+      <i class="bi bi-sliders" />
+    </button>
+  </ExpandTransition>
 </template>
 
 <script setup>
 import { computed } from 'vue'
+import ExpandTransition from '../ExpandTransition.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
 import { useKeywordPopover } from '../../composables/useKeywordPopover.js'

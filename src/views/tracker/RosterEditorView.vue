@@ -84,6 +84,7 @@
           <RosterSetupFields
             :limit="limitOf(roster)"
             :has-faction="!!roster.faction"
+            :faction-slug="roster.faction || ''"
             :faction-name="factionName"
             :detachment-summary="detachmentSummary"
             :dp-spent="dpSpent"

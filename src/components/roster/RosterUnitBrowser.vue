@@ -34,10 +34,12 @@
         @click="filtersOpen = !filtersOpen"
       >
         <i :class="activeFilters ? 'bi bi-funnel-fill' : 'bi bi-funnel'" />
-        <span
-          v-if="activeFilters"
-          class="rub-filter-count"
-        >{{ activeFilters }}</span>
+        <ExpandTransition>
+          <span
+            v-if="activeFilters"
+            class="rub-filter-count"
+          >{{ activeFilters }}</span>
+        </ExpandTransition>
       </button>
       <!-- The list's rules (RosterRulesModal), where the builder's eye already is — the same row as
            the search and the filters, instead of a bar of its own over both panes. -->
@@ -99,10 +101,12 @@
           </label>
         </div>
       </CollapseTransition>
-      <em
-        v-if="hiddenCount"
-        class="rub-hidden"
-      >{{ labels.rosterFilterHidden.replace('{n}', hiddenCount) }}</em>
+      <ExpandTransition>
+        <em
+          v-if="hiddenCount"
+          class="rub-hidden"
+        >{{ labels.rosterFilterHidden.replace('{n}', hiddenCount) }}</em>
+      </ExpandTransition>
     </div>
 
     <div class="rub-body">
@@ -212,6 +216,7 @@
 </template>
 
 <script setup>
+import ExpandTransition from '../ExpandTransition.vue'
 import ChevronIcon from '../ChevronIcon.vue'
 import TypingGhost from '../TypingGhost.vue'
 import { computed, ref, watch } from 'vue'

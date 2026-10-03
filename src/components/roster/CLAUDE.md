@@ -1346,8 +1346,8 @@ steps, and the phone its modal.
   one line. The Settings tab and the wizard's step 1 are ordinary pages: `.rw-host` is bound to
   the columns being up. The editor keeps both modes built (`v-show`) so a switch never rebuilds
   the catalogue and the list — their search, open groups and scroll survive a visit to Settings.
-- **`RosterSettingsBar.vue`** is the top line — name, faction, detachments (with the DP count),
-  battle size, Force Disposition, then its "…". **No points and no buttons** (owner, 2026-09-26):
+- **`RosterSettingsBar.vue`** is the top line — name, points limit (before the faction since
+  2026-10-03, as on the phone's form), faction, detachments (with the DP count), Force Disposition, then its "…". **No points and no buttons** (owner, 2026-09-26):
   the points, the issue badge and the way out are the fixed bar's at the bottom at every width, the
   desk included. It holds no state: both
   callers own a roster and do different things with the same answer (the wizard's faction pick also
@@ -2286,9 +2286,11 @@ repeats that under the chosen value; the desk's line shows the value alone — b
 facts pushed the line onto a second row. That line never wraps: the name field gives way.
 
 **Custom, with the player's own limits** (owner, 2026-10-03). Custom is a joined − [ N pts ] +
-field (`RosterLimitStepper`, 50 a step) under the phone's field. The player's own limits —
+field (`NumberStepper`, the builder's and the tracker's own: rolling digits, pressed buttons; 50 a
+step, and `editable` so the number can be typed) under the phone's field. The player's own limits —
 Detachment Points, enhancements, copies of a unit, copies of a Battleline unit — are a dialog
-(`RosterCustomLimit` in a `BaseModal`, the points again at its top) opened from the sliders square
+(`RosterCustomLimit` in a `BaseModal` wearing the list's faction colours through
+`FactionAccentScope`, the points again at its top) opened from the sliders square
 to the right of the field on both widths; on the desk picking "Custom" opens it too, since the
 line has no room for the number under the field. They are stored
 as `roster.customLimits: { dp, enh, dup, line }`, each key on its own: a key left out is borrowed

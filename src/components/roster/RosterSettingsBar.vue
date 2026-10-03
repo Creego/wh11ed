@@ -27,6 +27,19 @@
       >
     </label>
 
+    <!-- The points limit before the faction (owner, 2026-10-03), as on the phone's form. What it
+         decides besides the points is said in the picker's own rows; once chosen, the line shows
+         the value alone. -->
+    <div class="rw-field">
+      <span>{{ labels.rosterPointsLimitLabel }}</span>
+      <RosterBattleSizeField
+        variant="bar"
+        :faction="factionSlug"
+        :limit="limit"
+        @update:limit="$emit('update:limit', $event)"
+      />
+    </div>
+
     <!-- The pickers drop down under their fields rather than covering the screen (owner,
          2026-10-01), with the modal's own rows inside (PickerDropdown). -->
     <div class="rw-field">
@@ -57,11 +70,13 @@
     <div class="rw-field">
       <span>
         {{ labels.rosterDetachmentLabel }}
-        <em
-          v-if="factionSlug"
-          class="dp-count"
-          :class="{ over: dpSpent > dpLimit }"
-        >{{ dpSpent }}<template v-if="Number.isFinite(dpLimit)"> / {{ dpLimit }}</template> DP</em>
+        <ExpandTransition>
+          <em
+            v-if="factionSlug"
+            class="dp-count"
+            :class="{ over: dpSpent > dpLimit }"
+          >{{ dpSpent }}<template v-if="Number.isFinite(dpLimit)"> / {{ dpLimit }}</template> DP</em>
+        </ExpandTransition>
       </span>
       <!-- Several can be taken under the DP budget, so a pick leaves it open; a click outside or
            Escape closes it. -->
@@ -93,73 +108,67 @@
       </PickerDropdown>
     </div>
 
-    <!-- What a limit decides besides the points is said in the picker's own rows; once chosen,
-         the desk's line shows the value alone (owner, 2026-10-03). -->
-    <div class="rw-field">
-      <span>{{ labels.rosterPointsLimitLabel }}</span>
-      <RosterBattleSizeField
-        variant="bar"
-        :limit="limit"
-        @update:limit="$emit('update:limit', $event)"
-      />
-    </div>
-
     <!-- An army has ONE Force Disposition. One on offer settles it and there is nothing to ask;
          several make it a declaration, and the list is where it is declared — here a dropdown, in
          the shape of the faction and detachment fields beside it (owner, 2026-10-01: on one line
          a row of buttons was the odd one out). The phone's form keeps its segmented control. -->
-    <div
-      v-if="factionSlug && dispositionCands.length"
-      class="rw-field"
-    >
-      <span>{{ dispositionCands.length > 1 ? labels.rosterDispositionDeclared : labels.trackerDisposition }}</span>
-      <span
-        v-if="dispositionCands.length === 1"
-        class="rw-static"
-      >{{ dispositionCands[0] }}</span>
-      <PickerDropdown
-        v-else
-        v-model:open="dispositionPickerOpen"
-        class="rw-fd"
-        width="12rem"
-        align="right"
-        :label="labels.rosterDispositionDeclared"
+    <!-- What appears on this line as the list takes shape — the declared disposition, the DP
+         count, the custom limit's sliders — opens by sliding its neighbours aside and closes the
+         same way (ExpandTransition, owner 2026-10-03). -->
+    <ExpandTransition>
+      <div
+        v-if="factionSlug && dispositionCands.length"
+        class="rw-field"
       >
-        <template #trigger="{ toggle, open }">
-          <button
-            class="rw-choose"
-            :aria-expanded="open"
-            @click="toggle"
-          >
-            <span
-              v-if="dispositionCands.includes(disposition)"
-              class="tone tone-chip"
-              :style="toneVars(dispositionColor(disposition))"
-            >{{ disposition }}</span>
-            <span
-              v-else
-              class="placeholder"
-            >{{ labels.rosterChoose }}</span>
-            <i class="bi bi-chevron-down" />
-          </button>
-        </template>
-        <div class="modal-list rw-fd-list">
-          <button
-            v-for="d in dispositionCands"
-            :key="d"
-            type="button"
-            class="rw-fd-opt"
-            :class="{ on: disposition === d }"
-            @click="dispositionPickerOpen = false; $emit('update:disposition', d)"
-          >
-            <span
-              class="tone tone-chip"
-              :style="toneVars(dispositionColor(d))"
-            >{{ d }}</span>
-          </button>
-        </div>
-      </PickerDropdown>
-    </div>
+        <span>{{ dispositionCands.length > 1 ? labels.rosterDispositionDeclared : labels.trackerDisposition }}</span>
+        <span
+          v-if="dispositionCands.length === 1"
+          class="rw-static"
+        >{{ dispositionCands[0] }}</span>
+        <PickerDropdown
+          v-else
+          v-model:open="dispositionPickerOpen"
+          class="rw-fd"
+          width="12rem"
+          align="right"
+          :label="labels.rosterDispositionDeclared"
+        >
+          <template #trigger="{ toggle, open }">
+            <button
+              class="rw-choose"
+              :aria-expanded="open"
+              @click="toggle"
+            >
+              <span
+                v-if="dispositionCands.includes(disposition)"
+                class="tone tone-chip"
+                :style="toneVars(dispositionColor(disposition))"
+              >{{ disposition }}</span>
+              <span
+                v-else
+                class="placeholder"
+              >{{ labels.rosterChoose }}</span>
+              <i class="bi bi-chevron-down" />
+            </button>
+          </template>
+          <div class="modal-list rw-fd-list">
+            <button
+              v-for="d in dispositionCands"
+              :key="d"
+              type="button"
+              class="rw-fd-opt"
+              :class="{ on: disposition === d }"
+              @click="dispositionPickerOpen = false; $emit('update:disposition', d)"
+            >
+              <span
+                class="tone tone-chip"
+                :style="toneVars(dispositionColor(d))"
+              >{{ d }}</span>
+            </button>
+          </div>
+        </PickerDropdown>
+      </div>
+    </ExpandTransition>
 
     <!-- The notes and the legality switch are decided once and then left alone; giving each a
          permanent slot would spend the line on the two things nobody looks at twice. The points
@@ -210,17 +219,19 @@
           </span>
         </label>
         <!-- No limit, nothing left to count down to. -->
-        <label
-          v-if="limit.battleSize !== UNLIMITED_BATTLE"
-          class="check"
-          :class="{ on: showPointsLeft }"
-        >
-          <input
-            v-model="showPointsLeft"
-            type="checkbox"
+        <ExpandTransition>
+          <label
+            v-if="limit.battleSize !== UNLIMITED_BATTLE"
+            class="check"
+            :class="{ on: showPointsLeft }"
           >
-          <span>{{ labels.rosterShowPointsLeft }}</span>
-        </label>
+            <input
+              v-model="showPointsLeft"
+              type="checkbox"
+            >
+            <span>{{ labels.rosterShowPointsLeft }}</span>
+          </label>
+        </ExpandTransition>
       </div>
     </PickerDropdown>
   </div>
@@ -229,6 +240,7 @@
 <script setup>
 import { computed, ref } from 'vue'
 import PickerDropdown from '../PickerDropdown.vue'
+import ExpandTransition from '../ExpandTransition.vue'
 import FactionPickerList from '../tracker/FactionPickerList.vue'
 import DetachmentPickerList from '../tracker/DetachmentPickerList.vue'
 import { toneVars } from '../../utils/tone.js'

@@ -100,19 +100,21 @@
 
     <!-- The one number people came back for. It sits above the list because a record is a
          summary of that list, and it is a link because everything behind it is on /tracker/stats. -->
-    <RouterLink
-      v-if="stats.games"
-      to="/tracker/stats"
-      class="record-bar"
-    >
-      <span class="rb-rec">{{ recordText }}</span>
-      <span class="rb-lab">{{ labels.statsLink }}</span>
-      <span
-        v-if="stats.enough"
-        class="rb-rate"
-      >{{ winrateText }}</span>
-      <i class="bi bi-chevron-right" />
-    </RouterLink>
+    <ExpandTransition>
+      <RouterLink
+        v-if="stats.games"
+        to="/tracker/stats"
+        class="record-bar"
+      >
+        <span class="rb-rec">{{ recordText }}</span>
+        <span class="rb-lab">{{ labels.statsLink }}</span>
+        <span
+          v-if="stats.enough"
+          class="rb-rate"
+        >{{ winrateText }}</span>
+        <i class="bi bi-chevron-right" />
+      </RouterLink>
+    </ExpandTransition>
 
     <section class="history">
       <div class="history-head">
@@ -209,13 +211,15 @@
           </div>
         </li>
       </TransitionGroup>
-      <button
-        v-if="history.length > visibleCount"
-        class="show-more"
-        @click="showMore"
-      >
-        {{ labels.trackerShowMore }}
-      </button>
+      <ExpandTransition>
+        <button
+          v-if="history.length > visibleCount"
+          class="show-more"
+          @click="showMore"
+        >
+          {{ labels.trackerShowMore }}
+        </button>
+      </ExpandTransition>
     </section>
 
     <GameSummaryModal
@@ -238,6 +242,7 @@
 </template>
 
 <script setup>
+import ExpandTransition from '../../components/ExpandTransition.vue'
 import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import GameSummaryModal from '../../components/tracker/GameSummaryModal.vue'

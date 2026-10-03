@@ -81,11 +81,13 @@
               <span class="rname">{{ r.name || labels.rosterUntitled }}</span>
               <!-- Pinned (useRosterPins): the mark stands beside the "…" that sets it, in the
                    army's colour like the faction line under the name. -->
-              <i
-                v-if="isRosterPinned(r.id)"
-                class="bi bi-pin-angle-fill rpin"
-                :title="labels.favPinnedGroup"
-              />
+              <ExpandTransition>
+                <i
+                  v-if="isRosterPinned(r.id)"
+                  class="bi bi-pin-angle-fill rpin"
+                  :title="labels.favPinnedGroup"
+                />
+              </ExpandTransition>
               <!-- A draft's actions sheet only ever held one item, so it is spared the extra tap:
                the card carries Delete itself. Everything a SAVED list can do still needs the
                sheet, so that one keeps the kebab. -->
@@ -213,14 +215,16 @@
             </div>
           </li>
         </TransitionGroup>
-        <button
-          v-if="listed.length > visibleCount"
-          type="button"
-          class="show-more"
-          @click="visibleCount += PAGE"
-        >
-          {{ labels.trackerShowMore }} ({{ listed.length - visibleCount }})
-        </button>
+        <ExpandTransition>
+          <button
+            v-if="listed.length > visibleCount"
+            type="button"
+            class="show-more"
+            @click="visibleCount += PAGE"
+          >
+            {{ labels.trackerShowMore }} ({{ listed.length - visibleCount }})
+          </button>
+        </ExpandTransition>
       </div>
     </Transition>
 
@@ -248,6 +252,7 @@
 </template>
 
 <script setup>
+import ExpandTransition from '../../components/ExpandTransition.vue'
 import { computed, onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import ActionMenu from '../../components/ActionMenu.vue'

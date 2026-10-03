@@ -93,6 +93,7 @@
         v-model:limit="rosterLimit"
         v-model:disposition="disposition"
         v-model:check-legality="checkLegality"
+        :faction-slug="factionSlug || ''"
         show-name
         :has-faction="!!factionSlug"
         :faction-name="factionName"
@@ -200,6 +201,16 @@
       <div class="rc-sticky-inner">
         <!-- The points live here at every width once there are units to count — on the desk too,
              where they sat in the settings line until 2026-09-26. -->
+        <!-- Step 1 says why Next is off when the setup itself is illegal: the first such error,
+             in the words of the issues dialog. -->
+        <ExpandTransition>
+          <p
+            v-if="!desk && step === 1 && setupErrors.length"
+            class="rc-block-note"
+          >
+            <i class="bi bi-exclamation-triangle-fill" /> {{ issueText(setupErrors[0], labels) }}
+          </p>
+        </ExpandTransition>
         <RosterPointsTally
           v-if="desk || step === 2"
           class="rc-sticky-info"
@@ -292,6 +303,7 @@
 </template>
 
 <script setup>
+import ExpandTransition from '../../components/ExpandTransition.vue'
 import { computed, nextTick, onBeforeUnmount, ref, watch, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import FactionPickerModal from '../../components/tracker/FactionPickerModal.vue'
@@ -321,6 +333,7 @@ import { forgetDraft, rememberDraft } from '../../composables/useRosterDraftResu
 import { rosterItems } from '../../data/roster/index.js'
 import { useRosterFactionData } from '../../composables/useRosterFactionData.js'
 import { ROSTER_NOTES_MAX } from '../../composables/rosterEngine.js'
+import { SETUP_CODES, issueText } from '../../composables/rosterValidation.js'
 import { LIMIT_KEYS, limitOf } from '../../composables/rosterLimit.js'
 import { useMediaQuery } from '../../composables/useMediaQuery.js'
 
@@ -405,7 +418,8 @@ const {
 function syncUnits() {
   if (rosterId.value) updateRoster(rosterId.value, { units: units.value })
 }
-// Live validation is `validation` above (rosterValidation.js — never blocks, just reports). Only
+// Live validation is `validation` above (rosterValidation.js — it reports; the one thing it stops
+// is leaving step 1 with an illegal setup, see canLeaveStep1). Only
 // reachable once a faction is picked; shown from step 2 on, next to the points readout in
 // .rc-sticky. The main case worth surfacing this early for: units added under a bigger battle
 // size, then the size lowered again on step 1 — duplicate caps shrink out from under counts
@@ -471,7 +485,13 @@ function step1Patch() {
   }
 }
 // Steps 2 and 3 exist only once a faction is picked — the same gate step 1's Next button uses.
-const canLeaveStep1 = computed(() => !!factionSlug.value)
+// …and only while the setup itself holds: a points limit lowered after the detachments were chosen
+// can leave them over the Detachment Points budget, and a clashing tag or a detachment the faction
+// no longer has is the same kind of answer — one that only step 1 can change (owner, 2026-10-03).
+// The setup's own ERRORS only (rosterValidation's SETUP_CODES); its warnings — no detachment yet,
+// an undeclared disposition — are asked about later, as they always were.
+const setupErrors = computed(() => validation.value.issues.filter((i) => i.level === 'error' && SETUP_CODES.has(i.code)))
+const canLeaveStep1 = computed(() => !!factionSlug.value && !setupErrors.value.length)
 
 function goToStep(n) {
   if (n === step.value) return
@@ -567,6 +587,15 @@ watchEffect(() => {
 }
 
 .rc-panel { display: flex; flex-direction: column; gap: 1.1rem; }
+/* Why Next is off, beside it in the bar: the danger red, one or two short lines. */
+.rc-block-note {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.3;
+  color: var(--danger);
+}
 /* Height is the phone's scarce axis, and the panes below are sized to what is left of it. */
 @media (max-width: 900px) {
   .rc-top { margin-bottom: 0.6rem; }

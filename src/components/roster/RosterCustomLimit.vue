@@ -2,63 +2,61 @@
   <!-- A custom points limit: the number, and the player's own Detachment Points,
        enhancements, copies of a unit and copies of a Battleline unit (owner, 2026-10-03). Each one
        left alone is borrowed from the size the points fall within (rosterEngine's effectiveBattle),
-       so opening the dialog changes nothing until a number is moved; "Back to <size>" drops them all.
+       so opening the dialog changes nothing until a number is moved; "Back to <size>" in the
+       dialog's footer (RosterBattleSizeField) drops them all.
        The number stands under the phone's field; the limits are in a dialog on both widths,
        behind the sliders beside the field (RosterBattleSizeField). -->
   <div class="rcl">
-    <!-- In the dialog the number is a row like the four under it; under the phone's field it
-         stands alone, the field's own label above it. -->
-    <component
-      :is="pointsOnly ? 'div' : 'label'"
-      :class="pointsOnly ? 'rcl-solo' : 'rcl-row'"
-    >
-      <span
-        v-if="!pointsOnly"
-        class="rcl-name"
-      >{{ labels.rosterPointsLimitLabel }}</span>
-      <RosterLimitStepper
-        ref="points"
-        class="rcl-points"
-        :value="limit.customPoints"
-        :step="50"
-        :unit="labels.rosterPointsLabel"
-        :label="labels.rosterPointsLimitLabel"
-        @update="update({ customPoints: $event })"
-      />
-    </component>
-
-    <div
-      v-if="!pointsOnly"
-      class="rcl-own"
-    >
-      <label
-        v-for="row in rows"
-        :key="row.key"
-        class="rcl-row"
-      >
-        <span class="rcl-name">{{ row.label }}</span>
-        <RosterLimitStepper
-          :value="row.value"
-          :label="row.label"
-          :own="row.own"
-          @update="setOwn(row.key, $event)"
-        />
-      </label>
-      <button
-        v-if="battle.ownLimits"
-        type="button"
-        class="rcl-reset"
-        @click="reset"
-      >
-        <i class="bi bi-arrow-counterclockwise" /> {{ labels.rosterLimitResetTo.replace('{size}', baseName) }}
-      </button>
-    </div>
+    <!-- Under the phone's field: the number alone, the field's own label above it. -->
+    <NumberStepper
+      v-if="pointsOnly"
+      ref="points"
+      class="rcl-points"
+      editable
+      :model-value="limit.customPoints"
+      :step="50"
+      :unit="labels.rosterPointsLabel"
+      :label="labels.rosterPointsLimitLabel"
+      @update:model-value="update({ customPoints: $event })"
+    />
+    <!-- In the dialog: one card of rows, the settings form's recipe (RosterSetupFields) — a frame,
+         hairlines between rows, a surface of its own against the dialog's (owner, 2026-10-03: the
+         fields and the button below them were one flat background). -->
+    <template v-else>
+      <div class="rcl-card">
+        <label class="rcl-row">
+          <span class="rcl-name">{{ labels.rosterPointsLimitLabel }}</span>
+          <NumberStepper
+            ref="points"
+            class="rcl-points"
+            editable
+            :model-value="limit.customPoints"
+            :step="50"
+            :unit="labels.rosterPointsLabel"
+            :label="labels.rosterPointsLimitLabel"
+            @update:model-value="update({ customPoints: $event })"
+          />
+        </label>
+        <label
+          v-for="row in rows"
+          :key="row.key"
+          class="rcl-row"
+        >
+          <span class="rcl-name">{{ row.label }}</span>
+          <NumberStepper
+            :class="{ own: row.own }"
+            :model-value="row.value"
+            @update:model-value="setOwn(row.key, $event)"
+          />
+        </label>
+      </div>
+    </template>
   </div>
 </template>
 
 <script setup>
 import { computed, ref } from 'vue'
-import RosterLimitStepper from './RosterLimitStepper.vue'
+import NumberStepper from '../tracker/NumberStepper.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
 import { CUSTOM_LIMIT_KEYS, effectiveBattle } from '../../composables/rosterEngine.js'
@@ -76,7 +74,6 @@ const labels = computed(() => ui[locale.value])
 const points = ref(null)
 
 const battle = computed(() => effectiveBattle(props.limit, rosterCore))
-const baseName = computed(() => rosterCore.battleSizes.find((b) => b.id === battle.value.base)?.name || '')
 
 const own = computed(() => props.limit.customLimits || {})
 const rows = computed(() => {
@@ -96,30 +93,28 @@ function setOwn(key, v) {
   // Only the keys the engine reads, so nothing stray travels in a share link or a snapshot.
   update({ customLimits: Object.fromEntries(CUSTOM_LIMIT_KEYS.filter((k) => next[k] != null).map((k) => [k, next[k]])) })
 }
-function reset() {
-  const { customLimits: _, ...rest } = props.limit
-  emit('update:limit', rest)
-}
 defineExpose({ focus: () => points.value?.focus() })
 </script>
 
 <style scoped>
-.rcl { display: flex; flex-direction: column; align-items: flex-start; gap: 0.45rem; width: 100%; position: relative; z-index: 1; }
-.rcl-reset {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.2rem 0;
-  background: none;
-  border: none;
-  font: inherit;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  cursor: pointer;
+.rcl { display: flex; flex-direction: column; align-items: flex-start; gap: 0.6rem; width: 100%; position: relative; z-index: 1; }
+.rcl-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
 }
-@media (hover: hover) { .rcl-reset:hover { color: var(--accent); } }
-.rcl-own { display: flex; flex-direction: column; gap: 0.35rem; width: 100%; }
-.rcl > .rcl-row { width: 100%; }
-.rcl-row { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; }
-.rcl-name { font-size: 0.82rem; color: var(--text-muted); }
+.rcl-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.3rem 0.4rem 0.3rem 0.7rem;
+  border-top: 1px solid var(--border);
+}
+.rcl-row:first-child { border-top: none; }
+.rcl-name { font-size: 0.85rem; color: var(--text-primary); }
+/* A number the player set, against one borrowed from a size: the number takes the accent. */
+.own :deep(.step-val) { color: var(--accent); }
 </style>

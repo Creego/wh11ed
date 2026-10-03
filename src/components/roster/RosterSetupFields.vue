@@ -15,6 +15,15 @@
         >
       </label>
 
+      <!-- The points limit before the faction (owner, 2026-10-03): how big a game comes first, what
+           army second — the order a list is planned in. -->
+      <RosterBattleSizeField
+        class="choice pick"
+        :faction="factionSlug"
+        :limit="limit"
+        @update:limit="$emit('update:limit', $event)"
+      />
+
       <div class="choice pick">
         <span class="ch-label">{{ labels.rosterFactionLabel }}</span>
         <button
@@ -36,11 +45,13 @@
       >
         <span class="ch-label">
           {{ labels.rosterDetachmentLabel }}
-          <em
-            v-if="hasFaction"
-            class="dp-count"
-            :class="{ over: dpSpent > dpLimit }"
-          >{{ dpSpent }}<template v-if="Number.isFinite(dpLimit)"> / {{ dpLimit }}</template> DP</em>
+          <ExpandTransition>
+            <em
+              v-if="hasFaction"
+              class="dp-count"
+              :class="{ over: dpSpent > dpLimit }"
+            >{{ dpSpent }}<template v-if="Number.isFinite(dpLimit)"> / {{ dpLimit }}</template> DP</em>
+          </ExpandTransition>
         </span>
         <button
           type="button"
@@ -110,12 +121,6 @@
           @input="$emit('update:notes', $event.target.value)"
         />
       </label>
-
-      <RosterBattleSizeField
-        class="choice pick"
-        :limit="limit"
-        @update:limit="$emit('update:limit', $event)"
-      />
     </div>
 
     <!-- An archived list is never checked, whatever this says — so the box says why instead. -->
@@ -135,17 +140,19 @@
       </span>
     </label>
     <!-- No limit, nothing left to count down to. -->
-    <label
-      v-if="limit.battleSize !== UNLIMITED_BATTLE"
-      class="check"
-      :class="{ on: showPointsLeft }"
-    >
-      <input
-        v-model="showPointsLeft"
-        type="checkbox"
+    <ExpandTransition>
+      <label
+        v-if="limit.battleSize !== UNLIMITED_BATTLE"
+        class="check"
+        :class="{ on: showPointsLeft }"
       >
-      <span>{{ labels.rosterShowPointsLeft }}</span>
-    </label>
+        <input
+          v-model="showPointsLeft"
+          type="checkbox"
+        >
+        <span>{{ labels.rosterShowPointsLeft }}</span>
+      </label>
+    </ExpandTransition>
   </div>
 </template>
 
@@ -171,6 +178,8 @@ defineProps({
   // The points limit as one value (rosterEngine's limitOf), handed to RosterBattleSizeField.
   limit: { type: Object, required: true },
   hasFaction: { type: Boolean, default: false },
+  // The list's faction, for the limit dialog's colours (RosterBattleSizeField).
+  factionSlug: { type: String, default: '' },
   factionName: { type: String, default: '' },
   detachmentSummary: { type: String, default: '' },
   dpSpent: { type: Number, default: 0 },
@@ -241,6 +250,9 @@ const { showPointsLeft } = useRosterPrefs()
    `hover: hover`, because iOS leaves a tap's hover state on until something else is tapped. */
 @media (hover: hover) {
   .choice.pick:not(.off):hover { background: var(--bg-secondary); }
+  /* A custom points limit: only its head opens the picker, so only the head lights the row. */
+  .choice.pick.custom:hover { background: none; }
+  .choice.pick.custom:has(.bsf-trigger:hover) { background: var(--bg-secondary); }
 }
 .choice .bi-chevron-down { position: absolute; right: 0.6rem; top: 0.6rem; color: var(--text-dim); font-size: 0.7rem; }
 .ch-label { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); }

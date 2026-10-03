@@ -39,37 +39,41 @@
 
     <!-- The clock, one row under the rounds: whose turn and which phase. Only for a game that
          asked for it; a game without it looks exactly as it did. -->
-    <div
-      v-if="phasesOn"
-      class="phase-bar"
-    >
-      <button
-        class="pb-nav"
-        :disabled="!canStepPhase(-1)"
-        :aria-label="labels.ariaPrevPhase"
-        @click="stepPhase(-1)"
+    <ExpandTransition>
+      <div
+        v-if="phasesOn"
+        class="phase-bar"
       >
-        ‹
-      </button>
-      <button
-        class="pb-now"
-        @click="phasePickerOpen = true"
-      >
-        <span class="pb-who">{{ playerSide(turnIndex) }}</span>
-        <span class="pb-phase">{{ phaseLabel(current.currentPhase || 'command', labels) }}</span>
-      </button>
-      <button
-        class="pb-nav"
-        :disabled="!canStepPhase(1)"
-        :aria-label="labels.ariaNextPhase"
-        @click="stepPhase(1)"
-      >
-        ›
-      </button>
-    </div>
+        <button
+          class="pb-nav"
+          :disabled="!canStepPhase(-1)"
+          :aria-label="labels.ariaPrevPhase"
+          @click="stepPhase(-1)"
+        >
+          ‹
+        </button>
+        <button
+          class="pb-now"
+          @click="phasePickerOpen = true"
+        >
+          <span class="pb-who">{{ playerSide(turnIndex) }}</span>
+          <span class="pb-phase">{{ phaseLabel(current.currentPhase || 'command', labels) }}</span>
+        </button>
+        <button
+          class="pb-nav"
+          :disabled="!canStepPhase(1)"
+          :aria-label="labels.ariaNextPhase"
+          @click="stepPhase(1)"
+        >
+          ›
+        </button>
+      </div>
+    </ExpandTransition>
 
     <!-- …and, under it, what has something to say in the slot the clock is standing on. -->
-    <PhaseRules v-if="phasesOn && tracks(current.settings, 'trackPhaseRules')" />
+    <ExpandTransition>
+      <PhaseRules v-if="phasesOn && tracks(current.settings, 'trackPhaseRules')" />
+    </ExpandTransition>
 
     <PhasePickerModal
       v-if="phasePickerOpen"
@@ -81,15 +85,17 @@
     />
 
     <!-- Active twist reminder (mission-changing twists are already applied to the primary). -->
-    <details
-      v-if="activeTwist"
-      class="twist-card"
-    >
-      <summary><span class="tc-label">{{ labels.trackerTwist }}</span> {{ activeTwist.title }}</summary>
-      <div class="twist-card-body">
-        <RuleBody :body="activeTwist.body" />
-      </div>
-    </details>
+    <ExpandTransition>
+      <details
+        v-if="activeTwist"
+        class="twist-card"
+      >
+        <summary><span class="tc-label">{{ labels.trackerTwist }}</span> {{ activeTwist.title }}</summary>
+        <div class="twist-card-body">
+          <RuleBody :body="activeTwist.body" />
+        </div>
+      </details>
+    </ExpandTransition>
 
     <div class="players">
       <!-- In a shared game a side another phone plays is shown as it is, greyed, with the reason
@@ -326,6 +332,7 @@
 </template>
 
 <script setup>
+import ExpandTransition from '../ExpandTransition.vue'
 import { ref, computed } from 'vue'
 import NumberStepper from './NumberStepper.vue'
 import SecondaryDeck from './SecondaryDeck.vue'

@@ -44,10 +44,12 @@
         >
           <span class="card-name">
             {{ m.name }}
-            <span
-              v-if="isSetAside(m.slug)"
-              class="badge"
-            >{{ labels.trackerDiscardedBadge }}</span>
+            <ExpandTransition>
+              <span
+                v-if="isSetAside(m.slug)"
+                class="badge"
+              >{{ labels.trackerDiscardedBadge }}</span>
+            </ExpandTransition>
           </span>
           <span class="card-vp">{{ secondaryCardVp(pi, m.slug) }} VP</span>
         </button>
@@ -146,6 +148,7 @@
 </template>
 
 <script setup>
+import ExpandTransition from '../ExpandTransition.vue'
 import { ref, computed } from 'vue'
 import ScoringModal from './ScoringModal.vue'
 import BaseModal from '../BaseModal.vue'
