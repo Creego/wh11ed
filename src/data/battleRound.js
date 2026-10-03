@@ -652,6 +652,10 @@ Players alternate selecting units to fight. **Fights First** units (**A** and **
         id: 'section-12-08',
         sectionNum: '12.08',
         title: 'Consolidation Move',
+        // GW's errata changed this rule's text and the app's own rule has not taken it in yet
+        // (scripts/lib/appdata-exceptions.mjs, core-consolidation-ongoing-errata) — the page says
+        // so under the rule and links the errata entry in the Reference chapter.
+        errata: { anchor: 'errata-12-08', date: '2026-08-26' },
         body: `◈ MAXIMUM DISTANCE | 3"
 ◈ ELIGIBLE IF | It is the Fight phase and your unit was **eligible to fight** this phase.
 ◈ EFFECT | Your unit moves as described in Moving (03).

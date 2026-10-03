@@ -874,6 +874,17 @@ export const errata = {
       header: 'Grenades Stratagem',
       body: `The Grenades stratagem is the same as the **Explosives** stratagem.`,
     },
+    {
+      id: 'errata-01-02-06',
+      header: '01.02.06 – Splitting Units',
+      body: `Added:
+▪ A unit must be split into two units, each containing as equal a number of models as possible (when splitting a unit in this way, make a note of which models form each of the two new units). If a rule states a specific **starting strength** of the split units, but this is not possible based on the number of models in the unit being split (e.g. due to attached **leader/support** models), split the unit as stated above.`,
+    },
+    {
+      id: 'errata-12-08',
+      header: '12.08 – Consolidation Move, After Moving, Ongoing Consolidation',
+      body: `Changed to: 'Each model that started this move **engaged** with an enemy unit must still be **engaged** with that enemy unit. If one or more enemy units **engaged** with your unit have not been **selected to fight** this phase, your opponent must select each of those units, one at a time; when each is selected, it becomes **eligible to fight** and is **selected to fight**.'`,
+    },
   ],
   ru: [
     {
@@ -903,6 +914,17 @@ export const errata = {
       id: 'errata-grenades',
       header: 'Стратагема Grenades',
       body: `Стратагема Grenades — то же самое, что и стратагема **Explosives**.`,
+    },
+    {
+      id: 'errata-01-02-06',
+      header: '01.02.06 — разделение юнитов',
+      body: `Добавлено:
+▪ Юнит должен делиться на два юнита с как можно более равным числом моделей (при таком разделении отметьте, какие модели образуют каждый из двух новых юнитов). Если правило задаёт конкретную **начальную численность** разделённых юнитов, но она недостижима при таком количестве моделей в разделяемом юните (например, из-за присоединённых моделей **leader/support**), разделите юнит так, как указано выше.`,
+    },
+    {
+      id: 'errata-12-08',
+      header: '12.08 — консолидация, «После манёвра», продолжающаяся консолидация',
+      body: `Изменено на: «Каждая модель, которая начала этот манёвр **связанной боем** с вражеским юнитом, должна всё ещё быть **связана боем** с этим вражеским юнитом. Если один или несколько вражеских юнитов, **связанных боем** с вашим юнитом, ещё не были **выбраны для боя** в этой фазе, ваш оппонент должен выбрать каждый из таких юнитов поочерёдно; когда каждый выбран, он **получает право сражаться** и **выбирается для боя**».`,
     },
   ],
 }

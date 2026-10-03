@@ -48,6 +48,7 @@
             :example="sub.example"
             :see-also="sub.seeAlso"
             :children="sub.children"
+            :errata="sub.errata"
           />
         </template>
       </div>
@@ -88,6 +89,7 @@
           :example="grp.item.example"
           :see-also="grp.item.seeAlso"
           :children="grp.item.children"
+          :errata="grp.item.errata"
         />
       </template>
     </template>
