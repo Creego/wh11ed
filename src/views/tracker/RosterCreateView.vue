@@ -69,16 +69,13 @@
       :dp-spent="dpSpent"
       :max-dp="effBattle.dp"
       :dp-limit="dpLimit"
-      :battle-size="battleSize"
-      :battle-sizes="battleSizes"
-      :custom-points="customPoints"
+      :limit="rosterLimit"
       :disposition="disposition || ''"
       :disposition-cands="dispositionCands"
       :check-legality="checkLegality"
       :notes="notes"
       @update:name="name = $event"
-      @update:battle-size="battleSize = $event"
-      @update:custom-points="customPoints = Math.max(0, Number($event) || 0)"
+      @update:limit="rosterLimit = $event"
       @update:disposition="disposition = $event"
       @update:check-legality="checkLegality = $event"
       @update:notes="notes = $event"
@@ -93,8 +90,7 @@
     >
       <RosterSetupFields
         v-model:name="name"
-        v-model:battle-size="battleSize"
-        v-model:custom-points="customPoints"
+        v-model:limit="rosterLimit"
         v-model:disposition="disposition"
         v-model:check-legality="checkLegality"
         show-name
@@ -210,6 +206,7 @@
           :badge="!!factionSlug"
           :points="points"
           :limit="limit"
+          :limits="rosterLimit"
           :error-count="validation.errorCount"
           :issue-count="validation.issues.length"
           @open-issues="issuesOpen = true"
@@ -324,6 +321,7 @@ import { forgetDraft, rememberDraft } from '../../composables/useRosterDraftResu
 import { rosterItems } from '../../data/roster/index.js'
 import { useRosterFactionData } from '../../composables/useRosterFactionData.js'
 import { ROSTER_NOTES_MAX } from '../../composables/rosterEngine.js'
+import { LIMIT_KEYS, limitOf } from '../../composables/rosterLimit.js'
 import { useMediaQuery } from '../../composables/useMediaQuery.js'
 
 const router = useRouter()
@@ -344,8 +342,8 @@ const name = ref('')
 const factionSlug = ref(null)
 const detachments = ref([])
 const disposition = ref(null)
-const battleSize = ref('strike-force')
-const customPoints = ref(2000)
+// The points limit as one value (rosterEngine's limitOf): size, custom number, own limits.
+const rosterLimit = ref(limitOf(null))
 const checkLegality = ref(true)
 const notes = ref('')
 const units = ref([])
@@ -368,8 +366,7 @@ const draftRoster = computed(() => ({
   faction: factionSlug.value,
   detachments: detachments.value,
   disposition: disposition.value,
-  battleSize: battleSize.value,
-  customPoints: customPoints.value,
+  ...rosterLimit.value,
   checkLegality: checkLegality.value,
   units: units.value,
 }))
@@ -389,7 +386,7 @@ const {
   factionPickerOpen, detachmentPickerOpen, pickFaction,
   detachmentOptions, detachmentSummary, dispositionCands, dpSpent, dpLimit, toggleDetachment, clearDetachments,
   openUid, toggleOpen, openEntry, addUnit, duplicateEntry, removeEntry, toggleWarlord,
-  undoable, undoRemove, dismissUndo, battleSizes,
+  undoable, undoRemove, dismissUndo,
 } = useRosterBuildActions({
   roster: () => draftRoster.value,
   factionData,
@@ -441,8 +438,7 @@ if (resumed) {
   factionSlug.value = resumed.faction || null
   detachments.value = [...(resumed.detachments || [])]
   disposition.value = resumed.disposition || null
-  battleSize.value = resumed.battleSize || 'strike-force'
-  customPoints.value = resumed.customPoints ?? 2000
+  rosterLimit.value = limitOf(resumed)
   checkLegality.value = resumed.checkLegality !== false
   notes.value = resumed.notes || ''
   // The stored array itself, not a copy: from here the wizard's per-unit edits ARE the draft's,
@@ -467,8 +463,9 @@ function step1Patch() {
     faction: factionSlug.value,
     detachments: detachments.value,
     disposition: disposition.value,
-    battleSize: battleSize.value,
-    customPoints: customPoints.value,
+    // Every limit key, an absent one as undefined: updateRoster assigns, so a cleared value
+    // must be written as such for the draft to lose it.
+    ...Object.fromEntries(LIMIT_KEYS.map((k) => [k, rosterLimit.value[k]])),
     checkLegality: checkLegality.value,
     notes: notes.value.trim().slice(0, ROSTER_NOTES_MAX),
   }
@@ -499,7 +496,7 @@ function ensureDraft() {
 // Step 1's fields and the step itself are written through as they change — that is what makes the
 // draft a draft. Units take the other road (`syncUnits`, then the shared array), so they are not
 // watched here.
-watch([name, factionSlug, detachments, disposition, battleSize, customPoints, checkLegality, notes, step], () => {
+watch([name, factionSlug, detachments, disposition, rosterLimit, checkLegality, notes, step], () => {
   if (!rosterId.value) return
   updateRoster(rosterId.value, { ...step1Patch(), draftStep: step.value })
 }, { deep: true })

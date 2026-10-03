@@ -237,8 +237,8 @@ const props = defineProps({
   // mandatoryEnhancementFor) shows that surcharge already baked into its browse price, not just
   // once its config accordion is opened on step 3.
   detachments: { type: Array, default: () => [] },
-  // The roster's effective battle size (rosterEngine.js's effectiveBattle) — only `.dupLimit` is
-  // read, to compute each unit's duplicate cap (rosterValidation.js's duplicateLimit). Absent
+  // The roster's effective battle size (rosterEngine.js's effectiveBattle) — read for each unit's
+  // duplicate cap (rosterValidation.js's duplicateLimit: `dupLimit`, `lineLimit`). Absent
   // (e.g. no battle size resolvable yet) means no cap is enforced, same as checkLegality: false.
   battle: { type: Object, default: null },
   // The faction's allied contexts (data/roster/<slug>.js `allies`). Their units arrive in `units`
@@ -400,7 +400,7 @@ function limitOf(u) {
   const granted = props.factionSlug
     ? grantedKeywordsFor(src?.[1] || u.id, src?.[0] || props.factionSlug, props.detachments).map((g) => g.kw)
     : null
-  return duplicateLimit(u, props.battle.dupLimit, granted)
+  return duplicateLimit(u, props.battle, granted)
 }
 function atCap(u) { return props.checkLegality && countOf(u.id) >= limitOf(u) }
 // Strictly OVER the cap — not just at it. Unreachable through this browser's own "+" button

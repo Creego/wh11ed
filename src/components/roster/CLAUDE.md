@@ -2262,6 +2262,71 @@ whole point — but it is not a list: it shows only on the Drafts tab of `/roste
 be fielded. The flags never travel: `rosterShare.js`'s `PICK` is a whitelist, so a share link or
 a game snapshot carries the army and nothing about how it was made.
 
+**The archive** (player request 2026-10-02, owner's shape 2026-10-03). A saved list can be put
+away through its card's "…" — "every unit I own", a painting queue, last season's list: kept for
+reference, not for playing. `archived: true`, ABSENT on every other list (the way `draft` is), set
+and cleared by `setArchived(id, on)`, which bumps `updatedAt` and is followed by `saveToCloud` —
+unlike a draft, an archived list IS a saved list and syncs with its flag (`savedRosters` stays the
+sync scope; `domain/roster.ts` passes the key through). The list page's third tab after Drafts
+shows `archivedRosters`; the Lists tab and the tracker's `RosterPickerModal` show `activeRosters`.
+**An archived list is never checked**: `validateRoster` returns no issues for it (`isArchived` in
+rosterEngine), so the card, the view, the editor's badge (hidden) and the cached summary all go
+quiet together, and the catalogue's duplicate cap is off (`legalityOn`, the one question the cap
+asks). The "Check legality" box stays visible but disabled with the reason. The flag is not in
+`rosterShare`'s `PICK`: a link or a game snapshot carries the army, not where it is filed.
+
+**The points limit and "No limit"** (`battleSize: 'none'`, owner 2026-10-03). On the builder's
+screens the field is called **Points limit**, not battle size — the battle size is the tracker's
+word, for a game; a list has a limit. It is a picker (`RosterBattleSizeField`): the faction
+field's shape, a dropdown on a wide screen and a sheet on a phone (`AdaptivePicker`), `row` in the
+phone form and `bar` on the desk line. 1000 / 2000 / 3000 / Custom / No limit, default 2000, and
+every option says what it decides besides the points: DP, enhancements, copies of a unit,
+Battleline copies (a custom number names the size whose limits it borrows). The phone's form
+repeats that under the chosen value; the desk's line shows the value alone — beside the field the
+facts pushed the line onto a second row. That line never wraps: the name field gives way.
+
+**Custom, with the player's own limits** (owner, 2026-10-03). Custom is a joined − [ N pts ] +
+field (`RosterLimitStepper`, 50 a step) under the phone's field. The player's own limits —
+Detachment Points, enhancements, copies of a unit, copies of a Battleline unit — are a dialog
+(`RosterCustomLimit` in a `BaseModal`, the points again at its top) opened from the sliders square
+to the right of the field on both widths; on the desk picking "Custom" opens it too, since the
+line has no room for the number under the field. They are stored
+as `roster.customLimits: { dp, enh, dup, line }`, each key on its own: a key left out is borrowed
+from the size the points fall within, `line` left out is twice the `dup` in force, and "Back to
+<size>" drops the object. `effectiveBattle` is the only reader — it returns them as `dp`,
+`enhLimit`, `dupLimit`, `lineLimit` (`lineLimit` exists for every size now; `duplicateLimit` takes
+the battle object, a bare number still meaning a printed size), plus `ownLimits` for the screens
+that mark it. Ally limits are GW's per-size tables and stay the borrowed size's. Outside a custom
+size `customLimits` is ignored, and kept, so switching back restores them.
+
+**A list held to its own limits says so** wherever it is looked at: `RosterOwnLimitsMark` (a
+sliders icon) beside the points on the list card, the view's header, the building footer
+(`RosterPointsTally`'s `limits`) and — as plain text, being inside a button — the tracker's roster
+picker; a tap opens every limit in force in the glossary popover. The printed sheet's header and
+the Discord export carry a line of them; the GW app and WTC formats have no place for one and say
+nothing. A bare custom number (no own limits) is not marked — nothing about it is unusual.
+`battleLimitFacts.js`'s `ownLimitsLines` is the one wording.
+
+**Detachment tags in the picker** (2026-10-03). `useRosterBuildActions`'s `detachmentOptions`
+carries each detachment's `unique` tag (DYNASTY, DOCTRINES…), which `DetachmentPickerList` prints
+and uses to hide a second detachment sharing it (25.04). The mapping dropped it until then, so the
+builder showed no tags and let a clashing pair (Assault + Devastator Brethren, both DOCTRINES) be
+picked, leaving only `validateRoster`'s `detachmentTagClash` to object afterwards.
+
+**The limit travels as one value** (`src/composables/rosterLimit.js`: `LIMIT_KEYS`, `limitOf`,
+`applyLimit`). `battleSize`, `customPoints` and `customLimits` go between the picker, the two forms,
+the wizard's draft, the editor, Cancel's baseline and the share/snapshot payload as one object —
+a fourth key is added in `LIMIT_KEYS` and nowhere else. Its own module, not rosterEngine, because
+the bug-report dialog carries the share payload and must not drag the engine along.
+
+**No limit:** `effectiveBattle` returns every limit as `Infinity` with `unlimited: true` — points,
+DP, enhancements, duplicates all lift — so every `>` against them simply never fires; only the
+Epic Hero's cap of 1 stays, since that is the datasheet's, not the battle size's. Everything that
+PRINTS a limit asks `Number.isFinite` / `unlimited` first: the tally, the list card, the view
+header, the DP counts and the print header show the total alone, the "show points left" box is
+hidden, the GW export omits the battle-size line and states the DP the detachments spend, and the
+tracker handoff falls back to Strike Force as it does for Custom.
+
 **`roster.summary` (`{ points, unitCount, issues, v }`) is a CACHE**, and `rosterSummary.js` owns the
 rules around it. It exists precisely because of the line above: points live in the faction chunk,
 and the two screens that show them — `RosterListView` and the tracker's `RosterPickerModal` — must

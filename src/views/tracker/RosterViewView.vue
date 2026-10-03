@@ -41,12 +41,19 @@
           <div
             v-if="roster.faction"
             class="rv-points"
-            :class="{ over: points > limit }"
+            :class="{ over: !roster.archived && points > limit }"
           >
             <span class="rp-used">{{ points }}</span>
-            <span class="rp-sep">/</span>
-            <span class="rp-cap">{{ limit }}</span>
+            <!-- A list with no limit shows its total alone. -->
+            <template v-if="Number.isFinite(limit)">
+              <span class="rp-sep">/</span>
+              <span class="rp-cap">{{ limit }}</span>
+            </template>
           </div>
+          <RosterOwnLimitsMark
+            v-if="roster.faction"
+            :roster="roster"
+          />
           <RouterLink
             v-if="!inGame"
             :to="`/roster/${roster.id}`"
@@ -101,6 +108,14 @@
               @click="copyWholeList"
             >
               {{ copiedList ? labels.rosterCopied : labels.rosterCopyList }}
+            </button>
+            <!-- The same archive the list page's cards offer (useRosters.js's setArchived). -->
+            <button
+              type="button"
+              class="act-btn"
+              @click="toggleArchived"
+            >
+              {{ roster.archived ? labels.rosterUnarchive : labels.rosterArchive }}
             </button>
           </ActionMenu>
         </div>
@@ -615,11 +630,13 @@ import RosterCloudToast from '../../components/roster/RosterCloudToast.vue'
 import RosterIssuesModal from '../../components/roster/RosterIssuesModal.vue'
 import RosterExportModal from '../../components/roster/RosterExportModal.vue'
 import ActionMenu from '../../components/ActionMenu.vue'
+import RosterOwnLimitsMark from '../../components/roster/RosterOwnLimitsMark.vue'
 import ConditionChips from '../../components/ConditionChips.vue'
 import PageTabs from '../../components/PageTabs.vue'
 import RosterMissionsTab from '../../components/roster/RosterMissionsTab.vue'
 import RosterDispositionModal from '../../components/roster/RosterDispositionModal.vue'
 import { useRosterSync } from '../../composables/useRosterSync.js'
+import { refreshSummaries } from '../../composables/rosterSummary.js'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
 import { bringTabsIntoView } from '../../composables/bringTabsIntoView.js'
@@ -665,7 +682,7 @@ const { locale } = useLocale()
 // The same popover a core ability or a modifier note opens — a chip's "i" is one more way in.
 const { openRule } = useKeywordPopover()
 const labels = computed(() => ui[locale.value])
-const { rosterById, updateRoster } = useRosters()
+const { rosterById, updateRoster, setArchived, rosters } = useRosters()
 const { saveToCloud } = useRosterSync()
 
 // Two ways in: /roster/:id/view reads the saved roster, /tracker/game/roster/:pi reads the
@@ -1434,6 +1451,14 @@ const ready = computed(() => !roster.value?.faction || !!factionData.value)
 function openExport() {
   menuOpen.value = false
   exportOpen.value = true
+}
+// Into the archive and back — a real edit, so it goes to the cloud like a Save, and the cached
+// issue count on the list's card is recounted under the new rule.
+function toggleArchived() {
+  menuOpen.value = false
+  if (!setArchived(roster.value.id, !roster.value.archived)) return
+  saveToCloud(roster.value.id)
+  refreshSummaries(rosters.value)
 }
 function goPrint() {
   menuOpen.value = false

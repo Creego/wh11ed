@@ -1695,20 +1695,52 @@ export function dpLimitFor(dets, budget) {
   return dets.length === 1 && spent > limit && spent <= SOLO_DETACHMENT_DP ? SOLO_DETACHMENT_DP : limit
 }
 
-// The effective battle-size limits for a roster. A 'custom' size carries its own points total
-// and borrows the duplicate / enhancement / DP limits of the standard bracket it falls within.
+// An archived list is kept, not fielded: "every unit I own", a painting queue, last season's list.
+// Nothing about it is checked (owner, 2026-10-03) — rules move on under a list nobody plays, and a
+// warning that is always on gets read as noise. `archived: true` is ABSENT on every other list, the
+// way `draft` is (useRosters.js); `legalityOn` is the one question the cap and the badge ask.
+export const isArchived = (r) => r?.archived === true
+export const legalityOn = (r) => r?.checkLegality !== false && !isArchived(r)
+
+// The effective battle-size limits for a roster — the ONE place every limit a list is held to comes
+// from: points, Detachment Points (`dp`), enhancements (`enhLimit`), copies of a datasheet
+// (`dupLimit`) and copies of a Battleline / Dedicated Transport one (`lineLimit`, twice `dupLimit`
+// in every size the game prints). The validator, the catalogue's "+", the copy button, the
+// detachment picker and the exports all read this object and nothing else.
+//
+// A 'custom' size carries its own points total and borrows the other limits of the standard bracket
+// it falls within — unless the player set their own (`customLimits: { dp, enh, dup, line }`, owner
+// 2026-10-03), each one independently: a key left out is still borrowed, and `line` left out is
+// twice the `dup` in force. `ownLimits` says whether any was set, for the screens that mark it.
+// 'none' is a list with no budget at all — "every model I own", a painting queue — and lifts
+// every limit with it: points, DP, enhancements, duplicates (owner, 2026-10-03). The limits are
+// Infinity rather than absent, so every `>` against them simply never fires; anything that PRINTS
+// a limit asks `unlimited` first. `base` still names a bracket, for the ally tables — which no
+// custom limit reaches: they are GW's per-size tables, not a number of the player's.
+export const UNLIMITED_BATTLE = 'none'
+export const CUSTOM_LIMIT_KEYS = ['dp', 'enh', 'dup', 'line']
+const ownNumber = (v) => (Number.isInteger(v) && v >= 0 ? v : null)
 export function effectiveBattle(roster, core) {
   const sizes = [...(core?.battleSizes || [])].sort((a, b) => a.points - b.points)
   const fallback = sizes[sizes.length - 1] || { points: 2000, dp: 3, enhLimit: 4, dupLimit: 3 }
+  if (roster?.battleSize === UNLIMITED_BATTLE) {
+    return { id: UNLIMITED_BATTLE, base: fallback.id, points: Infinity, dp: Infinity, enhLimit: Infinity, dupLimit: Infinity, lineLimit: Infinity, custom: false, unlimited: true }
+  }
   if (roster?.battleSize === 'custom') {
     const points = roster.customPoints || 0
     const std = sizes.find((b) => points <= b.points) || fallback
+    const own = roster.customLimits || {}
+    const dp = ownNumber(own.dp) ?? std.dp
+    const enhLimit = ownNumber(own.enh) ?? std.enhLimit
+    const dupLimit = ownNumber(own.dup) ?? std.dupLimit
+    const lineLimit = ownNumber(own.line) ?? dupLimit * 2
+    const ownLimits = CUSTOM_LIMIT_KEYS.some((k) => ownNumber(own[k]) != null)
     // `base` is the standard bracket whose limits a custom size borrows — the ally limits are
     // tabulated per battle size, so they need a bracket name even when the points are hand-typed.
-    return { id: 'custom', base: std.id, points, dp: std.dp, enhLimit: std.enhLimit, dupLimit: std.dupLimit, custom: true }
+    return { id: 'custom', base: std.id, points, dp, enhLimit, dupLimit, lineLimit, custom: true, ownLimits }
   }
-  const b = sizes.find((x) => x.id === roster?.battleSize)
-  return b ? { ...b, base: b.id, custom: false } : { ...fallback, base: fallback.id, custom: false }
+  const b = sizes.find((x) => x.id === roster?.battleSize) || fallback
+  return { ...b, base: b.id, lineLimit: b.dupLimit * 2, custom: false }
 }
 
 // Total points for a list of roster unit entries. `defOf(id)` resolves a unit id to its

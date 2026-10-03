@@ -117,7 +117,7 @@ describe('RosterViewView', () => {
 
   // Print used to be an icon of its own beside the pencil; export lived only in the editor and on
   // the list page, and there was no one-tap copy at all. All three are one "…" now.
-  it('puts export, print and copy behind the header\u2019s \u201c\u2026\u201d menu', async () => {
+  it('puts export, print, copy and the archive behind the header\u2019s \u201c\u2026\u201d menu', async () => {
     const store = useRosters()
     const r = store.createRoster('Menu list')
     r.faction = 'necrons'
@@ -140,12 +140,17 @@ describe('RosterViewView', () => {
     // Picked by label, never by index — same rule as the list page's own actions sheet.
     const acts = [...document.querySelectorAll('.act-btn')]
     expect(acts.map((b) => b.textContent.trim()))
-      .toEqual([ui.en.rosterExportTitle, ui.en.printAction, ui.en.rosterCopyList])
+      .toEqual([ui.en.rosterExportTitle, ui.en.printAction, ui.en.rosterCopyList, ui.en.rosterArchive])
 
     acts.find((b) => b.textContent.trim() === ui.en.rosterCopyList).click()
     await flushPromises()
     expect(writeText).toHaveBeenCalledTimes(1)
     expect(writeText.mock.calls[0][0]).toContain('Menu list')
+
+    // The same archive the list page's cards offer.
+    acts.find((b) => b.textContent.trim() === ui.en.rosterArchive).click()
+    await flushPromises()
+    expect(store.rosterById(r.id).archived).toBe(true)
     w.unmount()
     document.body.innerHTML = ''
   })

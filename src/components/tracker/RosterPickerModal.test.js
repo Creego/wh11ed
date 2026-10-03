@@ -54,6 +54,18 @@ describe('RosterPickerModal', () => {
     expect(body().find('.rp-empty').exists()).toBe(true)
   })
 
+  // An archived list is put away, not fielded — the player brings it back to play it.
+  it('never offers an archived list', async () => {
+    const store = useRosters()
+    const kept = store.createRoster('All my models')
+    store.updateRoster(kept.id, { faction: 'space-marines' })
+    store.setArchived(kept.id, true)
+
+    mount(RosterPickerModal)
+    await flushPromises()
+    expect(body().findAll('.rp-row')).toHaveLength(0)
+  })
+
   it('says so when there is nothing saved yet, without blocking the link route', async () => {
     mount(RosterPickerModal)
     await flushPromises()

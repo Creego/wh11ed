@@ -430,6 +430,22 @@ describe('effectiveBattle', () => {
     expect(effectiveBattle({ battleSize: 'custom', customPoints: 800 }, core)).toMatchObject({ points: 800, dupLimit: 2, custom: true })
     expect(effectiveBattle({ battleSize: 'custom', customPoints: 5000 }, core)).toMatchObject({ points: 5000, dupLimit: 3, custom: true })
   })
+  // "No limit" lifts every limit hanging on the size, and still names the largest bracket for the
+  // ally tables.
+  // The player's own limits on a custom size: each key on its own, the rest still borrowed, the
+  // Battleline limit twice the copies unless set itself — and none of it outside a custom size.
+  it('takes the player\u2019s own limits on a custom size, borrowing what is not set', () => {
+    const own = { battleSize: 'custom', customPoints: 1500, customLimits: { dp: 1, dup: 2 } }
+    expect(effectiveBattle(own, core)).toMatchObject({ dp: 1, enhLimit: 4, dupLimit: 2, lineLimit: 4, ownLimits: true, base: 'strike-force' })
+    expect(effectiveBattle({ ...own, customLimits: { line: 9 } }, core)).toMatchObject({ dupLimit: 3, lineLimit: 9, ownLimits: true })
+    expect(effectiveBattle({ ...own, customLimits: { dp: -1, enh: 'x' } }, core)).toMatchObject({ dp: 3, enhLimit: 4, ownLimits: false })
+    expect(effectiveBattle({ battleSize: 'incursion', customLimits: { dp: 9 } }, core)).toMatchObject({ dp: 2, lineLimit: 4 })
+  })
+  it('lifts every limit for a list with no limit', () => {
+    expect(effectiveBattle({ battleSize: 'none' }, core)).toMatchObject({
+      points: Infinity, dp: Infinity, enhLimit: Infinity, dupLimit: Infinity, base: 'onslaught', unlimited: true,
+    })
+  })
 })
 
 describe('rosterPoints', () => {

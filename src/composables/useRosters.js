@@ -296,11 +296,32 @@ function importRoster(obj, name) {
   return r
 }
 
-// The two halves of the collection. Every screen picks one deliberately: the roster list's tabs
-// show both, the tracker's picker only `savedRosters` (an unfinished list has no business being
-// fielded), and `rosters` stays for the few things that mean all of them.
+// The halves of the collection. Every screen picks one deliberately: the roster list's tabs show
+// active / drafts / archive, the tracker's picker only `activeRosters` (an unfinished list has no
+// business being fielded, and an archived one is put away until it is brought back), the cloud
+// sync `savedRosters` — an archived list is still a saved one and travels to every device with
+// its flag — and `rosters` stays for the few things that mean all of them.
+// `archived: true` (rosterEngine.js's isArchived) is absent on every other list, like `draft`.
 const savedRosters = computed(() => rosters.value.filter((r) => !isDraft(r)))
+const activeRosters = computed(() => savedRosters.value.filter((r) => r.archived !== true))
+const archivedRosters = computed(() => savedRosters.value.filter((r) => r.archived === true))
 const draftRosters = computed(() => rosters.value.filter(isDraft))
+
+// Into the archive and back. A real edit — it moves `updatedAt`, so the other devices pick it up
+// on their next sync — and removing the flag rather than setting false keeps a restored list
+// indistinguishable from one that never was archived. The cached issue count was written under
+// the other rule (an archived list is never judged), so the summary loses its release stamp and
+// the caller's refreshSummaries() recounts it; the points stay on the card meanwhile.
+function setArchived(id, on) {
+  const r = rosters.value.find((x) => x.id === id)
+  if (!r || isDraft(r)) return null
+  if (on) r.archived = true
+  else delete r.archived
+  if (r.summary) r.summary = { ...r.summary, v: null }
+  touch(r)
+  saveNow()
+  return r
+}
 
 // The wizard's "Save": the draft becomes an ordinary saved list. Immediate persist, like the other
 // deliberate one-off mutations — this is the click the user would be most surprised to lose.
@@ -345,7 +366,10 @@ export function useRosters() {
   return {
     rosters,
     savedRosters,
+    activeRosters,
+    archivedRosters,
     draftRosters,
+    setArchived,
     saveDraft,
     createRoster,
     duplicateRoster,

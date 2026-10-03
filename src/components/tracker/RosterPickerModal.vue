@@ -11,7 +11,7 @@
         {{ labels.trackerRosterFactionOnly }}
       </p>
       <p
-        v-if="!savedRosters.length"
+        v-if="!activeRosters.length"
         class="rp-empty"
       >
         {{ labels.trackerRosterNone }}
@@ -21,7 +21,7 @@
            a collection look empty and reads as "my list is gone", which is a worse answer than
            seeing it greyed out next to the faction it belongs to. -->
       <button
-        v-for="r in savedRosters"
+        v-for="r in activeRosters"
         :key="r.id"
         type="button"
         class="rp-row"
@@ -34,6 +34,10 @@
           <template v-if="factionName(r.faction)">{{ factionName(r.faction) }} · </template>
           {{ r.summary?.points || 0 }} {{ labels.rosterPointsLabel }} ·
           <i class="bi bi-people-fill" /> {{ r.units?.length || 0 }}
+          <RosterOwnLimitsMark
+            inert
+            :roster="r"
+          />
         </span>
       </button>
 
@@ -85,6 +89,7 @@ import { computed, onMounted, ref, useId } from 'vue'
 import BaseModal from '../BaseModal.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
+import RosterOwnLimitsMark from '../roster/RosterOwnLimitsMark.vue'
 import { useRosters } from '../../composables/useRosters.js'
 import { decodeRoster } from '../../composables/rosterShare.js'
 import { refreshSummaries } from '../../composables/rosterSummary.js'
@@ -104,9 +109,9 @@ const emit = defineEmits(['pick', 'clear', 'close'])
 
 const { locale } = useLocale()
 const labels = computed(() => ui[locale.value])
-// Saved lists only: a draft is an unfinished wizard run (useRosters.js), and what it holds right
-// now isn't what will be fielded.
-const { rosters, savedRosters } = useRosters()
+// Active lists only: a draft is an unfinished wizard run (useRosters.js), and what it holds right
+// now isn't what will be fielded; an archived one is put away until the player brings it back.
+const { rosters, activeRosters } = useRosters()
 const linkId = useId()
 
 // Same cached summary the roster list shows, same one-off repair for a roster nothing ever
