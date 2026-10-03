@@ -297,6 +297,16 @@ async function syncFaction(slug) {
       if ((d.factionKeywords || []).some((k) => !k)) lines.push(`  ~ datasheet "${d.name}" has an empty faction keyword`)
     }
 
+    // Flavor — the lore under the name. Not compared until 2026-10-03, and 208 sheets still carried
+    // the Wahapedia import's 10th-edition text while the app had rewritten it. Compared as words
+    // (markup, italics and quotes folded); the RU overlay translates it, so a finding here is an EN
+    // change AND a re-translation.
+    if (d.flavor && appDs.lore && !d.legends) {
+      const words = (t) => norm(String(t).replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+        .replace(/<[^>]+>/g, ' ').replace(/[*_]/g, '').replace(/[’‘]/g, "'"))
+      if (words(d.flavor) !== words(appDs.lore)) lines.push(`  ~ datasheet "${d.name}" flavor differs from appdata`)
+    }
+
     // baseSize: exact scalar (both sides are short strings like "32mm") — appdata always spaces
     // out "170 x 109mm", wh11ed always writes "170x109mm" — and for a mixed-base unit (a wargear
     // variant on its own base, e.g. Cthonian Beserks' Mole grenade launcher) appdata spells out
