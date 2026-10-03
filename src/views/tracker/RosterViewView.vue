@@ -708,10 +708,10 @@ const gameMi = computed(() => (route.params.mi != null && route.params.mi !== ''
 const inGame = computed(() => gamePi.value != null)
 // A finished game reached from the history list (/tracker/history/:gid/roster/:pi) shows the same
 // screen as a live one, but as a RECORD: the rule switches are what they were when it ended, and
-// there is nothing left to flip.
+// there is nothing left to flip. "Back" reopens that game's modal on the history list.
 const historyId = computed(() => route.params.gid || null)
 const backTo = computed(() => {
-  if (historyId.value) return `/tracker/history/${historyId.value}`
+  if (historyId.value) return `/tracker?game=${historyId.value}`
   return inGame.value ? '/tracker/game' : '/roster'
 })
 const gameRoster = ref(undefined) // undefined = not resolved yet, null = no such attachment

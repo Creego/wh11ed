@@ -785,7 +785,7 @@ describe('RosterViewView', () => {
 
       expect(w.text()).toContain('Da Old List')
       expect(w.find('.cond-chip').exists()).toBe(false)      // a record has no controls
-      expect(w.find('.back').attributes('href')).toBe(`/tracker/history/${gid}`)
+      expect(w.find('.back').attributes('href')).toBe(`/tracker?game=${gid}`)
       // …but what was true in that game still shaped the numbers it shows.
       await waitForSelector(w, '.rvst-mod')
       expect(w.find('.rvst-mod').exists()).toBe(true)
