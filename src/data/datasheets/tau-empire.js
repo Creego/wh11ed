@@ -197,7 +197,7 @@ export default [
     "profiles": [
       {
         "name": "Ax-1-0 Tiger Shark",
-        "m": "20+\"",
+        "m": "-",
         "t": "11",
         "sv": "3+",
         "w": "18",
@@ -5027,7 +5027,7 @@ export default [
     "profiles": [
       {
         "name": "Razorshark Strike Fighter",
-        "m": "20+\"",
+        "m": "-",
         "t": "10",
         "sv": "3+",
         "w": "12",
@@ -6227,7 +6227,7 @@ export default [
     "profiles": [
       {
         "name": "Sun Shark Bomber",
-        "m": "20+\"",
+        "m": "-",
         "t": "9",
         "sv": "3+",
         "w": "12",
@@ -7049,7 +7049,7 @@ export default [
     "profiles": [
       {
         "name": "Tiger Shark",
-        "m": "20+\"",
+        "m": "-",
         "t": "11",
         "sv": "3+",
         "w": "18",

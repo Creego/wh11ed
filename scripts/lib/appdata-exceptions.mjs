@@ -31,6 +31,10 @@
 //                    `detachment` + `enhancement` name it, `from` must occur in appdata's rules
 //                    text, `to` is the whole new text (appdata's own markup), `ours` must occur in
 //                    the enhancement's body in src/data/factions/<slug>.js.
+//   core-rule-text — a Core Rules errata appdata's own rule text has not taken in: `num` names the
+//                    rule in factions/_core-rules.json (slug '_core-rules'), `from` must occur in its
+//                    text (appdata's markup), `ours` must occur in src/data/<file>. Core Rules are
+//                    transcribed, not generated, so nothing is patched — the gate only keeps watch.
 import fs from 'node:fs'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
@@ -83,6 +87,17 @@ export const APPDATA_EXCEPTIONS = [
     why: 'The Codex: Imperial Agents errata of 30 September 2026 rewrote the enhancement; appdata 972 keeps the old card (0 CP, Heroic Intervention or Counter-offensive) while its own detachment rule already prints the new wording.',
     source: 'Warhammer 40,000: The App 2.7.1 → Codex: Imperial Agents → Updates & Errata, "Veiled Blade Elimination Force Detachment, Intraneural Biotech enhancement" (checked 2026-10-03)',
   },
+  {
+    id: 'core-consolidation-ongoing-errata',
+    kind: 'core-rule-text',
+    slug: '_core-rules',
+    num: '12.08',
+    from: 'must still be <b>engaged</b> with that enemy unit.</li><li><b>Engaging Consolidation',
+    file: 'battleRound.js',
+    ours: 'that enemy unit. If one or more enemy units **engaged** with your unit have not been **selected to fight** this phase',
+    why: 'The Core Rules errata of 26 August 2026 gives Ongoing Consolidation\'s After Moving the same "your opponent must select each of those units" sentence Engaging Consolidation has; appdata 931–972 keeps the old one-sentence line.',
+    source: 'Warhammer 40,000: The App → Core Rules → Updates & Errata, "12.08 - Consolidation Move, After Moving Section, Ongoing Consolidation" (in appdata tables/faq.json since 931; checked 2026-10-03)',
+  },
 ]
 
 const appSlugOf = (slug) => SLUG_MAP[slug] || slug
@@ -91,12 +106,20 @@ const sheetOf = (bundle, name) => (bundle?.datasheets || []).find((d) => norm(d.
 const itemOf = (ds, name) => (ds?.wargear || []).find((w) => norm(w.name) === norm(name))
 const enhOf = (bundle, e) => (bundle?.detachments || []).find((d) => norm(d.name) === norm(e.detachment))
   ?.enhancements?.find((x) => norm(x.name) === norm(e.enhancement))
-// What an entry patches: a datasheet for most kinds, an enhancement for `enhancement-text`.
-const targetOf = (bundle, e) => (e.kind === 'enhancement-text' ? enhOf(bundle, e) : sheetOf(bundle, e.datasheet))
+const coreRuleOf = (bundle, e) => (bundle?.rules || []).find((r) => r.num === e.num)
+// What an entry patches: a datasheet for most kinds, an enhancement for `enhancement-text`, a
+// Core Rules entry for `core-rule-text`.
+const targetOf = (bundle, e) => (e.kind === 'enhancement-text' ? enhOf(bundle, e)
+  : e.kind === 'core-rule-text' ? coreRuleOf(bundle, e)
+    : sheetOf(bundle, e.datasheet))
 
 // What appdata says now, for the one place an entry patches — compared with what the entry
 // expects to find. Returns null when appdata still has the error, or the reason it does not.
 function appdataDrift(e, ds) {
+  if (e.kind === 'core-rule-text') {
+    if (!ds) return `Core Rules ${e.num} is gone`
+    return (ds.text || '').includes(e.from) ? null : `its text no longer has "${e.from}"`
+  }
   if (e.kind === 'enhancement-text') {
     if (!ds) return `enhancement "${e.enhancement}" is gone from ${e.detachment}`
     return (ds.rules || '').includes(e.from) ? null : `its text no longer has "${e.from}"`
@@ -144,6 +167,11 @@ export function loadAppdataBundle(slugOrAppSlug) {
 // Our side: does the sheet we ship still carry the correction? Needs no appdata, so it also runs
 // as a test (appdata-exceptions.test.js) — a regeneration that lost an entry fails `npm test`.
 export async function oursCarries(e) {
+  if (e.kind === 'core-rule-text') {
+    const file = path.join(ROOT, 'src/data', e.file)
+    if (!fs.existsSync(file)) return `src/data/${e.file} is missing`
+    return fs.readFileSync(file, 'utf8').includes(e.ours) ? null : `src/data/${e.file} does not read "${e.ours}"`
+  }
   if (e.kind === 'enhancement-text') {
     const ffile = path.join(ROOT, 'src/data/factions', `${e.slug}.js`)
     const mod = await import(pathToFileURL(ffile).href)

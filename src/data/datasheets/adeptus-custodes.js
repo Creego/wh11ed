@@ -590,12 +590,12 @@ export default [
     "profiles": [
       {
         "name": "Ares Gunship",
-        "m": "20+\"",
+        "m": "-",
         "t": "12",
         "sv": "2+",
         "w": "22",
         "ld": "6+",
-        "oc": "0",
+        "oc": "-",
         "inv": "5+"
       }
     ],

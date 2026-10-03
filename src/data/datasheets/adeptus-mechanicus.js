@@ -15,12 +15,12 @@ export default [
     "profiles": [
       {
         "name": "Archaeopter Fusilave",
-        "m": "20+\"",
+        "m": "-",
         "t": "9",
         "sv": "3+",
         "w": "10",
         "ld": "7+",
-        "oc": "0"
+        "oc": "-"
       }
     ],
     "ranged": [
@@ -101,12 +101,12 @@ export default [
     "profiles": [
       {
         "name": "Archaeopter Stratoraptor",
-        "m": "20+\"",
+        "m": "-",
         "t": "9",
         "sv": "3+",
         "w": "10",
         "ld": "7+",
-        "oc": "0"
+        "oc": "-"
       }
     ],
     "ranged": [

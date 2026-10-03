@@ -1682,7 +1682,7 @@ export default [
     "profiles": [
       {
         "name": "Grey Knights Thunderhawk Gunship",
-        "m": "20+\"",
+        "m": "20\"",
         "t": "12",
         "sv": "2+",
         "w": "30",

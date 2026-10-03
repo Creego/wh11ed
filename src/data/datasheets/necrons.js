@@ -3738,8 +3738,8 @@ export default [
         "d": "2"
       }
     ],
-    "core": "Deadly Demise D6+2",
-    "faction": "Reanimation Protocols, Super-heavy Walker",
+    "core": "Deadly Demise D6+2, Super-heavy Walker",
+    "faction": "Reanimation Protocols",
     "abilities": [
       {
         "name": "Terrifying Monstrosity",

@@ -1229,7 +1229,7 @@ export default [
     "profiles": [
       {
         "name": "Hive Crone",
-        "m": "20+\"",
+        "m": "-",
         "t": "9",
         "sv": "3+",
         "w": "12",
