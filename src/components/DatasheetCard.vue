@@ -1471,9 +1471,12 @@ function abilityStateLabel(st) {
 /* Narrower still, six boxes fill the row (six at their 2.7rem minimum plus gaps are ~290px, the
    badge ~60px): the tag steps down beside the invulnerable-save label (which then keeps to the
    three columns under W/LD/OC) — a row of its own only on a sheet with no invulnerable save,
-   where it is the only thing on that row. 340px is the width where the corner actually runs
-   out; at 400px a 393px phone still had room and stepped down for nothing (2026-09-18). */
-@container dscard (max-width: 340px) {
+   where it is the only thing on that row. The row with the badge up needs 363px of shell (six
+   boxes, a gap, the badge, the tight side padding) — MEASURED by `npm run legends-tag`, which
+   reads this number back and fails when any Legends sheet needs more. It was 340px, picked by
+   eye on the page, and a 360px phone (page and roster modal alike) ran the row off the screen
+   and scrolled sideways (2026-10-04). A 393px phone (shell 377px) keeps the badge up. */
+@container dscard (max-width: 368px) {
   .ds-legends-tag { grid-row: 2; grid-column: 7 / -1; align-self: start; }
   .ds-stats:has(.ds-legends-tag) .ds-inv-side { grid-column: 4 / 7; }
   .ds-stats.has-name .ds-legends-tag { grid-row: 3; }
