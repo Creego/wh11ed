@@ -215,6 +215,7 @@
           v-if="desk || step === 2"
           class="rc-sticky-info"
           :badge="!!factionSlug"
+          :checked="checkLegality"
           :points="points"
           :limit="limit"
           :limits="rosterLimit"

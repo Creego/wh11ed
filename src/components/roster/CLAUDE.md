@@ -1316,9 +1316,17 @@ show yet, or not; not ours to guess.
   (`rosterValidation.js`) is the shared tally built on top of it. **"Check legality"**
   (`roster.checkLegality`, per-roster, default `true`) is the player-facing toggle: on, it
   live-enforces `duplicateLimit` by disabling `RosterUnitBrowser`'s "+" button once a unit's
-  cap group is full; off, unlimited adding (today's pre-toggle behaviour). This is layered on
-  top of, not a replacement for, `validateRoster()`'s own always-on `overDuplicate` issue — the
-  two share the same `capKeyOf` grouping so they never disagree. Toggled on the creation
+  cap group is full; off, unlimited adding. **Off switches every check off, not just the cap**
+  (owner, 2026-10-04: "no rule checked, no warning shown, only that the checks are off"):
+  `validateRoster()` returns no issues at all — warnings included — exactly as for an archived
+  list, a total over its limit is not red (footer, list card, view page, the DP count), and the
+  one thing said is "Unchecked" (`rosterChecksOff`/`rosterChecksOffNote`): in place of the issues
+  badge in `RosterPointsTally` (the mark alone on a phone), in place of the warning count on the
+  list card, and as one muted line where the view page's issues bar would be. Every one of those
+  asks `legalityOn` (rosterEngine.js). The unit form's own option rules (wargear group caps, an
+  enhancement already taken, a leader already attached) are not checks in this sense and stay.
+  Both the cap and the `overDuplicate` issue share the same `capKeyOf` grouping so they never
+  disagree. Toggled on the creation
   wizard's step 1 and the editor's Settings tab (both `RosterSetupFields.vue`) — both write
   straight to the roster object. A count strictly OVER
   its cap (not just at it — unreachable through the "+" button itself, but reachable by lowering

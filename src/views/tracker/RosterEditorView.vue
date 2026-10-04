@@ -212,6 +212,7 @@
           :error-count="validation.errorCount"
           :issue-count="validation.issues.length"
           :badge="!!roster.faction && !roster.archived"
+          :checked="legalityOn(roster)"
           @open-issues="issuesOpen = true"
         />
         <!-- Units or Settings: the two modes of the phone's editor. They were a row of tabs over

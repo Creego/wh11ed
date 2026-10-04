@@ -131,6 +131,14 @@
         </div>
       </header>
 
+      <!-- Checks switched off: the one line said about legality, where the issues would be. Not on an
+           archived list — the archive says that itself. -->
+      <p
+        v-if="roster.faction && !roster.archived && !legalityOn(roster)"
+        class="rv-checks-off"
+      >
+        <i class="bi bi-slash-circle" /> {{ labels.rosterChecksOffNote }}
+      </p>
       <!-- What the list breaks, said HERE. The editor has always had this behind its footer badge,
          but a list is read far more often than it is edited, and "why is this illegal" was two
          screens away — the list page shows a warning count and this page said nothing at all. -->
@@ -679,7 +687,7 @@ import { buildRosterText } from '../../composables/rosterExport.js'
 import { APP_DATA_VERSION } from '../../data/appDataVersion.js'
 import { loadDatasheets } from '../../data/datasheets/index.js'
 import { ownLimitsLines } from '../../composables/battleLimitFacts.js'
-import { allySourceOf, effectiveBattle, blockNumbers, dispositionCandidates, dispositionOf, groupLabel, entrySummary, hostBlockTotal, leaderTargetsFor, mandatoryEnhancementFor, usesAllies } from '../../composables/rosterEngine.js'
+import { allySourceOf, effectiveBattle, blockNumbers, legalityOn, dispositionCandidates, dispositionOf, groupLabel, entrySummary, hostBlockTotal, leaderTargetsFor, mandatoryEnhancementFor, usesAllies } from '../../composables/rosterEngine.js'
 import { applyStatMods, splitBearers, grantedKeywordsFrom, resolveModifierEntries, datasheetEntriesFor, aurasReaching, gateStratagems, attachedUnitKeywords, attachedEnhKeys } from '../../composables/rosterStatMods.js'
 import { loadoutItemNames } from '../../composables/rosterModifiers.js'
 import { groupModNotes, modDelta, possibleModNotes } from '../../composables/rosterModNotes.js'
@@ -855,7 +863,7 @@ const {
 // The points beside the name. On the desk the list's card beside this page already carries them,
 // so they stay only when they say more than the card: the player's own limits, or a list over
 // its limit (owner, 2026-10-03). A phone has no card beside it and always shows it.
-const overLimit = computed(() => !roster.value?.archived && points.value > limit.value)
+const overLimit = computed(() => legalityOn(roster.value) && points.value > limit.value)
 const ownLimits = computed(() => ownLimitsLines(effectiveBattle(roster.value || {}, rosterCore), labels.value).length > 0)
 const showPoints = computed(() => !!roster.value?.faction && (!props.inDesk || ownLimits.value || overLimit.value))
 // A faction keyword tapped in a rule on this screen lists this list's own units first.
@@ -1804,6 +1812,7 @@ function stratKey(strat) {
   color: #e05c4b;
 }
 .rvi-txt { flex: 1; min-width: 0; }
+.rv-checks-off { display: flex; align-items: center; gap: 0.4rem; margin: 0 0 0.8rem; font-size: 0.8rem; color: var(--text-muted); }
 .rvi-more { color: var(--text-muted); font-weight: 500; }
 .rvi-go { flex: none; opacity: 0.7; }
 

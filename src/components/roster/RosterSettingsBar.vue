@@ -74,7 +74,7 @@
           <em
             v-if="factionSlug"
             class="dp-count"
-            :class="{ over: dpSpent > dpLimit }"
+            :class="{ over: checkLegality && !archived && dpSpent > dpLimit }"
           >{{ dpSpent }}<template v-if="Number.isFinite(dpLimit)"> / {{ dpLimit }}</template> DP</em>
         </ExpandTransition>
       </span>
