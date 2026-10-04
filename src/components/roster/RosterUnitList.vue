@@ -521,7 +521,11 @@ watch(naming, (on) => {
   position: relative; margin-top: -1px;
   font: inherit; text-align: left; cursor: pointer; color: var(--text-primary);
 }
-@media (hover: hover) { .rul-unit.rul-crew:hover { z-index: 1; } }
+/* …and the unit, hovered, lays its bottom edge back over the crew's top one. */
+@media (hover: hover) {
+  .rul-unit.rul-crew:hover,
+  .rul-unit:has(+ .rul-crew):hover { position: relative; z-index: 1; }
+}
 .rul-crew-mark { flex: none; color: var(--text-dim); font-size: 0.75rem; }
 .rul-crew-name { flex: 1; min-width: 0; font-weight: 600; font-size: 0.85rem; }
 .rul-crew-pts { flex: none; padding-right: var(--rul-acts-w, 2rem); font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; }

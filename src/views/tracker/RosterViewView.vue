@@ -1868,7 +1868,11 @@ function stratKey(strat) {
   /* Its own top edge, laid over the unit's bottom one: hovered, the row lights all four sides. */
   position: relative; margin-top: -1px;
 }
-@media (hover: hover) { .rvunit.rvunit-crew:hover { border-color: var(--accent); z-index: 1; } }
+@media (hover: hover) {
+  .rvunit.rvunit-crew:hover { border-color: var(--accent); z-index: 1; }
+  /* …and the unit, hovered, lays its bottom edge back over the crew's top one. */
+  .rvunit:has(+ .rvunit-crew):hover { position: relative; z-index: 1; }
+}
 .rvunit-crew-mark { flex: none; color: var(--text-dim); font-size: 0.8rem; }
 .rvunit.rvunit-attached,
 .rvunit.rvunit-host { border-left: 2px solid var(--accent); }
