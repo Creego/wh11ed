@@ -516,9 +516,12 @@ watch(naming, (on) => {
 .rul-unit:has(+ .rul-crew) { margin-bottom: 0; }
 .rul-unit.rul-crew {
   display: flex; align-items: center; gap: 0.5rem; width: 100%;
-  padding: 0.35rem 0.6rem; border-top: none; border-left: 2px solid var(--accent);
+  padding: 0.35rem 0.6rem; border-left: 2px solid var(--accent);
+  /* Its own top edge, laid over the unit's bottom one: hovered, the row lights all four sides. */
+  position: relative; margin-top: -1px;
   font: inherit; text-align: left; cursor: pointer; color: var(--text-primary);
 }
+@media (hover: hover) { .rul-unit.rul-crew:hover { z-index: 1; } }
 .rul-crew-mark { flex: none; color: var(--text-dim); font-size: 0.75rem; }
 .rul-crew-name { flex: 1; min-width: 0; font-weight: 600; font-size: 0.85rem; }
 .rul-crew-pts { flex: none; padding-right: var(--rul-acts-w, 2rem); font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; }
@@ -605,6 +608,9 @@ watch(naming, (on) => {
   /* The fold eats into the row's own left padding rather than adding to it. */
   .rul-fold + .rul-row { padding-left: 0.15rem; }
   .rul-chev { display: none; }
+  /* The unit's points drop to the right edge here; the crew's zero goes with them. */
+  .rul-unit.rul-crew { padding: 0.35rem 0.5rem; }
+  .rul-crew-pts { padding-right: 0; }
   /* Matches the button's new width: the reserve is what keeps the name's text out from
      under a control that would otherwise take the tap meant for the row. */
   .rul-headrow { --rul-acts-w: 2rem; }

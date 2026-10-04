@@ -1863,10 +1863,12 @@ function stratKey(strat) {
 /* The crew row hangs off the unit above it, slimmer and without the stats it has no list entry for. */
 .rvunit:has(+ .rvunit-crew) { margin-bottom: 0; }
 .rvunit.rvunit-crew {
-  background: var(--bg-card); border: 1px solid var(--border); border-top: none; border-left: 2px solid var(--accent);
+  background: var(--bg-card); border: 1px solid var(--border); border-left: 2px solid var(--accent);
   padding-top: 0.35rem; padding-bottom: 0.35rem;
+  /* Its own top edge, laid over the unit's bottom one: hovered, the row lights all four sides. */
+  position: relative; margin-top: -1px;
 }
-@media (hover: hover) { .rvunit.rvunit-crew:hover { border-color: var(--accent); } }
+@media (hover: hover) { .rvunit.rvunit-crew:hover { border-color: var(--accent); z-index: 1; } }
 .rvunit-crew-mark { flex: none; color: var(--text-dim); font-size: 0.8rem; }
 .rvunit.rvunit-attached,
 .rvunit.rvunit-host { border-left: 2px solid var(--accent); }
