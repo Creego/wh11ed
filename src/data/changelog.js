@@ -231,36 +231,6 @@ export const changelog = [
       'Заодно в этих списках карточки юнитов показывают, что меняют правила и снаряжение Space Marines. Например, Terminator со Storm Shield получают отдельную строку с W 4.',
     ],
   },
-  {
-    version: '2.7.8',
-    date: '2026-09-30',
-    en: [
-      { h: 'Rules pages' },
-      'Subheadings inside army and detachment rules are bigger now, for example the Assault, Devastator and Tactical Doctrines. Their Russian captions are bigger too.',
-      { h: 'Space Marines: game terms explained' },
-      'In the rules and datasheets of Space Marines and the five Chapters, bold game terms now open a short explanation when you tap them, for example hit roll, engaged or combat doctrine. The popup shows the English term. Core abilities such as Stealth or Feel No Pain open their full rule.',
-      { h: 'Space Marines and Chapters: Legendary Proxies' },
-      'The units pages of Space Marines and the five Chapters now have the Legendary Proxies table. It tells which datasheet to use for a retired unit, for example Tactical Squad plays as Intercessor Squad and Devastator Squad as Desolation Squad. A Chapter’s table lists only the units that Chapter can take.',
-      { h: 'Fixes' },
-      'The roster card of a Raptors unit used to show Close combat weapon several times in a row when several Raptors took it with different weapon options. Now it is one row with the right count.',
-      'When you built a new list with two detachments, the builder kept asking you to declare the Force Disposition even after you had picked one. Now the warning goes away once it is declared. Lists opened for editing were not affected.',
-      'The explanation of move types used to list only four of them. Now it names every move type from the core rules.',
-      'The roster builder used to let a Helliarch take a second hellglaive without the swap that gives it a splinter pistol. Now that option opens only after the swap. The same goes for the Storm Shield of a Space Marines Lieutenant, the force weapon of an Inquisitor and the Grenade Launcher of Death Company Marines.',
-    ],
-    ru: [
-      { h: 'Страницы правил' },
-      'Подзаголовки внутри правил армии и детачментов стали крупнее, например Assault, Devastator и Tactical Doctrine. Русские подписи под ними тоже стали крупнее.',
-      { h: 'Space Marines: пояснения к терминам' },
-      'В правилах и листах данных Space Marines и пяти орденов жирные игровые термины теперь открывают короткое пояснение по нажатию, например бросок на попадание, в ближнем бою или боевая доктрина. Во всплывающем окне есть английское название термина. Базовые способности, например Stealth или Feel No Pain, открывают своё полное правило.',
-      { h: 'Space Marines и ордены: Legendary Proxies' },
-      'На страницах юнитов Space Marines и пяти орденов появилась таблица Legendary Proxies. Она говорит, каким листом данных играть снятый юнит, например Tactical Squad играет как Intercessor Squad, а Devastator Squad как Desolation Squad. В таблице ордена только те юниты, которых этот орден может взять.',
-      { h: 'Исправления' },
-      'Раньше в карточке ростера у Raptors Close combat weapon повторялся несколько раз подряд, если его получили несколько моделей через разные варианты вооружения. Теперь это одна строка с правильным количеством.',
-      'Раньше при создании нового списка с двумя детачментами конструктор просил объявить Force Disposition, даже когда вы её уже выбрали. Теперь предупреждение пропадает сразу после выбора. Списков, открытых на редактирование, это не касалось.',
-      'Раньше пояснение к типам манёвров называло только четыре из них. Теперь в нём все типы манёвров из основных правил.',
-      'Раньше конструктор давал Helliarch второй hellglaive без замены, которая выдаёт ему splinter pistol. Теперь эта опция открывается только после замены. То же у Storm Shield для Lieutenant у Space Marines, force weapon у Inquisitor и Grenade Launcher у Death Company Marines.',
-    ],
-  },
 ]
 
 // The latest entry drives the banner + the stored "last seen version". Exported so the composable
