@@ -22,6 +22,28 @@
 
 export const changelog = [
   {
+    version: '2.7.14',
+    date: '2026-10-04',
+    en: [
+      { h: 'Unit cards on narrow phones' },
+      'On phones about 360px wide, a Legends unit card did not fit the screen, and the page scrolled sideways. Now on a narrow screen the Legends badge stands upright to the right of OC. On the narrowest phones it moves under the characteristics.',
+      'The weapons table now stays a table on every phone. Before, on phones narrower than 360px it turned into cards, one for each weapon. Long weapon names wrap to a second line.',
+      { h: 'Search' },
+      'Search results take less space: a phone screen shows almost twice as many units. If a unit was found by a nickname or an ability, that word now stands in the line with the faction, not on a line of its own.',
+      { h: 'Roster builder' },
+      'If you untick “Check legality”, the roster is not checked at all: no errors, no warnings, and points over the limit are not red. Instead the roster has an “Unchecked” mark. Before, the box only lifted the limit on unit copies.',
+    ],
+    ru: [
+      { h: 'Карточка юнита на узком телефоне' },
+      'На телефонах шириной около 360px карточка юнита Legends не помещалась в экран, и страница прокручивалась вбок. Теперь на узком экране бейдж Legends стоит вертикально справа от OC. На самых узких телефонах он уходит под характеристики.',
+      'Таблица оружия теперь остаётся таблицей на любом телефоне. Раньше на телефонах уже 360px она превращалась в карточки, по одной на каждое оружие. Длинные названия оружия переносятся на вторую строку.',
+      { h: 'Поиск' },
+      'Результаты поиска занимают меньше места: на экран телефона помещается почти вдвое больше юнитов. Если юнит найден по прозвищу или способности, это слово теперь стоит в строке с фракцией, а не отдельной строкой.',
+      { h: 'Конструктор ростеров' },
+      'Если снять галочку «Проверять легитимность», ростер не проверяется совсем: нет ни ошибок, ни предупреждений, превышение очков не подсвечивается красным. Вместо этого у ростера стоит пометка «Без проверок». Раньше галочка снимала только лимит копий юнита.',
+    ],
+  },
+  {
     version: '2.7.13',
     date: '2026-10-03',
     en: [
