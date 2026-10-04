@@ -56,7 +56,11 @@ await ctx.addInitScript(() => {
 const page = await ctx.newPage()
 
 const results = []
+const overlaps = []
 let missing = 0
+// Page widths whose card is stepped down: the narrowest phone, and the widest that still steps
+// (the page's shell is the window less 16px).
+const NARROW = [320, breakpoint + 16]
 for (const locale of ['', '/ru']) {
   for (const s of sheets) {
     const path = `${locale}/factions/${s.slug}/datasheets/${s.id}`
@@ -95,6 +99,29 @@ for (const locale of ['', '/ru']) {
     const required = Math.ceil(m.need + 2 * m.padX)
     results.push({ path, required })
     if (verbose) console.log(`  ${path} — needs ${required}px`)
+
+    // Stepped down, the badge shares row 2 with the invulnerable save's label and note — and
+    // the label is one line that does not wrap, so on a narrow card it runs into the badge's
+    // column (2026-10-04, a 342px modal: "INVULNERABLE SAVE" under "LEGENDS"). Checked at the
+    // narrowest phone and at the widest width that still steps down.
+    for (const width of NARROW) {
+      await page.setViewportSize({ width, height: 844 })
+      const hit = await page.evaluate(() => {
+        const t = document.querySelector('.ds-legends-tag').getBoundingClientRect()
+        const row = document.querySelector('.ds-legends-tag').closest('.ds-stats')
+        for (const el of row.querySelectorAll('.ds-stat, .ds-inv-band, .ds-inv-note, .ds-prof-name')) {
+          const r = el.getBoundingClientRect()
+          if (r.width && r.left < t.right - 0.5 && t.left < r.right - 0.5 && r.top < t.bottom - 0.5 && t.top < r.bottom - 0.5) {
+            return el.className.split(' ').find((c) => c.startsWith('ds-')) || el.className
+          }
+        }
+        // …and nothing on the row may push the window sideways (a long asterisk note did).
+        if (document.documentElement.scrollWidth > document.documentElement.clientWidth + 1) return 'page (scrolls sideways)'
+        return null
+      })
+      if (hit) overlaps.push({ path, width, hit })
+    }
+    await page.setViewportSize({ width: 400, height: 844 })
   }
 }
 await browser.close()
@@ -111,4 +138,8 @@ if (over.length) {
   for (const r of over.slice(0, 10)) console.error(`  ${r.path} — ${r.required}px`)
   console.error('  Raise the breakpoint in DatasheetCard.vue (`.ds-legends-tag { grid-row: 2; … }`).')
 }
-process.exit(over.length || missing ? 1 : 0)
+if (overlaps.length) {
+  console.error(`✗ ${overlaps.length} render(s) where the stepped-down row is broken — the badge covers something, or the row is wider than the screen:`)
+  for (const o of overlaps.slice(0, 10)) console.error(`  ${o.path} @${o.width}px — ${o.hit}`)
+}
+process.exit(over.length || overlaps.length || missing ? 1 : 0)

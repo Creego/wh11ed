@@ -1478,8 +1478,21 @@ function abilityStateLabel(st) {
    and scrolled sideways (2026-10-04). A 393px phone (shell 377px) keeps the badge up. */
 @container dscard (max-width: 368px) {
   .ds-legends-tag { grid-row: 2; grid-column: 7 / -1; align-self: start; }
-  .ds-stats:has(.ds-legends-tag) .ds-inv-side { grid-column: 4 / 7; }
+  /* `contain: inline-size` — three max-content columns cannot absorb a long asterisk note the way
+     the flexible one did, and without it the note stretched W/LD/OC past the card's edge instead
+     of wrapping (Illic Nightspear, Hounds of Morkai). Contained, the block takes the columns'
+     width and the note wraps inside it. */
+  .ds-stats:has(.ds-legends-tag) .ds-inv-side { grid-column: 4 / 7; contain: inline-size; }
   .ds-stats.has-name .ds-legends-tag { grid-row: 3; }
+  /* Beside the invulnerable save it sits on the row's floor, by the shield's point: the label is
+     one line that does not wrap and, on a narrow card, runs on into the badge's column — level
+     with it at the top, the two overprinted (2026-10-04). `npm run legends-tag` checks the
+     badge touches nothing on its row and the row stays inside the screen. */
+  .ds-stats:has(.ds-inv-box) .ds-legends-tag { align-self: end; }
+  /* An asterisk note under the label fills that floor itself, its last line running to the
+     badge's edge — there the badge takes a row of its own under the note (a handful of sheets). */
+  .ds-stats:has(.ds-inv-note) .ds-legends-tag { grid-row: 3; }
+  .ds-stats.has-name:has(.ds-inv-note) .ds-legends-tag { grid-row: 4; }
 }
 
 /* Points — closing faction-colour band: bleeds over the card padding (mirroring
