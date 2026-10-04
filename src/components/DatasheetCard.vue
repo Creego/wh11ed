@@ -1471,8 +1471,9 @@ function abilityStateLabel(st) {
 /* Narrower still, six boxes fill the row (six at their 2.7rem minimum plus gaps are ~290px, the
    badge ~60px). Two steps, both MEASURED by `npm run legends-tag`, which reads these numbers back
    and fails when any Legends sheet needs more:
-   - ≤368px the badge turns on its side and stays on the stat row, reading bottom to top like a
-     book's spine — ~20px wide instead of ~57 (owner, 2026-10-04: "turn it, it will fit"). The
+   - ≤368px the badge turns on its side and stays on the stat row, reading top to bottom with
+     the letters' feet to the left — ~20px wide instead of ~57 (owner, 2026-10-04: "turn it, it
+     will fit"; bottom-to-top was tried first and turned the other way round the same day). The
      row with it upright needs 363px of shell; 340px, picked by eye, ran the row off a 360px phone
      (page and roster modal alike) and the view scrolled sideways (2026-10-04).
    - ≤330px not even that fits (a 320px phone): it steps down beside the invulnerable-save label
@@ -1481,13 +1482,12 @@ function abilityStateLabel(st) {
 @container dscard (max-width: 368px) {
   .ds-legends-tag {
     writing-mode: vertical-rl;
-    transform: rotate(180deg);
     align-self: end;
     padding: 0.3em 0;
   }
 }
 @container dscard (max-width: 330px) {
-  .ds-legends-tag { grid-row: 2; grid-column: 7 / -1; align-self: start; writing-mode: horizontal-tb; transform: none; padding: 0 0.3em; }
+  .ds-legends-tag { grid-row: 2; grid-column: 7 / -1; align-self: start; writing-mode: horizontal-tb; padding: 0 0.3em; }
   /* `contain: inline-size` — three max-content columns cannot absorb a long asterisk note the way
      the flexible one did, and without it the note stretched W/LD/OC past the card's edge instead
      of wrapping (Illic Nightspear, Hounds of Morkai). Contained, the block takes the columns'
