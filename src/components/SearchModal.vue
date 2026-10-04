@@ -95,7 +95,11 @@
                 v-if="item.sectionNum"
                 class="result-num"
               >{{ item.sectionNum }}</span>
-              <span class="result-section">{{ item.sectionTitle }}</span>
+              <span class="result-section">{{ item.sectionTitle }}<template v-if="item.matchedBy">
+                · <span
+                  class="result-matched"
+                  v-html="highlightMatch(item.matchedBy, query)"
+                /></template></span>
             </div>
             <div class="result-title">
               <span v-html="highlightMatch(item.title, query)" />
@@ -471,6 +475,18 @@ function navigate(item) {
   color: var(--text-dim);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+}
+
+/* Why a unit or faction is here (a nickname, an ability, the retired unit it stands in for) —
+   the tail of the location line, in its flow, not a row of its own: a long one ("Legendary
+   Proxies: Ufthak Blackhawk") wraps word by word like the rest of the line instead of being cut,
+   since its end is the point. */
+.result-matched {
+  font-size: 0.76rem;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--text-muted);
 }
 
 .result-title {
