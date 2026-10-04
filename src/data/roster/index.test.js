@@ -308,6 +308,21 @@ describe('replaced-item links', () => {
     expect(havoc).toContainEqual(['Havoc lascannon', 2, 1])
   })
 
+  it('splits a group whose bullets each give up a different weapon', () => {
+    // "For every 5 models: ◦ 1 Raider's boltgun → 1 meltagun ◦ 1 Raider's reaver's blade → 1 power
+    // fist" was one group, and both options gave up the boltgun — ten reaver's blades stayed on the
+    // card beside the power fists (a player's report, 2026-10-04). One group per bullet now, each
+    // with its own weapon given up and its own 1-per-5 allowance.
+    const u = groupsOf('chaos-space-marines', 'red-corsairs-raiders')
+    const melta = u.gear.find((x) => /boltgun can be replaced with 1 meltagun/i.test(textOf(x)))
+    const fist = u.gear.find((x) => /reaver’s blade can be replaced with 1 power fist/i.test(textOf(x)))
+    expect(repNames(melta)).toEqual(['Boltgun'])
+    expect(repNames(fist)).toEqual(['Reaver’s blade'])
+    expect(melta.o).toHaveLength(1)
+    expect(fist.o).toHaveLength(1)
+    expect(fist.lim).toEqual([[5, 1], [10, 2]])
+  })
+
   it('resolves a weapon category to the one weapon of that type', () => {
     // "1 model's ranged weapon can be replaced with 1 shardlauncher" names no item at all.
     const u = groupsOf('tyranids', 'termagants')

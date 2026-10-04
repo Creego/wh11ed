@@ -10,7 +10,7 @@ const KEY = 'wh11ed-rosters'
 // Bump `v` when the stored shape changes; `migrateRoster()` below is the single upgrade point.
 // Exported because a SHARE LINK carries the same shape and the same version (rosterShare.js) — a
 // payload built by an older build has to be read through the same migration a stored roster is.
-export const SCHEMA_VERSION = 8
+export const SCHEMA_VERSION = 9
 
 // A stable unique id for a roster (and its line entries). crypto.randomUUID is available in
 // every browser we target and in Node ≥ 16; the fallback keeps tests / old engines working.
@@ -168,6 +168,19 @@ export function migrateRoster(r, v) {
       if (/(^|\/)lieutenant$/.test(u.id || '') && Array.isArray(u.wg)) {
         u.wg = u.wg.filter(([g]) => g !== 1)
         if (!u.wg.length) delete u.wg
+      }
+    }
+  }
+
+  // → v9: one group became two. Red Corsairs Raiders' "For every 5 models: ◦ boltgun → meltagun
+  // ◦ reaver's blade → power fist" was one group of two options, read as if both gave up the
+  // boltgun (a player's report, 2026-10-04); the generator now splits it, one group per weapon
+  // given up. Unlike v8 the old pick still says exactly what it was, so it is moved, not dropped:
+  // group 1 option 0 (meltagun) stays where it is, group 1 option 1 (power fist) becomes group 2.
+  if (!(v >= 9)) {
+    for (const u of r.units || []) {
+      if (/(^|\/)red-corsairs-raiders$/.test(u.id || '') && Array.isArray(u.wg)) {
+        u.wg = u.wg.map(([g, o, ...rest]) => (g === 1 && o === 1 ? [2, 0, ...rest] : [g, o, ...rest]))
       }
     }
   }

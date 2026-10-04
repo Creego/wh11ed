@@ -340,7 +340,7 @@ const bmlByDs = new Map() // datasheetId -> [{miniatureId, opts:[{wargearOptionI
 
 // ---- Per-faction generation ------------------------------------------------------------
 
-const report = { factions: 0, units: 0, linked: 0, unlinked: [], missingBundle: [], noPoints: [], stale: [], loadoutFixed: [], price: { repriced: 0, collapsed: 0, chapterOverrides: 0, noUnit: [], noBracket: [], stepDrift: [] }, bundle: { rewritten: 0, quantified: 0, unclaimed: [], unbacked: [] }, limit: { limited: 0, counted: 0, bundled: 0, ambiguous: 0, unmatched: 0, fromProse: 0, fromProseScaled: 0, fromProseConditional: [], perModelEach: [], perModelBudget: [], scaledDrift: [], perCopy: 0, conflict: [], merged: 0 }, rep: { resolved: 0, noMatch: [], unresolved: [] }, keep: { resolved: 0, unresolved: [] }, staticDefaults: 0, paidDefault: { units: 0, odd: [] }, sharedDets: 0, leadKw: { resolved: 0, unresolved: [] }, proseAttach: [], proseAttachAdded: 0, packAttach: [], packAttachAdded: 0, mirror: { rules: 0, added: [], unread: [] }, hosts: { read: [], unread: [] }, comp: { units: 0, brackets: 0, rejected: [] }, detTag: { tagged: 0, drift: [] }, alleg: { units: 0, kinds: new Set() }, defaultsMerged: [], dnu: [], allies: { groups: 0, units: 0, empty: [], missing: [], narrowed: [] }, pack: { ...emptyPackReport(), dropped: [] } }
+const report = { factions: 0, units: 0, linked: 0, unlinked: [], missingBundle: [], noPoints: [], stale: [], loadoutFixed: [], price: { repriced: 0, collapsed: 0, chapterOverrides: 0, noUnit: [], noBracket: [], stepDrift: [] }, bundle: { rewritten: 0, quantified: 0, unclaimed: [], unbacked: [] }, limit: { limited: 0, counted: 0, bundled: 0, ambiguous: 0, unmatched: 0, fromProse: 0, fromProseScaled: 0, fromProseConditional: [], perModelEach: [], perModelBudget: [], scaledDrift: [], perCopy: 0, conflict: [], merged: 0 }, rep: { resolved: 0, noMatch: [], unresolved: [], split: [] }, keep: { resolved: 0, unresolved: [] }, staticDefaults: 0, paidDefault: { units: 0, odd: [] }, sharedDets: 0, leadKw: { resolved: 0, unresolved: [] }, proseAttach: [], proseAttachAdded: 0, packAttach: [], packAttachAdded: 0, mirror: { rules: 0, added: [], unread: [] }, hosts: { read: [], unread: [] }, comp: { units: 0, brackets: 0, rejected: [] }, detTag: { tagged: 0, drift: [] }, alleg: { units: 0, kinds: new Set() }, defaultsMerged: [], dnu: [], allies: { groups: 0, units: 0, empty: [], missing: [], narrowed: [] }, pack: { ...emptyPackReport(), dropped: [] } }
 
 // …and two datasheets whose attachment appdata states in PROSE and in no table at all. The Ogryn
 // Bodyguard and Nork Deddog "must join one COMMAND SQUAD unit from your army" (their Loyal
@@ -773,6 +773,35 @@ function linkWargearConditions(datasheetId, drafts) {
   // replaced it, and the stock rule — a model cannot give the same item up twice — had nothing to
   // count, so a ten-Raptor squad offered two mutations with one chainsword left to trade.
   const ACTIVE_RE = /\bcan\s+(?:each\s+)?replace\s+(?:its|their|his|her|the)\s+((?:\d+\s+)?[a-z][a-z0-9' ’‐‑–,-]*?)\s+with\b/i
+
+  // One group, two swaps: appdata files "For every 5 models in this unit: ◦ 1 Raider's boltgun can
+  // be replaced with 1 meltagun ◦ 1 Raider's reaver's blade can be replaced with 1 power fist" as a
+  // single group of two options, and the reading below takes the FIRST possessive for both — so the
+  // power fist replaced the boltgun and ten reaver's blades stayed on the card (a player's report,
+  // 2026-10-04). Each bullet is its own allowance over its own weapon, so the group is split into
+  // one draft per bullet, each written as the comma form of its head ("For every 5 models in this
+  // unit, 1 Raider's boltgun…"), which the scaled and conditional limit readers already know.
+  // Only where every bullet names a DIFFERENT weapon given up and every option belongs to exactly
+  // one bullet — bullets that all give up the same weapon (Vespid's "If this unit contains 10
+  // models: ◦ … neutron blaster with 1 T'au flamer ◦ … neutron blaster with 1 neutron grenade
+  // launcher") are one stock and stay one group.
+  const SPLIT_HEAD = /^(for every \d+ models? in (?:this|the) unit|if this unit contains \d+(?: or (?:fewer|more))? models?):$/i
+  const valueNames = (line, name) => new RegExp(`\\b${reEsc(norm(name))}(?:e?s)?\\b`).test(norm(line.split(VALUE_SPLIT).pop()))
+  for (let i = drafts.length - 1; i >= 0; i--) {
+    const d = drafts[i]
+    const lines = d.text.split('\n').map((l) => l.trim()).filter(Boolean)
+    const head = SPLIT_HEAD.exec(lines[0] || '')
+    if (!head || lines.length < 3 || !lines.slice(1).every((l) => BULLET_RE.test(l))) continue
+    const bullets = lines.slice(1).map((l) => l.replace(BULLET_RE, ''))
+    const reps = bullets.map((b) => { const m = b.match(REP_RE) || b.match(ACTIVE_RE); return m && resolvePhrase(m[1], d.miniId) })
+    if (!reps.every(Boolean) || new Set(reps.map((r) => r.slice().sort().join('+'))).size !== bullets.length) continue
+    const owner = d.opts.map((o) => bullets.filter((b) => valueNames(b, wgItemName.get(o.uuid) || '')).length === 1 ? bullets.findIndex((b) => valueNames(b, wgItemName.get(o.uuid) || '')) : -1)
+    if (owner.includes(-1) || bullets.some((_, bi) => !owner.includes(bi))) continue
+    const parts = bullets.map((b, bi) => ({ ...d, text: `${head[1]}, ${b}`, opts: d.opts.filter((_, oi) => owner[oi] === bi) }))
+    drafts.splice(i, 1, ...parts)
+    repStats.split.push(`${enOf(dsById.get(datasheetId)).name}: ${bullets.length} swaps — ${lines[0]}`)
+  }
+
   for (const d of drafts) {
     // A sentence can carry more than one possessive before the swap — "The Celestian Insidiant's
     // Superior's condemnor bolt pistol" — and the first one starts a phrase that names no item.
@@ -2870,6 +2899,10 @@ if (report.defaultsMerged.length) {
 }
 console.log(`  replaced-item links: ${rp.resolved} groups know what they give up; ${rp.noMatch.length} instructions didn't parse, ${rp.unresolved.length} left the phrase unreadable (an unlisted item, or two the profile both holds)`)
 for (const l of [...rp.noMatch, ...rp.unresolved].slice(0, 12)) console.log(`    - ${l.replace(/\s+/g, ' ')}`)
+if (rp.split.length) {
+  console.log(`  one group, several swaps: ${rp.split.length} groups split into one per weapon given up`)
+  for (const l of rp.split) console.log(`    - ${l}`)
+}
 console.log(`  kept-item locks: ${report.keep.resolved} groups keep an item locked ("cannot be replaced"); ${report.keep.unresolved.length} unreadable`)
 console.log(`  unit-wide groups: ${lm.merged} duplicates folded (one instruction recorded per miniature)`)
 console.log(`  pick limits: ${lm.limited} groups capped from wargear_limit (${lm.counted} options also gained a quantity, ${lm.bundled} matched through a bundled option), ${lm.fromProse} more from their own instruction where appdata records no set (+${lm.fromProseScaled} from its "for every N models, up to M" step form), ${lm.perCopy} read per copy of the weapon replaced; no single matching group for ${lm.ambiguous} ambiguous + ${lm.unmatched} cross-group sets`)
