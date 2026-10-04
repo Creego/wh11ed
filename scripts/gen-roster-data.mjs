@@ -2538,6 +2538,19 @@ async function genFaction(slug) {
   // as `unitPoints` below instead.
   const prices = mfmPrices(ownMfmUnits(mfmFaction))
   const units = bundleUnits.map((bd) => buildUnit(bd, idMap, fx, kwIndex, prices)).sort((a, b) => a.name.localeCompare(b.name))
+  // …and the unit such a sheet comes WITH: one that shares a named rule with it ("Using Sir Hekhtur"
+  // on Canis Rex and on the pilot alike). `crew` lets the lists draw the pilot as a row of the unit
+  // he climbs out of, without loading the datasheets (owner, 2026-10-04) — the same test the unit
+  // card's `companions` applies to the full sheets.
+  const ruleNames = (d) => new Set((d.rules || []).map((r) => norm(enOf(r).name || r.name || '')).filter(Boolean))
+  for (const nb of (bundle.datasheets || []).filter((d) => noBuild.includes(d.name) && idMap.get(d.id))) {
+    const theirs = ruleNames(nb)
+    for (const bd of bundleUnits) {
+      if (![...ruleNames(bd)].some((n) => theirs.has(n))) continue
+      const u = units.find((x) => x.sid === bd.id)
+      if (u) (u.crew ||= []).push({ id: idMap.get(nb.id), name: nb.name })
+    }
+  }
   // Codex: Space Marines also plays the six Codex Supplement detachments (Blade of Ultramar …), which
   // appdata ships as one-detachment "factions" of their own. Each is its Chapter's only: `chapter`
   // says whose, the same field the faction page's chapter picker reads.

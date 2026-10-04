@@ -76,6 +76,25 @@ describe('RosterViewView', () => {
     for (const h of heads) expect(h.find('.rvblock-total').text()).toMatch(/^\d+pts$/)
   })
 
+  // Sir Hekhtur comes with Canis Rex and is in no list: a row of his own under the Knight, at 0 pts,
+  // opening his card (owner, 2026-10-04).
+  it('draws Canis Rex’s pilot as a row under him, and opens his card', async () => {
+    const store = useRosters()
+    const r = store.createRoster('Knights')
+    r.faction = 'imperial-knights'
+    r.units.push({ uid: 'k1', id: 'canis-rex', size: 0 })
+    ROSTER_ID = r.id
+    const w = mount(RosterViewView, { global: { stubs } })
+    await waitForSelector(w, '.rvunit-crew')
+    const crew = w.find('.rvunit-crew')
+    expect(crew.text()).toContain('Sir Hekhtur')
+    expect(crew.find('.rvunit-pts').text()).toBe('0')
+    await crew.trigger('click')
+    const card = w.findComponent({ name: 'RosterUnitRulesModal' })
+    expect(card.exists()).toBe(true)
+    expect(card.props('unitId')).toBe('sir-hekhtur')
+  })
+
   it('shows a setup hint for a roster with no faction yet', async () => {
     const store = useRosters()
     const r = store.createRoster('Blank')

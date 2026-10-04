@@ -315,7 +315,7 @@
                     class="rvunit"
                     :class="{
                       'rvunit-attached': e.leaderOf,
-                      'rvunit-host': hasAttached(g.entries, e),
+                      'rvunit-host': hasAttached(g.entries, e) || !!defOf(e.id)?.crew,
                       'rvunit-on': unitPane && viewingUid === e.uid,
                     }"
                   >
@@ -407,6 +407,24 @@
                       />
                     </CollapseTransition>
                   </div>
+                  <!-- Who comes WITH the unit and cannot be bought on his own — Sir Hekhtur, who climbs
+                   out of Canis Rex (the data's `crew`). A row of his own under the Knight, so his card
+                   is one tap away at the table (owner, 2026-10-04); no points, no switches. -->
+                  <button
+                    v-for="c in defOf(e.id)?.crew || []"
+                    :key="c.id"
+                    type="button"
+                    class="rvunit rvunit-main rvunit-crew"
+                    :class="{ 'rvunit-on': unitPane && viewingCrew === c.id }"
+                    @click="openCrew(c)"
+                  >
+                    <i class="bi bi-arrow-return-right rvunit-crew-mark" />
+                    <span class="rvunit-text">
+                      <span class="rvunit-name">{{ c.name }}</span>
+                    </span>
+                    <span class="rvunit-pts">0</span>
+                    <i class="bi bi-chevron-right rvunit-chev" />
+                  </button>
                 </template>
               </template>
             </template>
@@ -600,10 +618,10 @@
       />
 
       <RosterUnitRulesModal
-        v-if="viewingUid && viewingDef && !unitPane"
+        v-if="viewingCard && !unitPane"
         v-bind="viewingCard"
         v-on="viewingHandlers"
-        @close="viewingUid = null"
+        @close="viewingUid = null; viewingCrew = null"
       />
     </div>
     <aside
@@ -611,8 +629,8 @@
       class="rv-unit"
     >
       <RosterUnitRulesCard
-        v-if="viewingUid && viewingDef"
-        :key="viewingUid"
+        v-if="viewingCard"
+        :key="viewingUid || viewingCrew"
         v-bind="viewingCard"
         inline
         v-on="viewingHandlers"
@@ -973,6 +991,14 @@ function openChipInfo(sw, rect) {
 // only ever seeds the initial value) and keeps a reload on the same card.
 const viewingUid = ref(route.query?.unit ? String(route.query.unit) : null)
 const viewingEntry = computed(() => roster.value?.units.find((u) => u.uid === viewingUid.value) || null)
+// A crew row's card (Sir Hekhtur) — a datasheet id, not an entry: he is in no list, so his card is
+// the printed sheet with nothing to overlay. Opening one closes the other.
+const viewingCrew = ref(null)
+watch(viewingUid, (v) => { if (v) viewingCrew.value = null })
+function openCrew(c) {
+  viewingUid.value = null
+  viewingCrew.value = c.id
+}
 // The entry, not just its datasheet: the modal's overlay (rosterModifiers.js) needs this unit's
 // own wargear picks to show the loadout it actually fields rather than every option on the sheet.
 const viewingDef = computed(() => (viewingEntry.value ? defOf(viewingEntry.value.id) : null))
@@ -984,7 +1010,9 @@ const viewingLeaderTargets = computed(() => (viewingEntry.value
   : []))
 // What the unit's card is drawn from and answers to — the same whether it opens in a dialog or in
 // the desk's unit column.
-const viewingCard = computed(() => (viewingDef.value
+const viewingCard = computed(() => (viewingCrew.value
+  ? { unitId: viewingCrew.value, factionSlug: roster.value.faction, ctx: null, gameCtx: null }
+  : viewingDef.value
   ? {
       unitId: viewingSrc.value?.[1] || viewingDef.value.id,
       factionSlug: viewingSrc.value?.[0] || roster.value.faction,
@@ -1832,6 +1860,14 @@ function stratKey(strat) {
    the shared primitive in style.css, which cannot win against this view's own scoped `border` on
    .rvunit (see the note there). */
 .rvunit:has(+ .rvunit-attached) { margin-bottom: 0; }
+/* The crew row hangs off the unit above it, slimmer and without the stats it has no list entry for. */
+.rvunit:has(+ .rvunit-crew) { margin-bottom: 0; }
+.rvunit.rvunit-crew {
+  background: var(--bg-card); border: 1px solid var(--border); border-top: none; border-left: 2px solid var(--accent);
+  padding-top: 0.35rem; padding-bottom: 0.35rem;
+}
+@media (hover: hover) { .rvunit.rvunit-crew:hover { border-color: var(--accent); } }
+.rvunit-crew-mark { flex: none; color: var(--text-dim); font-size: 0.8rem; }
 .rvunit.rvunit-attached,
 .rvunit.rvunit-host { border-left: 2px solid var(--accent); }
 /* The block's head: the editor list's `.rul-bhead`, in this view's own card chrome — tinted with

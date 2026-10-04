@@ -1054,6 +1054,11 @@ directory; still part of this feature:
     His card still belongs on Canis Rex's: the unit card (`rosterUnitCard.js` `companions`) folds
     in every free sheet of the faction that shares a rule with the unit ("Using Sir Hekhtur"),
     under "Also in this unit" — in the roster view, the desk and a game alike (2026-10-03).
+    And he has a ROW of his own under the Knight in every list — the editor's (`RosterUnitList`)
+    and the view's, which a game and its history share (owner, 2026-10-04): the generator writes
+    `crew: [{ id, name }]` on the unit a free sheet shares a named rule with (the same test as
+    `companions`, on appdata's rule names), so the lists know without loading datasheets. The row
+    has no points and nothing to configure; a tap opens his printed card.
   - **The detachment line cannot be split as text.** The app writes every selected detachment on
     one line joined with commas and a final "and" — and detachment names contain "and" themselves:
     "Legends of Saga and Song and Saga of the Great Wolf" is TWO of them, and splitting on " and "

@@ -464,6 +464,12 @@ export default {
             ]
           ]
         ]
+      ],
+      "crew": [
+        {
+          "id": "sir-hekhtur",
+          "name": "Sir Hekhtur"
+        }
       ]
     },
     {
