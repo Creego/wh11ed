@@ -1739,9 +1739,11 @@ function abilityStateLabel(st) {
 
    The floor used to be ~380px, and it was the tags that set it: `.keyword` is `white-space:
    nowrap` everywhere else, so `[DEVASTATING WOUNDS]` was a ~130px word the name column could not
-   go under. Now that a tag may break (above), the floor is ~340px — the six stat columns plus a
-   readable name — and every phone in circulation keeps the table. Below it the stacked layout
-   still takes over. */
+   go under. Now that a tag may break (above), the floor is the six stat columns plus a readable
+   name — MEASURED at 300px of card (2026-10-04, all 1283 sheets: at 304px, a 320px phone, no
+   table is wider than the card, no number wraps, no word breaks, 124 of 6986 names take two
+   lines and none three). Every phone in circulation keeps the table; the stacked layout below
+   is the fallback for a narrower box, not a phone layout. */
 @container dscard (max-width: 560px) {
   .ds-weapons { --wname-share: 0.55; }
   .ds-weapons table { font-size: 0.74rem; }
@@ -1807,7 +1809,7 @@ function abilityStateLabel(st) {
   .wprofile-arrow { width: 10px; height: 7px; margin-right: 0.25rem; }
 }
 
-/* The narrowest phones only (≤380px): now the table gives up and each weapon becomes its own
+/* Narrower than any phone (≤300px): now the table gives up and each weapon becomes its own
    small card — the weapon name on its own line, the statline as a labelled six-column grid,
    then its ability tags. Same markup either way — no second template, no JS media query, and no
    risk of the two drifting — via `tr { display: grid }` plus `display: contents` on the name
@@ -1815,15 +1817,18 @@ function abilityStateLabel(st) {
    `td::before { content: attr(data-label) }`, since the shared `thead` is gone.
 
    Placed after the compact-table block above so it wins at equal specificity where the two
-   disagree. 340 rather than the 560 this started as, and than the 380 it was until the tags were
-   allowed to break: a 360-430px phone (every current iPhone, most Androids, and the small ones
-   too) reads the table, and only a 320px screen has to give it up.
+   disagree. 300 rather than the 560 this started as, the 380 it was until the tags were allowed
+   to break, and the 340 picked by eye after that — which handed a 320-356px phone (and the
+   roster modal on a 360px one) the stacked cards a few pixels short of a table that fitted.
+   `npm run weapon-table` reads this number back and renders every sheet just above it: the
+   table must fit the card, no number may wrap, no word may break, no name may take more than
+   three lines.
 
    The `thead` is not hidden outright: its FIRST cell is the "Ranged Weapons"/"Melee Weapons"
    caption, which is the only thing telling the two blocks apart once they are stacked cards, so
    it survives as a section label above the group while the six stat headers go. Reusing that
    cell keeps one source for the text (and its translation) instead of adding a second one. */
-@container dscard (max-width: 340px) {
+@container dscard (max-width: 300px) {
   /* Undo the squeeze above — a card has room to be read, and only the table needed it. */
   .ds-weapons table { font-size: 0.82rem; }
   .wtag { font-size: 0.72rem; }

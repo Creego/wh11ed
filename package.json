@@ -47,6 +47,7 @@
     "dupes": "node scripts/check-css-dupes.mjs",
     "a11y": "node scripts/check-a11y.mjs",
     "legends-tag": "node scripts/check-legends-tag.mjs",
+    "weapon-table": "node scripts/check-weapon-table.mjs",
     "smoke": "npx vite-node scripts/smoke.mjs",
     "test-rosters": "npx vite-node scripts/test-roster-links.mjs",
     "imghash": "node scripts/check-image-renames.mjs",
