@@ -45,6 +45,21 @@ describe('RosterPickerModal', () => {
     expect(body().text()).toContain('10')
   })
 
+  // …but hidden, not forbidden (owner, 2026-10-04): "Show" brings it back, and it can be taken.
+  it('shows a list over the battle size on request, and lets it be picked', async () => {
+    const store = useRosters()
+    const r = store.createRoster('One Captain')
+    store.updateRoster(r.id, { faction: 'space-marines', units: [{ uid: 'a', id: 'captain', size: 0 }] })
+
+    const w = mount(RosterPickerModal, { props: { maxPoints: 10 } })
+    await waitUntil(() => body().find('.rp-show').exists())
+    expect(body().findAll('.rp-row')).toHaveLength(0)
+    await body().find('.rp-show').trigger('click')
+    expect(body().findAll('.rp-row.over')).toHaveLength(1)
+    await body().find('.rp-row').trigger('click')
+    expect(w.emitted('pick')[0][0].id).toBe(r.id)
+  })
+
   it('lists the saved rosters and emits the one picked', async () => {
     const store = useRosters()
     const r = store.createRoster('Gladius 2k')

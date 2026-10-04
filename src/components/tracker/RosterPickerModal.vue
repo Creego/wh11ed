@@ -16,38 +16,51 @@
       >
         {{ labels.trackerRosterNone }}
       </p>
+      <!-- Over the battle size is hidden, not forbidden: a player who means to field the bigger
+           list anyway (a house game, a size about to change) shows them and takes one. -->
       <p
-        v-if="hiddenBySize"
-        class="rp-note"
+        v-if="overSize"
+        class="rp-note rp-over-note"
       >
-        {{ labels.trackerRosterHiddenBySize.replace('{limit}', maxPoints).replace('{n}', hiddenBySize) }}
+        <span>{{ (showBig ? labels.trackerRosterShownBySize : labels.trackerRosterHiddenBySize).replace('{limit}', maxPoints).replace('{n}', overSize) }}</span>
+        <button
+          type="button"
+          class="rp-show"
+          @click="showBig = !showBig"
+        >
+          {{ showBig ? labels.trackerRosterHideBig : labels.trackerRosterShowBig }}
+        </button>
       </p>
 
       <!-- A list of the wrong faction is shown DISABLED rather than filtered out: hiding it makes
            a collection look empty and reads as "my list is gone", which is a worse answer than
            seeing it greyed out next to the faction it belongs to. -->
-      <button
-        v-for="r in fitting"
+      <ExpandTransition
+        v-for="r in activeRosters"
         :key="r.id"
-        type="button"
-        class="rp-row"
-        :class="{ on: r.id === selected, off: wrongFaction(r) }"
-        :disabled="wrongFaction(r)"
-        @click="$emit('pick', r)"
       >
-        <span class="rp-name">{{ r.name || labels.rosterUntitled }}</span>
-        <span class="rp-meta">
-          <span>
-            <template v-if="factionName(r.faction)">{{ factionName(r.faction) }} · </template>
-            {{ r.summary?.points || 0 }} {{ labels.rosterPointsLabel }} ·
-            <i class="bi bi-people-fill" /> {{ r.units?.length || 0 }}
+        <button
+          v-if="showBig || !tooBig(r)"
+          type="button"
+          class="rp-row"
+          :class="{ on: r.id === selected, off: wrongFaction(r), over: tooBig(r) }"
+          :disabled="wrongFaction(r)"
+          @click="$emit('pick', r)"
+        >
+          <span class="rp-name">{{ r.name || labels.rosterUntitled }}</span>
+          <span class="rp-meta">
+            <span>
+              <template v-if="factionName(r.faction)">{{ factionName(r.faction) }} · </template>
+              <span class="rp-pts">{{ r.summary?.points || 0 }} {{ labels.rosterPointsLabel }}</span> ·
+              <i class="bi bi-people-fill" /> {{ r.units?.length || 0 }}
+            </span>
+            <RosterOwnLimitsMark
+              inert
+              :roster="r"
+            />
           </span>
-          <RosterOwnLimitsMark
-            inert
-            :roster="r"
-          />
-        </span>
-      </button>
+        </button>
+      </ExpandTransition>
 
       <!-- A share link is the second source, and for the opponent usually the only one: their list
            lives on their phone, not in this browser. Same payload the /roster/shared page reads. -->
@@ -98,6 +111,7 @@ import BaseModal from '../BaseModal.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
 import RosterOwnLimitsMark from '../roster/RosterOwnLimitsMark.vue'
+import ExpandTransition from '../ExpandTransition.vue'
 import { useRosters } from '../../composables/useRosters.js'
 import { decodeRoster } from '../../composables/rosterShare.js'
 import { refreshSummaries } from '../../composables/rosterSummary.js'
@@ -112,9 +126,9 @@ const props = defineProps({
   // it) and so is no longer the list's to decide. Unset in the setup wizard, where the list still
   // decides it.
   faction: { type: String, default: null },
-  // The battle size's points: a list over it is not offered at all (owner, 2026-10-03) — a game
-  // of 1000 points has no use for a 2000-point list. Null offers every list (Doubles, where the
-  // per-player size is the organiser's).
+  // The battle size's points: a list over it is hidden behind a "show" (owner, 2026-10-03/04) — a
+  // game of 1000 points rarely wants a 2000-point list, but may. Null offers every list (Doubles,
+  // where the per-player size is the organiser's).
   maxPoints: { type: Number, default: null },
 })
 const emit = defineEmits(['pick', 'clear', 'close'])
@@ -132,8 +146,10 @@ onMounted(() => { refreshSummaries(rosters.value) })
 
 // A list whose points are not known yet (never priced) stays: hiding it would be a guess.
 const tooBig = (r) => props.maxPoints != null && r.summary?.points != null && r.summary.points > props.maxPoints
-const fitting = computed(() => activeRosters.value.filter((r) => !tooBig(r)))
-const hiddenBySize = computed(() => activeRosters.value.length - fitting.value.length)
+const overSize = computed(() => activeRosters.value.filter(tooBig).length)
+// Hidden by default, one tap away (owner, 2026-10-04): the setup still warns under an attached list
+// that is over the size, so taking one is a choice made in the open.
+const showBig = ref(false)
 
 const allFactions = factionGroups.flatMap((g) => g.factions)
 function factionName(slug) {
@@ -192,6 +208,12 @@ async function useLink() {
 }
 /* The custom-limits mark sits at the row's right edge, and drops under the summary when narrow. */
 .rp-meta > :deep(.olm) { margin-left: auto; }
+.rp-row.over .rp-pts { color: var(--warning); font-weight: 600; }
+.rp-over-note { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.5rem; }
+.rp-show {
+  padding: 0; border: none; background: none; color: var(--accent);
+  font: inherit; font-size: 0.78rem; font-weight: 600; cursor: pointer;
+}
 .rp-link { margin-top: 0.5rem; border-top: 1px solid var(--border); padding-top: 0.75rem; }
 .rp-link-label { display: block; color: var(--text-muted); font-size: 0.78rem; margin-bottom: 0.35rem; }
 .rp-link-row { display: flex; gap: 0.4rem; }
