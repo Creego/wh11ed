@@ -25,7 +25,7 @@
         <span>{{ (showBig ? labels.trackerRosterShownBySize : labels.trackerRosterHiddenBySize).replace('{limit}', maxPoints).replace('{n}', overSize) }}</span>
         <button
           type="button"
-          class="rp-show"
+          class="btn-ghost rp-show"
           @click="showBig = !showBig"
         >
           {{ showBig ? labels.trackerRosterHideBig : labels.trackerRosterShowBig }}
@@ -209,11 +209,9 @@ async function useLink() {
 /* The custom-limits mark sits at the row's right edge, and drops under the summary when narrow. */
 .rp-meta > :deep(.olm) { margin-left: auto; }
 .rp-row.over .rp-pts { color: var(--warning); font-weight: 600; }
-.rp-over-note { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.5rem; }
-.rp-show {
-  padding: 0; border: none; background: none; color: var(--accent);
-  font: inherit; font-size: 0.78rem; font-weight: 600; cursor: pointer;
-}
+.rp-over-note { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.5rem; }
+/* A small ghost button at the line's right edge; it drops under the text when narrow. */
+.rp-show { margin-left: auto; padding: 0.35rem 0.8rem; font-size: 0.8rem; }
 .rp-link { margin-top: 0.5rem; border-top: 1px solid var(--border); padding-top: 0.75rem; }
 .rp-link-label { display: block; color: var(--text-muted); font-size: 0.78rem; margin-bottom: 0.35rem; }
 .rp-link-row { display: flex; gap: 0.4rem; }
