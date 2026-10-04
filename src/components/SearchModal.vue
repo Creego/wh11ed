@@ -91,7 +91,10 @@
             @mouseenter="selectedIndex = i"
           >
             <div class="result-meta">
-              <span class="result-num">{{ item.sectionNum }}</span>
+              <span
+                v-if="item.sectionNum"
+                class="result-num"
+              >{{ item.sectionNum }}</span>
               <span class="result-section">{{ item.sectionTitle }}</span>
             </div>
             <div class="result-title">
@@ -409,8 +412,11 @@ function navigate(item) {
   margin: 0;
 }
 
+/* Dense on purpose (2026-10-04, owner: "catastrophically much vertical space"): a result is
+   three short lines — where, what, why it matched — and the padding and gaps around them used
+   to take as much height as the lines did. ~6 results filled a phone; now ~9 do. */
 .result-item {
-  padding: 0.75rem 1.25rem;
+  padding: 0.45rem 1.25rem;
   cursor: pointer;
   border-bottom: 1px solid var(--border-light);
   transition: background 0.1s;
@@ -450,7 +456,7 @@ function navigate(item) {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.2rem;
+  line-height: 1.3;
 }
 
 .result-num {
@@ -470,21 +476,21 @@ function navigate(item) {
 .result-title {
   font-weight: 600;
   font-size: 0.95rem;
+  line-height: 1.3;
   color: var(--text-primary);
-  margin-bottom: 0.2rem;
 }
 
 .result-title-ru {
   font-size: 0.78rem;
   font-weight: 500;
+  line-height: 1.3;
   color: var(--text-muted);
-  margin-bottom: 0.2rem;
 }
 
 .result-snippet {
   font-size: 0.82rem;
   color: var(--text-muted);
-  line-height: 1.45;
+  line-height: 1.35;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -607,8 +613,9 @@ function navigate(item) {
     overflow-y: auto;
   }
 
+  /* Still a 44px+ target: the three lines alone are ~55px. */
   .result-item {
-    padding: 1rem 1.25rem;
+    padding: 0.5rem 1.25rem;
   }
 
   /* Let snippets wrap to two lines instead of a single ellipsised line. */
