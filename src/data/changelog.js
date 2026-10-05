@@ -23,7 +23,7 @@
 export const changelog = [
   {
     version: '2.7.14',
-    date: '2026-10-04',
+    date: '2026-10-05',
     en: [
       { h: 'Unit cards on narrow phones' },
       'On phones about 360px wide, a Legends unit card did not fit the screen, and the page scrolled sideways. Now on a narrow screen the Legends badge stands upright to the right of OC. On the narrowest phones it moves under the characteristics.',
@@ -37,6 +37,7 @@ export const changelog = [
       'I checked every unit’s default wargear against the text of its datasheet and found eight more errors. Before, a Land Raider had one Godhammer lascannon instead of two, and a World Eaters Defiler one excruciator cannon instead of two. Commissar Graves, Intranzia Fraye, Cthonian Earthshakers, Corsair Voidscarred and Gellerpox Infected had similar errors. Now the numbers match the datasheet, and Wolf Guard Headtakers without wolves no longer show the wolves’ weapon.',
       'I also checked every wargear swap. Before, some swaps added the new weapon but did not remove the old one. This happened when the weapon came from another swap, for example a Death Company Marine’s bolt pistol for a hand flamer. Fire Dragons had the same problem with the Exarch’s fusion gun. Now the old weapon goes away.',
       'GW’s PDF has an error on two Legends units. Cultist Mob with Firearms is printed with the plain Cultist Mob’s weapons, and Munitorum Servitors that take a heavy weapon are left with no melee weapon. I fixed this in the roster builder: the cultists start with autoguns, and servitors with a heavy weapon get a close combat weapon. The datasheet text stays as GW printed it.',
+      'The list export has a new “Simple” format, like War Organ’s. It has only the name, the faction, the detachments and one line per unit with its points, no wargear.',
     ],
     ru: [
       { h: 'Карточка юнита на узком телефоне' },
@@ -51,6 +52,7 @@ export const changelog = [
       'Я сверил снаряжение по умолчанию у всех отрядов с текстом их датащитов и нашёл ещё восемь ошибок. Раньше у Land Raider был один Godhammer Lascannon вместо двух, у Defiler из World Eaters — один excruciator cannon вместо двух. Похожие ошибки были у Commissar Graves, Intranzia Fraye, Cthonian Earthshakers, Corsair Voidscarred и Gellerpox Infected. Теперь числа совпадают с датащитом, а Wolf Guard Headtakers без волков больше не показывают оружие волков.',
       'Ещё я проверил все замены снаряжения. Раньше некоторые замены добавляли новое оружие, но не убирали старое. Так было, если менялось оружие, которое пришло из другой замены, например у Death Company Marines bolt pistol на hand flamer. У Fire Dragons так было с фузганом экзарха. Теперь старое оружие при замене уходит.',
       'В PDF от GW у двух отрядов Legends ошибка. Cultist Mob with Firearms напечатан с оружием обычного Cultist Mob, а у Munitorum Servitors после замены на тяжёлое оружие не остаётся оружия ближнего боя. В конструкторе я это поправил: культисты начинают с autogun, а сервиторы с тяжёлым оружием получают close combat weapon. Текст датащита оставил как у GW.',
+      'В экспорте листа появился формат «Простой», как в War Organ. В нём только название, фракция, детачменты и по строке на юнит с его очками, без снаряжения.',
     ],
   },
   {
