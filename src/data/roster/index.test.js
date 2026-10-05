@@ -1689,8 +1689,10 @@ describe('a profile at zero models', () => {
 // weapon beside the second.
 describe('wargear swaps', () => {
   // "… replaced with …" yet nothing to give up: the printed text replaces an item the model is not
-  // printed with (GW's own Legends sheets — Peltast Alpha's arc lance, Cultists' autogun) or names
-  // it differently (Wolf Scouts' "combat blade" for their combat knife). Frozen: a new entry is a
+  // printed with — GW's own Legends sheets, each pasted from a neighbour: Peltasts' options are the
+  // Hoplites' word for word (the Alpha's "arc lance"), the Firearms Cultists' back page is the plain
+  // Cultist Mob's (no autogun) — checked against the Faction Pack PDFs 2026-10-05. A name the prose
+  // spells differently goes in the generator's PROSE_NAME_FIXES instead. Frozen: a new entry is a
   // swap that quietly adds without taking away.
   const NO_REP = new Set([
     'adeptus-mechanicus/secutarii-peltasts g0',
@@ -1698,7 +1700,6 @@ describe('wargear swaps', () => {
     'chaos-space-marines/cultist-mob-with-firearms g2',
     'chaos-space-marines/cultist-mob-with-firearms g3',
     'chaos-space-marines/cultist-mob-with-firearms g4',
-    'space-wolves/wolf-scouts g1',
   ])
   it('give up what they replace, add what they grant, touch nothing else', () => {
     const bad = []
@@ -1753,5 +1754,44 @@ describe('wargear swaps', () => {
     expect(bad).toEqual([])
     expect(noRep.filter((t) => !NO_REP.has(t))).toEqual([])
     expect([...NO_REP].filter((t) => !noRep.includes(t))).toEqual([])
+  })
+})
+
+// Every weapon a datasheet prints must be one some model can carry — in its default loadout or by
+// an option (or the item a profile stands for: a Gun Drone is the twin pulse carbine, items.js
+// `stands`). A profile nobody can take is the mark of a sheet stitched from another: the Firearms
+// Cultists print an autogun that neither their pasted loadout nor any option hands out (found
+// 2026-10-05). Frozen; a new entry is a sheet to read against its source.
+describe('every printed weapon has a carrier', () => {
+  const UNREACHABLE = new Set([
+    'astra-militarum/munitorum-servitors: close combat weapon',
+    'chaos-space-marines/cultist-mob-with-firearms: autogun',
+    'chaos-space-marines/cultist-mob-with-firearms: close combat weapon',
+  ])
+  const key = (s) => String(s || '').toLowerCase().replace(/[’']/g, "'").replace(/[‐‑]/g, '-').replace(/\s+/g, ' ').trim().replace(/s$/, '')
+  it('in a default loadout or an option', async () => {
+    const found = []
+    for (const { slug, data } of factions) {
+      let sheets
+      try { sheets = (await import(`../datasheets/${slug}.js`)).default } catch { continue }
+      for (const def of data.units || []) {
+        const sheet = sheets.find((s) => s.id === def.id)
+        if (!sheet || !def.defaults?.length) continue
+        const have = new Set()
+        const put = (id) => {
+          const name = rosterItems.items[id]
+          have.add(key(name))
+          for (const w of rosterItems.stands?.[String(name).toLowerCase()] || rosterItems.stands?.[key(name)] || []) have.add(key(w))
+        }
+        for (const [, list] of def.defaults) for (const [id] of list) put(id)
+        for (const g of def.gear || []) for (const o of g.o) for (const [id] of optionItems(o)) put(id)
+        for (const w of [...(sheet.ranged || []), ...(sheet.melee || [])]) {
+          const n = key(w.name.replace(/\s+[–-]\s+.*$/, ''))
+          if (![...have].some((h) => h === n || h.endsWith(` ${n}`) || n.endsWith(` ${h}`) || h.replace(/^twin /, '') === n)) found.push(`${slug}/${def.id}: ${n}`)
+        }
+      }
+    }
+    expect([...new Set(found)].filter((x) => !UNREACHABLE.has(x))).toEqual([])
+    expect([...UNREACHABLE].filter((x) => !found.includes(x))).toEqual([])
   })
 })

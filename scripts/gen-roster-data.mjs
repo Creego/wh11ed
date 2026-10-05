@@ -529,6 +529,13 @@ function unitIdMap(slug) {
 // A named substitution, not a rule: only where the printed loadout and the option prose agree
 // against the table. Every application is reported, so this list can be dropped once upstream fixes
 // it. Keyed datasheet uuid → { wrong item uuid: right item uuid }.
+// A weapon the swap prose calls by another name than the datasheet prints, per datasheet — named,
+// not inferred, and only on the owner's word. Wolf Scouts: "1 Wolf Scout's plasma pistol and
+// combat blade can be replaced…", where every Wolf Scout carries a combat knife (owner, 2026-10-05).
+const PROSE_NAME_FIXES = {
+  'Wolf Scouts': { 'combat blade': 'combat knife' },
+}
+
 const LOADOUT_ITEM_FIXES = {
   'c0364758-8330-4028-b87a-b5154a7dc325': { // Death Company Dreadnought
     'a6281e48-79f7-4bd4-9421-375391ae0adc': 'e556ba87-b5da-49d5-941a-02844ead91cc', // Brutalis fists → Blood fists
@@ -667,7 +674,8 @@ function linkWargearConditions(datasheetId, drafts) {
   // ("this model's 2 twin heavy flamers" vs the item "Twin heavy flamer"), so both are stripped
   // before the lookup — a leading quantity, then a trailing plural if the exact name missed.
   const resolveItem = (raw, miniId) => {
-    const n = norm(raw).replace(/^\d+\s+/, '')
+    const n0 = norm(raw).replace(/^\d+\s+/, '')
+    const n = PROSE_NAME_FIXES[enOf(dsById.get(datasheetId)).name]?.[n0] || n0
     // "-s" before "-es": stripping greedily turns "dark lances" into "dark lanc", not "dark lance".
     const exact = nameToUuid.get(n) || nameToUuid.get(n.replace(/s$/, '')) || nameToUuid.get(n.replace(/es$/, ''))
     if (exact) return exact
