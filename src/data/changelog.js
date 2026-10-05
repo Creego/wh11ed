@@ -22,6 +22,24 @@
 
 export const changelog = [
   {
+    version: '2.7.16',
+    date: '2026-10-05',
+    en: [
+      { h: 'Roster builder' },
+      'You can now take the Nightforged Battery Upgrade up to three times, like any other Upgrade. It is in the Dark Angels Darkflight Pursuit detachment. Before, the roster builder let you take it only once.',
+      'The mistake came from the data of the official GW app. There, this Upgrade is limited to one copy. All the other Upgrades there are limited to three. By the muster rules, you can take any Upgrade up to three times.',
+      { h: 'Points' },
+      'I checked the points against the latest Munitorum Field Manual. No prices changed. GW fixed one label: Gretchin cost 80 points for 20 models. Before, the Orks unit page said 11 models.',
+    ],
+    ru: [
+      { h: 'Конструктор ростеров' },
+      'Upgrade Nightforged Battery теперь можно взять до трёх раз, как любой другой Upgrade. Он есть в детачменте Dark Angels Darkflight Pursuit. Раньше конструктор давал взять его только один раз.',
+      'Ошибка пришла из данных официального приложения GW. Там у этого Upgrade стоит лимит в одну копию. У всех остальных Upgrade там стоит три. По правилам сбора армии любой Upgrade можно взять до трёх раз.',
+      { h: 'Очки' },
+      'Я сверил очки с последним Munitorum Field Manual. Цены не изменились. GW исправил одну подпись: Gretchin стоят 80 очков за 20 моделей. Раньше на странице юнита у орков было написано 11 моделей.',
+    ],
+  },
+  {
 version: '2.7.15',
     date: '2026-10-05',
     en: [
