@@ -22,6 +22,18 @@
 
 export const changelog = [
   {
+    version: '2.7.15',
+    date: '2026-10-05',
+    en: [
+      { h: 'Roster builder' },
+      'The builder now shows how many points you have left, under the total. Before, this line was off by default, and only points over the limit were visible. You can turn it off in the roster settings.',
+    ],
+    ru: [
+      { h: 'Конструктор ростеров' },
+      'Под итогом очков теперь видно, сколько осталось до лимита. Раньше эта строка была выключена по умолчанию, и видно было только превышение. Её можно выключить в настройках ростера.',
+    ],
+  },
+  {
     version: '2.7.14',
     date: '2026-10-05',
     en: [
