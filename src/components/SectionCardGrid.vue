@@ -58,6 +58,7 @@ defineProps({
 }
 
 .section-badge {
+  display: inline-block;
   font-size: 0.72rem;
   font-weight: 700;
   color: var(--text-on-accent);
