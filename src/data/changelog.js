@@ -32,6 +32,11 @@ export const changelog = [
       'Search results take less space: a phone screen shows almost twice as many units. If a unit was found by a nickname or an ability, that word now stands in the line with the faction, not on a line of its own.',
       { h: 'Roster builder' },
       'If you untick “Check legality”, the roster is not checked at all: no errors, no warnings, and points over the limit are not red. Instead the roster has an “Unchecked” mark. Before, the box only lifted the limit on unit copies.',
+      'When you pick a detachment, each one has a {btn:info} button on the right. It opens the detachment’s rule, enhancements and stratagems, so you can read a detachment before you take it. The button is in the roster builder and in the tracker’s game setup.',
+      'Before, a Grey Knights Purifier Squad of ten showed no number next to its Nemesis force weapon if the squad took psycannons. Now the number is there. A Black Templars Crusader Squad had the same problem with its close combat weapon.',
+      'I checked every unit’s default wargear against the text of its datasheet and found eight more errors. Before, a Land Raider had one Godhammer lascannon instead of two, and a World Eaters Defiler one excruciator cannon instead of two. Commissar Graves, Intranzia Fraye, Cthonian Earthshakers, Corsair Voidscarred and Gellerpox Infected had similar errors. Now the numbers match the datasheet, and Wolf Guard Headtakers without wolves no longer show the wolves’ weapon.',
+      'I also checked every wargear swap. Before, some swaps added the new weapon but did not remove the old one. This happened when the weapon came from another swap, for example a Death Company Marine’s bolt pistol for a hand flamer. Fire Dragons had the same problem with the Exarch’s fusion gun. Now the old weapon goes away.',
+      'GW’s PDF has an error on two Legends units. Cultist Mob with Firearms is printed with the plain Cultist Mob’s weapons, and Munitorum Servitors that take a heavy weapon are left with no melee weapon. I fixed this in the roster builder: the cultists start with autoguns, and servitors with a heavy weapon get a close combat weapon. The datasheet text stays as GW printed it.',
     ],
     ru: [
       { h: 'Карточка юнита на узком телефоне' },
@@ -41,6 +46,11 @@ export const changelog = [
       'Результаты поиска занимают меньше места: на экран телефона помещается почти вдвое больше юнитов. Если юнит найден по прозвищу или способности, это слово теперь стоит в строке с фракцией, а не отдельной строкой.',
       { h: 'Конструктор ростеров' },
       'Если снять галочку «Проверять легитимность», ростер не проверяется совсем: нет ни ошибок, ни предупреждений, превышение очков не подсвечивается красным. Вместо этого у ростера стоит пометка «Без проверок». Раньше галочка снимала только лимит копий юнита.',
+      'При выборе детачмента у каждого справа есть кнопка {btn:info}. Она открывает правило детачмента, его улучшения и стратагемы, и детачмент можно прочитать до того, как взять. Кнопка есть в конструкторе и при настройке партии в трекере.',
+      'Раньше у Purifier Squad из Grey Knights в десять моделей не было числа рядом с Nemesis force weapon, если отряд брал Psycannon. Теперь число есть. У Crusader Squad из Black Templars так же было с close combat weapon.',
+      'Я сверил снаряжение по умолчанию у всех отрядов с текстом их датащитов и нашёл ещё восемь ошибок. Раньше у Land Raider был один Godhammer Lascannon вместо двух, у Defiler из World Eaters — один excruciator cannon вместо двух. Похожие ошибки были у Commissar Graves, Intranzia Fraye, Cthonian Earthshakers, Corsair Voidscarred и Gellerpox Infected. Теперь числа совпадают с датащитом, а Wolf Guard Headtakers без волков больше не показывают оружие волков.',
+      'Ещё я проверил все замены снаряжения. Раньше некоторые замены добавляли новое оружие, но не убирали старое. Так было, если менялось оружие, которое пришло из другой замены, например у Death Company Marines bolt pistol на hand flamer. У Fire Dragons так было с фузганом экзарха. Теперь старое оружие при замене уходит.',
+      'В PDF от GW у двух отрядов Legends ошибка. Cultist Mob with Firearms напечатан с оружием обычного Cultist Mob, а у Munitorum Servitors после замены на тяжёлое оружие не остаётся оружия ближнего боя. В конструкторе я это поправил: культисты начинают с autogun, а сервиторы с тяжёлым оружием получают close combat weapon. Текст датащита оставил как у GW.',
     ],
   },
   {
