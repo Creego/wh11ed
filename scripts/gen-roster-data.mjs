@@ -1935,9 +1935,14 @@ function buildUnit(bd, idMap, fx, kwIndex, prices) {
           report.defaultsMerged.push(`${bd.name} / ${enOf((minisByDs.get(bd.id) || []).find((x) => (miniIdx.get(x.id) ?? 0) === m)).name || m}: ${wgItemName.get(uuid)} (${c} for the profile, not one per model)`)
           continue
         }
+        // The group's count is the profile's, so it is divided like everywhere above: per model
+        // when it divides, a total when it does not. Pushed as a total outright until 2026-10-05,
+        // the Purifiers' "Nemesis force weapon 4" (the row leaves it out) stayed four at a squad of
+        // nine and a psycannon swap took all four — the weapon lost its count (a player's report).
         const models = compOf(m)
-        at[1].push(models > 1 ? [id, c, 1] : [id, c])
-        report.defaultsMerged.push(`${bd.name} / ${enOf((minisByDs.get(bd.id) || []).find((x) => (miniIdx.get(x.id) ?? 0) === m)).name || m}: ${wgItemName.get(uuid)}${models > 1 ? ` (${c} for the profile)` : ''}`)
+        const per = models > 1 && c % models === 0
+        at[1].push(models < 2 ? [id, c] : per ? [id, c / models] : [id, c, 1])
+        report.defaultsMerged.push(`${bd.name} / ${enOf((minisByDs.get(bd.id) || []).find((x) => (miniIdx.get(x.id) ?? 0) === m)).name || m}: ${wgItemName.get(uuid)}${models > 1 && !per ? ` (${c} for the profile)` : ''}`)
       }
     }
   }

@@ -1508,3 +1508,36 @@ describe('Deathwatch Support across the Space Marines family', () => {
     expect(d?.dp).toBe(1)
   })
 })
+
+// A default loadout's TOTAL marker (`[id, c, 1]`) means "c for the whole profile, not one each" —
+// a count the profile's models cannot share out evenly (one plasma gun between two Missionaries).
+// A count that DOES divide is per model, and the generator divides it everywhere; one branch
+// pushed it as a total until 2026-10-05, and the Purifiers' four Nemesis force weapons stayed
+// four at a squad of nine — four psycannons took them all and the weapon lost its count (a
+// player's report). Black Templars' Crusader Squad carried the same error.
+describe('default loadout totals', () => {
+  it('mark only a count the profile cannot share out evenly', () => {
+    const bad = []
+    for (const { slug, data } of factions) {
+      for (const u of data.units || []) {
+        const bracket = (u.sizes || []).find((x) => x.default) || (u.sizes || [])[0]
+        for (const [m, list] of u.defaults || []) {
+          const models = (bracket?.comp || []).find(([mi]) => mi === m)?.[1] ?? (bracket?.per?.[0] ?? 1)
+          for (const [id, c, total] of list) {
+            if (total && models > 1 && c % models === 0) bad.push(`${slug}/${u.id}: ${rosterItems.items[id]} ${c} over ${models} models`)
+          }
+        }
+      }
+    }
+    expect(bad).toEqual([])
+  })
+
+  it('give each Purifier its Nemesis force weapon, less the ones traded for a psycannon', async () => {
+    const gk = await loadRosterFaction('grey-knights')
+    const def = gk.units.find((u) => u.id === 'purifier-squad')
+    // Six items share the name across Grey Knights; the one this unit starts with.
+    const nfw = def.defaults.flatMap(([, list]) => list.map(([id]) => id)).find((id) => /^nemesis force weapon$/i.test(rosterItems.items[id]))
+    // Ten models (Knight of the Flame + nine Purifiers), four psycannons: six swords remain.
+    expect(loadoutItemCounts(def, { id: def.id, size: 1, count: 10, wg: [[0, 2, 4]] }).get(nfw)).toBe(6)
+  })
+})
