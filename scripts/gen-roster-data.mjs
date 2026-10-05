@@ -2935,6 +2935,25 @@ function oneEachPerModel(slug, units) {
   }
 }
 
+// The same entitlements for the FACTION PAGE (src/composables/useFactionPage.js): which other
+// file's detachments this faction's picker offers after its own, and what each costs it. The page
+// must not load a 45 KB roster file to learn sixteen names, so they get a file of their own —
+// outside src/data/roster/, whose directory several readers enumerate as factions. Until
+// 2026-10-05 the page offered a Chapter its own detachments only, and a Deathwatch player could
+// read neither Gladius' rule nor its stratagems there.
+function genChapterDetachments() {
+  const out = {}
+  for (const { slug, data } of built) {
+    if (!data.sharedDetachments?.length) continue
+    out[slug] = data.sharedDetachments.map((name) => {
+      const e = { name, from: data.sharedDetachmentFrom?.[name] || 'space-marines' }
+      if (data.detachmentDp?.[name] != null) e.dp = data.detachmentDp[name]
+      return e
+    })
+  }
+  writeOut('../chapterDetachments.js', `${HEAD}// faction slug -> detachments it fields from another faction's file, in picker order.\nexport default ${stableJson(out)}\n`)
+}
+
 // One call per process: the intern dictionaries and `report` are module state, so a second call
 // would keep interning into the same dicts. `npm run sync` imports this and calls run(['--check'])
 // exactly once, the same contract the other generators here follow.
@@ -2958,6 +2977,7 @@ for (const { slug, data } of built) {
 }
 genItems() // after all factions — the intern dicts are complete
 genIndex()
+genChapterDetachments()
 
 console.log(`\nroster data: ${report.factions} factions, ${report.units} units (${report.linked} linked, ${report.unlinked.length} unlinked)`)
 const pr = report.price
