@@ -5,7 +5,7 @@
     @close="$emit('close')"
   >
     <div class="modal-body rex">
-      <!-- One list, three dialects: which one you need depends on where it is going (a TO's inbox,
+      <!-- One list, five dialects: which one you need depends on where it is going (a TO's inbox,
            a tournament header, a Discord channel), so the choice is a switch and not a setting. -->
       <div
         class="rex-fmts"
@@ -82,8 +82,8 @@ const { locale } = useLocale()
 const labels = computed(() => ui[locale.value])
 
 const FORMATS = EXPORT_FORMATS
-const FMT_LABEL = { gw: 'rosterFmtGw', wtc: 'rosterFmtWtc', 'wtc-compact': 'rosterFmtWtcCompact', compact: 'rosterFmtCompact' }
-const FMT_HINT = { gw: 'rosterFmtGwHint', wtc: 'rosterFmtWtcHint', 'wtc-compact': 'rosterFmtWtcCompactHint', compact: 'rosterFmtCompactHint' }
+const FMT_LABEL = { gw: 'rosterFmtGw', wtc: 'rosterFmtWtc', 'wtc-compact': 'rosterFmtWtcCompact', compact: 'rosterFmtCompact', simple: 'rosterFmtSimple' }
+const FMT_HINT = { gw: 'rosterFmtGwHint', wtc: 'rosterFmtWtcHint', 'wtc-compact': 'rosterFmtWtcCompactHint', compact: 'rosterFmtCompactHint', simple: 'rosterFmtSimpleHint' }
 const format = ref('gw')
 
 // The footer names the tool and the points data that wrote the list — never the GW app's own
