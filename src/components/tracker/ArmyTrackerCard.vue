@@ -965,7 +965,7 @@ useFlashOnChange(counter, counterEl)
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--accent-ink);
+  color: var(--text-muted);
 }
 
 .army-field-chev {

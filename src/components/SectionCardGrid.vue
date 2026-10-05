@@ -60,7 +60,7 @@ defineProps({
 .section-badge {
   font-size: 0.72rem;
   font-weight: 700;
-  color: var(--accent-ink);
+  color: var(--text-muted);
   font-family: var(--font-mono);
   background: color-mix(in srgb, var(--accent) 10%, transparent);
   padding: 2px 7px;
