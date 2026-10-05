@@ -301,6 +301,7 @@
       :selected="roster.detachments"
       :max-dp="effBattle.dp"
       :dp-spent="dpSpent"
+      :faction-slug="roster.faction"
       @toggle="toggleDetachment"
       @clear="clearDetachments"
       @close="detachmentPickerOpen = false"

@@ -278,6 +278,16 @@ Every dialog is a `BaseModal` (teleported to `<body>`, `useModalA11y` for focus/
   global. A new dialog has to set its own padding — nothing will do it for you.
 
 
+## Borders that touch
+
+Two bordered boxes set flush against each other (a card and its ⓘ, a segmented control, a
+button group) share ONE edge: overlap them with `margin-left: -1px` instead of dropping one side's
+border, and lift whichever is hovered, focused or selected with `position: relative; z-index`, so
+its accent edge is drawn over the neighbour's grey one. Dropping a side (`border-left: none`) or
+skipping the lift leaves the hovered box with three accent sides — the owner caught it on the
+detachment picker's ⓘ (2026-10-04) and it has happened before. **Check every state on the shared
+edge — hover of each box, selected, focus — in a screenshot before calling it done.**
+
 ## Corners & surfaces
 
 **Corners are square.** `border-radius` is not a default we reach for — it is an exception that

@@ -404,6 +404,7 @@
                             :selected="m.detachments"
                             :max-dp="memberMaxDp"
                             :dp-spent="dpSpent(m)"
+                            :faction-slug="m.factionSlug"
                             @toggle="d => toggleDetachment(m, d)"
                             @clear="m.detachments.splice(0)"
                           />

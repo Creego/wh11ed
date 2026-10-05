@@ -102,6 +102,7 @@
           :selected="detachments"
           :max-dp="maxDp"
           :dp-spent="dpSpent"
+          :faction-slug="factionSlug"
           @toggle="(d) => $emit('toggle-detachment', d)"
           @clear="$emit('clear-detachments')"
         />

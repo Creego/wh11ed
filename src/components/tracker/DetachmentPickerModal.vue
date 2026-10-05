@@ -16,6 +16,7 @@
       :selected="selected"
       :max-dp="maxDp"
       :dp-spent="dpSpent"
+      :faction-slug="factionSlug"
       @toggle="(d) => $emit('toggle', d)"
       @clear="$emit('clear')"
     />
@@ -35,6 +36,7 @@ const props = defineProps({
   selected:    { type: Array, required: true },
   maxDp:       { type: Number, required: true },
   dpSpent:     { type: Number, required: true },
+  factionSlug: { type: String, default: '' },
 })
 defineEmits(['toggle', 'clear', 'close'])
 

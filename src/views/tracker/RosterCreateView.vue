@@ -274,6 +274,7 @@
       :selected="detachments"
       :max-dp="effBattle.dp"
       :dp-spent="dpSpent"
+      :faction-slug="factionSlug || ''"
       @toggle="toggleDetachment"
       @clear="clearDetachments"
       @close="detachmentPickerOpen = false"
