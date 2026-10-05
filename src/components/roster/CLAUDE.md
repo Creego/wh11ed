@@ -151,6 +151,16 @@ or Stormlance army — the commonest thing a Chapter fields — could be neither
 The RULES side already handled it: `RosterViewView` and the stratagems page fall back to the
 space-marines faction file for a detachment the Chapter's own file doesn't define.
 
+**Printed in a book ≠ the book's army may take it.** Deathwatch Support is printed in Codex
+Supplement: Deathwatch, and it is how every OTHER Adeptus Astartes army brings the Deathwatch along:
+appdata entitles the Space Marines and every Chapter to it, not the Deathwatch, and the MFM's
+Deathwatch page agrees. The generator now keeps a faction's own detachments to what its keyword is
+entitled to; one printed for others stays in the file marked `lend` (so the others can fold it in)
+and `loadRosterFaction` leaves it out of the army's own list. The faction page still shows it, where
+it is printed (2026-10-05, owner: "offer it only to those who may pick it; read it anywhere").
+`src/data/chapterDetachments.test.js` holds the editor (appdata) and the tracker (MFM) to the same
+list for every faction — they disagreed on exactly this and nothing said so.
+
 ### A group of nothing but defaults is a loadout
 
 appdata records a miniature's starting gear as a `wargear_option_group` when there is no

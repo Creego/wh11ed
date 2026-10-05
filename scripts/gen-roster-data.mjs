@@ -340,7 +340,7 @@ const bmlByDs = new Map() // datasheetId -> [{miniatureId, opts:[{wargearOptionI
 
 // ---- Per-faction generation ------------------------------------------------------------
 
-const report = { factions: 0, units: 0, linked: 0, unlinked: [], missingBundle: [], noPoints: [], stale: [], loadoutFixed: [], price: { repriced: 0, collapsed: 0, chapterOverrides: 0, noUnit: [], noBracket: [], stepDrift: [] }, bundle: { rewritten: 0, quantified: 0, unclaimed: [], unbacked: [] }, limit: { limited: 0, counted: 0, bundled: 0, ambiguous: 0, unmatched: 0, fromProse: 0, fromProseScaled: 0, fromProseConditional: [], perModelEach: [], perModelBudget: [], scaledDrift: [], perCopy: 0, conflict: [], merged: 0 }, rep: { resolved: 0, noMatch: [], unresolved: [], split: [] }, keep: { resolved: 0, unresolved: [] }, staticDefaults: 0, paidDefault: { units: 0, odd: [] }, sharedDets: 0, leadKw: { resolved: 0, unresolved: [] }, proseAttach: [], proseAttachAdded: 0, packAttach: [], packAttachAdded: 0, mirror: { rules: 0, added: [], unread: [] }, hosts: { read: [], unread: [] }, comp: { units: 0, brackets: 0, rejected: [] }, detTag: { tagged: 0, drift: [] }, alleg: { units: 0, kinds: new Set() }, defaultsMerged: [], textCount: [], dnu: [], allies: { groups: 0, units: 0, empty: [], missing: [], narrowed: [] }, pack: { ...emptyPackReport(), dropped: [] } }
+const report = { factions: 0, units: 0, linked: 0, unlinked: [], missingBundle: [], noPoints: [], stale: [], loadoutFixed: [], price: { repriced: 0, collapsed: 0, chapterOverrides: 0, noUnit: [], noBracket: [], stepDrift: [] }, bundle: { rewritten: 0, quantified: 0, unclaimed: [], unbacked: [] }, limit: { limited: 0, counted: 0, bundled: 0, ambiguous: 0, unmatched: 0, fromProse: 0, fromProseScaled: 0, fromProseConditional: [], perModelEach: [], perModelBudget: [], scaledDrift: [], perCopy: 0, conflict: [], merged: 0 }, rep: { resolved: 0, noMatch: [], unresolved: [], split: [] }, keep: { resolved: 0, unresolved: [] }, staticDefaults: 0, paidDefault: { units: 0, odd: [] }, sharedDets: 0, notEntitled: [], leadKw: { resolved: 0, unresolved: [] }, proseAttach: [], proseAttachAdded: 0, packAttach: [], packAttachAdded: 0, mirror: { rules: 0, added: [], unread: [] }, hosts: { read: [], unread: [] }, comp: { units: 0, brackets: 0, rejected: [] }, detTag: { tagged: 0, drift: [] }, alleg: { units: 0, kinds: new Set() }, defaultsMerged: [], textCount: [], dnu: [], allies: { groups: 0, units: 0, empty: [], missing: [], narrowed: [] }, pack: { ...emptyPackReport(), dropped: [] } }
 
 // …and two datasheets whose attachment appdata states in PROSE and in no table at all. The Ogryn
 // Bodyguard and Nork Deddog "must join one COMMAND SQUAD unit from your army" (their Loyal
@@ -2668,10 +2668,27 @@ async function genFaction(slug) {
       return (b?.detachments || []).map((d) => ({ ...d, chapter: enOf(b.faction).name || b.faction?.name }))
     })
     : []
+  // A detachment published in this faction's book is not necessarily one this army may take:
+  // Deathwatch Support is printed in Codex Supplement: Deathwatch and is how every OTHER Adeptus
+  // Astartes army brings the Deathwatch along — the Deathwatch itself may not field it (appdata's
+  // detachment_faction_keyword, and the MFM's Deathwatch page agrees). The editor offered it to
+  // Deathwatch lists until 2026-10-05. Only what the faction keyword is entitled to is offered; the
+  // faction page still shows the rest, so its rules can be read where they are printed.
+  const ownKw = kwByName.get(norm(enOf(bundle.faction).name || bundle.faction?.name || ''))
+  const entitled = ownKw && detsByKeyword.has(ownKw) ? new Set(detsByKeyword.get(ownKw)) : null
+  // It stays in the file, marked `lend`: the other armies fold it in from here (loadRosterFaction),
+  // and the loader leaves it out of this army's own list.
+  const lent = new Set()
+  for (const d of bundle.detachments || []) {
+    if (!entitled || d.isCombatPatrol || entitled.has(d.id)) continue
+    lent.add(d.id)
+    report.notEntitled.push(`${slug}: ${enOf(d).name || d.name}`)
+  }
   const detachments = [...(bundle.detachments || []), ...supplements]
     .filter((d) => !d.isCombatPatrol && !cpDatasheetIds.has(d.id))
     .map((bdet) => {
       const det = buildDetachment(bdet, idMap, mfmDet, nameToDsId, facTag, slug)
+      if (lent.has(bdet.id)) return { ...det, lend: 1 }
       return bdet.chapter ? { ...det, chapter: bdet.chapter } : det
     })
     .sort((a, b) => a.name.localeCompare(b.name))
@@ -2864,8 +2881,11 @@ async function allyUnits(data) {
 }
 
 export async function loadRosterFaction(slug, { allies = false } = {}) {
-  const data = await load(slug)
-  if (!data) return null
+  const raw = await load(slug)
+  if (!raw) return null
+  // A detachment printed in this faction's book for OTHER armies (\`lend\`) is not one of its own:
+  // the armies it is lent to fold it in below (Deathwatch Support).
+  const data = raw.detachments?.some((d) => d.lend) ? { ...raw, detachments: raw.detachments.filter((d) => !d.lend) } : raw
   const extra = allies && data.allies?.length ? await allyUnits(data) : []
   // A shared detachment comes from space-marines.js unless \`sharedDetachmentFrom\` names its
   // bundle (Deathwatch Support → deathwatch.js).
@@ -2888,15 +2908,21 @@ export async function loadRosterFaction(slug, { allies = false } = {}) {
     if (!bySource.has(src)) bySource.set(src, new Set())
     bySource.get(src).add(n)
   }
+  // The army's own come first and the others after them, a group per faction they come from
+  // (\`from\`, the slug the pickers head the group with — DetachmentGroupHead), each by name.
+  const byName = (a, b) => a.name.localeCompare(b.name)
   const dets = []
   for (const [src, want] of bySource) {
     const bundle = src === 'space-marines' ? sm : await load(src)
+    const group = []
     for (const d of bundle?.detachments || []) {
       if (!want.has(d.name)) continue
-      dets.push(data.detachmentDp?.[d.name] != null ? { ...d, dp: data.detachmentDp[d.name], shared: 1 } : { ...d, shared: 1 })
+      const { lend, ...det } = d
+      group.push({ ...det, dp: data.detachmentDp?.[d.name] ?? d.dp, shared: 1, from: src })
     }
+    dets.push(...group.sort(byName))
   }
-  const detachments = [...data.detachments, ...dets].sort((a, b) => a.name.localeCompare(b.name))
+  const detachments = [...[...data.detachments].sort(byName), ...dets]
   return { ...data, units, detachments }
 }
 
@@ -3034,6 +3060,7 @@ console.log(`  default loadouts: ${report.staticDefaults} units read theirs from
 console.log(`  paid defaults: ${report.paidDefault.units} units start with wargear that costs points on top of the bracket`)
 if (report.paidDefault.odd.length) console.log(`    not charged (count does not divide): ${report.paidDefault.odd.join('; ')}`)
 console.log(`  Chapter detachments: ${report.sharedDets} Codex entitlements folded in at load time`)
+if (report.notEntitled.length) console.log(`  printed in the faction's book but not its to field (kept as \`lend\`, offered only to the armies that fold it in): ${report.notEntitled.join('; ')}`)
 if (report.textCount.length) {
   console.log(`    ${report.textCount.length} default count(s) taken from the datasheet text over the tables:`)
   for (const l of report.textCount) console.log(`      - ${l}`)

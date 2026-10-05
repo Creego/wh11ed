@@ -69,8 +69,11 @@ async function allyUnits(data) {
 }
 
 export async function loadRosterFaction(slug, { allies = false } = {}) {
-  const data = await load(slug)
-  if (!data) return null
+  const raw = await load(slug)
+  if (!raw) return null
+  // A detachment printed in this faction's book for OTHER armies (`lend`) is not one of its own:
+  // the armies it is lent to fold it in below (Deathwatch Support).
+  const data = raw.detachments?.some((d) => d.lend) ? { ...raw, detachments: raw.detachments.filter((d) => !d.lend) } : raw
   const extra = allies && data.allies?.length ? await allyUnits(data) : []
   // A shared detachment comes from space-marines.js unless `sharedDetachmentFrom` names its
   // bundle (Deathwatch Support → deathwatch.js).
@@ -102,8 +105,8 @@ export async function loadRosterFaction(slug, { allies = false } = {}) {
     const group = []
     for (const d of bundle?.detachments || []) {
       if (!want.has(d.name)) continue
-      const dp = data.detachmentDp?.[d.name] ?? d.dp
-      group.push({ ...d, dp, shared: 1, from: src })
+      const { lend, ...det } = d
+      group.push({ ...det, dp: data.detachmentDp?.[d.name] ?? d.dp, shared: 1, from: src })
     }
     dets.push(...group.sort(byName))
   }
