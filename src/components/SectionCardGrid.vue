@@ -61,8 +61,8 @@ defineProps({
   display: inline-block;
   font-size: 0.72rem;
   font-weight: 700;
-  color: var(--text-on-accent);
-  background: var(--accent);
+  color: var(--text-primary);
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
   padding: 2px 7px;
 }
 
