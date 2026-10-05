@@ -22,15 +22,23 @@
 
 export const changelog = [
   {
-    version: '2.7.15',
+version: '2.7.15',
     date: '2026-10-05',
     en: [
+      { h: 'Space Marines detachments' },
+      'The pages of Deathwatch, Blood Angels, Dark Angels, Space Wolves and Black Templars now have the Space Marines detachments. Before, they had only the Chapter’s own.',
+      'Detachment lists show the army’s own detachments first, then the Space Marines ones. This is the same on faction pages, in the roster builder and in the tracker.',
+      'A Deathwatch list can no longer take Deathwatch Support. By the rules, only the Space Marines and the other Chapters can take it. Its rules are still on the Deathwatch page.',
       { h: 'Roster builder' },
-      'The builder now shows how many points you have left, under the total. Before, this line was off by default, and only points over the limit were visible. You can turn it off in the roster settings.',
+      'The points you have left are now shown under the total. You can turn this off in the roster settings.',
     ],
     ru: [
+      { h: 'Детачменты Space Marines' },
+      'На страницах Deathwatch, Blood Angels, Dark Angels, Space Wolves и Black Templars теперь есть детачменты Space Marines. Раньше там были только детачменты самого ордена.',
+      'В списках детачментов сначала идут детачменты армии, потом детачменты Space Marines. Так на страницах фракций, в конструкторе ростеров и в трекере.',
+      'В список Deathwatch больше нельзя взять Deathwatch Support. По правилам его берут только Space Marines и другие ордены. Его правила по-прежнему есть на странице Deathwatch.',
       { h: 'Конструктор ростеров' },
-      'Под итогом очков теперь видно, сколько осталось до лимита. Раньше эта строка была выключена по умолчанию, и видно было только превышение. Её можно выключить в настройках ростера.',
+      'Под итогом очков теперь видно, сколько очков осталось. Это можно выключить в настройках ростера.',
     ],
   },
   {
