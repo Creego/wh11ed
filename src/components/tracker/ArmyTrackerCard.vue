@@ -1283,8 +1283,13 @@ useFlashOnChange(counter, counterEl)
   font-family: inherit;
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--accent-ink);
+  /* Muted, like the static line beside it: a fold to open, not an action — red read as one. */
+  color: var(--text-muted);
   text-align: left;
+}
+
+@media (hover: hover) {
+  .army-acc-head:hover { color: var(--text-primary); }
 }
 
 .army-acc-chev {
