@@ -62,8 +62,8 @@ defineProps({
   font-size: 0.72rem;
   font-weight: 700;
   color: var(--text-primary);
-  background: color-mix(in srgb, var(--accent) 15%, transparent);
-  padding: 2px 7px;
+  border: 1px solid var(--accent);
+  padding: 1px 6px;
 }
 
 .section-card-title {
