@@ -394,8 +394,10 @@ const primary = computed(() => {
 
 // The same start, with the lobby opened on arrival: `?share=1` is the wizard's instruction to
 // share as soon as it is on screen, so the host lands on the armies step with the code already
-// in hand instead of finding a button there.
-function startShared() {
+// in hand instead of finding a button there. `choice` is what SharedGameModal asked for — the host's
+// name, the game type (set before the lobby opens, because the lobby locks it) and, in doubles, the
+// team names.
+function startShared(choice) {
   if (!canShare.value) return
   if (current.value) {
     const lobby = current.value.phase === 'setup'
@@ -403,21 +405,26 @@ function startShared() {
       title: labels.value.lobbyNewGame,
       message: lobby ? labels.value.lobbyDiscardConfirm : labels.value.trackerOverwriteConfirm,
       confirmLabel: labels.value.lobbyNewGame,
-      action: doStartShared,
+      action: () => doStartShared(choice),
     }
     return
   }
-  doStartShared()
+  doStartShared(choice)
 }
 const sharedOpen = ref(false)
-function onSharedCreate() {
+function onSharedCreate(choice) {
   sharedOpen.value = false
-  startShared()
+  startShared(choice)
 }
-function doStartShared() {
+function doStartShared(choice) {
   archiveCurrent()
   setupDraft.value = null
-  router.push('/tracker/game?share=1')
+  const query = { share: '1' }
+  if (choice?.mode && choice.mode !== 'singles') query.mode = choice.mode
+  if (choice?.name) query.name = choice.name
+  if (choice?.teams?.[0]) query.team0 = choice.teams[0]
+  if (choice?.teams?.[1]) query.team1 = choice.teams[1]
+  router.push({ path: '/tracker/game', query })
 }
 // Resume any finished game from the summary modal — pull it back into active play.
 function onResumeGame(id) {
