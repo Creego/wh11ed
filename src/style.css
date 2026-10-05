@@ -18,7 +18,10 @@
   --link-accent-hover: var(--accent-hover);
   --text-primary: #2a2828;
   --text-muted: #5e5f4e;
-  --text-dim: #8a8b78;
+  /* One grey for secondary text in the light theme: the paler step (#8a8b78) read 2.6–3.2:1 and no
+     shade of it reached AA, so dim text is the muted grey and is told apart by its size (owner,
+     2026-10-05). The dark theme keeps its own step. */
+  --text-dim: var(--text-muted);
   --text-on-dark: #f0ede8;
   --text-on-accent: #fff;
   --border: #c8cac0;
