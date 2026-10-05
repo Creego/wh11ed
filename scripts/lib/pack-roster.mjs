@@ -137,6 +137,7 @@ function sizes(points, minis, report, who) {
 // bolter carries. "Every other Nightmare Hulk" is the per-model remainder.
 function parseLoadout(text, minis, findMini, report, who) {
   const out = new Map() // mini → { each: [name…], total: [name…] }
+  const others = new Map() // mini → the items its "Every other X" paragraph names
   const paras = String(text || '').split(/\n\s*\n/).map((s) => s.trim()).filter(Boolean)
   for (const p of paras) {
     if (/^\*\*Designer/.test(p)) continue
@@ -150,10 +151,12 @@ function parseLoadout(text, minis, findMini, report, who) {
       targets = []
       for (const part of subject.split(/\s+and\s+/i)) {
         const one = /^(one|1)\s+/i.test(part)
+        const other = /^every other\s+/i.test(part)
         const name = part.replace(/^(the|every other|every|each|an?|one|1)\s+/i, '').trim()
         const mi = findMini(name)
         if (mi == null) { report.loadout.push(`${who}: subject "${subject}"`); return null }
         if (one || minis[mi].aliases?.some((a) => norm(a) === norm(name))) total = true
+        if (other) others.set(mi, [...(others.get(mi) || []), ...m[2].replace(/\.$/, '').split(/;\s*/).map((s) => s.trim())])
         targets.push(mi)
       }
     }
@@ -165,6 +168,19 @@ function parseLoadout(text, minis, findMini, report, who) {
         if (total) row.total.push(it)
         else if (!row.each.includes(it)) row.each.push(it)
       }
+    }
+  }
+  // "One Nightmare Hulk is equipped with: belly-flamer; hideous mutations" + "Every other
+  // Nightmare Hulk is equipped with: hideous mutations": the mutations are on EVERY Hulk, one
+  // each — read as a per-model item AND a profile total, four Hulks held five (found 2026-10-05).
+  // An item the singled-out models also carry is the whole profile's, so its total copies go. An
+  // item only "every other" model has would be the profile less those models, which a per-model
+  // row overcounts — no pack says that yet, so it is reported rather than guessed at.
+  for (const [mi, items] of others) {
+    const row = out.get(mi)
+    for (const it of items) {
+      if (row.total.includes(it)) row.total = row.total.filter((t) => t !== it)
+      else report.note.push(`${who}: "${it}" is on every other model only — counted on every model`)
     }
   }
   return out

@@ -340,7 +340,7 @@ const bmlByDs = new Map() // datasheetId -> [{miniatureId, opts:[{wargearOptionI
 
 // ---- Per-faction generation ------------------------------------------------------------
 
-const report = { factions: 0, units: 0, linked: 0, unlinked: [], missingBundle: [], noPoints: [], stale: [], loadoutFixed: [], price: { repriced: 0, collapsed: 0, chapterOverrides: 0, noUnit: [], noBracket: [], stepDrift: [] }, bundle: { rewritten: 0, quantified: 0, unclaimed: [], unbacked: [] }, limit: { limited: 0, counted: 0, bundled: 0, ambiguous: 0, unmatched: 0, fromProse: 0, fromProseScaled: 0, fromProseConditional: [], perModelEach: [], perModelBudget: [], scaledDrift: [], perCopy: 0, conflict: [], merged: 0 }, rep: { resolved: 0, noMatch: [], unresolved: [], split: [] }, keep: { resolved: 0, unresolved: [] }, staticDefaults: 0, paidDefault: { units: 0, odd: [] }, sharedDets: 0, leadKw: { resolved: 0, unresolved: [] }, proseAttach: [], proseAttachAdded: 0, packAttach: [], packAttachAdded: 0, mirror: { rules: 0, added: [], unread: [] }, hosts: { read: [], unread: [] }, comp: { units: 0, brackets: 0, rejected: [] }, detTag: { tagged: 0, drift: [] }, alleg: { units: 0, kinds: new Set() }, defaultsMerged: [], dnu: [], allies: { groups: 0, units: 0, empty: [], missing: [], narrowed: [] }, pack: { ...emptyPackReport(), dropped: [] } }
+const report = { factions: 0, units: 0, linked: 0, unlinked: [], missingBundle: [], noPoints: [], stale: [], loadoutFixed: [], price: { repriced: 0, collapsed: 0, chapterOverrides: 0, noUnit: [], noBracket: [], stepDrift: [] }, bundle: { rewritten: 0, quantified: 0, unclaimed: [], unbacked: [] }, limit: { limited: 0, counted: 0, bundled: 0, ambiguous: 0, unmatched: 0, fromProse: 0, fromProseScaled: 0, fromProseConditional: [], perModelEach: [], perModelBudget: [], scaledDrift: [], perCopy: 0, conflict: [], merged: 0 }, rep: { resolved: 0, noMatch: [], unresolved: [], split: [] }, keep: { resolved: 0, unresolved: [] }, staticDefaults: 0, paidDefault: { units: 0, odd: [] }, sharedDets: 0, leadKw: { resolved: 0, unresolved: [] }, proseAttach: [], proseAttachAdded: 0, packAttach: [], packAttachAdded: 0, mirror: { rules: 0, added: [], unread: [] }, hosts: { read: [], unread: [] }, comp: { units: 0, brackets: 0, rejected: [] }, detTag: { tagged: 0, drift: [] }, alleg: { units: 0, kinds: new Set() }, defaultsMerged: [], textCount: [], dnu: [], allies: { groups: 0, units: 0, empty: [], missing: [], narrowed: [] }, pack: { ...emptyPackReport(), dropped: [] } }
 
 // …and two datasheets whose attachment appdata states in PROSE and in no table at all. The Ogryn
 // Bodyguard and Nork Deddog "must join one COMMAND SQUAD unit from your army" (their Loyal
@@ -535,6 +535,11 @@ const LOADOUT_ITEM_FIXES = {
     'b0ad20e4-94e0-4591-9c4c-bbd4b87fdaa1': 'df5ca3a0-444a-49b8-b0f0-8226c0142b45', // Brutalis bolt rifles → Blood fist bolt rifles
   },
 }
+
+// The datasheet table's own rows, for the prose a bundle entry does not carry (unitComposition).
+const datasheetById = new Map(table('datasheet').map((d) => [d.id, d]))
+// An interned item id back to its name (the defaults hold ids; a few checks compare by name).
+const itemNameOfId = (id) => { for (const [uuid, i] of itemIds) if (i === id) return wgItemName.get(uuid) }
 
 const CHAPTERS = new Set(['black-templars', 'blood-angels', 'dark-angels', 'deathwatch', 'space-wolves'])
 const isChapter = (slug) => CHAPTERS.has(slug)
@@ -1918,8 +1923,14 @@ function buildUnit(bd, idMap, fx, kwIndex, prices) {
         continue
       }
       const have = new Set(at[1].map(([id]) => id))
+      // The row and the group can name ONE weapon by two item ids: a Nightmare Hulk's "Hideous
+      // mutations" is one id in the loadout row and another in the group's "One Nightmare Hulk is
+      // equipped with: belly-flamer; hideous mutations" — added as a second copy, four Hulks held
+      // five (found 2026-10-05). By name, the group's item is the row's.
+      const rowIdByName = new Map(at[1].map(([id]) => [norm(itemNameOfId(id)), id]))
       for (const [uuid, c] of items) {
-        const id = fx.item(fixItem(uuid))
+        const named = rowIdByName.get(norm(wgItemName.get(fixItem(uuid))))
+        const id = named ?? fx.item(fixItem(uuid))
         // …and the row can OVERSTATE: it describes one model, and a profile whose models are not
         // all alike gets that one model's loadout for every model. "2 Havocs are equipped with: Havoc
         // autocannon … 2 Havocs are equipped with: Havoc lascannon" has a row of autocannon ×1 for
@@ -1930,6 +1941,17 @@ function buildUnit(bd, idMap, fx, kwIndex, prices) {
         if (have.has(id)) {
           const row = at[1].find(([i]) => i === id)
           const models = profileModels(m)
+          // …and on a lone model it can UNDERSTATE: the row of a Land Raider says one Godhammer
+          // lascannon where the group and the datasheet say two, and the weapon lost its "×2"
+          // (found 2026-10-05 sweeping every default loadout against its datasheet text after a
+          // Purifier report). For exactly ONE model the group's count is that model's, so the
+          // larger count wins. Not for a profile the default bracket fields none of (a
+          // Headtakers' Hunting Wolf, 0 at three models): there the group counts the wolves.
+          if (!row[2] && models === 1 && c > row[1]) {
+            report.defaultsMerged.push(`${bd.name}: ${wgItemName.get(uuid)} ×${c} (the loadout row said ${row[1]})`)
+            row[1] = c
+            continue
+          }
           if (row[2] || models < 2 || c >= row[1] * models) continue
           row.splice(1, 2, ...(c % models === 0 ? [c / models] : [c, 1]))
           report.defaultsMerged.push(`${bd.name} / ${enOf((minisByDs.get(bd.id) || []).find((x) => (miniIdx.get(x.id) ?? 0) === m)).name || m}: ${wgItemName.get(uuid)} (${c} for the profile, not one per model)`)
@@ -1943,6 +1965,56 @@ function buildUnit(bd, idMap, fx, kwIndex, prices) {
         const per = models > 1 && c % models === 0
         at[1].push(models < 2 ? [id, c] : per ? [id, c / models] : [id, c, 1])
         report.defaultsMerged.push(`${bd.name} / ${enOf((minisByDs.get(bd.id) || []).find((x) => (miniIdx.get(x.id) ?? 0) === m)).name || m}: ${wgItemName.get(uuid)}${models > 1 && !per ? ` (${c} for the profile)` : ''}`)
+      }
+    }
+  }
+  // The datasheet's own words outrank both tables (owner, 2026-10-05). Where a one-profile unit's
+  // composition says "This model / Every model is equipped with: 2 X" and the tables count another
+  // number of X, the text's number stands: Cthonian Earthshakers carry two Autoch-pattern bolt
+  // pistols each, and every table says one. Only an explicit number is read — a bare "X" says
+  // nothing about a table's 2 — and only the single-line, single-profile shape, where the line
+  // can mean one thing; the rest is held to the text by src/data/roster/index.test.js.
+  if (defaults.length === 1 && !(minis.length > 1)) {
+    const lines = [...(enOf(datasheetById.get(bd.id)).unitComposition || '').matchAll(/\*\*(?:This|Every) model is equipped with:\*\*\s*([^\n]+)/g)]
+    if (lines.length === 1) {
+      const key = (n) => String(n || '').toLowerCase().replace(/[\u2010\u2011]/g, '-').replace(/\s+/g, ' ').trim().replace(/s$/, '')
+      const said = new Map()
+      for (const part of lines[0][1].replace(/\.\s*$/, '').split(/[;,]/)) {
+        const m = part.trim().match(/^(\d+)\s+(.+)$/)
+        if (m) said.set(key(m[2]), Number(m[1]))
+      }
+      const nameOfId = (id) => { for (const [uuid, i] of itemIds) if (i === id) return wgItemName.get(uuid) }
+      for (const row of defaults[0][1]) {
+        const n = !row[2] && said.get(key(nameOfId(row[0])))
+        if (!n || n === row[1]) continue
+        report.textCount.push(`${bd.name}: ${nameOfId(row[0])} ${row[1]} → ${n}`)
+        row[1] = n
+      }
+    }
+  }
+  // …and on a unit of several profiles, a line that names ONE profile exactly ("A Shade Runner is
+  // equipped with: shuriken pistol; close combat weapon; paired Hekatarii blades") is that
+  // profile's loadout, so an item it lists that the tables left off the profile is added — the
+  // Voidscarred's three specialists had no close combat weapon (found 2026-10-05). Only an item
+  // this unit already fields somewhere (so the name resolves to an id without guessing), only
+  // added, never removed or recounted: a line can describe one model of a profile the tables split.
+  if (defaults.length && minis.length > 1) {
+    const key = (n) => String(n || '').toLowerCase().replace(/[\u2010\u2011]/g, '-').replace(/[’']/g, "'").replace(/\s+/g, ' ').trim().replace(/s$/, '')
+    const profileByName = new Map(minis.map((m, i) => [key(enOf(m).name), i]))
+    const nameOfId = (id) => { for (const [uuid, i] of itemIds) if (i === id) return wgItemName.get(uuid) }
+    const idByName = new Map()
+    for (const [, list] of defaults) for (const [id] of list) idByName.set(key(nameOfId(id)), id)
+    const text = enOf(datasheetById.get(bd.id)).unitComposition || ''
+    for (const [, who, list] of text.matchAll(/\*\*(?:The |A |An |Every )(.+?) (?:is|are) equipped with:\*\*\s*([^\n]+)/g)) {
+      const m = profileByName.get(key(who))
+      if (m == null) continue
+      const row = defaults.find(([mi]) => mi === m)
+      if (!row) continue
+      for (const part of list.replace(/\.\s*$/, '').split(/[;,]/)) {
+        const id = idByName.get(key(part.trim().replace(/^\d+\s+/, '')))
+        if (id == null || row[1].some(([i]) => i === id)) continue
+        row[1].push([id, Number(part.trim().match(/^(\d+)\s/)?.[1]) || 1])
+        report.textCount.push(`${bd.name} / ${enOf(minis[m]).name}: + ${nameOfId(id)} (the text lists it, the tables do not)`)
       }
     }
   }
@@ -2911,6 +2983,10 @@ console.log(`  default loadouts: ${report.staticDefaults} units read theirs from
 console.log(`  paid defaults: ${report.paidDefault.units} units start with wargear that costs points on top of the bracket`)
 if (report.paidDefault.odd.length) console.log(`    not charged (count does not divide): ${report.paidDefault.odd.join('; ')}`)
 console.log(`  Chapter detachments: ${report.sharedDets} Codex entitlements folded in at load time`)
+if (report.textCount.length) {
+  console.log(`    ${report.textCount.length} default count(s) taken from the datasheet text over the tables:`)
+  for (const l of report.textCount) console.log(`      - ${l}`)
+}
 if (report.defaultsMerged.length) {
   console.log(`    ${report.defaultsMerged.length} more items the loadout row leaves out, taken from that group:`)
   for (const l of report.defaultsMerged) console.log(`      - ${l}`)

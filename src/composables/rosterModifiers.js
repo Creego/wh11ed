@@ -135,6 +135,9 @@ export function loadoutItemCopies(def, entry) {
 
   for (const [m, list] of def.defaults) {
     const models = perMini?.get(m)
+    // A profile the chosen size fields none of holds nothing: Wolf Guard Headtakers without their
+    // Hunting Wolves kept a "Teeth and Claws" row on the card, uncounted, until 2026-10-05.
+    if (models === 0) continue
     for (const [id, c, total] of list) {
       const take = removed.get(`${m}:${id}`) || 0
       // `take` counts MODELS OF THIS PROFILE that gave the item up; `c` is its per-model quantity.

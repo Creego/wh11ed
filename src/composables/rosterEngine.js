@@ -1449,6 +1449,8 @@ export function defaultLoadoutLines(def, items, entry) {
 
   return (def?.defaults || []).flatMap(([m, list]) => {
     const models = perMini?.get(m)
+    // A profile this size fields none of has no line: Headtakers without their wolves (2026-10-05).
+    if (models === 0) return []
     const parts = []
     // The bare names too — what the editor's info button opens the profiles of.
     const names = []
