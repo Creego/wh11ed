@@ -213,15 +213,19 @@ screens that had copied each other and drifted. The pairs that existed then are 
   (2026-09-25). Its rows must not shrink (`flex-shrink: 0`): the lists are flex columns.
   **A picker's list is a component of its own, so it can live in a modal OR a dropdown**
   (2026-10-01): `tracker/FactionPickerList.vue` and `tracker/DetachmentPickerList.vue` are the
-  rows; `FactionPickerModal`/`DetachmentPickerModal` wrap them in `BaseModal` (phones, the tracker),
-  and the desk's settings line wraps them in `PickerDropdown.vue` — the account menu's recipe
+  rows; `FactionPickerModal` wraps its list in `BaseModal` (phones, the tracker),
+  and the desk's settings line wraps it in `PickerDropdown.vue` — the account menu's recipe
   (backdrop for the outside click, Escape, `fade-pop`), the modal's surface, its own scroll. The
   declared Force Disposition there is a `PickerDropdown` too, its chips in their colours.
   Everywhere else a picker serves both widths, **`AdaptivePicker.vue`** picks the shape: the
   dropdown from 901px up, the modal below, the same list in both (its slot hands the list
   `compact` and `bodyClass`). In use: the faction pages' chapter and detachment pickers
-  (`FactionPickerBar`, rows from `FactionDetachmentList`) and the tracker's game setup (faction,
-  detachments). Not for pickers whose rows unfold rich content (missions, secondaries, twists,
+  (`FactionPickerBar`, rows from `FactionDetachmentList`), the tracker's game setup (faction) and
+  **every multi-pick of detachments under a DP budget — `tracker/DetachmentPicker.vue`**, the one
+  component the tracker's setup, the builder's phone form and the desk's settings line all open
+  (2026-10-05; the builder had a modal of its own and a dropdown of its own until then). Both
+  detachment lists put another faction's detachments (a row's `from`) after the army's own, under
+  `DetachmentGroupHead.vue`. Not for pickers whose rows unfold rich content (missions, secondaries, twists,
   layouts) or carry a form (the roster picker's share-link field) — a dropdown is for a short list.
   **The panel is teleported to `<body>`** and placed from the trigger's rect (`position: fixed`,
   `width`/`align` props, it follows scroll and resize): a dropdown inside a roster card

@@ -51,7 +51,7 @@ export function useFactionPage() {
   // list and each one's cost to THIS army are generated with the roster data
   // (src/data/chapterDetachments.js, the same entitlements the roster editor offers); the text is
   // the other faction's own, localised the same way. Each carries `from` (the other faction's
-  // name), which the picker groups under. Only the Space Marines family has any, so no one else
+  // slug), which the picker groups under. Only the Space Marines family has any, so no one else
   // loads a thing.
   const shared = ref([])
   watch(
@@ -69,7 +69,7 @@ export function useFactionPage() {
         if (!local) continue
         for (const e of list.filter((x) => x.from === src)) {
           const d = local.detachments?.find((x) => x.name === e.name)
-          if (d) out.push({ ...d, ...(e.dp != null ? { dp: e.dp } : {}), from: data.en.name })
+          if (d) out.push({ ...d, ...(e.dp != null ? { dp: e.dp } : {}), from: src })
         }
       }
       // guard against a stale resolve after a rapid route/locale change

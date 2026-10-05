@@ -63,7 +63,7 @@ defineEmits(['toggle', 'close'])
 .modal-list { gap: 0.4rem; }
 
 /* Option rows use the same tokens as the other tracker pickers (TwistPickerModal `.tp-item`,
-   DetachmentPickerModal `.det`): bg-secondary tile + border, accent tint/border when selected.
+   DetachmentOption `.det`): bg-secondary tile + border, accent tint/border when selected.
    `color` is set explicitly because <button> does NOT inherit it (the UA default is black, which
    left the RuleBody text unreadable on a dark tile). */
 .opt {

@@ -25,32 +25,39 @@
     <!-- The ⓘ on the right opens the detachment's rule, enhancements and stratagems over the
          picker, so a detachment can be read before it is taken (a player's idea, 2026-10-04). A
          button of its own beside the row, not inside it: the row is a button already. -->
-    <div
-      v-for="d in offered"
+    <template
+      v-for="(d, i) in offered"
       :key="d.name"
-      class="det-row"
-      :class="{ compact }"
     >
-      <DetachmentOption
-        :name="d.name"
-        :force-dispositions="d.forceDispositions || []"
-        :unique="d.unique || ''"
-        :dp="d.dp"
-        :on="selected.includes(d.name)"
-        :compact="compact"
-        @click="$emit('toggle', d)"
+      <DetachmentGroupHead
+        v-if="d.from && d.from !== offered[i - 1]?.from"
+        :from="d.from"
       />
-      <button
-        v-if="factionSlug"
-        type="button"
-        class="det-info"
-        :title="labels.detachmentRules"
-        :aria-label="`${labels.detachmentRules}: ${d.name}`"
-        @click="infoFor = d.name"
+      <div
+        class="det-row"
+        :class="{ compact }"
       >
-        <i class="bi bi-info-circle" />
-      </button>
-    </div>
+        <DetachmentOption
+          :name="d.name"
+          :force-dispositions="d.forceDispositions || []"
+          :unique="d.unique || ''"
+          :dp="d.dp"
+          :on="selected.includes(d.name)"
+          :compact="compact"
+          @click="$emit('toggle', d)"
+        />
+        <button
+          v-if="factionSlug"
+          type="button"
+          class="det-info"
+          :title="labels.detachmentRules"
+          :aria-label="`${labels.detachmentRules}: ${d.name}`"
+          @click="infoFor = d.name"
+        >
+          <i class="bi bi-info-circle" />
+        </button>
+      </div>
+    </template>
     <RosterRulesModal
       v-if="infoFor"
       :faction-slug="factionSlug"
@@ -65,6 +72,7 @@
 // tracker) and the desk's dropdown (RosterSettingsBar) draw the same rows, the same "what is hidden
 // and why" line and the same way back.
 import { computed, ref } from 'vue'
+import DetachmentGroupHead from '../DetachmentGroupHead.vue'
 import DetachmentOption from '../DetachmentOption.vue'
 import RosterRulesModal from '../roster/RosterRulesModal.vue'
 import { ui } from '../../i18n/ui.js'

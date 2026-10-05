@@ -80,10 +80,16 @@
       </span>
       <!-- Several can be taken under the DP budget, so a pick leaves it open; a click outside or
            Escape closes it. -->
-      <PickerDropdown
+      <DetachmentPicker
         v-model:open="detachmentPickerOpen"
-        width="32rem"
-        :label="labels.trackerDpBudget"
+        panel-width="32rem"
+        :detachments="detachmentOptions"
+        :selected="detachments"
+        :max-dp="maxDp"
+        :dp-spent="dpSpent"
+        :faction-slug="factionSlug"
+        @toggle="(d) => $emit('toggle-detachment', d)"
+        @clear="$emit('clear-detachments')"
       >
         <template #trigger="{ toggle, open }">
           <button
@@ -96,17 +102,7 @@
             <i class="bi bi-chevron-down" />
           </button>
         </template>
-        <DetachmentPickerList
-          compact
-          :detachments="detachmentOptions"
-          :selected="detachments"
-          :max-dp="maxDp"
-          :dp-spent="dpSpent"
-          :faction-slug="factionSlug"
-          @toggle="(d) => $emit('toggle-detachment', d)"
-          @clear="$emit('clear-detachments')"
-        />
-      </PickerDropdown>
+      </DetachmentPicker>
     </div>
 
     <!-- An army has ONE Force Disposition. One on offer settles it and there is nothing to ask;
@@ -243,7 +239,7 @@ import { computed, ref } from 'vue'
 import PickerDropdown from '../PickerDropdown.vue'
 import ExpandTransition from '../ExpandTransition.vue'
 import FactionPickerList from '../tracker/FactionPickerList.vue'
-import DetachmentPickerList from '../tracker/DetachmentPickerList.vue'
+import DetachmentPicker from '../tracker/DetachmentPicker.vue'
 import { toneVars } from '../../utils/tone.js'
 import { dispositionColor } from '../../data/dispositionColors.js'
 import { ui } from '../../i18n/ui.js'

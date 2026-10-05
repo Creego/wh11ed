@@ -369,13 +369,17 @@
                     </span>
                     <!-- Several can be taken under the DP budget, so a pick leaves it open. -->
                     <ExpandTransition>
-                      <AdaptivePicker
+                      <DetachmentPicker
                         v-if="m.factionSlug && detachmentsFor(m.factionSlug).length"
-                        panel-width="30rem"
-                        modal-width="520px"
-                        :title="labels.trackerDpBudget"
                         :open="detPickerKey === ak(i, mi)"
+                        :detachments="detachmentsFor(m.factionSlug)"
+                        :selected="m.detachments"
+                        :max-dp="memberMaxDp"
+                        :dp-spent="dpSpent(m)"
+                        :faction-slug="m.factionSlug"
                         @update:open="v => (detPickerKey = v ? ak(i, mi) : '')"
+                        @toggle="d => toggleDetachment(m, d)"
+                        @clear="m.detachments.splice(0)"
                       >
                         <template #trigger="{ toggle, open }">
                           <button
@@ -390,26 +394,7 @@
                             <i class="bi bi-chevron-down ct-chev" />
                           </button>
                         </template>
-                        <template #aside>
-                          <span
-                            class="mh-count"
-                            :class="{ over: dpSpent(m) > dpLimit(m) }"
-                          >{{ dpSpent(m) }} / {{ dpLimit(m) }} DP</span>
-                        </template>
-                        <template #default="{ compact, bodyClass }">
-                          <DetachmentPickerList
-                            :class="bodyClass"
-                            :compact="compact"
-                            :detachments="detachmentsFor(m.factionSlug)"
-                            :selected="m.detachments"
-                            :max-dp="memberMaxDp"
-                            :dp-spent="dpSpent(m)"
-                            :faction-slug="m.factionSlug"
-                            @toggle="d => toggleDetachment(m, d)"
-                            @clear="m.detachments.splice(0)"
-                          />
-                        </template>
-                      </AdaptivePicker>
+                      </DetachmentPicker>
                       <p
                         v-else
                         class="det-empty"
@@ -1153,7 +1138,7 @@ import { useMediaQuery } from '../../composables/useMediaQuery.js'
 import MissionCard from '../event/MissionCard.vue'
 import RuleBody from '../RuleBody.vue'
 import TwistPickerModal from './TwistPickerModal.vue'
-import DetachmentPickerList from './DetachmentPickerList.vue'
+import DetachmentPicker from './DetachmentPicker.vue'
 import AdaptivePicker from '../AdaptivePicker.vue'
 import { dpLimitFor } from '../../composables/rosterEngine.js'
 import FactionPickerList from './FactionPickerList.vue'

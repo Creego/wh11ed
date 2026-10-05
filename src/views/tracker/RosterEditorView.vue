@@ -95,12 +95,16 @@
             :notes="roster.notes || ''"
             :check-legality="roster.checkLegality !== false"
             :archived="!!roster.archived"
+            :detachment-options="detachmentOptions"
+            :detachments="detachments"
+            :max-dp="effBattle.dp"
             @update:limit="setLimit"
             @update:disposition="setDisposition"
             @update:notes="setNotes"
             @update:check-legality="setCheckLegality"
             @pick-faction="factionPickerOpen = true"
-            @pick-detachments="detachmentPickerOpen = true"
+            @toggle-detachment="toggleDetachment"
+            @clear-detachments="clearDetachments"
           />
         </div>
       </div>
@@ -295,17 +299,6 @@
       @pick="pickFaction"
       @close="factionPickerOpen = false"
     />
-    <DetachmentPickerModal
-      v-if="detachmentPickerOpen"
-      :detachments="detachmentOptions"
-      :selected="roster.detachments"
-      :max-dp="effBattle.dp"
-      :dp-spent="dpSpent"
-      :faction-slug="roster.faction"
-      @toggle="toggleDetachment"
-      @clear="clearDetachments"
-      @close="detachmentPickerOpen = false"
-    />
     <RosterRulesModal
       v-if="rulesOpen && roster.faction"
       :faction-slug="roster.faction"
@@ -335,7 +328,6 @@ import { useRoute, useRouter } from 'vue-router'
 import ConfirmModal from '../../components/ConfirmModal.vue'
 import { useDispositionGate } from '../../composables/useDispositionGate.js'
 import FactionPickerModal from '../../components/tracker/FactionPickerModal.vue'
-import DetachmentPickerModal from '../../components/tracker/DetachmentPickerModal.vue'
 import RosterEntryFields from '../../components/roster/RosterEntryFields.vue'
 import RosterUnitBrowser from '../../components/roster/RosterUnitBrowser.vue'
 import RosterUndoBar from '../../components/roster/RosterUndoBar.vue'
@@ -476,7 +468,7 @@ const editorModes = computed(() => [
 
 // ── What building a list does (useRosterBuildActions.js — the wizard runs the same code) ──
 const {
-  factionPickerOpen, detachmentPickerOpen, pickFaction,
+  factionPickerOpen, pickFaction,
   detachmentOptions, detachmentSummary, dispositionCands, dpSpent, dpLimit, toggleDetachment, clearDetachments,
   openUid, toggleOpen, openEntry, addUnit, duplicateEntry, removeEntry, toggleWarlord,
   undoable, undoRemove, dismissUndo,

@@ -1850,7 +1850,7 @@ are the app's shared `.check` rows (`style.css`), not a private pill.
 
 Both **hide** rather than dim, and that is not a preference: this list already spends opacity on
 "not in the roster yet" (`.rub-item`), so there is no dim left to mean "you cannot afford it". The
-shape is the detachment picker's (`DetachmentPickerModal`, the same week): what the filters took
+shape is the detachment picker's (`DetachmentPickerList`, the same week): what the filters took
 away is counted on screen.
 
 **Two things never go inside the fold**, because a closed accordion must not hide why the
