@@ -30,7 +30,6 @@
   "contrast · dark · span.cl-ver · #c8585e on #242428": "v2.7.15",
   "contrast · dark · span.ds-title-base · #dee7d7 on #467a1e": "(32mm, 40mm)",
   "contrast · dark · span.faq-badge · #ffffff on #c8585e": "Q",
-  "contrast · dark · span.faq-badge.ans · #ffffff on #a8a89a": "A",
   "contrast · dark · span.flow-arrow · #c8585e on #2a2a2f": "→",
   "contrast · dark · span.lang-opt · #acacae on #46464b": "EN",
   "contrast · dark · span.logo-sub · #929294 on #38383d": "11th Edition",
@@ -59,7 +58,6 @@
   "contrast · light · span.keyword · #467a1e on #e0e6d7": "[IGNORES COVER]",
   "contrast · light · span.logo-sub · #8a8989 on #2a2828": "11th Edition",
   "contrast · light · span.strat-name-ru · #828283 on #1c1c1e": "Командный переброс",
-  "contrast · light · strong · #3d282a on #027360": "CRITICAL HIT",
   "contrast · light · strong · #467a1e on #d4dec8": "MONSTER",
   "contrast · light · strong · #467a1e on #d9dfcf": "MONSTER",
   "contrast · light · strong · #467a1e on #e0e6d7": "MONSTER"
