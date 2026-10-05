@@ -712,7 +712,30 @@ function linkWargearConditions(datasheetId, drafts) {
     return held.length === 1 ? held[0] : null
   }
 
-  const resolveChunk = (chunk, miniId) => resolveItem(chunk, miniId) || resolveAlternatives(chunk, miniId)
+  // What is given up is the PROFILE's own item, and the prose may name it by the tail of its name:
+  // "The Fire Dragon Exarch's Dragon fusion gun can be replaced with…" gives up the Exarch's
+  // "Exarch's Dragon fusion gun", not the troopers' "Dragon fusion gun" an exact lookup lands on;
+  // a Magna-grapple Dreadnought's "Furioso fists" are its "Twin Furioso fists". Matched to another
+  // profile's item, the swap took nothing away and the old weapon stayed on the card beside the
+  // new one (found 2026-10-05 sweeping every swap). So a resolved item the profile does not hold
+  // yields to the ONE item it does hold whose name ends with the phrase.
+  const heldByTail = (chunk, miniId) => {
+    const n = norm(chunk).replace(/^\d+\s+/, '')
+    const forms = [n, n.replace(/s$/, ''), n.replace(/es$/, '')]
+    const hits = [...(defaultsByMini.get(miniId) || [])].filter((u) => {
+      const k = norm(wgItemName.get(u) || '')
+      return forms.some((f) => f && (k === f || k.endsWith(` ${f}`) || k.replace(/s$/, '').endsWith(` ${f}`)))
+    })
+    return hits.length === 1 ? hits[0] : null
+  }
+  // Not when the unit hands the item out through its own options: the Wracks' Acothyst gives up
+  // the single "torturer's tool" an earlier swap left it, and that is the item meant.
+  const optionUuids = new Set(drafts.flatMap((d) => d.opts.map((o) => o.uuid)))
+  const resolveChunk = (chunk, miniId) => {
+    const u = resolveItem(chunk, miniId)
+    if (u && (defaultsByMini.get(miniId)?.has(u) || optionUuids.has(u))) return u
+    return heldByTail(chunk, miniId) || u || resolveAlternatives(chunk, miniId)
+  }
 
   // …and the case it leaves: a profile that holds BOTH, because its models are not alike. "2 Havocs
   // are equipped with a Havoc autocannon, 2 with a Havoc lascannon", then "any number of Havocs can

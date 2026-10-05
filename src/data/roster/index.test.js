@@ -1679,3 +1679,79 @@ describe('a profile at zero models', () => {
     expect(loadoutItemCounts(def, { id: def.id, size: pack, count: def.sizes[pack].per[0] }).get(teeth)).toBe(3)
   })
 })
+
+// Every wargear option of every unit, picked once at every size its profile is fielded (after
+// the option that hands its item out, for a CHAINED swap), must give up what it says it gives up,
+// add what it grants and touch nothing else; picked to its cap it must leave no count below zero.
+// Swept 2026-10-05 after the default-loadout sweep: the Fire Dragon Exarch's swap gave up the
+// troopers' fusion gun, a Magna-grapple Dreadnought kept its fists, and chained swaps (Death
+// Company Marines, Furioso, Dire Avengers, Corsairs, Kill Tank, Desolation Squad) left the first
+// weapon beside the second.
+describe('wargear swaps', () => {
+  // "… replaced with …" yet nothing to give up: the printed text replaces an item the model is not
+  // printed with (GW's own Legends sheets — Peltast Alpha's arc lance, Cultists' autogun) or names
+  // it differently (Wolf Scouts' "combat blade" for their combat knife). Frozen: a new entry is a
+  // swap that quietly adds without taking away.
+  const NO_REP = new Set([
+    'adeptus-mechanicus/secutarii-peltasts g0',
+    'chaos-space-marines/cultist-mob-with-firearms g1',
+    'chaos-space-marines/cultist-mob-with-firearms g2',
+    'chaos-space-marines/cultist-mob-with-firearms g3',
+    'chaos-space-marines/cultist-mob-with-firearms g4',
+    'space-wolves/wolf-scouts g1',
+  ])
+  it('give up what they replace, add what they grant, touch nothing else', () => {
+    const bad = []
+    const noRep = []
+    let picks = 0
+    for (const { slug, data } of factions) {
+      for (const def of data.units || []) {
+        for (const [gi, g] of (def.gear || []).entries()) {
+          const tag = `${slug}/${def.id} g${gi}`
+          if (/replaced with/i.test(rosterItems.texts[g.t] || '') && !g.rep?.length) noRep.push(tag)
+          for (let size = 0; size < (def.sizes || []).length; size++) {
+            const count = def.sizes[size].per?.[1] ?? def.sizes[size].per?.[0]
+            const base = { id: def.id, size, count, wg: [] }
+            if (!wargearGroupLive(def, base, gi)) continue
+            const perMini = modelsPerMini(def, base)
+            const models = g.all ? null : perMini?.get(g.m ?? 0)
+            if (!perMini || (!g.all && !models) || wargearGroupCap(def, base, gi)?.limit === 0) continue
+            const before = loadoutItemCounts(def, base)
+            if (!before) continue
+            for (const [oi, o] of g.o.entries()) {
+              picks++
+              // A chained swap's item first, from a group of the same profile where there is one.
+              const pre = []
+              for (const id of g.rep || []) {
+                if ((before.get(id) ?? 0) > 0) continue
+                const grants = (h, i) => i !== gi && h.o.some((x) => optionItems(x).some(([y]) => y === id))
+                let src = def.gear.findIndex((h, i) => grants(h, i) && (h.all || (h.m ?? 0) === (g.m ?? 0)))
+                if (src < 0) src = def.gear.findIndex(grants)
+                if (src >= 0) pre.push([src, def.gear[src].o.findIndex((x) => optionItems(x).some(([y]) => y === id)), 1])
+              }
+              const start = pre.length ? loadoutItemCounts(def, { ...base, wg: pre }) : before
+              const after = loadoutItemCounts(def, { ...base, wg: [...pre, [gi, oi, 1]] })
+              const add = new Map(optionItems(o))
+              for (const id of new Set([...start.keys(), ...after.keys()])) {
+                const b = start.get(id) ?? 0
+                const a = after.get(id) ?? 0
+                if (b == null || a == null) continue
+                const given = g.rep?.includes(id) && !add.has(id)
+                if (given && a >= b && b > 0 && !g.alt) bad.push(`${tag} o${oi} at ${count}: keeps ${rosterItems.items[id]} (${b}→${a})`)
+                if (!g.rep?.includes(id) && a - b !== (add.get(id) || 0)) bad.push(`${tag} o${oi} at ${count}: ${rosterItems.items[id]} ${b}→${a}, expected +${add.get(id) || 0}`)
+              }
+              const cap = wargearGroupCap(def, base, gi)?.limit ?? (g.in === 'stepper' ? models || 1 : 1)
+              for (const [id, n] of loadoutItemCounts(def, { ...base, wg: [[gi, oi, cap]] })) {
+                if (n != null && n < 0) bad.push(`${tag} o${oi} at ${count}×${cap}: ${rosterItems.items[id]} ${n}`)
+              }
+            }
+          }
+        }
+      }
+    }
+    expect(picks).toBeGreaterThan(3500)
+    expect(bad).toEqual([])
+    expect(noRep.filter((t) => !NO_REP.has(t))).toEqual([])
+    expect([...NO_REP].filter((t) => !noRep.includes(t))).toEqual([])
+  })
+})

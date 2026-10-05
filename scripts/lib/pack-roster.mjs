@@ -501,7 +501,19 @@ export function packRosterUnit(sheet, ctx) {
       const dicts = opt.all ? [...defaultNames.values()] : [defaultNames.get(opt.m)].filter(Boolean)
       const merged = new Map(dicts.flatMap((d) => [...d]))
       const parts = opt.given.split(/,\s*|\s+and\s+/i).map((s) => s.trim()).filter(Boolean)
-      const ids = parts.map((p) => findName(p, merged))
+      // …or the ONE printed item whose name ends with the phrase: a Magna-grapple Dreadnought's
+      // "Furioso fists" are its "twin Furioso fists" (found 2026-10-05 sweeping every swap).
+      const byTail = (p) => {
+        const forms = singulars(norm(p).replace(/^\d+\s+/, ''))
+        const hits = [...merged].filter(([key]) => forms.some((f) => singulars(key).some((k) => k.endsWith(` ${f}`))))
+        return new Set(hits.map(([, v]) => v)).size === 1 ? hits[0][1] : null
+      }
+      // …or an item an earlier option of this unit hands out: a CHAINED swap. Death Company Marines
+      // trade "boltgun and close combat weapon" for "Astartes chainsword and bolt pistol", then "bolt
+      // pistol" for a hand flamer — the pistol is no printed item, and the group was left without
+      // `rep`, so the hand flamer joined the pistol instead of replacing it (found 2026-10-05).
+      // (`seenItems`: every name this unit resolved so far, the earlier options' among them.)
+      const ids = parts.map((p) => findName(p, merged) ?? byTail(p) ?? findName(p, seenItems))
       if (ids.every((x) => x != null)) rep = [...new Set(ids)]
       else report.rep.push(`${who}: "${opt.given}"`)
     }
