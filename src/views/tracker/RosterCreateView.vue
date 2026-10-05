@@ -566,8 +566,8 @@ watchEffect(() => {
 }
 .rc-step:disabled { cursor: default; opacity: 0.55; }
 .rc-step:not(:disabled):hover { color: var(--text-primary); }
-.rc-step.on:not(:disabled):hover { color: var(--accent); }
-.rc-step.on { color: var(--accent); }
+.rc-step.on:not(:disabled):hover { color: var(--accent-ink); }
+.rc-step.on { color: var(--accent-ink); }
 .rc-step.done { color: var(--text-muted); }
 .rc-step-sep { color: var(--text-dim); font-size: 0.75rem; }
 /* Small phones: three steps + arrows is a lot to fit on one line. Shrink first; on the

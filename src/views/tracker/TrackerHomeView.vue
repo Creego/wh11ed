@@ -539,7 +539,7 @@ function footLine(g) {
   font-variant-numeric: tabular-nums;
 }
 .rb-lab { flex: 1; }
-.rb-rate { color: var(--accent); font-weight: 600; }
+.rb-rate { color: var(--accent-ink); font-weight: 600; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .hero {
   display: flex;
@@ -624,7 +624,7 @@ function footLine(g) {
   cursor: pointer;
 }
 @media (hover: hover) {
-  .cta-q:hover { color: var(--accent); }
+  .cta-q:hover { color: var(--accent-ink); }
 }
 .cta-q:disabled { opacity: 0.5; cursor: default; }
 /* No separator glyph between them, and that is the second attempt: a '·' on every item after
@@ -670,7 +670,7 @@ function footLine(g) {
   font-weight: 600;
   color: var(--text-dim);
 }
-.in-sync .bi { color: var(--accent); }
+.in-sync .bi { color: var(--accent-ink); }
 /* Small "force sync" icon button next to the status — muted, highlights on hover, spins while syncing. */
 .in-sync .sync-icon {
   display: inline-flex;
@@ -684,9 +684,9 @@ function footLine(g) {
   line-height: 1;
 }
 .in-sync .sync-icon .bi { color: var(--text-dim); font-size: 0.9rem; }
-.in-sync .sync-icon:hover .bi { color: var(--accent); }
+.in-sync .sync-icon:hover .bi { color: var(--accent-ink); }
 .in-sync .sync-icon:disabled { cursor: default; }
-.in-sync .sync-icon.spinning .bi { animation: spin 0.8s linear infinite; color: var(--accent); }
+.in-sync .sync-icon.spinning .bi { animation: spin 0.8s linear infinite; color: var(--accent-ink); }
 .empty { color: var(--text-muted); font-style: italic; }
 .games { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; position: relative; }
 .game {
@@ -719,7 +719,7 @@ function footLine(g) {
   color: var(--text-dim);
 }
 .gc-date { display: inline-flex; align-items: center; gap: 0.35rem; }
-.cloud-flag { color: var(--accent); font-size: 0.82rem; }
+.cloud-flag { color: var(--accent-ink); font-size: 0.82rem; }
 .del {
   display: inline-flex;
   background: none;
@@ -730,7 +730,7 @@ function footLine(g) {
   line-height: 1;
   padding: 0.1rem;
 }
-.del:hover { color: var(--accent); }
+.del:hover { color: var(--accent-ink); }
 
 .gc-body {
   display: grid;

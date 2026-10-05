@@ -269,12 +269,12 @@ function onRestore(slug) { restoreSecondaryToHand(props.pi, slug) }
 }
 .card-open:hover { border-color: var(--accent); }
 .card-name { font-weight: 700; font-size: 0.88rem; color: var(--text-primary); }
-.card-vp { font-family: var(--font-mono); font-weight: 700; font-size: 0.82rem; color: var(--accent); flex-shrink: 0; }
+.card-vp { font-family: var(--font-mono); font-weight: 700; font-size: 0.82rem; color: var(--accent-ink); flex-shrink: 0; }
 .manage {
   background: none; border: 1px solid var(--border); color: var(--text-dim);
   cursor: pointer; font-size: 1rem; line-height: 1; padding: 0 0.55rem; flex-shrink: 0;
 }
-.manage:hover { color: var(--accent); border-color: var(--accent); }
+.manage:hover { color: var(--accent-ink); border-color: var(--accent); }
 .manage.restore { display: flex; align-items: center; }
 .manage-more { flex: 1; }
 .manage.restore .bi { font-size: 0.95rem; }

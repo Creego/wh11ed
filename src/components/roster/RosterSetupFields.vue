@@ -292,7 +292,7 @@ const detachmentPickerOpen = ref(false)
 .dp-count {
   font-style: normal;
   font-family: var(--font-mono);
-  color: var(--accent);
+  color: var(--accent-ink);
   font-weight: 700;
   margin-left: 0.3rem;
   letter-spacing: 0;

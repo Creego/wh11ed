@@ -155,6 +155,6 @@ const hidden = computed(() => props.detachments.length - offered.value.length)
 }
 .det-row.compact .det-info { width: 36px; font-size: 1rem; }
 @media (hover: hover) {
-  .det-info:hover { color: var(--accent); border-color: var(--accent); }
+  .det-info:hover { color: var(--accent-ink); border-color: var(--accent); }
 }
 </style>

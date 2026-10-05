@@ -580,7 +580,7 @@ function onEndBattle(reason) {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: var(--accent);
+  color: var(--accent-ink);
   margin-right: 0.35rem;
 }
 .twist-card-body {
@@ -655,7 +655,7 @@ function onEndBattle(reason) {
 }
 .card-open:hover { border-color: var(--accent); }
 .card-name { font-weight: 700; font-size: 0.88rem; color: var(--text-primary); }
-.card-vp { font-family: var(--font-mono); font-weight: 700; font-size: 0.82rem; color: var(--accent); flex-shrink: 0; }
+.card-vp { font-family: var(--font-mono); font-weight: 700; font-size: 0.82rem; color: var(--accent-ink); flex-shrink: 0; }
 .score-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.55rem; }
 /* Same gap SecondaryDeck opens above itself (.sec), so the row reads as its own band under it.
    The CP label drops `.sr-label`'s column width here — it labels the stepper right next to it,
@@ -723,7 +723,7 @@ function onEndBattle(reason) {
 
 /* The broadcast button is a STATE: lit while the game is streaming to an overlay. */
 .bc-on {
-  color: var(--accent);
+  color: var(--accent-ink);
   border-color: var(--accent);
 }
 </style>

@@ -1650,7 +1650,7 @@ function stratKey(strat) {
   font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
   transition: border-color var(--motion-fast), color var(--motion-fast);
 }
-.rvp-head:hover { border-color: var(--accent); color: var(--accent); }
+.rvp-head:hover { border-color: var(--accent); color: var(--accent-ink); }
 .rvp-chev { flex-shrink: 0; font-size: 0.7rem; }
 .rvp-title { flex: 1; text-align: left; }
 .rvp-count { flex-shrink: 0; font-family: var(--font-mono); }
@@ -1755,7 +1755,7 @@ function stratKey(strat) {
   letter-spacing: 0.04em;
   cursor: pointer;
 }
-.rvn-head:hover { color: var(--accent); }
+.rvn-head:hover { color: var(--accent-ink); }
 .rvn-chev { font-size: 0.75rem; }
 .rvn-text {
   margin: 0 0 0.3rem;
@@ -1856,14 +1856,14 @@ function stratKey(strat) {
   font-size: 0.7rem; line-height: 1;
   transition: border-color var(--motion-fast), color var(--motion-fast);
 }
-.rvunit-more:hover { border-color: var(--accent); color: var(--accent); }
+.rvunit-more:hover { border-color: var(--accent); color: var(--accent-ink); }
 .rvunit-more-n { font-family: var(--font-mono); font-weight: 700; }
 /* The folded-out strip continues the one above it, so it carries no rule of its own. */
 .rvunit-rest { border-top: 0; padding-top: 0; }
 .rvunit-text { display: flex; flex-direction: column; flex: 1; min-width: 0; gap: 0.1rem; }
 .rvunit-name { font-weight: 600; color: var(--text-primary); font-size: 0.92rem; }
 /* The slot an attached character fills, after its name. */
-.rvunit-role { margin-left: 0.35rem; font-weight: 400; font-size: 0.74rem; color: var(--accent); }
+.rvunit-role { margin-left: 0.35rem; font-weight: 400; font-size: 0.74rem; color: var(--accent-ink); }
 /* The attached block: the tiles touch, and the army's colour runs down the left of all of them —
    the host's tile included, so the edge starts where the block does. Drawn HERE rather than from
    the shared primitive in style.css, which cannot win against this view's own scoped `border` on
@@ -1905,7 +1905,7 @@ function stratKey(strat) {
 .rvst { display: inline-flex; flex-direction: column; align-items: center; gap: 2px; }
 /* A plate the modifier layer rewrote — the same accent treatment DatasheetCard gives a modified
    value, so the list and the card agree at a glance as well as in the number. */
-.rvst-mod .rvst-box { color: var(--accent); }
+.rvst-mod .rvst-box { color: var(--accent-ink); }
 .rvst-label { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.5px; color: var(--text-muted); }
 .rvst-box {
   --cut: 4px;
@@ -1916,7 +1916,7 @@ function stratKey(strat) {
 /* Invulnerable save — its own plate right after SV, colour-called-out the way DatasheetCard's
    accent-coloured "Invulnerable Save" label calls it out (a distinct accent fill, not just
    another neutral box, so it reads as "special" among the plain stats). */
-.rvst-inv .rvst-label { color: var(--accent); }
+.rvst-inv .rvst-label { color: var(--accent-ink); }
 .rvst-inv .rvst-box { background: var(--accent); color: var(--text-on-accent, #fff); }
 .rvst-inv .rvst-box::before { background: var(--accent); }
 .rvunit-sub { font-size: 0.74rem; color: var(--text-dim); }

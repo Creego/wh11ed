@@ -198,7 +198,7 @@ defineProps({
 
 .det.on .det-dp {
   border-color: var(--accent);
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 /* The dropdown's row: one line — name, then the tag and the dispositions, the cost a plain figure

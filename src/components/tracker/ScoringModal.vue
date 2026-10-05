@@ -201,7 +201,7 @@ function toggleBriefing() {
   font-size: 0.9rem;
   color: var(--text-dim);
 }
-.m-static.hit { color: var(--accent); }
+.m-static.hit { color: var(--accent-ink); }
 .view-only {
   display: flex;
   align-items: center;

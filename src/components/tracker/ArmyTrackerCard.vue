@@ -965,7 +965,7 @@ useFlashOnChange(counter, counterEl)
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .army-field-chev {
@@ -983,7 +983,7 @@ useFlashOnChange(counter, counterEl)
 .army-active-name {
   display: block;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-ink);
   font-size: 0.8rem;
   margin-bottom: 0.1rem;
 }
@@ -1018,7 +1018,7 @@ useFlashOnChange(counter, counterEl)
   font-family: inherit;
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .army-bonus-btn:hover {
@@ -1062,7 +1062,7 @@ useFlashOnChange(counter, counterEl)
   flex-shrink: 0;
   font-family: var(--font-mono);
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .army-resurrect-undo {
@@ -1104,7 +1104,7 @@ useFlashOnChange(counter, counterEl)
   font-family: var(--font-mono);
   font-size: 0.95rem;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .army-readout-note {
@@ -1133,7 +1133,7 @@ useFlashOnChange(counter, counterEl)
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--accent);
+  color: var(--accent-ink);
   line-height: 1;
   transition: transform 0.1s, color 0.15s;
 }
@@ -1144,7 +1144,7 @@ useFlashOnChange(counter, counterEl)
 }
 
 .army-die:hover {
-  color: var(--accent-hover);
+  color: var(--accent-ink-hover);
 }
 
 .army-die:active {
@@ -1193,7 +1193,7 @@ useFlashOnChange(counter, counterEl)
 }
 
 .army-die-add:hover {
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .army-die-add:active {
@@ -1236,7 +1236,7 @@ useFlashOnChange(counter, counterEl)
   font-family: inherit;
   font-size: 0.78rem;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .army-again:hover {
@@ -1283,7 +1283,7 @@ useFlashOnChange(counter, counterEl)
   font-family: inherit;
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent-ink);
   text-align: left;
 }
 

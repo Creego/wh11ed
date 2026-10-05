@@ -326,6 +326,13 @@ There is no separate style passport: the design tokens at the top of `src/style.
 Read that `:root` block before styling anything new — it is short and it answers every "which
 colour / which face / how big" question.
 
+- **`--accent` fills, `--accent-ink` writes** (2026-10-05). A button ground, a tab plate, a tint
+  take `--accent`; text, an icon, a link take `--accent-ink` (and `--accent-ink-hover`). In the dark
+  theme the fill went a step darker (`#b8474d`, white on it 5.2:1) and the ink kept the red the
+  site always wrote in (`#c8585e`): every lighter shade that passes AA read pink to the owner, so
+  that red text stays below AA on purpose and is what the a11y baseline holds. Inside a faction's
+  colour the ink is that colour darkened by 15% in the light theme. Whatever re-points `--accent` must
+  re-point the ink beside it — `.fa-themed`, FactionLayout, Combat Patrol, the print sheet do.
 - **Colour** — `--bg-*` surfaces, `--accent` (the house oxblood), `--text-*`, `--border*`, the
   ability tints (`--ability-weapon` / `--ability-unit`) and the sub-rule set. There is a dark
   theme (`:root[data-theme='dark']` further down the same file), so a hex literal in a component
@@ -368,11 +375,12 @@ measures three things from computed styles and real geometry:
 
 Findings are keyed by theme + element signature + colour pair, not by page — a bad token pair is
 one finding however many pages carry it, and fixing the token clears them all. **The baseline**
-(`scripts/lib/a11y-baseline.json`, 124 entries after the first pass) holds what the palette itself
-was short of AA on that day: `--text-dim` on every surface (2.6–3.2:1), the dark `--accent` as
+(`scripts/lib/a11y-baseline.json`) holds since 2026-10-05 only the dark theme's red text, kept by
+the owner's choice (30 entries, see the palette note above). It held 124 after the first pass, all
+of them what the palette itself was short of AA on that day: `--text-dim` on every surface (2.6–3.2:1), the dark `--accent` as
 text (2.8–3.7:1) and as a button ground under white (4.2:1), `--text-muted` on `--bg-secondary`
-(4.24:1), a faction's own green as chip text. Those are palette decisions, still a fix each; the
-gate is red only on something new. A baseline entry that stops firing is reported as stale, so
+(4.24:1), a faction's own green as chip text. All fixed (the greys merged, the ink token, spot fixes); a
+new entry is a decision to write down, not a default. A baseline entry that stops firing is reported as stale, so
 the file shrinks as the palette is fixed; `--baseline` re-records it — read the diff first.
 
 Tracker and roster screens that need a game or a list in storage are not in the route sample on

@@ -1983,7 +1983,7 @@ function cancel() {
   cursor: pointer;
   transition: border-color 0.15s, color 0.15s;
 }
-@media (hover: hover) { .step:not(:disabled):not(.on):hover { border-color: var(--accent); color: var(--accent); } }
+@media (hover: hover) { .step:not(:disabled):not(.on):hover { border-color: var(--accent); color: var(--accent-ink); } }
 .step:disabled { cursor: default; opacity: 0.55; }
 .step.on {
   color: #fff;
@@ -1992,7 +1992,7 @@ function cancel() {
   cursor: default;
 }
 .step.done {
-  color: var(--accent);
+  color: var(--accent-ink);
   border-color: var(--accent);
 }
 .step-sep { color: var(--text-dim); }
@@ -2002,7 +2002,7 @@ function cancel() {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 @media (max-width: 560px) {
   .steps { display: none; }
@@ -2113,7 +2113,7 @@ function cancel() {
   font-family: var(--font-display);
   font-size: 1.21rem;
   font-weight: 500;
-  color: var(--accent);
+  color: var(--accent-ink);
   margin: 0 0 0.3rem;
 }
 .deploy-card .layout-note { margin: 0.4rem 0 0; }
@@ -2133,7 +2133,7 @@ function cancel() {
   font-family: var(--font-display);
   font-size: 1.21rem;
   font-weight: 500;
-  color: var(--accent);
+  color: var(--accent-ink);
   margin-bottom: 0.75rem;
 }
 /* The team name beside "You"/"Opponent" in a step-2 heading — muted so the fixed side label
@@ -2181,7 +2181,7 @@ function cancel() {
 .dp-count {
   font-style: normal;
   font-family: var(--font-mono);
-  color: var(--accent);
+  color: var(--accent-ink);
   font-weight: 700;
   margin-left: 0.3rem;
 }
@@ -2286,7 +2286,7 @@ function cancel() {
   font-size: 1rem; cursor: pointer;
 }
 .rp-open:hover { border-color: var(--accent); color: var(--text-primary); }
-.rp-open.on { border-color: var(--accent); color: var(--accent); }
+.rp-open.on { border-color: var(--accent); color: var(--accent-ink); }
 /* Stands where the faction picker would be, so it keeps `.ro`'s shape and only adds the ✕. */
 .roster-line { display: flex; align-items: center; gap: 0.5rem; }
 .rl-text { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -2363,7 +2363,7 @@ function cancel() {
   font-size: 0.78rem;
   color: var(--text-muted);
 }
-.side-note.ok { color: var(--accent); }
+.side-note.ok { color: var(--accent-ink); }
 .side-takeover { margin-top: 0.7rem; }
 /* The lobby's own row, under the step navigation: text, not buttons with frames, so it reads as
    an annotation to the party rather than a third and fourth way forward. Same recipe as the
@@ -2395,7 +2395,7 @@ function cancel() {
   cursor: pointer;
 }
 @media (hover: hover) {
-  .lobby-q:hover { color: var(--accent); }
+  .lobby-q:hover { color: var(--accent-ink); }
 }
 
 /* The other side's card while another phone holds it: a waiting line, then what it sent. */

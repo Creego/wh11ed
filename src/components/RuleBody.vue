@@ -364,7 +364,7 @@ p {
 }
 
 .flow-arrow {
-  color: var(--accent);
+  color: var(--accent-ink);
   flex-shrink: 0;
   font-weight: 600;
 }

@@ -266,7 +266,7 @@ const total = computed(() => sides.value.reduce((n, s) => n + s.rules.length, 0)
   cursor: pointer;
   text-align: left;
 }
-.pr-head:hover { color: var(--accent); }
+.pr-head:hover { color: var(--accent-ink); }
 .pr-chev { font-size: 0.75rem; }
 .pr-title { flex: 1; }
 .pr-count {
@@ -305,7 +305,7 @@ const total = computed(() => sides.value.reduce((n, s) => n + s.rules.length, 0)
   cursor: pointer;
 }
 .pr-go-btn:hover .pr-name,
-.pr-go-btn:hover .pr-go { color: var(--accent); }
+.pr-go-btn:hover .pr-go { color: var(--accent-ink); }
 .pr-src {
   flex: 0 0 auto;
   max-width: 40%;
@@ -325,6 +325,6 @@ const total = computed(() => sides.value.reduce((n, s) => n + s.rules.length, 0)
   font-size: 0.8rem;
   color: var(--text-muted);
 }
-.pr-strats:hover { color: var(--accent); }
+.pr-strats:hover { color: var(--accent-ink); }
 .pr-go { flex-shrink: 0; margin-left: auto; font-size: 0.75rem; color: var(--text-dim); }
 </style>

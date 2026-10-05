@@ -123,7 +123,7 @@ const asTablist = computed(() => props.tabs.every((t) => !t.to))
 }
 
 .page-tab.active {
-  color: var(--accent);
+  color: var(--accent-ink);
   background: var(--bg-primary);
   border-color: var(--accent);
   border-bottom-color: var(--bg-primary); /* erase the accent line under the open tab → merge with content */

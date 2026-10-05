@@ -608,7 +608,7 @@ function confirmDelete() {
 .rfd { flex-shrink: 0; margin-top: 0.1rem; }
 .rdets { display: block; font-size: 0.72rem; color: var(--text-muted); opacity: 0.8; }
 @media (prefers-color-scheme: dark) {
-  .rfaction, .rpin { color: var(--fa-dark, var(--accent)); }
+  .rfaction, .rpin { color: var(--fa-dark, var(--accent-ink)); }
 }
 .rpin { flex-shrink: 0; margin-left: auto; font-size: 0.85rem; color: var(--fa-light, var(--accent)); }
 .rpoints { font-family: var(--font-mono); font-weight: 700; color: var(--text-primary); white-space: nowrap; }
@@ -631,10 +631,10 @@ function confirmDelete() {
 <!-- Explicit data-theme must win over prefers-color-scheme in both directions (see FactionLayout). -->
 <style>
 :root[data-theme='light'] .roster.themed { border-left-color: var(--fa-light, #8b2a33); }
-:root[data-theme='dark'] .roster.themed { border-left-color: var(--fa-dark, #c8585e); }
+:root[data-theme='dark'] .roster.themed { border-left-color: var(--fa-dark, #b8474d); }
 @media (hover: hover) {
   :root[data-theme='light'] .roster.themed:hover { border-color: var(--fa-light, #8b2a33); }
-  :root[data-theme='dark'] .roster.themed:hover { border-color: var(--fa-dark, #c8585e); }
+  :root[data-theme='dark'] .roster.themed:hover { border-color: var(--fa-dark, #b8474d); }
 }
 :root[data-theme='light'] .rfaction,
 :root[data-theme='light'] .rpin { color: var(--fa-light, #8b2a33); }
