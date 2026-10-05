@@ -12,6 +12,7 @@ import { allySourceOf, leadTypeFor, optionItems, optionLabel, unitWargearPoints,
 import { duplicateLimit, validateRoster } from '../../composables/rosterValidation.js'
 import conditionalKeywords from '../conditionalKeywords.json'
 import { loadoutItemCounts } from '../../composables/rosterModifiers.js'
+import { PACK_ERRATA } from '../../../scripts/lib/pack-roster.mjs'
 
 const DIR = path.dirname(fileURLToPath(import.meta.url))
 const files = fs.readdirSync(DIR).filter((f) => f.endsWith('.js') && !['index.js', 'core.js', 'items.js', 'index.test.js'].includes(f))
@@ -1613,6 +1614,8 @@ describe('default loadout against the datasheet text', () => {
       try { sheets = (await import(`../datasheets/${slug}.js`)).default } catch { continue }
       for (const def of data.units || []) {
         const sheet = sheets.find((s) => s.id === def.id)
+        // A sheet GW printed wrong is read through its errata, not as printed (pack-roster.mjs).
+        if (PACK_ERRATA[def.id]?.loadout) continue
         const text = String(sheet?.loadout || '').split('\n').filter((l) => /equipped with/.test(l))
         const lines = text.map((l) => l.match(/^\*\*(.+?) (?:is|are) equipped with:\*\*\s*(.+)$/))
         if (!lines.length || lines.some((l) => !l) || !def.defaults?.length) continue
@@ -1689,17 +1692,13 @@ describe('a profile at zero models', () => {
 // weapon beside the second.
 describe('wargear swaps', () => {
   // "… replaced with …" yet nothing to give up: the printed text replaces an item the model is not
-  // printed with — GW's own Legends sheets, each pasted from a neighbour: Peltasts' options are the
-  // Hoplites' word for word (the Alpha's "arc lance"), the Firearms Cultists' back page is the plain
-  // Cultist Mob's (no autogun) — checked against the Faction Pack PDFs 2026-10-05. A name the prose
-  // spells differently goes in the generator's PROSE_NAME_FIXES instead. Frozen: a new entry is a
+  // printed with — the Peltasts' options are the Hoplites' word for word (the Alpha's "arc lance"),
+  // GW's Faction Pack, checked against the PDF 2026-10-05; left as printed on the owner's word, the
+  // intended swap being a guess. A sheet whose fix is known goes in pack-roster's PACK_ERRATA, a
+  // name the prose spells differently in the generator's PROSE_NAME_FIXES. Frozen: a new entry is a
   // swap that quietly adds without taking away.
   const NO_REP = new Set([
     'adeptus-mechanicus/secutarii-peltasts g0',
-    'chaos-space-marines/cultist-mob-with-firearms g1',
-    'chaos-space-marines/cultist-mob-with-firearms g2',
-    'chaos-space-marines/cultist-mob-with-firearms g3',
-    'chaos-space-marines/cultist-mob-with-firearms g4',
   ])
   it('give up what they replace, add what they grant, touch nothing else', () => {
     const bad = []
@@ -1763,11 +1762,8 @@ describe('wargear swaps', () => {
 // Cultists print an autogun that neither their pasted loadout nor any option hands out (found
 // 2026-10-05). Frozen; a new entry is a sheet to read against its source.
 describe('every printed weapon has a carrier', () => {
-  const UNREACHABLE = new Set([
-    'astra-militarum/munitorum-servitors: close combat weapon',
-    'chaos-space-marines/cultist-mob-with-firearms: autogun',
-    'chaos-space-marines/cultist-mob-with-firearms: close combat weapon',
-  ])
+  // Empty since PACK_ERRATA restored the Firearms Cultists and the Munitorum Servitors (2026-10-05).
+  const UNREACHABLE = new Set([])
   const key = (s) => String(s || '').toLowerCase().replace(/[’']/g, "'").replace(/[‐‑]/g, '-').replace(/\s+/g, ' ').trim().replace(/s$/, '')
   it('in a default loadout or an option', async () => {
     const found = []

@@ -391,10 +391,55 @@ function perModelRules(gear, raws, sheet, seenItems, report, who) {
   return pm
 }
 
+// ---- Errata to GW's own sheets -----------------------------------------------------------------
+// A Faction Pack sheet stitched from another, read as printed, gives the builder a unit nobody can
+// field as GW meant it. Each entry rewrites a passage of the sheet's loadout or option text BEFORE
+// it is read, on the owner's word, with the evidence — and only for the builder: the datasheet
+// players read keeps GW's text. Found 2026-10-05 by the 'every printed weapon has a carrier' gate
+// (src/data/roster/index.test.js) and checked page by page against the PDFs. Remove an entry when
+// GW fixes the sheet — a passage no longer found fails the generator.
+export const PACK_ERRATA = {
+  // The back page is the plain Cultist Mob's — its title, its "autopistol; brutal assault weapon"
+  // loadout. The front prints Autogun and Close combat weapon, and every option trades "autogun and
+  // close combat weapon" or "a Chaos Cultist's autogun". The Champion's line is kept as printed: it
+  // agrees with his own "autopistol → bolt pistol".
+  'cultist-mob-with-firearms': {
+    loadout: [['**Every Chaos Cultist is equipped with:** autopistol; brutal assault weapon.', '**Every Chaos Cultist is equipped with:** autogun; close combat weapon.']],
+  },
+  // "Up to 2 models can each have their Servitor's servo-arm replaced with" a heavy weapon — and
+  // nothing to fight with: a model with no melee weapon cannot make melee attacks (core rules), and
+  // the sheet prints a Close combat weapon no model could otherwise take. GW's usual wording,
+  // "1 heavy bolter and 1 close combat weapon", restored.
+  'munitorum-servitors': {
+    options: [
+      ['▪ 1 heavy bolter\n', '▪ 1 heavy bolter and 1 close combat weapon\n'],
+      ['▪ 1 multi-melta\n', '▪ 1 multi-melta and 1 close combat weapon\n'],
+      ['▪ 1 plasma cannon', '▪ 1 plasma cannon and 1 close combat weapon'],
+    ],
+  },
+}
+
+function applyErrata(sheet) {
+  const fix = PACK_ERRATA[sheet.id]
+  if (!fix) return sheet
+  const swap = (text, pairs) => pairs.reduce((t, [from, to]) => {
+    if (!t.includes(from)) throw new Error(`pack-roster: PACK_ERRATA for ${sheet.id} — "${from.slice(0, 50)}" no longer in the sheet; GW fixed it? Remove the entry.`)
+    return t.replace(from, to)
+  }, text)
+  const out = { ...sheet }
+  if (fix.loadout) out.loadout = swap(String(sheet.loadout || ''), fix.loadout)
+  if (fix.options) {
+    const joined = (sheet.options || []).join('\u0000')
+    out.options = swap(joined, fix.options).split('\u0000')
+  }
+  return out
+}
+
 // ---- The unit ----------------------------------------------------------------------------------
 // `sheet` is the datasheet entry; `ctx` carries the faction's other units (for Leader targets),
 // the interners and the report. Returns the roster unit, or null when the sheet cannot be read.
-export function packRosterUnit(sheet, ctx) {
+export function packRosterUnit(printedSheet, ctx) {
+  const sheet = applyErrata(printedSheet)
   const { report, item, text, unitIdByName, allegFor } = ctx
   const who = sheet.name
   const minis = parseComposition(sheet.composition, report, who)
