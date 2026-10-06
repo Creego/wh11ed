@@ -1495,7 +1495,7 @@ back.
 **`useRosterUndo.js` is the one step back the builder has** (2026-09-23). Building a list is a long
 session of small picks and the trash icon sat on the same tile as the row that opens them; the only
 way back from a mis-tap was Cancel, which throws away the session rather than the tap. It holds the
-last removal for 5 seconds (`UNDO_MS`, 8 until 2026-10-06) and `RosterUndoBar.vue` offers it back — a REPORT with one
+last removal for 3 seconds (`UNDO_MS`, 8 until 2026-10-06) and `RosterUndoBar.vue` offers it back — a REPORT with one
 action, `role="status"`, taking no focus, ignoring it being the ordinary outcome. ONE slot on
 purpose: a stack invites "undo until it looks right", which is a different feature and one that
 would have to survive a save, a reload and both screens. The ticket lives in a closure, not in the
