@@ -462,11 +462,27 @@
                 :key="det.name"
                 class="rv-rule-block"
               >
-                <!-- Named as what it is (owner, 2026-10-06): the bare name over the rule did not say
-                     it was the detachment. The tag after the name, as an ally group's heading. -->
-                <h3 class="roster-group-head">
-                  {{ det.name }}<span class="roster-group-tag">{{ labels.rosterDetachmentLabel }}</span>
+                <!-- Headed like the army rule above, by what it is (owner, 2026-10-06): the bare
+                     name over the rule did not say it was the detachment. One detachment: its
+                     name in the heading. Several: one "Detachments" heading over the first, and
+                     each one's name over its own rule. -->
+                <h3
+                  v-if="selectedDetachmentRules.length === 1"
+                  class="roster-group-head"
+                >
+                  {{ labels.rosterDetachmentLabel }} · {{ det.name }}
                 </h3>
+                <template v-else>
+                  <h3
+                    v-if="det === selectedDetachmentRules[0]"
+                    class="roster-group-head"
+                  >
+                    {{ labels.factionDetachments }}
+                  </h3>
+                  <h4 class="rv-det-name">
+                    {{ det.name }}
+                  </h4>
+                </template>
                 <RuleBlock
                   :title="det.rule.name"
                   :subtitle="det.rule.nameRu"
@@ -475,9 +491,9 @@
                 <!-- Its enhancements, and who in this list wears each one or could (a player's
                      request, 2026-10-06). -->
                 <template v-if="det.enhancements?.length">
-                  <h4 class="rv-enh-head">
+                  <h3 class="roster-group-head">
                     {{ labels.factionEnhancements }}
-                  </h4>
+                  </h3>
                   <EnhancementList
                     :enhancements="det.enhancements"
                     :list="rulesList"
@@ -1962,12 +1978,9 @@ function stratKey(strat) {
    settled by chunk order, which is nobody's intention. Through the wrapper it is 0,3,0 and wins
    outright. */
 .rv-rules .rv-rule-block :deep(.rule-block) { padding: 0.5rem 0; }
+/* One of several detachments, named over its rule under the shared heading. */
+.rv-det-name { margin: 0.5rem 0 0; font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; color: var(--accent-ink); }
 .rv-rules .rv-rule-block :deep(.rule-body) { font-size: 0.85rem; line-height: 1.45; }
-/* A detachment's enhancements under its rule, headed like the panel's own small caps. */
-.rv-enh-head {
-  margin: 0.6rem 0 0.35rem; font-family: var(--font-sans); font-size: 0.72rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim);
-}
 .rv-rules .rv-rule-block :deep(.rule-body p) { margin-bottom: 0.5rem; }
 .rv-rules .rv-rule-block :deep(.rule-body p:last-child) { margin-bottom: 0; }
 .rv-rules .rv-rule-block :deep(.rule-header) { margin-bottom: 0.4rem; }
