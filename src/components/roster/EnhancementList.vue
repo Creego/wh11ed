@@ -9,41 +9,51 @@
       class="enh"
     >
       <div class="enh-head">
-        <span class="enh-name">{{ e.name }}</span>
-        <span
-          v-if="e.nameRu"
-          class="enh-ru"
-        >{{ e.nameRu }}</span>
+        <div class="enh-heading">
+          <span class="enh-name">{{ e.name }}</span>
+          <span
+            v-if="e.nameRu"
+            class="enh-ru"
+          >{{ e.nameRu }}</span>
+        </div>
         <span
           v-if="e.points != null"
           class="enh-pts"
-        >{{ e.points }}{{ labels.rosterPointsLabel }}</span>
+        >{{ e.points }} {{ labels.rosterPointsLabel }}</span>
       </div>
       <div
         class="enh-body"
         v-html="renderRichText(e.body)"
       />
-      <p
+      <!-- Who: the units as tags — the one wearing it filled with a tick, the free ones outlined. -->
+      <div
         v-if="bearers(e)"
         class="enh-who"
-        :class="{ taken: bearers(e).taken.length }"
       >
         <template v-if="bearers(e).taken.length">
-          <i
+          <span class="enh-who-label">{{ labels.rosterEnhTaken }}</span>
+          <span
+            v-for="n in bearers(e).taken"
+            :key="'t' + n"
+            class="enh-unit on"
+          ><i
             class="bi bi-check-lg"
             aria-hidden="true"
-          /> {{ labels.rosterEnhTaken }} {{ bearers(e).taken.join(', ') }}<span
-            v-if="bearers(e).can.length"
-            class="enh-more"
-          > · {{ labels.rosterEnhCanMore }} {{ bearers(e).can.join(', ') }}</span>
+          /> {{ n }}</span>
         </template>
-        <template v-else-if="bearers(e).can.length">
-          {{ labels.rosterEnhCan }} {{ bearers(e).can.join(', ') }}
+        <template v-if="bearers(e).can.length">
+          <span class="enh-who-label">{{ bearers(e).taken.length ? labels.rosterEnhCanMore : labels.rosterEnhCan }}</span>
+          <span
+            v-for="n in bearers(e).can"
+            :key="'c' + n"
+            class="enh-unit"
+          >{{ n }}</span>
         </template>
-        <template v-else>
-          {{ labels.rosterEnhNobody }}
-        </template>
-      </p>
+        <span
+          v-if="!bearers(e).taken.length && !bearers(e).can.length"
+          class="enh-none"
+        >{{ labels.rosterEnhNobody }}</span>
+      </div>
     </article>
   </div>
 </template>
@@ -76,14 +86,36 @@ const bearers = (e) => answers.value.get(e.name) || null
 </script>
 
 <style scoped>
-.enh { padding: 0.35rem 0; border-top: 1px dashed var(--border); }
-.enh:first-child { border-top: none; padding-top: 0; }
-.enh-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.35rem; }
-.enh-name { font-weight: 700; font-size: 0.95rem; color: var(--text-primary); }
-.enh-ru { font-size: 0.72rem; color: var(--text-muted); }
-.enh-pts { margin-left: auto; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; color: var(--text-muted); }
-.enh-body { font-size: 0.8rem; line-height: 1.4; color: var(--text-primary); }
-.enh-who { margin: 0.3rem 0 0; font-size: 0.78rem; color: var(--text-muted); }
-.enh-who.taken { color: var(--accent-ink); font-weight: 600; }
-.enh-more { color: var(--text-muted); font-weight: 400; }
+/* One card an enhancement, as on the faction page (FactionRuleView), a step denser: it sits in a
+   list's Rules tab and in the builder's rules sheet, both beside a list of units. */
+.enh-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.enh {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  padding: 0.6rem 0.8rem 0.7rem;
+}
+.enh-head { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.35rem; }
+.enh-heading { min-width: 0; }
+.enh-name {
+  display: block;
+  font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; line-height: 1.15;
+  text-transform: uppercase; letter-spacing: 0.3px; color: var(--text-primary);
+}
+.enh-ru { display: block; font-size: 0.72rem; color: var(--text-muted); }
+.enh-pts { margin-left: auto; flex-shrink: 0; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; color: var(--text-muted); white-space: nowrap; }
+.enh-body { font-size: 0.85rem; line-height: 1.45; color: var(--text-primary); }
+/* The answer for this list, ruled off from the rule text. */
+.enh-who {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.35rem;
+  margin-top: 0.55rem; padding-top: 0.5rem; border-top: 1px solid var(--border-light);
+}
+.enh-who-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-dim); }
+.enh-unit {
+  display: inline-flex; align-items: center; gap: 0.2rem;
+  padding: 0.1rem 0.45rem; border: 1px solid var(--border);
+  font-size: 0.78rem; font-weight: 600; color: var(--text-primary);
+}
+.enh-unit.on { border-color: var(--accent); background: var(--accent); color: var(--text-on-accent); }
+.enh-none { font-size: 0.8rem; color: var(--text-dim); }
 </style>

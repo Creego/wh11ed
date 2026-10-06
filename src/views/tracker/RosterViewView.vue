@@ -462,8 +462,10 @@
                 :key="det.name"
                 class="rv-rule-block"
               >
+                <!-- Named as what it is (owner, 2026-10-06): the bare name over the rule did not say
+                     it was the detachment. The tag after the name, as an ally group's heading. -->
                 <h3 class="roster-group-head">
-                  {{ det.name }}
+                  {{ det.name }}<span class="roster-group-tag">{{ labels.rosterDetachmentLabel }}</span>
                 </h3>
                 <RuleBlock
                   :title="det.rule.name"
