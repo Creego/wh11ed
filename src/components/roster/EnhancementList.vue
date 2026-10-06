@@ -25,6 +25,7 @@
         class="enh-body"
         v-html="renderRichText(e.body)"
       />
+      <RuleExtras :extras="e.extras" />
       <!-- Who: the units as tags — the one wearing it filled with a tick, the free ones outlined. -->
       <div
         v-if="bearers(e)"
@@ -64,6 +65,7 @@ import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
 import { useRenderInline } from '../../composables/useRenderInline.js'
 import { enhancementBearers } from '../../composables/rosterEngine.js'
+import RuleExtras from '../RuleExtras.vue'
 
 const props = defineProps({
   // The rules bundle's enhancements (name, nameRu, points, body).

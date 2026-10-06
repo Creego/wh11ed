@@ -107,6 +107,7 @@
                   :subtitle="det.rule.nameRu"
                   :body="det.rule.body"
                 />
+                <RuleExtras :extras="det.rule?.extras" />
               </div>
             </CollapseTransition>
           </div>
@@ -189,6 +190,7 @@ import CollapseTransition from '../CollapseTransition.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
 import EnhancementList from './EnhancementList.vue'
+import RuleExtras from '../RuleExtras.vue'
 import { normName } from '../../composables/rosterFactionRules.js'
 import { useRosterFactionRules } from '../../composables/useRosterFactionData.js'
 

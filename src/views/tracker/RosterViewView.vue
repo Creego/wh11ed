@@ -488,6 +488,7 @@
                   :subtitle="det.rule.nameRu"
                   :body="det.rule.body"
                 />
+                <RuleExtras :extras="det.rule.extras" />
                 <!-- Its enhancements, and who in this list wears each one or could (a player's
                      request, 2026-10-06). -->
                 <template v-if="det.enhancements?.length">
@@ -729,6 +730,7 @@ import { phaseLabel, usableInSlot, PHASE_ORDER } from '../../composables/stratag
 import { normName } from '../../composables/rosterFactionRules.js'
 import { useRosterFactionData, useRosterFactionRules } from '../../composables/useRosterFactionData.js'
 import EnhancementList from '../../components/roster/EnhancementList.vue'
+import RuleExtras from '../../components/RuleExtras.vue'
 import { getItem, setItem } from '../../composables/safeStorage.js'
 import { rosterNameFit } from '../../utils/rosterNameFit.js'
 import { APP_VERSION } from '../../buildInfo.js'

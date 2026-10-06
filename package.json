@@ -35,6 +35,7 @@
     "wtags": "node scripts/check-weapon-abilities.mjs",
     "dsrules": "node scripts/check-datasheet-rules.mjs",
     "imgrules": "node scripts/check-image-rules.mjs",
+    "ruletext": "node scripts/check-rule-text.mjs",
     "coregrants": "node scripts/check-core-grants.mjs",
     "dsids": "node scripts/check-datasheet-ids.mjs",
     "exceptions": "node scripts/check-appdata-exceptions.mjs",
