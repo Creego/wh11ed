@@ -1871,21 +1871,22 @@ phone spent three rows of the catalogue on switches already summed up by that co
 open and nothing hidden the block drops its own padding and rule (`.rub-filters.folded`): a closed
 filter must not cost a visible band of pane height.
 
-- **"Fits the points left"** compares `minPoints(u)` — the cheapest bracket plus any mandatory
-  enhancement, exactly the figure the row prints — against the `remaining` prop, which both views
-  pass as `limit - points`. No `remaining` (no battle size resolvable) takes the toggle off the
-  screen rather than guessing. The promise is "its cheapest configuration fits"; a bigger bracket
-  or paid wargear chosen afterwards can still take the list over, and saying so is the points
-  readout's job.
+- **"Fits the points left"** compares `minPoints(u)` — the NEXT copy's cheapest bracket, copy tax
+  and any mandatory enhancement included, exactly the figure the row prints — against the
+  `remaining` prop, which both views pass as `limit - points`. No `remaining` (no battle size
+  resolvable) takes the toggle off the screen rather than guessing. The promise is "another copy
+  fits"; a bigger bracket or paid wargear chosen afterwards can still take the list over, and
+  saying so is the points readout's job.
 - **"In my collection"** reads `useCollection` (below).
 
 Two things follow from the pane being a list you are BUILDING, not a picker:
 
-- **A unit already in the list is never filtered away**, by either toggle. A catalogue that drops
-  what you just added — the budget ran out, or you are proxying something you do not own — reads as
-  a bug; its row keeps its count badge instead. It is also why the copy tax (`def.step`) never enters
-  the budget test: the surcharge lands on the Nth copy, and every unit the test prices is on its
-  first.
+- **The budget filter asks the same question of every row, the units in the list included**
+  (owner, 2026-10-06). It used to spare them, for the "−" their rows carried; that button left the
+  catalogue on 2026-09-23, and a player then read the spared rows as the filter not working ("why
+  are the others hidden and not these"). While another copy fits the row stays, so building three
+  copies is three taps. **The other two toggles still spare a unit in the list**: a catalogue that
+  drops what you just added because you are proxying a box you do not own reads as a bug.
 - **The "N hidden" count is taken after `sectionsOf`, not before it.** A group whose ally
   Detachment isn't selected is not on offer whatever the toggles say, and counting it as hidden by
   the filter would be a lie. That is the one reason `allSections` exists beside `groups`; with both

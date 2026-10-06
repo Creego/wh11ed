@@ -22,6 +22,20 @@
 
 export const changelog = [
   {
+    version: '2.7.17',
+    date: '2026-10-06',
+    en: [
+      { h: 'Roster builder' },
+      'The list you edited last is now at the top of your lists. Pinned lists stay above it. Just opening a list does not move it.',
+      'The “Fits the points left” filter now hides units that are already in your list too. A unit stays while one more copy of it fits. Before, units in the list were never hidden.',
+    ],
+    ru: [
+      { h: 'Конструктор ростеров' },
+      'Список, который вы меняли последним, теперь стоит первым. Закреплённые списки по-прежнему выше всех. Если список просто открыть, он не сдвигается.',
+      'Фильтр «Влезает в остаток» теперь прячет и юниты, которые уже есть в списке. Юнит остаётся, пока влезает ещё одна его копия. Раньше юниты из списка не прятались никогда.',
+    ],
+  },
+  {
     version: '2.7.16',
     date: '2026-10-05',
     en: [

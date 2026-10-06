@@ -73,6 +73,23 @@ describe('RosterListView', () => {
     })
   })
 
+  // Owner, 2026-10-06: the list changed last comes first; a pinned one stays above it.
+  it('puts the list edited last on top, under the pinned ones', async () => {
+    const store = useRosters()
+    const { toggleRosterPin } = await import('../../composables/useRosterPins.js')
+    const old = store.createRoster('Old')
+    const mid = store.createRoster('Mid')
+    const pinned = store.createRoster('Pinned')
+    old.updatedAt = 1000; mid.updatedAt = 2000; pinned.updatedAt = 500
+    toggleRosterPin(pinned.id)
+    const w = mount(RosterListView, { global: { stubs } })
+    const names = () => w.findAll('.rname').map((n) => n.text())
+    expect(names()).toEqual(['Pinned', 'Mid', 'Old'])
+    store.renameRoster(old.id, 'Old, edited')
+    await flushPromises()
+    expect(names()).toEqual(['Pinned', 'Old, edited', 'Mid'])
+  })
+
   it('shows twenty lists, and "Show more" the next twenty', async () => {
     const store = useRosters()
     for (let i = 0; i < 45; i++) store.createRoster(`L${i}`)

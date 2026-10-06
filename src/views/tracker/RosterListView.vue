@@ -359,8 +359,16 @@ const onlyFaction = computed(() => (
   factionFilters.value.length > 1 && factionFilters.value.some((f) => f.slug === pickedFaction.value)
     ? pickedFaction.value : null
 ))
+// The list last changed comes first (owner, 2026-10-06), pins still above everything. Storage
+// order is only insertion order, so an edited list used to stay wherever it was created. Sorted by
+// `updatedAt`, which only real edits move (opening a list or repricing it does not) — and a list
+// edited on another device arrives with its own clock, so it ranks by when it was changed there.
+// On the desk the card moves while its editor is still open, on the first edit (owner's call);
+// TransitionGroup's list-move makes that a slide, not a jump.
+const byLastEdit = (a, b) => (b.updatedAt || 0) - (a.updatedAt || 0)
 const listed = computed(() => pinnedFirst(
-  onlyFaction.value ? shown.value.filter((r) => r.faction === onlyFaction.value) : shown.value,
+  (onlyFaction.value ? shown.value.filter((r) => r.faction === onlyFaction.value) : shown.value)
+    .slice().sort(byLastEdit),
 ))
 function draftStepLabel(r) {
   return labels.value.rosterDraftStep.replace('{n}', String(r.draftStep || 1))
