@@ -61,6 +61,21 @@ describe('RosterListView', () => {
       expect(names(w)).toHaveLength(3)
     })
 
+    // A player request (2026-10-06): the page opens on the faction picked last time.
+    it('remembers the faction picked, and forgets it on "All"', async () => {
+      const store = useRosters()
+      make(store, 'Waaagh', 'orks'); make(store, 'Bugs', 'tyranids')
+      const w = mount(RosterListView, { global: { stubs } })
+      await w.find('.rl-factions select').setValue('tyranids')
+      w.unmount()
+      const again = mount(RosterListView, { global: { stubs } })
+      expect(names(again)).toEqual(['Bugs'])
+      expect(again.find('.rl-factions select').element.value).toBe('tyranids')
+      await again.find('.rl-factions select').setValue('')
+      again.unmount()
+      expect(names(mount(RosterListView, { global: { stubs } }))).toHaveLength(2)
+    })
+
     it('shows everything again once the picked faction has no list left', async () => {
       const store = useRosters()
       make(store, 'Waaagh', 'orks'); const b = make(store, 'Bugs', 'tyranids'); make(store, 'Mechs', 'necrons')

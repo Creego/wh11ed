@@ -51,7 +51,9 @@
         :title="labels.rosterFactionRules"
         @click="$emit('open-rules')"
       >
-        <i class="bi bi-book" />
+        <!-- The faction-rules shield, as the faction pages and the bottom nav draw it — not the
+             book, which the top bar already uses for the lore switch (owner, 2026-10-06). -->
+        <i class="bi bi-shield-shaded" />
       </button>
     </div>
 
@@ -257,7 +259,7 @@ const props = defineProps({
   // Points still unspent (the views' `limit - points`), which is all the budget filter needs.
   // Null — no battle size resolvable — takes that filter off the screen rather than guessing.
   remaining: { type: Number, default: null },
-  // Show the book that opens the list's rules (the caller owns the dialog: `open-rules`).
+  // Show the shield that opens the list's rules (the caller owns the dialog: `open-rules`).
   rulesButton: { type: Boolean, default: false },
 })
 defineEmits(['add', 'open-rules'])

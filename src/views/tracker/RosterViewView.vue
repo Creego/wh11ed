@@ -470,6 +470,17 @@
                   :subtitle="det.rule.nameRu"
                   :body="det.rule.body"
                 />
+                <!-- Its enhancements, and who in this list wears each one or could (a player's
+                     request, 2026-10-06). -->
+                <template v-if="det.enhancements?.length">
+                  <h4 class="rv-enh-head">
+                    {{ labels.factionEnhancements }}
+                  </h4>
+                  <EnhancementList
+                    :enhancements="det.enhancements"
+                    :list="rulesList"
+                  />
+                </template>
               </section>
             </template>
           </div>
@@ -699,6 +710,7 @@ import { memberAt } from '../../composables/rosterGameLink.js'
 import { phaseLabel, usableInSlot, PHASE_ORDER } from '../../composables/stratagemPhases.js'
 import { normName } from '../../composables/rosterFactionRules.js'
 import { useRosterFactionData, useRosterFactionRules } from '../../composables/useRosterFactionData.js'
+import EnhancementList from '../../components/roster/EnhancementList.vue'
 import { getItem, setItem } from '../../composables/safeStorage.js'
 import { rosterNameFit } from '../../utils/rosterNameFit.js'
 import { APP_VERSION } from '../../buildInfo.js'
@@ -1570,6 +1582,8 @@ const { rulesFaction, detachmentLookup } = useRosterFactionRules(() => roster.va
   when: () => rulesWanted.value || tab.value === 'rules' || tab.value === 'stratagems',
 })
 
+// The list, for the Rules tab's enhancements to say who wears each (EnhancementList).
+const rulesList = computed(() => ({ units: roster.value?.units || [], defOf, detachments: curDetachments.value, factionSlug: roster.value?.faction }))
 const selectedDetachmentRules = computed(() =>
   (roster.value?.detachments || [])
     .map((name) => detachmentLookup.value.get(normName(name)))
@@ -1947,6 +1961,11 @@ function stratKey(strat) {
    outright. */
 .rv-rules .rv-rule-block :deep(.rule-block) { padding: 0.5rem 0; }
 .rv-rules .rv-rule-block :deep(.rule-body) { font-size: 0.85rem; line-height: 1.45; }
+/* A detachment's enhancements under its rule, headed like the panel's own small caps. */
+.rv-enh-head {
+  margin: 0.6rem 0 0.35rem; font-family: var(--font-sans); font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim);
+}
 .rv-rules .rv-rule-block :deep(.rule-body p) { margin-bottom: 0.5rem; }
 .rv-rules .rv-rule-block :deep(.rule-body p:last-child) { margin-bottom: 0; }
 .rv-rules .rv-rule-block :deep(.rule-header) { margin-bottom: 0.4rem; }

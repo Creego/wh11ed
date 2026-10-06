@@ -1495,7 +1495,7 @@ back.
 **`useRosterUndo.js` is the one step back the builder has** (2026-09-23). Building a list is a long
 session of small picks and the trash icon sat on the same tile as the row that opens them; the only
 way back from a mis-tap was Cancel, which throws away the session rather than the tap. It holds the
-last removal for 8 seconds (`UNDO_MS`) and `RosterUndoBar.vue` offers it back — a REPORT with one
+last removal for 5 seconds (`UNDO_MS`, 8 until 2026-10-06) and `RosterUndoBar.vue` offers it back — a REPORT with one
 action, `role="status"`, taking no focus, ignoring it being the ordinary outcome. ONE slot on
 purpose: a stack invites "undo until it looks right", which is a different feature and one that
 would have to survive a save, a reload and both screens. The ticket lives in a closure, not in the
@@ -1822,13 +1822,21 @@ mission datasets). The list's "Statistics" button is just a link to `/roster`.
 ## Faction rules beside the build (added 2026-08-28)
 
 `RosterRulesPanel.vue` on **both** building screens — the wizard's Units step and the editor's
-Units mode. **Since 2026-09-24 it is a sheet, not a bar**: the book beside the catalogue's search
+Units mode. **Since 2026-09-24 it is a sheet, not a bar**: the shield (book until 2026-10-06 — the top bar's lore switch is a book too) beside the catalogue's search
 (`RosterUnitBrowser`'s `rules-button` → `open-rules`) opens `RosterRulesModal`, which hosts the
 panel `bare` (no head of its own, open from the start). The folded bar over both panes cost a row
 of every phone's screen for something opened now and then — see "Height for the panes" below. The question a half-built list raises is "what does my detachment
 actually do?", and the answer used to live on the faction pages, one navigation out of the builder
 and back (the resume chip in "Views" exists because of that trip). The list's own Rules tab is no
 help either: it is on the finished list's view screen.
+
+**Who wears an enhancement (2026-10-06, a player's request).** Each enhancement in the rules sheet
+and in the list view's Rules tab says, under its text, which unit of the list has taken it or which
+could — `EnhancementList.vue` over `rosterEngine.enhancementBearers`, the same `enhEligible` the
+editor's enhancement picker asks (granted keywords included). Names are matched loosely between the
+rules bundle and the roster data (apostrophes, case); a mandatory enhancement is worn by every unit
+it fits; repeated names are counted ("Captain ×2"). The one-detachment sheet from the picker's ⓘ
+gets no list — it is about the detachment, not the list.
 
 - **Folded twice.** The panel starts closed — it is reference, not the work — and each thing inside
   it is its own fold: the army rule, one per picked detachment, the enhancements those detachments
