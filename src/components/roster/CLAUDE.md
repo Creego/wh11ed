@@ -326,6 +326,13 @@ reports it. `swapRoom` pools the alternatives; `stockBlocker` closes the group o
 carries either. Without it the group replaced nothing and four heavy bolters sat beside four heavy
 weapons (a player's report, 2026-10-03).
 
+**One copy of several — `rc` (main generator since 2026-10-06).** "The Nob can have their Rokkit
+Pistol replaced with 1 Smash Hammer": the Nob carries two, the sentence names one (no "each", no
+"both", no number, the item singular), so `gen-roster-data` writes `rc: 1` and `pickShare` charges a
+pick one copy of the two — the other stays on the card and the list. Read as an ordinary swap it took
+both (a player's report). The Legends generator (`pack-roster`) already wrote `rc` for "2 of this
+model's …"; corpus-wide the singular wording on a multi-copy per-model line is Tankbustas alone today.
+
 **Kept items — `keep` (added 2026-09-24).** "(that model's boltgun cannot be replaced)" is read by
 the generator (`KEEP_RE`, 38 groups, `--check` fails on one whose item does not resolve) into
 `g.keep`. The model still carries the item — the loadout line keeps it — but no other group may
