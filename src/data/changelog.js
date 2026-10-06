@@ -28,11 +28,15 @@ export const changelog = [
       { h: 'Roster builder' },
       'The list you edited last is now at the top of your lists. Pinned lists stay above it. Just opening a list does not move it.',
       'The “Fits the points left” filter now hides units that are already in your list too. A unit stays while one more copy of it fits. Before, units in the list were never hidden.',
+    'The Rules tab of a roster now shows your detachments’ enhancements. Under each one you see which unit has taken it. If it is still free, you see which units can take it. The same shows in the builder under {btn:shield}.',
+    'The faction filter on your lists is now remembered. The page opens on the faction you picked last time.',
     ],
     ru: [
       { h: 'Конструктор ростеров' },
       'Список, который вы меняли последним, теперь стоит первым. Закреплённые списки по-прежнему выше всех. Если список просто открыть, он не сдвигается.',
       'Фильтр «Влезает в остаток» теперь прячет и юниты, которые уже есть в списке. Юнит остаётся, пока влезает ещё одна его копия. Раньше юниты из списка не прятались никогда.',
+    'На вкладке «Правила» в ростере теперь есть улучшения ваших детачментов. Под каждым написано, какой юнит его взял. Если улучшение свободно, написано, какие юниты могут его взять. То же видно в конструкторе по кнопке {btn:shield}.',
+    'Фильтр по фракции в списке ростеров теперь запоминается. Страница открывается на той фракции, которую вы выбрали в прошлый раз.',
     ],
   },
   {
