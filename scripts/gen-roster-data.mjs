@@ -30,6 +30,7 @@ import { pathToFileURL } from 'node:url'
 import { ROOT, APPDATA, SLUG_MAP, SM_SUPPLEMENT_BUNDLES, norm, loadJson, loadModule } from './lib/sync-common.mjs'
 import { packRosterUnit, emptyPackReport } from './lib/pack-roster.mjs'
 import { APPDATA_EXCEPTIONS } from './lib/appdata-exceptions.mjs'
+import { CHARACTER_GRANTS } from './lib/character-grants.mjs'
 import { enhEligible } from '../src/composables/rosterEnhEligible.js'
 
 const T = path.join(APPDATA, 'tables')
@@ -2862,11 +2863,14 @@ async function packUnitsFor(slug, units) {
   // list, so a pack Legends Chaos Lord on Bike gets the same choice appdata's 43 units carry.
   const mark = units.find((u) => u.alleg?.g === 'mark-of-chaos')?.alleg
   const MARKS = ['khorne', 'tzeentch', 'nurgle', 'slaanesh', 'chaos undivided']
+  // The same for a Detachment that hands CHARACTER to units it names by keyword (CHARACTER_GRANTS):
+  // Steel Hammer's "one or more ASTRA MILITARUM TITANIC units" takes a Legends Macharius too.
+  const grants = units.map((u) => u.alleg).filter((a) => a && CHARACTER_GRANTS[a.g])
   const allegFor = (d) => {
-    if (!mark) return null
     const kws = [...(d.keywords || []), ...(d.factionKeywords || [])].map(norm)
-    if (!kws.includes('heretic astartes') || kws.includes('epic hero') || kws.some((k) => MARKS.includes(k))) return null
-    return JSON.parse(JSON.stringify(mark))
+    if (mark && kws.includes('heretic astartes') && !kws.includes('epic hero') && !kws.some((k) => MARKS.includes(k))) return JSON.parse(JSON.stringify(mark))
+    const grant = grants.find((a) => CHARACTER_GRANTS[a.g].every((k) => kws.includes(k)))
+    return grant ? JSON.parse(JSON.stringify(grant)) : null
   }
   // Keyword-named Leader targets ("Imperium Battleline Infantry"), against every unit this file
   // will hold — appdata's and the pack's; a keyword that names nothing here resolves to nothing.
@@ -3406,6 +3410,12 @@ if (report.unlinked.length) {
 
 // An enhancement nobody can take fails BOTH runs, ahead of everything else: a stale-file verdict
 // would otherwise name the wrong cause, and a plain run would write the broken data.
+const characterGrantUnread = [...report.alleg.kinds].map((k) => k.replace(/ \(.*\)$/, ''))
+  .filter((g) => /-keywords?$/.test(g) && !CHARACTER_GRANTS[g])
+if (characterGrantUnread.length) {
+  console.log(`\n  ✗ a Detachment grants CHARACTER by choice and its rule is not in CHARACTER_GRANTS — read it, name its keywords: ${characterGrantUnread.join(', ')}`)
+  return 1
+}
 const unusedLockFixes = Object.keys(ENH_LOCK_FIXES).filter((k) => !usedLockFixes.has(k))
 if (unusedLockFixes.length) {
   console.log(`\n  ✗ ENH_LOCK_FIXES names ${unusedLockFixes.length} enhancement(s) no detachment has — misspelt, or retired by GW: ${unusedLockFixes.join(', ')}`)
