@@ -29,6 +29,7 @@ import path from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { ROOT, APPDATA, SLUG_MAP, SM_SUPPLEMENT_BUNDLES, norm, loadJson, loadModule } from './lib/sync-common.mjs'
 import { packRosterUnit, emptyPackReport } from './lib/pack-roster.mjs'
+import { APPDATA_EXCEPTIONS } from './lib/appdata-exceptions.mjs'
 
 const T = path.join(APPDATA, 'tables')
 const OUT = path.join(ROOT, 'src/data/roster')
@@ -1038,6 +1039,17 @@ function itemsNamedIn(rawClause, rawVocab) {
 // 2026-10-07): a Deathwatch Terminator holding a power fist and nothing else is no loadout. Dropped
 // only in a group that has bundles, only for an item it gives up among two or more, and only when
 // the value half of the sentence does not name it.
+// The appdata-exceptions registry's wargear-rule typos ("Lascannonss", "can be equipped 1 medi") are
+// GW's text errors the datasheets already print corrected. The roster read the raw tables and kept
+// them — on the Kratos the typo cost its whole group the "2 of each" counts (2026-10-07). One
+// registry, applied here too, so a correction is written once and reaches every generated layer.
+const TYPO_FIXES = APPDATA_EXCEPTIONS.filter((e) => e.kind === 'wargear-rule')
+function fixWargearTypos(unitName, text) {
+  let out = text
+  for (const e of TYPO_FIXES) if (e.datasheet === unitName && out.includes(e.from)) out = out.replace(e.from, e.to)
+  return out
+}
+
 function dropStockRemnants(unitName, drafts, out) {
   for (const d of drafts) {
     if (!(d.rep?.length >= 2) || !d.opts.some((o) => o.items)) continue
@@ -1129,8 +1141,9 @@ function linkWargearBundles(datasheetId, unitName, drafts, stats) {
     // something other than this group's option list and can't be trusted to replace it.
     // The one exception is the item being given up when appdata also lists it among the group's
     // options ("…have their Power Fist and Storm Bolter replaced with one of the following:
-    // …" — Deathwatch Terminators, 963): that is the "keep it" choice, named in the head of the
-    // sentence, never among the entries. It stays an option of its own, first.
+    // …" — Deathwatch Terminators, 963): it is named in the head of the sentence, never among the
+    // entries, so it does not fail this check. It was read as a "keep it" choice and left as an
+    // option of its own; the GW app refuses that pick, and dropStockRemnants removes it (2026-10-07).
     const claimed = new Set(sets.flat().map(([uuid]) => uuid))
     const head = flatText(d.text.split(VALUE_SPLIT)[0])
     const kept = d.opts.filter((o) => !claimed.has(o.uuid) && head.includes(flatText(wgItemName.get(o.uuid))))
@@ -2148,7 +2161,7 @@ function buildUnit(bd, idMap, fx, kwIndex, prices) {
   // BELOW that weapon choice, not above it.
   let drafts = []
   for (const g of (wogByDs.get(bd.id) || []).slice().sort((a, b) => a.displayOrder - b.displayOrder)) {
-    const text = (enOf(g).instructionText || '').trim()
+    const text = fixWargearTypos(bd.name, (enOf(g).instructionText || '').trim())
     if (!text || isDefaultGroup(g)) continue
     const rawOpts = (woByGroup.get(g.id) || []).sort((a, b) => a.displayOrder - b.displayOrder)
     if (!rawOpts.length) continue
@@ -2310,6 +2323,21 @@ function buildUnit(bd, idMap, fx, kwIndex, prices) {
   for (const d of drafts) {
     if (d.cp || d.rep?.length !== 1 || !/\breplace\s+one of\s+(?:its|their)\b/i.test(d.text.split('\n')[0])) continue
     d.rc = 1
+    report.limit.oneCopy = (report.limit.oneCopy || 0) + 1
+  }
+  // "This model's 2 Heavy Bolters can be replaced with …" on a Kratos that carries FOUR (two
+  // sponsons, a group each): a pick takes the two the sentence names, not all four (an audit,
+  // 2026-10-07). Only where the printed loadout holds more than the number — "this model's 2
+  // twin heavy flamers" on a model with exactly two is the ordinary whole swap.
+  for (const d of drafts) {
+    if (d.cp || d.rc || d.rep?.length !== 1) continue
+    const m = d.text.split('\n')[0].match(/^this model(?:'|’)s (\d|two|three|four) /i)
+    if (!m) continue
+    const n = WORD_NUM[m[1].toLowerCase()] || Number(m[1])
+    const id = itemIds.get(d.rep[0])
+    const hit = id != null && (defaults.find(([dm]) => dm === d.m)?.[1] || []).find(([i]) => i === id)
+    if (!hit || hit.length > 2 || !(hit[1] > n)) continue
+    d.rc = n
     report.limit.oneCopy = (report.limit.oneCopy || 0) + 1
   }
   for (const d of drafts) {

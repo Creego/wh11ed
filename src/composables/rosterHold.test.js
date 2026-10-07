@@ -156,3 +156,22 @@ describe('one of two copies given up', () => {
     expect(wargearGroupFallbackCap(def, { uid: 't', id: def.id, size: 0 }, 1)).toBe(1)
   })
 })
+
+// Kratos: four heavy bolters, two groups "This model's 2 Heavy Bolters can be replaced with one of
+// the following: 2 Autocannons, …". A pick takes a pair and gives a pair (an audit, 2026-10-07 —
+// it took all four for one autocannon; appdata's "Lascannonss" typo had hidden the counts).
+describe('a pair of a larger stock', () => {
+  const sm = factions.find((d) => d.slug === 'space-marines')
+  const def = sm.units.find((u) => u.name === 'Kratos')
+  const count = (wg, name) => {
+    const line = (defaultLoadoutLines(def, shared.items, { uid: 'k', id: def.id, size: 0, wg }) || []).map((l) => l.items).join(', ')
+    const m = line.match(new RegExp(`${name}(?: ×(\\d+))?`))
+    return m ? Number(m[1] || 1) : 0
+  }
+  it('trades two heavy bolters for two of the new weapon, per group', () => {
+    expect(def.gear[0].o[0][0]).toEqual([[expect.any(Number), 2]])
+    expect(count([], 'Heavy Bolter')).toBe(4)
+    expect(count([[0, 0, 1]], 'Heavy Bolter')).toBe(2)
+    expect(count([[0, 0, 1], [2, 1, 1]], 'Heavy Bolter')).toBe(0)
+  })
+})
