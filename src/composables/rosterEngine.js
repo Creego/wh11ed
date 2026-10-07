@@ -426,6 +426,22 @@ export function perModelRoom(def, entry, gi, oi) {
 // two big shootas and two dread klaws, a War Walker's two shuriken cannons, which at 2 models is
 // four swaps). Deliberately conservative: `null` where the group belongs to no single profile, so
 // the caller keeps its own behaviour rather than being handed a guess.
+// A group no unit size lets more than one model take — "This model's storm bolter can be replaced
+// with 1 relic shield" on a Chaplain, "1 model's … can be replaced" on a squad of any size. appdata
+// still calls some of these steppers, and a 0/1 counter beside a one-for-one swap read as a
+// different kind of choice from the two-row "one of" every other single swap is (2026-10-07). Asked
+// at the LARGEST bracket and its top model count, so the answer never changes with the unit's size
+// and the control does not change shape under a "+" on the model count.
+export function wargearGroupAlwaysOne(def, gi) {
+  const sizes = def?.sizes || []
+  if (!def?.gear?.[gi] || !sizes.length) return false
+  const top = sizes.length - 1
+  const entry = { id: def.id, size: top, count: sizes[top]?.per?.[1] }
+  const cap = wargearGroupCap(def, entry, gi)
+  const ceiling = cap ? cap.limit : wargearGroupFallbackCap(def, entry, gi)
+  return ceiling != null && ceiling <= 1
+}
+
 export function wargearGroupFallbackCap(def, entry, gi) {
   const g = def?.gear?.[gi]
   if (!g || g.all || g.m == null) return null

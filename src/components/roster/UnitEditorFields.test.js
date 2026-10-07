@@ -532,3 +532,52 @@ describe('UnitEditorFields — exact-count groups', () => {
     expect(chip(mountFor(strike, { wg: [[0, 1, 1]] }))).toBe('1 more to pick')
   })
 })
+
+// A single swap no unit size lets past one model is drawn as the two-row "one of", like every
+// other single swap — appdata calls the Chaplain's "storm bolter → relic shield" a stepper, and a
+// 0/1 counter there read as a different kind of choice (2026-10-07).
+describe('UnitEditorFields — a one-model swap appdata calls a stepper', () => {
+  it('draws the Chaplain in Terminator Armour\'s swap as stock / replacement rows', async () => {
+    const sm = (await import('../../data/roster/space-marines.js')).default
+    const chap = sm.units.find((u) => u.name === 'Chaplain in Terminator Armour')
+    expect(chap.gear[0].in).toBe('stepper')
+    const w = mountFor(chap)
+    expect(w.findAllComponents(NumberStepper)).toHaveLength(0)
+    const names = w.findAll('.opt-name').map((n) => n.text())
+    expect(names.some((n) => n.includes('Storm Bolter'))).toBe(true)
+    expect(names.some((n) => n.includes('Relic Shield'))).toBe(true)
+  })
+
+  // One model at the default size but more at a bigger one: the counter stays, so the control does
+  // not change shape when the squad grows.
+  it('keeps the counter where a bigger squad may take more', () => {
+    const ironstrider = adeptusMechanicus.units.find((u) => u.name === 'Ironstrider Ballistarii')
+    expect(mountFor(ironstrider).findAllComponents(NumberStepper).filter((s) => !s.classes('stock-n')).length).toBeGreaterThan(0)
+  })
+})
+
+// From six models on a count can be typed (a tap on the number) — twenty swaps are not twenty
+// taps. Below that the number stays a plain readout.
+describe('UnitEditorFields — typing a count', () => {
+  const warriors = necrons.units.find((u) => u.name === 'Necron Warriors')
+  const typed = (w) => w.findAllComponents(NumberStepper).filter((s) => !s.classes('stock-n'))
+
+  it('lets a twenty-model squad type its swap count, capped at what the group allows', async () => {
+    const w = mountFor(warriors, { size: warriors.sizes.length - 1, count: 20 })
+    const st = typed(w).find((s) => s.props('editable') && s.props('max') >= 6)
+    expect(st).toBeTruthy()
+    await st.find('.step-edit').trigger('click')
+    const input = st.find('.step-input')
+    expect(input.attributes('inputmode')).toBe('numeric')
+    expect(input.attributes('enterkeyhint')).toBe('done')
+    await input.setValue('99')
+    await input.trigger('keydown', { key: 'Enter' })
+    expect(st.emitted('update:modelValue').at(-1)[0]).toBe(st.props('max'))
+  })
+
+  it('keeps small groups to − and +', () => {
+    const w = mountFor(wracks)
+    expect(typed(w).length).toBeGreaterThan(0)
+    expect(typed(w).filter((s) => s.props('editable'))).toHaveLength(0)
+  })
+})

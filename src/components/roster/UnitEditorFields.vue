@@ -138,9 +138,12 @@
           <span class="ues-cap">{{ labels.rosterModelsMin.replace('{n}', rangeSize.per[0]) }}</span>
         </h4>
         <NumberStepper
+          compact
           :model-value="models"
           :min="rangeSize.per[0]"
           :max="rangeSize.per[1]"
+          :editable="rangeSize.per[1] - rangeSize.per[0] >= TYPE_FROM"
+          :label="labels.rosterModelsLabel"
           @update:model-value="setCount"
         />
       </section>
@@ -450,8 +453,9 @@
             class="opt-tile opt-stock"
           >
             <div class="opt-step-body">
-              <span class="opt-name">{{ g.rep.map((id) => items[id]).join(' + ') }}<span class="opt-tag">{{ labels.rosterStockTag }}</span></span>
+              <span class="opt-name opt-stock-name"><span>{{ g.rep.map((id) => items[id]).join(' + ') }}</span><span class="opt-tag">{{ labels.rosterStockTag }}</span></span>
               <NumberStepper
+                compact
                 class="stock-n"
                 :model-value="stockLefts[gi]"
                 disabled
@@ -480,6 +484,7 @@
               > +{{ o[1] }}</span></span>
               <NumberStepper
                 v-if="holds[gi]"
+                compact
                 :model-value="held(gi, oi)"
                 :min="0"
                 :max="held(gi, oi) + freed(gi)"
@@ -488,10 +493,13 @@
               />
               <NumberStepper
                 v-else
+                compact
                 :model-value="stepCount(gi, oi)"
                 :min="0"
                 :max="stepMax(gi, oi)"
                 :disabled="shut[gi]"
+                :editable="typeable(gi)"
+                :label="optLabel(o)"
                 @update:model-value="setStep(gi, oi, $event)"
               />
             </div>
@@ -764,7 +772,7 @@ import FactionAccentScope from './FactionAccentScope.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
 import { loadRosterTextsRu } from '../../data/roster/ru/index.js'
-import { ENTRY_NOTE_MAX, allySourceOf, allegFor, allegSpent, defaultWargearPoints, fixedLoadoutLines, fitWargear, modelsPerMini, overdrawnGroups, optionItems, optionLabel, setNote, splitInstruction, swapRoom, wargearGroupBlocker, perModelRoom, wargearExclRoom, wargearGroupCap, wargearGroupFallbackCap, wargearGroupSpent, exactPicksOwed } from '../../composables/rosterEngine.js'
+import { ENTRY_NOTE_MAX, allySourceOf, allegFor, allegSpent, defaultWargearPoints, fixedLoadoutLines, fitWargear, modelsPerMini, overdrawnGroups, optionItems, optionLabel, setNote, splitInstruction, swapRoom, wargearGroupBlocker, perModelRoom, wargearExclRoom, wargearGroupCap, wargearGroupFallbackCap, wargearGroupSpent, exactPicksOwed, wargearGroupAlwaysOne } from '../../composables/rosterEngine.js'
 import { holdCounts, holdGroup, holdWg, stockLeft } from '../../composables/rosterHold.js'
 
 const props = defineProps({
@@ -910,6 +918,16 @@ function capChip(gi) {
 }
 
 const optLabel = (o) => optionLabel(o, props.items)
+
+// From six models on, a count can be typed as well as stepped (a tap on the number): twenty
+// Termagants with fleshborers is not twenty taps (owner, 2026-10-07). Read from the group's own
+// ceiling, not the room left in it, so the control does not change kind halfway through a group.
+const TYPE_FROM = 6
+function typeable(gi) {
+  const cap = caps.value[gi]
+  const ceiling = cap ? cap.limit : wargearGroupFallbackCap(props.def, props.entry, gi)
+  return ceiling != null && ceiling >= TYPE_FROM
+}
 const optNames = (o) => optionItems(o).map(([id]) => props.items[id]).filter(Boolean)
 
 // Every wargear row is a checkbox (selection) plus a separate trailing button; the button opens a
@@ -1078,7 +1096,10 @@ function setWg(next) {
 // Without a structural cap this falls back exactly to the old inputType-only reading.
 function mode(g, gi) {
   const cap = caps.value[gi]
-  if (g.in === 'stepper' || (cap && cap.limit > 1)) return 'stepper'
+  // A single-option "stepper" that no unit size lets past one model is a one-for-one swap, drawn
+  // like every other one (wargearGroupAlwaysOne) — not a 0/1 counter.
+  const single = g.in === 'stepper' && g.o.length === 1 && !(cap && cap.limit > 1) && wargearGroupAlwaysOne(props.def, gi)
+  if (!single && (g.in === 'stepper' || (cap && cap.limit > 1))) return 'stepper'
   // A single option that REPLACES something is a choice between two things, so the stock weapon
   // is a row of its own, as in every one-of group: it is no longer listed above the groups.
   return g.o.length > 1 || g.rep?.length ? 'radio' : 'toggle'
@@ -1403,6 +1424,11 @@ const writeNote = (obj, key, value) => setNote(obj, key, value)
 .opt-name { color: var(--text-primary); }
 .opt-pts { font-family: var(--font-mono); font-weight: 700; color: var(--accent-ink); }
 .opt-tag { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-dim); margin-left: 0.4rem; }
+/* The stock row's name and its tag are two flex items: when the line runs out the TAG drops to the
+   next line, and the weapon names stay whole ("Bolt Pistol + Boltgun", not "Bolt Pistol +" over
+   "Boltgun STOCK" — owner, 2026-10-07). */
+.opt-stock-name { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 0.4rem; }
+.opt-stock-name .opt-tag { margin-left: 0; }
 /* Which of the two squads of that name this row is. Its OWN line — the name above it is what the
    reader scans, and a sentence trailing off the end of it would be read as part of the name. */
 .opt-which { display: block; margin-top: 0.1rem; font-size: 0.7rem; font-style: normal; line-height: 1.3; color: var(--text-muted); }
