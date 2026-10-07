@@ -248,7 +248,17 @@ export default {
             ]
           ]
         }
-      ]
+      ],
+      "alleg": {
+        "g": "steel-hammer-keywords",
+        "t": "Steel Hammer Keywords",
+        "o": [
+          {
+            "n": "Character"
+          }
+        ],
+        "det": "Steel Hammer"
+      }
     },
     {
       "id": "armageddon-pattern-medusa",
@@ -4208,7 +4218,17 @@ export default {
             ]
           ]
         }
-      ]
+      ],
+      "alleg": {
+        "g": "steel-hammer-keywords",
+        "t": "Steel Hammer Keywords",
+        "o": [
+          {
+            "n": "Character"
+          }
+        ],
+        "det": "Steel Hammer"
+      }
     },
     {
       "id": "doomhammer",
@@ -4833,7 +4853,17 @@ export default {
             ]
           ]
         }
-      ]
+      ],
+      "alleg": {
+        "g": "steel-hammer-keywords",
+        "t": "Steel Hammer Keywords",
+        "o": [
+          {
+            "n": "Character"
+          }
+        ],
+        "det": "Steel Hammer"
+      }
     },
     {
       "id": "griffon-mortar-carrier",
@@ -7708,7 +7738,17 @@ export default {
             ]
           ]
         }
-      ]
+      ],
+      "alleg": {
+        "g": "steel-hammer-keywords",
+        "t": "Steel Hammer Keywords",
+        "o": [
+          {
+            "n": "Character"
+          }
+        ],
+        "det": "Steel Hammer"
+      }
     },
     {
       "id": "macharius-omega",
@@ -7805,7 +7845,17 @@ export default {
             ]
           ]
         }
-      ]
+      ],
+      "alleg": {
+        "g": "steel-hammer-keywords",
+        "t": "Steel Hammer Keywords",
+        "o": [
+          {
+            "n": "Character"
+          }
+        ],
+        "det": "Steel Hammer"
+      }
     },
     {
       "id": "macharius-vanquisher",
@@ -7905,7 +7955,17 @@ export default {
             ]
           ]
         }
-      ]
+      ],
+      "alleg": {
+        "g": "steel-hammer-keywords",
+        "t": "Steel Hammer Keywords",
+        "o": [
+          {
+            "n": "Character"
+          }
+        ],
+        "det": "Steel Hammer"
+      }
     },
     {
       "id": "macharius-vulcan",
@@ -8005,7 +8065,17 @@ export default {
             ]
           ]
         }
-      ]
+      ],
+      "alleg": {
+        "g": "steel-hammer-keywords",
+        "t": "Steel Hammer Keywords",
+        "o": [
+          {
+            "n": "Character"
+          }
+        ],
+        "det": "Steel Hammer"
+      }
     },
     {
       "id": "malcador",
@@ -8608,7 +8678,17 @@ export default {
             3240
           ]
         }
-      ]
+      ],
+      "alleg": {
+        "g": "steel-hammer-keywords",
+        "t": "Steel Hammer Keywords",
+        "o": [
+          {
+            "n": "Character"
+          }
+        ],
+        "det": "Steel Hammer"
+      }
     },
     {
       "id": "marauder-destroyer",
@@ -8669,7 +8749,17 @@ export default {
             ]
           ]
         }
-      ]
+      ],
+      "alleg": {
+        "g": "steel-hammer-keywords",
+        "t": "Steel Hammer Keywords",
+        "o": [
+          {
+            "n": "Character"
+          }
+        ],
+        "det": "Steel Hammer"
+      }
     },
     {
       "id": "medusa-carriage-battery",
@@ -11170,7 +11260,17 @@ export default {
             ]
           ]
         }
-      ]
+      ],
+      "alleg": {
+        "g": "steel-hammer-keywords",
+        "t": "Steel Hammer Keywords",
+        "o": [
+          {
+            "n": "Character"
+          }
+        ],
+        "det": "Steel Hammer"
+      }
     },
     {
       "id": "stormlord",
@@ -12521,7 +12621,17 @@ export default {
             ]
           ]
         }
-      ]
+      ],
+      "alleg": {
+        "g": "steel-hammer-keywords",
+        "t": "Steel Hammer Keywords",
+        "o": [
+          {
+            "n": "Character"
+          }
+        ],
+        "det": "Steel Hammer"
+      }
     },
     {
       "id": "valkyrie",

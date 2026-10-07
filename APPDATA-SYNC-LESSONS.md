@@ -1169,3 +1169,11 @@ and appdata state fresh; a data model can change between now and when this is ne
     each one is; a key in a correction table that matches nothing now fails the generator. The gate
     reads the printed prose, not appdata (`src/data/roster/index.test.js`, "enhancement bearer named
     in its prose"), so a group appdata itself leaves out shows up there too.
+81. **A probe that skips a step the editor takes reports a bug the editor does not have.** The
+    "enhancements nobody can take" list of 2026-10-07 (11, five detachments) was asked with a bare
+    entry: no allies the Detachment admits, no "gains CHARACTER" choice taken. Asked the way the
+    editor asks (`enhOptionsFor`, allies, the choice), one remained, and it is right (Space Wolves
+    bar APOTHECARY). What it did find was beside the point: appdata's allegiance group lists its
+    own datasheets, while Steel Hammer's rule reaches "ASTRA MILITARUM TITANIC units" — 11 Legends
+    tanks had no choice. A rule written by keyword reaches the pack Legends through
+    `scripts/lib/character-grants.mjs`, the way Pactbound Zealots' mark already did.
