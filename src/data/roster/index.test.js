@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url'
 import rosterCore from './core.js'
 import rosterItems from './items.js'
 import { loadRosterFaction } from './index.js'
-import { allySourceOf, leadTypeFor, optionItems, optionLabel, unitWargearPoints, unitPoints, modelsPerMini, defaultLoadoutLines, wargearGroupCap, wargearGroupLive, bucketOf, grantedKeywordsFor, swapRoom } from '../../composables/rosterEngine.js'
+import { enhEligible, allySourceOf, leadTypeFor, optionItems, optionLabel, unitWargearPoints, unitPoints, modelsPerMini, defaultLoadoutLines, wargearGroupCap, wargearGroupLive, bucketOf, grantedKeywordsFor, swapRoom } from '../../composables/rosterEngine.js'
 import { duplicateLimit, validateRoster } from '../../composables/rosterValidation.js'
 import conditionalKeywords from '../conditionalKeywords.json'
 import { loadoutItemCounts } from '../../composables/rosterModifiers.js'
@@ -202,8 +202,8 @@ describe('roster factions', () => {
           for (const e of d.enhancements) {
             expect(e.name).toBeTruthy()
             expect(typeof e.pts).toBe('number')
-            // eligibility, when present, is OR-groups of faction-keywords / keywords
-            if (e.req) for (const g of e.req) expect((g.fac?.length || 0) + (g.kw?.length || 0)).toBeGreaterThan(0)
+            // eligibility, when present, is OR-groups of faction-keywords / keywords / one datasheet
+            if (e.req) for (const g of e.req) expect((g.fac?.length || 0) + (g.kw?.length || 0) + (g.ds ? 1 : 0)).toBeGreaterThan(0)
           }
         }
       })
@@ -1812,5 +1812,57 @@ describe('a swap of one copy of several (rc)', () => {
     const nob = (wg) => defaultLoadoutLines(def, rosterItems.items, { uid: 'x', id: def.id, size: 0, wg }).find((l) => l.mini === 'Nob').items
     expect(nob([])).toBe('Rokkit Pistol ×2, Choppa')
     expect(nob([[gi, 0, 1]])).toBe('Rokkit Pistol ×1, Choppa')
+  })
+})
+
+// "ARCHON model only": an enhancement whose rules text names its bearer must not be offered to
+// anyone else. appdata says so in the `datasheetId` of its requirement group, which the generator
+// did not read until 2026-10-07 — 36 enhancements across 13 factions were open to other units
+// of the faction (Pact of Cursed Pinions to 28 Chaos characters), and the Orks' upgrades to every
+// unit in the codex. Read against the printed prose rather than appdata, so a group appdata itself
+// leaves out shows up here too. "X/Y" and "X or Y" are alternatives; each one must be spelled by
+// the unit's own keywords, its name and the enhancement's faction keywords.
+describe('enhancement bearer named in its prose', () => {
+  it('offers "<X> model only" to X and nobody else', async () => {
+    const FDIR = path.join(DIR, '../factions')
+    const lc = (s) => String(s).replace(/[’']/g, "'").toLowerCase().trim()
+    const prose = new Map() // "detachment|enhancement" -> body
+    for (const f of fs.readdirSync(FDIR).filter((x) => x.endsWith('.js') && x !== 'index.js')) {
+      const walk = (o, det) => {
+        if (!o || typeof o !== 'object') return
+        if (Array.isArray(o)) return o.forEach((x) => walk(x, det))
+        if (Array.isArray(o.enhancements) && o.name) det = o.name
+        if (o.name && typeof o.body === 'string' && 'points' in o) prose.set(`${lc(det)}|${lc(o.name)}`, o.body)
+        Object.values(o).forEach((x) => walk(x, det))
+      }
+      for (const v of Object.values(await import(`../factions/${f}`))) walk(v?.en || v)
+    }
+    const covers = (u, phrase, facs) => {
+      const words = lc(phrase).split(/\s+/)
+      const keys = new Set([...(u.kws || []).map(lc), lc(u.name), ...facs])
+      const ok = [true]
+      for (let i = 0; i < words.length; i++) if (ok[i]) for (let j = i + 1; j <= words.length; j++) if (keys.has(words.slice(i, j).join(' '))) ok[j] = true
+      // The prose names a unit in the singular ("SCOUT SENTINEL unit only" — Scout Sentinels).
+      const n = lc(u.name).replace(/s$/, '')
+      return !!ok[words.length] || n === lc(phrase).replace(/s$/, '') || n.endsWith(` ${lc(phrase)}`)
+    }
+    let read = 0
+    const wrong = []
+    for (const { slug } of factions) {
+      const data = await loadRosterFaction(slug)
+      if (!data?.detachments) continue
+      for (const det of data.detachments) for (const e of det.enhancements || []) {
+        if (e.mandatory) continue
+        const body = prose.get(`${lc(det.name)}|${lc(e.name.replace(/\s*\((?:Upgrade|Ulgrade)\)$/i, ''))}`)
+        const m = body?.replace(/\*\*|\[[a-z]+:[^\]]*:([^\]]+)\]/g, '$1').match(/^([^.\n]*?)\s+(?:models?|units?)\s+only/i)
+        if (!m) continue
+        read++
+        const alts = m[1].replace(/\(excluding[^)]*\)/i, '').replace(/^friendly\s+/i, '').split(/\s*(?:,|\/|\bor\b)\s*/i).filter(Boolean)
+        const facs = (e.req || []).flatMap((g) => g.fac || []).map(lc)
+        for (const u of data.units) if (enhEligible(e, u) && !alts.some((a) => covers(u, a, facs))) wrong.push(`${slug} / ${det.name} / ${e.name}: ${u.name}`)
+      }
+    }
+    expect(read).toBeGreaterThan(300)
+    expect([...new Set(wrong)]).toEqual([])
   })
 })

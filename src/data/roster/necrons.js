@@ -3880,11 +3880,9 @@ export default {
             {
               "fac": [
                 "Necrons"
-              ]
+              ],
+              "ds": "Necron Warriors"
             }
-          ],
-          "lockDs": [
-            "a2c770db-6c8a-4008-8736-96f8a8971ed9"
           ]
         },
         {
@@ -3897,11 +3895,9 @@ export default {
             {
               "fac": [
                 "Necrons"
-              ]
+              ],
+              "ds": "Immortals"
             }
-          ],
-          "lockDs": [
-            "1e7ce3f3-9cf9-4453-baea-7849e646a0d1"
           ]
         }
       ]
@@ -4106,11 +4102,9 @@ export default {
             {
               "fac": [
                 "Necrons"
-              ]
+              ],
+              "ds": "Tomb Blades"
             }
-          ],
-          "lockDs": [
-            "21d42f33-bff6-47e9-a97c-9e2edb803e06"
           ]
         },
         {
@@ -4225,11 +4219,9 @@ export default {
             {
               "fac": [
                 "Necrons"
-              ]
+              ],
+              "ds": "Obelisk"
             }
-          ],
-          "lockDs": [
-            "ef491108-65e0-465d-9c70-2906c451e53a"
           ]
         }
       ]

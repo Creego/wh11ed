@@ -12968,11 +12968,9 @@ export default {
             {
               "fac": [
                 "Astra Militarum"
-              ]
+              ],
+              "ds": "Ratlings"
             }
-          ],
-          "lockDs": [
-            "6397c7fd-79f1-43e0-9ddb-115f0ba150f1"
           ]
         },
         {
@@ -13183,11 +13181,9 @@ export default {
             {
               "fac": [
                 "Astra Militarum"
-              ]
+              ],
+              "ds": "Scout Sentinels"
             }
-          ],
-          "lockDs": [
-            "62d85e34-a50d-4c67-841a-037256b34d47"
           ]
         },
         {

@@ -918,7 +918,17 @@
                 :key="r.key"
               >
                 <template v-if="r.enh">
-                  {{ r.enh }}
+                  {{ r.pre }}<button
+                    v-if="r.units.length"
+                    type="button"
+                    class="fkw-btn"
+                    data-kw-open
+                    @click="openBearers(r, $event)"
+                  >
+                    {{ r.who }}
+                  </button><template v-else>
+                    {{ r.who }}
+                  </template>{{ r.post }}
                 </template>
                 <template v-else>
                   <RouterLink
@@ -1161,6 +1171,7 @@ import { factionPartsOf, factionKwMarker, invNoteText, statCells } from '../comp
 import { useDatasheetParts } from '../composables/useDatasheetParts.js'
 import DsAccordion from './DsAccordion.vue'
 import ConditionChips from './ConditionChips.vue'
+import { openUnitList } from '../composables/useFactionKeywordUnits.js'
 
 const props = defineProps({
   sheet: { type: Object, required: true },
@@ -1277,7 +1288,8 @@ const leaderGroupLabel = computed(() =>
 // to" (owner, 2026-10-07). From src/data/ledBy (the roster layer: mirrors, Legends and enhancement
 // grants included), loaded for the card's own faction. A row is [name, type, note?]: a note names
 // the Detachments the attachment needs (`in`) or is barred from (`out`), or makes it an
-// enhancement's grant (`enh`, `det`). A keyword attachment (an Inquisitor's "Imperium Battleline
+// enhancement's grant (`enh`, `det`, and `by` — the characters that may take it, opened as a list
+// the way a faction keyword in rule prose is). A keyword attachment (an Inquisitor's "Imperium Battleline
 // Infantry") stays text on the leader's own sheet and is not listed here.
 const ledByRows = ref([])
 watch(() => [props.factionSlug, props.sheet?.id], async ([slug, id]) => {
@@ -1295,14 +1307,27 @@ const ledByGroups = computed(() => {
     if (n.out) return l.dsLedByNotIn.replace('{det}', n.out.join(', '))
     return ''
   }
-  const row = ([name, , note]) => (note?.enh
-    ? { key: `enh:${name}`, enh: l.dsLedByEnh.replace('{enh}', name).replace('{det}', note.det) }
-    : { key: name, name, note: noteOf(note) })
+  // An enhancement's row names no unit, so its "Character" opens the ones that may take it.
+  const enhRow = (name, note) => {
+    const [pre, post] = l.dsLedByEnh.replace('{enh}', name).replace('{det}', note.det).split('{who}')
+    const units = (note.by || []).filter((n) => props.unitIndex?.get(n)).map((n) => ({ id: props.unitIndex.get(n), name: n }))
+    return { key: `enh:${name}`, enh: name, pre, post, who: l.dsLedByEnhWho, units }
+  }
+  const row = ([name, , note]) => (note?.enh ? enhRow(name, note) : { key: name, name, note: noteOf(note) })
   return [
     { key: 'leader', title: l.dsLedBy, lead: l.dsLedByText, rows: ledByRows.value.filter((r) => r[1] === 'leader').map(row) },
     { key: 'support', title: l.dsSupportedBy, lead: l.dsSupportedByText, rows: ledByRows.value.filter((r) => r[1] === 'support').map(row) },
   ].filter((g) => g.rows.length)
 })
+
+function openBearers(r, e) {
+  openUnitList({
+    heading: labels.value.dsEnhBearers.replace('{enh}', r.enh),
+    factionSlug: props.factionSlug,
+    units: r.units,
+    anchor: e.currentTarget.getBoundingClientRect(),
+  })
+}
 
 // See the otherFactionUnits prop doc above — drop those names entirely rather than list a
 // bodyguard target the current faction's army could never actually take.
