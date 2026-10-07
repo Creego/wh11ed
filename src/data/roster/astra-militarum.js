@@ -3898,8 +3898,7 @@ export default {
       ],
       "flags": {
         "legends": 1,
-        "char": 1,
-        "alongside": 1
+        "char": 1
       },
       "sizes": [
         {
@@ -3912,6 +3911,11 @@ export default {
         }
       ],
       "linked": 1,
+      "along": [
+        "Death Rider Squadron Commander",
+        "Lord Marshal Dreir",
+        "Lord Solar Leontus"
+      ],
       "defaults": [
         [
           0,

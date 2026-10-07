@@ -1177,3 +1177,14 @@ and appdata state fresh; a data model can change between now and when this is ne
     own datasheets, while Steel Hammer's rule reaches "ASTRA MILITARUM TITANIC units" — 11 Legends
     tanks had no choice. A rule written by keyword reaches the pack Legends through
     `scripts/lib/character-grants.mjs`, the way Pactbound Zealots' mark already did.
+82. **A loose pattern that grants a permission is a hole in every limit it touches.** The Faction
+    Pack reader turned any "even if … already been attached" footer into "takes no slot at all" —
+    the Death Guard's reading — and four Legends got it: an Exalted Champion became a second
+    Support on Chaos squads (a player's report, 2026-10-08), a Jokaero, an Obyron and a Death
+    Rider Commissar joined beside anyone instead of the characters their footers name. The gate on
+    attachments asked about the six Death Guard sheets it knew, never "can any unit hold two
+    Supports". A pattern that LIFTS a rule must recognise each wording it lifts and fail on the
+    rest (`alongsideOf` in pack-roster.mjs); the gate asks the invariant over every pair
+    (`index.test.js` → "attachment slots"). Same day, same shape on screen: the size pills were
+    held to "a tied pill gets a suffix", and Accursed Cultists' two builds got the same suffix —
+    the test now asks that every pill reads differently.

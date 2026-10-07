@@ -74,6 +74,16 @@ class of derived data as the datasheet/mfm pipelines (structural facts only, no 
   SAME leader on one unit. Checked against the whole game: `bodyguardType` agrees with the rule's
   own name ("Leader"/"Support") on all 304 datasheets that have a group, so this is the one
   exception class, not a symptom of a wider typing problem.
+  **The Faction Pack Legends print the same kind of footer in other words** (`alongsideOf` in
+  `pack-roster.mjs`, 2026-10-08). Until then any "even if … already been attached" became
+  `flags.alongside`, so four Legends took no slot at all: an Exalted Champion sat beside a second
+  Support (a player's report) and a Jokaero beside any Leader. Now "one other Leader unit" is the
+  flag; "even if X, Y or Z model has already been attached" is **`along`** — keywords, read by
+  `joinsAlongside` (rosterEngine), free only beside those (Death Rider Commissar, Jokaero
+  Weaponsmith, Vargard Obyron); "one other CHARACTER model" (the Exalted Champion, a Support in
+  11th edition) is read as nothing — core rules already seat a Leader and a Support together
+  (owner's ruling). Any other wording fails the generator. Gates: `index.test.js` → "attachment
+  slots" (no Bodyguard takes two Supports, every pair asked as the picker asks it).
 - **`MIRROR_ATTACH`** — an attachment one datasheet borrows from another: "If a **CHARACTER** unit
   from your army with the Leader ability can be attached to an **INTERCESSOR SQUAD**, it can be
   attached to this unit instead." 33 datasheets carry a rule of that shape (Deathwing Terminator

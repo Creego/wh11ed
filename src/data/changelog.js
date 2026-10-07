@@ -22,6 +22,22 @@
 
 export const changelog = [
   {
+    version: '2.7.19',
+    date: '2026-10-08',
+    en: [
+      { h: 'Roster builder' },
+      'A unit takes only one Support. The Legends Exalted Champion could join as a second one, and now it cannot.',
+      'The Legends Jokaero Weaponsmith, Vargard Obyron and Death Rider Commissar join a unit that already has a Leader only beside the characters their datasheets name.',
+      'Accursed Cultists have two 9–16 builds at 185 points. Their buttons used to look the same. Now each one shows how many Mutants and Torments it takes.',
+    ],
+    ru: [
+      { h: 'Конструктор ростеров' },
+      'К отряду можно присоединить только одного Support. Legends Exalted Champion вставал вторым, теперь нельзя.',
+      'Legends Jokaero Weaponsmith, Vargard Obyron и Death Rider Commissar встают к отряду с Leader только рядом с персонажами, которых называет их датащит.',
+      'У Accursed Cultists два состава на 9–16 моделей по 185 очков. Раньше их кнопки выглядели одинаково. Теперь на каждой видно, сколько в нём Mutant и Torment.',
+    ],
+  },
+  {
     version: '2.7.18',
     date: '2026-10-07',
     en: [

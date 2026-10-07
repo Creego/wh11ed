@@ -3504,8 +3504,7 @@ export default {
       "flags": {
         "legends": 1,
         "char": 1,
-        "epic": 1,
-        "alongside": 1
+        "epic": 1
       },
       "sizes": [
         {
@@ -3518,6 +3517,9 @@ export default {
         }
       ],
       "linked": 1,
+      "along": [
+        "Nemesor Zahndrekh"
+      ],
       "defaults": [
         [
           0,

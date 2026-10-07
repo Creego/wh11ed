@@ -3416,6 +3416,12 @@ if (characterGrantUnread.length) {
   console.log(`\n  ✗ a Detachment grants CHARACTER by choice and its rule is not in CHARACTER_GRANTS — read it, name its keywords: ${characterGrantUnread.join(', ')}`)
   return 1
 }
+// A Legends Leader whose "even if … already been attached" footer no template reads would join
+// either nobody or everybody — the second is how an Exalted Champion became a second Support.
+if (pk.alongside.length) {
+  console.log(`\n  ✗ a Faction Pack Leader's "even if … already been attached" footer is unread — add its wording to pack-roster.mjs alongsideOf:\n${pk.alongside.map((l) => `      - ${l}`).join('\n')}`)
+  return 1
+}
 const unusedLockFixes = Object.keys(ENH_LOCK_FIXES).filter((k) => !usedLockFixes.has(k))
 if (unusedLockFixes.length) {
   console.log(`\n  ✗ ENH_LOCK_FIXES names ${unusedLockFixes.length} enhancement(s) no detachment has — misspelt, or retired by GW: ${unusedLockFixes.join(', ')}`)
