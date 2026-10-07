@@ -2169,10 +2169,11 @@ function cancel() {
   margin-bottom: 0.7rem;
 }
 .member-block .field:last-child { margin-bottom: 0; }
+/* The condensed display face this small reads cramped above 400 (owner, 2026-10-07). */
 .member-head {
   font-family: var(--font-display);
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--text-muted);
   margin: 0 0 0.5rem;
 }

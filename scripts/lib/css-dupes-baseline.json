@@ -103,7 +103,7 @@
     "src/components/tracker/EditSetupModal.vue",
     "src/components/tracker/GameSetup.vue"
   ],
-  ".member-head { font-family: var(--font-display); font-size: 0.95rem; font-weight: 500; color: var(--text-muted); margin: 0 0 0.5rem; }": [
+  ".member-head { font-family: var(--font-display); font-size: 0.95rem; font-weight: 400; color: var(--text-muted); margin: 0 0 0.5rem; }": [
     "src/components/tracker/EditSetupModal.vue",
     "src/components/tracker/GameSetup.vue"
   ],
@@ -123,7 +123,7 @@
     "src/views/StratagemsView.vue",
     "src/views/tracker/RosterViewView.vue"
   ],
-  ".phase-head { display: flex; align-items: center; gap: 0.5rem; width: 100%; padding: 0.5rem 0.7rem; border: 1px solid var(--border); background: var(--bg-secondary); color: var(--text-primary); cursor: pointer; font-family: var(--font-display); font-size: 1.1rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.3px; transition: border-color var(--motion-fast); }": [
+  ".phase-head { display: flex; align-items: center; gap: 0.5rem; width: 100%; padding: 0.5rem 0.7rem; border: 1px solid var(--border); background: var(--bg-secondary); color: var(--text-primary); cursor: pointer; font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.3px; transition: border-color var(--motion-fast); }": [
     "src/views/StratagemsView.vue",
     "src/views/tracker/RosterViewView.vue"
   ],

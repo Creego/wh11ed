@@ -404,6 +404,7 @@ function togglePhase(key) {
   margin-bottom: 0.75rem;
 }
 
+/* The condensed display face this small reads cramped above 400 (owner, 2026-10-07). */
 .phase-head {
   display: flex;
   align-items: center;
@@ -416,7 +417,7 @@ function togglePhase(key) {
   cursor: pointer;
   font-family: var(--font-display);
   font-size: 1.1rem;
-  font-weight: 500;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.3px;
   transition: border-color var(--motion-fast);
