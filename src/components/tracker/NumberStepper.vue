@@ -112,7 +112,8 @@ const inputEl = ref(null)
 const inputWidth = ref('')
 function startEdit() {
   if (props.disabled) return
-  const w = valEl.value?.$el?.offsetWidth ?? valEl.value?.offsetWidth ?? 0
+  const el = valEl.value?.$el ?? valEl.value
+  const w = el?.getBoundingClientRect?.().width || 0
   inputWidth.value = w ? `${w}px` : ''
   editing.value = true
   nextTick(() => { inputEl.value?.focus(); inputEl.value?.select() })
