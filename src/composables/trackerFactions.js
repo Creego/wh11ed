@@ -70,3 +70,9 @@ export function detachmentInfo(slug, name) {
   const key = detKey(name)
   return detachmentsFor(slug).find(d => detKey(d.name) === key) || null
 }
+// A roster's detachment names in the MFM's spelling, for the setup that copies them onto a side:
+// the detachment picker ticks and toggles its rows by the MFM name, so "Vow-sworn Crusaders" from
+// the list would sit unticked beside "Vow-Sworn Crusaders". A name the MFM does not know is kept.
+export function mfmDetachmentNames(slug, names) {
+  return (names || []).map((n) => detachmentInfo(slug, n)?.name || n)
+}

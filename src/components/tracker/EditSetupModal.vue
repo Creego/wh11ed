@@ -241,6 +241,7 @@ import LayoutTabs from './LayoutTabs.vue'
 import RosterPickerModal from './RosterPickerModal.vue'
 import TrackOptions from './TrackOptions.vue'
 import { trackSettingsOf, normalizeTrackSettings, LOCAL_TRACK_SETTINGS } from '../../data/trackerOptions.js'
+import { detKey } from '../../data/slugify.js'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
 import { useTracker, membersOf, isYouSide, sideLabel, BATTLE_SIZES } from '../../composables/useTracker.js'
@@ -346,10 +347,11 @@ function clearRoster(p) {
 }
 
 // Order doesn't matter (a detachment list is a set of picks), and an empty side isn't a
-// disagreement — it's the case pickRoster just filled in.
+// disagreement — it's the case pickRoster just filled in. Compared by detKey: the side holds the
+// MFM's spelling of a name, the roster appdata's ("Vow-Sworn" / "Vow-sworn"), and that is one pick.
 function detMismatch(p) {
-  const a = p.detachments || []
-  const b = p.roster?.detachments || []
+  const a = (p.detachments || []).map(detKey)
+  const b = (p.roster?.detachments || []).map(detKey)
   if (!a.length || !b.length) return false
   return a.length !== b.length || a.some(d => !b.includes(d))
 }

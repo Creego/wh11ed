@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { mfmFactions } from '../data/mfmFactions.js'
-import { detachmentInfo } from './trackerFactions.js'
+import { detachmentInfo, mfmDetachmentNames } from './trackerFactions.js'
 
 // A list built in the roster builder names its detachments the way appdata spells them; the tracker
 // and the roster list read DP and Force Disposition from the MFM, which spells some of them
@@ -35,5 +35,10 @@ describe('detachmentInfo — every roster detachment is found in the MFM', () =>
     expect(detachmentInfo('black-templars', 'Vow-sworn Crusaders')?.forceDispositions).toEqual(['Purge the Foe'])
     expect(detachmentInfo('space-marines', "Forgefather's Seekers")?.name).toBe('Forgefather’s Seekers')
     expect(detachmentInfo('space-marines', 'No Such Detachment')).toBeNull()
+  })
+
+  // What the setup copies from a roster onto a side: the picker ticks its rows by the MFM name.
+  it('renames a roster\'s detachments to the MFM spelling, keeping one it does not know', () => {
+    expect(mfmDetachmentNames('black-templars', ['Vow-sworn Crusaders', 'Unknown'])).toEqual(['Vow-Sworn Crusaders', 'Unknown'])
   })
 })
