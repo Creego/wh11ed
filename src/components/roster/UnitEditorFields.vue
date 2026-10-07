@@ -104,6 +104,7 @@
           <span class="ues-cap">{{ labels.rosterModelsMin.replace('{n}', rangeSize.per[0]) }}</span>
         </h4>
         <NumberStepper
+          compact
           :model-value="models"
           :min="rangeSize.per[0]"
           :max="rangeSize.per[1]"
@@ -418,6 +419,7 @@
             <div class="opt-step-body">
               <span class="opt-name">{{ g.rep.map((id) => items[id]).join(' + ') }}<span class="opt-tag">{{ labels.rosterStockTag }}</span></span>
               <NumberStepper
+                compact
                 class="stock-n"
                 :model-value="stockLefts[gi]"
                 disabled
@@ -446,6 +448,7 @@
               > +{{ o[1] }}</span></span>
               <NumberStepper
                 v-if="holds[gi]"
+                compact
                 :model-value="held(gi, oi)"
                 :min="0"
                 :max="held(gi, oi) + freed(gi)"
@@ -454,6 +457,7 @@
               />
               <NumberStepper
                 v-else
+                compact
                 :model-value="stepCount(gi, oi)"
                 :min="0"
                 :max="stepMax(gi, oi)"

@@ -1,5 +1,8 @@
 <template>
-  <div class="stepper">
+  <div
+    class="stepper"
+    :class="{ compact }"
+  >
     <button
       class="step-btn"
       data-press
@@ -79,6 +82,9 @@ const props = defineProps({
   editable: { type: Boolean, default: false },
   label: { type: String, default: '' },
   unit: { type: String, default: '' },
+  // Smaller buttons for a form with many steppers stacked (the roster's unit editor): 32px under
+  // a finger, 28px under a mouse. The tracker keeps 40px — it is tapped mid-game, not read.
+  compact: { type: Boolean, default: false },
 })
 const emit = defineEmits(['update:modelValue'])
 
@@ -133,6 +139,12 @@ defineExpose({ focus: () => (props.editable ? startEdit() : undefined) })
   line-height: 1;
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s;
+}
+.compact .step-btn { width: 32px; height: 32px; font-size: 1rem; }
+.compact .step-input { height: 32px; }
+@media (pointer: fine) {
+  .compact .step-btn { width: 28px; height: 28px; }
+  .compact .step-input { height: 28px; }
 }
 .step-btn:hover:not(:disabled) {
   border-color: var(--accent);
