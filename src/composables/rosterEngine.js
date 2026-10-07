@@ -1,6 +1,6 @@
 // Pure roster maths — no Vue, no store. Shared by the editor (live points, unit grouping) and,
 // later, the validation engine. Everything here takes plain data so it's trivially testable.
-import { slugify } from '../data/slugify.js'
+import { detKey } from '../data/slugify.js'
 import conditionalKeywords from '../data/conditionalKeywords.json'
 
 // Battlefield-role buckets a unit is filed under in the editor / add-unit list, in display
@@ -530,16 +530,10 @@ export function enhEligible(enh, def, granted = []) {
 // is active". Nothing new is generated for this.
 
 // The sidecar keys detachments by their wh11ed id, the roster refers to them by their appdata
-// display name, so matching means slugifying the name. NOT the shared slugify() alone: appdata
-// spells "Dëlve Assault Shift" with a diaeresis, which slugify() drops to `d-lve-assault-shift`
-// and would silently fail to match the `delve-assault-shift` id (24 of 25 gated grants matched
-// without this, one didn't — the same silent-no-op class as the enhancement apostrophe bug).
-// Stripping combining marks first fixes it; slugify() itself is load-bearing for DOM ids and the
-// search index, so it stays untouched.
-const detKey = (name) => slugify((name || '').normalize('NFD').replace(/[\u0300-\u036f]/g, ''))
-
-// Same job for a detachment name, which needs no such stripping — exported so the modal matches
-// the roster's detachment names to the faction file's exactly the way grantedKeywordsFor does.
+// display name, so matching goes through detKey() (src/data/slugify.js), not slugify() alone:
+// appdata spells "Dëlve Assault Shift" with a diaeresis, which slugify() drops to
+// `d-lve-assault-shift` (24 of 25 gated grants matched without it). Re-exported so the modal
+// matches the roster's detachment names to the faction file's the way grantedKeywordsFor does.
 export { detKey }
 
 // `detachments` accepts either the resolved detachment objects the editor/browser pass around

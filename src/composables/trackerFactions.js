@@ -6,6 +6,7 @@ import { mfmFactions } from '../data/mfmFactions.js'
 import { combatPatrolIndex } from '../data/combatPatrolIndex.js'
 import { factionGroups } from '../data/factionsIndex.js'
 import chapterDetachments from '../data/chapterDetachments.js'
+import { detKey } from '../data/slugify.js'
 
 export const FACTIONS = mfmFactions.en.map(f => ({ slug: f.slug, name: f.name }))
 
@@ -62,6 +63,10 @@ export function detachmentsFor(slug) {
   detCache.set(slug, out)
   return out
 }
+// By detKey, not `===`: a list built in the roster builder carries appdata's spelling of the name,
+// the MFM its own (case, apostrophe), and an exact match lost that detachment's DP and Force
+// Disposition in the tracker's setup and on the roster list.
 export function detachmentInfo(slug, name) {
-  return detachmentsFor(slug).find(d => d.name === name) || null
+  const key = detKey(name)
+  return detachmentsFor(slug).find(d => detKey(d.name) === key) || null
 }
