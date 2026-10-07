@@ -3906,8 +3906,7 @@ export default {
       ],
       "flags": {
         "legends": 1,
-        "char": 1,
-        "alongside": 1
+        "char": 1
       },
       "sizes": [
         {

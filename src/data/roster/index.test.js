@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url'
 import rosterCore from './core.js'
 import rosterItems from './items.js'
 import { loadRosterFaction } from './index.js'
-import { enhEligible, enhOptionsFor, allyGroupsFor, allySourceOf, leadTypeFor, optionItems, optionLabel, unitWargearPoints, unitPoints, modelsPerMini, defaultLoadoutLines, wargearGroupCap, wargearGroupLive, bucketOf, grantedKeywordsFor, swapRoom } from '../../composables/rosterEngine.js'
+import { enhEligible, enhOptionsFor, allyGroupsFor, allySourceOf, leadTypeFor, hostSlotTaken, optionItems, optionLabel, unitWargearPoints, unitPoints, modelsPerMini, defaultLoadoutLines, wargearGroupCap, wargearGroupLive, bucketOf, grantedKeywordsFor, swapRoom } from '../../composables/rosterEngine.js'
 import { duplicateLimit, validateRoster } from '../../composables/rosterValidation.js'
 import conditionalKeywords from '../conditionalKeywords.json'
 import { loadoutItemCounts } from '../../composables/rosterModifiers.js'
@@ -1154,6 +1154,39 @@ describe('an attachment one unit borrows from another', () => {
     expect(leads('captain')).toEqual(expect.arrayContaining(['company-heroes', 'victrix-honour-guard']))
     expect(leads('lieutenant')).toContain('company-heroes')
     expect(leads('lieutenant')).not.toContain('victrix-honour-guard')
+  })
+})
+
+// One Leader and one Support per Bodyguard unit (core rules). Every pair of Supports on every unit,
+// asked the way the editor's picker asks it: until 2026-10-08 an Exalted Champion's 10th-edition
+// footer ("even if one other CHARACTER model has already been attached") let it sit beside a
+// second Support on four Chaos units — a player's report. And no footer is read as "beside
+// anyone" except the Death Guard form the gate below names.
+describe('attachment slots', () => {
+  it('seats no Bodyguard unit with two Supports', () => {
+    const bad = []
+    for (const { slug, data } of factions) {
+      for (const host of data.units || []) {
+        const sups = data.units.filter((u) => leadTypeFor(u, { id: u.id }, host, data.detachments) === 'support')
+        for (const a of sups) {
+          for (const b of sups) {
+            if (a !== b && !hostSlotTaken(b, { id: b.id }, { id: host.id }, host, [{ def: a, entry: { id: a.id } }], data.detachments)) bad.push(`${slug}/${host.id}: ${a.id} + ${b.id}`)
+          }
+        }
+      }
+    }
+    expect(bad).toEqual([])
+  })
+
+  it('lets only the Death Guard’s "one other Leader unit" footer join beside anyone', () => {
+    const free = factions.flatMap(({ slug, data }) => (data.units || []).filter((u) => u.flags?.alongside).map((u) => `${slug}/${u.id}`))
+    expect(free.every((k) => k.startsWith('death-guard/'))).toBe(true)
+    const named = Object.fromEntries(factions.flatMap(({ data }) => (data.units || []).filter((u) => u.along).map((u) => [u.id, u.along])))
+    expect(named).toEqual({
+      'death-rider-commissar': ['Death Rider Squadron Commander', 'Lord Marshal Dreir', 'Lord Solar Leontus'],
+      'jokaero-weaponsmith': ['Inquisitor'],
+      'vargard-obyron': ['Nemesor Zahndrekh'],
+    })
   })
 })
 

@@ -810,8 +810,12 @@ export function leadTypeFor(def, entry, targetDef, detachments = []) {
 // otherwise — the Death Guard characters that join a Plague Marines unit "even if one other Leader
 // unit has already been attached to it (you cannot attach more than one of the same Leader to the
 // same unit)", `flags.alongside`. Such a leader neither takes the slot nor is blocked by one; the
-// parenthetical is the only limit left, so it blocks nothing but another copy of ITSELF.
-const occupies = (def, other) => (def?.flags?.alongside || other?.flags?.alongside
+// parenthetical is the only limit left, so it blocks nothing but another copy of ITSELF. A few
+// Legends name WHOM they may join beside instead (`along`, keywords: a Jokaero Weaponsmith "even
+// if one INQUISITOR unit has already been attached") — beside anyone else they take the slot.
+export const joinsAlongside = (def, other) => !!def?.flags?.alongside
+  || !!(other && def?.along?.some((k) => hasKeyword(other, k)))
+const occupies = (def, other) => (joinsAlongside(def, other) || joinsAlongside(other, def)
   ? def?.id != null && def.id === other?.id
   : true)
 
