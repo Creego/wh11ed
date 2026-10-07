@@ -1159,7 +1159,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useLobby } from '../../composables/useLobby.js'
 import { useParty } from '../../composables/useParty.js'
 import { useTracker, DISPOSITIONS, BATTLE_SIZES, MIRROR_MISSIONS, derivePrimary, deriveForceType, missionBySlug, fixedPool, dispositionName } from '../../composables/useTracker.js'
-import { FACTIONS, detachmentsFor, detachmentInfo } from '../../composables/trackerFactions.js'
+import { FACTIONS, detachmentsFor, detachmentInfo, mfmDetachmentNames } from '../../composables/trackerFactions.js'
 import { rosterSnapshot } from '../../composables/rosterGameLink.js'
 import RosterPickerModal from './RosterPickerModal.vue'
 import { useRosters } from '../../composables/useRosters.js'
@@ -1635,7 +1635,7 @@ async function resolveArmyChoice(p) {
   // A roster is built against its detachments (its enhancements and legality depend on them), so
   // it dictates them here instead of being checked against a separate pick. Beyond the DP budget
   // is possible in principle; the budget readout flags it exactly as a manual pick would.
-  if (p.roster?.detachments?.length) p.detachments = [...p.roster.detachments]
+  if (p.roster?.detachments?.length) p.detachments = mfmDetachmentNames(p.factionSlug, p.roster.detachments)
 }
 
 // The three mutually exclusive game modes of the seg above: standard singles, doubles
