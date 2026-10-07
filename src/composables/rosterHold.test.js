@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import fs from 'node:fs'
 import path from 'node:path'
 import { holdGroup, holdCounts, holdWg, stockLeft } from './rosterHold.js'
-import { fixedLoadoutLines, modelsPerMini, overdrawnGroups, swapOverdraft, unitWargearPoints } from './rosterEngine.js'
+import { defaultLoadoutLines, fixedLoadoutLines, modelsPerMini, overdrawnGroups, swapOverdraft, unitWargearPoints, wargearGroupFallbackCap } from './rosterEngine.js'
 import shared from '../data/roster/items.js'
 
 const dir = path.resolve(__dirname, '../data/roster')
@@ -135,5 +135,24 @@ describe('an addition offered beside a swap', () => {
     expect(stockLeft(def, flamers, gi)).toBe(5) // five Chaos Bikers, none of them gave it up
     const combis = entry([[gi, optOf('Combi-weapon'), 2]])
     expect(stockLeft(def, combis, gi)).toBe(3)
+  })
+})
+
+// Talos: "each replace ONE OF their macro-scalpels with one of the following" (two such groups).
+// Read as no swap at all until 2026-10-07 — the model kept both scalpels and gained the weapon.
+describe('one of two copies given up', () => {
+  const dru = factions.find((d) => d.slug === 'drukhari')
+  const def = dru.units.find((u) => u.name === 'Talos')
+  const scalpels = (wg) => {
+    const line = (defaultLoadoutLines(def, shared.items, { uid: 't', id: def.id, size: 0, wg }) || []).map((l) => l.items).join(', ')
+    const m = line.match(/Macro-scalpel(?: ×(\d+))?/)
+    return m ? Number(m[1] || 1) : 0
+  }
+  it('takes one scalpel per pick, one pick per group per model', () => {
+    expect(scalpels([])).toBe(2)
+    expect(scalpels([[1, 0, 1]])).toBe(1)
+    expect(scalpels([[1, 0, 1], [2, 1, 1]])).toBe(0)
+    // A single Talos: each group may take one copy, so its ceiling is one model's worth.
+    expect(wargearGroupFallbackCap(def, { uid: 't', id: def.id, size: 0 }, 1)).toBe(1)
   })
 })

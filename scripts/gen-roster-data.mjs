@@ -808,7 +808,9 @@ function linkWargearConditions(datasheetId, drafts) {
   // across 11 factions declared no `rep`: the weapon stayed on the model beside the one that
   // replaced it, and the stock rule — a model cannot give the same item up twice — had nothing to
   // count, so a ten-Raptor squad offered two mutations with one chainsword left to trade.
-  const ACTIVE_RE = /\bcan\s+(?:each\s+)?replace\s+(?:its|their|his|her|the)\s+((?:\d+\s+)?[a-z][a-z0-9' ’‐‑–,-]*?)\s+with\b/i
+  // …and "can each replace ONE OF their macro-scalpels with" (the Talos, 2026-10-07): the item is
+  // still named, one copy of it goes — `rc` below.
+  const ACTIVE_RE = /\bcan\s+(?:each\s+)?replace\s+(?:one of\s+)?(?:its|their|his|her|the)\s+((?:\d+\s+)?[a-z][a-z0-9' ’‐‑–,-]*?)\s+with\b/i
 
   // One group, two swaps: appdata files "For every 5 models in this unit: ◦ 1 Raider's boltgun can
   // be replaced with 1 meltagun ◦ 1 Raider's reaver's blade can be replaced with 1 power fist" as a
@@ -2277,6 +2279,8 @@ function buildUnit(bd, idMap, fx, kwIndex, prices) {
   const grantCount = (o) => (o.items ? o.items.reduce((n, [, c]) => n + (c || 1), 0) : 1)
   for (const d of drafts) {
     if (d.lim || !d.rep?.length || !/\beach\b/i.test(d.text.split('\n')[0])) continue
+    // "each replace ONE OF their macro-scalpels" is one copy per model, not every copy (rc, below).
+    if (/\breplace\s+one of\s+(?:its|their)\b/i.test(d.text.split('\n')[0])) continue
     if (!d.opts.every((o) => grantCount(o) === 1)) continue
     const row = defaults.find(([m]) => m === d.m)?.[1] || []
     // A count that is the profile's TOTAL rather than one model's has to be divided by the models
@@ -2300,8 +2304,16 @@ function buildUnit(bd, idMap, fx, kwIndex, prices) {
   // stays. Read as an ordinary swap it took both off the model, card and list (a player's report,
   // 2026-10-06). Only a per-model line: a profile TOTAL ("2 Havocs are equipped with…") is one copy
   // per model already, and a per-copy group (`cp`) has its own allowance.
+  // "Any number of models can each replace ONE OF their macro-scalpels with one of the following"
+  // says it outright: a Talos carries two and gives up one (an audit of every instruction,
+  // 2026-10-07 — read as no swap at all, the model kept both and gained the new weapon).
   for (const d of drafts) {
-    if (d.cp || d.lim || d.rep?.length !== 1) continue
+    if (d.cp || d.rep?.length !== 1 || !/\breplace\s+one of\s+(?:its|their)\b/i.test(d.text.split('\n')[0])) continue
+    d.rc = 1
+    report.limit.oneCopy = (report.limit.oneCopy || 0) + 1
+  }
+  for (const d of drafts) {
+    if (d.cp || d.lim || d.rc || d.rep?.length !== 1) continue
     const head = d.text.split('\n')[0]
     const low = head.toLowerCase()
     if (/\b(each|both|all|two|three|four|[2-9])\b/.test(low.split('replaced')[0])) continue
