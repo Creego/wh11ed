@@ -178,6 +178,7 @@
                     v-bind="fieldProps"
                     :entry="e"
                     @toggle-warlord="toggleWarlord"
+                    @add-leader="addLeaderTo"
                   />
                 </template>
               </RosterUnitList>
@@ -189,6 +190,7 @@
                 v-bind="fieldProps"
                 :entry="openEntry"
                 @toggle-warlord="toggleWarlord"
+                @add-leader="addLeaderTo"
               />
             </template>
           </RosterWorkbench>
@@ -473,7 +475,7 @@ const editorModes = computed(() => [
 const {
   factionPickerOpen, pickFaction,
   detachmentOptions, detachmentSummary, dispositionCands, dpSpent, dpLimit, toggleDetachment, clearDetachments,
-  openUid, toggleOpen, openEntry, addUnit, duplicateEntry, removeEntry, toggleWarlord,
+  openUid, toggleOpen, openEntry, addUnit, addLeaderTo, duplicateEntry, removeEntry, toggleWarlord,
   undoable, undoRemove, dismissUndo,
 } = useRosterBuildActions({
   roster: () => roster.value,
