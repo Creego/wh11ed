@@ -33,6 +33,7 @@ export const changelog = [
       { h: 'Roster builder: leaders' },
       'The unit editor has a new folded block at the bottom, “Can be led by”. It lists the Characters that can join this unit, even before they are in your list. Press “+”, and the Character is added to your list already attached to this unit. Press a row to open the Character’s datasheet.',
       'In “Attach to this unit”, moving a Character that is attached to another unit now asks first. The window says what changes: which unit the Character leaves, and whether that unit is left with no Character.',
+      'The “Can be led by” block was made by Creego, who sent it to the project on GitHub. He also moved the “Undo” offer after deleting a unit on a wide screen into the bottom bar. Thank you!',
     ],
     ru: [
       { h: 'Конструктор ростеров: снаряжение' },
@@ -43,6 +44,7 @@ export const changelog = [
       { h: 'Конструктор ростеров: лидеры' },
       'Внизу редактора отряда появился свёрнутый блок «Кто может возглавить». В нём персонажи, которые могут присоединиться к этому отряду, даже если их ещё нет в списке. Нажмите «+», и персонаж добавится в список уже прикреплённым к отряду. Нажмите на строку, чтобы открыть его лист данных.',
       'Если персонаж прикреплён к другому отряду, перенести его через «Прикрепить к этому отряду» теперь можно только после подтверждения. В окне написано, что изменится: от какого отряда персонаж открепится и останется ли тот отряд без персонажей.',
+      'Блок «Кто может возглавить» сделал Creego и прислал его в проект на GitHub. Ещё он перенёс плашку «Вернуть» после удаления отряда на широком экране в нижнюю панель. Спасибо!',
     ],
   },
   {
