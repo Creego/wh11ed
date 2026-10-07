@@ -427,3 +427,54 @@ describe('UnitEditorFields — attach to this unit', () => {
     expect(w.text()).not.toContain('Attach to this unit')
   })
 })
+
+describe('UnitEditorFields — can be led by', () => {
+  const warriors = necrons.units.find((u) => u.id === 'necron-warriors')
+  const mountWith = (leaderCandidates) => mount(UnitEditorFields, {
+    props: {
+      entry: { uid: 'sq', id: 'necron-warriors', size: 0 },
+      def: warriors,
+      items: rosterItems.items,
+      texts: rosterItems.texts,
+      leaderCandidates,
+    },
+    // The sheet itself is RosterUnitRulesModal's to test; here only that the row opens it.
+    global: { stubs: { Teleport: true, RosterUnitRulesModal: true } },
+  })
+  const cands = [
+    { id: 'overlord', name: 'Overlord', type: 'leader', pts: 85, used: false, linked: true, slug: 'necrons', sheetId: 'overlord' },
+    { id: 'technomancer', name: 'Technomancer', type: 'support', pts: 75, used: false, linked: true, slug: 'necrons', sheetId: 'technomancer' },
+  ]
+
+  // Folded until asked for, the count on the heading; "+" asks the parent to add AND attach.
+  it('folds the catalogue candidates behind a counted heading, and adds one on "+"', async () => {
+    const w = mountWith(cands)
+    const fold = w.find('.ues-fold')
+    expect(fold.text()).toBe('Can be led by · 2')
+    expect(fold.attributes('aria-expanded')).toBe('false')
+    await fold.trigger('click')
+    expect(fold.attributes('aria-expanded')).toBe('true')
+    const tiles = w.findAll('.opt-tile').filter((t) => t.find('.bi-plus-lg').exists())
+    expect(tiles).toHaveLength(2)
+    await tiles[0].find('.opt-info').trigger('click')
+    expect(w.emitted('add-leader')).toEqual([['overlord']])
+    expect(tiles[1].text()).toContain('Support')
+  })
+
+  it('draws nothing when no one in the catalogue could join', () => {
+    expect(mountWith([]).find('.ues-fold').exists()).toBe(false)
+  })
+
+  // The row opens the candidate's datasheet — its own faction and bare id, as the catalogue does.
+  it('opens a candidate\'s datasheet from its row', async () => {
+    const w = mountWith(cands)
+    await w.find('.ues-fold').trigger('click')
+    expect(w.findComponent({ name: 'RosterUnitRulesModal' }).exists()).toBe(false)
+    await w.findAll('.opt-open')[1].trigger('click')
+    const modal = w.findComponent({ name: 'RosterUnitRulesModal' })
+    expect(modal.props()).toMatchObject({ unitId: 'technomancer', factionSlug: 'necrons' })
+    modal.vm.$emit('close')
+    await w.vm.$nextTick()
+    expect(w.findComponent({ name: 'RosterUnitRulesModal' }).exists()).toBe(false)
+  })
+})

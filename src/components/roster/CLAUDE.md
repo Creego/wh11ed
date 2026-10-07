@@ -370,6 +370,36 @@ Draxus allied into an Adeptus Mechanicus army joins a Skitarii Vanguard her own 
 heard of. `rosterEngine.leadTypeFor` answers the question against the unit actually in the list, and
 both the target picker and `leaderTargetInvalid` go through it.
 
+### Who can lead this unit — three views of one question
+
+An attachment is read from three ends; the first two ask `leadTypeFor`, so they cannot disagree:
+
+- **"Attach to unit"** (on a Character) — `leaderTargetsFor`: the list's units it could join.
+- **"Attach to this unit"** (on a squad) — `leaderSourcesFor`: the list's Characters that could
+  join it, asked through `leaderTargetsFor` itself.
+- **"Can be led by"** (on a squad, added 2026-10-06) — `leaderCandidatesFor`: asked of the
+  **catalogue** instead of the list, because the section above is empty until a Character is added
+  ("I add Intercessors and want to know who can lead them"). **The one exception to "all three ask
+  `leadTypeFor`"**: this list takes only characters that NAME the unit in their own `leads`
+  (`leadsFor` — table, mirror, mandatory-enhancement grant, detachment gates), never a keyword
+  group (`leadKw`). An Inquisitor's "any IMPERIUM BATTLELINE INFANTRY unit" made every allied
+  Inquisitor a suggestion for Assault Intercessors, which their sheet does not say by name (owner's
+  call, 2026-10-06). The picker and the validator still accept the keyword attachment. The catalogue is what the
+  unit browser offers right now (`useRosterDerived`'s `catalogue` — `sectionsOf` without
+  `keepLocked`, so a group a Detachment locks is not offered), minus datasheets the list already
+  holds (those are the section above). Folded by default with the count on the heading; "+" is
+  `useRosterBuildActions.addLeaderTo(id, hostUid)`, which adds the character and writes its
+  `leaderOf` in one commit; tapping the row itself opens the character's datasheet
+  (`RosterUnitRulesModal` as a preview, `ctx: { detachments }` — no entry yet), at its OWN faction's
+  slug and bare id, which `RosterEntryFields` adds as `slug`/`sheetId` (an allied Inquisitor is an
+  Imperial Agents sheet). **Only candidates that could be attached right now are listed**
+  (owner's call, 2026-10-06): a taken slot (`hostSlotTaken` — a Leader on the squad removes every
+  other Leader, Supports stay) or a reached duplicate cap drops the row, filtered in
+  `RosterEntryFields`; the engine still reports `used` for any caller that wants it. Legends characters follow the
+catalogue's **"Hide Legends units"** — one switch for both, `hideLegends` in `useRosterPrefs.js`
+(moved there from `RosterUnitBrowser`, same storage key), applied in `RosterEntryFields`. Not covered: an attachment only an
+  OPTIONAL enhancement grants (Abhuman Detail) — the bearer has no enhancement yet.
+
 ### Points
 
 **The brackets are appdata's, the prices are the Munitorum Field Manual's** (`src/data/mfm/*.js`,

@@ -41,6 +41,23 @@
         />
       </FactionAccentScope>
     </Teleport>
+    <!-- A "Can be led by" candidate's sheet — a preview, like the catalogue's: the character is
+         not in the list, so the overlay gets the army's Detachments and nothing of an entry. Its
+         own faction's slug and bare id (RosterEntryFields), since an Inquisitor offered to a
+         Space Marines squad is an Imperial Agents sheet. -->
+    <Teleport
+      v-if="leaderPreview"
+      to="body"
+    >
+      <FactionAccentScope :faction-slug="leaderPreview.slug">
+        <RosterUnitRulesModal
+          :unit-id="leaderPreview.sheetId"
+          :faction-slug="leaderPreview.slug"
+          :ctx="{ detachments }"
+          @close="leaderPreview = null"
+        />
+      </FactionAccentScope>
+    </Teleport>
     <Teleport
       v-if="weaponInfoNames"
       to="body"
@@ -569,8 +586,94 @@
         </div>
       </section>
     </ExpandTransition>
+
+    <!-- "Can be led by" (a player's ask, 2026-10-06): the Leaders and Supports the CATALOGUE holds
+         that could join this unit and the list does not have yet — the section above only knows
+         what is already in it, so a squad added first said nothing. Folded by default, the count on
+         the heading: a Space Marines squad has a dozen and more. "+" adds the character and
+         attaches it here in one tap. Only rows that could be attached right now arrive here
+         (RosterEntryFields drops a taken slot and a reached cap), so every "+" works. -->
+    <ExpandTransition>
+      <section
+        v-if="leaderCandidates.length"
+        class="ues-sec"
+      >
+        <!-- A heading holding its toggle (not a button styled as one): the display face and the
+             heading's place in the outline stay those of every other section here. -->
+        <h4
+          class="ues-h ues-fold-h"
+          :class="{ open: ledByOpen }"
+        >
+          <button
+            type="button"
+            class="ues-fold"
+            :aria-expanded="ledByOpen"
+            @click="ledByOpen = !ledByOpen"
+          >
+            <ChevronIcon
+              class="ues-fold-chev"
+              :turned="ledByOpen"
+            />
+            <span>{{ ledByTitle }}</span>
+          </button>
+        </h4>
+        <CollapseTransition :show="ledByOpen">
+          <div class="opt-col">
+            <div
+              v-for="c in leaderCandidates"
+              :key="c.id"
+              class="opt-tile"
+            >
+              <!-- The row itself opens the character's datasheet — "who could lead this" is
+                   usually followed by "and what does he do", and the answer is one tap away
+                   instead of a trip to the catalogue. An unlinked unit has no sheet to open. -->
+              <button
+                v-if="c.linked"
+                type="button"
+                class="opt-step-body opt-open"
+                :title="labels.rosterShowDatasheet"
+                @click="leaderPreview = c"
+              >
+                <span class="opt-name">
+                  {{ c.name }}
+                  <span
+                    v-if="c.type === 'support'"
+                    class="opt-tag"
+                  >{{ labels.rosterSupportTag }}</span>
+                </span>
+                <span class="opt-pts">{{ c.pts }}</span>
+              </button>
+              <div
+                v-else
+                class="opt-step-body"
+              >
+                <span class="opt-name">
+                  {{ c.name }}
+                  <span
+                    v-if="c.type === 'support'"
+                    class="opt-tag"
+                  >{{ labels.rosterSupportTag }}</span>
+                </span>
+                <span class="opt-pts">{{ c.pts }}</span>
+              </div>
+              <button
+                type="button"
+                class="opt-info"
+                data-press
+                :aria-label="labels.rosterLedByAdd.replace('{unit}', c.name)"
+                :title="labels.rosterLedByAdd.replace('{unit}', c.name)"
+                @click="$emit('add-leader', c.id)"
+              >
+                <i class="bi bi-plus-lg" />
+              </button>
+            </div>
+          </div>
+        </CollapseTransition>
+      </section>
+    </ExpandTransition>
   </div>
 </template>
+
 
 <script setup>
 // The unit-configuration fields (size, wargear, warlord, enhancement, leader attachment) —
@@ -579,6 +682,7 @@
 import { computed, ref, watch } from 'vue'
 import NumberStepper from '../tracker/NumberStepper.vue'
 import CollapseTransition from '../CollapseTransition.vue'
+import ChevronIcon from '../ChevronIcon.vue'
 import ExpandTransition from '../ExpandTransition.vue'
 import RosterUnitRulesModal from './RosterUnitRulesModal.vue'
 import WeaponProfileModal from './WeaponProfileModal.vue'
@@ -611,11 +715,20 @@ const props = defineProps({
   leaderTargets: { type: Array, default: () => [] },
   // rosterEngine's leaderSourcesFor: the entries that could be attached to this one.
   leaderSources: { type: Array, default: () => [] },
+  // rosterEngine's leaderCandidatesFor, narrowed to who could join this unit right now.
+  leaderCandidates: { type: Array, default: () => [] },
 })
-defineEmits(['toggle-warlord'])
+defineEmits(['toggle-warlord', 'add-leader'])
 
 const { locale } = useLocale()
 const labels = computed(() => ui[locale.value])
+
+// "Can be led by" is folded until asked for; the title is built here, not out of adjacent
+// template fragments (a line break there would be a real space — see the root CLAUDE.md).
+const ledByOpen = ref(false)
+// The candidate whose datasheet is open, or null.
+const leaderPreview = ref(null)
+const ledByTitle = computed(() => `${labels.value.rosterLedBy} · ${props.leaderCandidates.length}`)
 
 // What tells two targets of the same datasheet apart, in the player's own terms first: the name
 // they gave that block, then the facts that differ (models, enhancement, mark, their note), then
@@ -1185,6 +1298,35 @@ const writeNote = (obj, key, value) => setNote(obj, key, value)
   cursor: pointer;
 }
 .opt-info:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+/* "Can be led by" — a fold whose heading is the toggle. */
+.ues-fold-h { margin: 0; }
+.ues-fold-h.open { margin-bottom: 0.5rem; }
+.ues-fold {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+  min-height: 24px;
+  padding: 0;
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.ues-fold-chev { font-size: 0.8rem; color: var(--text-muted); }
+/* A candidate's row is a button that opens its datasheet; it keeps the tile's look. */
+.opt-open {
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.opt-open:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.opt-open:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 .opt-step-body {
   flex: 1;
   display: flex;
