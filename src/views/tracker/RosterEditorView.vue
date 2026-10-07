@@ -196,7 +196,9 @@
       </div>
     </Transition>
 
+    <!-- Floating on the phone; on the desk it is the footer's middle (below). -->
     <RosterUndoBar
+      v-if="!desk"
       :undoable="undoable"
       @undo="undoRemove"
       @dismiss="dismissUndo"
@@ -218,6 +220,13 @@
           :badge="!!roster.faction && !roster.archived"
           :checked="legalityOn(roster)"
           @open-issues="issuesOpen = true"
+        />
+        <RosterUndoBar
+          v-if="desk"
+          inline
+          :undoable="undoable"
+          @undo="undoRemove"
+          @dismiss="dismissUndo"
         />
         <!-- Units or Settings: the two modes of the phone's editor. They were a row of tabs over
              the panes; here they cost no height at all, and the amber mark a tab wore when the
