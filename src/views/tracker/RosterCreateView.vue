@@ -192,7 +192,9 @@
       </RosterWorkbench>
     </div>
 
+    <!-- Floating on the phone; on the desk it is the footer's middle (below). -->
     <RosterUndoBar
+      v-if="!desk"
       :undoable="undoable"
       @undo="undoRemove"
       @dismiss="dismissUndo"
@@ -228,6 +230,13 @@
           :error-count="validation.errorCount"
           :issue-count="validation.issues.length"
           @open-issues="issuesOpen = true"
+        />
+        <RosterUndoBar
+          v-if="desk"
+          inline
+          :undoable="undoable"
+          @undo="undoRemove"
+          @dismiss="dismissUndo"
         />
         <div class="rc-sticky-actions">
           <!-- No steps on the desk, so nothing to go back to and nothing to go forward to: the
