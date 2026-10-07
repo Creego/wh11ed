@@ -13,6 +13,8 @@ import adeptusMechanicus from '../../data/roster/adeptus-mechanicus.js'
 import chaosSpaceMarines from '../../data/roster/chaos-space-marines.js'
 import chaosDaemons from '../../data/roster/chaos-daemons.js'
 import necrons from '../../data/roster/necrons.js'
+import spaceWolves from '../../data/roster/space-wolves.js'
+import darkAngels from '../../data/roster/dark-angels.js'
 
 // Mounted against REAL generated data: what this guards is the path from the generator's bundled
 // options to what the player actually reads, which a fixture would hide.
@@ -509,5 +511,24 @@ describe('UnitEditorFields — can be led by', () => {
     modal.vm.$emit('close')
     await w.vm.$nextTick()
     expect(w.findComponent({ name: 'RosterUnitRulesModal' }).exists()).toBe(false)
+  })
+})
+
+// "Two different weapons" (`ex`): the heading's chip says the count is exact and how many are
+// still owed. It stands there from the start, so picking changes its words, not the layout.
+describe('UnitEditorFields — exact-count groups', () => {
+  const wgpl = spaceWolves.units.find((u) => u.name === 'Wolf Guard Pack Leader')
+  const strike = darkAngels.units.find((u) => u.name === 'Deathwing Strikemaster')
+  const chip = (w) => w.findAll('.ues-cap').map((c) => c.text())[0]
+
+  it('asks for two, then for the one still owed', () => {
+    expect(chip(mountFor(wgpl))).toBe('pick 2 different')
+    expect(chip(mountFor(wgpl, { wg: [[0, 2, 1]] }))).toBe('1 more to pick')
+    expect(chip(mountFor(wgpl, { wg: [[0, 2, 1], [0, 3, 1]] }))).toBe('pick 2 different')
+  })
+
+  it('is satisfied by the sentence’s own single option', () => {
+    expect(chip(mountFor(strike, { wg: [[0, 0, 1]] }))).toBe('pick 2 different')
+    expect(chip(mountFor(strike, { wg: [[0, 1, 1]] }))).toBe('1 more to pick')
   })
 })

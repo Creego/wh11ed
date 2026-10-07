@@ -333,6 +333,15 @@ pick one copy of the two — the other stays on the card and the list. Read as a
 both (a player's report). The Legends generator (`pack-roster`) already wrote `rc` for "2 of this
 model's …"; corpus-wide the singular wording on a multi-copy per-model line is Tankbustas alone today.
 
+**Exact counts — `ex` / `solo` (added 2026-10-07).** "…replaced with two different weapons from
+the following list" is a count the model must meet, not only a ceiling: `lim` (up to 2, no
+duplicates) let one pick through, and the model was left one weapon short. `ex` is the count,
+`solo` the options the same sentence offers on their own ("either 1 twin lightning claws, or two
+different weapons…", the Deathwing Strikemaster). Both from `scripts/lib/pack-roster.mjs` — the
+four groups that say it are Legends sheets. `rosterEngine.exactPicksOwed` is the one reader: the
+editor's cap chip ("pick 2 different" → "1 more to pick", words only, never a new line) and
+`validateRoster`'s `wargearPickExact`.
+
 **Kept items — `keep` (added 2026-09-24).** "(that model's boltgun cannot be replaced)" is read by
 the generator (`KEEP_RE`, 38 groups, `--check` fails on one whose item does not resolve) into
 `g.keep`. The model still carries the item — the loadout line keeps it — but no other group may
