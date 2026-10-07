@@ -2253,6 +2253,9 @@ span.ds-stat-box.ds-stat-mod { color: var(--accent-ink); }
   background: var(--ds-th-bg, var(--accent));
   color: #fff;
 }
+/* The English name beside a Russian header ("(SUPREME COMMANDER)") on that fill: the header's own
+   white, told apart by its weight and size. Muted grey on a faction fill read 2.4:1 (T'au). */
+.ds-ability-group .ds-group-title .ds-name-en { color: inherit; }
 .ds-ability-group .ds-ability { margin: 0.45rem 0.7rem; }
 .ds-ability-group .ds-ability:first-of-type { margin-top: 0.5rem; }
 .ds-ability-group .ds-ability:last-child { margin-bottom: 0.5rem; }
