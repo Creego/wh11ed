@@ -22,6 +22,24 @@
 
 export const changelog = [
   {
+    version: '2.7.18',
+    date: '2026-10-07',
+    en: [
+      { h: 'Roster builder: wargear' },
+      'A player wrote that Havocs could not take four Havoc autocannons. They could: two autocannons are in the default loadout, and two more replace the lascannons. But the counter showed only replacements, so “2” looked like the limit. It was not a bug, but it was not obvious. So I reworked wargear in the unit editor.',
+      'For Havocs, the Stormboyz Nob and the Scout Bike Squad Sergeant the options include the default weapons themselves. There each row shows how many models hold that weapon. To change one, take it off with “−” and put another on with “+”.',
+      'For all other units, each swap group now starts with the default weapon as a row. Next to it you see how many models still carry it. Press “+” on an option, and one model takes it instead. Before, the default weapons were only listed in the “Default wargear” block above the groups.',
+      'The block above the groups is now “Wargear that cannot be replaced”. It lists only what no option replaces, such as Close combat weapon. Your picks never change it.',
+    ],
+    ru: [
+      { h: 'Конструктор ростеров: снаряжение' },
+      'Игрок написал, что у Havocs нельзя взять четыре Havoc autocannon. На самом деле можно было: две автопушки есть в стандартном снаряжении, ещё две заменяют ласпушки. Но счётчик показывал только замены, и «2» выглядело как предел. Ошибки не было, но это было неочевидно. Поэтому я переделал снаряжение в редакторе отряда.',
+      'У Havocs, Nob в Stormboyz и сержанта Scout Bike Squad среди вариантов есть само стандартное оружие. Там у каждой строки видно, сколько моделей держит это оружие. Чтобы поменять, снимите оружие «−» и наденьте другое «+».',
+      'У всех остальных отрядов каждая группа замен теперь начинается со строки стандартного оружия. Рядом видно, у скольких моделей оно осталось. Нажмите «+» у замены, и одна модель возьмёт её вместо стандартного. Раньше стандартное оружие было только в блоке «Стандартное снаряжение» над группами.',
+      'Блок над группами теперь называется «Незаменяемое снаряжение». В нём только то, что нельзя заменить, например Close combat weapon. Ваши выборы его не меняют.',
+    ],
+  },
+  {
     version: '2.7.17',
     date: '2026-10-06',
     en: [
