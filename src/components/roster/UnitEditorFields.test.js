@@ -427,3 +427,26 @@ describe('UnitEditorFields — attach to this unit', () => {
     expect(w.text()).not.toContain('Attach to this unit')
   })
 })
+
+// A single swap no unit size lets past one model is drawn as the two-row "one of", like every
+// other single swap — appdata calls the Chaplain's "storm bolter → relic shield" a stepper, and a
+// 0/1 counter there read as a different kind of choice (2026-10-07).
+describe('UnitEditorFields — a one-model swap appdata calls a stepper', () => {
+  it('draws the Chaplain in Terminator Armour\'s swap as stock / replacement rows', async () => {
+    const sm = (await import('../../data/roster/space-marines.js')).default
+    const chap = sm.units.find((u) => u.name === 'Chaplain in Terminator Armour')
+    expect(chap.gear[0].in).toBe('stepper')
+    const w = mountFor(chap)
+    expect(w.findAllComponents(NumberStepper)).toHaveLength(0)
+    const names = w.findAll('.opt-name').map((n) => n.text())
+    expect(names.some((n) => n.includes('Storm Bolter'))).toBe(true)
+    expect(names.some((n) => n.includes('Relic Shield'))).toBe(true)
+  })
+
+  // One model at the default size but more at a bigger one: the counter stays, so the control does
+  // not change shape when the squad grows.
+  it('keeps the counter where a bigger squad may take more', () => {
+    const ironstrider = adeptusMechanicus.units.find((u) => u.name === 'Ironstrider Ballistarii')
+    expect(mountFor(ironstrider).findAllComponents(NumberStepper).filter((s) => !s.classes('stock-n')).length).toBeGreaterThan(0)
+  })
+})

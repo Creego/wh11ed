@@ -2212,7 +2212,11 @@ editor states in words instead of hiding, so an existing pick can still be clear
 **The cap is what picks the editor's mode**, not appdata's `inputType` alone: a group allowing
 several models becomes per-option steppers sharing one budget (`stepMax` = remaining budget,
 never more than the duplicate cap), whatever appdata calls it — "Up to 2 Vigilants can each…"
-was a checkbox, i.e. one choice for the whole squad. Limit 1 stays the familiar radio/toggle.
+was a checkbox, i.e. one choice for the whole squad. Limit 1 stays the familiar radio/toggle. **The other way round too** (2026-10-07): a single-option group
+appdata marks `stepper` that no unit size lets past one model (`wargearGroupAlwaysOne`, asked at the
+largest bracket — the Chaplain in Terminator Armour's relic shield, 47 groups) is drawn as the
+two-row one-of, not a 0/1 counter. One that only starts at one and grows with the squad (123 groups)
+keeps its counter, so the control never changes shape under the model count's "+".
 
 **A "for every N models, up to M" instruction is a step table, and the generator reads it as one**
 (`SCALED_ALLOWANCE`, 2026-08-27). `proseAllowance` refuses the scaled forms on purpose — they are

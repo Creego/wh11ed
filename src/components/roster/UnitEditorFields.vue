@@ -643,7 +643,7 @@ import FactionAccentScope from './FactionAccentScope.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
 import { loadRosterTextsRu } from '../../data/roster/ru/index.js'
-import { ENTRY_NOTE_MAX, allySourceOf, allegFor, allegSpent, defaultWargearPoints, fixedLoadoutLines, fitWargear, modelsPerMini, overdrawnGroups, optionItems, optionLabel, setNote, splitInstruction, swapRoom, wargearGroupBlocker, perModelRoom, wargearExclRoom, wargearGroupCap, wargearGroupFallbackCap, wargearGroupSpent } from '../../composables/rosterEngine.js'
+import { ENTRY_NOTE_MAX, allySourceOf, allegFor, allegSpent, defaultWargearPoints, fixedLoadoutLines, fitWargear, modelsPerMini, overdrawnGroups, optionItems, optionLabel, setNote, splitInstruction, swapRoom, wargearGroupBlocker, perModelRoom, wargearExclRoom, wargearGroupCap, wargearGroupFallbackCap, wargearGroupSpent, wargearGroupAlwaysOne } from '../../composables/rosterEngine.js'
 import { holdCounts, holdGroup, holdWg, stockLeft } from '../../composables/rosterHold.js'
 
 const props = defineProps({
@@ -941,7 +941,10 @@ function setWg(next) {
 // Without a structural cap this falls back exactly to the old inputType-only reading.
 function mode(g, gi) {
   const cap = caps.value[gi]
-  if (g.in === 'stepper' || (cap && cap.limit > 1)) return 'stepper'
+  // A single-option "stepper" that no unit size lets past one model is a one-for-one swap, drawn
+  // like every other one (wargearGroupAlwaysOne) — not a 0/1 counter.
+  const single = g.in === 'stepper' && g.o.length === 1 && !(cap && cap.limit > 1) && wargearGroupAlwaysOne(props.def, gi)
+  if (!single && (g.in === 'stepper' || (cap && cap.limit > 1))) return 'stepper'
   // A single option that REPLACES something is a choice between two things, so the stock weapon
   // is a row of its own, as in every one-of group: it is no longer listed above the groups.
   return g.o.length > 1 || g.rep?.length ? 'radio' : 'toggle'
