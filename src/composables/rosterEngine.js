@@ -901,8 +901,11 @@ export function leaderSourcesFor(targetUid, units, defOf, detachments = []) {
 // unit" picker and validateRoster still accept a keyword attachment, so one made from that end
 // is still legal; this list just does not suggest it.
 // `catalogue` — the datasheets the army may take right now (the caller drops what its Detachments
-// lock, as the catalogue does). A datasheet already in the list is left out: it is
-// leaderSourcesFor's, one section up, and a second copy is a catalogue question.
+// lock, as the catalogue does). A datasheet the list holds a FREE copy of (attached to nobody) is
+// left out: that copy is leaderSourcesFor's, one section up, and attaches without a new purchase.
+// One whose every copy already leads another unit stays: a Lieutenant with squad A is offered to
+// squad B as a second Lieutenant, not only as "move him here" (the caller's duplicate cap decides
+// whether a second copy is legal).
 // `used` — this unit's slot of that type is already held, so a new one could not be attached.
 // Not covered: an attachment only an OPTIONAL enhancement grants (Abhuman Detail) — the bearer
 // does not have it yet, and whether it may take it is a question about that entry.
@@ -910,13 +913,13 @@ export function leaderCandidatesFor(targetUid, units, catalogue, defOf, detachme
   const target = (units || []).find((u) => u.uid === targetUid)
   const targetDef = target && defOf(target.id)
   if (!targetDef) return []
-  const inList = new Set((units || []).map((u) => u.id))
+  const freeInList = new Set((units || []).filter((u) => u.uid !== targetUid && !u.leaderOf).map((u) => u.id))
   const attached = (units || [])
     .filter((o) => o.uid !== targetUid && o.leaderOf === targetUid)
     .map((o) => ({ entry: o, def: defOf(o.id) }))
   const out = []
   for (const def of catalogue || []) {
-    if (!def || def.id === targetDef.id || inList.has(def.id)) continue
+    if (!def || def.id === targetDef.id || freeInList.has(def.id)) continue
     const type = leadsFor(def, null, detachments).find((l) => l.to === targetDef.id)?.type
     if (!type) continue
     out.push({

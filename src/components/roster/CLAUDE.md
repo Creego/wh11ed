@@ -386,8 +386,9 @@ An attachment is read from three ends; the first two ask `leadTypeFor`, so they 
   Inquisitor a suggestion for Assault Intercessors, which their sheet does not say by name (owner's
   call, 2026-10-06). The picker and the validator still accept the keyword attachment. The catalogue is what the
   unit browser offers right now (`useRosterDerived`'s `catalogue` — `sectionsOf` without
-  `keepLocked`, so a group a Detachment locks is not offered), minus datasheets the list already
-  holds (those are the section above). Folded by default with the count on the heading; "+" is
+  `keepLocked`, so a group a Detachment locks is not offered), minus datasheets the list holds a
+  free (unattached) copy of — that copy is the section above; one whose every copy already leads
+  another unit stays, so squad B is offered a second Lieutenant while the first is with squad A. Folded by default with the count on the heading; "+" is
   `useRosterBuildActions.addLeaderTo(id, hostUid)`, which adds the character and writes its
   `leaderOf` in one commit; tapping the row itself opens the character's datasheet
   (`RosterUnitRulesModal` as a preview, `ctx: { detachments }` — no entry yet), at its OWN faction's

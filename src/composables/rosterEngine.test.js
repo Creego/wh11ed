@@ -576,12 +576,21 @@ describe('leaderCandidatesFor', () => {
 
   // A datasheet already in the list belongs to leaderSourcesFor's section; a taken slot marks
   // every candidate of that type, and leaves the other type open.
-  it('leaves out what the list holds and marks a full slot', () => {
+  it('marks a full slot, and leaves the other type open', () => {
     const units = [{ uid: 's', id: 'intercessor-squad' }, { uid: 'c', id: 'captain', leaderOf: 's' }]
     const got = leaderCandidatesFor('s', units, catalogue, defOf)
-    expect(got.map((c) => c.id)).toEqual(['apothecary', 'lieutenant'])
+    expect(got.map((c) => c.id)).toEqual(['apothecary', 'captain', 'lieutenant'])
     expect(got.find((c) => c.id === 'lieutenant').used).toBe(true)
     expect(got.find((c) => c.id === 'apothecary').used).toBe(false)
+  })
+
+  // A free copy in the list is the section above's (attach it, no new purchase); a copy already
+  // leading another squad is not, so a second one is still offered.
+  it('leaves out a datasheet the list holds a free copy of, not one busy with another unit', () => {
+    const free = [{ uid: 's', id: 'intercessor-squad' }, { uid: 'l', id: 'lieutenant' }]
+    expect(leaderCandidatesFor('s', free, catalogue, defOf).map((c) => c.id)).toEqual(['apothecary', 'captain'])
+    const busy = [{ uid: 's', id: 'intercessor-squad' }, { uid: 's2', id: 'intercessor-squad' }, { uid: 'l', id: 'lieutenant', leaderOf: 's2' }]
+    expect(leaderCandidatesFor('s', busy, catalogue, defOf).find((c) => c.id === 'lieutenant')).toMatchObject({ used: false })
   })
 
   it('answers nothing for a unit no one leads, or an unknown entry', () => {

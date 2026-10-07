@@ -730,7 +730,6 @@
   </div>
 </template>
 
-
 <script setup>
 // The unit-configuration fields (size, wargear, warlord, enhancement, leader attachment) —
 // shared by the creation wizard's step 3 and the roster editor's Loadout tab, each rendering it
