@@ -61,7 +61,7 @@ describe('UnitEditorFields — pick limits', () => {
   it('caps a stepper by the remaining budget, not by the model count', () => {
     const gi = kasrkin.gear.findIndex((g) => g.o.length > 3 && g.lim)
     // The "+" of the first option in that group, however the tiles are laid out.
-    const plus = (w) => w.findAll('.opt-step-body')[0].findAll('.step-btn')[1]
+    const plus = (w) => w.findAll('.opt-tile:not(.opt-stock) .opt-step-body')[0].findAll('.step-btn')[1]
     // Its own duplicate cap is 2, so a second copy is fine and a third is not — even though the
     // squad has 10 models and the group's total allowance is 4.
     expect(plus(mountFor(kasrkin, { wg: [[gi, 0, 1]] })).attributes('disabled')).toBeUndefined()
@@ -146,7 +146,7 @@ describe('UnitEditorFields — unit composition', () => {
     expect(gi).toBeGreaterThan(-1)
     const w = mountFor(ruststalkers, { size, count: 10 })
     // Steppers render in group order; the model-count one lives outside the wargear sections.
-    const wargearSteppers = w.findAllComponents(NumberStepper).slice(w.find('.ues-count').exists() ? 1 : 0)
+    const wargearSteppers = w.findAllComponents(NumberStepper).filter((s) => !s.classes('stock-n')).slice(w.find('.ues-count').exists() ? 1 : 0)
     const before = ruststalkers.gear.slice(0, gi).filter((g) => g.in === 'stepper' || g.lim?.[0]?.[1] > 1).length
     expect(wargearSteppers[before].props('max')).toBe(9)
   })
@@ -159,7 +159,7 @@ describe('UnitEditorFields — unit composition', () => {
     const russ = astraMilitarum.units.find((u) => u.id === 'leman-russ-battle-tank')
     const gi = russ.gear.findIndex((g) => g.in === 'stepper' && !g.lim && !g.all && g.o.length > 1)
     expect(gi).toBeGreaterThan(-1)
-    const steppers = (w) => w.findAllComponents(NumberStepper).slice(w.find('.ues-count').exists() ? 1 : 0)
+    const steppers = (w) => w.findAllComponents(NumberStepper).filter((s) => !s.classes('stock-n')).slice(w.find('.ues-count').exists() ? 1 : 0)
     const before = russ.gear.slice(0, gi).filter((g) => g.in === 'stepper' || g.lim?.[0]?.[1] > 1).length
     // One model, so one pick for the group: untouched, every row offers it…
     const idle = steppers(mountFor(russ))
@@ -179,7 +179,7 @@ describe('UnitEditorFields — unit composition', () => {
     const gi = wraithlord.gear.findIndex((g) => g.cp)
     expect(gi).toBeGreaterThan(-1)
     const w = mountFor(wraithlord)
-    const steppers = w.findAllComponents(NumberStepper).slice(w.find('.ues-count').exists() ? 1 : 0)
+    const steppers = w.findAllComponents(NumberStepper).filter((s) => !s.classes('stock-n')).slice(w.find('.ues-count').exists() ? 1 : 0)
     const before = wraithlord.gear.slice(0, gi).filter((g) => g.in === 'stepper' || g.lim?.[0]?.[1] > 1).length
     expect(steppers[before].props('max')).toBe(2)
   })
@@ -206,7 +206,7 @@ describe('UnitEditorFields — a cap that grows with the squad', () => {
     // above that each option gets its own stepper sharing the group's budget. The unit already
     // has two steppers of its own at any size (the model count, and the ungated chainsword swap),
     // so it is the group's nine options appearing that this counts.
-    const steppers = (count) => mountFor(legionaries, { size: 1, count }).findAllComponents(NumberStepper).length
+    const steppers = (count) => mountFor(legionaries, { size: 1, count }).findAllComponents(NumberStepper).filter((s) => !s.classes('stock-n')).length
     expect(steppers(10) - steppers(9)).toBe(9)
   })
 
@@ -214,7 +214,7 @@ describe('UnitEditorFields — a cap that grows with the squad', () => {
     // "(duplicates are not allowed)" is prose — appdata leaves duplicateLimit empty here, so the
     // generator reads it from the instruction. Without that, two havoc autocannons.
     const w = mountFor(legionaries, { size: 1, count: 10, wg: [[specialGi, 2, 1]] })
-    const steppers = w.findAllComponents(NumberStepper)
+    const steppers = w.findAllComponents(NumberStepper).filter((s) => !s.classes('stock-n'))
     const taken = steppers.find((s) => s.props('modelValue') === 1)
     expect(taken.props('max')).toBe(1)
   })

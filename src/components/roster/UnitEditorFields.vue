@@ -172,16 +172,18 @@
       </div>
     </section>
 
-    <!-- Default loadout (read-only). Its own points, where it has any, are marked on the heading:
-         the size pill shows the Munitorum bracket, and without this the difference between that
-         and the unit's total (a Terminator Assault Squad's ten thunder hammers, +50) is invisible. -->
+    <!-- Wargear no group replaces (read-only, and no pick changes it — what a pick can touch is in
+         its group below, the stock weapon as a row of its own). The stock loadout's own points,
+         where it has any, are marked on the heading: the size pill shows the Munitorum bracket,
+         and without this the difference between that and the unit's total (a Terminator Assault
+         Squad's ten thunder hammers, +50) is invisible. -->
     <ExpandTransition>
       <section
-        v-if="defaultLines.length"
+        v-if="defaultLines.length || defaultPts"
         class="ues-sec"
       >
         <h4 class="ues-h">
-          {{ labels.rosterDefaultWargear }}
+          {{ defaultLines.length ? labels.rosterFixedWargear : labels.rosterDefaultWargear }}
           <ExpandTransition>
             <em
               v-if="defaultPts"
@@ -189,7 +191,10 @@
             >+{{ defaultPts }}{{ labels.rosterPointsLabel }}</em>
           </ExpandTransition>
         </h4>
-        <div class="opt-tile ues-default-row">
+        <div
+          v-if="defaultLines.length"
+          class="opt-tile ues-default-row"
+        >
           <div class="ues-default-list">
             <p
               v-for="(l, i) in defaultLines"
@@ -207,7 +212,7 @@
             type="button"
             class="opt-info"
             :aria-label="labels.rosterViewInfo"
-            @click="openWeaponInfo(defaultNames, labels.rosterDefaultWargear)"
+            @click="openWeaponInfo(defaultNames, labels.rosterFixedWargear)"
           >
             <i class="bi bi-info-circle" />
           </button>
@@ -282,6 +287,21 @@
           class="ues-bnote"
         >
           * {{ groupLines[gi].note }}
+        </p>
+        <!-- A group drawn as what the models hold says how to change it, on a line that is always
+             there: it came and went with the first "−" at first, and pushed the rows down under
+             a player clicking two weapons off in a row (2026-10-07). Only its words change. -->
+        <p
+          v-if="holds[gi]"
+          class="ues-blocked ues-hold"
+          :class="{ 'ues-freed': freed(gi) }"
+        >
+          <Transition
+            name="fade"
+            mode="out-in"
+          >
+            <span :key="freed(gi)">{{ freed(gi) ? labels.rosterHoldFreed.replace('{n}', freed(gi)) : labels.rosterHoldHow }}</span>
+          </Transition>
         </p>
         <!-- Each of these comes and goes with picks made in OTHER groups, so it slides in. -->
         <ExpandTransition mode="out-in">
@@ -386,6 +406,33 @@
           v-else
           class="opt-col"
         >
+          <!-- What the group replaces, as a row: how many models still carry it (rosterHold's
+               stockLeft — after every group, so two groups that replace the same pistol show the
+               same number). A count, not a control: it is whatever the rows below did not take,
+               so "+" on an option takes from it in one click. The stepper is drawn with its
+               buttons hidden so the number stands in the column of the numbers under it. -->
+          <div
+            v-if="!holds[gi] && stockLefts[gi] != null"
+            class="opt-tile opt-stock"
+          >
+            <div class="opt-step-body">
+              <span class="opt-name">{{ g.rep.map((id) => items[id]).join(' + ') }}<span class="opt-tag">{{ labels.rosterStockTag }}</span></span>
+              <NumberStepper
+                class="stock-n"
+                :model-value="stockLefts[gi]"
+                disabled
+              />
+            </div>
+            <button
+              type="button"
+              class="opt-info"
+              data-press
+              :aria-label="labels.rosterViewInfo"
+              @click="openWeaponInfo(g.rep.map((id) => items[id]))"
+            >
+              <i class="bi bi-info-circle" />
+            </button>
+          </div>
           <div
             v-for="(o, oi) in g.o"
             :key="oi"
@@ -398,6 +445,15 @@
                 class="opt-pts"
               > +{{ o[1] }}</span></span>
               <NumberStepper
+                v-if="holds[gi]"
+                :model-value="held(gi, oi)"
+                :min="0"
+                :max="held(gi, oi) + freed(gi)"
+                :disabled="shut[gi]"
+                @update:model-value="setHeld(gi, oi, $event)"
+              />
+              <NumberStepper
+                v-else
                 :model-value="stepCount(gi, oi)"
                 :min="0"
                 :max="stepMax(gi, oi)"
@@ -587,7 +643,8 @@ import FactionAccentScope from './FactionAccentScope.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
 import { loadRosterTextsRu } from '../../data/roster/ru/index.js'
-import { ENTRY_NOTE_MAX, allySourceOf, allegFor, allegSpent, defaultLoadoutLines, defaultWargearPoints, fitWargear, modelsPerMini, overdrawnGroups, optionItems, optionLabel, setNote, splitInstruction, swapRoom, wargearGroupBlocker, perModelRoom, wargearExclRoom, wargearGroupCap, wargearGroupFallbackCap, wargearGroupSpent } from '../../composables/rosterEngine.js'
+import { ENTRY_NOTE_MAX, allySourceOf, allegFor, allegSpent, defaultWargearPoints, fixedLoadoutLines, fitWargear, modelsPerMini, overdrawnGroups, optionItems, optionLabel, setNote, splitInstruction, swapRoom, wargearGroupBlocker, perModelRoom, wargearExclRoom, wargearGroupCap, wargearGroupFallbackCap, wargearGroupSpent } from '../../composables/rosterEngine.js'
+import { holdCounts, holdGroup, holdWg, stockLeft } from '../../composables/rosterHold.js'
 
 const props = defineProps({
   entry: { type: Object, required: true },
@@ -863,7 +920,7 @@ const sizeTells = computed(() => {
 })
 
 // ── Default loadout summary ──
-const defaultLines = computed(() => defaultLoadoutLines(props.def, props.items, props.entry))
+const defaultLines = computed(() => fixedLoadoutLines(props.def, props.items, props.entry))
 // Every item the lines name, once — a Sergeant and his squad both carrying a bolt pistol is one
 // profile to read. The info button beside them opens all of it, the way an option's button opens
 // the option: the default loadout was the one wargear on this screen with no way to read it.
@@ -885,7 +942,9 @@ function setWg(next) {
 function mode(g, gi) {
   const cap = caps.value[gi]
   if (g.in === 'stepper' || (cap && cap.limit > 1)) return 'stepper'
-  return g.o.length > 1 ? 'radio' : 'toggle'
+  // A single option that REPLACES something is a choice between two things, so the stock weapon
+  // is a row of its own, as in every one-of group: it is no longer listed above the groups.
+  return g.o.length > 1 || g.rep?.length ? 'radio' : 'toggle'
 }
 
 // radio (one-of): a single selection per group. `null` means "the default loadout" — shown as
@@ -929,6 +988,42 @@ function setStep(gi, oi, n) {
   if (n > 0) next.push([gi, oi, n])
   setWg(next)
 }
+// A group whose rows include the weapons it replaces (Havocs' "autocannon or lascannon → one of
+// five", the two among them) is drawn as what the models HOLD — see rosterHold.js. Its stock
+// models are already spoken for, so a change is two steps: "−" takes a weapon off a model, "+"
+// gives the freed model another. What is taken off and not yet replaced lives only here: the
+// entry changes when the model gets its new weapon, so leaving a weapon off and walking away
+// changes nothing — the hint over the rows says so.
+const stockLefts = computed(() => (props.def.gear || []).map((g, gi) => (g.rep?.length ? stockLeft(props.def, props.entry, gi) : null)))
+const holds = computed(() => (props.def.gear || []).map((g, gi) => (holdGroup(props.def, gi) ? holdCounts(props.def, props.entry, gi) : null)))
+const takenOff = ref({})
+let ownWrite = false
+watch(() => [props.entry, props.entry.wg, props.entry.size, props.entry.count], () => {
+  if (ownWrite) ownWrite = false
+  else takenOff.value = {}
+})
+const offAt = (gi, oi) => takenOff.value[gi]?.[oi] || 0
+function held(gi, oi) { return holds.value[gi][oi] - offAt(gi, oi) }
+function freed(gi) { return (takenOff.value[gi] || []).reduce((a, n) => a + (n || 0), 0) }
+function setHeld(gi, oi, n) {
+  const off = [...(takenOff.value[gi] || [])]
+  if (n < held(gi, oi)) {
+    off[oi] = offAt(gi, oi) + 1
+  } else if (offAt(gi, oi)) {
+    off[oi]--
+  } else {
+    const from = off.findIndex((x) => x > 0)
+    if (from < 0) return
+    off[from]--
+    const counts = [...holds.value[gi]]
+    counts[from]--
+    counts[oi]++
+    ownWrite = true
+    setWg(holdWg(props.def, props.entry, gi, counts))
+  }
+  takenOff.value = { ...takenOff.value, [gi]: off }
+}
+
 // What's left for THIS option: the group's own budget minus what its siblings already took, and
 // never more than the duplicate cap on a single option. Falls back to reading "For every N
 // models, 1 model…" out of the instruction for the groups appdata gives no cap for — that guess
@@ -1050,11 +1145,12 @@ const writeNote = (obj, key, value) => setNote(obj, key, value)
   .ues-top { flex-direction: column; align-items: stretch; gap: 0.35rem; }
 }
 .ues-sec:first-of-type { border-top: none; }
+/* The condensed display face this small reads cramped above 400 (owner, 2026-10-07). */
 .ues-h {
-  font-size: 0.98rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 400;
   color: var(--text-primary);
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.3rem;
   line-height: 1.35;
 }
 /* A wargear group's heading is a whole sentence lifted off the datasheet — "1 Cultist Champion's
@@ -1070,7 +1166,9 @@ const writeNote = (obj, key, value) => setNote(obj, key, value)
   font-size: 0.88rem;
   line-height: 1.5;
 }
-.ues-mini { color: var(--text-dim); font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.03em; margin-right: 0.3rem; }
+/* The size of the text it heads (owner, 2026-10-07: at 0.7rem the model name read smaller than
+   the sentence after it) — capitals at the same size as the sentence's own capitals. */
+.ues-mini { color: var(--text-dim); font-weight: 500; text-transform: uppercase; font-size: inherit; letter-spacing: 0.02em; margin-right: 0.3rem; }
 .ues-default { font-size: 0.85rem; margin: 0.15rem 0; }
 /* The default loadout is a tile like the options under it (owner, 2026-10-01): the same frame and
    ground, its info button in the same right-hand column. Inside a tile the names read at full
@@ -1096,6 +1194,11 @@ const writeNote = (obj, key, value) => setNote(obj, key, value)
   color: var(--text-muted);
   font-style: italic;
 }
+/* The stock row's number without its buttons: hidden, not removed, so it keeps the stepper's
+   width and stands over the numbers below it. */
+.stock-n :deep(.step-btn) { visibility: hidden; }
+.ues-hold { font-style: normal; transition: color 0.2s; }
+.ues-freed { color: var(--accent-ink); }
 .ues-cap {
   display: inline-block;
   margin-left: 0.35rem;

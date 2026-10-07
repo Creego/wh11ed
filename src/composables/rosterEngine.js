@@ -1475,6 +1475,26 @@ export function pickMiniFor(def, entry, gi) {
   return first ? first[0] : 0
 }
 
+// The stock items NO wargear group replaces — the editor's "Wargear that cannot be replaced".
+// Printed as the datasheet prints them, and no pick ever changes it: everything a pick can touch
+// is drawn in its own group, the stock weapon as a row with how many models still carry it
+// (owner, 2026-10-07). A block above the groups that grew and shrank with every click moved the
+// buttons under the player's finger. Only a size that fields none of a profile drops its line.
+export function fixedLoadoutLines(def, items, entry) {
+  const perMini = entry && def ? modelsPerMini(def, entry) : null
+  const replaced = new Set((def?.gear || []).flatMap((g) => (g.rep || []).map((id) => (g.all ? `*:${id}` : `${g.m ?? 0}:${id}`))))
+  return (def?.defaults || []).flatMap(([m, list]) => {
+    if (perMini?.get(m) === 0) return []
+    const kept = list.filter(([id]) => !replaced.has(`${m}:${id}`) && !replaced.has(`*:${id}`))
+    if (!kept.length) return []
+    return [{
+      mini: def.minis?.length > 1 ? (def.minis[m]?.n || '') : '',
+      items: kept.map(([id, c]) => `${items[id]}${c > 1 ? ` ×${c}` : ''}`).join(', '),
+      names: kept.map(([id]) => items[id]),
+    }]
+  })
+}
+
 export function defaultLoadoutLines(def, items, entry) {
   const perMini = entry && def ? modelsPerMini(def, entry) : null
   const removed = swapsByMini(def, entry, perMini)
