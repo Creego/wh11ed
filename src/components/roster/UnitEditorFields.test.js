@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import NumberStepper from '../tracker/NumberStepper.vue'
 import UnitEditorFields from './UnitEditorFields.vue'
+import ConfirmModal from '../ConfirmModal.vue'
 import { wargearGroupCap } from '../../composables/rosterEngine.js'
 import rosterItems from '../../data/roster/items.js'
 import drukhari from '../../data/roster/drukhari.js'
@@ -416,10 +417,42 @@ describe('UnitEditorFields — attach to this unit', () => {
     const w = mountSquad(units, [{ uid: 'tm', name: 'Technomancer', type: 'support', used: false, elsewhere: 'other' }])
     const tile = w.findAll('.opt-tile').at(-1)
     expect(tile.text()).toContain('now with Necron Warriors')
+    // Attached elsewhere: nothing moves until the player confirms, and the box stays unticked.
     await tile.find('input').setValue(true)
+    expect(units[2].leaderOf).toBe('other')
+    expect(tile.find('input').element.checked).toBe(false)
+    const ask = w.findComponent(ConfirmModal)
+    expect(ask.props('title')).toBe('Move Technomancer here?')
+    expect(ask.props('message')).toContain('detaches it from Necron Warriors')
+    expect(ask.props('message')).toContain('Necron Warriors is left with no Character attached.')
+    await ask.vm.$emit('confirm')
     expect(units[2].leaderOf).toBe('sq')
+    expect(w.findComponent(ConfirmModal).exists()).toBe(false)
+    // Detaching from here, and attaching a free one, ask nothing.
     await tile.find('input').setValue(false)
     expect(units[2].leaderOf).toBeUndefined()
+    await tile.find('input').setValue(true)
+    expect(units[2].leaderOf).toBe('sq')
+    expect(w.findComponent(ConfirmModal).exists()).toBe(false)
+  })
+
+  // Cancel leaves both units as they were; the message names what travels with the Character and
+  // stays quiet about the other unit when another Character is still on it.
+  it('keeps the attachment on cancel, and says only what is true', async () => {
+    const units = [
+      { uid: 'sq', id: 'necron-warriors', size: 0 },
+      { uid: 'other', id: 'necron-warriors', size: 0 },
+      { uid: 'tm', id: 'technomancer', size: 0, leaderOf: 'other', enh: 'Veil of Darkness' },
+      { uid: 'ov', id: 'overlord', size: 0, leaderOf: 'other' },
+    ]
+    const w = mountSquad(units, [{ uid: 'tm', name: 'Technomancer', type: 'support', used: false, elsewhere: 'other' }])
+    await w.findAll('.opt-tile').at(-1).find('input').setValue(true)
+    const ask = w.findComponent(ConfirmModal)
+    expect(ask.props('message')).toContain('The enhancement Veil of Darkness stays with Technomancer.')
+    expect(ask.props('message')).not.toContain('is left with no Character')
+    await ask.vm.$emit('close')
+    expect(units[2].leaderOf).toBe('other')
+    expect(w.findComponent(ConfirmModal).exists()).toBe(false)
   })
 
   it('draws nothing when no one in the list could join', () => {

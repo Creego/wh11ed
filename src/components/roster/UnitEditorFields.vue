@@ -45,6 +45,23 @@
          not in the list, so the overlay gets the army's Detachments and nothing of an entry. Its
          own faction's slug and bare id (RosterEntryFields), since an Inquisitor offered to a
          Space Marines squad is an Imperial Agents sheet. -->
+    <!-- Moving a Character that already leads another unit: say what changes before it does
+         (owner, 2026-10-07 — one tap silently took the Leader off the other squad). -->
+    <Teleport
+      v-if="moveAsk"
+      to="body"
+    >
+      <FactionAccentScope :faction-slug="factionSlug">
+        <ConfirmModal
+          :title="moveAsk.title"
+          :message="moveAsk.message"
+          :confirm-label="labels.rosterMoveConfirm"
+          :cancel-label="labels.rosterCancel"
+          @confirm="confirmMove"
+          @close="moveAsk = null"
+        />
+      </FactionAccentScope>
+    </Teleport>
     <Teleport
       v-if="leaderPreview"
       to="body"
@@ -598,8 +615,8 @@
     </ExpandTransition>
 
     <!-- The same attachment from the squad's end (a player's request): the Leaders and Supports in
-         the list that could join THIS unit. Ticking one attached elsewhere moves it here, and its
-         row says where it is now so that is not a surprise. -->
+         the list that could join THIS unit. Ticking one attached elsewhere asks first (ConfirmModal,
+         saying what the move does) and then moves it here; its row says where it is now. -->
     <ExpandTransition>
       <section
         v-if="leaderSources.length"
@@ -620,7 +637,7 @@
                 type="checkbox"
                 :checked="isAttachedHere(s.uid)"
                 :disabled="s.used"
-                @change="toggleSource(s.uid)"
+                @change="toggleSource(s.uid, $event)"
               >
               <span class="opt-name">
                 {{ s.name }}
@@ -742,6 +759,7 @@ import ExpandTransition from '../ExpandTransition.vue'
 import RosterUnitRulesModal from './RosterUnitRulesModal.vue'
 import WeaponProfileModal from './WeaponProfileModal.vue'
 import EnhancementRuleModal from './EnhancementRuleModal.vue'
+import ConfirmModal from '../ConfirmModal.vue'
 import FactionAccentScope from './FactionAccentScope.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
@@ -1203,11 +1221,35 @@ function toggleLeader(uid) { setLeader(props.entry.leaderOf === uid ? null : uid
 // pickers edit one fact and cannot disagree.
 const unitByUid = (uid) => props.units.find((u) => u.uid === uid)
 function isAttachedHere(uid) { return unitByUid(uid)?.leaderOf === props.entry.uid }
-function toggleSource(uid) {
+function toggleSource(uid, ev) {
   const other = unitByUid(uid)
   if (!other) return
   if (other.leaderOf === props.entry.uid) delete other.leaderOf
-  else other.leaderOf = props.entry.uid
+  else if (other.leaderOf && unitByUid(other.leaderOf)) {
+    // Attached elsewhere: ask first. The box stays as it was until the answer — the state did not
+    // change, so Vue would not redraw it on its own.
+    if (ev?.target) ev.target.checked = false
+    moveAsk.value = moveQuestion(other)
+  } else other.leaderOf = props.entry.uid
+}
+// What a move does, spelled out: off the other unit (and whether that leaves it with no Character),
+// onto this one, the points untouched, an enhancement travelling with its bearer.
+const moveAsk = ref(null)
+function moveQuestion(other) {
+  const l = labels.value
+  const name = props.defOf?.(other.id)?.name || ''
+  const fromEntry = unitByUid(other.leaderOf)
+  const from = fromEntry?.blockName || props.defOf?.(fromEntry?.id)?.name || ''
+  const fill = (s) => s.replaceAll('{unit}', name).replaceAll('{from}', from).replaceAll('{enh}', other.enh || '')
+  const leftAlone = !props.units.some((u) => u.uid !== other.uid && u.leaderOf === other.leaderOf)
+  const message = [l.rosterMoveBody, leftAlone ? l.rosterMoveLeft : '', other.enh ? l.rosterMoveEnh : '']
+    .filter(Boolean).map(fill).join(' ')
+  return { uid: other.uid, title: fill(l.rosterMoveTitle), message }
+}
+function confirmMove() {
+  const other = unitByUid(moveAsk.value?.uid)
+  if (other) other.leaderOf = props.entry.uid
+  moveAsk.value = null
 }
 // Where a candidate is now, if not here; and, where one datasheet is offered twice, what tells the
 // copies apart — the same facts the forward picker leans on, fewer of them: a Leader is one model.

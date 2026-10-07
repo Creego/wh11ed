@@ -376,7 +376,9 @@ An attachment is read from three ends; the first two ask `leadTypeFor`, so they 
 
 - **"Attach to unit"** (on a Character) — `leaderTargetsFor`: the list's units it could join.
 - **"Attach to this unit"** (on a squad) — `leaderSourcesFor`: the list's Characters that could
-  join it, asked through `leaderTargetsFor` itself.
+  join it, asked through `leaderTargetsFor` itself. Ticking one that leads another unit asks first
+  (owner, 2026-10-07): the confirmation says it leaves that unit (and when that unit is left with no
+  Character), that the points do not change, and that an enhancement travels with its bearer.
 - **"Can be led by"** (on a squad, added 2026-10-06) — `leaderCandidatesFor`: asked of the
   **catalogue** instead of the list, because the section above is empty until a Character is added
   ("I add Intercessors and want to know who can lead them"). **The one exception to "all three ask
