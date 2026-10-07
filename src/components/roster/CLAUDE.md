@@ -2131,6 +2131,16 @@ gained a count, and folding the Deathwatch Veterans' pair also let the "for ever
 cap appdata records for it match its group at last — two identical options are exactly what makes a
 limited-choice set ambiguous.
 
+**A lone item of the given-up pair is not an option** (`dropStockRemnants`, 2026-10-07). appdata
+lists the Deathwatch Terminators' "Power Fist and Storm Bolter replaced with one of the following:
+1 Storm Bolter and 1 Chainfist, …" item by item, Power Fist among them, and after the pairing the
+power fist was left as an option of its own — one that leaves the model a power fist and nothing
+else, which the GW app refuses ("Invalid wargear selected", checked in the app). Dropped where the
+group has bundles, the item is one of two or more given up, and the sentence's value half never
+names it; the run prints each one (one today). With it gone the Sergeant's and the Terminators'
+copies of the instruction matched and were folded into one unit-wide group — `useRosters.js` v10
+moves stored picks onto it.
+
 Two guards keep it fail-open, and both currently reject real groups — don't remove them to raise
 the number: every option appdata lists must be named by the prose (else the prose is describing
 something else), and a multi-item set must be backed by the enumeration. A rejected group is
