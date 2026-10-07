@@ -888,6 +888,50 @@ export function leaderSourcesFor(targetUid, units, defOf, detachments = []) {
   return out
 }
 
+// Who COULD lead this entry, asked of the whole catalogue instead of the list (a player's ask,
+// 2026-10-06 — "I add Intercessors and want to know who can lead them"). leaderSourcesFor only
+// knows the entries already in the list, so until a Character was added the squad's end of the
+// attachment said nothing at all.
+// **Named attachments only** (owner's call, 2026-10-06): a candidate must list THIS unit in its own
+// `leads` (leadsFor — the datasheet's table, a mirrored link, a mandatory enhancement's grant, all
+// detachment-gated), the way a Captain names "Assault Intercessor Squad". A keyword group
+// (`leadKw` — an Inquisitor's "any IMPERIUM BATTLELINE INFANTRY unit") does NOT put a character
+// here: it read as "this Inquisitor's sheet says he leads Assault Intercessors", which the sheet
+// nowhere says by name. Narrower than leadTypeFor on purpose — the Character's own "Attach to
+// unit" picker and validateRoster still accept a keyword attachment, so one made from that end
+// is still legal; this list just does not suggest it.
+// `catalogue` — the datasheets the army may take right now (the caller drops what its Detachments
+// lock, as the catalogue does). A datasheet already in the list is left out: it is
+// leaderSourcesFor's, one section up, and a second copy is a catalogue question.
+// `used` — this unit's slot of that type is already held, so a new one could not be attached.
+// Not covered: an attachment only an OPTIONAL enhancement grants (Abhuman Detail) — the bearer
+// does not have it yet, and whether it may take it is a question about that entry.
+export function leaderCandidatesFor(targetUid, units, catalogue, defOf, detachments = []) {
+  const target = (units || []).find((u) => u.uid === targetUid)
+  const targetDef = target && defOf(target.id)
+  if (!targetDef) return []
+  const inList = new Set((units || []).map((u) => u.id))
+  const attached = (units || [])
+    .filter((o) => o.uid !== targetUid && o.leaderOf === targetUid)
+    .map((o) => ({ entry: o, def: defOf(o.id) }))
+  const out = []
+  for (const def of catalogue || []) {
+    if (!def || def.id === targetDef.id || inList.has(def.id)) continue
+    const type = leadsFor(def, null, detachments).find((l) => l.to === targetDef.id)?.type
+    if (!type) continue
+    out.push({
+      id: def.id,
+      name: def.name,
+      type,
+      pts: unitBasePoints(def, Math.max(0, (def.sizes || []).findIndex((s) => s.default))),
+      used: hostSlotTaken(def, null, target, targetDef, attached, detachments),
+      // For the caller's "Hide Legends units" (useRosterPrefs) — a reader preference, not a rule.
+      legends: !!def.flags?.legends,
+    })
+  }
+  return orderedByName(out, (c) => c.name)
+}
+
 // Attach targets an ENHANCEMENT grants its bearer — a Cryptek with Murdermind gains DESTROYER
 // CULT and with it the Destroyer squads, a Commissar with Abhuman Detail can join Ogryns. From
 // appdata's enhancement_bodyguard_group, emitted by gen-roster-data.mjs as `attach` in the same

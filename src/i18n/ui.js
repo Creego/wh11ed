@@ -458,6 +458,9 @@ export const ui = {
     rosterAttachTo: 'Attach to unit',
     rosterAttachHere: 'Attach to this unit',
     rosterAttachNow: 'now with {unit}',
+    // "Can be led by": Leaders from the catalogue not in the list yet (UnitEditorFields).
+    rosterLedBy: 'Can be led by',
+    rosterLedByAdd: 'Add {unit} and attach it to this unit',
     // The player's own notes — a list's plan, a unit's reminder, a name for an attached block.
     rosterNotes: 'Notes',
     rosterMoreSettings: 'More settings',
@@ -1604,6 +1607,8 @@ export const ui = {
     rosterAttachTo: 'Прикрепить к отряду',
     rosterAttachHere: 'Прикрепить к этому отряду',
     rosterAttachNow: 'сейчас с {unit}',
+    rosterLedBy: 'Кто может возглавить',
+    rosterLedByAdd: 'Добавить {unit} и прикрепить к этому отряду',
     rosterNotes: 'Заметки',
     rosterMoreSettings: 'Ещё настройки',
     rosterPickUnitHint: 'Выберите юнит, чтобы настроить модели, вооружение и энхансы.',
