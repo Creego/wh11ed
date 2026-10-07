@@ -72,6 +72,15 @@ Read the one for the directory you're touching:
 This file is the map: what the app is, how it is laid out, how a route becomes a page, and the
 invariants with no single directory to live in.
 
+## Branches and releases
+
+**`main` is what is live, and it moves once per release** (since 2026-10-07, when the project got
+its first outside contributor). Work — ours and a contributor's — branches from `main`; a checked
+branch is merged into the open `release/X.Y.Z`, which is deployed and then fast-forwards `main`.
+Do not commit to `main` directly, and do not merge a PR with the GitHub button: a contributor's PR
+goes into `review/pr-N` **by merge, never cherry-pick**, so GitHub marks it merged when the release
+reaches `main`. Full flow: `CONTRIBUTING.md`; the deploy side: `deploy.sh` step 0 and `DEPLOY.md`.
+
 ## How this repo relates to the others
 
 The product is split across separate repositories, cloned side by side into one working folder.
