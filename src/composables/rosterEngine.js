@@ -229,7 +229,9 @@ function stockBlocker(def, entry, gi) {
 // Four markers are in use (◦ ■ ▫ •) and one list has none at all — just a head line ending in
 // ':' and an option per line — so the marker is not what identifies a list. A line opening with
 // '*' is a footnote about the options rather than one of them, and comes back separately.
-const BULLET = /^[◦•■▫]\s*/
+// `▪` is the Faction Pack transcriptions' marker (114 Legends instructions); without it their
+// lists ran together into one paragraph of the heading (2026-10-07).
+const BULLET = /^[◦•■▪▫]\s*/
 const FOOTNOTE = /^\*\s*/
 export function splitInstruction(text) {
   const lines = String(text || '').split('\n').map((l) => l.trim()).filter(Boolean)

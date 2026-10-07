@@ -1879,3 +1879,18 @@ describe('dpLimitFor', () => {
     expect(dpLimitFor([], 3)).toBe(3)
   })
 })
+
+// Every instruction with list markers comes apart into a head and its bullets — in BOTH locales.
+// The Faction Pack transcriptions mark theirs with `▪`, which the reader did not know, and 114
+// Legends instructions ran their whole list into the heading (2026-10-07).
+describe('splitInstruction — every marked list in the data', () => {
+  it('leaves no list marker inside a head', async () => {
+    const { default: rosterItemsData } = await import('../data/roster/items.js')
+    const { default: ru } = await import('../data/roster/ru/texts.js')
+    const bad = []
+    for (const [id, t] of [...Object.entries(rosterItemsData.texts), ...Object.entries(ru)]) {
+      if (/[◦•■▪▫]/.test(splitInstruction(t).head)) bad.push(id)
+    }
+    expect(bad).toEqual([])
+  })
+})
