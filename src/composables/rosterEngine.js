@@ -1480,6 +1480,19 @@ export function pickMiniFor(def, entry, gi) {
 // is drawn in its own group, the stock weapon as a row with how many models still carry it
 // (owner, 2026-10-07). A block above the groups that grew and shrank with every click moved the
 // buttons under the player's finger. Only a size that fields none of a profile drops its line.
+// "…replaced with two different weapons" (`ex`, from the generators): how many picks the group
+// still owes, 0 when it is untouched or complete. One pick of a `solo` option ("either 1 twin
+// lightning claws, or two different…") is complete on its own.
+export function exactPicksOwed(def, entry, gi) {
+  const g = def?.gear?.[gi]
+  if (!g?.ex) return 0
+  const spent = wargearGroupSpent(entry, gi)
+  if (!spent || spent >= g.ex) return 0
+  const picked = (entry?.wg || []).filter(([x, , n]) => x === gi && (n ?? 1) > 0)
+  if (picked.length === 1 && (picked[0][2] ?? 1) === 1 && g.solo?.includes(picked[0][1])) return 0
+  return g.ex - spent
+}
+
 export function fixedLoadoutLines(def, items, entry) {
   const perMini = entry && def ? modelsPerMini(def, entry) : null
   const replaced = new Set((def?.gear || []).flatMap((g) => (g.rep || []).map((id) => (g.all ? `*:${id}` : `${g.m ?? 0}:${id}`))))

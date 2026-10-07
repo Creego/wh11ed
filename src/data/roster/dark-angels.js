@@ -637,6 +637,10 @@ export default {
               1
             ]
           ],
+          "ex": 2,
+          "solo": [
+            0
+          ],
           "rep": [
             2789,
             682

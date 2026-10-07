@@ -643,7 +643,7 @@ import FactionAccentScope from './FactionAccentScope.vue'
 import { ui } from '../../i18n/ui.js'
 import { useLocale } from '../../composables/useLocale.js'
 import { loadRosterTextsRu } from '../../data/roster/ru/index.js'
-import { ENTRY_NOTE_MAX, allySourceOf, allegFor, allegSpent, defaultWargearPoints, fixedLoadoutLines, fitWargear, modelsPerMini, overdrawnGroups, optionItems, optionLabel, setNote, splitInstruction, swapRoom, wargearGroupBlocker, perModelRoom, wargearExclRoom, wargearGroupCap, wargearGroupFallbackCap, wargearGroupSpent } from '../../composables/rosterEngine.js'
+import { ENTRY_NOTE_MAX, allySourceOf, allegFor, allegSpent, defaultWargearPoints, fixedLoadoutLines, fitWargear, modelsPerMini, overdrawnGroups, optionItems, optionLabel, setNote, splitInstruction, swapRoom, wargearGroupBlocker, perModelRoom, wargearExclRoom, wargearGroupCap, wargearGroupFallbackCap, wargearGroupSpent, exactPicksOwed } from '../../composables/rosterEngine.js'
 import { holdCounts, holdGroup, holdWg, stockLeft } from '../../composables/rosterHold.js'
 
 const props = defineProps({
@@ -767,6 +767,13 @@ function blockerText(gi) {
 // one-of group already looks like, and 0 gets its own sentence instead.
 function capChip(gi) {
   const cap = caps.value[gi]
+  // An exact count says so, and how many are still owed — the chip stands in the heading either
+  // way, so only its words change as the player picks (nothing above the rows moves).
+  const ex = props.def?.gear?.[gi]?.ex
+  if (ex) {
+    const owed = exactPicksOwed(props.def, props.entry, gi)
+    return owed ? labels.value.rosterPickExactLeft.replace('{n}', owed) : labels.value.rosterPickExact.replace('{n}', ex)
+  }
   if (!cap || cap.limit < 2) return ''
   const upTo = labels.value.rosterPickUpTo.replace('{n}', cap.limit)
   return cap.dup ? `${upTo}, ${labels.value.rosterPickDup.replace('{n}', cap.dup)}` : upTo

@@ -400,6 +400,9 @@ export const ui = {
     rosterKeepDefault: 'Keep default',
     rosterPickUpTo: 'up to {n}',
     rosterPickDup: 'max {n} of a kind',
+    // A "two different weapons" group (UnitEditorFields' cap chip): the count is exact.
+    rosterPickExact: 'pick {n} different',
+    rosterPickExactLeft: '{n} more to pick',
     rosterPickUnavailable: 'Not available at this unit size.',
     // Why a wargear group is greyed out: what the reader has to undo to open it again. The item
     // names that follow stay English, like every other data name in the roster.
@@ -504,6 +507,7 @@ export const ui = {
     issue_namedNotEpic: '{unit} is a named character, but GW’s datasheet has no EPIC HERO keyword, so several copies are allowed. Most likely a GW oversight — agree it with your opponent',
     issue_overWargearLimit: '{unit}: {count} wargear picks in one group (max {limit} at this unit size)',
     issue_overWargearDup: '{unit}: {count} of the same wargear option (max {limit})',
+    issue_wargearPickExact: '{unit}: pick {limit} different weapons, not {count}',
     issue_overWargearOnePerModel: '{unit}: {count} × {names} — one per model at most (models in the unit: {limit})',
     issue_overWargearPerModel: '{unit}: this wargear cannot be shared out among the models under the datasheet’s per-model limits',
     issue_overWargearReplaced: '{unit}: {item} replaced on {count} models, the unit carries {limit}',
@@ -1551,6 +1555,8 @@ export const ui = {
     rosterKeepDefault: 'Оставить по умолчанию',
     rosterPickUpTo: 'до {n}',
     rosterPickDup: 'не больше {n} одинаковых',
+    rosterPickExact: 'выберите {n} разных',
+    rosterPickExactLeft: 'выберите ещё {n}',
     rosterPickUnavailable: 'Недоступно при таком размере отряда.',
     rosterModelsMin: 'от {n}',
     rosterCondNeedGone: 'Необходимо снять:',
@@ -1649,6 +1655,7 @@ export const ui = {
     issue_namedNotEpic: '{unit} — именной персонаж, но в датащите GW нет ключевого слова EPIC HERO, поэтому можно взять несколько. Скорее всего, это ошибка GW — договоритесь с соперником',
     issue_overWargearLimit: '{unit}: выбрано {count} в одной группе варгира (макс {limit} при таком размере отряда)',
     issue_overWargearDup: '{unit}: {count} одинаковых опций варгира (макс {limit})',
+    issue_wargearPickExact: '{unit}: нужно выбрать {limit} разных оружия, выбрано {count}',
     issue_overWargearOnePerModel: '{unit}: {count} × {names} — не больше одного на модель (моделей в отряде: {limit})',
     issue_overWargearPerModel: '{unit}: выбранное вооружение нельзя разложить по моделям с учётом ограничений датащита на одну модель',
     issue_overWargearReplaced: '{unit}: {item} заменено у {count} моделей, а в отряде их {limit}',
