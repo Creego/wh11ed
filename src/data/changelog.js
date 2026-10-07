@@ -30,6 +30,9 @@ export const changelog = [
       'For Havocs, the Stormboyz Nob and the Scout Bike Squad Sergeant the options include the default weapons themselves. There each row shows how many models hold that weapon. To change one, take it off with “−” and put another on with “+”.',
       'For all other units, each swap group now starts with the default weapon as a row. Next to it you see how many models still carry it. Press “+” on an option, and one model takes it instead. Before, the default weapons were only listed in the “Default wargear” block above the groups.',
       'The block above the groups is now “Wargear that cannot be replaced”. It lists only what no option replaces, such as Close combat weapon. Your picks never change it.',
+      { h: 'Roster builder: leaders' },
+      'The unit editor has a new folded block at the bottom, “Can be led by”. It lists the Characters that can join this unit, even before they are in your list. Press “+”, and the Character is added to your list already attached to this unit. Press a row to open the Character’s datasheet.',
+      'In “Attach to this unit”, moving a Character that is attached to another unit now asks first. The window says what changes: which unit the Character leaves, and whether that unit is left with no Character.',
     ],
     ru: [
       { h: 'Конструктор ростеров: снаряжение' },
@@ -37,6 +40,9 @@ export const changelog = [
       'У Havocs, Nob в Stormboyz и сержанта Scout Bike Squad среди вариантов есть само стандартное оружие. Там у каждой строки видно, сколько моделей держит это оружие. Чтобы поменять, снимите оружие «−» и наденьте другое «+».',
       'У всех остальных отрядов каждая группа замен теперь начинается со строки стандартного оружия. Рядом видно, у скольких моделей оно осталось. Нажмите «+» у замены, и одна модель возьмёт её вместо стандартного. Раньше стандартное оружие было только в блоке «Стандартное снаряжение» над группами.',
       'Блок над группами теперь называется «Незаменяемое снаряжение». В нём только то, что нельзя заменить, например Close combat weapon. Ваши выборы его не меняют.',
+      { h: 'Конструктор ростеров: лидеры' },
+      'Внизу редактора отряда появился свёрнутый блок «Кто может возглавить». В нём персонажи, которые могут присоединиться к этому отряду, даже если их ещё нет в списке. Нажмите «+», и персонаж добавится в список уже прикреплённым к отряду. Нажмите на строку, чтобы открыть его лист данных.',
+      'Если персонаж прикреплён к другому отряду, перенести его через «Прикрепить к этому отряду» теперь можно только после подтверждения. В окне написано, что изменится: от какого отряда персонаж открепится и останется ли тот отряд без персонажей.',
     ],
   },
   {
