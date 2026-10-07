@@ -416,7 +416,7 @@
             class="opt-tile opt-stock"
           >
             <div class="opt-step-body">
-              <span class="opt-name">{{ g.rep.map((id) => items[id]).join(' + ') }}<span class="opt-tag">{{ labels.rosterStockTag }}</span></span>
+              <span class="opt-name opt-stock-name"><span>{{ g.rep.map((id) => items[id]).join(' + ') }}</span><span class="opt-tag">{{ labels.rosterStockTag }}</span></span>
               <NumberStepper
                 class="stock-n"
                 :model-value="stockLefts[gi]"
@@ -1242,6 +1242,11 @@ const writeNote = (obj, key, value) => setNote(obj, key, value)
 .opt-name { color: var(--text-primary); }
 .opt-pts { font-family: var(--font-mono); font-weight: 700; color: var(--accent-ink); }
 .opt-tag { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-dim); margin-left: 0.4rem; }
+/* The stock row's name and its tag are two flex items: when the line runs out the TAG drops to the
+   next line, and the weapon names stay whole ("Bolt Pistol + Boltgun", not "Bolt Pistol +" over
+   "Boltgun STOCK" — owner, 2026-10-07). */
+.opt-stock-name { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 0.4rem; }
+.opt-stock-name .opt-tag { margin-left: 0; }
 /* Which of the two squads of that name this row is. Its OWN line — the name above it is what the
    reader scans, and a sentence trailing off the end of it would be read as part of the name. */
 .opt-which { display: block; margin-top: 0.1rem; font-size: 0.7rem; font-style: normal; line-height: 1.3; color: var(--text-muted); }
