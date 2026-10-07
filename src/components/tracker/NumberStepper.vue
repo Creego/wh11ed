@@ -18,6 +18,8 @@
       class="step-input"
       type="number"
       inputmode="numeric"
+      enterkeyhint="done"
+      :style="inputWidth ? { width: inputWidth } : null"
       :min="min"
       :max="max ?? undefined"
       :step="step"
@@ -103,8 +105,16 @@ function bump(delta) {
 
 const editing = ref(false)
 const inputEl = ref(null)
+// The field takes the number's own width, so the − and + do not move when it opens: a row of
+// steppers is tapped several in a row, and a button that slid under the finger is a mis-tap
+// (2026-10-07). The tappable number is three digits wide from the start (`.step-edit`), so it
+// has the room for "20" typed over "8" and does not widen when a count reaches two digits.
+const inputWidth = ref('')
 function startEdit() {
   if (props.disabled) return
+  const el = valEl.value?.$el ?? valEl.value
+  const w = el?.getBoundingClientRect?.().width || 0
+  inputWidth.value = w ? `${w}px` : ''
   editing.value = true
   nextTick(() => { inputEl.value?.focus(); inputEl.value?.select() })
 }
@@ -157,6 +167,7 @@ defineExpose({ focus: () => (props.editable ? startEdit() : undefined) })
 .step-num { grid-area: 1 / 1; }
 /* The tappable number of an `editable` stepper, and the field it turns into: the same cell. */
 .step-edit {
+  min-width: calc(3ch + 0.3rem);
   padding: 0 0.15rem;
   background: none;
   border: none;
@@ -165,6 +176,7 @@ defineExpose({ focus: () => (props.editable ? startEdit() : undefined) })
 }
 .step-input {
   width: 5ch;
+  box-sizing: border-box;
   height: 40px;
   padding: 0 0.2rem;
   background: var(--bg-secondary);
