@@ -18,6 +18,8 @@
       class="step-input"
       type="number"
       inputmode="numeric"
+      enterkeyhint="done"
+      :style="inputWidth ? { width: inputWidth } : null"
       :min="min"
       :max="max ?? undefined"
       :step="step"
@@ -103,8 +105,14 @@ function bump(delta) {
 
 const editing = ref(false)
 const inputEl = ref(null)
+// The field takes the number's own width, so the − and + do not move when it opens: a row of
+// steppers is tapped several in a row, and a button that slid under the finger is a mis-tap
+// (2026-10-07). Never narrower than three digits — typing "20" over "8" needs the room.
+const inputWidth = ref('')
 function startEdit() {
   if (props.disabled) return
+  const w = valEl.value?.$el?.offsetWidth ?? valEl.value?.offsetWidth ?? 0
+  inputWidth.value = w ? `max(${w}px, 3ch)` : ''
   editing.value = true
   nextTick(() => { inputEl.value?.focus(); inputEl.value?.select() })
 }
@@ -165,6 +173,7 @@ defineExpose({ focus: () => (props.editable ? startEdit() : undefined) })
 }
 .step-input {
   width: 5ch;
+  box-sizing: border-box;
   height: 40px;
   padding: 0 0.2rem;
   background: var(--bg-secondary);

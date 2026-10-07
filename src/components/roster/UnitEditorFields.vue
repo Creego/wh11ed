@@ -107,6 +107,8 @@
           :model-value="models"
           :min="rangeSize.per[0]"
           :max="rangeSize.per[1]"
+          :editable="rangeSize.per[1] - rangeSize.per[0] >= TYPE_FROM"
+          :label="labels.rosterModelsLabel"
           @update:model-value="setCount"
         />
       </section>
@@ -458,6 +460,8 @@
                 :min="0"
                 :max="stepMax(gi, oi)"
                 :disabled="shut[gi]"
+                :editable="typeable(gi)"
+                :label="optLabel(o)"
                 @update:model-value="setStep(gi, oi, $event)"
               />
             </div>
@@ -773,6 +777,16 @@ function capChip(gi) {
 }
 
 const optLabel = (o) => optionLabel(o, props.items)
+
+// From six models on, a count can be typed as well as stepped (a tap on the number): twenty
+// Termagants with fleshborers is not twenty taps (owner, 2026-10-07). Read from the group's own
+// ceiling, not the room left in it, so the control does not change kind halfway through a group.
+const TYPE_FROM = 6
+function typeable(gi) {
+  const cap = caps.value[gi]
+  const ceiling = cap ? cap.limit : wargearGroupFallbackCap(props.def, props.entry, gi)
+  return ceiling != null && ceiling >= TYPE_FROM
+}
 const optNames = (o) => optionItems(o).map(([id]) => props.items[id]).filter(Boolean)
 
 // Every wargear row is a checkbox (selection) plus a separate trailing button; the button opens a
