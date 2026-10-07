@@ -403,7 +403,10 @@ gen-roster-data.mjs reverses every unit's `leads` per faction (a Chapter's pool 
 Faction Pack Legends and the enhancement grants are in — and the page and the builder cannot
 disagree. A Detachment-gated lead carries `{ in: [...] }` or `{ out: [...] }`; the CSM pairs that
 state one attachment twice (inside D, outside D) cancel out. An enhancement's grant is a row of its
-own ("A Character with the Abhuman Detail enhancement (Grizzled Company)"). A keyword attachment —
+own ("A Character with the Abhuman Detail enhancement (Grizzled Company)"), carrying `by` — the
+characters that may take it, asked of `enhEligible` itself (`src/composables/rosterEnhEligible.js`,
+a module without imports so the Node generator can load it) — and its "Character" opens them as a
+list, the way a faction keyword in rule prose does (`openUnitList` in useFactionKeywordUnits). A keyword attachment —
 the Inquisitors' "Imperium Battleline Infantry" — is NOT listed: it stays text on the leader's own
 sheet (owner's call). Writing the lists found a reading bug: MIRROR_ATTACH took the bold
 "(excluding **EPIC HEROES**)" for a keyword the candidate NEEDS, which with `noEpic` admitted

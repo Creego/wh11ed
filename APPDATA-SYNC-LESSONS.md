@@ -1156,3 +1156,16 @@ and appdata state fresh; a data model can change between now and when this is ne
     not regenerate them). A report counts what the reader recognised as a failure — it cannot list
     what it read wrongly with confidence. Re-run the comparison sweep after a generator change: every
     instruction with "or", "one of", a number, or a footnote, checked against rep/rc/counts/lim/xpm.
+80. **A column nobody reads looks like data that is not there.** `enhancement_required_keyword_group`
+    has three columns, and the generator read two (`id`, `enhancementId`): a group that names ONE
+    DATASHEET in `datasheetId` (136 of 977 — "ARCHON model only") came out as "any Character of
+    the faction", and a group of that datasheet alone was dropped. 36 enhancements in 13 factions
+    were open to other units (Pact of Cursed Pinions to 28 Chaos characters, every Ork Upgrade to
+    every unit in the codex), 10 were closed to a unit their rules name (Incendiary Animus on a
+    Judiciar). Meanwhile 36 hand-written `ENH_LOCK_FIXES` entries "corrected" what appdata had said
+    all along — three of them dead (two enhancements retired, one keyed "(Upgrade)" where GW spells
+    "(Upgarde)"). Found while listing who may take an enhancement on a datasheet page (2026-10-07).
+    Before writing a correction table, list every column of the tables in question and say what
+    each one is; a key in a correction table that matches nothing now fails the generator. The gate
+    reads the printed prose, not appdata (`src/data/roster/index.test.js`, "enhancement bearer named
+    in its prose"), so a group appdata itself leaves out shows up there too.

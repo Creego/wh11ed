@@ -10091,7 +10091,8 @@ export default {
             {
               "fac": [
                 "Heretic Astartes"
-              ]
+              ],
+              "ds": "Chaos Lord with Jump Pack"
             }
           ]
         },
@@ -10103,7 +10104,8 @@ export default {
             {
               "fac": [
                 "Heretic Astartes"
-              ]
+              ],
+              "ds": "Chaos Lord with Jump Pack"
             }
           ],
           "attach": [
