@@ -53,6 +53,7 @@
           <button
             class="rw-choose"
             :aria-expanded="open"
+            aria-haspopup="dialog"
             @click="toggle"
           >
             <span :class="{ placeholder: !factionSlug }">{{ factionName || labels.rosterChoose }}</span>
@@ -96,6 +97,7 @@
             class="rw-choose"
             :disabled="!factionSlug"
             :aria-expanded="open"
+            aria-haspopup="dialog"
             @click="toggle"
           >
             <span :class="{ placeholder: !detachments.length }">{{ detachmentSummary || labels.rosterChoose }}</span>
@@ -134,6 +136,7 @@
             <button
               class="rw-choose"
               :aria-expanded="open"
+              aria-haspopup="dialog"
               @click="toggle"
             >
               <span
@@ -186,7 +189,7 @@
           :aria-expanded="moreOpen"
           @click="toggle"
         >
-          <i class="bi bi-three-dots" />
+          <i class="wi wi-more" />
         </button>
       </template>
       <div class="rw-more-body">

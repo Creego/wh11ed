@@ -44,7 +44,7 @@
              instead of on 90 chips. -->
         <div class="ds-tools">
           <p class="ds-legend">
-            <span><i class="bi bi-pin-angle" /> {{ labels.favPinnedGroup }}</span>
+            <span><i class="wi wi-pin-on" /> {{ labels.favPinnedGroup }}</span>
             <span><i class="bi bi-star" /> {{ labels.rosterFilterOwned }}</span>
           </p>
           <!-- Legends sheets are listed with everything else and marked, not hidden — a rule GW
@@ -91,12 +91,13 @@
                   type="button"
                   class="ds-fav"
                   :class="{ on: isUnitFavorite(slug, s.id) }"
+                  data-press-sound="toggle"
                   :title="isUnitFavorite(slug, s.id) ? labels.dsUnpinUnit : labels.dsPinUnit"
                   :aria-label="isUnitFavorite(slug, s.id) ? labels.dsUnpinUnit : labels.dsPinUnit"
                   :aria-pressed="isUnitFavorite(slug, s.id)"
                   @click.stop.prevent="toggleUnitFavorite(slug, s.id)"
                 >
-                  <i :class="isUnitFavorite(slug, s.id) ? 'bi bi-pin-angle-fill' : 'bi bi-pin-angle'" />
+                  <i :class="isUnitFavorite(slug, s.id) ? 'wi wi-pin-on' : 'wi wi-pin-off'" />
                 </button>
                 <!-- "I own this one" — the same mark the roster catalogue shows and filters by.
                      This grid is where a collection actually gets entered: the datasheet page
@@ -106,6 +107,7 @@
                   type="button"
                   class="ds-fav ds-own"
                   :class="{ on: isOwned(slug, s.id) }"
+                  data-press-sound="toggle"
                   :title="isOwned(slug, s.id) ? labels.dsOwnRemove : labels.dsOwnAdd"
                   :aria-label="isOwned(slug, s.id) ? labels.dsOwnRemove : labels.dsOwnAdd"
                   :aria-pressed="isOwned(slug, s.id)"

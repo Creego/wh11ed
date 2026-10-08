@@ -1,46 +1,26 @@
 <template>
   <div class="view">
-    <div class="view-hero">
+    <!-- Without a game the toolbar is the phase toggle alone: it sits opposite the title rather
+         than taking a line of its own (owner, 2026-10-08). -->
+    <div class="view-hero strat-hero">
       <h1>{{ labels.stratagemsHeading }}</h1>
+      <StratFilterBar
+        v-if="!hasGame"
+        ref="barEl"
+        v-model:by-phase="byPhase"
+        class="strat-hero-bar"
+      />
     </div>
 
-    <div class="strat-toolbar">
-      <!-- Detachment filters — only while a game is in progress. Without a game this page
-           stays the plain core-stratagem quick reference (no filter bar). -->
-      <div
-        v-if="hasGame"
-        class="strat-filters"
-        role="tablist"
-      >
-        <button
-          v-for="f in filters"
-          :key="f.key"
-          class="strat-filter"
-          :class="{ active: filter === f.key }"
-          role="tab"
-          :aria-selected="filter === f.key"
-          @click="filter = f.key"
-        >
-          {{ f.label }}
-        </button>
-      </div>
-      <!-- Toggle: flat list ↔ grouped-by-phase accordions -->
-      <button
-        type="button"
-        class="strat-toggle"
-        data-press="pop"
-        :class="{ active: byPhase }"
-        :aria-pressed="byPhase"
-        :aria-label="byPhase ? labels.stratGroupAsList : labels.stratGroupByPhase"
-        @click="byPhase = !byPhase"
-      >
-        <i
-          class="bi"
-          :class="byPhase ? 'bi-list-ul' : 'bi-collection'"
-        />
-        <span class="strat-toggle-label">{{ byPhase ? labels.stratGroupAsList : labels.stratGroupByPhase }}</span>
-      </button>
-    </div>
+    <!-- Detachment filters only while a game is in progress: without one this page stays the
+         plain core-stratagem quick reference. Shared with the tracker's CP tab. -->
+    <StratFilterBar
+      v-if="hasGame"
+      ref="barEl"
+      v-model:filter="filter"
+      v-model:by-phase="byPhase"
+      :filters="filters"
+    />
 
     <Transition name="fade">
       <p
@@ -53,39 +33,22 @@
 
     <!-- Phase view: one accordion per phase, stratagems for that phase inside. The empty note
          above is its own condition (not the head of this chain) so it can fade on its own. -->
-    <template v-if="visibleStratagems.length && byPhase">
-      <div
-        v-for="g in phaseGroups"
-        :key="g.key"
-        class="phase-group"
-      >
-        <button
-          type="button"
-          class="phase-head"
-          :aria-expanded="openPhases.has(g.key)"
-          @click="togglePhase(g.key)"
-        >
-          <ChevronIcon
-            class="phase-chev"
-            :turned="openPhases.has(g.key)"
-            from="right"
-            to="down"
+    <StratPhaseGroups
+      v-if="visibleStratagems.length && byPhase"
+      v-model:open="openPhases"
+      :groups="phaseGroups"
+    >
+      <template #default="{ group }">
+        <div class="strat-grid">
+          <StratCard
+            v-for="strat in group.strats"
+            :key="stratKey(strat)"
+            :strat="strat"
+            :sublabel="sublabelOf(strat)"
           />
-          <span class="phase-name">{{ phaseLabel(g.key, labels) }}</span>
-          <span class="phase-count">{{ g.strats.length }}</span>
-        </button>
-        <CollapseTransition :show="openPhases.has(g.key)">
-          <div class="strat-grid phase-grid">
-            <StratCard
-              v-for="strat in g.strats"
-              :key="stratKey(strat)"
-              :strat="strat"
-              :sublabel="sublabelOf(strat)"
-            />
-          </div>
-        </CollapseTransition>
-      </div>
-    </template>
+        </div>
+      </template>
+    </StratPhaseGroups>
 
     <!-- Flat list -->
     <div
@@ -103,19 +66,20 @@
 </template>
 
 <script setup>
-import ChevronIcon from '../components/ChevronIcon.vue'
 import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { SM_CHAPTERS } from '../data/smChapters.js'
 import StratCard from '../components/StratCard.vue'
-import CollapseTransition from '../components/CollapseTransition.vue'
-import { battlefields } from '../data/battlefields.js'
+import StratFilterBar from '../components/StratFilterBar.vue'
+import StratPhaseGroups from '../components/StratPhaseGroups.vue'
 import { ui } from '../i18n/ui.js'
 import { useLocale } from '../composables/useLocale.js'
-import { useBilingualSections } from '../composables/useBilingualMerge.js'
-import { useTracker, membersOf } from '../composables/useTracker.js'
-import { phasesOf, phaseLabel, PHASE_ORDER } from '../composables/stratagemPhases.js'
+import { useTracker } from '../composables/useTracker.js'
+import { loadCoreStratagems, loadSideStratagems, sideSignature } from '../composables/gameStratagems.js'
+import { PHASE_ORDER, groupByPhase } from '../composables/stratagemPhases.js'
 import { getItem, setItem } from '../composables/safeStorage.js'
+import { hold, settle } from '../composables/settleScroll.js'
+import { stripOffset } from '../composables/bringTabsIntoView.js'
+import { motionMs } from '../composables/motionToken.js'
 
 const route = useRoute()
 const { locale } = useLocale()
@@ -126,120 +90,15 @@ const hasGame = computed(() => current.value?.phase === 'playing')
 const you = computed(() => current.value?.players?.find((p) => p.isYou) || null)
 const opp = computed(() => current.value?.players?.find((p) => !p.isYou) || null)
 
-// Core stratagems — same EN/RU merge as BattlefieldsView, section 15 cards only.
-const sections = useBilingualSections(battlefields, (section, ruSection) =>
-  section.stratagems && ruSection.stratagems
-    ? { stratagems: section.stratagems.map((strat, k) => ({ ...strat, ...ruSection.stratagems[k] })) }
-    : {}
-)
-// Phase is derived from the English `when` (battlefields.en §15), keyed by index, so the
-// grouping is identical in EN and RU even though the displayed `when` is localized.
-const coreEnStrats = battlefields.en.find((s) => s.id === '15')?.stratagems || []
-const coreStrats = computed(() =>
-  (sections.value.find((s) => s.id === '15')?.stratagems || []).map((s, i) => ({
-    ...s,
-    _phases: phasesOf(coreEnStrats[i]?.when),
-  })),
-)
-
-// Detachment stratagems for each player, resolved from the (heavy) faction rules data,
-// which is dynamically imported so it never rides in this page's chunk unless a game is on.
+// Core stratagems and each side's detachment deck (gameStratagems.js — shared with the game
+// screen's CP tab). The faction data is imported dynamically, per side, only while a game is on.
+const coreStrats = ref([])
+watch(locale, async (loc) => {
+  const core = await loadCoreStratagems(loc)
+  if (loc === locale.value) coreStrats.value = core
+}, { immediate: true })
 const youStrats = ref([])
 const oppStrats = ref([])
-
-// Detachment names come from the MFM dataset (tracker) but stratagems from the faction rules
-// data; the two occasionally disagree on apostrophe glyph / letter case, so match loosely.
-const normName = (s) => s.replace(/[’'`]/g, "'").trim().toLowerCase()
-
-// Combat Patrol: the active detachment/stratagems live in src/data/combatPatrol.js, not in
-// src/data/factions/*.js — dynamically imported here (heavy, datasheet-bearing file), only
-// while a Combat Patrol game is in progress.
-async function loadCombatPatrolFaction(slug, loc) {
-  const { combatPatrol } = await import('../data/combatPatrol.js')
-  return combatPatrol[loc]?.factions?.find((f) => f.slug === slug) || null
-}
-
-// Resolve one faction's localized detachment list + its RU stratagem-name map.
-async function loadFactionSource(slug, loc) {
-  const { loadFaction } = await import('../data/factions/index.js')
-  const data = await loadFaction(slug)
-  if (!data) return null
-  // Tag each stratagem with `_phase` derived from its ENGLISH `when` (data.en, aligned by
-  // detachment+stratagem index with the localized faction) so phase grouping matches EN/RU.
-  const withPhase = (faction) => ({
-    ...faction,
-    detachments: (faction.detachments || []).map((det, di) => ({
-      ...det,
-      stratagems: (det.stratagems || []).map((s, si) => ({
-        ...s,
-        _phases: phasesOf(data.en.detachments?.[di]?.stratagems?.[si]?.when),
-      })),
-    })),
-  })
-  if (loc !== 'ru') return { faction: withPhase(data.en), stratNamesRu: null }
-  const { loadFactionRu, deepOverlay } = await import('../data/factions/ru/index.js')
-  const mod = await loadFactionRu(slug)
-  return {
-    faction: withPhase(mod ? deepOverlay(data.en, mod.default) : data.ru),
-    stratNamesRu: mod?.stratNamesRu || null,
-  }
-}
-
-// One ARMY's detachment stratagems (the side itself in singles, one doubles member otherwise).
-async function loadArmyStrats(m, loc) {
-  if (!m?.factionSlug || !m.detachments?.length) return []
-  if (current.value?.settings?.combatPatrol) {
-    const f = await loadCombatPatrolFaction(m.factionSlug, loc)
-    if (!f) return []
-    // Phase grouping always keys off the English `when` text (see coreEnStrats above), even
-    // when rendering the RU faction — fetch the EN entry too when locale isn't already 'en'.
-    const enF = loc === 'en' ? f : await loadCombatPatrolFaction(m.factionSlug, 'en')
-    return (f.stratagems || []).map((s, i) => ({ ...s, _phases: phasesOf(enF?.stratagems?.[i]?.when) }))
-  }
-  const sources = [m.factionSlug]
-  // The Chapters share the Codex Space Marines detachments (Gladius Task Force, etc.), which live
-  // only in the space-marines faction data — fall back to it for detachments not in the Chapter's file.
-  if (SM_CHAPTERS.has(m.factionSlug)) sources.push('space-marines')
-  // normName(detachment) → { det, stratNamesRu }; the chapter's own data wins over the shared one.
-  const lookup = new Map()
-  for (const slug of sources) {
-    const src = await loadFactionSource(slug, loc)
-    if (!src) continue
-    for (const det of src.faction.detachments || []) {
-      const key = normName(det.name)
-      if (!lookup.has(key)) lookup.set(key, { det, stratNamesRu: src.stratNamesRu })
-    }
-  }
-  const out = []
-  for (const name of m.detachments) {
-    const entry = lookup.get(normName(name))
-    if (!entry) continue
-    for (const s of entry.det.stratagems || []) {
-      const strat = { ...s, _det: normName(name) }
-      const ru = entry.stratNamesRu && entry.stratNamesRu[s.name]
-      if (ru) strat.nameRu = ru
-      out.push(strat)
-    }
-  }
-  return out
-}
-
-// A SIDE's stratagems: its one army in singles, both members' in doubles. The same detachment
-// fielded by both teammates yields ONE set of cards — within a team the two copies are identical
-// (the owner prefix only disambiguates across sides), so a second copy is noise.
-async function loadPlayerStrats(player, loc) {
-  if (!player) return []
-  const out = []
-  const seenDets = new Set()
-  for (const m of membersOf(player)) {
-    for (const s of await loadArmyStrats(m, loc)) {
-      if (s._det && seenDets.has(s._det)) continue
-      out.push(s)
-    }
-    for (const name of m?.detachments || []) seenDets.add(normName(name))
-  }
-  return out
-}
 
 let loadToken = 0
 async function loadStrats() {
@@ -250,20 +109,18 @@ async function loadStrats() {
   }
   const token = ++loadToken
   const loc = locale.value
-  const [y, o] = await Promise.all([loadPlayerStrats(you.value, loc), loadPlayerStrats(opp.value, loc)])
+  const combatPatrol = !!current.value?.settings?.combatPatrol
+  const [y, o] = await Promise.all([
+    loadSideStratagems(you.value, loc, { combatPatrol }),
+    loadSideStratagems(opp.value, loc, { combatPatrol }),
+  ])
   if (token !== loadToken) return // a newer load superseded this one
   youStrats.value = y
   oppStrats.value = o
 }
 
-// One signature per side covering every army it fields (both members' factions/detachments in
-// doubles) — the two bare factionSlug/detachments keys this replaces missed the members.
-const sideSig = (pl) =>
-  membersOf(pl || {})
-    .map((m) => `${m?.factionSlug || ''}:${(m?.detachments || []).join(',')}`)
-    .join('|')
 watch(
-  [hasGame, locale, () => sideSig(you.value), () => sideSig(opp.value)],
+  [hasGame, locale, () => sideSignature(you.value), () => sideSignature(opp.value)],
   loadStrats,
   { immediate: true },
 )
@@ -334,171 +191,34 @@ const VIEW_KEY = 'wh11ed-stratagems-by-phase'
 const wantedPhase = PHASE_ORDER.includes(String(route?.query?.phase)) ? String(route.query.phase) : null
 const byPhase = ref(wantedPhase ? true : getItem(VIEW_KEY) === '1')
 watch(byPhase, (on) => setItem(VIEW_KEY, on ? '1' : '0'))
+
+// A filter or the phase view can shorten the page under the reader (the phases fold to their
+// heads): the page glides to the new list's start, filters just under the header, instead of the
+// browser clamping it in one frame (owner, 2026-10-08; settleScroll.js).
+const barEl = ref(null)
+watch([filter, byPhase], hold)
+watch([filter, byPhase], () => settle(motionMs('--motion-swap'), stripOffset(barEl.value?.$el)), { flush: 'post' })
 const openPhases = ref(new Set(wantedPhase ? [wantedPhase] : []))
 
-const phaseGroups = computed(() => {
-  // A stratagem can span several phases (its `_phases` array), so it appears under each.
-  const by = new Map()
-  for (const s of visibleStratagems.value) {
-    for (const k of s._phases?.length ? s._phases : ['any']) {
-      if (!by.has(k)) by.set(k, [])
-      by.get(k).push(s)
-    }
-  }
-  return PHASE_ORDER.filter((k) => by.has(k)).map((k) => ({ key: k, strats: by.get(k) }))
-})
-
-function togglePhase(key) {
-  const next = new Set(openPhases.value)
-  next.has(key) ? next.delete(key) : next.add(key)
-  openPhases.value = next
-}
+const phaseGroups = computed(() => groupByPhase(visibleStratagems.value))
 </script>
 
 <style scoped>
-.strat-toolbar {
+/* A reference page read on a phone: the hero takes a line, not a screen's sixth (owner, 2026-10-08). */
+.strat-hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-bottom: 1rem;
+  gap: 0.75rem;
+  padding: 0.75rem 0 0.6rem;
+  margin-bottom: 0.9rem;
 }
-
-.strat-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
-
-/* Push the by-phase toggle to the right even when there's no filter row (no game). */
-.strat-toggle {
-  margin-left: auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font: inherit;
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 0.4rem 0.9rem;
-  border: 1px solid var(--border);
-  background: var(--bg-card);
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: background var(--motion-fast), color var(--motion-fast), border-color var(--motion-fast);
-}
-
-.strat-toggle:hover {
-  color: var(--text-primary);
-  border-color: var(--accent);
-}
-
-.strat-toggle.active {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
-}
-
-/* Phase accordions */
-.phase-group {
-  margin-bottom: 0.75rem;
-}
-
-/* The condensed display face this small reads cramped above 400 (owner, 2026-10-07). */
-.phase-head {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  width: 100%;
-  padding: 0.5rem 0.7rem;
-  border: 1px solid var(--border);
-  background: var(--bg-secondary);
-  color: var(--text-primary);
-  cursor: pointer;
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
-  transition: border-color var(--motion-fast);
-}
-
-.phase-head:hover {
-  border-color: var(--accent);
-}
-
-.phase-chev {
-  flex-shrink: 0;
-  font-size: 0.8rem;
-  color: var(--text-dim);
-}
-
-.phase-name {
-  flex: 1;
-  text-align: left;
-}
-
-.phase-count {
-  flex-shrink: 0;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--text-muted);
-}
-
-.phase-grid {
-  padding-top: 0.75rem;
-}
-
-.strat-filter {
-  font: inherit;
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 0.4rem 0.9rem;
-  border: 1px solid var(--border);
-  background: var(--bg-card);
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: background var(--motion-fast), color var(--motion-fast), border-color var(--motion-fast);
-}
-
-.strat-filter:hover {
-  color: var(--text-primary);
-  border-color: var(--accent);
-}
-
-.strat-filter.active {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
-}
-
+.strat-hero h1 { margin-bottom: 0; }
+.strat-hero .strat-hero-bar { margin-bottom: 0; }
 .strat-empty {
   color: var(--text-muted);
   font-style: italic;
   padding: 1.5rem 0;
   text-align: center;
-}
-
-/* Narrow phones: with a game on there are 4 toolbar buttons (3 filters + the toggle),
-   which wrap to a second row. Compact them so they fit one line — tighter filter pills
-   and an icon-only toggle (its text label is the widest of the lot). */
-@media (max-width: 480px) {
-  .strat-toolbar {
-    gap: 0.4rem;
-  }
-  .strat-filters {
-    gap: 0.3rem;
-  }
-  .strat-filter {
-    padding: 0.35rem 0.6rem;
-    font-size: 0.75rem;
-  }
-  .strat-toggle {
-    padding: 0.35rem 0.55rem;
-  }
-  .strat-toggle-label {
-    display: none;
-  }
 }
 </style>
