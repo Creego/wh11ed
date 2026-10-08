@@ -23,14 +23,12 @@
 export const changelog = [
   {
     version: '2.7.19',
-    date: '2026-10-08',
+    date: '2026-10-09',
     en: [
-      { h: 'Beta of the new game tracker' },
-      'You can try the new game tracker at beta.wh-rules.ru. The tracker on this site stays as it was.',
-      'A game started in the beta is played only in the beta, and a game from this site only here. If the host plays in the other version, the join page gives you a link there.',
       { h: 'Roster builder' },
       'The last update gave a unit a “Can be led by” block. Now the other way round works too: a Character has a “Can lead” block. Press “+” next to a unit, and the unit joins the roster with this Character attached.',
       'If the Character already leads another unit, the builder asks before moving it.',
+      'The roster’s “…” menu has “Start a game with this list” again. It opens the game setup with the faction, detachments and this roster already in place.',
       'In the Deathwatch Terminator Squad a model with a Cyclone Missile Launcher can no longer take a Thunder Hammer and Storm Shield. The GW app does not allow it either. The same goes for the Legends Deathwing Command Squad and Proteus Kill Team.',
       'A weapon a model gave up to two swaps no longer stays on the roster card. The Deathwatch Terminator Squad used to keep extra Storm Bolters.',
       'A weapon an enhancement gives stands in the Character’s weapon table, marked “enhancement”. For example, Imperium’s Sword.',
@@ -42,12 +40,10 @@ export const changelog = [
       'Button sounds can be switched on in the {btn:gear} menu. They are off by default.',
     ],
     ru: [
-      { h: 'Бета нового трекера партии' },
-      'Новый трекер партии можно попробовать на beta.wh-rules.ru. Трекер на этом сайте остаётся прежним.',
-      'Партия из беты играется только в бете, а партия с этого сайта — только здесь. Если хост играет в другой версии, страница подключения даст ссылку туда.',
       { h: 'Конструктор ростеров' },
       'В прошлом обновлении у отряда появился блок «Кто может возглавить». Теперь есть и обратный: у персонажа — блок «Кого может возглавить». Нажмите «+» у отряда, и он добавится в ростер уже с этим персонажем.',
       'Если персонаж уже возглавляет другой отряд, конструктор спросит, перенести ли его.',
+      'В меню «…» ростера снова есть «Начать партию с этим списком». Кнопка открывает настройку партии, где уже выбраны фракция, детачменты и этот ростер.',
       'В Deathwatch Terminator Squad модель с Cyclone Missile Launcher больше не может взять Thunder Hammer и Storm Shield. Приложение GW тоже этого не разрешает. То же у Legends Deathwing Command Squad и Proteus Kill Team.',
       'Оружие, которое модель отдала двум заменам, больше не остаётся в карточке ростера. Раньше у Deathwatch Terminator Squad оставались лишние Storm Bolter.',
       'Оружие от улучшения стоит в таблице оружия персонажа с пометкой «улучшение». Например, Imperium’s Sword.',
