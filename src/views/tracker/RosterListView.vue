@@ -543,16 +543,17 @@ function confirmDelete() {
 }
 /* Tighter than the list page (owner, 2026-09-29): the column is a picker to scan down, so every
    card spends less height — the card's padding and its line gaps, the tabs' and the filter's
-   margins, and the "…" button, which keeps its tap area but no longer props the name row open. */
+   margins, and the "…" button, which keeps its tap area but no longer props the name row open.
+   Loosened a step on 2026-10-09 (owner): the card's own lines had come to touch. */
 .rl-in-desk .rl-tabs { margin-bottom: 0.6rem; }
 .rl-in-desk .rl-factions { margin-bottom: 0.5rem; }
 .rl-in-desk .rl-factions select { padding: 0.25rem 0.4rem; }
 .rl-in-desk .rosters { gap: 0.4rem; }
-.rl-in-desk .roster { padding: 0.45rem 0.7rem 0.5rem; }
+.rl-in-desk .roster { padding: 0.6rem 0.8rem 0.65rem; }
 .rl-in-desk .rname { font-size: 0.9rem; line-height: 1.25; }
 .rl-in-desk .kebab { margin: -0.35rem -0.4rem -0.35rem 0; }
-.rl-in-desk .rline { margin-top: 0; }
-.rl-in-desk .roster-meta { margin-top: 0.2rem; }
+.rl-in-desk .rline { margin-top: 0.1rem; }
+.rl-in-desk .roster-meta { margin-top: 0.35rem; }
 /* The faction's bar on the left stays; the other three edges and a wash say "open". */
 .roster.on {
   border-top-color: var(--accent);
@@ -584,7 +585,11 @@ function confirmDelete() {
 @media (hover: hover) and (prefers-color-scheme: dark) {
   .roster.themed:hover { border-color: var(--fa-dark, var(--accent)); }
 }
-.roster-main { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+/* The "…" stands by the name's first line, not the middle of a name that wrapped, and a step clear
+   of it (owner, 2026-10-09); its 32px box hangs over the line instead of opening the row. */
+.roster-main { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.9rem; }
+.roster-main .kebab { margin: -0.3rem -0.3rem -0.3rem 0; }
+.roster-main .rpin { margin-top: 0.2rem; }
 /* A card is a card: a name that runs on is cut at two lines rather than stretching the row.
    The whole thing is readable on the list's own page. */
 .rname {
