@@ -609,11 +609,13 @@ function confirmDelete() {
 /* The draft's own Delete: same hit area as the kebab it replaces, and it says what it does only
    on hover — a bin sitting bright red on every draft card would shout louder than the card. */
 @media (hover: hover) { .kebab.danger:hover { background: color-mix(in srgb, var(--danger) 14%, transparent); color: var(--danger); } }
-/* Faction on the left, the disposition chip pinned right; the detachments under them, one step
-   quieter than the faction — a fact to check, not a headline. */
-.rline { display: flex; align-items: flex-start; gap: 0.45rem; margin-top: 0.05rem; }
+/* Faction on the left, the disposition chip pinned right and centred on it: the chip is taller
+   than the faction's line, and hung from its top it pressed on the detachments (owner,
+   2026-10-09). The detachments under them, one step quieter than the faction — a fact to check,
+   not a headline. */
+.rline { display: flex; align-items: center; gap: 0.45rem; margin: 0.05rem 0 0.15rem; }
 .rfaction { flex: 1 1 auto; min-width: 0; font-size: 0.78rem; font-weight: 600; color: var(--fa-light, var(--accent)); opacity: 0.7; }
-.rfd { flex-shrink: 0; margin-top: 0.1rem; }
+.rfd { flex-shrink: 0; }
 .rdets { display: block; font-size: 0.72rem; color: var(--text-muted); opacity: 0.8; }
 @media (prefers-color-scheme: dark) {
   .rfaction, .rpin { color: var(--fa-dark, var(--accent-ink)); }

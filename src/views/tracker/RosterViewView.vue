@@ -91,7 +91,7 @@
                 :aria-label="labels.rosterMoreActions"
                 @click="toggle"
               >
-                <i class="bi bi-three-dots-vertical" />
+                <i class="wi wi-more-v" />
               </button>
             </template>
             <!-- The game this list is for: the tracker's setup opens with the faction, detachments,
