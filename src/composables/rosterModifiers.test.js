@@ -157,6 +157,36 @@ describe('loadoutItemCounts', () => {
     expect(counts.get(1)).toBe(5) // untouched by the swap
   })
 
+  // Deathwatch Terminators as appdata 972 builds them, before the cyclone's storm bolter was locked:
+  // 1 = storm bolter, 2 = power fist, 3 = cyclone, 4 = thunder hammer, 5 = storm shield, 6 = chainfist.
+  const dwTerminators = {
+    sizes: [{ per: [5, 5], comp: [[0, 1], [1, 4]] }, { per: [10, 10], comp: [[0, 1], [1, 9]] }],
+    minis: [{ n: 'Deathwatch Terminator Sergeant' }, { n: 'Deathwatch Terminator' }],
+    defaults: [[1, [[1, 1], [2, 1]]], [0, [[2, 1], [1, 1]]]],
+    gear: [
+      { m: 1, in: 'stepper', o: [[[[3, 1], [1, 1]]]], lim: [[0, 3]], rep: [1] },
+      { all: 1, in: 'stepper', o: [[[[1, 1], [6, 1]]], [[[4, 1], [5, 1]]]], rep: [2, 1] },
+    ],
+  }
+
+  it('a model that gives up a handed-back item to a second swap holds none of it (a player, 2026-10-08)', () => {
+    // Three Terminators take the cyclone (their storm bolter comes back with it), then those three
+    // and one more trade fist and storm bolter for hammer and shield: only the Sergeant keeps a bolter.
+    const counts = loadoutItemCounts(dwTerminators, { size: 0, wg: [[1, 1, 4], [0, 0, 3]] })
+    expect(counts.get(1)).toBe(1)
+    expect(counts.get(2)).toBe(1)
+    expect(counts.get(3)).toBe(3)
+    expect(counts.get(4)).toBe(4)
+  })
+
+  it('a unit-wide swap taken by every model reaches the Sergeant too', () => {
+    // Ten models, ten "storm bolter and chainfist": ten bolters (handed back), ten chainfists, no fist.
+    const counts = loadoutItemCounts(dwTerminators, { size: 1, wg: [[1, 0, 10]] })
+    expect(counts.get(1)).toBe(10)
+    expect(counts.get(6)).toBe(10)
+    expect(counts.has(2)).toBe(false)
+  })
+
   it('says nothing rather than guessing when the model count is unknown', () => {
     // A multi-miniature datasheet with no resolvable per-profile count: the item is fielded,
     // its quantity is not knowable, and `null` is how that is said.
