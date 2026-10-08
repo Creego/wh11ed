@@ -201,13 +201,22 @@ export function loadoutItemCopies(def, entry) {
   // the bolt pistol stayed beside the hand flamer (found 2026-10-05 sweeping every swap; 13 groups,
   // Death Company Marines, Furioso, Dire Avengers, Corsairs, Wracks…). What a profile gave up that
   // it was not printed with comes off the copies the options added, first ones first.
+  //
+  // A PRINTED item can be given up twice on one model too: an option hands it back ("cyclone
+  // missile launcher and 1 storm bolter") and another group takes it ("power fist and storm bolter →
+  // thunder hammer and storm shield"). The printed lines can lose no more than the profile's
+  // models; the rest of what the ledger counts came off copies an option added — else they stayed
+  // on the card (a player, 2026-10-08: four storm bolters on a squad that kept one).
   const printed = new Set(def.defaults.flatMap(([m, list]) => list.map(([id]) => `${m}:${id}`)))
   for (const [key, take] of removed) {
-    if (!take || printed.has(key)) continue
+    if (!take) continue
     const [m, id] = key.split(':').map(Number)
+    const models = perMini?.get(m)
+    if (printed.has(key) && models == null) continue
     // The profile's own copies first, then the unit-wide ones (a Desolation Sergeant gives up the
     // superkrak launcher a whole-unit group handed every model).
-    let left = take
+    let left = printed.has(key) ? take - models : take
+    if (left <= 1e-9) continue
     for (const own of [true, false]) {
       for (const sl of copies.get(id) || []) {
         if (left <= 0) break
