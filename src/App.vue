@@ -364,7 +364,8 @@ onUnmounted(() => {
 .main-content {
   max-width: 860px;
   margin: 0 auto;
-  padding: 0 2rem 4rem;
+  /* + a pinned bar's height, where a screen carries one (--roster-sticky-h, set below). */
+  padding: 0 2rem calc(4rem + var(--roster-sticky-h, 0px));
 }
 
 /* Only the merged Core Rules and Event Companion pages: their prose chapters lay out in
@@ -412,7 +413,7 @@ onUnmounted(() => {
 /* ── Mobile ── */
 @media (max-width: 900px) {
   .main-content {
-    padding: 0 calc(1rem + var(--safe-right)) calc(4.5rem + var(--safe-bottom) + var(--mobile-bar-h, 0px)) calc(1rem + var(--safe-left));
+    padding: 0 calc(1rem + var(--safe-right)) calc(4.5rem + var(--safe-bottom) + var(--mobile-bar-h, 0px) + var(--roster-sticky-h, 0px)) calc(1rem + var(--safe-left));
   }
   .main-content--desk { padding-bottom: calc(var(--roster-sticky-h, 0px) + 52px + var(--safe-bottom)); }
 }
@@ -447,4 +448,8 @@ onUnmounted(() => {
 @media (max-width: 480px) {
   .app-layout:has(.rc-sticky:not(.page-leaving .rc-sticky)) { --roster-sticky-h: 3.1rem; }
 }
+/* The tracker's pinned turn buttons (RoundTracker's .tf-sticky): 36px buttons + 2 × 0.25rem +
+   the border — the same reserve the roster bar makes, so the floating buttons yield to it and the
+   page's end is not under it (the padding rules below add it). */
+.app-layout:has(.tf-sticky) { --roster-sticky-h: 2.85rem; }
 </style>

@@ -10,7 +10,7 @@
       :class="{ active: isRulesRoute }"
       @click="$emit('open-rules')"
     >
-      <i class="bi bi-book-half" />
+      <i class="wi wi-rules" />
       <span>{{ labels.navRules }}</span>
     </button>
     <RouterLink
@@ -18,7 +18,7 @@
       class="bn-item"
       :class="{ active: isRosterRoute }"
     >
-      <i class="bi bi-clipboard-plus" />
+      <i class="wi wi-rosters" />
       <span>{{ labels.navRoster }}</span>
     </RouterLink>
     <button
@@ -27,7 +27,7 @@
       :class="{ active: isFactionRoute }"
       @click="$emit('open-factions')"
     >
-      <i class="bi bi-shield-shaded" />
+      <i class="wi wi-army" />
       <span>{{ labels.navFactions }}</span>
     </button>
     <RouterLink
@@ -35,7 +35,7 @@
       class="bn-item"
       :class="{ active: isStratagemsRoute }"
     >
-      <i class="bi bi-lightning-charge" />
+      <i class="wi wi-stratagems" />
       <span>{{ labels.navStratagemsShort }}</span>
     </RouterLink>
     <RouterLink
@@ -43,7 +43,7 @@
       class="bn-item"
       :class="{ active: isTrackerRoute }"
     >
-      <i class="bi bi-clipboard-data" />
+      <i class="wi wi-tracker" />
       <span>{{ labels.navTracker }}</span>
     </RouterLink>
   </nav>

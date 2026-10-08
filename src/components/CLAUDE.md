@@ -32,7 +32,8 @@ libraries** (don't add GSAP/@vueuse/motion/animate.css).
   the finger is **`pressFeedback.js`**, one document listener installed in `main.js` — not a
   directive per button. The shared primitives (`.btn-primary`, `.btn-ghost`, `.tab`, `.bn-item`)
   sink a little while held by class alone — not `.seg`, whose answer is its sliding plate (a button
-  shrinking inside a plate that does not shows the plate round its edges); a one-off opts in with `data-press`; an icon
+  shrinking inside a plate that does not shows the plate round its edges); a one-off opts in with `data-press` (and `data-press-scope="<selector>"` when the button is the
+  face of a bigger card that should sink whole — a roster unit, its Battle-shocked row included); an icon
   button whose result stays on screen (a mark, a toggle, back-to-top) takes `data-press="pop"` —
   its icon sinks and springs back with a wobble on release. Every checkbox row (a `<label>`
   holding a checkbox) pops its box the same way, found by shape, not marked. A press sinks a button
@@ -41,6 +42,31 @@ libraries** (don't add GSAP/@vueuse/motion/animate.css).
   `:active`**: the tap flips the button's own `:class`, and Vue rewrites the whole attribute when a
   class binding changes, so an added class is gone before it can play (the first version never
   animated anywhere); `:active` is unreliable on iOS and loses to every scoped `transition`.
+- **A dropdown closes on a tap outside through `useOutsideTap`, never a backdrop** (2026-10-08).
+  A full-screen transparent backdrop also covered the dropdown's own trigger: a second tap on the
+  gear closed the menu without pressing the gear — no sink, no sound. `useOutsideTap(open, inside,
+  close)` listens on the window while open: inside (trigger + panel) passes untouched, outside
+  closes on release and is swallowed as a backdrop's was (pointerdown stopped before pressFeedback,
+  the click after it stopped). Used by the settings gear, `PickerDropdown`, `SyncIndicator`.
+- **Sounds: one engine, the triggers beside what sounds** (owner's set, 2026-10-08; off until
+  switched on in the ⚙ menu). `uiSound.js` is the engine — the list of files (`SOUNDS`, each a
+  `public/sounds/<name>.mp3`, precached as mp3), the switch, `playSound(name)`; nothing else touches
+  Web Audio. Switched on, the files load at idle on every visit (decoded on an offline context, no
+  gesture needed) and the playing context is made at the first touch — loading at the first tap
+  made that click late and lost its let-go. Who plays what: a press in `pressSound.js` (from `pressFeedback`: click, or card for a
+  target over 200×80, `data-press-sound="card|click"` overrides; a tap held under 150 ms is heard
+  once, going down — its let-go ran into the press — measured by the events' own times); what a control DID in
+  `stateSounds.js` (document listeners, `main.js`) — a mark (`data-press-sound="toggle"` plus
+  `aria-pressed`, or a checkbox) by its new state, `toggle-on/off`; a switch — `role="tab"`, a
+  `.seg` button, a `button[aria-expanded]` (a fold's head) — slides, `seg`, a tab or segment only
+  when the pick moves; a dialog opening and closing (`BaseModal`, mount / unmount) slides too — the same sound
+  twice within 50 ms plays once (`uiSound.js`), so a dialog replaced by the next is one slide; an error toast in
+  `AppToast.vue`. Those are silent under the finger
+  (`soundsOwnState`): one action, one sound. **A button that opens a menu or a picker carries
+  `aria-haspopup`** (`menu` / `dialog`) — that is what keeps it an ordinary click; a new dropdown
+  trigger without it would slide like a fold. Points, CP, phases have no sound of their own — the button
+  that did it is the sound (owner). A new sound: add the file and its name to `SOUNDS`, and play it
+  where the thing happens — not a second engine.
 - **`.seg` slides its lit half** (`segSlider.js`, installed in `main.js` beside `pressFeedback`).
   One MutationObserver on class changes of buttons inside a `.seg` — no `.seg` in the app had to
   change. Before its first switch a `.seg` draws as it always did; on the first switch it becomes
@@ -111,9 +137,16 @@ libraries** (don't add GSAP/@vueuse/motion/animate.css).
   a view that is expensive to build is not remounted per switch: both stay built behind `v-show`,
   one `<Transition>` each, and the leaving one's `after-leave` lets the other in — the editor does
   both (`paneTab`). A tab switch hands its `@enter` to `bringTabsIntoView`.
-- **`BaseModal` animates open only** — on a phone the sheet rises from below the screen edge, wider
-  it grows in from 0.94, at `--motion-slow`; never the dialog's opacity (VoiceOver focus, see its CSS) (`<Transition name="modal" appear>`); **close is intentionally
-  instant** — a leave phase races the focus-restore in `useModalA11y.js`. Don't "fix" it.
+- **`BaseModal` animates both ways** — on a phone the sheet rises from below the screen edge, wider
+  it grows in from 0.94, at `--motion-slow`; never the dialog's opacity (VoiceOver focus, see its CSS) (`<Transition name="modal" appear>`).
+  **The exit is played by a copy** (`modalLeave.js`, owner 2026-10-08): the dialog itself still
+  goes at once with its consumer's `v-if` — a leave phase on the real one raced the focus-restore
+  in `useModalA11y.js`, which is why close used to be instant — and an inert, `aria-hidden` clone
+  (ids stripped, scroll positions copied) drops/shrinks away at `--motion-med` and removes itself.
+  A dialog opening while a copy leaves is a **swap**: the copy drops its dim at once and the new
+  one opens with its dim already there (`.modal-swap`), so only the sheets move. To make a hand-over
+  a swap, close the old dialog in the same tick the new one opens (load what the new one needs
+  first — `CpStratagems.use(s, fromCard)`). Reduced motion: the token is 0 and no copy is made.
 - **Page transitions**: `App.vue` wraps `<RouterView>` in `<Transition name="fade" mode="out-in">`
   keyed on `pageKey`. **Every page swap fades** (owner, 2026-09-29): from 2026-09-28 pages slid
   sideways down and up a chain (`meta.trail`/`meta.level`), the help's prev/next did too, and the
@@ -215,7 +248,7 @@ screens that had copied each other and drifted. The pairs that existed then are 
   (2026-10-01): `tracker/FactionPickerList.vue` and `tracker/DetachmentPickerList.vue` are the
   rows; `FactionPickerModal` wraps its list in `BaseModal` (phones, the tracker),
   and the desk's settings line wraps it in `PickerDropdown.vue` — the account menu's recipe
-  (backdrop for the outside click, Escape, `fade-pop`), the modal's surface, its own scroll. The
+  (`useOutsideTap` for the outside tap, Escape, `fade-pop`), the modal's surface, its own scroll. The
   declared Force Disposition there is a `PickerDropdown` too, its chips in their colours.
   Everywhere else a picker serves both widths, **`AdaptivePicker.vue`** picks the shape: the
   dropdown from 901px up, the modal below, the same list in both (its slot hands the list
@@ -244,6 +277,28 @@ screens that had copied each other and drifted. The pairs that existed then are 
   The unfold is a `clip-path` on the overlay — the root of App's `<Transition name="search">`,
   because Vue times enter/leave by the root's own animation and would cut a child's short.
 
+
+## App icons
+
+Most icons are the Bootstrap icon font (`bi bi-…`). **The owner's own drawings** (2026-10-08) are
+`.wi .wi-<name>` in `style.css`, one-colour SVGs in `src/assets/icons/` drawn as a mask filled with
+`currentColor` — the same size and baseline as a `bi` glyph, so a template swaps one class string for
+the other. Each file is under Vite's inline limit and lands in the stylesheet as a data URI: no
+request, nothing for the PWA to precache, there offline — so a drawing over 4 KB is thinned (its
+points), not shipped as a file. **The pack** (2026-10-08) covers the bottom nav, the header and its
+settings menu, a game's ⋯ menu, a faction's tabs, the game screen's tabs, add / import / edit / more,
+pins and a unit's status (`wi-unit-*`); the classes are grouped by place in `style.css`. Five were
+drawn to the pack's style to fill its gaps: `lore-on` (the lore shown, the owner's `lore` is it
+hidden), `offline-ready`, `sync` (in progress), `install` and `check`. **`wi-army` is wherever the app
+means an army or its rules**; swords, hourglass and skull mean a unit's status and nothing else.
+Paired states swap the class (`theme-light`/`-dark`, `sound-on`/`-off`, `pin-on`/`-off`,
+`lore`/`lore-on`, `add`/`check`). Still Bootstrap: anything the pack has no drawing for, including
+the roster cloud-status icons (a family of cloud states only partly drawn). A scoped rule that sized
+`.bi` must follow the swap to `.wi`; in a fixed-width icon column give `.wi` `margin-inline: 0`, or
+it sits 0.2em narrower than its `bi` neighbours. Every file's `viewBox` is a square cropped round its ink, the ink 21 of its 24 (22.5 for the
+diagonal pencil and pins) and centred — the pack's own margins varied from 1 to 4.5, and a drawing
+with a wide one read a size small. A new drawing: the file, its viewBox measured the same way
+(`getBBox()` in a browser), one `.wi-name` line.
 
 ## Modals
 
@@ -332,7 +387,9 @@ colour / which face / how big" question.
   site always wrote in (`#c8585e`): every lighter shade that passes AA read pink to the owner, so
   that red text stays below AA on purpose and is what the a11y baseline holds. Inside a faction's
   colour the ink is that colour darkened by 15% in the light theme. Whatever re-points `--accent` must
-  re-point the ink beside it — `.fa-themed`, FactionLayout, Combat Patrol, the print sheet do.
+  re-point the ink beside it — `.fa-themed`, FactionLayout, Combat Patrol, the print sheet do, and
+  so does every game scope that points `--accent` at a side (`.turn-colored`, `.ap`, `.cps`, `.mside`…:
+  there the ink is the side colour itself).
 - **Colour** — `--bg-*` surfaces, `--accent` (the house oxblood), `--text-*`, `--border*`, the
   ability tints (`--ability-weapon` / `--ability-unit`) and the sub-rule set. There is a dark
   theme (`:root[data-theme='dark']` further down the same file), so a hex literal in a component

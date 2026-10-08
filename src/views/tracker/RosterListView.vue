@@ -31,9 +31,9 @@
              and the one faction would be the same list. -->
         <label
           v-if="factionFilters.length > 1"
-          class="rl-factions"
+          class="rl-factions filter-select"
         >
-          <span class="rl-factions-label">{{ labels.rosterFilterFaction }}</span>
+          <span>{{ labels.rosterFilterFaction }}</span>
           <select
             :value="onlyFaction || ''"
             @change="pickedFaction = $event.target.value || null"
@@ -84,7 +84,7 @@
               <ExpandTransition>
                 <i
                   v-if="isRosterPinned(r.id)"
-                  class="bi bi-pin-angle-fill rpin"
+                  class="wi wi-pin-on rpin"
                   :title="labels.favPinnedGroup"
                 />
               </ExpandTransition>
@@ -112,7 +112,7 @@
                     :aria-label="labels.rosterMoreActions"
                     @click.stop="toggle"
                   >
-                    <i class="bi bi-three-dots-vertical" />
+                    <i class="wi wi-more-v" />
                   </button>
                 </template>
                 <button
@@ -500,27 +500,7 @@ function confirmDelete() {
 /* The same folder tabs the faction pages use (PageTabs) — the list below them is the tab's
    content, so it reads as one panel rather than a filter sitting above a list. */
 .rl-tabs { margin-bottom: 1rem; }
-.rl-factions {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 0.8rem;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-.rl-factions-label { flex-shrink: 0; }
-.rl-factions select {
-  flex: 1;
-  min-width: 0;
-  max-width: 18rem;
-  padding: 0.4rem 0.5rem;
-  font: inherit;
-  font-size: 0.85rem;
-  color: var(--text-primary);
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  cursor: pointer;
-}
+.rl-factions { margin-bottom: 0.8rem; } /* the look is .filter-select's (style.css) */
 .empty { color: var(--text-muted); font-style: italic; text-align: center; }
 /* Sits where a saved list shows its issue count — for a draft, how far it got is the useful fact. */
 .rstep {

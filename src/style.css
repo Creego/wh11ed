@@ -11,11 +11,15 @@
   --bg-content: #f0f2ea;
   --bg-insert: #2a2828;
   --accent: #8b2a33;
+  /* The site's own red, fixed: --accent is re-pointed per screen (a faction's colour, the game
+     screen's side colours), and a control that must stay the site's red whatever the screen wears
+     takes this (the tracker's End game, owner 2026-10-06). Same value as --accent per theme. */
+  --brand: #8b2a33;
   --accent-hover: #6d1f27;
   /* The accent as TEXT. A fill and a word want different shades of one red: in the dark theme no
      single value read both as text on the page and as a ground under white (2.8–3.7:1 and 4.2:1,
      a11y gate). So text takes the ink and fills keep --accent. Every place that re-points --accent
-     (.fa-themed, FactionLayout, Combat Patrol, the print sheet) re-points these with it: a custom
+     (.fa-themed, FactionLayout, Combat Patrol, the print sheet, the game's side scopes) re-points these with it: a custom
      property declared from var(--accent) here would inherit already computed (owner, 2026-10-05). */
   --accent-ink: #8b2a33;
   --accent-ink-hover: #6d1f27;
@@ -38,6 +42,12 @@
   --bg-row-hover: rgba(104, 105, 87, 0.10); /* neutral: a red tint read as a warning */
   --ability-weapon: #6e5100; /* 4.8:1 on its badge tint over --bg-secondary; #7a5a00 read 4.14 */
   --ability-unit: #004a6e;
+  /* The two sides' colours in a game: yours the accent, the opponent's the unit-ability blue (which
+     already passes contrast on the card in both themes). `--side-you` is a token of its own, not
+     `--accent` read in place: the game screen re-points --accent at whoever's turn it is
+     (RoundTracker's .turn-opp), and your side must stay yours through the opponent's turn. */
+  --side-you: var(--accent);
+  --side-opponent: var(--ability-unit);
   /* The one "something is wrong" red: points over budget, validation errors, losses,
      destructive hover. Every red that means danger goes through this — not a literal.
      Vermilion, not the brand's crimson (2026-10-05): over-budget beside a selected chip read as
@@ -106,6 +116,13 @@
   /* A fold opening (CollapseTransition). Longer still: a fold's body can be a few screens tall,
      and only its first few hundred px are ever on screen while it opens. */
   --motion-fold: 0.45s;
+  /* The tracker's tabs switching (RoundTracker.vue): the base its fill, word and panel time from. */
+  --motion-tab: 0.45s;
+  /* What side tabs show fading in, in place (useSwapFade.js). Slower than a fold: at 0.32s the
+     old content gone at once and the new one up read as a blink (owner, 2026-09-30). */
+  --motion-swap: 0.6s;
+  /* The folder tabs switching (PageTabs.vue): the frame rising out of the line. */
+  --motion-page-tab: 0.52s;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -117,6 +134,9 @@
     --motion-move: 0s;
     --motion-slow: 0s;
     --motion-fold: 0s;
+    --motion-tab: 0s;
+    --motion-page-tab: 0s;
+    --motion-swap: 0s;
   }
 }
 
@@ -307,6 +327,7 @@
   --bg-content: #2a2a2f;
   --bg-insert: #38383d;
   --accent: #b8474d;
+  --brand: #b8474d;
   --accent-hover: #a83f45;
   /* The red the dark theme always wrote in (owner, 2026-10-05: the lighter shades AA asks for read
      pink). 2.8–3.7:1 on the dark surfaces — kept on purpose, listed in the a11y baseline. */
@@ -347,12 +368,17 @@
 /* Corners are square app-wide (see "Corners & surfaces" in CLAUDE.md) — stated once, here,
    instead of in every component. It has to be stated at all because form controls are the one
    thing browsers round on their own: iOS Safari gives <button>/<input> a radius of its own
-   unless told otherwise, which would have quietly re-rounded every button in the app. */
+   unless told otherwise, which would have quietly re-rounded every button in the app.
+   The same goes for the typeface: a control does not inherit the page's, and every button or
+   field that did not say `font: inherit` drew in the system Arial — a roster's unit names beside
+   the catalogue's Inter ones read as a different size (owner, 2026-10-08). The family only:
+   sizes are each control's own. */
 button,
 input,
 select,
 textarea {
   border-radius: 0;
+  font-family: inherit;
 }
 
 /* Kill double-tap-to-zoom (and the legacy 300ms tap delay) on tap targets — rapid taps on
@@ -386,11 +412,13 @@ html {
 /* Visible keyboard focus across the app. Only shows for keyboard/AT users (`:focus-visible`),
    never on mouse click, so it doesn't add chrome for pointer users. Components that focus a
    non-interactive container programmatically (e.g. BaseModal's dialog root) suppress it with
-   their own `:focus { outline: none }`. */
+   their own `:focus { outline: none }`. Square like everything else (owner, 2026-10-06 — a 2px
+   radius here bent the ring round the corners): the outline follows the element's own corners.
+   It also lights after a key closes a dialog (focus goes back to its opener) — that is the
+   browser reading a keyboard user, and it stays. */
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
-  border-radius: 2px;
 }
 
 body {
@@ -833,6 +861,81 @@ strong {
   .view-hero h1 { font-size: 1.6rem !important; }
 }
 
+/* ── App icons ─────────────────────────────────────────────────────────────
+   The owner's own one-colour drawings (src/assets/icons, 2026-10-08), used beside the Bootstrap
+   icon font: `<i class="wi wi-army" />` wherever a `bi bi-…` would go, and the same size and
+   baseline. Drawn as a mask filled with the text colour, the way FactionEmblem draws an emblem, so
+   they follow the colour of what holds them. Under Vite's inline limit, so each file lands in this
+   stylesheet as a data URI: no request, nothing to precache, there offline. */
+/* The drawings keep a margin inside their 24px square that a Bootstrap glyph does not, so at 1em
+   they read a size smaller (owner, 2026-10-08). Drawn at 1.2em, the overflow taken back by a
+   negative margin: the box in the line stays 1em, as a glyph's, and nothing beside it moves. */
+.wi {
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  margin: -0.1em;
+  vertical-align: -0.225em;
+  background-color: currentColor;
+  mask: no-repeat center / contain;
+}
+/* Tracker tabs; the army wherever an army is shown */
+.wi-army { mask-image: url('./assets/icons/tab-army.svg'); }
+.wi-cp { mask-image: url('./assets/icons/tab-cp.svg'); }
+.wi-log { mask-image: url('./assets/icons/tab-log.svg'); }
+.wi-missions { mask-image: url('./assets/icons/tab-missions.svg'); }
+.wi-phase { mask-image: url('./assets/icons/tab-phase.svg'); }
+.wi-stats { mask-image: url('./assets/icons/tab-stats.svg'); }
+/* Unit status — swords, hourglass and skull mean only this */
+.wi-unit-table { mask-image: url('./assets/icons/unit-on-field.svg'); }
+.wi-unit-reserve { mask-image: url('./assets/icons/unit-in-reserve.svg'); }
+.wi-unit-destroyed { mask-image: url('./assets/icons/unit-destroyed.svg'); }
+/* The time to act (what can be played now, whose turn it is): a dial, not the reserve's hourglass */
+.wi-clock { mask-image: url('./assets/icons/ui-clock.svg'); }
+/* Bottom nav (Rosters also the roster tab in a game); a faction's tabs */
+.wi-rules { mask-image: url('./assets/icons/nav-rules.svg'); }
+.wi-stratagems { mask-image: url('./assets/icons/nav-stratagems.svg'); }
+.wi-tracker { mask-image: url('./assets/icons/nav-tracker.svg'); }
+.wi-rosters { mask-image: url('./assets/icons/nav-rosters.svg'); }
+.wi-units { mask-image: url('./assets/icons/tab-units.svg'); }
+.wi-faq { mask-image: url('./assets/icons/tab-faq.svg'); }
+/* Header and its settings menu. Paired states swap the file, not the style */
+.wi-search { mask-image: url('./assets/icons/ui-search.svg'); }
+.wi-settings { mask-image: url('./assets/icons/ui-settings.svg'); }
+.wi-theme-light { mask-image: url('./assets/icons/ui-theme-light.svg'); }
+.wi-theme-dark { mask-image: url('./assets/icons/ui-theme-dark.svg'); }
+.wi-lore { mask-image: url('./assets/icons/ui-lore.svg'); }
+.wi-lore-on { mask-image: url('./assets/icons/ui-lore-on.svg'); }
+.wi-sound-on { mask-image: url('./assets/icons/ui-sound-on.svg'); }
+.wi-sound-off { mask-image: url('./assets/icons/ui-sound-off.svg'); }
+/* the cloud's states — a roster's or a game's backup, the account */
+.wi-cloud { mask-image: url('./assets/icons/ui-cloud.svg'); }
+.wi-cloud-up { mask-image: url('./assets/icons/ui-cloud-up.svg'); }
+.wi-cloud-down { mask-image: url('./assets/icons/ui-offline.svg'); }
+.wi-cloud-error { mask-image: url('./assets/icons/ui-cloud-error.svg'); }
+.wi-offline { mask-image: url('./assets/icons/ui-offline.svg'); }
+.wi-offline-ready { mask-image: url('./assets/icons/ui-offline-ready.svg'); }
+.wi-sync { mask-image: url('./assets/icons/ui-sync.svg'); }
+.wi-install { mask-image: url('./assets/icons/ui-install.svg'); }
+.wi-bug { mask-image: url('./assets/icons/ui-bug.svg'); }
+.wi-support { mask-image: url('./assets/icons/ui-support.svg'); }
+.wi-cloud-synced { mask-image: url('./assets/icons/ui-cloud-synced.svg'); }
+.wi-logout { mask-image: url('./assets/icons/ui-logout.svg'); }
+/* Actions */
+.wi-add { mask-image: url('./assets/icons/ui-add.svg'); }
+.wi-check { mask-image: url('./assets/icons/ui-check.svg'); }
+.wi-import { mask-image: url('./assets/icons/ui-import.svg'); }
+.wi-edit { mask-image: url('./assets/icons/ui-edit.svg'); }
+.wi-more { mask-image: url('./assets/icons/ui-more.svg'); }
+.wi-more-v { mask-image: url('./assets/icons/ui-more-vertical.svg'); }
+.wi-pin-on { mask-image: url('./assets/icons/pin-on.svg'); }
+.wi-pin-off { mask-image: url('./assets/icons/pin-off.svg'); }
+/* A game's menu */
+.wi-party-settings { mask-image: url('./assets/icons/party-settings.svg'); }
+.wi-coop { mask-image: url('./assets/icons/party-coop.svg'); }
+.wi-broadcast { mask-image: url('./assets/icons/party-broadcast.svg'); }
+.wi-end { mask-image: url('./assets/icons/party-end.svg'); }
+
 /* ── Boxed switch ──────────────────────────────────────────────────────────
    A row of separate boxes picking one of a few (the wizard's first-turn choice, the Event
    Companion's layout A/B/C). Neither PageTabs (which changes what the page shows) nor .seg
@@ -900,6 +1003,39 @@ strong {
 }
 :root[data-theme='light'] .fa-themed { --accent: var(--fa-light, #8b2a33); --accent-hover: color-mix(in srgb, var(--fa-light) 80%, black); --accent-ink: color-mix(in srgb, var(--fa-light, #8b2a33) 85%, black); --accent-ink-hover: color-mix(in srgb, var(--fa-light, #8b2a33) 70%, black); }
 :root[data-theme='dark'] .fa-themed { --accent: var(--fa-dark, #b8474d); --accent-hover: color-mix(in srgb, var(--fa-dark) 80%, white); --accent-ink: var(--fa-dark, #c8585e); --accent-ink-hover: color-mix(in srgb, var(--fa-dark, #c8585e) 80%, white); }
+
+/* A game's two side colours (composables/sideColors.js — the standard pair or the factions'),
+   folded per theme the same way .fa-themed folds a faction into --accent. The literal fallbacks
+   are the standard pair: never var(--accent), which the game screen itself points at a side. */
+.side-colored {
+  --side-you: var(--sy-light, #8b2a33);
+  --side-opponent: var(--so-light, #004a6e);
+}
+@media (prefers-color-scheme: dark) {
+  .side-colored { --side-you: var(--sy-dark, #c8585e); --side-opponent: var(--so-dark, #5fb2dc); }
+}
+:root[data-theme='light'] .side-colored { --side-you: var(--sy-light, #8b2a33); --side-opponent: var(--so-light, #004a6e); }
+:root[data-theme='dark'] .side-colored { --side-you: var(--sy-dark, #c8585e); --side-opponent: var(--so-dark, #5fb2dc); }
+/* The game screen — and every dialog opened from it (modalScope.js) — wears the colour of the
+   side on turn: the accent is re-pointed at that side's colour, so every accented control says
+   whose turn it is. `.turn-opp` is the opponent's turn. Goes with `.side-colored`. */
+.turn-colored {
+  --accent: var(--side-you);
+  --accent-hover: color-mix(in srgb, var(--side-you) 80%, #000);
+  --accent-ink: var(--side-you);
+  --accent-ink-hover: color-mix(in srgb, var(--side-you) 80%, #000);
+}
+.turn-colored.turn-opp {
+  --accent: var(--side-opponent);
+  --accent-hover: color-mix(in srgb, var(--side-opponent) 80%, #000);
+  --accent-ink: var(--side-opponent);
+  --accent-ink-hover: color-mix(in srgb, var(--side-opponent) 80%, #000);
+}
+/* A dialog of the game says whose turn it is in its title too. */
+.modal-overlay.turn-colored .mh-title { color: var(--accent-ink); }
+/* …but a unit's card from an army's list (the game's Roster tab) is that army's: its faction's
+   colour, title and all, like the card under it (RosterViewView's modal scope). */
+.modal-overlay.army-colored .mh-title { color: var(--accent-ink); }
 
 /* ── Roster screen header icon ─────────────────────────────────────────────
    The square icon buttons by a roster's name (editor and view: edit, share, the "…" menu). One of
@@ -1238,6 +1374,81 @@ strong {
   line-height: 1.5;
 }
 
+/* ── Tracker panel label ───────────────────────────────────────────────────
+   The small caps line that names what a game panel holds: "Secondary · Round 2" over the cards,
+   "Stratagems" over the CP tab's list (owner, 2026-10-06: nothing said what the list was). */
+.panel-label { font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); }
+
+/* ── Side frame ────────────────────────────────────────────────────────────
+   The game screen's side-aware panel (Missions, CP, Armies, Roster): the side is picked on the
+   score cards, and the panel hangs from the open tab framed in that side's colour — one surface
+   from the tab strip's line down (owner, 2026-10-06). The block sets --side itself. */
+.side-frame { border: 1px solid var(--side); border-top: 0; background: var(--bg-card); padding: 0.4rem 0.7rem 0.7rem; }
+
+/* ── Filter select ─────────────────────────────────────────────────────────
+   A label and a native dropdown narrowing a list: the roster list's faction filter, the game
+   log's (owner, 2026-10-06 — a row of tabs over a list read as more navigation). */
+.filter-select { display: flex; align-items: center; gap: 0.6rem; font-size: 0.8rem; color: var(--text-muted); }
+.filter-select > span { flex-shrink: 0; }
+.filter-select select {
+  flex: 1; min-width: 0; max-width: 18rem; padding: 0.4rem 0.5rem;
+  font: inherit; font-size: 0.85rem; color: var(--text-primary);
+  background: var(--bg-secondary); border: 1px solid var(--border); cursor: pointer;
+}
+
+/* ── Picker trigger ────────────────────────────────────────────────────────
+   The app's own dropdown button: what is picked, a quiet caps label before it, a chevron — opening
+   an AdaptivePicker (a dropdown on a desk, a modal on a phone). The faction page's chapter and
+   detachment pickers, the game log's filter (owner, 2026-10-06: not the system select). */
+.picker-trigger {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-height: 34px;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: border-color var(--motion-fast);
+}
+
+.picker-trigger:hover {
+  border-color: var(--accent);
+}
+
+.picker-trigger-main {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.picker-trigger-label {
+  flex-shrink: 0;
+  font-size: 0.58rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-dim);
+}
+
+.picker-trigger-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.picker-trigger-chev {
+  flex-shrink: 0;
+  color: var(--text-dim);
+}
+
 /* ── Show more ──────────────────────────────────────────────────────────────
    The quiet button under a long list that reveals the next page of it: the tracker's game history
    (10 at a time) and the roster list (20). */
@@ -1535,6 +1746,16 @@ a.btn-ghost { color: var(--text-muted); text-decoration: none; }
    scoped overrides while each drew its header by hand. */
 .modal-head.two-line { align-items: flex-start; }
 .modal-head.dense .mh-close { min-width: 32px; min-height: 32px; }
+/* An icon beside the close button that opens something about the dialog (the "i" over a note the
+   dialog keeps folded): the close button's size and colour, lit while what it opens is open. */
+.mh-icon {
+  flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 36px; min-height: 36px;
+  background: none; border: none; cursor: pointer;
+  color: var(--text-muted); font-size: 1.05rem;
+}
+.mh-icon.on { color: var(--accent-ink); }
 
 /* A number in the header beside the close button: how many are picked of how many ("2 / 3"),
    turning the accent colour once the picks are all made and red when over; `.value` is the number
@@ -1553,7 +1774,7 @@ a.btn-ghost { color: var(--text-muted); text-decoration: none; }
 .mh-count.value { font-size: 0.95rem; color: var(--accent-ink); }
 
 @media (hover: hover) {
-  .mh-close:hover {
+  .mh-close:hover, .mh-icon:hover {
     background: color-mix(in srgb, var(--text-primary) 8%, transparent);
     color: var(--text-primary);
   }
@@ -1598,15 +1819,28 @@ a.btn-ghost { color: var(--text-muted); text-decoration: none; }
   font-size: 0.88rem; font-weight: 600; text-align: left;
 }
 .act-danger { color: var(--danger); }
+/* A choice that cannot be taken now reads as such — dimmed, no pointer (the stratagem dialog's price
+   the bank cannot cover, owner 2026-10-02). */
+.act-btn:disabled { opacity: 0.45; cursor: default; }
 /* The same list dropped under its "…" on a wide screen (ActionMenu): menu rows, not buttons. */
 .act-compact { gap: 0.1rem; }
 .act-compact .act-btn { padding: 0.45rem 0.6rem; border-color: transparent; background: none; font-size: 0.85rem; }
 @media (hover: hover) {
-  .act-btn:hover { border-color: var(--accent); }
+  .act-btn:not(:disabled):hover { border-color: var(--accent); }
   .act-compact .act-btn:hover { border-color: transparent; background: var(--bg-secondary); }
   .act-danger:hover { border-color: var(--danger); background: color-mix(in srgb, var(--danger) 8%, transparent); }
   .act-compact .act-danger:hover { background: color-mix(in srgb, var(--danger) 8%, transparent); }
 }
+
+/* "— or choose by hand —": a label across a rule, between two ways of doing one thing (the
+   tracker's take-two and replacement dialogs). */
+.or-sep {
+  display: flex; align-items: center; gap: 0.6rem;
+  margin: 0.9rem 0 0.5rem;
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--text-dim);
+}
+.or-sep::before, .or-sep::after { content: ''; flex: 1; border-top: 1px solid var(--border); }
 
 /* A body that is a LIST of choices rather than prose — the faction/detachment/keyword pickers. */
 .modal-list {

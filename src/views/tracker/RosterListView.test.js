@@ -239,7 +239,7 @@ describe('RosterListView', () => {
     expect(w.findAll('.roster')).toHaveLength(0)
 
     const tabs = w.findAll('.rl-tabs button')
-    expect(tabs.map((t) => t.text())).toEqual(['Lists 0', 'Drafts 0', 'Archive 1'])
+    expect(tabs.map((t) => t.text())).toEqual(['Lists0', 'Drafts0', 'Archive1'])
     await tabs[2].trigger('click')
     await flushPromises()
     expect(w.find('.rname').text()).toBe('All my models')

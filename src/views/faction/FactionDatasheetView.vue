@@ -25,12 +25,13 @@
               type="button"
               class="ds-btn"
               :class="{ 'ds-btn-pin-on': fav }"
+              data-press-sound="toggle"
               :title="fav ? labels.dsUnpinUnit : labels.dsPinUnit"
               :aria-label="fav ? labels.dsUnpinUnit : labels.dsPinUnit"
               :aria-pressed="fav"
               @click="toggleUnitFavorite(route.params.slug, sheet.id)"
             >
-              <i :class="fav ? 'bi bi-pin-angle-fill' : 'bi bi-pin-angle'" />
+              <i :class="fav ? 'wi wi-pin-on' : 'wi wi-pin-off'" />
             </button>
             <!-- "I own this one" — the mark the roster catalogue shows on its rows and can filter
                  by. Same treatment as the pin: state is the outline→filled swap, no highlight. -->
@@ -39,6 +40,7 @@
               type="button"
               class="ds-btn"
               :class="{ 'ds-btn-pin-on': owned }"
+              data-press-sound="toggle"
               :title="owned ? labels.dsOwnRemove : labels.dsOwnAdd"
               :aria-label="owned ? labels.dsOwnRemove : labels.dsOwnAdd"
               :aria-pressed="owned"
@@ -69,7 +71,7 @@
               data-press="pop"
               @click="toggleLorePopover"
             >
-              <i :class="loreOpen ? 'bi bi-book-fill' : 'bi bi-book'" />
+              <i :class="loreOpen ? 'wi wi-lore-on' : 'wi wi-lore'" />
             </button>
             <a
               :href="imageUrl"
@@ -101,14 +103,14 @@
                   :aria-label="labels.rosterMoreActions"
                   @click="toggle"
                 >
-                  <i class="bi bi-three-dots" />
+                  <i class="wi wi-more" />
                 </button>
               </template>
               <button
                 class="act-btn ds-act"
                 @click="moreDo(() => toggleUnitFavorite(route.params.slug, sheet.id))"
               >
-                <i :class="fav ? 'bi bi-pin-angle-fill' : 'bi bi-pin-angle'" />{{ fav ? labels.dsUnpinUnit : labels.dsPinUnit }}
+                <i :class="fav ? 'wi wi-pin-on' : 'wi wi-pin-off'" />{{ fav ? labels.dsUnpinUnit : labels.dsPinUnit }}
               </button>
               <button
                 class="act-btn ds-act"
@@ -127,7 +129,7 @@
                 class="act-btn ds-act"
                 @click="moreDo(openLoreFromSheet)"
               >
-                <i class="bi bi-book" />{{ labels.loreShow }}
+                <i class="wi wi-lore-on" />{{ labels.loreShow }}
               </button>
               <a
                 :href="imageUrl"
@@ -607,7 +609,8 @@ async function copyName() {
 }
 /* The sheet's rows carry the same icon the toolbar button did, so the two read as one thing. */
 .ds-act { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
-.ds-act .bi { width: 1.1rem; text-align: center; color: var(--text-muted); }
+.ds-act :is(.bi, .wi) { width: 1.1rem; text-align: center; color: var(--text-muted); }
+.ds-act .wi { height: 1.1rem; margin-inline: 0; }
 /* Cancel FactionLayout's .faction-view top padding (0.5rem) so the full-bleed card sits flush
    under the subnav, with no gap above the name plate. .fsection is the container's parent and
    cannot be queried from inside it; a viewport query is close enough for half a rem. */

@@ -115,27 +115,7 @@
           :aria-label="labels.ariaSearchTitle"
           @click="$emit('open-search')"
         >
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <circle
-              cx="11"
-              cy="11"
-              r="8"
-            /><line
-              x1="21"
-              y1="21"
-              x2="16.65"
-              y2="16.65"
-            />
-          </svg>
+          <i class="wi wi-search" />
           <span class="search-hint">Ctrl K</span>
         </button>
         <button
@@ -163,24 +143,21 @@
         <!-- The gear on every width since 2026-10-01 (owner): the theme, the account, the lore
              toggle, bug reports and support live in it on the desktop too, rather than as a row of
              buttons (the theme joined them 2026-10-02). -->
-        <div class="settings-wrap">
+        <div
+          ref="settingsWrapEl"
+          class="settings-wrap"
+        >
           <button
             class="settings-btn"
             data-press
             :class="{ active: settingsOpen }"
             :aria-expanded="settingsOpen"
+            aria-haspopup="menu"
             :aria-label="labels.ariaSettings"
             @click="toggleSettings"
           >
-            <i class="bi bi-gear-fill" />
+            <i class="wi wi-settings" />
           </button>
-          <Transition name="fade">
-            <div
-              v-if="settingsOpen"
-              class="settings-backdrop"
-              @click="settingsOpen = false"
-            />
-          </Transition>
           <Transition name="fade-pop">
             <div
               v-if="settingsOpen"
@@ -190,7 +167,7 @@
                 class="settings-item"
                 @click="toggleTheme"
               >
-                <i :class="theme === 'dark' ? 'bi bi-sun-fill' : 'bi bi-moon-fill'" />
+                <i :class="theme === 'dark' ? 'wi wi-theme-light' : 'wi wi-theme-dark'" />
                 <span>{{ theme === 'dark' ? labels.themeToLight : labels.themeToDark }}</span>
               </button>
               <button
@@ -198,15 +175,24 @@
                 :class="{ active: hideLore }"
                 @click="toggleLore"
               >
-                <i :class="hideLore ? 'bi bi-book' : 'bi bi-book-fill'" />
+                <i :class="hideLore ? 'wi wi-lore' : 'wi wi-lore-on'" />
                 <span>{{ hideLore ? labels.loreShow : labels.loreHide }}</span>
+              </button>
+              <!-- The interface's sounds (uiSound.js) — off by default. -->
+              <button
+                class="settings-item"
+                :class="{ active: soundOn }"
+                @click="toggleSound"
+              >
+                <i :class="soundOn ? 'wi wi-sound-on' : 'wi wi-sound-off'" />
+                <span>{{ soundOn ? labels.soundOff : labels.soundOn }}</span>
               </button>
               <button
                 v-if="(canInstall || iosInstall) && !isStandalone"
                 class="settings-item"
                 @click="onInstallClick"
               >
-                <i class="bi bi-download" />
+                <i class="wi wi-install" />
                 <span>{{ labels.installApp }}</span>
               </button>
               <!-- The rest of the app, on demand. The shell is ~1 MB and everything else is
@@ -227,7 +213,7 @@
                 class="settings-item"
                 @click="onFeedback"
               >
-                <i class="bi bi-bug" />
+                <i class="wi wi-bug" />
                 <span>{{ labels.feedbackMenu }}</span>
               </button>
               <RouterLink
@@ -235,14 +221,14 @@
                 class="settings-item"
                 @click="settingsOpen = false"
               >
-                <i class="bi bi-heart" />
+                <i class="wi wi-support" />
                 <span>{{ labels.supportProject }}</span>
               </RouterLink>
               <!-- The account: it joins the lore toggle and the rest rather than crowding the
                    navbar with a button of its own. -->
               <template v-if="accountStatus === 'authed'">
                 <p class="settings-who">
-                  <i class="bi bi-cloud-check-fill" />
+                  <i class="wi wi-cloud-synced" />
                   <!-- An e-mail that has to wrap breaks before the "@": name on one line,
                        domain on the next — not a stray "yande / x.ru". -->
                   <span v-if="accountEmailParts">{{ accountEmailParts.name }}<wbr>{{ accountEmailParts.domain }}</span>
@@ -252,7 +238,7 @@
                   class="settings-item"
                   @click="onSignOut"
                 >
-                  <i class="bi bi-box-arrow-right" />
+                  <i class="wi wi-logout" />
                   <span>{{ labels.cloudSignOut }}</span>
                 </button>
               </template>
@@ -280,6 +266,7 @@
           class="hamburger"
           :class="{ open: mobileNavOpen }"
           :aria-expanded="mobileNavOpen"
+          aria-haspopup="dialog"
           :aria-label="labels.ariaToggleMenu"
           @click="$emit('toggle-mobile-nav')"
         >
@@ -297,6 +284,8 @@ import { useLocale } from '../composables/useLocale.js'
 import { localePath, stripLocale } from '../router/locale.js'
 import { useTheme } from '../composables/useTheme.js'
 import { useLoreVisibility } from '../composables/useLoreVisibility.js'
+import { useUiSound } from '../composables/uiSound.js'
+import { useOutsideTap } from '../composables/useOutsideTap.js'
 import { useInstallPrompt } from '../composables/useInstallPrompt.js'
 import { useOfflineWarmup, startOfflineWarmup, loadOfflineSize } from '../composables/useOfflineWarmup.js'
 import { useRouteSection } from '../composables/useRouteSection.js'
@@ -326,6 +315,7 @@ function toggleLocale() {
 }
 const { theme, toggleTheme } = useTheme()
 const { hideLore, toggleLore } = useLoreVisibility()
+const { soundOn, toggleSound } = useUiSound()
 const { canInstall, isStandalone, iosInstall, promptInstall } = useInstallPrompt()
 const { isRulesRoute, isFactionRoute, isTrackerRoute, isRosterRoute } = useRouteSection()
 const isPatchesRoute = computed(() => stripLocale(route.path) === '/patches')
@@ -376,6 +366,9 @@ function searchRect() {
 defineExpose({ searchRect })
 
 const settingsOpen = ref(false)
+// A tap anywhere but the gear and its menu closes it (useOutsideTap).
+const settingsWrapEl = ref(null)
+useOutsideTap(settingsOpen, () => [settingsWrapEl.value], () => { settingsOpen.value = false })
 
 // Bug reports: the ⚙ menu is the one surface present on every screen, so the entry lives here.
 const { openFeedback } = useFeedbackModal()
@@ -403,8 +396,8 @@ const offlineLabel = computed(() => {
   return offlineSize.value ? `${labels.value.offlineDownload} · ${offlineSize.value}` : labels.value.offlineDownload
 })
 const offlineIcon = computed(() => {
-  if (warmupStatus.value === 'warming') return 'bi bi-arrow-repeat'
-  return warmed.value ? 'bi bi-cloud-check-fill' : 'bi bi-cloud-arrow-down'
+  if (warmupStatus.value === 'warming') return 'wi wi-sync'
+  return warmed.value ? 'wi wi-offline-ready' : 'wi wi-offline'
 })
 // The menu stays open: the progress is on this very item, and closing it would hide the one thing
 // that says the download started. The toast repeats it once the menu does close.
@@ -733,12 +726,6 @@ a.nd-link:hover {
   transform: rotate(180deg);
 }
 
-.settings-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 205;
-}
-
 .settings-menu {
   position: absolute;
   right: 0;
@@ -786,6 +773,9 @@ a.nd-link:hover {
   text-align: center;
   flex-shrink: 0;
 }
+/* The owner's drawings (`.wi`) take back their overflow with a negative margin; here the column
+   is a fixed 1.2rem, so they keep it and the labels line up with the glyph rows'. */
+.settings-item .wi { margin-inline: 0; }
 
 .settings-item:hover {
   background: color-mix(in srgb, var(--accent) 10%, transparent);
@@ -807,9 +797,10 @@ a.nd-link:hover {
   /* Only when the e-mail is wider than the capped menu — and then at the <wbr>. */
   overflow-wrap: anywhere;
 }
-.settings-who .bi {
+.settings-who .wi {
   font-size: 1rem;
   width: 1.2rem;
+  margin-inline: 0;
   text-align: center;
   flex-shrink: 0;
   color: var(--accent-ink);
@@ -838,6 +829,8 @@ a.nd-link:hover {
   background: rgba(255,255,255,0.13);
   color: #fff;
 }
+
+.search-btn .wi { font-size: 0.95rem; }
 
 .search-hint {
   font-size: 0.7rem;
