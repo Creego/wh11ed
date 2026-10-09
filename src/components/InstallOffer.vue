@@ -41,7 +41,7 @@
           {{ labels.installOfferSignIn }}
         </button>
         <button
-          v-if="canInstall"
+          v-if="installNow"
           type="button"
           class="btn-primary"
           @click="onInstall"
@@ -49,7 +49,7 @@
           {{ labels.installOfferInstall }}
         </button>
         <button
-          v-else-if="iosInstall"
+          v-else-if="iosHow"
           type="button"
           :class="signInFirst ? 'btn-ghost' : 'btn-primary'"
           @click="onHow"
@@ -80,16 +80,19 @@ import { ui } from '../i18n/ui.js'
 import { useLocale } from '../composables/useLocale.js'
 import { useInstallPrompt } from '../composables/useInstallPrompt.js'
 import { useAccountActions } from '../composables/useAccountActions.js'
-import { isIos, localWork, offerAnswered } from '../composables/installPath.js'
+import { isIos, localWork, offerAnswered, preview } from '../composables/installPath.js'
 
 const emit = defineEmits(['close', 'ios-help'])
 const { locale } = useLocale()
 const labels = computed(() => ui[locale.value])
 const { canInstall, iosInstall, promptInstall } = useInstallPrompt()
 const { status, signIn } = useAccountActions()
+// What this browser can do: the system prompt, or Safari's "Add to Home Screen" (or the stand's preview).
+const installNow = computed(() => canInstall.value || preview === 'offer')
+const iosHow = computed(() => iosInstall.value || preview === 'offer-ios')
 
 // A phone or a tablet is told about the table; a computer just about working with no signal.
-const phone = typeof window !== 'undefined' && window.matchMedia?.('(pointer: coarse)').matches
+const phone = preview === 'offer-ios' || (typeof window !== 'undefined' && window.matchMedia?.('(pointer: coarse)').matches)
 const signInFirst = computed(() => {
   if (!isIos() || status.value === 'authed') return false
   const { rosters, games } = localWork()

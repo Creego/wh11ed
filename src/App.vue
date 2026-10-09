@@ -120,7 +120,7 @@ import { ref, computed, watch, onMounted, onUnmounted, defineAsyncComponent } fr
 import { pageLeaving, pageArrived } from './composables/usePageMotion.js'
 import { useRoute, useRouter } from 'vue-router'
 import { shouldWelcome } from './composables/useWelcome.js'
-import { appFirstRunDue, countVisit, offerDue, offerShown } from './composables/installPath.js'
+import { appFirstRunDue, countVisit, offerDue, offerShown, preview as installPreview } from './composables/installPath.js'
 import { useInstallPrompt } from './composables/useInstallPrompt.js'
 import { useFeedbackModal } from './composables/useFeedbackModal.js'
 import { useBackToCloseWhile } from './composables/useBackToClose.js'
@@ -363,8 +363,9 @@ onMounted(() => {
   window.addEventListener('keydown', onKeydown)
   document.addEventListener('click', onGlobalClick)
   countVisit()
-  welcomeOpen.value = shouldWelcome(appPath.value)
-  appFirstOpen.value = appFirstRunDue()
+  welcomeOpen.value = !installPreview && shouldWelcome(appPath.value)
+  appFirstOpen.value = appFirstRunDue() || !!installPreview?.startsWith('first')
+  if (installPreview?.startsWith('offer')) installOfferOpen.value = true
   // Silent session restore, once per load: the navbar's account menu is on every page, so the
   // answer to "am I signed in" can no longer wait for the tracker to be opened. Costs one
   // request against the refresh cookie, resolves to 'anon' offline or with no backend.

@@ -14,6 +14,13 @@ export const APP_FIRST_KEY = 'wh11ed-app-first-run' // the installed app's own f
 const SESSION_KEY = 'wh11ed-visit-counted'
 const OFFER_SESSION_KEY = 'wh11ed-install-offer-shown'
 
+// The stand only (stripped from a build): `?preview=offer | offer-ios | first | first-ios` shows the
+// offer or the installed app's first card in any browser, the iPhone wording included — a dev
+// server cannot be installed, so neither would ever come up there by itself.
+export const preview = import.meta.env.DEV && typeof location !== 'undefined'
+  ? new URLSearchParams(location.search).get('preview')
+  : null
+
 const json = (key, fallback) => {
   try { return JSON.parse(getItem(key) || 'null') ?? fallback } catch { return fallback }
 }
@@ -40,6 +47,7 @@ export function localWork() {
 // Any iPhone or iPad, whatever the browser: there an installed app keeps its own storage, apart
 // from Safari's.
 export function isIos() {
+  if (preview?.endsWith('-ios')) return true
   if (typeof navigator === 'undefined') return false
   const ua = navigator.userAgent || ''
   return /iP(hone|ad|od)/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
