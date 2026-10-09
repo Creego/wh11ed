@@ -26,7 +26,7 @@ export const changelog = [
     date: '2026-10-09',
     en: [
       { h: 'Beta of the new game tracker' },
-      'You can try the new game tracker at beta.wh-rules.ru. The tracker on this site stays as it was.',
+      'You can try the new game tracker at {link:beta.wh-rules.ru}. The tracker on this site stays as it was.',
       'A game started in the beta is played only in the beta, and a game from this site only here. If the host plays in the other version, the join page gives you a link there.',
       'In the beta the tracker and the roster builder have a tutorial. It goes through the screen step by step and opens the tabs for you. You can run it again from the {btn:gear} menu.',
       { h: 'Putting the site on your phone' },
@@ -41,7 +41,7 @@ export const changelog = [
     ],
     ru: [
       { h: 'Бета нового трекера партии' },
-      'Новый трекер партии можно попробовать на beta.wh-rules.ru. Трекер на этом сайте остаётся прежним.',
+      'Новый трекер партии можно попробовать на {link:beta.wh-rules.ru}. Трекер на этом сайте остаётся прежним.',
       'Партия из беты играется только в бете, а партия с этого сайта — только здесь. Если хост играет в другой версии, страница подключения даст ссылку туда.',
       'В бете у трекера и конструктора ростеров есть туториал. Он проходит по экрану шаг за шагом и сам открывает вкладки. Пройти его ещё раз можно в меню {btn:gear}.',
       { h: 'Сайт на телефоне' },
