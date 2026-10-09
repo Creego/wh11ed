@@ -96,6 +96,7 @@ import { useLocale } from '../../composables/useLocale.js'
 import { useTracker, membersOf, sideName } from '../../composables/useTracker.js'
 import { usableInSlot, BATTLE_PHASES } from '../../composables/stratagemPhases.js'
 import { allySourceOf } from '../../composables/rosterEngine.js'
+import { detachmentSources } from '../../data/detachmentSources.js'
 import { getItem, setItem } from '../../composables/safeStorage.js'
 import { useFactionChoice } from '../../composables/useFactionChoice.js'
 import { useRefNavigation } from '../../composables/useRefNavigation.js'
@@ -154,10 +155,13 @@ function rulesFor(pi) {
     if (fac) {
       take(fac.army, labels.value.trackerArmyRule)
       // The detachment's own rule, under the detachment's name — which is what the game stores.
+      // A borrowed detachment is indexed under the faction it is printed for (detachmentSources).
       for (const name of m.detachments || []) {
-        const byName = fac.dets || {}
-        const key = Object.keys(byName).find((k) => norm(k) === norm(name))
-        if (key) take(byName[key], name)
+        for (const src of detachmentSources(m.factionSlug)) {
+          const byName = idx[src]?.dets || {}
+          const key = Object.keys(byName).find((k) => norm(k) === norm(name))
+          if (key) { take(byName[key], name); break }
+        }
       }
     }
 
