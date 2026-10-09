@@ -162,6 +162,16 @@ interruption, not a welcome. Shown once; dismissing (or following the link) is p
 decision is taken on mount rather than in a route watcher, so navigating to `/` later in a session
 never raises it.
 
+**The way to the installed app follows the player's real path** (owner, 2026-10-09; `installPath.js`).
+The first visit is to a SITE — found from a search, read in a tab — so the welcome card says what is
+here and asks for no install, and it never shows in the installed app. The offer to install
+(`InstallOffer.vue`) comes once, at the first sign the site is used for real: a saved list, a game,
+or a third visit — never over a game, a list being built or a join, once a session until answered.
+On an iPhone with lists or games in Safari it asks for a sign-in FIRST: an installed app there has
+storage of its own and would open empty. The installed app's first launch has its own card
+(`AppFirstRun.vue`): it is downloading for offline, and on an empty iPhone, sign in to bring the
+lists over.
+
 **Navigation model:** Two levels.
 
 - **Top navbar** (`App.vue`) — sections "Core Rules", "Event Companion", "Tracker", "Factions". (The `/links` page of source PDFs is deliberately NOT in the navbar or the drawer — only its card on the landing page links to it.) `isEventRoute` (path starts with `/event-companion`) and `isTrackerRoute` (starts with `/tracker`) switch which subnav renders. **Factions** is a `.nav-dropdown`: the link still navigates to `/factions`, but on **hover / focus-within** (desktop only — `.navbar-links` is `display:none` ≤900px) it opens a pure-CSS grouped mega-menu of all factions (2-column grid from `data/factionsIndex.js` via `groupLabelKey`, links to `/factions/:slug`, "coming soon" for non-ready). No JS state — reveal is CSS `:hover`/`:focus-within` with a transparent `padding-top` bridge.
