@@ -34,7 +34,9 @@ const SITE_ORIGIN = process.env.VITE_SITE_ORIGIN || 'https://wh-rules.ru'
 // folder rather than renamed files: the new path is what makes browsers, the CDN and Android's
 // installed icon drop the old pictures, which had the same names.
 const BRAND = process.env.VITE_BETA === '1' ? 'beta' : 'main'
-const BRAND_DIR = `brand/${BRAND}`
+// `beta-2`: the beta's icons say BETA under the WH since 2026-10-09 (owner) — a new folder for the
+// same reason as above: a changed picture needs a new path.
+const BRAND_DIR = `brand/${BRAND === 'beta' ? 'beta-2' : BRAND}`
 
 // Replace the %SITE_ORIGIN% placeholder in index.html at build time. Not Vite's built-in
 // %VITE_*% mechanism, so we control the fallback (a bare `npm run build` with no env still emits
