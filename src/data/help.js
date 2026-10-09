@@ -78,15 +78,15 @@ export const help = {
 **Setting a game up together**
 ▪ On the tracker page press "Shared game", then "Start a new one". Choose the game type and press "Open the lobby". Only you need an account.
 ▪ The others press "Shared game", then "Join a game", and enter the code — or open your link or QR code.
-▪ Each guest fills in their own side on their phone: name, faction, detachments, list. Then they press "Done". Nothing leaves their phone before that.
+▪ Each guest fills in their own side on their device: name, faction, detachments, list. Then they press "Done". Nothing leaves their phone before that.
 ▪ You choose the mission, the battlefield, who goes first and what to track. You start the game once the other side is in.
 ▪ A side is filled in by one phone: the first to join it. It can hand the right over to a partner.
 ▪ While you are on the armies step, a guest changes their side freely. Once you have moved on, they ask, and you answer.
 **One game, several phones**
 ▪ A game already running is shared from the people icon beside the game's buttons. The others join the same way, by code, link or QR, and pick their side.
 ▪ Each phone scores its own side. The board is the same on every phone within a few seconds.
-▪ The other side's card is on your screen, greyed: you can read it, they score it. The host too, until it frees their seat in the sharing window. "Score both sides from this phone" is there for a guest who only came to watch.
-▪ Losing signal changes nothing: play on, and the phones catch up. The dot on the round bar shows how the sync is doing.
+▪ The other side's card is on your screen, greyed: you can read it, they score it. The host too, until it frees their seat in the sharing window. "Score both sides from this device" is there for a guest who only came to watch.
+▪ Losing signal changes nothing: play on, and the devices catch up. The dot on the round bar shows how the sync is doing.
 ▪ When the game ends, each player keeps it in their own history.`,
       },
       {
@@ -179,15 +179,15 @@ export const help = {
 **Настроить партию вместе**
 ▪ На странице трекера нажмите «Совместная игра», затем «Начать новую». Выберите тип игры и запустите лобби. Аккаунт нужен только вам.
 ▪ Остальные нажимают «Совместная игра», затем «Подключиться», и вводят код — или открывают вашу ссылку или QR-код.
-▪ Каждый гость заполняет свою сторону на своём телефоне: имя, фракцию, детачменты, лист. Потом нажимает «Готово». До этого с его телефона ничего не уходит.
+▪ Каждый гость заполняет свою сторону на своём устройстве: имя, фракцию, детачменты, лист. Потом нажимает «Готово». До этого с его телефона ничего не уходит.
 ▪ Вы выбираете миссию, поле, очерёдность хода и что отслеживать. Партию начинаете вы, когда сторона соперника на месте.
 ▪ Сторону заполняет один телефон — тот, что подключился к ней первым. Он может передать право партнёру.
 ▪ Пока вы на шаге «Армии», гость меняет свою сторону свободно. Когда вы ушли дальше, он просит, а вы отвечаете.
 **Одна партия на нескольких телефонах**
 ▪ Уже идущей партией можно поделиться значком с людьми рядом с кнопками партии. Остальные подключаются так же — по коду, ссылке или QR — и выбирают свою сторону.
 ▪ Каждый телефон ведёт свою сторону. Табло у всех одно, с задержкой в несколько секунд.
-▪ Чужая сторона на вашем экране приглушена: читать её можно, ведёт её другой телефон. Хоста это тоже касается, пока он не освободит это место в окне совместной игры. Там же есть «Вести обе стороны с этого телефона» — для гостя, который подключился только смотреть.
-▪ Пропала связь — играйте дальше, телефоны догонят друг друга. Точка на полосе раундов показывает, как идёт синхронизация.
+▪ Чужая сторона на вашем экране приглушена: читать её можно, ведёт её другое устройство. Хоста это тоже касается, пока он не освободит это место в окне совместной игры. Там же есть «Вести обе стороны с этого устройства» — для гостя, который подключился только смотреть.
+▪ Пропала связь — играйте дальше, устройства догонят друг друга. Точка на полосе раундов показывает, как идёт синхронизация.
 ▪ Когда партия закончится, каждый сохраняет её в свою историю.`,
       },
       {
