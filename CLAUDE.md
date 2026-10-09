@@ -154,9 +154,9 @@ Vue 3 SPA using HTML5 history routing (`createWebHistory`) — clean paths like 
 - Old `/#/path` links are rewritten by a tiny inline shim at the top of `index.html` (`location.replace`, keeps the query even inside the hash — the pre-migration OAuth callback relies on that). Keep the shim — it's what makes old bookmarks/shared links work forever.
 
 
-**First-visit card** (`WelcomeModal.vue` + `useWelcome.js`, key `wh11ed-welcome-seen`): three facts
-a reader cannot get from the screen — what is here, that the *installed* app goes fully offline, and
-that their lists live on the device — plus a link to `/help`. **Landing page only**: most visitors
+**First-visit card** (`WelcomeModal.vue` + `useWelcome.js`, key `wh11ed-welcome-seen`): two facts
+a reader cannot get from the screen — what is here, and that it needs no account and keeps their
+lists on the device — plus a link to `/help`. No install pitch (see below). **Landing page only**: most visitors
 arrive from a search engine straight into a rule and are mid-question, and a card across that is an
 interruption, not a welcome. Shown once; dismissing (or following the link) is permanent, and the
 decision is taken on mount rather than in a route watcher, so navigating to `/` later in a session
