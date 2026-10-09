@@ -255,7 +255,7 @@ describe('RoundTracker — a shared game', () => {
     const w = mountTracker()
     expect(cards(w).map(locked)).toEqual([LOCKED, OPEN])
     expect(cards(w)[0].find('.pinfo').attributes('inert')).toBeUndefined()
-    expect(cards(w)[0].text()).toContain('Scored on another phone')
+    expect(cards(w)[0].text()).toContain('Scored on another device')
     expect(w.find('[aria-label="Setup"]').attributes('disabled')).toBeUndefined()
   })
 
