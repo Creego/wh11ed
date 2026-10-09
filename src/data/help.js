@@ -105,11 +105,14 @@ export const help = {
       {
         id: 'help-offline',
         title: 'Offline, and installing the app',
-        body: `**A browser tab stays light on purpose** — it downloads the app and the text, and fetches pictures only as you look at them. That is the right trade for someone who opened one rule on the way to the club.
-**The installed app goes fully offline.** Install it from the menu (⚙ → Install app; on an iPhone: Share → Add to Home Screen), open it once with a connection, and it downloads everything it needs. After that a venue with no signal changes nothing.
-▪ **Want the lot without installing?** ⚙ → Download for offline. The button says how much it is before you tap it, and it does the same thing the installed app does for itself.
+        body: `**The site in a browser tab stays light on purpose.** It loads the text, and pictures only as you look at them. That suits someone who opened one rule on the way to the club.
+**Playing at a table, put it on your phone as an app.** It then works with no signal: the rules, your lists and the tracker.
+▪ **To install:** ⚙ → "Install app". On an iPhone: Safari's Share button → "Add to Home Screen".
+▪ **On an iPhone, sign in before you install.** There the installed app keeps its data apart from Safari and does not see the lists and games you made in the browser. Once you are signed in, they show up in the app too. On Android the app and the browser share them.
+▪ Open the installed app once with a connection: it downloads everything it needs. The bottom of the screen shows how far it is.
+▪ **Want it all without installing?** ⚙ → "Download for offline". The button says how much it is before you tap it.
 ▪ Updates arrive by themselves and are never applied in the middle of a game.
-▪ It is worth doing the first launch — or that download — at home, not in the queue at the event.`,
+▪ Do the first launch at home, not in the queue at the event.`,
       },
       {
         id: 'help-data',
@@ -203,11 +206,14 @@ export const help = {
       {
         id: 'help-offline',
         title: 'Офлайн и установка приложения',
-        body: `**Вкладка в браузере намеренно остаётся лёгкой** — она качает приложение и тексты, а картинки подтягивает по мере просмотра. Это правильный размен для того, кто открыл одно правило по дороге в клуб.
-**Установленное приложение работает полностью офлайн.** Поставьте его из меню (⚙ → «Установить приложение»; на айфоне: «Поделиться» → «На экран «Домой»»), один раз откройте при связи — и оно скачает всё нужное. После этого площадка без сети ничего не меняет.
-▪ **Хотите всё сразу, но без установки?** ⚙ → «Скачать для офлайна». На кнопке написан размер до того, как вы её нажмёте, а делает она то же самое, что установленное приложение делает само.
+        body: `**Сайт во вкладке браузера намеренно лёгкий.** Он загружает тексты, а картинки — по мере просмотра. Это удобно тому, кто открыл одно правило по дороге в клуб.
+**Если играете за столом, поставьте сайт на телефон как приложение.** Тогда он работает без сети: правила, ростеры и трекер.
+▪ **Как поставить:** ⚙ → «Установить приложение». На айфоне: кнопка «Поделиться» в Safari → «На экран „Домой“».
+▪ **На айфоне сначала войдите в аккаунт.** Там установленное приложение хранит данные отдельно от Safari и не видит ростеры и партии, сделанные в браузере. После входа они появятся и в приложении. На Android приложение и браузер видят одни и те же данные.
+▪ Один раз откройте установленное приложение при связи: оно скачает всё нужное. Как идёт загрузка, видно внизу экрана.
+▪ **Хотите всё сразу, но без установки?** ⚙ → «Скачать для офлайна». На кнопке написан размер ещё до нажатия.
 ▪ Обновления приходят сами и никогда не применяются посреди партии.
-▪ Первый запуск — или эту загрузку — стоит сделать дома, а не в очереди на ивенте.`,
+▪ Первый запуск лучше сделать дома, а не в очереди на ивенте.`,
       },
       {
         id: 'help-data',
